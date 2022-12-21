@@ -32,7 +32,7 @@ twitter_username:
 github_username:  Poechant
 
 # Build settings
-theme: minima
+theme: minimal
 plugins:
   - jekyll-feed
 
