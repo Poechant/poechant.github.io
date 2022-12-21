@@ -8,7 +8,9 @@ excerpt: 这是文章的摘要
 ---
 # 用 Jekyll 创建一个 Github Pages 网站
 
-#### 1、GitHub 上的准备
+本文涉及到 macOS 命令行的一点点基础，以及 git 版本控制软件、Web 前端的一点点基础，但是船长会尽量浅显地写在本文，避免太多其他依赖。
+
+### 1、GitHub 上的准备
 
 在 Github 上创建一个新的仓库，命名为「账户名.github.io」。然后将仓库拉取到本地：
 
@@ -20,13 +22,13 @@ excerpt: 这是文章的摘要
     $ git commit -m "Initial commit"
     $ git push -u origin main
 
-#### 2、了解 Ruby 和 Jekyll
+### 2、了解 Ruby 和 Jekyll
 
 Ruby 目前业界的主要应用都在 Web 开发领域，有不少框架，比如 Ruby on Rails、Sinatra、Padrino. 我们这里要用到的 Jekyll 是用 Ruby 实现的一个构建静态网站的工具，用 HTML 和 Markdown 作为源码，再通过布局和模板生成网页文件。
 
 Jekyll 特别适合构建博客，支持标签、分类、搜索，并支持自定义模板和布局。
 
-#### 3、了解 Gem
+### 3、了解 Gem
 
 Gem 是 Ruby 常用的一个管理库的工具，类似于 Pip 是 Python 常用的一个管理库的工具。
 
@@ -35,7 +37,7 @@ Gem 是 Ruby 常用的一个管理库的工具，类似于 Pip 是 Python�
     gem sources --add https://mirrors.tuna.tsinghua.edu.cn/rubygems/ --remove https://rubygems.org/
     gem sources -l
 
-#### 4、安装 Homebrew
+### 4、安装 Homebrew
 
 Homebrew 是一个专门为 macOS 设计的开源软件包管理工具，熟悉 Linux 的朋友可以把 Homebrew 理解成 macOS 的 apt-get。先安装 Homebrew：
 
@@ -51,7 +53,7 @@ Homebrew 是一个专门为 macOS 设计的开源软件包管理工具，熟�
 
 Homebrew 安装、卸载软件的命令都很简单，brew install wget和brew uninstall wget。
 
-#### 5、用 Homebrew 安装 Ruby
+### 5、用 Homebrew 安装 Ruby
 
 用 Homebrew 安装 chruby 和 ruby-install
 
@@ -83,13 +85,13 @@ Homebrew 安装、卸载软件的命令都很简单，brew install wget和bre
 
 Jekyll 官网要求 Ruby 版本大于 3.1.2p20.
 
-#### 6、安装 Jekyll 和 Bundler
+### 6、安装 Jekyll 和 Bundler
 
     $ gem install jekyll bundler
 
 上面顺便安装了 Bundler，Bundler 是 Ruby 常用的管理项目依赖关系的工具，类似于 virtualenv 之于 Python，可以简化项目的包依赖管理，帮你维护一份 Gemfile 文件，里面包含了所有依赖关系。这个工具的名字叫 Bundler，使用的时候都是用这个词的动词 bundle 命令。
 
-#### 7、使用 bundle 管理包依赖关系
+### 7、使用 bundle 管理包依赖关系
 
 创建 Gemfile 文件，Gemfile 是 Ruby 项目的依赖包管理文件：
 
@@ -107,7 +109,7 @@ Gemfile.lock 是 Gemfile 的锁定版本，记录了当前项目所使用的�
 
     $ git add Gemfile Gemfile.lock
 
-#### 8、本地启动一下看看
+### 8、本地启动一下看看
 
 先用 bundle 如下命令来启动：
 
@@ -134,7 +136,7 @@ Gemfile.lock 是 Gemfile 的锁定版本，记录了当前项目所使用的�
     $ git pull --no-rebase
     $ git push -u origin main
 
-#### 9、用 Jekyll 创建一个项目
+### 9、用 Jekyll 创建一个项目
 
     $ jekyll new CaptainMikeBlog
     $ cd CaptainMikeBlog
@@ -157,7 +159,7 @@ Gemfile.lock 是 Gemfile 的锁定版本，记录了当前项目所使用的�
 
 ![image](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/1Lk3lbmW2Z7jOm96/img/954955e5-0afd-49f9-8db1-44f77291f9fb.png)
 
-#### 10、修改 Gemfile 文件
+### 10、修改 Gemfile 文件
 
 注释掉gem "jekyll"开头的这一行，修改# gem "github-pages"开头的这一行为：
 
@@ -182,7 +184,7 @@ Gemfile.lock 是 Gemfile 的锁定版本，记录了当前项目所使用的�
 
 这里注意jekyll server和bundle exec jekyll serve两个的区别是前者基本本地 Jekyll 版本启动服务，后者基于目录下的 Gemfile 文件启动服务，所以我们要用后者。
 
-#### 11、配置 Github Pages
+### 11、配置 Github Pages
 
 在 Github 的仓库页面进入「Settings - Code and Automation - Pages - Build and Deploy」，选择「Deploy from a branch」，然后选择你设定的分支。再选发布源的文件夹，这里我设置为根目录。然后「保存」。再修改 \_config.yml 文件：
 
@@ -191,7 +193,61 @@ Gemfile.lock 是 Gemfile 的锁定版本，记录了当前项目所使用的�
 
 将本地代码push到 Github 仓库中，在浏览器访问your-username.github.io即可，有时候可能要等几分钟。
 
-#### 12、配置一个 Jekyll Theme
+### 12、配置一个 Jekyll Theme
+
+可以在http://jekyllthemes.org/这个网站上找一下喜欢的 theme，下载后将如下文件都 copy 到你项目目录下：
+
+    _includes
+    _layouts
+    _sass
+    css
+    js
+    img
+    404.markdown
+    index.html
+
+不同主题会有所不同，这里只列个大概。
+
+### 13、设置自定义域名
+
+添加四条 A 记录，记录值如下：
+
+    185.199.108.153
+    185.199.109.153
+    185.199.110.153
+    185.199.111.153
+
+添加 CNAME，主机记录为www，记录值为your-username.github.io。然后在「Github 你的仓库里 - Settings - Pages - Custom Domain」填写你刚使用的域名，并把Enforce HTTPS打上勾。
+
+一旦解析成功，Github 上会自动多一个 CNAME 文件。把你最新的代码都 push 到 Github 仓库上，稍等片刻就可以从你自己的域名访问 Github Pages 搭建的博客啦。
+
+### 14、一些扩展问题
+
+##### Q1：我想在网站的首页的每一篇文章标题下，显示一个指定的摘要，而不是自动从文章内容开头截取的，应该如何实现呢？
+
+在 Jekyll 中，你可以在每篇文章的 front matter 中设置摘要字段。例如，你可以在文章的 front matter 中添加一个 excerpt 字段，然后在该字段中填入你想要在首页显示的摘要内容。
+
+    ---
+    title: 这是一篇文章
+    excerpt: 这是文章的摘要
+    ---
+    
+    这是文章的正文内容
+
+然后，在你的首页模板中，你可以使用 {{ post.excerpt }} 输出文章的摘要。例如：
+
+    <ul>
+      {% for post in paginator.posts %}
+        <li>
+          <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+          <p>{{ post.excerpt }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+
+这样，在首页显示文章列表时，每篇文章就会带上它的摘要内容。
+
+注意，如果文章的 excerpt 字段没有设置，那么在首页显示时就不会有摘要内容。因此，建议在发布新文章时务必检查 excerpt 字段是否已经设置。
 
 #### 参考
 
@@ -207,41 +263,6 @@ Gemfile.lock 是 Gemfile 的锁定版本，记录了当前项目所使用的�
 
 6、[https://docs.github.com/zh/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site](https://docs.github.com/zh/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 
----
+7、[https://github.com/dyutibarma/monochrome](https://github.com/dyutibarma/monochrome)
 
-安装 Ruby、RubyGems、GCC、G++、Makefile，如何查看自己是否已经安装了：
-
-:::
-Ruby：版本 2.5.0 或更高，运行ruby -v看看。
-
-RubyGems：运行gem -v。
-
-GCC、G++ 和 Makefile：运行gcc -v、g++ -v和make -v。
-:::
-
-更新一下：
-
-    sudo gem update --system
-
-检查系统中是否有可用的软件更新，这一步会比较慢，需要一些耐心：
-
-    $ softwareupdate --install -a
-
-    $ gem install racc -v '1.6.1' --source 'https://rubygems.org/'
-
-    $ bundle init
-
-创建一个文件，内容如下：
-
-    source 'https://rubygems.org'
-    gem 'nokogiri'
-    gem 'rack', '~> 2.2.4'
-    gem 'rspec'
-
-    $ bundle install
-
-    $ git add Gemfile Gemfile.lock
-
-如果你的电脑上已经有 Ruby、RubyGems、GCC、G++、Make，则可以直接安装 jekyll：
-
-    $ gem install jekyll
+8、[https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain](https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain)
