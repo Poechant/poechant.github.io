@@ -4,18 +4,18 @@ title:  如何使用 Jekyll 基于 Github Pages 搭建个人博客
 description: This is description
 date:   2022-12-21 15:53:57 +0800
 categories: jekyll update
-excerpt: GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用 GitHub Pages 搭建博客，然后使用 Jekyll 生成的静态网站文件上传到该仓库。花 10 分钟时间，通过本文让你快速地实现了一个免费、简单、快速、安全、支持版本控制、支持自定义域名的独立域名博客。
+excerpt: GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用 GitHub Pages 搭建博客，然后使用 Jekyll 生成的静态网站文件上传到该仓库。花 10 分钟时间，通过本文让你快速地实现了一个免费、简单、快速、安全、支持版本控制、支持自定义域名的独立域名博客 ……
 ---
 ### 写在前面：
 
-GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用 GitHub Pages 搭建博客，然后使用 Jekyll 生成的静态网站文件上传到该仓库。花 10 分钟时间，通过本文让你快速地实现了一个免费、简单、快速、安全、支持版本控制、支持自定义域名的独立域名博客。这样实现的**优势**：
+GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用 GitHub Pages 搭建博客，然后使用 Jekyll 生成的静态网站文件上传到该仓库。花 10 分钟时间，通过本文让你快速地实现了一个免费、简单、快速、安全、支持版本控制、支持自定义域名的独立域名博客。这样实现的优势：
 
-* **免费**：GitHub Pages 允许用户免费使用其托管静态网站。
-* **简单**：Jekyll 是一个轻量级的静态网站生成器，它使用简单的 Markdown 格式写文章，不需要数据库或者后端语言的支持。
-* **快速**：由于 Jekyll 生成的网站是静态的，所以可以通过 CDN 加速访问速度。
-* **安全**：由于 Jekyll 生成的网站是静态的，所以不存在脚本攻击、SQL 注入等安全问题。    
-* **版本控制**：GitHub 提供了强大的版本控制功能，你可以使用 Git 记录每一次修改，方便查看和回滚。    
-* **自定义域名**：你可以在仓库的设置页面中自定义域名，让你的博客更专业和个性化。
+*   **免费**：GitHub Pages 允许用户免费使用其托管静态网站。
+*   **简单**：Jekyll 是一个轻量级的静态网站生成器，它使用简单的 Markdown 格式写文章，不需要数据库或者后端语言的支持。
+*   **快速**：由于 Jekyll 生成的网站是静态的，所以可以通过 CDN 加速访问速度。
+*   **安全**：由于 Jekyll 生成的网站是静态的，所以不存在脚本攻击、SQL 注入等安全问题。
+*   **版本控制**：GitHub 提供了强大的版本控制功能，你可以使用 Git 记录每一次修改，方便查看和回滚。
+*   **自定义域名**：你可以在仓库的设置页面中自定义域名，让你的博客更专业和个性化。
 
 使用 Jekyll 和 GitHub Pages 搭建博客，你可以快速、简单、免费地拥有一个个人博客，并且可以享受到较高的安全性、版本控制和自定义域名的优势。
 
@@ -245,8 +245,9 @@ Gemfile.lock 是 Gemfile 的锁定版本，记录了当前项目所使用的�
     
     这是文章的正文内容
 
-然后，在你的首页模板中，你可以使用 {{ post.excerpt }} 输出文章的摘要。例如：
+然后，在你的首页模板中，你可以使用 {{ post.excerpt }} 输出文章的摘要。例如：
 
+`
     <ul>
       {% for post in paginator.posts %}
         <li>
@@ -255,25 +256,18 @@ Gemfile.lock 是 Gemfile 的锁定版本，记录了当前项目所使用的�
         </li>
       {% endfor %}
     </ul>
-
+`
 这样，在首页显示文章列表时，每篇文章就会带上它的摘要内容。
 
 注意，如果文章的 excerpt 字段没有设置，那么在首页显示时就不会有摘要内容。因此，建议在发布新文章时务必检查 excerpt 字段是否已经设置。
 
 #### 参考
 
-1、[https://bundler.io](https://bundler.io)
-
-2、[https://jekyllrb.com/docs/](https://jekyllrb.com/docs/)
-
-3、[https://zhuanlan.zhihu.com/p/87225594](https://zhuanlan.zhihu.com/p/87225594)
-
-4、[https://chat.openai.com/chat](https://chat.openai.com/chat)
-
-5、[https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll)
-
-6、[https://docs.github.com/zh/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site](https://docs.github.com/zh/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
-
-7、[https://github.com/dyutibarma/monochrome](https://github.com/dyutibarma/monochrome)
-
-8、[https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain](https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain)
+1. [https://bundler.io](https://bundler.io)
+2. [https://jekyllrb.com/docs/](https://jekyllrb.com/docs/)
+3. [https://zhuanlan.zhihu.com/p/87225594](https://zhuanlan.zhihu.com/p/87225594)
+4. [https://chat.openai.com/chat](https://chat.openai.com/chat)
+5. [https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll)
+6. [https://docs.github.com/zh/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site](https://docs.github.com/zh/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+7. [https://github.com/dyutibarma/monochrome](https://github.com/dyutibarma/monochrome)
+8. [https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain](https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain)
