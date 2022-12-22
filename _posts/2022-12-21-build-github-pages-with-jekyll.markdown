@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  如何使用 Jekyll 基于 Github Pages 搭建个人博客
+title:  如何使用 Jekyll 基于 Github Pages 搭建个人博客？
 description: This is description
 date:   2022-12-21 15:53:57 +0800
 categories: jekyll update
