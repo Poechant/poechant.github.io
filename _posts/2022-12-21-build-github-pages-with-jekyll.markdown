@@ -140,7 +140,7 @@ Gemfile.lock 是 Gemfile 的锁定版本，记录了当前项目所使用的�
 
 然后打开浏览器输入http://localhost:4000看看效果：
 
-![image](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/1Lk3lbmW2Z7jOm96/img/238a75d0-8901-4d6c-9a62-524b5b604dd8.png)
+![image](/img/src/2022-12-21-build-github-pages-with-jekyll-1.png)
 
 这就说明 Jekyll 本地配置已经成功了。然后把当前的版本同步到 Git 上：
 
@@ -168,7 +168,7 @@ Gemfile.lock 是 Gemfile 的锁定版本，记录了当前项目所使用的�
 
 再打开浏览器输入http://localhost:4000看看效果：
 
-![image](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/1Lk3lbmW2Z7jOm96/img/954955e5-0afd-49f9-8db1-44f77291f9fb.png)
+![image](/img/src/2022-12-21-build-github-pages-with-jekyll-2.png)
 
 ### 10、修改 Gemfile 文件
 
