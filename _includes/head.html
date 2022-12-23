@@ -5,7 +5,7 @@
 	<meta name="generator" content="Jekyll">
 
 	<title>{%if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-  <meta name="description" content="{%if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  	<meta name="description" content="{%if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
 
 	<!-- CSS & fonts -->
 	<link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl | replace: '//', '/' }}">
@@ -13,7 +13,9 @@
 	<!-- RSS -->
 	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
 
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
 </head>

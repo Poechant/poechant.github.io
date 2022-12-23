@@ -1,10 +1,11 @@
 ---
 layout: post
-title:  如何使用 Jekyll 基于 Github Pages 搭建个人博客？
+title:  如何使用 Jekyll 基于 Github Pages 搭建个人博客 / 2022#3
 description: This is description
-date:   2022-12-21 15:53:57 +0800
+date:   2022-12-21 23:53:57 +0800
 categories: 前端
 tags: [Jekyll, Github Pages, 前端]
+description: GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用 GitHub Pages 搭建博客，然后使用 Jekyll 生成的静态网站文件上传到该仓库。花 10 分钟时间，通过本文让你快速地实现了一个免费、简单、快速、安全、支持版本控制、支持自定义域名的独立域名博客。
 excerpt: GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用 GitHub Pages 搭建博客，然后使用 Jekyll 生成的静态网站文件上传到该仓库。花 10 分钟时间，通过本文让你快速地实现了一个免费、简单、快速、安全、支持版本控制、支持自定义域名的独立域名博客 ……
 ---
 ### 写在前面：
@@ -78,7 +79,8 @@ Homebrew 安装、卸载软件的命令都很简单，brew install wget和bre
 这时候提示如下问题：
 
     >>> Updating ruby versions ...
-    !!! Failed to download https://raw.githubusercontent.com/postmodern/ruby-versions/master/ruby/versions.txt to /Users/captain/.cache/ruby-install/ruby/versions.txt!
+    !!! Failed to download https://raw.githubusercontent.com/postmodern/ruby-versions/master/ruby/versions.txt \
+    to /Users/captain/.cache/ruby-install/ruby/versions.txt!
     !!! Failed to download ruby versions!
 
 因为 raw.githubusercontent.com 在国内是被 blocked，所以用https://www.ipaddress.com查一下 IP 地址，然后修改下/etc/hosts：
@@ -187,7 +189,8 @@ Gemfile.lock 是 Gemfile 的锁定版本，记录了当前项目所使用的�
 
 得到如下提示：
 
-    You have already activated i18n 1.12.0, but your Gemfile requires i18n 0.9.5. Prepending `bundle exec` to your command may solve this. (Gem::LoadError)
+    You have already activated i18n 1.12.0, but your Gemfile requires i18n 0.9.5.
+    Prepending `bundle exec` to your command may solve this. (Gem::LoadError)
 
 参考https://github.com/Homebrew/brew.sh/issues/845这个 issue 后如下解决：
 
@@ -233,7 +236,39 @@ Gemfile.lock 是 Gemfile 的锁定版本，记录了当前项目所使用的�
 
 一旦解析成功，Github 上会自动多一个 CNAME 文件。把你最新的代码都 push 到 Github 仓库上，稍等片刻就可以从你自己的域名访问 Github Pages 搭建的博客啦。
 
-### 14、一些扩展问题
+### 14、用 rouge 实现代码高亮
+
+我们用支持 Markdown 内代码语法高亮的 Rouge 来实现，首先安装 Rouge：
+
+~~~
+gem install kramdom rouge
+~~~
+
+然后配置 \_config.yml 文件：
+
+~~~
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+~~~
+
+然后用 rouge 创建 syntax.css 文件：
+
+~~~
+$ rougify style github > css/syntax.css
+~~~
+
+在 `_include/head.html` 文件中添加：
+
+~~~
+<link rel="stylesheet" href="/css/syntax.css" />
+~~~
+
+
+### 15、一些扩展问题
 
 ##### Q1：我想在网站的首页的每一篇文章标题下，显示一个指定的摘要，而不是自动从文章内容开头截取的，应该如何实现呢？
 
@@ -246,18 +281,18 @@ Gemfile.lock 是 Gemfile 的锁定版本，记录了当前项目所使用的�
     
     这是文章的正文内容
 
-然后，在你的首页模板中，你可以使用 {{ post.excerpt }} 输出文章的摘要。例如：
+然后，在你的首页模板中，你可以使用`{{ post.excerpt }}`输出文章的摘要。例如：
 
-`
-    <ul>
-      {% for post in paginator.posts %}
-        <li>
-          <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-          <p>{{ post.excerpt }}</p>
-        </li>
-      {% endfor %}
-    </ul>
-`
+~~~
+<ul>
+  {% for post in paginator.posts %}
+    <li>
+      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+      <p>{{ post.excerpt }}</p>
+    </li>
+  {% endfor %}
+</ul>
+~~~
 这样，在首页显示文章列表时，每篇文章就会带上它的摘要内容。
 
 注意，如果文章的 excerpt 字段没有设置，那么在首页显示时就不会有摘要内容。因此，建议在发布新文章时务必检查 excerpt 字段是否已经设置。

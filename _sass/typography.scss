@@ -30,12 +30,21 @@ h2 {
 	font-size: 1.5em; /* 24px/16px */
 	line-height: 1.8em;
 	padding: 1em 0 0 0; /* 12px/24px * 2, only top (Use padding instead of margin to maintain proximity with paragwithph) */
+	margin-bottom: 1.5em; /* 24px/16px */
 }
 
-h3, h4, h5, h6 {
+h3 {
 	font-size: 1.125em; /* 18px/16px */
 	line-height: 1.8em;
 	padding: 0.66667em 0; /* 12px/18px * 2 (Use padding instead of margin to maintain proximity with paragraph) */
+	margin-bottom: 1.5em; /* 24px/16px */
+}
+
+h4, h5, h6 {
+	font-size: 0.875em; /* 14px/16px */
+	line-height: 1.8em;
+	padding: 0.5em 0; /* 12px/14px * 2 (Use padding instead of margin to maintain proximity with paragraph) */
+	margin-bottom: 1.5em; /* 24px/16px */
 }
 
 blockquote {
@@ -72,12 +81,21 @@ h2 {
 	font-size: 2em; /* 36px/18px */
 	line-height: 1.8em;
 	padding: 0.66667em 0 0 0; /* 12px/36px * 2, pnly top (Use padding instead of margin to maintain proximity with paragraph) */
+	margin-bottom: 1em; /* 24px/18px */
 }
 
-h3, h4, h5, h6 {
+h3 {
 	font-size: 1.3334em; /* 24px/18px */
 	line-height: 1.8em;
 	padding: 0.5em 0; /* 12px/24px * 2 (Use padding instead of margin to maintain proximity with paragraph) */
+	margin-bottom: 1em; /* 24px/18px */
+}
+
+h4, h5, h6 {
+	font-size: 1.1111em; /* 20px/18px */
+	line-height: 1.8em;
+	padding: 0.5em 0; /* 12px/24px * 2 (Use padding instead of margin to maintain proximity with paragraph) */
+	margin-bottom: 1em; /* 24px/18px */
 }
 
 blockquote {
