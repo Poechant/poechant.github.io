@@ -27,13 +27,17 @@ GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用�
 
 在 Github 上创建一个新的仓库，命名为「账户名.github.io」。然后将仓库拉取到本地：
 
-    $ git clone https://github.com/username/username.github.io
+```bash
+$ git clone https://github.com/username/username.github.io
+```
 
 创建一些 web 文件后再推到 Github 上就可以了：
 
-    $ git add --all
-    $ git commit -m "Initial commit"
-    $ git push -u origin main
+```bash
+$ git add --all
+$ git commit -m "Initial commit"
+$ git push -u origin main
+```
 
 ### 2、了解 Ruby 和 Jekyll
 
@@ -54,15 +58,21 @@ Gem 是 Ruby 常用的一个管理库的工具，类似于 Pip 是 Python�
 
 Homebrew 是一个专门为 macOS 设计的开源软件包管理工具，熟悉 Linux 的朋友可以把 Homebrew 理解成 macOS 的 apt-get。先安装 Homebrew：
 
-    $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```bash
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
 为了让 Homebrew 在国内安装快一些，可以替换下镜像源：
 
-    echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles' >> ~/.bash_profile
+```bash
+echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles' >> ~/.bash_profile
+```
 
 以上用的是阿里云的源，也可以用网易的源：
 
-    echo 'export HOMEBREW_BOTTLE_DOMAIN=http://mirrors.163.com/homebrew/bottles' >> ~/.bash_profile
+```bash
+echo 'export HOMEBREW_BOTTLE_DOMAIN=http://mirrors.163.com/homebrew/bottles' >> ~/.bash_profile
+```
 
 Homebrew 安装、卸载软件的命令都很简单，brew install wget和brew uninstall wget。
 
@@ -70,18 +80,24 @@ Homebrew 安装、卸载软件的命令都很简单，brew install wget和bre
 
 用 Homebrew 安装 chruby 和 ruby-install
 
-    $ brew install chruby ruby-install xz
+```bash
+$ brew install chruby ruby-install xz
+```
 
 安装 Ruby 的最新版本：
 
-    $ ruby-install ruby
+```bash
+$ ruby-install ruby
+```
 
 这时候提示如下问题：
 
-    >>> Updating ruby versions ...
-    !!! Failed to download https://raw.githubusercontent.com/postmodern/ruby-versions/master/ruby/versions.txt \
-    to /Users/captain/.cache/ruby-install/ruby/versions.txt!
-    !!! Failed to download ruby versions!
+```bash
+>>> Updating ruby versions ...
+!!! Failed to download https://raw.githubusercontent.com/postmodern/ruby-versions/master/ruby/versions.txt \
+to /Users/captain/.cache/ruby-install/ruby/versions.txt!
+!!! Failed to download ruby versions!
+```
 
 因为 raw.githubusercontent.com 在国内是被 blocked，所以用https://www.ipaddress.com查一下 IP 地址，然后修改下/etc/hosts：
 
@@ -89,19 +105,25 @@ Homebrew 安装、卸载软件的命令都很简单，brew install wget和bre
 
 然后再运行ruby-install ruby就可以正常安装了，这个过程会非常的慢，安装完成后，配置 zsh 脚本的 .zshrc 文件以便后续可以使用 chruby：
 
-    $ echo "source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh" >> ~/.zshrc
-    $ echo "source $(brew --prefix)/opt/chruby/share/chruby/auto.sh" >> ~/.zshrc
-    $ echo "chruby ruby-3.1.2" >> ~/.zshrc # run 'chruby' to see actual version
+```bash
+$ echo "source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh" >> ~/.zshrc
+$ echo "source $(brew --prefix)/opt/chruby/share/chruby/auto.sh" >> ~/.zshrc
+$ echo "chruby ruby-3.1.2" >> ~/.zshrc # run 'chruby' to see actual version
+```
 
 再看下 Ruby 版本对不对：
 
-    $ ruby -v
+```bash
+$ ruby -v
+```
 
 Jekyll 官网要求 Ruby 版本大于 3.1.2p20.
 
 ### 6、安装 Jekyll 和 Bundler
 
-    $ gem install jekyll bundler
+```bash
+$ gem install jekyll bundler
+```
 
 上面顺便安装了 Bundler，Bundler 是 Ruby 常用的管理项目依赖关系的工具，类似于 virtualenv 之于 Python，可以简化项目的包依赖管理，帮你维护一份 Gemfile 文件，里面包含了所有依赖关系。这个工具的名字叫 Bundler，使用的时候都是用这个词的动词 bundle 命令。
 
@@ -109,25 +131,33 @@ Jekyll 官网要求 Ruby 版本大于 3.1.2p20.
 
 创建 Gemfile 文件，Gemfile 是 Ruby 项目的依赖包管理文件：
 
-    source 'https://rubygems.org'
-    gem 'nokogiri'
-    gem 'rack', '~> 2.2.4'
-    gem 'rspec'
-    gem 'jekyll'
+```bash
+source 'https://rubygems.org'
+gem 'nokogiri'
+gem 'rack', '~> 2.2.4'
+gem 'rspec'
+gem 'jekyll'
+```
 
 然后安装依赖包，这里默认会根据运行命令时所在的目录的 Gemfile 来安装：
 
-    $ bundle install
+```bash
+$ bundle install
+```
 
 Gemfile.lock 是 Gemfile 的锁定版本，记录了当前项目所使用的所有依赖包的版本信息。下面把这两个文件都加入到 Git 版本控制中。
 
-    $ git add Gemfile Gemfile.lock
+```
+$ git add Gemfile Gemfile.lock
+```
 
 ### 8、本地启动一下看看
 
 先用 bundle 如下命令来启动：
 
-    $ bundle exec jekyll serve
+```bash
+$ bundle exec jekyll serve
+```
 
 启动日志如下：
 
@@ -147,14 +177,18 @@ Gemfile.lock 是 Gemfile 的锁定版本，记录了当前项目所使用的�
 
 这就说明 Jekyll 本地配置已经成功了。然后把当前的版本同步到 Git 上：
 
-    $ git pull --no-rebase
-    $ git push -u origin main
+```bash
+$ git pull --no-rebase
+$ git push -u origin main
+```
 
 ### 9、用 Jekyll 创建一个项目
 
-    $ jekyll new CaptainMikeBlog
-    $ cd CaptainMikeBlog
-    $ jekyll server
+```bash
+$ jekyll new CaptainMikeBlog
+$ cd CaptainMikeBlog
+$ jekyll server
+```
 
 启动日志如下：
 
@@ -177,7 +211,9 @@ Gemfile.lock 是 Gemfile 的锁定版本，记录了当前项目所使用的�
 
 注释掉gem "jekyll"开头的这一行，修改# gem "github-pages"开头的这一行为：
 
-    $ gem "github-pages", "~> GITHUB-PAGES-VERSION", group: :jekyll_plugins
+```bash
+$ gem "github-pages", "~> GITHUB-PAGES-VERSION", group: :jekyll_plugins
+```
 
 其中的GITHUB-PAGES-VERSION改为具体的版本号，版本号参考https://pages.github.com/versions/，我写本文的时候github-pages最新版本号是227。关闭 Gemfile 文件然后命令行运行如下命令：
 
@@ -185,17 +221,23 @@ Gemfile.lock 是 Gemfile 的锁定版本，记录了当前项目所使用的�
 
 再本地启动服务器测试：
 
-    $ jekyll server
+```bash
+$ jekyll server
+```
 
 得到如下提示：
 
-    You have already activated i18n 1.12.0, but your Gemfile requires i18n 0.9.5.
-    Prepending `bundle exec` to your command may solve this. (Gem::LoadError)
+```bash
+You have already activated i18n 1.12.0, but your Gemfile requires i18n 0.9.5.
+Prepending `bundle exec` to your command may solve this. (Gem::LoadError)
+```
 
 参考https://github.com/Homebrew/brew.sh/issues/845这个 issue 后如下解决：
 
-    $ bundle add webrick
-    $ bundle exec jekyll serve
+```bash
+$ bundle add webrick
+$ bundle exec jekyll serve
+```
 
 这里注意jekyll server和bundle exec jekyll serve两个的区别是前者基本本地 Jekyll 版本启动服务，后者基于目录下的 Gemfile 文件启动服务，所以我们要用后者。
 
@@ -246,7 +288,7 @@ gem install kramdom rouge
 
 然后配置 \_config.yml 文件：
 
-~~~
+~~~yaml
 markdown: kramdown
 highlighter: rouge
 
@@ -257,15 +299,15 @@ kramdown:
 
 然后用 rouge 创建 syntax.css 文件：
 
-~~~
+```bash
 $ rougify style github > css/syntax.css
-~~~
+```
 
 在 `_include/head.html` 文件中添加：
 
-~~~
+```html
 <link rel="stylesheet" href="/css/syntax.css" />
-~~~
+```
 
 
 ### 15、一些扩展问题
@@ -274,16 +316,18 @@ $ rougify style github > css/syntax.css
 
 在 Jekyll 中，你可以在每篇文章的 front matter 中设置摘要字段。例如，你可以在文章的 front matter 中添加一个 excerpt 字段，然后在该字段中填入你想要在首页显示的摘要内容。
 
-    ---
-    title: 这是一篇文章
-    excerpt: 这是文章的摘要
-    ---
-    
-    这是文章的正文内容
+```markdown
+---
+title: 这是一篇文章
+excerpt: 这是文章的摘要
+---
+
+这是文章的正文内容
+```
 
 然后，在你的首页模板中，你可以使用`{{ post.excerpt }}`输出文章的摘要。例如：
 
-~~~
+```html
 <ul>
   {% for post in paginator.posts %}
     <li>
@@ -292,7 +336,8 @@ $ rougify style github > css/syntax.css
     </li>
   {% endfor %}
 </ul>
-~~~
+```
+
 这样，在首页显示文章列表时，每篇文章就会带上它的摘要内容。
 
 注意，如果文章的 excerpt 字段没有设置，那么在首页显示时就不会有摘要内容。因此，建议在发布新文章时务必检查 excerpt 字段是否已经设置。

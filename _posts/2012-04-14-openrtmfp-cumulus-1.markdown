@@ -20,17 +20,11 @@ OpenRTMFP 是一个开源的 RTMFP 实现，可以用于构建基于 RTMFP 
 
 Cumulus 是一个基于 OpenRTMFP 的服务器，是一个完整的开源且跨平台的 RTMFP 服务器，可通过脚本进行扩展。CumulusServer 根据 GPL 许可在考虑以下 4 个概念的情况下开发：速度、轻量、跨平台和可扩展。尽管尚未发布版本，但只有在 CumulusServer 经过测试和批准后才会将代码推送到 github。实际上，主要稳定的功能有：
 
-*   P2P rendez-vous service、
-    
-*   live streaming、
-    
-
+*   P2P rendez-vous service
+*   live streaming
 *   RPC、pull、push exchange，实际上客户端和服务器之间的所有 AMF 可能交换
-    
 *   脚本引擎，用于创建自己的应用服务器或扩展 Cumulus 的功能
-    
 *   可扩展性和负载均衡解决方案
-    
 
 下面的内容是本篇 blog 的重点，包括两部分：先是 OpenRTMFP 应用的核心 CumulusServer 的入门介绍与部署，然后用 Lua 编写 HelloWorld 应用扩展 CumulusServer，我们开始吧！
 
@@ -60,32 +54,36 @@ POCO：POrtable COmponents，是一个强大的开源 C++ 库。其在 C++ 
 
 Windows 下略，Linux 下基本就是：
 
+~~~sh
+$ ./configuremakesudo
+$ make install
 ~~~
-./configuremakesudo
-make
-install
-~~~
+
 ##### 3.2、安装 OpenRTMFP/Cumulus
 
-    cd OpenRTMFP-Cumulus/CumulusLib
-    make
-    cd ../CumulusServer
-    make
+```sh
+$ cd OpenRTMFP-Cumulus/CumulusLib
+$ make
+$ cd ../CumulusServer
+$ make
+```
 
-如果出现了 .h 文件、lib 库找不到的情况，请修改 OpenRTMFP-Cumulus/CumulusLib/Makefile 或 OpenRTMFP-Cumulus/CumulusServer/Makefile。
+如果出现了 `.h` 文件、lib 库找不到的情况，请修改 OpenRTMFP-Cumulus/CumulusLib/Makefile 或 OpenRTMFP-Cumulus/CumulusServer/Makefile。
 
 #### 4、配置
 
-通过编写 OpenRTMFP-Cumulus/CumulusServer/CumulusServer.ini文件来为 OpenRTMFP-Cumulus 进行个性化配置（默认是没有这个文件的），这个文件的内容形如：
+通过编写 `OpenRTMFP-Cumulus/CumulusServer/CumulusServer.ini` 文件来为 OpenRTMFP-Cumulus 进行个性化配置（默认是没有这个文件的），这个文件的内容形如：
 
-    ;CumulusServer.ini
-    port = 1985
-    udpBufferSize = 114688
-    keepAlivePeer = 10
-    keepAliveServer = 15
-    [logs]
-    name=log
-    directory=C:/CumulusServer/logs
+```lua
+;CumulusServer.ini
+port = 1985
+udpBufferSize = 114688
+keepAlivePeer = 10
+keepAliveServer = 15
+[logs]
+name=log
+directory=C:/CumulusServer/logs
+```
 
 一些字段的设置含义如下，摘自：[地址](https://github.com/OpenRTMFP/Cumulus/wiki/Installation)。
 
@@ -110,28 +108,33 @@ install
 
 Windows 下的启动方法为：
 
-~~~
-CumulusServer.exe /registerService [/displayName=CumulusServer /description="Open Source RTMFP Server" /startup=automatic]
+~~~dos
+$ CumulusServer.exe /registerService [/displayName=CumulusServer /description="Open Source RTMFP Server" /startup=automatic]
 ~~~
 
 Unix-like 下的启动方法为：
 
-    sudo ./CumulusServer --daemon [--pidfile=/var/run/CumulusServer.pid]
+```sh
+$ sudo ./CumulusServer --daemon [--pidfile=/var/run/CumulusServer.pid]
+```
 
 具体地，我的启动命令为：
 
-    sudo ./CumulusServer --daemon --pidfile=./CumulusServer.pid
+```sh
+$ sudo ./CumulusServer --daemon --pidfile=./CumulusServer.pid
+```
 
 #### 6、基本使用
 
 本地 Flash client 可以通过如下语句连接：
 
-    var nc:NetConnection = new NetConnection();nc.connect("rtmfp://localhost/");
+```as
+$ var nc:NetConnection = new NetConnection();nc.connect("rtmfp://localhost/");
+```
 
 RTMFP默认是采用1935端口，如果你特别指定了其他端口，比如12345，请使用如下方式：
 
     nc.connect("rtmfp://localhost:12345/");
-    
 
 #### 7、扩展 CumulusServer（Server Application）
 
@@ -153,13 +156,15 @@ RTMFP默认是采用1935端口，如果你特别指定了其他端口，比如12
 
 ##### 1.1、Server configuration
 
-    ; CumulusServer.ini
-    port = 1935
-    udpBufferSize = 114688
-    keepAlivePeer = 10
-    keepAliveServer = 15
-    [logs]name = log
-    directory = logs
+```lua
+; CumulusServer.ini
+port = 1935
+udpBufferSize = 114688
+keepAlivePeer = 10
+keepAliveServer = 15
+[logs]name = log
+directory = logs
+```
 
 ##### 1.2、Application file
 
@@ -172,7 +177,7 @@ RTMFP默认是采用1935端口，如果你特别指定了其他端口，比如12
 
 #### 2、Client-side
 
-~~~
+```java
 // CumulusClient.as
 
 package {
@@ -205,29 +210,36 @@ package {
 	  }    
 	}
 }
-~~~
+```
 
 #### 3、运行结果
 
-    Hello World OpenRTMFP/Cumulus
-    [SWF] CumulusClient.swf - 解压缩后为 1,776 个字节
-    [卸装 SWF] CumulusClient.swf
+```
+Hello World OpenRTMFP/Cumulus
+[SWF] CumulusClient.swf - 解压缩后为 1,776 个字节
+[卸装 SWF] CumulusClient.swf
+```
 
 #### 4、远程测试：一个免费的测试服务器
 
 获取 Developer Key 的地址：
 
-    http://108.59.252.39:8080/CumulusServer/index.jsp
+```
+http://108.59.252.39:8080/CumulusServer/index.jsp
+```
 
 服务器配置信息：
 
-    Server: amd64 OS: Linux 2.6.18-028stab095.1
-    Server IP: 108.59.252.39
-    OpenRTMFP as of: 22.Feb.2012
+```
+Server: amd64 OS: Linux 2.6.18-028stab095.1
+Server IP: 108.59.252.39
+OpenRTMFP as of: 22.Feb.2012
+```
 
 编写服务器段应用地址：
 
-    http://108.59.252.39:8080/CumulusServer/manage_ssls.jsp
-    
+```
+http://108.59.252.39:8080/CumulusServer/manage_ssls.jsp
+```
 
 快去试试吧 :)
