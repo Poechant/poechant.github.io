@@ -5,9 +5,7 @@ layout: default
 	<h2>{%if page.header %}{{ page.header }}{% else %}{{ page.title }}{% endif %}</h2>		
 	<time datetime="{{ page.date | date_to_xmlschema }}" class="by-line"><i>{{ page.date | date_to_string }}</i></time>
 	<div class="content">
-
 		{{ content }}
-		
 	</div>
 </article>
 
