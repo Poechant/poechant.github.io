@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<header class="masthead">
+  <h2>麦克船长的「{{ page.title }}」博客文章</h2>
+  {% if page.description %}
+    <span class="subheading">{{ page.description }}</span>
+  {% endif %}
+</header>
+
+<div class="container">
+  <br>
+    {% if site.categories[page.category] %}
+      {% for post in site.categories[page.category] %}
+        <!-- <li class="post"> -->
+        <a href="{% if site.baseurl == "/" %}{{ post.url }}{% else %}{{ post.url | prepend: site.baseurl }}{% endif %}">{%if post.header %}{{ post.header }}{% else %}{{ post.title }}{% endif %}</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;<i>{{ post.date | date_to_string }}</i><br><br>
+      {% endfor %}
+    {% else %}
+      <br>
+      <p>No posts for this category. If you have something in mind, check <a href="/write">Write For Us</a>page.</p>
+    {% endif %}
+</div>
