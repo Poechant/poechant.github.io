@@ -2,7 +2,7 @@
 layout: post
 title:  未来人工智能就是要：让普通人过上现在富豪们的生活 / 2017#2
 date:   2017-02-24 02:23:33 +0800
-categories: 思考
+categories: thinking
 tags: [思考]
 description: 有很多领域，需要专业人士面对具体的问题，给出个性化的解决方案。想获取这些个性化的解决方案，就要用金钱作为交换代价。而人工智能（Artificial Intelligence）真正能够发挥巨大作用的，恰恰就是这些领域。
 excerpt: 有很多领域，需要专业人士面对具体的问题，给出个性化的解决方案。想获取这些个性化的解决方案，就要用金钱作为交换代价。而人工智能（Artificial Intelligence）真正能够发挥巨大作用的，恰恰就是这些领域 ……

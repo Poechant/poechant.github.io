@@ -3,7 +3,7 @@ layout: post
 title:  如何使用 Jekyll 基于 Github Pages 搭建个人博客 / 2022#3
 description: This is description
 date:   2022-12-21 23:53:57 +0800
-categories: 前端
+categories: web
 tags: [Jekyll, Github Pages, 前端]
 description: GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用 GitHub Pages 搭建博客，然后使用 Jekyll 生成的静态网站文件上传到该仓库。花 10 分钟时间，通过本文让你快速地实现了一个免费、简单、快速、安全、支持版本控制、支持自定义域名的独立域名博客。
 excerpt: GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用 GitHub Pages 搭建博客，然后使用 Jekyll 生成的静态网站文件上传到该仓库。花 10 分钟时间，通过本文让你快速地实现了一个免费、简单、快速、安全、支持版本控制、支持自定义域名的独立域名博客 ……
@@ -312,7 +312,7 @@ $ rougify style github > css/syntax.css
 
 ### 15、一些扩展问题
 
-##### Q1：我想在网站的首页的每一篇文章标题下，显示一个指定的摘要，而不是自动从文章内容开头截取的，应该如何实现呢？
+#### Q1：我想在网站的首页的每一篇文章标题下，显示一个指定的摘要，而不是自动从文章内容开头截取的，应该如何实现呢？
 
 在 Jekyll 中，你可以在每篇文章的 front matter 中设置摘要字段。例如，你可以在文章的 front matter 中添加一个 excerpt 字段，然后在该字段中填入你想要在首页显示的摘要内容。
 
@@ -342,7 +342,51 @@ excerpt: 这是文章的摘要
 
 注意，如果文章的 excerpt 字段没有设置，那么在首页显示时就不会有摘要内容。因此，建议在发布新文章时务必检查 excerpt 字段是否已经设置。
 
-#### 参考
+#### Q2：如何支持对每一个分类都可以显示一个该分类下的所有文章的页面？
+
+有很多种办法，但是这里我讲一个比较简单且容易维护的方法，不过也有其弊端。首先在`_layouts`目录下创建一个`category.html`文件：
+
+```html
+---
+layout: default
+---
+
+<div class="container">
+  <br>
+    {% if site.categories[page.category] %}
+      {% for post in site.categories[page.category] %}
+        <a href="{% if site.baseurl == "/" %}{{ post.url }}{% else %}{{ post.url | prepend: site.baseurl }}{% endif %}">{%if post.header %}{{ post.header }}{% else %}{{ post.title }}{% endif %}</a>
+      {% endfor %}
+    {% else %}
+      <br>
+      <p>No posts for this category. If you have something in mind, check <a href="/write">Write For Us</a>page.</p>
+    {% endif %}
+</div>
+```
+
+这样就有了一个可以显示某个 category 下的所有 posts 的布局文件了。然后修改`_config.yml`文件：
+
+```yaml
+include: ['_categories']
+```
+
+在根目录创建一个`categories`目录，并在里面对每个 category 分别创建一个 html 文件，文件名即 category 的名字。但这个文件特别的简单，就是只需要写一个头部，例如我的「AI」分类的`ai.html`如下：
+
+```yaml
+---
+layout: category
+title: 人工智能
+description: This is the description.
+permalink: /category/ai
+category: ai
+category_type: tech
+---
+```
+
+那么之后每次创建文件时，在头部写`category`一定要与这些`categories`中的`html`文件对应起来。
+
+
+### 参考
 
 1. [https://bundler.io](https://bundler.io)
 2. [https://jekyllrb.com/docs/](https://jekyllrb.com/docs/)
