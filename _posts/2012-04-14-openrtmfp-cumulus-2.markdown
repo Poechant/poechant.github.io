@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  OpenRTMFP/Cumulus原理及源码解读-2：CumulusServer 启动分析与主进程主循环分析
-date:   2012-04-15 22:26:58 +0800
+title:  OpenRTMFP/Cumulus 原理及源码解读 2：CumulusServer 源码启动流程分析
+date:   2012-04-14 19:20:46 +0800
 categories: rt_tech
 tags: [直播技术]
 description:
