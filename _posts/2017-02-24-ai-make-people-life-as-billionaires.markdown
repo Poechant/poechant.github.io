@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  未来人工智能就是要：让普通人过上现在富豪们的生活 / 2017#2
+title:  未来人工智能就是要：让普通人过上现在富豪们的生活
 date:   2017-02-24 02:23:33 +0800
 categories: thinking
 tags: [思考]

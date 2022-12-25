@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  延迟满足，才有自由 / 2020#1
+title:  延迟满足，才有自由
 date:   2020-04-11 14:18:03 +0800
 categories: thinking
 tags: [思考]

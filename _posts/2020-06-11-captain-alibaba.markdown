@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  不要船开远了，就忘了为什么启航 / 2020#3
+title:  不要船开远了，就忘了为什么启航
 date:   2022-08-11 23:53:57 +0800
 categories: thinking
 tags: [思考]

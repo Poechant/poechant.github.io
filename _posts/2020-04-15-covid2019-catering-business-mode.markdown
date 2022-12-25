@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  疫后怎么做餐饮品牌？三叉戟模式或成标配 / 2020#2
+title:  疫后怎么做餐饮品牌？三叉戟模式或成标配
 date:   2020-04-15 00:42:43 +0800
 categories: thinking
 tags: [思考]

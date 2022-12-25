@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  一名出色软件工程师的技术基本功：编程与工具 / 2012#1
+title:  一名出色软件工程师的技术基本功：编程与工具
 date:   2012-05-16 01:06:59 +0800
 categories: thinking
 tags: [思考]

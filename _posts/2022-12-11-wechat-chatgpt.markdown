@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  让你和你的朋友们，在微信上跟 ChatGPT 聊聊天 / 2022#1
+title:  让你和你的朋友们，在微信上跟 ChatGPT 聊聊天
 date:   2022-12-11 23:59:57 +0800
 category: ai
 tags: [人工智能, AI, ChatGPT, OpenAI, 微信]

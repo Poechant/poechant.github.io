@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  我们是应该「断舍离」还是「念念不忘，必有回响」 / 2017#1
+title:  我们是应该「断舍离」还是「念念不忘，必有回响」
 date:   2017-02-01 04:59:21 +0800
 categories: thinking
 tags: [思考]
