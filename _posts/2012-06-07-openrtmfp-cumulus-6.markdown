@@ -1,16 +1,12 @@
 ---
 layout: post
-title:  OpenRTMFP/Cumulus 原理及源码解读 6：独立使用 CumulusLib 源码时的线程安全 Bug 及修复方法
+title:  OpenRTMFP/Cumulus 原理、源码及实践 6：独立使用 CumulusLib 源码时的线程安全 Bug 及修复方法
 date:   2012-06-07 23:34:18 +0800
 categories: rt_tech
 tags: [直播技术]
-description: 
-excerpt: 
+description: 本文是麦克船长《OpenRTMFP/Cumulus 原理、源码及实践》系列文章的其中一篇，相关内容最初首发于 CSDN 的 Poechant 技术博客，后整理于本博客。对于使用 Cumulus 来做二次开发的技术人员，CumulusLib 是一定会使用到的，但是 CumulusLib 的源码在被单独使用时是存在严重的线程安全 Bug 的，这就是本文诞生的原因。YY 的网页版流媒体技术服务端使用到 CumulusLib 时遇到了这个问题，因此修复了这个 Bug。最终的 Bug 修复很简单，但是要先理解 CumulusLib 整体线程安全问题才能确定解决方案。
+excerpt: 本文是麦克船长《OpenRTMFP/Cumulus 原理、源码及实践》系列文章的其中一篇，相关内容最初首发于 CSDN 的 Poechant 技术博客，后整理于本博客。对于使用 Cumulus 来做二次开发的技术人员，CumulusLib 是一定会使用到的，但是 CumulusLib 的源码在被单独使用时是存在严重的线程安全 Bug 的，这就是本文诞生的原因。YY 的网页版流媒体技术服务端使用到 CumulusLib 时遇到了这个问题，因此修复了这个 Bug。最终的 Bug 修复很简单，但是要先理解 CumulusLib 整体线程安全问题才能确定解决方案。
 ---
-
-**本文目录**
-* TOC
-{:toc}
 
 OpenRTMFP/Cumulus 提供了 `CumulusLib` 可以供其他 RTMFP 应用使用，而不局限于 `CumulusServer`。
 

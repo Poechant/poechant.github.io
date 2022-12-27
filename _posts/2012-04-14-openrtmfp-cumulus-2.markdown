@@ -1,18 +1,18 @@
 ---
 layout: post
-title:  OpenRTMFP/Cumulus 原理及源码解读 2：CumulusServer 源码启动流程分析
+title:  OpenRTMFP/Cumulus 原理、源码及实践 2：CumulusServer 源码启动流程分析
 date:   2012-04-14 19:20:46 +0800
 categories: rt_tech
 tags: [直播技术]
-description:
-excerpt:
+description: 本文是麦克船长《OpenRTMFP/Cumulus 原理、源码及实践》系列文章的第二篇，相关内容最初首发于 CSDN 的 Poechant 技术博客，后整理于本博客。本文对 CumulusServer 的启动流程进行了详细的源码解读，其中还包括 CumulusServer 如何处理命令行的各个输入选项、各项命令、如何 dump logs、载入配置、处理日志。
+excerpt: 本文是麦克船长《OpenRTMFP/Cumulus 原理、源码及实践》系列文章的第二篇，相关内容最初首发于 CSDN 的 Poechant 技术博客，后整理于本博客。本文对 CumulusServer 的启动流程进行了详细的源码解读，其中还包括 CumulusServer 如何处理命令行的各个输入选项、各项命令、如何 dump logs、载入配置、处理日志。
 ---
 
 **本文目录**
 * TOC
 {:toc}
 
-首先要知道的是，OpenRTMFP/Cumulus 中使用到的库有 Poco、OpenSSL 和 Lua。
+本文对 CumulusServer 的启动流程进行了详细的源码解读，其中还包括 CumulusServer 如何处理命令行的各个输入选项、各项命令、如何 dump logs、载入配置、处理日志。首先要知道的是，OpenRTMFP/Cumulus 中使用到的库有 Poco、OpenSSL 和 Lua。
 
 ### 一、Cumulus 启动源码分析
 

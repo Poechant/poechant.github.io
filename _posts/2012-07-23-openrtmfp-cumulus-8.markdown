@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  OpenRTMFP/Cumulus 原理及源码解读 8：经由服务器的 Pub/Sub 流程的关键点
+title:  OpenRTMFP/Cumulus 原理、源码及实践 8：经由服务器的 Pub/Sub 流程的关键点
 date:   2012-07-23 11:07:43 +0800
 categories: rt_tech
 tags: [直播技术]
-description: 
-excerpt: 
+description: Flash 客户端通过 NetConnection 与 Cumulus 建立连接，然后通过 NetStream 使用 RTMFP 发布 Audio/Video/Data（下面简称为 A/V/D） 给服务器，这个 Flash Player 就作为一个发布者（Publisher）。RTMFP 服务器接收到后给所有的订阅者（Subscribers）发送 Audio/Video/Data。本文将介绍如何经由服务器实现 Pub/Sub 流程。
+excerpt: Flash 客户端通过 NetConnection 与 Cumulus 建立连接，然后通过 NetStream 使用 RTMFP 发布 Audio/Video/Data（下面简称为 A/V/D） 给服务器，这个 Flash Player 就作为一个发布者（Publisher）。RTMFP 服务器接收到后给所有的订阅者（Subscribers）发送 Audio/Video/Data。本文将介绍如何经由服务器实现 Pub/Sub 流程。
 ---
 
 **本文目录**

@@ -1,16 +1,18 @@
 ---
 layout: post
-title:  OpenRTMFP/Cumulus 原理及源码解读 5：IO 管理源码分析
+title:  OpenRTMFP/Cumulus 原理、源码及实践 5：IO 管理源码分析
 date:   2012-04-24 11:31:10 +0800
 categories: rt_tech
 tags: [直播技术]
-description: 
-excerpt: 
+description: 本文是麦克船长《OpenRTMFP/Cumulus 原理、源码及实践》系列文章的其中一篇，相关内容最初首发于 CSDN 的 Poechant 技术博客，后整理于本博客。本篇文章主要介绍 Cumulus 中 Input/Output 管理的源码分析，包括流缓冲区、IO 流、局部内存片。
+excerpt: 本文是麦克船长《OpenRTMFP/Cumulus 原理、源码及实践》系列文章的其中一篇，相关内容最初首发于 CSDN 的 Poechant 技术博客，后整理于本博客。本篇文章主要介绍 Cumulus 中 Input/Output 管理的源码分析，包括流缓冲区、IO 流、局部内存片。
 ---
 
 **本文目录**
 * TOC
 {:toc}
+
+本文是麦克船长《OpenRTMFP/Cumulus 原理、源码及实践》系列文章的其中一篇，相关内容最初首发于 CSDN 的 Poechant 技术博客，后整理于本博客。本篇文章主要介绍 Cumulus 中 Input/Output 管理的源码分析，包括流缓冲区、IO 流、局部内存片。
 
 ### 一、流缓冲区
 

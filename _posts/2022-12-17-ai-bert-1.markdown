@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  你可能已经听说 GPT-3，但是你也不能不知道 BERT
-date:   2022-12-17 21:08:01 +0800
+date:   2022-12-17 23:08:01 +0800
 categories: ai
 tags: [BERT, AI, 人工智能]
 description: 
@@ -10,7 +10,11 @@ excerpt:
 
 ### 一、关于 BERT 的一些背景
 
-BERT（Bidirectional Encoder Representations from Transformers）
+2018 年 Google 发布 BERT 后迅速在 NLP 领域引起广泛关注。BERT（Bidirectional Encoder Representations from Transformers）是一种自然语言处理（NLP）的深度学习模型，它可以进行语言模型预测、序列标注和问答等任务。BERT 采用双向的 Transformer 编码器架构，使用了大量的数据和计算资源进行训练，因此具有较强的泛化能力。
+
+BERT 的训练方法是通过让模型对给定的输入文本进行自监督学习，即使用未标记的语料进行训练。BERT 可以在很多 NLP 任务中获得较好的性能，并且由于其双向的编码方式，能够更好地理解语境信息。
+
+BERT 的训练需要大量的计算资源，因此它常常被用来作为解决 NLP 问题的预训练模型，可以用来初始化其他模型的权重，使得这些模型能够更快速地收敛。
 
 ### 二、开始一个 BERT 的动手小试验
 

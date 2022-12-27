@@ -1,18 +1,18 @@
 ---
 layout: post
-title:  OpenRTMFP/Cumulus 原理及源码解读 4：AMF 解析源码分析
+title:  OpenRTMFP/Cumulus 原理、源码及实践 4：AMF 解析源码分析
 date:   2012-04-24 10:04:55 +0800
 categories: rt_tech
 tags: [直播技术]
-description: 
-excerpt: 
+description: 本文是麦克船长《OpenRTMFP/Cumulus 原理、源码及实践》系列文章的其中一篇，相关内容最初首发于 CSDN 的 Poechant 技术博客，后整理于本博客。本篇文章主要介绍 ActionScript 独有的 AMF 数据格式，并对其序列化和反序列化的源码进行详细解读。
+excerpt: 本文是麦克船长《OpenRTMFP/Cumulus 原理、源码及实践》系列文章的其中一篇，相关内容最初首发于 CSDN 的 Poechant 技术博客，后整理于本博客。本篇文章主要介绍 ActionScript 独有的 AMF 数据格式，并对其序列化和反序列化的源码进行详细解读。
 ---
 
 **本文目录**
 * TOC
 {:toc}
 
-本文介绍 CumulusServer 中如何对 AMF 数据格式进行序列化与反序列化。
+本文是麦克船长《OpenRTMFP/Cumulus 原理、源码及实践》系列文章的其中一篇，相关内容最初首发于 CSDN 的 Poechant 技术博客，后整理于本博客。本篇文章主要介绍 ActionScript 独有的 AMF 数据格式，并对其序列化和反序列化的源码进行详细解读。
 
 ### 一、AMF 数据类型定义
 

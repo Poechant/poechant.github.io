@@ -1,18 +1,20 @@
 ---
 layout: post
-title:  OpenRTMFP/Cumulus 原理及源码解读 3：CumulusServer 源码主进程主循环分析
+title:  OpenRTMFP/Cumulus 原理、源码及实践 3：CumulusServer 源码主进程主循环分析
 date:   2012-04-15 22:26:58 +0800
 categories: rt_tech
 tags: [直播技术]
-description: 
-excerpt: 
+description: CumulusServer 主进程的主循环分析，看本文一篇就够了。从绑定地址开始，本文介绍了如何接收数据，如何在 CumulusEdge 和 CumulusServer 的 socket 不同情况下的处理逻辑，如何处理发送方 IP 被禁、数据包大小异常等问题。通过本文让你了解 CumulusServer 的主循环，需要你对 POCO 库有一点了解，还要稍微熟悉 C++ 的基本语法。
+excerpt: CumulusServer 主进程的主循环分析，看本文一篇就够了。从绑定地址开始，本文介绍了如何接收数据，如何在 CumulusEdge 和 CumulusServer 的 socket 不同情况下的处理逻辑，如何处理发送方 IP 被禁、数据包大小异常等问题。通过本文让你了解 CumulusServer 的主循环，需要你对 POCO 库有一点了解，还要稍微熟悉 C++ 的基本语法。
 ---
 
 **本文目录**
 * TOC
 {:toc}
 
-该主循环在 `RTMFPServer::run(const volatile bool& terminate)` 函数中。RTMFPServer覆盖 `Startable` 的 `run(const volatile bool &terminate)` 方法。
+`CumulusServer` 主进程的主循环分析，看本文一篇就够了。从绑定地址开始，本文介绍了如何接收数据，如何在 `CumulusEdge` 和 `CumulusServer` 的 socket 不同情况下的处理逻辑，如何处理发送方 IP 被禁、数据包大小异常等问题。通过本文让你了解 `CumulusServer` 的主循环，需要你对 POCO 库有一点了解，还要稍微熟悉 C++ 的基本语法。
+
+本所要介绍的这个主循环在 `RTMFPServer::run(const volatile bool& terminate)` 函数中。RTMFPServer覆盖 `Startable` 的 `run(const volatile bool &terminate)` 方法。
 
 ```c++
 void RTMFPServer::run(const volatile bool& terminate) {

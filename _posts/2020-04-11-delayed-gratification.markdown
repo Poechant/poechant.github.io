@@ -8,6 +8,9 @@ description: 今天我们来聊聊延迟满足（Delayed Gratification）和即
 excerpt: 今天我们来聊聊延迟满足（Delayed Gratification）和即时满足（Instant Gratification）。面对不同的「对手」，我们要做到不同深度的延迟满足。而延迟满足的驻留时间，则量化了我们在相应深度上的延迟满足能力。有意培养，刻意练习，用延迟满足来帮助自我成长，是一个长期课题，我也在路上 ……
 ---
 
+* 作者：麦克船长（钟超）
+* 微信：sinosuperman
+
 ### 写在前面
 
 今天我们来聊聊延迟满足（Delayed Gratification）和即时满足（Instant Gratification）。

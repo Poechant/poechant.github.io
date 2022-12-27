@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  OpenRTMFP/Cumulus 原理及源码解读 1：入门介绍、部署与 Hello World
+title:  OpenRTMFP/Cumulus 原理、源码及实践 1：入门介绍、部署与 Hello World
 date:   2012-04-10 02:57:19 +0800
 categories: rt_tech
 tags: [直播技术]
