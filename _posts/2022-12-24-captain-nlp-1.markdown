@@ -152,14 +152,6 @@ BERT 模型是在一篇于 2018 年发表的叫做《BERT: Pre-training of Deep 
 
 ![image](/img/src/2022-12-24-captain-nlp-8.png)
 
-* 2022 年 12 月，游戏形象资产道具生成 AI Scenario.gg（https://www.scenario.gg） 上线。
-
-![image](/img/src/2022-12-24-captain-nlp-4.png)
-
-* 虚拟形象生成 AI：Avatar AI https://avatarai.me/
-
-![image](/img/src/2022-12-24-captain-nlp-3.jpg)
-
 * 室内设计生成 AI：INTERIORAI.com https://interiorai.com
 
 ![image](/img/src/2022-12-24-captain-nlp-6.png)
