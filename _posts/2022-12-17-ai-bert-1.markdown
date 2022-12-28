@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  你可能已经听说 GPT-3，但是你也不能不知道 BERT
+title:  你可能已经听说 GPT-3，但是你也不能不知道 BERT —— 跟我一起用 BERT 跑个小用例
 date:   2022-12-17 23:08:01 +0800
 categories: ai
 tags: [BERT, AI, 人工智能]
-description: 
-excerpt: 
+description: 2018 年 Google 发布了 BERT 模型后迅速席卷 NLP 领域，这家伙可是比 ChatGPT 背后的 GPT 还要早的。本文简单介绍了 BERT 后主要是希望大家都手试一下，所以文中提到了一个小的中文模型供大家练手，以及一个小用例。
+excerpt: 2018 年 Google 发布了 BERT 模型后迅速席卷 NLP 领域，这家伙可是比 ChatGPT 背后的 GPT 还要早的。本文简单介绍了 BERT 后主要是希望大家都手试一下，所以文中提到了一个小的中文模型供大家练手，以及一个小用例。
 ---
 
 ### 一、关于 BERT 的一些背景
