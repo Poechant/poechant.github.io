@@ -152,17 +152,13 @@ BERT 模型是在一篇于 2018 年发表的叫做《BERT: Pre-training of Deep 
 
 ![image](/img/src/2022-12-24-captain-nlp-8.png)
 
-* 室内设计生成 AI：INTERIORAI.com https://interiorai.com
-
-![image](/img/src/2022-12-24-captain-nlp-6.png)
-
 * 2021 年年底，西湖心辰公司发布「[Friday AI 智能协作系统](https://www.heyfriday.cn/)」，并且目前也做了商业化。
 
 ![image](/img/src/2022-12-24-captain-nlp-1.png)
 
 ### 五、行业内哪些人的言论值得我们日常重点关注
 
-Sam Altman、Andrej Karpathy、Elon Musk。
+这些人的言论都值得我们关注：Sam Altman、Andrej Karpathy、Elon Musk。
 
 Andrej Karpathy 在其 Medium 博客上提到：
 

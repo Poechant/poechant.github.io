@@ -2,8 +2,8 @@
 layout: post
 title:  确实惊艳！用 MidJourney 三分钟生成了两张 CG 级高清机甲特写
 date:   2022-11-30 23:12:03 +0800
-categories: try
-tags: [MidJourney, Text2Image, 文生图, AIGC]
+categories: ai
+tags: [AI, 人工智能, diffusion, MidJourney, Text2Image, 文生图, AIGC]
 description: AIGC,MidJourney,Image2Text,文生图
 excerpt: 因为 Diffusion 模型在计算机视觉领域的发展，可以说今年人工智能在计算机视觉领域大放异彩，各种 Text2Image 项目层出不穷，花了三分钟时间做了一组机甲图，确实非常惊艳 ……
 ---
