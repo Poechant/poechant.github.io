@@ -77,11 +77,13 @@ excerpt: 火出圈的 ChatGPT，背后是自然语言处理领域近几年发展
 
 ### 二、学术里程碑：几篇重量级论文
 
-#### 1、提出 Transformer 的《Attention is All You Need》
+以下重量级的论文，每一篇都不短，B 站上有一些二手解读，虽然二手但是也值得高效地看下，这些论文我罗列如下。我的理解也不深，欢迎随时交流。
+
+#### 1、提出 Transformer 的《Attention is All You Need》（2017）
 
 《Attention is all you need》是一篇颇具影响力的自然语言处理（NLP）论文，由 Vaswani 等人在 2017 年发表。这篇论文提出了一种叫做 Transformer 的模型架构，这种模型架构不依赖于递归神经网络（RNN）或卷积神经网络（CNN）等传统的深度学习架构，而是使用了注意力机制（attention mechanism）和多头注意力（multi-head attention）来捕捉序列间的依赖关系。
 
-看到有人说「Transformer 基本宣告了 LSTM 在 NLP 领域的终结」。Transformer 模型在 NLP 领域内获得了广泛的应用，并且因为其较好的并行化能力，在计算资源有限的情况下也能够获得较好的性能。Transformer 模型也被广泛应用于其他领域，如计算机视觉、音频处理等。
+看到有人说「**Transformer 基本宣告了 LSTM 在 NLP 领域的终结**」。Transformer 模型在 NLP 领域内获得了广泛的应用，并且因为其较好的并行化能力，在计算资源有限的情况下也能够获得较好的性能。Transformer 模型也被广泛应用于其他领域，如计算机视觉、音频处理等。
 
 #### 2、ELMo: Deep contextualized word representations
 
@@ -89,32 +91,37 @@ ELMo 是 Embeddings from Language Models 的缩写，刚好是《芝麻街》中
 
 ELMo 是一种预训练模型，基于深度双向递归神经网络（biLSTM），可以用来生成词嵌入（word embeddings）。ELMo 使用了大量未标记的文本数据训练，并使用了多层双向递归神经网络来学习。
 
-#### 3、BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
+#### 3、BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding（2018）
 
 BERT 模型是在一篇于 2018 年发表的叫做《BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding》的论文中被提出来的，BERT 是 Bidirectional Encoder Representations from Transformers 的缩写。我觉得这个名字有点硬凑出来的意思，BERT 也是《芝麻街》里一个角色的名字，我想就是为了跟 ELMo 凑一块儿怕它孤单吧。这篇论文带来的最大突破性变化有：
 
 * 在语言模型预训练中引入双向信息：传统的预训练语言模型（比如 word2vec、GloVe）通常只考虑了单向的信息（前面的词语）。BERT 模型则同时考虑了前后的词语，从而更好地捕捉句子的上下文信息。
-* 在预训练中引入自监督学习任务
+* 在预训练中引入自监督学习任务。
+
+#### 4、GPT-3: Language Models are Few-Shot Learners（2020）
+
+这篇来自 OpenAI 的论文，提出了「小样本学习（Few-Shot Learning，FSL）」的新训练方法，可以在小样本的情况下取得优秀的表现。
+
+#### 其他的重量级论文
+
+* Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context（2019）
+* RoBERTa: A Robustly Optimized BERT Pretraining Approach（2019）
+* T5: Exploring the Limits of Transfer Learning witha Unified Text-to-Text Transformer（2020）
+* ViT: An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale（2021）
+* ERNIE-ViL: Vision and Language Pre-training for Image Captioning and VQA（2021）
+* ……
 
 ### 三、行业里程碑
 
 2017 年 8 月，Andrej Karpathy 在其 Twitter 上发文称「很遗憾，梯度下降（实现的 AI 模型）代码写得比你好」。同年 11 月 Andrej 在博客上表示，软件 2.0 将会区别于软件 1.0 时代，程序将由更抽象的、基于神经网络权重的程序语言编写。
 
-2018 年 OpenAI 推出了基于强化学习的第一代 GPT。
+2018 年 OpenAI 推出了无监督的、基于强化学习的第一代 GPT。
 
-2020 年，拥有 1750 亿个参数的 GPT-3 面世，这个模型的训练量是 GPT-2 的十倍不止，并开放了商业化 API 共使用，不到一年时间发展出约 300 家企业客户。
+2019 年情人节，OpenAI 发布 GPT-2，当时被称为史上最强的「通用」自然语言处理模型，基于 Transformer，拥有 15 亿个参数，使用含有 800 万网页内容的数据集训练。
 
-2021 年年底，西湖心辰公司发布「[Friday AI 智能协作系统](https://www.heyfriday.cn/)」，并且目前也做了商业化。
-
-![image](/img/src/2022-12-24-captain-nlp-1.png)
+2020 年 6 月，拥有 1750 亿个参数的 GPT-3 面世，这个模型的训练量是 GPT-2 的十倍不止，并开放了商业化 API 共使用，不到一年时间发展出约 300 家企业客户。
 
 2022 年 5 月，杭州 AI 领域初创公司「感知阶跃（ZMO.ai）」宣布完成由高瓴资本领投、GGV Capital 和 GSR Ventures 跟投的 800 万美元 A 轮融资。
-
-2022 年 8 月，借鉴 DALLE2 的思路，并给予最新的 Diffusion 模型，初创公司 Stability 推出 Stable Diffusion，其能够在消费级显卡上运行，生成图片的速度是 DALLE2 的 30 倍。国内 AI 绘画平台「盗梦师」、百度的「文心 · 一格」文生图系统，也都于本月上线。
-
-2022 年 9 月，Meta 发布了 Make-A-Video 人工智能 Text2Video 系统。紧随其后，Google 发布了重点关注视频品质的 Imagen Video 和主打视频长度的 Phenaki.
-
-2022 年 10 月 18 日，Stability 宣布完成 1.01 亿美元融资，估值达到 10 亿美元。到目前为止，通过各个渠道使用 Stable Diffusion 每日活跃用户数已经突破千万，并累计吸引超过 20 万开发者。
 
 次日 10 月 19 日，Jasper.ai 宣布完成由 Insight Partner 领投，Coatue、（BVP）Bessemer 以及 IVP 等机构跟投的 1.25 亿美元 A 轮融资，估值达到了 15 亿美元，Jasper AI 从产品上线至今仅 18 个月。
 
@@ -122,29 +129,48 @@ BERT 模型是在一篇于 2018 年发表的叫做《BERT: Pre-training of Deep 
 
 ### 四、业内应用
 
-* 代码辅助生成：GitHub Copilot（已商业化）https://github.com/features/copilot
+因为图片生成的容错率非常高，也就是在应用上的包容度更高，相比之下文本或语音的生成，是对结果容错非常低的，比如不容许事实错误、逻辑错误等等。这类的应用，我们能想到：
+
+* 虚拟客服（可以乱真的）
+* 智能助理：AI 家庭教师、AI 非诉律师、AI 医生助手、AI 新闻编辑
+* 翻译（更牛逼的）
+* 智能导购员：如果叠加虚拟人技术、语音合成技术，可以应用于电商
+* AI 广告公司：替代传统广告公司
+* AI 程序员助手：更高智能的辅助代码生成
+
+所以下面除了大家耳熟能详的 CV 领域的 AIGC 产品 Disco Diffusion、MidJourney、DALL·E 2、Stable Diffusion 之外，我们重点关注非图片生成类的应用。
+
+* 用于营销场景的 AI 写手与图像生成工具 Jasper.ai，常被用于生成互联网营销文案（比如用于 Instagram、Tik Tok、Facebook、博客、email、论坛帖子 等等）。
+
+![image](/img/src/2022-12-24-captain-nlp-7.png)
+
+* 2021 年 10 月底，Github 的代码辅助生成 AI 工具 GitHub Copilot（https://github.com/features/copilot） 上线。
 
 ![image](/img/src/2022-12-24-captain-nlp-2.jpg)
+
+* 虚拟客服 DialogFlow，能理解电话、语音内容等输入，并且给出文本或语音合成的输出。
+
+![image](/img/src/2022-12-24-captain-nlp-8.png)
+
+* 2022 年 12 月，游戏形象资产道具生成 AI Scenario.gg（https://www.scenario.gg） 上线。
+
+![image](/img/src/2022-12-24-captain-nlp-4.png)
 
 * 虚拟形象生成 AI：Avatar AI https://avatarai.me/
 
 ![image](/img/src/2022-12-24-captain-nlp-3.jpg)
 
-* 游戏形象资产道具生成 AI：Scenario.gg https://www.scenario.gg
-
-![image](/img/src/2022-12-24-captain-nlp-4.png)
-
-* 文本引导生成艺术（基于 Stable Diffusion）：Lexica https://lexica.art/aperture
-
-![image](/img/src/2022-12-24-captain-nlp-5.png)
-
-* 市内设计生成 AI：INTERIORAI.com https://interiorai.com
+* 室内设计生成 AI：INTERIORAI.com https://interiorai.com
 
 ![image](/img/src/2022-12-24-captain-nlp-6.png)
 
+* 2021 年年底，西湖心辰公司发布「[Friday AI 智能协作系统](https://www.heyfriday.cn/)」，并且目前也做了商业化。
+
+![image](/img/src/2022-12-24-captain-nlp-1.png)
+
 ### 五、行业内哪些人的言论值得我们日常重点关注
 
-Sam Altman、Andrej Karpathy
+Sam Altman、Andrej Karpathy、Elon Musk。
 
 Andrej Karpathy 在其 Medium 博客上提到：
 
@@ -163,3 +189,7 @@ OpenAI 创始人兼 CEO Sam Altman 曾表示：
 1. https://karpathy.medium.com/software-2-0-a64152b37c35
 2. https://hub.baai.ac.cn/view/21726
 3. https://www.sohu.com/a/615541698_121255906
+4. http://blog.itpub.net/29829936/viewspace-2654536/
+5. http://tech.sina.com.cn/csj/2018-10-13/doc-ihmhafir3634167.shtml
+6. https://colab.research.google.com/github/alembics/disco-diffusion/blob/main/Disco_Diffusion.ipynb#scrollTo=DefMidasFns
+7. https://en.wikipedia.org/wiki/BERT_(language_model)
