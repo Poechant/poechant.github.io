@@ -1,17 +1,21 @@
 ---
 layout: post
-title:  自然语言处理近年的发展脉络、关键论文、技术里程碑和商业应用
+title:  自然语言处理 AIGC 近年的发展脉络、关键论文、技术里程碑和商业应用
 date:   2022-12-24 23:08:01 +0800
 categories: ai
 tags: [AI, 人工智能, NLP, 自然语言处理]
-description: 
+description: 火出圈的 ChatGPT，背后是自然语言处理领域近几年发展的成果。本文从近几年自然语言处理的关键发展脉络，过程中关键的几篇学术论文，这几年的所有重要行业里程碑，以及目前为止业内已经诞生的应用。
 excerpt: 
 ---
 
 * 作者：麦克船长（钟超）
 * 微信：sinosuperman
 
-### 一、自然语言处理领域的发展关键节点
+**本文目录**
+* TOC
+{:toc}
+
+### 一、自然语言处理领域近年的发展关键节点
 
 ![image](/img/src/2022-12-17-ai-bert-1-1.jpg)
 
@@ -73,13 +77,11 @@ excerpt:
 
 ### 二、学术里程碑：几篇重量级论文
 
-Transformer、LSTM、GRU
-
 #### 1、提出 Transformer 的《Attention is All You Need》
 
 《Attention is all you need》是一篇颇具影响力的自然语言处理（NLP）论文，由 Vaswani 等人在 2017 年发表。这篇论文提出了一种叫做 Transformer 的模型架构，这种模型架构不依赖于递归神经网络（RNN）或卷积神经网络（CNN）等传统的深度学习架构，而是使用了注意力机制（attention mechanism）和多头注意力（multi-head attention）来捕捉序列间的依赖关系。
 
-Transformer 模型在 NLP 领域内获得了广泛的应用，并且因为其较好的并行化能力，在计算资源有限的情况下也能够获得较好的性能。Transformer 模型也被广泛应用于其他领域，如计算机视觉、音频处理等。
+看到有人说「Transformer 基本宣告了 LSTM 在 NLP 领域的终结」。Transformer 模型在 NLP 领域内获得了广泛的应用，并且因为其较好的并行化能力，在计算资源有限的情况下也能够获得较好的性能。Transformer 模型也被广泛应用于其他领域，如计算机视觉、音频处理等。
 
 #### 2、ELMo: Deep contextualized word representations
 
@@ -89,10 +91,10 @@ ELMo 是一种预训练模型，基于深度双向递归神经网络（biLSTM）
 
 #### 3、BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
 
-BERT 是在一篇叫《BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding》的论文中被提出来的，BERT 是 Bidirectional Encoder Representations from Transformers 的缩写。我觉得这个名字有点硬凑出来的意思，BERT 也是《芝麻街》里一个角色的名字，我想就是为了跟 ELMo 凑一块儿怕它孤单吧。这篇论文带来的最大突破性变化有：
+BERT 模型是在一篇于 2018 年发表的叫做《BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding》的论文中被提出来的，BERT 是 Bidirectional Encoder Representations from Transformers 的缩写。我觉得这个名字有点硬凑出来的意思，BERT 也是《芝麻街》里一个角色的名字，我想就是为了跟 ELMo 凑一块儿怕它孤单吧。这篇论文带来的最大突破性变化有：
 
 * 在语言模型预训练中引入双向信息：传统的预训练语言模型（比如 word2vec、GloVe）通常只考虑了单向的信息（前面的词语）。BERT 模型则同时考虑了前后的词语，从而更好地捕捉句子的上下文信息。
-* 在预训练中引入自监督学习任务：
+* 在预训练中引入自监督学习任务
 
 ### 三、行业里程碑
 
@@ -142,6 +144,8 @@ BERT 是在一篇叫《BERT: Pre-training of Deep Bidirectional Transformers for
 
 ### 五、行业内哪些人的言论值得我们日常重点关注
 
+Sam Altman、Andrej Karpathy
+
 Andrej Karpathy 在其 Medium 博客上提到：
 
 > 我们都熟悉的软件 1.0 的「经典堆栈」（The classical stack）是由 Python、C++ 等语言编写的，它由程序员编写的明确的计算机指令组成。通过编写每一行代码，程序员标识了程序空间中具有某些期望行为的特定点。
@@ -150,23 +154,12 @@ Andrej Karpathy 在其 Medium 博客上提到：
 
 不过打那之后 Andrej 在其博客上就再未说过一句话。
 
-> OpenAI 创始人兼 CEO Sam Altman 曾表示：“十年前的传统观点认为，人工智能首先会影响体力劳动，然后是认知劳动，再然后，也许有一天可以做创造性工作。现在看起来，它会以相反的顺序进行。”
+OpenAI 创始人兼 CEO Sam Altman 曾表示：
 
-
-
-Sam Altman
-Andrej Karpathy
-
-
-
-
-
-
-
+> 十年前的传统观点认为，人工智能首先会影响体力劳动，然后是认知劳动，再然后，也许有一天可以做创造性工作。现在看起来，它会以相反的顺序进行。
 
 ### Reference
 
 1. https://karpathy.medium.com/software-2-0-a64152b37c35
 2. https://hub.baai.ac.cn/view/21726
 3. https://www.sohu.com/a/615541698_121255906
-4. 

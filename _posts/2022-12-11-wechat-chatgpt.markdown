@@ -29,15 +29,23 @@ excerpt: 最近 OpenAI 的 ChatGPT 非常地出圈，ChatGPT 是一个由 
 
 第六步，编辑 wechat-chatgpt 的 config.yaml，填写 session token；设置 private trigger keywords（可选）。
 
+```yaml
+chatGPTAccountPool:
+  - email: <your email>
+    password: <your password>
+# if you hope only some keywords can trigger chatgpt on private chat, you can set it like this:
+chatPrivateTiggerKeyword: ""
+```
+
 第七步，用 docker 来拉取 wechat-chatgpt
 
-```sh
+```shell
 docker pull holegots/wechat-chatgpt:latest。
 ```
 
 第八步，启动 wechat-chatgpt：
 
-```sh
+```shell
 docker run -d --name wechat-chatgpt -v $(pwd)/config.yaml:/app/config.yaml holegots/wechat-chatgpt:latest
 ```
 
