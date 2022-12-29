@@ -35,3 +35,13 @@ permalink: /about/
 * 我的书单：[麦克船长的书单](/booklist/)
 * 变形金刚手办收藏
 
+![image](/img/about/photo_10.jpg)
+![image](/img/about/photo_2.jpg)
+![image](/img/about/photo_6.jpg)
+![image](/img/about/photo_3.jpg)
+![image](/img/about/photo_4.jpg)
+![image](/img/about/photo_5.jpg)
+![image](/img/about/photo_1.jpg)
+![image](/img/about/photo_7.jpg)
+![image](/img/about/photo_8.jpg)
+![image](/img/about/photo_9.jpg)
