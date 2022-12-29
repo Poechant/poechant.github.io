@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  阿里一年香
+title:  麦克船长的阿里一年香（入职阿里一周年）
 date:   2021-06-04 23:42:43 +0800
 categories: thinking
 tags: [思考]
