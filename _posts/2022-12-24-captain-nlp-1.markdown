@@ -98,6 +98,8 @@ BERT 模型是在一篇于 2018 年发表的叫做《BERT: Pre-training of Deep 
 * 在语言模型预训练中引入双向信息：传统的预训练语言模型（比如 word2vec、GloVe）通常只考虑了单向的信息（前面的词语）。BERT 模型则同时考虑了前后的词语，从而更好地捕捉句子的上下文信息。
 * 在预训练中引入自监督学习任务。
 
+关于 BERT，我这里写了一篇背景介绍、用例试跑、优劣势分析：[《你可能已经听说 GPT-3，但是你也不能不知道 BERT —— 跟我一起用 BERT 跑个小用例》](https://www.mikecaptain.com/2022/12/17/ai-bert-1/)
+
 #### 4、GPT-3: Language Models are Few-Shot Learners（2020）
 
 这篇来自 OpenAI 的论文，提出了「小样本学习（Few-Shot Learning，FSL）」的新训练方法，可以在小样本的情况下取得优秀的表现。
