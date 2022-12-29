@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  让你和你的朋友们，在微信上跟 ChatGPT 聊聊天
+title:  动动手，让你和你的朋友们，在微信上跟 ChatGPT 聊聊天
 date:   2022-12-11 23:59:57 +0800
 category: ai
 tags: [人工智能, AI, ChatGPT, OpenAI, 微信]
@@ -59,7 +59,7 @@ docker run -d --name wechat-chatgpt -v $(pwd)/config.yaml:/app/config.yaml holeg
 
 如何停止、重启、查看日志呢？首先停止的命令是docker stop wechat-chatgpt，登录时需要扫码登录微信并追踪 logs，因为这其实是用了微信在桌面端的接口。
 
-```sh
+```shell
 docker logs -f wechat-chatgpt
 ```
 
@@ -67,7 +67,7 @@ docker logs -f wechat-chatgpt
 
 如果要停止运行，用如下命令：
 
-```sh
+```shell
 docker stop wechat-chatgpt
 ```
 
