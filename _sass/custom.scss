@@ -23,6 +23,18 @@ code {
 	font-style: normal;
 }
 
-a {
+/*li a {
 	color: #1e6afe;
+	&:hover,
+	&:focus {
+		color: #6297ff;
+	}
+}*/
+
+p a {
+	color: #1e6afe;
+	&:hover,
+	&:focus {
+		color: #6297ff;
+	}
 }
