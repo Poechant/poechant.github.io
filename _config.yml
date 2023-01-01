@@ -47,8 +47,8 @@ plugins:
 
 # Set Graphviz
 graphviz:
-  options: "-Tsvg" # 'dot' command option
   command: "dot"   # execute this string. specify full path to 'dot' if you need
+  options: "-Tsvg" # 'dot' command option
 
 # Custom variables
 version: "1.0.0"

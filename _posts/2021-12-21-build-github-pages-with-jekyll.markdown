@@ -333,12 +333,12 @@ excerpt: 这是文章的摘要
 
 ```html
 <ul>
-  {% for post in paginator.posts %}
+  {% raw %}{%{% endraw %} for post in paginator.posts %}
     <li>
-      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-      <p>{{ post.excerpt }}</p>
+      <h2><a href="{% raw %}{{{% endraw %} post.url }}">{% raw %}{{{% endraw %} post.title }}</a></h2>
+      <p>{% raw %}{{{% endraw %} post.excerpt }}</p>
     </li>
-  {% endfor %}
+  {% raw %}{%{% endraw %} endfor %}
 </ul>
 ```
 
@@ -357,14 +357,16 @@ layout: default
 
 <div class="container">
   <br>
-    {% if site.categories[page.category] %}
-      {% for post in site.categories[page.category] %}
-        <a href="{% if site.baseurl == "/" %}{{ post.url }}{% else %}{{ post.url | prepend: site.baseurl }}{% endif %}">{%if post.header %}{{ post.header }}{% else %}{{ post.title }}{% endif %}</a>
-      {% endfor %}
-    {% else %}
+    {% raw %}{%{% endraw %} if site.categories[page.category] %}
+      {% raw %}{%{% endraw %} for post in site.categories[page.category] %}
+        <a href="{% raw %}{%{% endraw %} if site.baseurl == "/" %}{% raw %}{{{% endraw %} post.url }}{% raw %}{%{% endraw %} else %}{% raw %}{{{% endraw %} post.url | prepend: site.baseurl }}{% raw %}{%{% endraw %} endif %}">
+            {% raw %}{%{% endraw %}if post.header %}{% raw %}{{{% endraw %} post.header }}{% raw %}{%{% endraw %} else %}{% raw %}{{{% endraw %} post.title }}{% raw %}{%{% endraw %} endif %}
+        </a>
+      {% raw %}{%{% endraw %} endfor %}
+    {% raw %}{%{% endraw %} else %}
       <br>
       <p>No posts for this category. If you have something in mind, check <a href="/write">Write For Us</a>page.</p>
-    {% endif %}
+    {% raw %}{%{% endraw %} endif %}
 </div>
 ```
 
@@ -456,9 +458,9 @@ gem install duktape
 以如下方式输入输入如下内容：
 
 ```html
-{% raw %}
+{% raw %}{%{% endraw %} raw %}
 $$ \sum_{i=1}^{n} a_i $$
-{% endraw %}
+{% raw %}{%{% endraw %} endraw %}
 ```
 
 就会得到一个数学公式：
@@ -484,13 +486,38 @@ plugins:
   - jekyll-graphviz
 ```
 
-然后 `bundle install` 再 `bundle exec jekyll serve` 在本地下一段看看效果：
+再在本地安装 graphviz，可以通过 `conda install graphviz` 或者 `brew install graphviz`。然后 `bundle install` 再 `bundle exec jekyll serve` 在本地下一段看看效果：
 
-{% graph some graph title %}
-a -- b
-b -- c
-c -- a
-{% endgraph %}
+```graphviz
+{% raw %}{%{% endraw %} graph some graph title %}
+digraph G {
+    a -> b
+    b -> c
+    c -> a
+}
+{% raw %}{%{% endraw %} endgraph %}
+```
+
+如果看到如下效果，就说明你都配置成功了：
+
+{% graphviz some graph title %}
+digraph G {
+    a -> b
+    b -> c
+    c -> a
+}
+{% endgraphviz %}
+
+#### Q6：如何显示 `{% raw %}{%{% endraw %}` 或者 `{% raw %}{{{% endraw %}` ？
+
+其实也是一个字符转义的问题，我们直接面对一个在 StackOverflow 上会被问的终极 Jekyll 中 Markdown 转义问题（与 Liquid Template Tags 冲突的问题），如何实现显示 `{% raw %}{%{% endraw %} raw %}` 和 `{% raw %}{%{% endraw %} endraw %}` 呢？方法如下：
+
+```html
+{% raw %}{%{% endraw %} raw %}{% raw %}{%{% endraw %}{% raw %}{%{% endraw %} endraw %} raw %}
+{% raw %}{%{% endraw %} raw %}{% raw %}{%{% endraw %}{% raw %}{%{% endraw %} endraw %} endraw %}
+```
+
+如上，就是用 `{% raw %}{%{% endraw %} raw %}` 和 `{% raw %}{%{% endraw %} endraw %}` 把 `{% raw %}{%{% endraw %}` 包起来，但是 `%}` 不用包。应该讲的很清楚了吧。
 
 ### 参考
 
