@@ -398,6 +398,100 @@ category_type: tech
 {:toc}
 ```
 
+#### Q4：如何在 Jekyll 中支持 KaTeX
+
+Katex 是一个开源的 JavaScript 库，能够在浏览器端快速渲染 LaTeX 格式的数学公式。
+
+##### 在 GitHub.io 上
+
+先修改 `_config.yml`：
+
+```yaml
+kramdown:
+  math_engine: katex
+```
+
+然后修改 `_includes/head.html` 文件，在 `<head>` 与 `</head>` 中间：
+
+```html
+<!--KaTeX-->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+        integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X"
+        crossorigin="anonymous">
+  <script defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"
+        integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4"
+        crossorigin="anonymous"></script>
+  <script defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+        integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"
+        crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+              // ...options...
+          });
+      });
+  </script>
+```
+
+##### 如果不在 GitHub.io 上，则还需要额外工作
+
+以上方式只适合于 GitHub.io 的网站，如果是自己搭建的网站用 Jekyll 则要自己安装，如下：
+
+```shell
+gem install kramdom-math-katex
+
+gem install katex
+gem install execjs
+
+gem install therubyracer
+gem install therubyrhino
+gem install duktape
+```
+
+##### 使用示例
+
+以如下方式输入输入如下内容：
+
+```html
+{% raw %}
+$$ \sum_{i=1}^{n} a_i $$
+{% endraw %}
+```
+
+就会得到一个数学公式：
+
+{% raw %}
+$$ \sum_{i=1}^{n} a_i $$
+{% endraw %}
+
+#### Q5：Jekyll 中如何支持 Graphviz ？
+
+这要依赖 `jekyll-graphviz-dot`，修改 `Gemfile` 增加一句：
+
+```shell
+group :jekyll_plugins do
+  gem "jekyll-graphviz-dot"
+end
+```
+
+再修改 `_config.yml` 配置文件：
+
+```yaml
+plugins:
+  - jekyll-graphviz
+```
+
+然后 `bundle install` 再 `bundle exec jekyll serve` 在本地下一段看看效果：
+
+{% graph some graph title %}
+a -- b
+b -- c
+c -- a
+{% endgraph %}
+
 ### 参考
 
 1. [https://bundler.io](https://bundler.io)
@@ -409,3 +503,5 @@ category_type: tech
 7. [https://github.com/dyutibarma/monochrome](https://github.com/dyutibarma/monochrome)
 8. [https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain](https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain)
 9. [http://www.seanbuscay.com/blog/jekyll-toc-markdown/](http://www.seanbuscay.com/blog/jekyll-toc-markdown/)
+10. [https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/](https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/)
+11. [https://github.com/DerekStride/jekyll-graphviz](https://github.com/DerekStride/jekyll-graphviz)

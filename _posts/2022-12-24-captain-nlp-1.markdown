@@ -81,7 +81,9 @@ excerpt: 火出圈的 ChatGPT，背后是自然语言处理领域近几年发展
 
 #### 1、提出 Transformer 的《Attention is All You Need》（2017）
 
-《Attention is all you need》是一篇颇具影响力的自然语言处理（NLP）论文，由 Vaswani 等人在 2017 年发表。这篇论文提出了一种叫做 Transformer 的模型架构，这种模型架构不依赖于递归神经网络（RNN）或卷积神经网络（CNN）等传统的深度学习架构，而是使用了注意力机制（attention mechanism）和多头注意力（multi-head attention）来捕捉序列间的依赖关系。
+Google 的 Lamda、BERT，OpenAI 的 GPT-3 都是基于 Transformer 的。
+
+《Attention is all you need》是一篇颇具影响力的自然语言处理（NLP）论文，由 Google 在 2017 年发表。这篇论文提出了一种叫做 Transformer 的模型架构，这种模型架构不依赖于递归神经网络（RNN）或卷积神经网络（CNN）等传统的深度学习架构，而是使用了注意力机制（attention mechanism）和多头注意力（multi-head attention）来捕捉序列间的依赖关系。
 
 看到有人说「**Transformer 基本宣告了 LSTM 在 NLP 领域的终结**」。Transformer 模型在 NLP 领域内获得了广泛的应用，并且因为其较好的并行化能力，在计算资源有限的情况下也能够获得较好的性能。Transformer 模型也被广泛应用于其他领域，如计算机视觉、音频处理等。
 
@@ -123,13 +125,28 @@ BERT 模型是在一篇于 2018 年发表的叫做《BERT: Pre-training of Deep 
 
 2020 年 6 月，拥有 1750 亿个参数的 GPT-3 面世，这个模型的训练量是 GPT-2 的十倍不止，并开放了商业化 API 共使用，不到一年时间发展出约 300 家企业客户。
 
+2021 年 6 月，微软与 OpenAI 共同推出代码辅助生成 AI 工具 GitHub Copilot.
+
+2022 年 1 月，OpenAI 发布基于 GPT-3 微调的模型 InstructGPT（包括 text-davinci-001、text-davinci-002、text-davinci-003），微调主要来自于 RLHF（Reinforcement Learning via Human Feedback）。
+
 2022 年 5 月，杭州 AI 领域初创公司「感知阶跃（ZMO.ai）」宣布完成由高瓴资本领投、GGV Capital 和 GSR Ventures 跟投的 800 万美元 A 轮融资。
 
-次日 10 月 19 日，Jasper.ai 宣布完成由 Insight Partner 领投，Coatue、（BVP）Bessemer 以及 IVP 等机构跟投的 1.25 亿美元 A 轮融资，估值达到了 15 亿美元，Jasper AI 从产品上线至今仅 18 个月。
+2022 年 10 月 19 日，Jasper.ai 宣布完成由 Insight Partner 领投，Coatue、（BVP）Bessemer 以及 IVP 等机构跟投的 1.25 亿美元 A 轮融资，估值达到了 15 亿美元，Jasper AI 从产品上线至今仅 18 个月。
 
-2022 年 11 月底，OpenAI 推出基于 GPT-3.5 的 ChatGPT 对话系统，震惊全球。
+2022 年 11 月底，OpenAI 推出基于 GPT-3.5 的 ChatGPT 对话系统，震惊全球。项目地址：https://chat.openai.com 。
 
-### 四、业内应用
+2022 年 12 月底，专注于各 AI 闭源项目的逆向工程的 Philip Wang 发布了 PaLM+RLHF 的文本生成开源模型，类似于 ChatGPT。该项目基于 Google 的大型语言模型 PaLM 和带有人类反馈的强化学习（RLHF），拥有 5400 亿个参数。项目地址：https://github.com/lucidrains/PaLM-rlhf-pytorch 。
+
+### 四、成本
+
+目前成本主要有三方面：大模型、大数据、大算力。这其中最昂贵的成本首先是算力。下面有几个数据可以作为参照：
+
+* 2020 年的一项研究表明，开发一个只有 15 亿个参数的文本生成模型的费用高达 160 万美元。
+* 2022 年 7 月，为了训练拥有 1760 亿个参数的开源模型 Bloom，Hugging Face 的研究人员耗时三个月，使用了 384 个英伟达 A100 GPU。
+* OpenAI 的文本生成 GPT-3（具有大约 1750 亿个参数）的运行成本约为每年 87,000 美元。
+* Hugging Face 训练 Bloom 花了三个月的时间。
+
+### 五、业内应用
 
 因为图片生成的容错率非常高，也就是在应用上的包容度更高，相比之下文本或语音的生成，是对结果容错非常低的，比如不容许事实错误、逻辑错误等等。这类的应用，我们能想到：
 
@@ -149,7 +166,7 @@ BERT 模型是在一篇于 2018 年发表的叫做《BERT: Pre-training of Deep 
 
 ![image](/img/src/2022-12-24-captain-nlp-7.png)
 
-* 2021 年 10 月底，Github 的代码辅助生成 AI 工具 GitHub Copilot（https://github.com/features/copilot） 上线。
+* 2021 年 6 月，微软与 OpenAI 共同推出的的代码辅助生成 AI 工具 GitHub Copilot（https://github.com/features/copilot） 发布。
 
 ![image](/img/src/2022-12-24-captain-nlp-2.jpg)
 
@@ -177,12 +194,16 @@ OpenAI 创始人兼 CEO Sam Altman 曾表示：
 
 > 十年前的传统观点认为，人工智能首先会影响体力劳动，然后是认知劳动，再然后，也许有一天可以做创造性工作。现在看起来，它会以相反的顺序进行。
 
+> 通用人工智能的建成会比大多数人想象得更快，并且它会改变大多数人想象中的一切。」
+
 ### Reference
 
-1. https://karpathy.medium.com/software-2-0-a64152b37c35
-2. https://hub.baai.ac.cn/view/21726
-3. https://www.sohu.com/a/615541698_121255906
-4. http://blog.itpub.net/29829936/viewspace-2654536/
-5. http://tech.sina.com.cn/csj/2018-10-13/doc-ihmhafir3634167.shtml
-6. https://colab.research.google.com/github/alembics/disco-diffusion/blob/main/Disco_Diffusion.ipynb#scrollTo=DefMidasFns
-7. https://en.wikipedia.org/wiki/BERT_(language_model)
+1. https://beta.openai.com/docs/models
+2. https://karpathy.medium.com/software-2-0-a64152b37c35
+3. https://hub.baai.ac.cn/view/21726
+4. https://www.reddit.com/r/OpenAI/comments/zdrnsf/comment/iz3kfui/?context=3
+5. https://www.sohu.com/a/615541698_121255906
+6. http://blog.itpub.net/29829936/viewspace-2654536/
+7. http://tech.sina.com.cn/csj/2018-10-13/doc-ihmhafir3634167.shtml
+8. https://colab.research.google.com/github/alembics/disco-diffusion/blob/main/Disco_Diffusion.ipynb#scrollTo=DefMidasFns
+9. https://en.wikipedia.org/wiki/BERT_(language_model)

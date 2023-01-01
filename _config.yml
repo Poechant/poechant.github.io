@@ -15,6 +15,7 @@ highlighter: rouge
 kramdown:
   input: GFM
   syntax_highlighter: rouge
+  math_engine: katex
 
 # Build settings
 baseurl:  # Change this to your relative path (ex: /blog/), or leave just a /
@@ -42,6 +43,12 @@ defaults:
 plugins:
   - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-graphviz
+
+# Set Graphviz
+graphviz:
+  options: "-Tsvg" # 'dot' command option
+  command: "dot"   # execute this string. specify full path to 'dot' if you need
 
 # Custom variables
 version: "1.0.0"
