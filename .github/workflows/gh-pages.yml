@@ -11,7 +11,7 @@ on:
 permissions:
 #   contents: read
   # pages: write
-  idToken: write
+  id_token: write
 
 # Allow one concurrent deployment
 concurrency:
@@ -23,7 +23,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - uses: actions/checkout@v3
+    # - uses: actions/checkout@v3
+    - name: 📂 setup 
+      uses: actions/checkout@v2
 
     - name: Setup Graphviz
       uses: ts-graphviz/setup-graphviz@v1
