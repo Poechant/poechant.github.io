@@ -42,8 +42,7 @@ jobs:
     - name: 🔨 install dependencies & build site
       uses: limjh16/jekyll-action-ts@v2
       env:
-        # NODE_ENV: "production"
-        JEKYLL_ENV: production
+        NODE_ENV: "production"
       with:
         enable_cache: true
 
@@ -51,16 +50,9 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./_site
+        publish_dir: ./
         publish_branch: gh-pages
         repo: Poechant/poechant.github.io
-
-    # - name: Deploy to GitHub Pages
-    #   uses: JamesIves/github-pages-deploy-action@releases/v3
-    #   with:
-    #     ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-    #     BRANCH: gh-pages
-    #     FOLDER: _site
 
 
 # name: gh-pages - Build and deploy Jekyll site to GitHub Pages
