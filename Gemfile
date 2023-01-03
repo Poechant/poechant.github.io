@@ -40,3 +40,4 @@ gem "webrick", "~> 1.7"
 
 #
 gem 'coderay', '~> 1.1.0'
+gem 'ruby-graphviz'
