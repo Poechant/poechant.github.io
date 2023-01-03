@@ -48,6 +48,10 @@ jobs:
         publish_branch: gh-pages
         repo: Poechant/poechant.github.io
 
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v1
+
 
 # name: gh-pages - Build and deploy Jekyll site to GitHub Pages
 # on:
