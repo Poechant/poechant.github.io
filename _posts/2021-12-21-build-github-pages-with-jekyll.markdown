@@ -509,6 +509,8 @@ digraph G {
 }
 {% endgraphviz %}
 
+但是 GitHub Pages 默认并不支持 Graphviz 插件，所以还需要如下处理：
+
 #### Q6：如何显示 `{% raw %}{%{% endraw %}` 或者 `{% raw %}{{{% endraw %}` ？
 
 其实也是一个字符转义的问题，我们直接面对一个在 StackOverflow 上会被问的终极 Jekyll 中 Markdown 转义问题（与 Liquid Template Tags 冲突的问题），如何实现显示 `{% raw %}{%{% endraw %} raw %}` 和 `{% raw %}{%{% endraw %} endraw %}` 呢？方法如下：
@@ -533,3 +535,4 @@ digraph G {
 9. [http://www.seanbuscay.com/blog/jekyll-toc-markdown/](http://www.seanbuscay.com/blog/jekyll-toc-markdown/)
 10. [https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/](https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/)
 11. [https://github.com/DerekStride/jekyll-graphviz](https://github.com/DerekStride/jekyll-graphviz)
+12. [https://github.com/DerekStride/jekyll-graphviz](https://github.com/DerekStride/jekyll-graphviz)
