@@ -1,0 +1,1587 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/pages/Poechant/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/pages/Poechant/" rel="alternate" type="text/html" /><updated>2023-01-03T18:25:01+00:00</updated><id>https://www.mikecaptain.com/pages/Poechant/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">自然语言处理 AIGC 近年的发展脉络、关键论文、技术里程碑和商业应用</title><link href="https://www.mikecaptain.com/pages/Poechant/2022/12/24/captain-nlp-1/" rel="alternate" type="text/html" title="自然语言处理 AIGC 近年的发展脉络、关键论文、技术里程碑和商业应用" /><published>2022-12-24T15:08:01+00:00</published><updated>2022-12-24T15:08:01+00:00</updated><id>https://www.mikecaptain.com/pages/Poechant/2022/12/24/captain-nlp-1</id><content type="html" xml:base="https://www.mikecaptain.com/pages/Poechant/2022/12/24/captain-nlp-1/">&lt;ul&gt;
+  &lt;li&gt;作者：麦克船长（钟超）&lt;/li&gt;
+  &lt;li&gt;微信：sinosuperman&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#一自然语言处理领域近年的发展关键节点&quot; id=&quot;markdown-toc-一自然语言处理领域近年的发展关键节点&quot;&gt;一、自然语言处理领域近年的发展关键节点&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1从理性主义到经验主义&quot; id=&quot;markdown-toc-1从理性主义到经验主义&quot;&gt;1、从理性主义到经验主义&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#2经验主义的早期还不是深度学习&quot; id=&quot;markdown-toc-2经验主义的早期还不是深度学习&quot;&gt;2、经验主义的早期，还不是深度学习&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#3撇开特征让机器囫囵吞枣地学吧&quot; id=&quot;markdown-toc-3撇开特征让机器囫囵吞枣地学吧&quot;&gt;3、撇开特征，让机器「囫囵吞枣」地学吧&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#4囫囵个儿地学习省去特征工程的人工但也少不了标注的人工&quot; id=&quot;markdown-toc-4囫囵个儿地学习省去特征工程的人工但也少不了标注的人工&quot;&gt;4、囫囵个儿地学习，省去特征工程的人工，但也少不了标注的人工&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#5自监督学习法让我们省去人工标注&quot; id=&quot;markdown-toc-5自监督学习法让我们省去人工标注&quot;&gt;5、自监督学习法，让我们省去人工标注&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#6用原始的任务训练出来的模型能迁移去解决新任务吗&quot; id=&quot;markdown-toc-6用原始的任务训练出来的模型能迁移去解决新任务吗&quot;&gt;6、用原始的任务训练出来的模型，能迁移去解决新任务吗？&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#7从理解到生成nlp-是最直面-aigc-最硬核难题的领域&quot; id=&quot;markdown-toc-7从理解到生成nlp-是最直面-aigc-最硬核难题的领域&quot;&gt;7、从理解到生成，NLP 是最直面 AIGC 最硬核难题的领域&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#8数据和算力有了还不够&quot; id=&quot;markdown-toc-8数据和算力有了还不够&quot;&gt;8、数据和算力有了，还不够&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#二学术里程碑几篇重量级论文&quot; id=&quot;markdown-toc-二学术里程碑几篇重量级论文&quot;&gt;二、学术里程碑：几篇重量级论文&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1提出-transformer-的attention-is-all-you-need2017&quot; id=&quot;markdown-toc-1提出-transformer-的attention-is-all-you-need2017&quot;&gt;1、提出 Transformer 的《Attention is All You Need》（2017）&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#2elmo-deep-contextualized-word-representations&quot; id=&quot;markdown-toc-2elmo-deep-contextualized-word-representations&quot;&gt;2、ELMo: Deep contextualized word representations&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#3bert-pre-training-of-deep-bidirectional-transformers-for-language-understanding2018&quot; id=&quot;markdown-toc-3bert-pre-training-of-deep-bidirectional-transformers-for-language-understanding2018&quot;&gt;3、BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding（2018）&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#4gpt-3-language-models-are-few-shot-learners2020&quot; id=&quot;markdown-toc-4gpt-3-language-models-are-few-shot-learners2020&quot;&gt;4、GPT-3: Language Models are Few-Shot Learners（2020）&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#其他的重量级论文&quot; id=&quot;markdown-toc-其他的重量级论文&quot;&gt;其他的重量级论文&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#三行业里程碑&quot; id=&quot;markdown-toc-三行业里程碑&quot;&gt;三、行业里程碑&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#四成本&quot; id=&quot;markdown-toc-四成本&quot;&gt;四、成本&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#五业内应用&quot; id=&quot;markdown-toc-五业内应用&quot;&gt;五、业内应用&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#五行业内哪些人的言论值得我们日常重点关注&quot; id=&quot;markdown-toc-五行业内哪些人的言论值得我们日常重点关注&quot;&gt;五、行业内哪些人的言论值得我们日常重点关注&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#reference&quot; id=&quot;markdown-toc-reference&quot;&gt;Reference&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;一自然语言处理领域近年的发展关键节点&quot;&gt;一、自然语言处理领域近年的发展关键节点&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2022-12-17-ai-bert-1-1.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;1从理性主义到经验主义&quot;&gt;1、从理性主义到经验主义&lt;/h4&gt;
+
+&lt;p&gt;自然语言处理（Natural Language Processing，简称 NLP），一开始走的是专家路线，也就是想「白盒化」来解构对自然语言的理解，这被称为「符号主义（Symbolism）」。符号主义的背后，是人类对自己用符号系统基于逻辑来完全数字化自然语言的自信。反正这条路目前是没走出来，你要非说「这其实是自负」，暂时人工智能专家们也无可辩驳。沿着这个路径的研究一直占据人工智能主流到 20 世纪 90 年代。&lt;/p&gt;
+
+&lt;p&gt;这里我们想想，自然语言处理，其实是两个过程，一个是输入，即对自然语言的理解，一个是输出，即近期有点火的概念 AIGC（Artificial Intelligence Generated Content）。我们这里说说前者，人类学习语言的过程，哪有什么符号系统，哪有什么逻辑，就是被疯狂输入，然后经过很多个月之后，一个小 baby 就学会说话了，这个过程没有「理性主义」的痕迹，只有「经验主义」的胜利。那么 AI 学人话，能这样吗？&lt;/p&gt;
+
+&lt;p&gt;于是就有了所谓「联结主义（Connectionism）」：你知道人的神经元网络吧？这个是一个个神经元，相互联结组成一个网络，通过这个网络来非常「黑盒化」地学习自然语言。至于这个网络里的每一个细节，我们不甚清楚，但就是可以通过这个网络模型学会自然语言，这就是一种「经验主义」。从 20 世纪 90 年代，人工智能领域就是沿着这个方向取得了巨大进展的。要注意一点，经验主义地路径解决 NLP 问题，并不等同于神经网络，但它是目前最有效的。&lt;/p&gt;
+
+&lt;h4 id=&quot;2经验主义的早期还不是深度学习&quot;&gt;2、经验主义的早期，还不是深度学习&lt;/h4&gt;
+
+&lt;p&gt;最初的经验主义，还是主要通过人工对特征进行「经验性地」提取，对计算机来说不要让它求甚解，直接给它喂这些梳理好的「特征」就好了。而这个需要一定的专业领域知识储备，加上人工地提取特征的操作过程，被称为「特征工程」。&lt;/p&gt;
+
+&lt;p&gt;可以看出来，「特征工程」的人工工作量非常大，可以说是名副其实的「人工」智能了（此处捂脸）。但这已经比此前的、有点理想的那种构建符号系统的想法，要务实多了，也确实在解决问题的实用主义上也好得多。以这个为主流的研究，大概持续到 2010 年代。&lt;/p&gt;
+
+&lt;h4 id=&quot;3撇开特征让机器囫囵吞枣地学吧&quot;&gt;3、撇开特征，让机器「囫囵吞枣」地学吧&lt;/h4&gt;
+
+&lt;p&gt;要经过「人工」对特征进行研究、提取，实在是太难了，你说是「经验主义」，其实我个人认为有点介于「理性主义」与「经验主义」之间。毕竟还是非常需要人进行非常专家级地梳理的。于是，更囫囵个儿地给机器喂数据，让机器学会的方向，逐渐成为主流。能这样的前提，是牛逼算力的大发展，以及海量数据集的大规模沉淀，所以才会在 2010 年代爆发。&lt;/p&gt;
+
+&lt;p&gt;这囫囵吞枣的学法，目前主要都是基于深度神经网路的表示学习方法实现的。为啥说「深度神经网络」，因为「从输入到输出」是有一层又一层的神经网络，第一层接收原始的自然语言输入，这么多层的神经网络就被称为深度神经网络。这个过程显著地避免了「特征工程」的人工高成本。&lt;/p&gt;
+
+&lt;h4 id=&quot;4囫囵个儿地学习省去特征工程的人工但也少不了标注的人工&quot;&gt;4、囫囵个儿地学习，省去特征工程的人工，但也少不了标注的人工&lt;/h4&gt;
+
+&lt;p&gt;虽然省去了需要专家的「特征工程」，但是这个「囫囵个儿学习法」还是需要依赖标注数据的，也就是「监督学习」。通过先学习大量有人工标注地数据，构建好深度神经网络后，再对测试数据进行验证，最后再用于使用。能不能把人工标注也给省了？或者至少不需要海量标注吧。&lt;/p&gt;
+
+&lt;h4 id=&quot;5自监督学习法让我们省去人工标注&quot;&gt;5、自监督学习法，让我们省去人工标注&lt;/h4&gt;
+
+&lt;p&gt;大家上中学的时候做过英语试卷里的「完形填空」吗？为什么我们根据一个填空的上下文，能推测出这个空应该填什么词？那我们是不是可以根据这个原理，把一段段完整的文字内容挖词进行训练学习？没错，这个挖掉的词，就可以当做曾经的「人工标注」，上年文就是训练数据。但是需要海量的数据，怎么办？&lt;/p&gt;
+
+&lt;p&gt;好在书籍、互联网网页是我们最好的数据来源，而且数据量极其巨大，于是这就解决了人工个标注问题。由此衍生出来的方法，就被成为「自监督学习（Self-Supervised Learning）」。&lt;/p&gt;
+
+&lt;h4 id=&quot;6用原始的任务训练出来的模型能迁移去解决新任务吗&quot;&gt;6、用原始的任务训练出来的模型，能迁移去解决新任务吗？&lt;/h4&gt;
+
+&lt;p&gt;这是一个迁移学习问题，这也就引出了「预训练（Pre-Training）」，最近火到出圈的「ChatGPT」最后两个字母「PT」就是「预训练」。正如「预训练」这个名字，我们先对一些原始任务用大量数据对一个模型进行训练（这个过程其实就叫预训练），然后对于实际要解决的各种任务，再使用少量数据对模型进行精调（Fine-Tune），从而得到一个解决具体问题的模型。&lt;/p&gt;
+
+&lt;p&gt;这样的方式，让面对具体任务（可以叫下游任务，或者目标任务）时可以省去很多训练，所以对这种模型叫做「预训练模型」。因此上游任务的训练，就变得非常有复用性、通用性价值，而不是每次面对新任务构建新模型来训练。沿着预训练模型，NLP 取得了非常多的突破。这个技术趋势，是从 2017 年 Transformer 模型在论文《Attention is All You Need》被提出后开始的，在论文中作者使用了大量的未标记的语言数据进行自监督学习，以学习 Transformer 模型的语言表示。然后，在这个自监督学习的模型的基础上，再使用少量的标记数据进行进一步训练，以解决具体的目标任务。&lt;/p&gt;
+
+&lt;h4 id=&quot;7从理解到生成nlp-是最直面-aigc-最硬核难题的领域&quot;&gt;7、从理解到生成，NLP 是最直面 AIGC 最硬核难题的领域&lt;/h4&gt;
+
+&lt;p&gt;我们再说回到前面提到的人工标注，从这点来理解所谓「任务」。人工标注，是主观性很强的。在图像处理、语音识别两个领域，标注数据的复用性很强，所以可以积累大的数据标注集，这是有积累沉淀价值的，比如 CV 领域鼎鼎大名的 ImageNet 图像数据集。但是 NLP 领域的任务复杂、多样，很难像图像处理、语音识别那样单纯地得到大量有价值标注。什么意思呢？这与我们在不同领域面对的任务有关。&lt;/p&gt;
+
+&lt;p&gt;比如给一副画，对于绝大多数需要输入这幅画的任务来说，标注出它是一副油画、作者梵高、画中有星空等等，都是必须的。比如对于一个人脸识别，哪里是眼睛、鼻子、嘴巴，也是从任务层面非常通用的。语音识别就更有通用性了。但是对于一句自然语言，一个随机的任务需要什么信息，这非常难以沉淀通用。&lt;/p&gt;
+
+&lt;p&gt;从这个角度说，一个「图像处理」任务一般是要输出这个图像里有什么内容，一个「语音识别」任务一般是要输出这段语音的文字内容是什么。但是一个「自然语言处理」任务一般是要干嘛？鬼知道要干嘛，但肯定大多数时候是要先生成一段话作为回应，这也就是「自然语言生成」。&lt;/p&gt;
+
+&lt;p&gt;所以 NLP 领域的 NLG（Natural Language Generation）面对着最多可能性的任务，也就是最直面 AIGC 核心问题的领域。&lt;/p&gt;
+
+&lt;h4 id=&quot;8数据和算力有了还不够&quot;&gt;8、数据和算力有了，还不够&lt;/h4&gt;
+
+&lt;p&gt;我个人认为，预训练这个方向之所以正确，就是因为它在推动 AGI（Artificial General Intelligent）。这背后是一个基本哲学问题：我们应该把劲儿使在推动 AGI，还是应该认为每个领域都应该有自己独有的模型？&lt;/p&gt;
+
+&lt;p&gt;这个问题的答案，在我看来是笃定的。AI 目前面对的还是人类思考的问题，而人面对的问题去构建的人脑学习模型，并没有呈现出在不同领域里人脑的学习方式有显著差异，更何况计算机能容纳的学习能力显然更广、更深。因此我很笃定，我们一定是要构建 AGI，为什么 AGI 将解决我们方方面面的问题。&lt;/p&gt;
+
+&lt;p&gt;那么一个预训练模型，在下游能解决的问题越广，越说明这是在构建 AGI。但是反过来对上游的预训练模型的要求，就是它最好模型参数越多越好，这样能容纳的下游任务也就可能越多样。因此我们现在知道的 ChatGPT 背后的 OpenAI 公司此前研发的 GPT-3 已经有 1750 亿个参数了，这就是 —— 大模型。&lt;/p&gt;
+
+&lt;p&gt;所以目前沿着预训练方向发展的自然语言处理领域，已经进入了「大模型、大数据、大算力」时代。&lt;/p&gt;
+
+&lt;h3 id=&quot;二学术里程碑几篇重量级论文&quot;&gt;二、学术里程碑：几篇重量级论文&lt;/h3&gt;
+
+&lt;p&gt;以下重量级的论文，每一篇都不短，B 站上有一些二手解读，虽然二手但是也值得高效地看下，这些论文我罗列如下。我的理解也不深，欢迎随时交流。&lt;/p&gt;
+
+&lt;h4 id=&quot;1提出-transformer-的attention-is-all-you-need2017&quot;&gt;1、提出 Transformer 的《Attention is All You Need》（2017）&lt;/h4&gt;
+
+&lt;p&gt;Google 的 Lamda、BERT，OpenAI 的 GPT-3 都是基于 Transformer 的。&lt;/p&gt;
+
+&lt;p&gt;《Attention is all you need》是一篇颇具影响力的自然语言处理（NLP）论文，由 Google 在 2017 年发表。这篇论文提出了一种叫做 Transformer 的模型架构，这种模型架构不依赖于递归神经网络（RNN）或卷积神经网络（CNN）等传统的深度学习架构，而是使用了注意力机制（attention mechanism）和多头注意力（multi-head attention）来捕捉序列间的依赖关系。&lt;/p&gt;
+
+&lt;p&gt;看到有人说「&lt;strong&gt;Transformer 基本宣告了 LSTM 在 NLP 领域的终结&lt;/strong&gt;」。Transformer 模型在 NLP 领域内获得了广泛的应用，并且因为其较好的并行化能力，在计算资源有限的情况下也能够获得较好的性能。Transformer 模型也被广泛应用于其他领域，如计算机视觉、音频处理等。&lt;/p&gt;
+
+&lt;h4 id=&quot;2elmo-deep-contextualized-word-representations&quot;&gt;2、ELMo: Deep contextualized word representations&lt;/h4&gt;
+
+&lt;p&gt;ELMo 是 Embeddings from Language Models 的缩写，刚好是《芝麻街》中一个角色的名字，是在 Peters 等人于 2018 年在 ACL（美国计算机学会计算语言学会议，NLP 领域顶级会议之一）上发表的论文《Deep contextualized word representations》中被提出来的。&lt;/p&gt;
+
+&lt;p&gt;ELMo 是一种预训练模型，基于深度双向递归神经网络（biLSTM），可以用来生成词嵌入（word embeddings）。ELMo 使用了大量未标记的文本数据训练，并使用了多层双向递归神经网络来学习。&lt;/p&gt;
+
+&lt;h4 id=&quot;3bert-pre-training-of-deep-bidirectional-transformers-for-language-understanding2018&quot;&gt;3、BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding（2018）&lt;/h4&gt;
+
+&lt;p&gt;BERT 模型是在一篇于 2018 年发表的叫做《BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding》的论文中被提出来的，BERT 是 Bidirectional Encoder Representations from Transformers 的缩写。我觉得这个名字有点硬凑出来的意思，BERT 也是《芝麻街》里一个角色的名字，我想就是为了跟 ELMo 凑一块儿怕它孤单吧。这篇论文带来的最大突破性变化有：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在语言模型预训练中引入双向信息：传统的预训练语言模型（比如 word2vec、GloVe）通常只考虑了单向的信息（前面的词语）。BERT 模型则同时考虑了前后的词语，从而更好地捕捉句子的上下文信息。&lt;/li&gt;
+  &lt;li&gt;在预训练中引入自监督学习任务。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;关于 BERT，我这里写了一篇背景介绍、用例试跑、优劣势分析：&lt;a href=&quot;https://www.mikecaptain.com/2022/12/17/ai-bert-1/&quot;&gt;《你可能已经听说 GPT-3，但是你也不能不知道 BERT —— 跟我一起用 BERT 跑个小用例》&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;4gpt-3-language-models-are-few-shot-learners2020&quot;&gt;4、GPT-3: Language Models are Few-Shot Learners（2020）&lt;/h4&gt;
+
+&lt;p&gt;这篇来自 OpenAI 的论文，提出了「小样本学习（Few-Shot Learning，FSL）」的新训练方法，可以在小样本的情况下取得优秀的表现。&lt;/p&gt;
+
+&lt;h4 id=&quot;其他的重量级论文&quot;&gt;其他的重量级论文&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context（2019）&lt;/li&gt;
+  &lt;li&gt;RoBERTa: A Robustly Optimized BERT Pretraining Approach（2019）&lt;/li&gt;
+  &lt;li&gt;T5: Exploring the Limits of Transfer Learning witha Unified Text-to-Text Transformer（2020）&lt;/li&gt;
+  &lt;li&gt;ViT: An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale（2021）&lt;/li&gt;
+  &lt;li&gt;ERNIE-ViL: Vision and Language Pre-training for Image Captioning and VQA（2021）&lt;/li&gt;
+  &lt;li&gt;……&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;三行业里程碑&quot;&gt;三、行业里程碑&lt;/h3&gt;
+
+&lt;p&gt;2017 年 8 月，Andrej Karpathy 在其 Twitter 上发文称「很遗憾，梯度下降（实现的 AI 模型）代码写得比你好」。同年 11 月 Andrej 在博客上表示，软件 2.0 将会区别于软件 1.0 时代，程序将由更抽象的、基于神经网络权重的程序语言编写。&lt;/p&gt;
+
+&lt;p&gt;2018 年 OpenAI 推出了无监督的、基于强化学习的第一代 GPT。&lt;/p&gt;
+
+&lt;p&gt;2019 年情人节，OpenAI 发布 GPT-2，当时被称为史上最强的「通用」自然语言处理模型，基于 Transformer，拥有 15 亿个参数，使用含有 800 万网页内容的数据集训练。&lt;/p&gt;
+
+&lt;p&gt;2020 年 6 月，拥有 1750 亿个参数的 GPT-3 面世，这个模型的训练量是 GPT-2 的十倍不止，并开放了商业化 API 共使用，不到一年时间发展出约 300 家企业客户。&lt;/p&gt;
+
+&lt;p&gt;2021 年 6 月，微软与 OpenAI 共同推出代码辅助生成 AI 工具 GitHub Copilot.&lt;/p&gt;
+
+&lt;p&gt;2022 年 1 月，OpenAI 发布基于 GPT-3 微调的模型 InstructGPT（包括 text-davinci-001、text-davinci-002、text-davinci-003），微调主要来自于 RLHF（Reinforcement Learning via Human Feedback）。&lt;/p&gt;
+
+&lt;p&gt;2022 年 5 月，杭州 AI 领域初创公司「感知阶跃（ZMO.ai）」宣布完成由高瓴资本领投、GGV Capital 和 GSR Ventures 跟投的 800 万美元 A 轮融资。&lt;/p&gt;
+
+&lt;p&gt;2022 年 10 月 19 日，Jasper.ai 宣布完成由 Insight Partner 领投，Coatue、（BVP）Bessemer 以及 IVP 等机构跟投的 1.25 亿美元 A 轮融资，估值达到了 15 亿美元，Jasper AI 从产品上线至今仅 18 个月。&lt;/p&gt;
+
+&lt;p&gt;2022 年 11 月底，OpenAI 推出基于 GPT-3.5 的 ChatGPT 对话系统，震惊全球。项目地址：https://chat.openai.com 。&lt;/p&gt;
+
+&lt;p&gt;2022 年 12 月底，专注于各 AI 闭源项目的逆向工程的 Philip Wang 发布了 PaLM+RLHF 的文本生成开源模型，类似于 ChatGPT。该项目基于 Google 的大型语言模型 PaLM 和带有人类反馈的强化学习（RLHF），拥有 5400 亿个参数。项目地址：https://github.com/lucidrains/PaLM-rlhf-pytorch 。&lt;/p&gt;
+
+&lt;h3 id=&quot;四成本&quot;&gt;四、成本&lt;/h3&gt;
+
+&lt;p&gt;目前成本主要有三方面：大模型、大数据、大算力。这其中最昂贵的成本首先是算力。下面有几个数据可以作为参照：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2020 年的一项研究表明，开发一个只有 15 亿个参数的文本生成模型的费用高达 160 万美元。&lt;/li&gt;
+  &lt;li&gt;2022 年 7 月，为了训练拥有 1760 亿个参数的开源模型 Bloom，Hugging Face 的研究人员耗时三个月，使用了 384 个英伟达 A100 GPU。&lt;/li&gt;
+  &lt;li&gt;OpenAI 的文本生成 GPT-3（具有大约 1750 亿个参数）的运行成本约为每年 87,000 美元。&lt;/li&gt;
+  &lt;li&gt;Hugging Face 训练 Bloom 花了三个月的时间。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;五业内应用&quot;&gt;五、业内应用&lt;/h3&gt;
+
+&lt;p&gt;因为图片生成的容错率非常高，也就是在应用上的包容度更高，相比之下文本或语音的生成，是对结果容错非常低的，比如不容许事实错误、逻辑错误等等。这类的应用，我们能想到：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;虚拟客服（可以乱真的）&lt;/li&gt;
+  &lt;li&gt;智能助理：AI 家庭教师、AI 非诉律师、AI 医生助手、AI 新闻编辑&lt;/li&gt;
+  &lt;li&gt;智能翻译&lt;/li&gt;
+  &lt;li&gt;智能导购员：如果叠加虚拟人技术、语音合成技术，可以应用于电商&lt;/li&gt;
+  &lt;li&gt;AI 广告公司：替代传统广告公司&lt;/li&gt;
+  &lt;li&gt;AI 程序员助手：更高智能的辅助代码生成&lt;/li&gt;
+  &lt;li&gt;部分场景下的美术工作者：游戏素材生成、海报生成&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;我们可以看到，AI 带来的这一波机会，都是曾经常说的「人不会被 AI 替代」的领域，也就是一些创作创意创新型工作，其中的中低端部分会因为成本因素而极力推动 AI 应用的发展。&lt;/p&gt;
+
+&lt;p&gt;所以下面除了大家耳熟能详的 CV 领域的 AIGC 产品 Disco Diffusion、MidJourney、DALL·E 2、Stable Diffusion 之外，我们重点关注非图片生成类的应用。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;用于营销场景的 AI 写手与图像生成工具 Jasper.ai，常被用于生成互联网营销文案（比如用于 Instagram、Tik Tok、Facebook、博客、email、论坛帖子 等等）。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2022-12-24-captain-nlp-7.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2021 年 6 月，微软与 OpenAI 共同推出的的代码辅助生成 AI 工具 GitHub Copilot（https://github.com/features/copilot） 发布。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2022-12-24-captain-nlp-2.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;虚拟客服 DialogFlow，能理解电话、语音内容等输入，并且给出文本或语音合成的输出。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2022-12-24-captain-nlp-8.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2021 年年底，西湖心辰公司发布「&lt;a href=&quot;https://www.heyfriday.cn/&quot;&gt;Friday AI 智能协作系统&lt;/a&gt;」，并且目前也做了商业化。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2022-12-24-captain-nlp-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;五行业内哪些人的言论值得我们日常重点关注&quot;&gt;五、行业内哪些人的言论值得我们日常重点关注&lt;/h3&gt;
+
+&lt;p&gt;这些人的言论都值得我们关注：Sam Altman、Andrej Karpathy、Elon Musk。&lt;/p&gt;
+
+&lt;p&gt;Andrej Karpathy 在其 Medium 博客上提到：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;我们都熟悉的软件 1.0 的「经典堆栈」（The classical stack）是由 Python、C++ 等语言编写的，它由程序员编写的明确的计算机指令组成。通过编写每一行代码，程序员标识了程序空间中具有某些期望行为的特定点。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;相比之下，软件 2.0 是用更抽象、不友好的人类语言（如神经网络的权重）编写的，没有人参与编写这些代码，因为权重数量很多（典型的网络可能有数百万个），并且直接用权重编写代码有一定困难（我尝试过）。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;不过打那之后 Andrej 在其博客上就再未说过一句话。&lt;/p&gt;
+
+&lt;p&gt;OpenAI 创始人兼 CEO Sam Altman 曾表示：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;十年前的传统观点认为，人工智能首先会影响体力劳动，然后是认知劳动，再然后，也许有一天可以做创造性工作。现在看起来，它会以相反的顺序进行。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;通用人工智能的建成会比大多数人想象得更快，并且它会改变大多数人想象中的一切。」&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;https://beta.openai.com/docs/models&lt;/li&gt;
+  &lt;li&gt;https://karpathy.medium.com/software-2-0-a64152b37c35&lt;/li&gt;
+  &lt;li&gt;https://hub.baai.ac.cn/view/21726&lt;/li&gt;
+  &lt;li&gt;https://www.reddit.com/r/OpenAI/comments/zdrnsf/comment/iz3kfui/?context=3&lt;/li&gt;
+  &lt;li&gt;https://www.sohu.com/a/615541698_121255906&lt;/li&gt;
+  &lt;li&gt;http://blog.itpub.net/29829936/viewspace-2654536/&lt;/li&gt;
+  &lt;li&gt;http://tech.sina.com.cn/csj/2018-10-13/doc-ihmhafir3634167.shtml&lt;/li&gt;
+  &lt;li&gt;https://colab.research.google.com/github/alembics/disco-diffusion/blob/main/Disco_Diffusion.ipynb#scrollTo=DefMidasFns&lt;/li&gt;
+  &lt;li&gt;https://en.wikipedia.org/wiki/BERT_(language_model)&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><summary type="html">火出圈的 ChatGPT，背后是自然语言处理领域近几年发展的成果。本文从近几年自然语言处理的关键发展脉络，过程中关键的几篇学术论文，这几年的所有重要行业里程碑，以及目前为止业内已经诞生的应用。</summary></entry><entry><title type="html">你可能已经听说 GPT-3，但是你也不能不知道 BERT —— 跟我一起用 BERT 跑个小用例</title><link href="https://www.mikecaptain.com/pages/Poechant/2022/12/17/ai-bert-1/" rel="alternate" type="text/html" title="你可能已经听说 GPT-3，但是你也不能不知道 BERT —— 跟我一起用 BERT 跑个小用例" /><published>2022-12-17T15:08:01+00:00</published><updated>2022-12-17T15:08:01+00:00</updated><id>https://www.mikecaptain.com/pages/Poechant/2022/12/17/ai-bert-1</id><content type="html" xml:base="https://www.mikecaptain.com/pages/Poechant/2022/12/17/ai-bert-1/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#一关于-bert-的一些背景&quot; id=&quot;markdown-toc-一关于-bert-的一些背景&quot;&gt;一、关于 BERT 的一些背景&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#二开始一个-bert-的动手小试验&quot; id=&quot;markdown-toc-二开始一个-bert-的动手小试验&quot;&gt;二、开始一个 BERT 的动手小试验&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1安装-anaconda-来为部署-bert-做环境准备&quot; id=&quot;markdown-toc-1安装-anaconda-来为部署-bert-做环境准备&quot;&gt;1、安装 Anaconda 来为部署 BERT 做环境准备&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#2安装-bert-所需要的各种依赖&quot; id=&quot;markdown-toc-2安装-bert-所需要的各种依赖&quot;&gt;2、安装 BERT 所需要的各种依赖&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#3下载一个预训练pre-train过的-bert-模型&quot; id=&quot;markdown-toc-3下载一个预训练pre-train过的-bert-模型&quot;&gt;3、下载一个预训练（Pre-Train）过的 BERT 模型&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#5启动-bert-服务端&quot; id=&quot;markdown-toc-5启动-bert-服务端&quot;&gt;5、启动 BERT 服务端&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#6在-pycharm-中使用-conda-的环境&quot; id=&quot;markdown-toc-6在-pycharm-中使用-conda-的环境&quot;&gt;6、在 PyCharm 中使用 Conda 的环境&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#7编写程序实现-bert-客户端&quot; id=&quot;markdown-toc-7编写程序实现-bert-客户端&quot;&gt;7、编写程序实现 BERT 客户端&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#三bert-模型的优劣势及其原因&quot; id=&quot;markdown-toc-三bert-模型的优劣势及其原因&quot;&gt;三、BERT 模型的优劣势及其原因&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1bert-的优势是很明显的&quot; id=&quot;markdown-toc-1bert-的优势是很明显的&quot;&gt;1、BERT 的优势是很明显的&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#11mlm-和-nsp-预训练能够捕捉到自然语言中的各种复杂细节&quot; id=&quot;markdown-toc-11mlm-和-nsp-预训练能够捕捉到自然语言中的各种复杂细节&quot;&gt;1.1、MLM 和 NSP 预训练能够捕捉到自然语言中的各种复杂细节&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#12识别并专注于较重要的部分进行文本处理&quot; id=&quot;markdown-toc-12识别并专注于较重要的部分进行文本处理&quot;&gt;1.2、识别并专注于较重要的部分进行文本处理&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#13快速构建针对具体任务的-nlp-系统&quot; id=&quot;markdown-toc-13快速构建针对具体任务的-nlp-系统&quot;&gt;1.3、快速构建针对具体任务的 NLP 系统&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#2bert-模型的劣势及其原因&quot; id=&quot;markdown-toc-2bert-模型的劣势及其原因&quot;&gt;2、BERT 模型的劣势及其原因&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#21随机挖-mask-的完形填空题是有隐患的&quot; id=&quot;markdown-toc-21随机挖-mask-的完形填空题是有隐患的&quot;&gt;2.1、随机挖 MASK 的完形填空题是有隐患的&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#22nsp-任务有必要吗&quot; id=&quot;markdown-toc-22nsp-任务有必要吗&quot;&gt;2.2、NSP 任务有必要吗？&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#23针对两个或以上词组成的连续词的词义被丢失&quot; id=&quot;markdown-toc-23针对两个或以上词组成的连续词的词义被丢失&quot;&gt;2.3、针对两个或以上词组成的连续词的词义被丢失&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#24需要的算力高&quot; id=&quot;markdown-toc-24需要的算力高&quot;&gt;2.4、需要的算力高&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#25需要的模型大&quot; id=&quot;markdown-toc-25需要的模型大&quot;&gt;2.5、需要的模型大&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#四一些关于-bert-的问题&quot; id=&quot;markdown-toc-四一些关于-bert-的问题&quot;&gt;四、一些关于 BERT 的问题&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1bert-模型的所谓双向与-bilstm-的双向是啥区别&quot; id=&quot;markdown-toc-1bert-模型的所谓双向与-bilstm-的双向是啥区别&quot;&gt;1、BERT 模型的所谓「双向」与 BiLSTM 的「双向」是啥区别？&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#2为什么-bert-可以比-rnn-更好地并行化&quot; id=&quot;markdown-toc-2为什么-bert-可以比-rnn-更好地并行化&quot;&gt;2、为什么 BERT 可以比 RNN 更好地并行化&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#reference&quot; id=&quot;markdown-toc-reference&quot;&gt;Reference&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;一关于-bert-的一些背景&quot;&gt;一、关于 BERT 的一些背景&lt;/h3&gt;
+
+&lt;p&gt;2018 年 Google 发布 BERT 后迅速在 NLP 领域引起广泛关注。BERT（Bidirectional Encoder Representations from Transformers）是一种自然语言处理（NLP）的深度学习模型，它可以进行语言模型预测、序列标注和问答等任务。BERT 采用双向的 Transformer 编码器架构，使用了大量的数据和计算资源进行训练，因此具有较强的泛化能力。&lt;/p&gt;
+
+&lt;p&gt;BERT 的训练方法是通过让模型对给定的输入文本进行自监督学习，即使用未标记的语料进行训练。BERT 可以在很多 NLP 任务中获得较好的性能，并且由于其双向的编码方式，能够更好地理解语境信息。&lt;/p&gt;
+
+&lt;p&gt;BERT 的训练需要大量的计算资源，因此它常常被用来作为解决 NLP 问题的预训练模型，可以用来初始化其他模型的权重，使得这些模型能够更快速地收敛。&lt;/p&gt;
+
+&lt;h3 id=&quot;二开始一个-bert-的动手小试验&quot;&gt;二、开始一个 BERT 的动手小试验&lt;/h3&gt;
+
+&lt;p&gt;为了让 conda 使用 Python 3.7，你可以按照这些步骤来操作。&lt;/p&gt;
+
+&lt;h4 id=&quot;1安装-anaconda-来为部署-bert-做环境准备&quot;&gt;1、安装 Anaconda 来为部署 BERT 做环境准备&lt;/h4&gt;
+
+&lt;p&gt;先了解几个概念：Anaconda 是一个软件包管理系统，其中包含了 conda 和许多其他的工具。Conda 是 Anaconda 中的一个组件，用于安装和管理软件包。
+我们需要用 conda 创建一个环境，在这个环境里去启用我们想要使用的 BERT 所需要的各种依赖。&lt;/p&gt;
+
+&lt;p&gt;更新 conda 到最新版本：&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda update &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; base conda
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;使用 Python 3.7 创建一个新的环境：&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda create &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; py37 &lt;span class=&quot;nv&quot;&gt;python&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;3.7
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;激活这个新环境：&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda activate py37
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;验证正在使用的是正确版本的 Python&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;另外你可能还会用到的 conda 命令有：&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 你之后一定会需要 deactivate 一个环境，命令如下：&lt;/span&gt;
+conda deactivate py37
+
+&lt;span class=&quot;c&quot;&gt;# 查看 conda 当前安装的所有库&lt;/span&gt;
+conda list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;2安装-bert-所需要的各种依赖&quot;&gt;2、安装 BERT 所需要的各种依赖&lt;/h4&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tensorflow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;1.14.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;验证 tensorflow 是否安装正确：&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tensorflow&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__version__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;3下载一个预训练pre-train过的-bert-模型&quot;&gt;3、下载一个预训练（Pre-Train）过的 BERT 模型&lt;/h4&gt;
+
+&lt;p&gt;官方的模型在这里浏览：https://github.com/google-research/bert#pre-trained-models&lt;/p&gt;
+
+&lt;p&gt;也有一些中文的模型，以下是 ChatGPT 推荐的三个：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;BERT-Base, Chinese：这是 Google 官方提供的中文 BERT 模型，在中文 NLP 任务中表现良好。你可以从 这里下载这个模型。&lt;/li&gt;
+  &lt;li&gt;ERNIE：这是由中科院自然语言所提供的中文 BERT 模型，包含了额外的语义信息。你可以从 这里下载这个模型。&lt;/li&gt;
+  &lt;li&gt;RoBERTa-wwm-ext：这是由清华大学自然语言处理实验室提供的中文 BERT 模型，在多种中文 NLP 任务中表现良好。你可以从 这里下载这个模型。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;4、安装 BERT 的服务端和客户端&lt;/p&gt;
+
+&lt;p&gt;这里我们使用 bert-as-service，bert-as-service 是一种将 BERT 模型部署为服务的方式。该工具使用 TensorFlow Serving 来运行 BERT 模型，并允许通过 REST API 进行调用。根据 bert-as-service 的文档，它已经在 TensorFlow 1.14.0 上测试过。&lt;/p&gt;
+
+&lt;p&gt;在你激活的环境里，安装 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bert-as-service&lt;/code&gt;：&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 安装服务端和客户端&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 更多关于 bert-serving-server 的信息可以参考：https://bert-serving.readthedocs.io/en/latest/index.html&lt;/span&gt;
+conda &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;bert-serving-server bert-serving-client 
+验证 bert-as-service 是否安装成功
+bert-serving-start &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;5启动-bert-服务端&quot;&gt;5、启动 BERT 服务端&lt;/h4&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 命令行下启动BERT服务&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# -num_worker 表示启动几个worker服务，即可以处理几个并发请求，超过这个数字的请求将会在LBS（负载均衡器）中排队等待&lt;/span&gt;
+bert-serving-start &lt;span class=&quot;nt&quot;&gt;-model_dir&lt;/span&gt; /模型/的/绝对/路径 &lt;span class=&quot;nt&quot;&gt;-num_worker&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;6在-pycharm-中使用-conda-的环境&quot;&gt;6、在 PyCharm 中使用 Conda 的环境&lt;/h4&gt;
+
+&lt;p&gt;在 PyCharm 中启用 Interpreter 为 Anaconda，macOS 上具体地是在「Preference - Project - Python Interpreter - Add Interpreter - Add Local Interpreter - Conda Environment」。&lt;/p&gt;
+
+&lt;p&gt;接下来还有一项重要的步骤就是选择该 project 要加载包文件的路径。如果不进行这一步，那该 project 还是从系统环境变量中的路径来搜索你要加载的包，这样在你用 Anaconda 新建的这个环境中所特有的包就会出现无法加载的问题。单击菜单栏 Run 选择 Edit Configuration。在Environment variables中添加一个新的 Path。新的路径为你用 Anaconda 新建的环境的文件夹中的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;「/Users/captain/opt/anaconda3/bin/python」&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;配置 PyCharm 这里参考：https://docs.anaconda.com/anaconda/user-guide/tasks/pycharm/&lt;/p&gt;
+
+&lt;h4 id=&quot;7编写程序实现-bert-客户端&quot;&gt;7、编写程序实现 BERT 客户端&lt;/h4&gt;
+
+&lt;p&gt;这里有一些客户端例子可以参考：https://blog.csdn.net/qq_18256855/article/details/123860126&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;bert_serving.client&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BertClient&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 定义类
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BertModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bert_client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BertClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;127.0.0.1&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5555&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;port_out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5556&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 创建客户端对象
+&lt;/span&gt;            &lt;span class=&quot;c1&quot;&gt;# 注意：可以参考API，查看其它参数的设置
+&lt;/span&gt;            &lt;span class=&quot;c1&quot;&gt;# 127.0.0.1 表示本机IP，也可以用localhost
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Exception&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;cannot create BertClient&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;close_bert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bert_client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 关闭服务
+&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sentence_embedding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&apos;&apos;&apos;对输入文本进行embedding
+          Args:
+            text: str, 输入文本
+          Returns:
+            text_vector: float, 返回一个列表，包含text的embedding编码值
+        &apos;&apos;&apos;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;text_vector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bert_client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text_vector&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 获取输出结果
+&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;caculate_similarity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vec_1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vec_2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&apos;&apos;&apos;根据两个语句的vector，计算它们的相似性
+          Args:
+            vec_1: float, 语句1的vector
+            vec_2: float, 语句2的vector
+          Returns:
+            sim_value: float, 返回相似性的计算值
+        &apos;&apos;&apos;&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# 根据cosine的计算公式
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;v1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vec_1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;v2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vec_2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linalg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linalg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;norm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;cosine&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cosine&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;__main__&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# 创建bert对象
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;bert&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BertModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# --- 输入语句 ----
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;input_a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;请输入语句1: &apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;N&quot;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;n&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;bert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close_bert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 关闭服务
+&lt;/span&gt;            &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;input_b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;请输入语句2: &apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# --- 对输入语句进行embedding ---
+&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;a_vec&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sentence_embedding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;a_vec shape : &apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a_vec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;b_vec&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sentence_embedding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;b_vec shape : &apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b_vec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# 计算两个语句的相似性
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;cos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;caculate_similarity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a_vec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b_vec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;cosine value : &apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# 如果相似性值大于0.85，则输出相似，否则，输出不同
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.85&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2个语句的含义相似&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;不相似&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;在使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bert-serving-client&lt;/code&gt; 连接 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bert-serving-server&lt;/code&gt; 时，你需要确保 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bert-serving-server&lt;/code&gt; 使用的模型和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bert-serving-client&lt;/code&gt; 使用的模型是匹配的，否则会出现错误。&lt;/p&gt;
+
+&lt;p&gt;程序正常运行后，将要求你输入两句话，然后 BERT 计算两句话的相似性。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;请输入语句1: 
+请输入语句2: 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;两句输入好确认后，得到如下形式的结果：&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a_vec shape :  (768,)
+b_vec shape :  (768,)
+cosine value :  0.8691698561422959
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;其实这个小试验蛮没意思的，而且准确性也比较令人质疑。&lt;/p&gt;
+
+&lt;h3 id=&quot;三bert-模型的优劣势及其原因&quot;&gt;三、BERT 模型的优劣势及其原因&lt;/h3&gt;
+
+&lt;p&gt;论文地址：&lt;a href=&quot;https://arxiv.org/abs/1810.04805&quot;&gt;《BERT: Pre-Training of Deep Bidirectional Transformers for Language Understanding》&lt;/a&gt; 。&lt;/p&gt;
+
+&lt;h4 id=&quot;1bert-的优势是很明显的&quot;&gt;1、BERT 的优势是很明显的&lt;/h4&gt;
+
+&lt;p&gt;复旦大学的邱锡鹏教授层评价 BERT 的「里程碑意义」在于：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;证明了一个非常深的模型可以显著提高 NLP 任务的准确率，而这个模型可以从无标记数据集中预训练得到。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h5 id=&quot;11mlm-和-nsp-预训练能够捕捉到自然语言中的各种复杂细节&quot;&gt;1.1、MLM 和 NSP 预训练能够捕捉到自然语言中的各种复杂细节&lt;/h5&gt;
+
+&lt;p&gt;因为 BERT 采用了双向的自注意力机制，这里的「双向」意味着 BERT 模型可以同时利用输入文本的前后文信息来预测下一个词是什么、下一句是什么。这样 BERT 模型就可以捕捉到自然语言中的各种隐藏的细节，比如语义关系、语法结构、语义暗示等等。&lt;/p&gt;
+
+&lt;p&gt;具体地，BERT 采用了 Masked Language Model（MLM）来做「下一个词是什么」的预训练，采用了 Next Sentence Prediction（NSP）来做「下一句是什么」的预训练。MLM 的方式其实就很像英语考试里的「完形填空」，而 NSP 的方式，就像整句的完形填空。&lt;/p&gt;
+
+&lt;h5 id=&quot;12识别并专注于较重要的部分进行文本处理&quot;&gt;1.2、识别并专注于较重要的部分进行文本处理&lt;/h5&gt;
+
+&lt;p&gt;这要得益于因为 BERT 采用了自注意力机制。自注意力机制，通过计算输入单元的权重值，来确定在一个输入序列中哪些输入单元是重要的。具体地，一个输入单元与其他单元的相似性越高，按照我们自然语言的逻辑，那么这部分是在被重复、强调、翻来覆去用不同的方式在解释，那么这部分就是重要的，权重值就更高。&lt;/p&gt;
+
+&lt;h5 id=&quot;13快速构建针对具体任务的-nlp-系统&quot;&gt;1.3、快速构建针对具体任务的 NLP 系统&lt;/h5&gt;
+
+&lt;p&gt;因为 BERT 采用了预训练模型，能够在没有监督标注数据的情况下从大量文本中学习语言模型。因为我们认为上下文信息本身就能推测出某个词，所以大量的文本数据本身就是一种「自带标注」的数据，所以 BERT 能够无监督学习。&lt;/p&gt;
+
+&lt;h4 id=&quot;2bert-模型的劣势及其原因&quot;&gt;2、BERT 模型的劣势及其原因&lt;/h4&gt;
+
+&lt;h5 id=&quot;21随机挖-mask-的完形填空题是有隐患的&quot;&gt;2.1、随机挖 MASK 的完形填空题是有隐患的&lt;/h5&gt;
+
+&lt;p&gt;对于上面提到的 MLM、NSP 方法做预训练，那么问题也就显而易见了，如果我们挖掉的一组 MASK 完形填空词，是强关联的（非条件独立），那么这一组词的预测就都会出现问题。&lt;/p&gt;
+
+&lt;h5 id=&quot;22nsp-任务有必要吗&quot;&gt;2.2、NSP 任务有必要吗？&lt;/h5&gt;
+
+&lt;p&gt;论文《Crosslingual language model pretraining》中提到 BERT 的 NSP 可能是非必要的，针对这个问题，后续出现的模型都移除了 NSP 任务，比如 RoBERTa、spanBERT、ALBERT。&lt;/p&gt;
+
+&lt;h5 id=&quot;23针对两个或以上词组成的连续词的词义被丢失&quot;&gt;2.3、针对两个或以上词组成的连续词的词义被丢失&lt;/h5&gt;
+
+&lt;p&gt;比如 cutting-edge，MLM 的方式可能会割裂这两个子词的相关性，导致模型丢失这个词的词义，针对这个问题 Google 后来发表了 BERT-WWM，WWM 即 Whole Word Masking，从字面就能理解针对的问题。哈尔滨工业大学的科大讯飞联合实验室后来推出了 Chinese-BERT-WWM 专门针对中文解决了这个问题。&lt;/p&gt;
+
+&lt;h5 id=&quot;24需要的算力高&quot;&gt;2.4、需要的算力高&lt;/h5&gt;
+
+&lt;p&gt;算力高，自然需要的计算成本运行更高。不过算力成本高这种问题总有办法优化，通常来说不是模型本身所处理问题的局限性和先决条件的局限性（比如依赖大量人工工作）就非常好了。&lt;/p&gt;
+
+&lt;h5 id=&quot;25需要的模型大&quot;&gt;2.5、需要的模型大&lt;/h5&gt;
+
+&lt;p&gt;模型大，自然存储成本也就高了。这也类似于上一点，而且算力、存储成本高，可以在大型应用中把成本均摊下来，比如 BERT 如果支持的某个 AGI 应用得到广泛普及。&lt;/p&gt;
+
+&lt;h3 id=&quot;四一些关于-bert-的问题&quot;&gt;四、一些关于 BERT 的问题&lt;/h3&gt;
+
+&lt;h4 id=&quot;1bert-模型的所谓双向与-bilstm-的双向是啥区别&quot;&gt;1、BERT 模型的所谓「双向」与 BiLSTM 的「双向」是啥区别？&lt;/h4&gt;
+
+&lt;p&gt;BiLSTM 是把句子再倒序一遍，而 BERT 的双向是指在 Encoder 的自注意力机制下编码一个 token 时「同时利用上下文」的 token。&lt;/p&gt;
+
+&lt;h4 id=&quot;2为什么-bert-可以比-rnn-更好地并行化&quot;&gt;2、为什么 BERT 可以比 RNN 更好地并行化&lt;/h4&gt;
+
+&lt;p&gt;RNN 因为有时序概念，即后面的特征计算，依赖于前面计算的结果，所以就形成了循环（Recurrent）。而 BERT 采用了自注意力机制则没有时序概念，每个词特征都依赖其上下文独立计算，因此更容易并行化。&lt;/p&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;https://arxiv.org/abs/1810.04805&lt;/li&gt;
+  &lt;li&gt;https://github.com/google-research/bert&lt;/li&gt;
+  &lt;li&gt;https://github.com/ymcui/Chinese-BERT-wwm&lt;/li&gt;
+  &lt;li&gt;https://zhuanlan.zhihu.com/p/195723105&lt;/li&gt;
+  &lt;li&gt;https://www.jiqizhixin.com/articles/2018-10-24-13&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="ai" /><category term="BERT" /><category term="AI" /><category term="人工智能" /><summary type="html">2018 年 Google 发布了 BERT 模型后迅速席卷 NLP 领域，这家伙可是比 ChatGPT 背后的 GPT 还要早的。本文简单介绍了 BERT 后主要是希望大家都手试一下，所以文中提到了一个小的中文模型供大家练手，以及一个小用例。</summary></entry><entry><title type="html">动动手，让你和你的朋友们，在微信上跟 ChatGPT 聊聊天</title><link href="https://www.mikecaptain.com/pages/Poechant/2022/12/11/wechat-chatgpt/" rel="alternate" type="text/html" title="动动手，让你和你的朋友们，在微信上跟 ChatGPT 聊聊天" /><published>2022-12-11T15:59:57+00:00</published><updated>2022-12-11T15:59:57+00:00</updated><id>https://www.mikecaptain.com/pages/Poechant/2022/12/11/wechat-chatgpt</id><content type="html" xml:base="https://www.mikecaptain.com/pages/Poechant/2022/12/11/wechat-chatgpt/">&lt;p&gt;&lt;img src=&quot;/img/src/2022-12-11-wechat-chatgpt-3.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;写在前面&quot;&gt;写在前面&lt;/h3&gt;
+&lt;p&gt;最近 OpenAI 的 ChatGPT 非常地出圈，ChatGPT 是一个由 OpenAI 训练的大型语言模型，被设计用来回答用户的问题并提供信息。官方的 Slogan 是 &lt;strong&gt;「Optimizing Language Models for Dialogue」&lt;/strong&gt;，所以非常适合做到 IM 里聊天。那么我在想如果用一个微信号，背后是 ChatGPT，是不是很有趣？正当我准备利用 WeChaty 开发一个服务端程序来连接 ChatGPT 时，发现目前 Github 上已经有人做了，刚好可以省去很多工程的工作。&lt;/p&gt;
+
+&lt;h3 id=&quot;stepbystep&quot;&gt;Step by step&lt;/h3&gt;
+
+&lt;p&gt;本实践依赖：CLI、Docker、npm、Github、fuergaosi233/wechat-chatgpt、git、YAML、Chrome 的使用。以下将简洁地 Step by step 列出步骤。&lt;/p&gt;
+
+&lt;p&gt;第一步，你要现有一个 OpenAI 的账号，注意注册时手机号不能是中国大陆或香港的，IP 地址和 GPS 也不能暴露你是中国大陆或者香港的。&lt;/p&gt;
+
+&lt;p&gt;第二步，准备一台服务器（否则个人电脑要一直处于开机运行状态），由于后面将用到 Session Token 来登录，因此 IP 地址是香港也没关系，于是我是在我的香港服务器上部署 wechat-chatgpt&lt;/p&gt;
+
+&lt;p&gt;第三步，在服务器上安装 Docker，不赘述。&lt;/p&gt;
+
+&lt;p&gt;第四步，从 Github 上拉取项目项目到服务器上。&lt;/p&gt;
+
+&lt;p&gt;第五步，任何设备上登录 ChatGPT，用 Chrome 的 Inspect 来查看并复制 session token 到剪贴板。&lt;/p&gt;
+
+&lt;p&gt;第六步，编辑 wechat-chatgpt 的 config.yaml，填写 session token；设置 private trigger keywords（可选）。&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;chatGPTAccountPool&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;lt;your email&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;lt;your password&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# if you hope only some keywords can trigger chatgpt on private chat, you can set it like this:&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;chatPrivateTiggerKeyword&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;第七步，用 docker 来拉取 wechat-chatgpt&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker pull holegots/wechat-chatgpt:latest。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;第八步，启动 wechat-chatgpt：&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; wechat-chatgpt &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;/config.yaml:/app/config.yaml holegots/wechat-chatgpt:latest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;注意，如果手动模式下也可以用npm run dev启动。如果提示系统不认识 npm 则可以运行 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm install &amp;amp;&amp;amp; poetry install&lt;/code&gt; 来解决。到此你就可以在微信上跟这个打通了 ChatGPT 的账号聊天了。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;img src=&quot;/img/src/2022-12-11-wechat-chatgpt-1.png&quot; alt=&quot;image&quot; style=&quot;width:100%&quot; /&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;img src=&quot;/img/src/2022-12-11-wechat-chatgpt-2.png&quot; alt=&quot;image&quot; style=&quot;width:100%&quot; /&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;其实可以看到这个 AI 船长不管是专业性问题（计算机相关）还是非专业问题，都回答的很不错。&lt;/p&gt;
+
+&lt;p&gt;如何停止、重启、查看日志呢？首先停止的命令是docker stop wechat-chatgpt，登录时需要扫码登录微信并追踪 logs，因为这其实是用了微信在桌面端的接口。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker logs &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; wechat-chatgpt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;会在 Terminal 里显示一个文字阵列组成的桌面端微信登录二维码，用你打算做成微信 AI 机器人那个微信号扫一下，相关信息都填完。另外，这样最好别用自己的微信大号，而是用一个小号。微信不让聊这些，小号注意要完成实名认证。&lt;/p&gt;
+
+&lt;p&gt;如果要停止运行，用如下命令：&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker stop wechat-chatgpt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;参考&quot;&gt;参考&lt;/h3&gt;
+
+&lt;p&gt;1、&lt;a href=&quot;https://github.com/fuergaosi233/wechat-chatgpt/tree/main&quot;&gt;https://github.com/fuergaosi233/wechat-chatgpt/tree/main&lt;/a&gt;&lt;/p&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="ai" /><category term="人工智能" /><category term="AI" /><category term="ChatGPT" /><category term="OpenAI" /><category term="微信" /><summary type="html">最近 OpenAI 的 ChatGPT 非常地出圈，ChatGPT 是一个由 OpenAI 训练的大型语言模型，被设计用来回答用户的问题并提供信息。官方的 Slogan 是「Optimizing Language Models for Dialogue」，所以非常适合做到 IM 里聊天。那么我在想如果用一个微信号，背后是 ChatGPT，是不是很有趣？正当我准备利用 WeChaty 开发一个服务端程序来连接 ChatGPT 时，发现目前 Github 上已经有人做了，刚好可以省去很多工程的工作 ……</summary></entry><entry><title type="html">确实惊艳！用 MidJourney 三分钟生成了两张 CG 级高清机甲特写</title><link href="https://www.mikecaptain.com/pages/Poechant/2022/11/30/midjourney-first-test/" rel="alternate" type="text/html" title="确实惊艳！用 MidJourney 三分钟生成了两张 CG 级高清机甲特写" /><published>2022-11-30T15:12:03+00:00</published><updated>2022-11-30T15:12:03+00:00</updated><id>https://www.mikecaptain.com/pages/Poechant/2022/11/30/midjourney-first-test</id><content type="html" xml:base="https://www.mikecaptain.com/pages/Poechant/2022/11/30/midjourney-first-test/">&lt;p&gt;因为 Diffusion 模型在计算机视觉领域的发展，最近文生图（Text2Image）很火，花了三分钟时间用 MidJourney 做了一组机甲图，确实非常惊艳，直接看图：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;img src=&quot;/img/src/2022-12-16-midjourney-first-test-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;img src=&quot;/img/src/2022-12-16-midjourney-first-test-2.png&quot; alt=&quot;image&quot; /&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;今年人工智能在 CV 领域的发展非常的精彩，目前市面上看到的主要应用，都是这种松散式的、对结果容错率很高图像生成，基于一段 prompt 生成一张或一组图片，甚至已经有了 avatarai.me 这种帮你打造全套的 photorealistic 层次质感的全套图片和视频商业化产品。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2022-12-16-midjourney-first-test-3.png&quot; alt=&quot;image&quot; /&gt;
+（&lt;em&gt;注：MidJourney 官网&lt;/em&gt;）&lt;/p&gt;
+
+&lt;p&gt;未来很快，我们将看到一些更精准满足图像生成需求的应用出现，比如生成游戏素材（其实现在已经有了，比如 Scenario.gg）、AI 替身生成等等。&lt;/p&gt;
+
+&lt;p&gt;相应的，对抗性的防御技术也会很快发展。&lt;/p&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="diffusion" /><category term="MidJourney" /><category term="Text2Image" /><category term="文生图" /><category term="AIGC" /><summary type="html">因为 Diffusion 模型在计算机视觉领域的发展，可以说今年人工智能在计算机视觉领域大放异彩，各种 Text2Image 项目层出不穷，花了三分钟时间做了一组机甲图，确实非常惊艳 ……</summary></entry><entry><title type="html">不要船开远了，就忘了为什么启航</title><link href="https://www.mikecaptain.com/pages/Poechant/2022/08/11/captain-alibaba/" rel="alternate" type="text/html" title="不要船开远了，就忘了为什么启航" /><published>2022-08-11T15:53:57+00:00</published><updated>2022-08-11T15:53:57+00:00</updated><id>https://www.mikecaptain.com/pages/Poechant/2022/08/11/captain-alibaba</id><content type="html" xml:base="https://www.mikecaptain.com/pages/Poechant/2022/08/11/captain-alibaba/">&lt;h3 id=&quot;写在前面&quot;&gt;写在前面&lt;/h3&gt;
+&lt;p&gt;偶然翻到 2020.06.11 刚来到阿里时写的一篇内容（我是 2020 年的 6 月 4 日我入职阿里巴巴集团），是有关于来阿里的期待、对这家公司的一些粗浅初步的理解。此时再翻来看看，最大的感触就是，提醒自己勿忘初心。&lt;/p&gt;
+
+&lt;p&gt;在不涉及到公司数据安全及商业机密问题的前提下，稍做了一些删改，发布在这里作为一个回顾。本次穿插了一些图片，当时写的时候还没有这些照片。本文内容包括：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;很多人是带着梦想来阿里的，那么我的梦想是什么呢？&lt;/li&gt;
+  &lt;li&gt;最喜欢新六脉的哪句话？为什么？&lt;/li&gt;
+  &lt;li&gt;关于阿里企业价值观：为什么要接受这套价值观？&lt;/li&gt;
+  &lt;li&gt;价值观的本质意义（极度务实视角）是什么？&lt;/li&gt;
+  &lt;li&gt;Landing 的 SOP&lt;/li&gt;
+  &lt;li&gt;问问自己，来到阿里，如果初期我可能需要做一点改变，那会是什么？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2020-06-11-captain-alibaba-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;注：2020 年平安夜 · 百年湖畔 87 期合影&lt;/p&gt;
+
+&lt;h3 id=&quot;很多人是带着梦想来阿里的那么我的梦想是什么呢&quot;&gt;很多人是带着梦想来阿里的，那么我的梦想是什么呢？&lt;/h3&gt;
+
+&lt;p&gt;Christensen 在《创新者的窘境》中提到：每一次技术更迭，都需要破坏性创新，而破坏性创新在前一次技术更迭的胜出者内部是很难生长出来的。阿里诞生以来，不断地创造第二增长曲线：阿里巴巴、淘宝、支付宝、天猫、阿里云、钉钉 …… 这让我非常好奇。其中很多产品穿越多个时间周期，期间不断创造内生二次曲线。&lt;/p&gt;
+
+&lt;p&gt;但是阿里也一样错失了很多，微信、美团、拼多多、抖/快…… 等等很多产品诞生在了其他公司，还有某些产品在不断的科技更迭中自身生长出了第二曲线。&lt;/p&gt;
+
+&lt;p&gt;因此我来阿里的梦想也非常明确：&lt;strong&gt;参与或创造一次（甚至多次）第二曲线，可以是新产品，也可以是原有产品内生的。在这个过程中获得个人成长、个人价值。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;一直以来，我有三个最想实现或得到的东西：LOVE、CREATION、FREEDOM。随着生活与工作的前行，对这三者的理解，在不断加深。在这个问题里，我想应该是讨论”CREATION”。&lt;/p&gt;
+
+&lt;p&gt;CREATION 上，我的梦想的范式，大概是从自己中学时代就确立了，在某一次人类社会变革浪潮中，扮演有一定权重的角色。这里面有几个变量：&lt;strong&gt;什么领域（F）的变革；什么规模（S）的变革；多大的权重（W）；什么角色（R）。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;F 这个变量，我在中学及大学时代逐渐明确，是以相对普适的产品形式输出结果并对社会变革产生积极作用。后来越来越明确为科技与商业结合的领域。&lt;/p&gt;
+
+&lt;p&gt;S、W 这两个变量，自然是越大越好。因此我会希望能够构建尽可能大的机会，或者参与到尽可能大的机会中。R 希望是有强烈 Ownership 的身份。&lt;/p&gt;
+
+&lt;p&gt;因此过去几年我选择了创业。创业就像冲浪，你抓住一次浪并完成漂亮的动作，就是一次不算失败的创业。但是如果一个浪没抓住，你去追它是没意义的，而应该等待下一个浪。我认为在未来 5~10 年内难以出现规模能大到令我足够兴奋的科技浪潮。大浪潮中属于创业者的大机会很多，而中小浪潮的大机会基本只属于大平台，那么为了在壮年期做获得我的 CREATION，我选择了加入阿里这样的大平台。&lt;/p&gt;
+
+&lt;p&gt;在最后做决定以及初来阿里的那个人生转折点，作为老阿里人的曲洋老师对我说的一句话，深深地鼓励了我，他说：”带着创业气质，把这里当你的舞台折腾！”&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2020-06-11-captain-alibaba-2.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;注：2020 年双十一 · 淘宝 KO&lt;/p&gt;
+
+&lt;h3 id=&quot;最喜欢新六脉的哪句话为什么&quot;&gt;最喜欢新六脉的哪句话？为什么？&lt;/h3&gt;
+
+&lt;p&gt;最喜欢的是“因为信任所以简单”。&lt;/p&gt;
+
+&lt;p&gt;我一直认为人最重要的两个元特质是”真实”和“谦逊”，由”真实”可以塑造自我（对内）、构建信任（对外），后者可以带来清晰的边界，继而实现人与人之间高效的互动（这种互动包括各种人际关系在内，如婚姻、合伙、共事、合作等等）。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;事物（虚实皆可）呈现在人的认知中，会得到三方面的投影：facts、opinion、feeling。如果我们足够真实，当我们需要把这三方面呈现给他人时，双方就能顺畅建立信任。信任的结果，就对应到这三方面：彼此之间建立共识（facts）、求同存异（opinion）、尊重感受（feeling），这就是”简单”。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;另外一句是鼓励自己勇于绽放的一条：「此次此刻，非我莫属」。&lt;/p&gt;
+
+&lt;p&gt;激情、自信、积极…… 通常行为统一表现为“勇于绽放自己”，绽放有表达（语言）与投身（行为）两种表现形式。更进一步推进就是”此次此刻，非我莫属”的阿里价值观。&lt;/p&gt;
+
+&lt;p&gt;低调、稳重、谦逊，其实与“此次此刻，非我莫属“，并不矛盾。这点是我来到阿里后，发现自己在过去这些年的创业中已经不知不觉改变了，从 Introvert 逐渐变成了 Extrovert 的人，而且从曾经 social 中消耗能量，逐渐变为我现在可以感知到获得能量。这种变化，是我最近来阿里才确认发生的，此前因为自己创业者的身份没有察觉这种变化的发生。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2020-06-11-captain-alibaba-3.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;注：2021 年秋 · 径山之行&lt;/p&gt;
+
+&lt;h3 id=&quot;关于阿里企业价值观为什么要接受这套价值观&quot;&gt;关于阿里企业价值观：为什么要接受这套价值观？&lt;/h3&gt;
+
+&lt;p&gt;马老师和老逍都提到这个：我们是寻找同路人，而不是教育别人。这其实非常明晰地解释了为什么阿里要构建一个毛细血管网络一样的政委体系。基于这种用人理念，政委体系不敢说是最优解，但一定是优解（而且是否有更优解的论证没有意义）。&lt;/p&gt;
+
+&lt;p&gt;对于个人，我的理解是要做两件事：&lt;strong&gt;1）构建自己的价值观体系（初始化）；2）寻找价值观契合的公司（做匹配）。这两点里，没有任何地方提到”你要改变价值观为了契合你所在的公司”。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;而企业价值观呢，其实可以分两部分看待：普世价值观、独特价值观。前者因为是普世的，所以到了哪个公司这种价值观都对，这点老逍也提了，比如“客户第一”。后者是个性化的，但不存在孰高孰低，就像一个人内向还是外向，你不能说哪个是错的。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2020-06-11-captain-alibaba-4.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;注：2021 年双十一 · 天天特卖团队&lt;/p&gt;
+
+&lt;h3 id=&quot;价值观的本质意义极度务实视角是什么&quot;&gt;价值观的本质意义（极度务实视角）是什么？&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;在充分考虑价值观适配使命、愿景基础上，价值观本身的意义，在和风细雨时（即企业价值观与其他价值判断相 match 时），是看不到的。但在暴风骤雨时（即企业价值观与其他价值判断相冲突时），就能显示其实实在在的作用了。&lt;/strong&gt;我认为包括三类，前两个是阿里整体视角，第三个是阿里内部：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;经济体内，阿里与其他生态位的冲突或损益关系，如曾经的美蘑口一役。&lt;/li&gt;
+  &lt;li&gt;经济体内，其他的生态位之间的冲突或损益关系，如曾经的十月围城。&lt;/li&gt;
+  &lt;li&gt;阿里人的行为价值判断，如最近的钉钉代考事件、过往的各类廉政事件。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2020-06-11-captain-alibaba-5.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;注：2021 年冬 · 淘宝天猫合并前合影&lt;/p&gt;
+
+&lt;h3 id=&quot;landing的sop&quot;&gt;Landing 的 SOP&lt;/h3&gt;
+
+&lt;p&gt;大家都说 landing 充满挑战，马老师其实给出了 landing 的 SOP 三部曲：&lt;strong&gt;一起打过仗、一起创过新、一起度过难。三个经历都 close 才算 smooth landing。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;集团人才策略层面、HR 实操层面、Leader 层面、，对于新人 landing 能做到什么程度的保障，其实每个新人感受到的不尽相同：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;集团层面，始终是在构建更好的新人 landing 环境的，这符合自身价值，这能打下很好的底子。&lt;/li&gt;
+  &lt;li&gt;实操层面，包括面试阶段对候选人的价值观判断、预期管理，面试及入职后公司文化及人才体系的事实呈现、内化吸收和长期解惑。&lt;/li&gt;
+  &lt;li&gt;Leader 层面，这是新人体感最强烈的部分，也是最重要的部分。尽管拥抱变化，但首先 Leader 需要给出尽可能最全面的考虑，其次是对候选人的预期管理。好的 Leader 会给候选人提供合理的着陆点、多个降落伞、缓冲垫，完成 smooth landing。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2020-06-11-captain-alibaba-6.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;注：2021 年夏 · 出差厦漳泉&lt;/p&gt;
+
+&lt;h3 id=&quot;问问自己来到阿里如果初期我可能需要做一点改变那会是什么&quot;&gt;问问自己，来到阿里，如果初期我可能需要做一点改变，那会是什么？&lt;/h3&gt;
+
+&lt;p&gt;曾经个人的激情与动力，常来自于“增长”。常说&lt;strong&gt;高增长掩盖一切&lt;/strong&gt;，所以未来在阿里如果不能如创业般快速获得反馈得到积极结果，并且大平台中必然要接受大量关联方共同参与项目而导致的效率降低，因此我要逐渐改变自己，重新适应这种环境下的激情与动力获得方式。&lt;/p&gt;
+
+&lt;p&gt;另一方面，作为创业公司的负责人，工作中鲜有因为内部原因而无法推进的事情，但是扮演肩部或腰部角色时，需要接受头部决策的一定程度不可控，这是我需要作出的适应与改变。关于这一点，我在几个月前就已经在做预期管理和心态调整，我认为以创业者的强适应性，这可能并不会是问题，但是我习惯于保持谨慎的乐观来面对自己。&lt;/p&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="thinking" /><category term="思考" /><summary type="html">2020 年的 6 月 4 日我入职阿里巴巴集团，7 天后的 6 月 11 日我写下了这篇文章。偶然翻到了当时这篇文章，遂转录于此，提醒自己勿忘初心。在不涉及到公司数据安全及商业机密问题的前提下，稍做了一些删改，发布在这里作为一个回顾。本次穿插了一些图片，当时写的时候还没有这些照片。本文内容包括：很多人是带着梦想来阿里的，那么我的梦想是什么呢？最喜欢新六脉的哪句话？为什么？关于阿里企业价值观：为什么要接受这套价值观？价值观的本质意义（极度务实视角）是什么？Landing 的 SOP；问问自己，来到阿里，如果初期我可能需要做一点改变，那会是什么？</summary></entry><entry><title type="html">麦克船长的 Jekyll 快速教程</title><link href="https://www.mikecaptain.com/pages/Poechant/2021/12/23/captains-jeckyll-learning/" rel="alternate" type="text/html" title="麦克船长的 Jekyll 快速教程" /><published>2021-12-23T19:43:02+00:00</published><updated>2021-12-23T19:43:02+00:00</updated><id>https://www.mikecaptain.com/pages/Poechant/2021/12/23/captains-jeckyll-learning</id><content type="html" xml:base="https://www.mikecaptain.com/pages/Poechant/2021/12/23/captains-jeckyll-learning/">&lt;ul&gt;
+  &lt;li&gt;作者：麦克船长（钟超）&lt;/li&gt;
+  &lt;li&gt;微信：sinosuperman&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;写在前面&quot;&gt;写在前面&lt;/h3&gt;
+
+&lt;p&gt;Jekyll 是一个用 Ruby 实现的、使用 Liquid 模板引擎的静态网站生成器，它可以通过 Markdown 或者 HTML 等文件生成完整的静态网站。它特别适用于博客或者文章类的网站，因为可以自动生成博客的首页、分类页、标签页等等。因为使用 Liquid 引擎所以能在页面中使用变量、循环、条件语句等等，非常方便。虽然基于 Ruby 实现但使用起来并不需要掌握 Ruby，只需要了解一些基本的语法即可。&lt;/p&gt;
+
+&lt;h3 id=&quot;part-1基本特点&quot;&gt;Part 1、基本特点&lt;/h3&gt;
+
+&lt;h4 id=&quot;一基本语法&quot;&gt;一、基本语法&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;变量：用双大括号表示变量 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;麦克船长的技术、产品与商业博客&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;过滤器：可以使用过滤器对变量进行操作，例如 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;麦克船长的技术、产品与商业博客&lt;/code&gt; 表示把网站的标题转换为大写。&lt;/li&gt;
+  &lt;li&gt;支持循环与分支结构：比如 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for-endfor&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if-elsif-else-endif&lt;/code&gt; ：可以使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fo-endfor&lt;/code&gt; 循环遍历列表或集合，例如 `````` 表示遍历网站的所有页面。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;二典型-jekyll-项目结构及重要文件介绍&quot;&gt;二、典型 Jekyll 项目结构及重要文件介绍&lt;/h4&gt;
+
+&lt;h5 id=&quot;1配置文件-_configyml&quot;&gt;1、配置文件 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;&lt;/h5&gt;
+
+&lt;p&gt;首先看到下作为一个网站的基础设置，这里要特别注意不要遗漏 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;encoding: utf-8&lt;/code&gt; 这一条。&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Site settings&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;utf-8&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;麦克船长的技术、产品与商业博客&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管&quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;https://www.mikecaptain.com&quot;&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Your&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Name&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;https://www.mikecaptian.com&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后是 Markdown 引擎的设置，及其高亮语法 Rouge 部分。&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Markdown and highlighter&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;markdown&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kramdown&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;highlighter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rouge&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;kramdown&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;GFM&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;syntax_highlighter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rouge&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;一些要用到的插件也要设置进来，本博客只用到了基础插件两个。&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Plugins&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jekyll-paginate&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jekyll-sitemap&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;另外构建项目的一些关键设置，比如文章放在哪里、如何进行分页（每页多少条文章）等等作为一个静态博客网站的 build 类设置都在此。&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Build settings&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;baseurl&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Change this to your relative path (ex: /blog/), or leave just a /&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;destination&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;./_site&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;permalink&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/:title&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;paginate&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;20&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;paginate_path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/page:num/&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;collections&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;posts&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;permalink&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/:year/:month/:day/:title/&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;directory&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;_posts&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;2布局文件_layouts-目录下的文件规则&quot;&gt;2、布局文件：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_layouts&lt;/code&gt; 目录下的文件规则&lt;/h5&gt;
+
+&lt;p&gt;Jekyll 的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_layouts&lt;/code&gt; 目录包含了你的 Jekyll 站点中所使用的页面布局。每个页面布局是一个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HTML&lt;/code&gt;模板，定义了你的站点中页面的框架和外观。你可以通过在你的文章或页面的头部添加一个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;layout&lt;/code&gt; 字段来指定使用哪个布局来渲染该页面。&lt;/p&gt;
+
+&lt;p&gt;布局文件通常包含用于渲染页面的常见元素，例如头部、尾部和侧边栏。你可以在布局文件中使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;include&lt;/code&gt; 语句来插入你的站点的其他文件，例如 header.html 和 footer.html 文件。这样，你就可以在一个地方维护站点的头部和尾部，而不必在每个页面中都进行更新。&lt;/p&gt;
+
+&lt;h5 id=&quot;3页面文件及其头部&quot;&gt;3、页面文件及其头部&lt;/h5&gt;
+
+&lt;p&gt;在一个页面的开头，用如下语法表示页面头部：&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;page&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;permalink&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/categories/&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Categories&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;每个页面文件的头部都会有layout，并与 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_layouts&lt;/code&gt; 目录下的某个文件对应。&lt;/p&gt;
+
+&lt;h3 id=&quot;part-2jekyll-中的全局变量&quot;&gt;Part 2、Jekyll 中的全局变量&lt;/h3&gt;
+
+&lt;p&gt;Jekyll 中有许多全局变量可供使用，它们可以在模板中调用。这些变量提供了有关网站，页面，文章和其他内容的信息，可用于在模板中进行条件判断或显示信息。以下是 Jekyll 中常用的一些全局变量：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site&lt;/code&gt;：包含有关网站的信息，如网站标题，描述，域名等。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;page&lt;/code&gt;：包含有关当前页面的信息，如标题，内容，布局等。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;post&lt;/code&gt;：包含有关当前文章的信息，如标题，作者，日期等。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;content&lt;/code&gt;：包含当前页面或文章的内容。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;paginator&lt;/code&gt;：包含有关分页的信息，如当前页码，总页数等。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tags&lt;/code&gt;：包含有关网站的所有标签的信息。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;related_posts&lt;/code&gt;：包含与当前文章有关的文章的信息。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这些变量可以在模板中使用，比如：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;{{ page.title }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;{{ site.description }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+  {{ for category in site.categories %}
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;{{ category }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+  {{ endfor %}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;    
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Jekyll 还支持自定义全局变量，可以在配置文件 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; 中添加任意的键值对，然后就可以在模板文件中使用这些变量了。例如，你可以在配置文件中添加如下内容：&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;my_custom_variable&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Hello&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;World&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后就可以在模板文件中使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site.my_custom_variable&lt;/code&gt; 访问这个自定义变量了。&lt;/p&gt;
+
+&lt;h4 id=&quot;一site变量&quot;&gt;一、site变量&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site&lt;/code&gt; 的数据结构里包含了所构建的网站的各种基本信息和结构。&lt;/p&gt;
+
+&lt;h5 id=&quot;1sitecategories&quot;&gt;1、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site.categories&lt;/code&gt;&lt;/h5&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site.categories&lt;/code&gt; 是一个 array，每个元素取出它的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;first&lt;/code&gt; 就是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;category&lt;/code&gt; 的名字，如下使用：&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;2sitepages&quot;&gt;2、site.pages&lt;/h5&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site.pages&lt;/code&gt; 是一个包含所有页面的数组，不仅包括根目录下的页面，还包括所有子目录下的页面。因此，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site.pages&lt;/code&gt; 中包含的是整个网站中所有的页面。&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{{ for page in site.pages %}
+	{{ page.title }}
+{{ endfor %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;3其他常用属性&quot;&gt;3、其他常用属性&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site.title&lt;/code&gt;：是网站的标题。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site.related_posts&lt;/code&gt;：相关文章的列表。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site.data&lt;/code&gt;：从 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_data&lt;/code&gt; 目录加载的数据。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site.static_files&lt;/code&gt;：静态文件的列表。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site.collections&lt;/code&gt;：自定义集合的列表。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;二page-变量&quot;&gt;二、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;page&lt;/code&gt; 变量&lt;/h4&gt;
+
+&lt;p&gt;在 Jekyll 中，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;page&lt;/code&gt; 变量表示单独页面的数据。它是一个包含多个属性的对象，可以用来存储页面的信息并在模板中使用。一些常见的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;page&lt;/code&gt; 变量属性包括：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;layout&lt;/code&gt;：表示页面使用的布局模板的名称。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;title&lt;/code&gt;：表示页面的标题。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;date&lt;/code&gt;：表示页面的发布日期。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;categories&lt;/code&gt;：表示页面所属的分类列表。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tags&lt;/code&gt;：表示页面所属的标签列表。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;content&lt;/code&gt;：表示页面的内容（用 Markdown 格式书写）。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在模板中，可以使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{{ page.属性名 }}&lt;/code&gt; 的方式来访问 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;page&lt;/code&gt; 变量的属性。例如，如果想在模板中输出页面的标题，可以使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{{ page.title }}&lt;/code&gt;。此外，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;page&lt;/code&gt; 变量还有其他属性，如 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;permalink&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;excerpt&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;url&lt;/code&gt; 等，可以根据需要调用。&lt;/p&gt;
+
+&lt;h3 id=&quot;part-3控制结构&quot;&gt;Part 3、控制结构&lt;/h3&gt;
+
+&lt;h4 id=&quot;1if-else-分支结构&quot;&gt;1、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if-else&lt;/code&gt; 分支结构&lt;/h4&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{{ if tmp_var == &quot;type1&quot; %}
+{{ elsif tmp_var == &quot;type2&quot; %}
+{{ elsif tmp_var == &quot;type3&quot; %}
+{{ elsif tmp_var == &quot;type4&quot; %}
+{{ else tmp_var == &quot;type5&quot; %}
+{{ endif %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;2for-endfor-循环结构&quot;&gt;2、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for-endfor&lt;/code&gt; 循环结构&lt;/h4&gt;
+
+&lt;p&gt;不带条件判断的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt; 循环如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{{ for post in paginator.posts %}
+	&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Your other sentences --&amp;gt;&lt;/span&gt;
+{{ endfor %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;带条件循环的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt; 用 Jekyll 里的「过滤器」来实现：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{{ for page in site.pages | where: &quot;dir&quot;, &quot;categories&quot; %}
+	{{ page.title }}
+{{ endfor %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;3jekyll-支持的其他结构包括&quot;&gt;3、Jekyll 支持的其他结构包括：&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;case&lt;/code&gt; 用于在多个可能的条件中执行代码的结构。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;capture&lt;/code&gt; 用于捕获输出的结构。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cycle&lt;/code&gt; 用于循环一组字符串的结构。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;include&lt;/code&gt; 用于包含其他文件的结构。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;unless&lt;/code&gt; 用于在不满足指定条件时执行代码的结构。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;while&lt;/code&gt; 用于在满足指定条件时执行代码的结构。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;参考&quot;&gt;参考：&lt;/h3&gt;
+
+&lt;p&gt;1、&lt;a href=&quot;https://learn.cloudcannon.com/jekyll/list-posts-by-category/&quot;&gt;https://learn.cloudcannon.com/jekyll/list-posts-by-category/&lt;/a&gt;
+2、&lt;a href=&quot;https://jekyllrb.com/docs/&quot;&gt;https://jekyllrb.com/docs/&lt;/a&gt;&lt;/p&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="web" /><category term="Jekyll" /><category term="Web" /><category term="前端" /><summary type="html">Jekyll 是一个用 Ruby 实现的、使用 Liquid 模板引擎的静态网站生成器，它可以通过 Markdown 或者 HTML 等文件生成完整的静态网站。它特别适用于博客或者文章类的网站，因为可以自动生成博客的首页、分类页、标签页等等。因为使用 Liquid 引擎所以能在页面中使用变量、循环、条件语句等等，非常方便。虽然基于 Ruby 实现但使用起来并不需要掌握 Ruby，只需要了解一些基本的语法即可 ……</summary></entry><entry><title type="html">如何使用 Jekyll 基于 Github Pages 搭建个人博客</title><link href="https://www.mikecaptain.com/pages/Poechant/2021/12/21/build-github-pages-with-jekyll/" rel="alternate" type="text/html" title="如何使用 Jekyll 基于 Github Pages 搭建个人博客" /><published>2021-12-21T15:53:57+00:00</published><updated>2021-12-21T15:53:57+00:00</updated><id>https://www.mikecaptain.com/pages/Poechant/2021/12/21/build-github-pages-with-jekyll</id><content type="html" xml:base="https://www.mikecaptain.com/pages/Poechant/2021/12/21/build-github-pages-with-jekyll/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#写在前面&quot; id=&quot;markdown-toc-写在前面&quot;&gt;写在前面&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1github上的准备&quot; id=&quot;markdown-toc-1github上的准备&quot;&gt;1、GitHub 上的准备&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#2了解ruby和jekyll&quot; id=&quot;markdown-toc-2了解ruby和jekyll&quot;&gt;2、了解 Ruby 和 Jekyll&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#3了解gem&quot; id=&quot;markdown-toc-3了解gem&quot;&gt;3、了解 Gem&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#4安装homebrew&quot; id=&quot;markdown-toc-4安装homebrew&quot;&gt;4、安装 Homebrew&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#5用homebrew安装ruby&quot; id=&quot;markdown-toc-5用homebrew安装ruby&quot;&gt;5、用 Homebrew 安装 Ruby&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#6安装jekyll和bundler&quot; id=&quot;markdown-toc-6安装jekyll和bundler&quot;&gt;6、安装 Jekyll 和 Bundler&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#7使用bundle管理包依赖关系&quot; id=&quot;markdown-toc-7使用bundle管理包依赖关系&quot;&gt;7、使用 bundle 管理包依赖关系&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#8本地启动一下看看&quot; id=&quot;markdown-toc-8本地启动一下看看&quot;&gt;8、本地启动一下看看&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#9用jekyll创建一个项目&quot; id=&quot;markdown-toc-9用jekyll创建一个项目&quot;&gt;9、用 Jekyll 创建一个项目&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#10修改gemfile文件&quot; id=&quot;markdown-toc-10修改gemfile文件&quot;&gt;10、修改 Gemfile 文件&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#11配置githubpages&quot; id=&quot;markdown-toc-11配置githubpages&quot;&gt;11、配置 Github Pages&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#12配置一个jekylltheme&quot; id=&quot;markdown-toc-12配置一个jekylltheme&quot;&gt;12、配置一个 Jekyll Theme&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#13设置自定义域名&quot; id=&quot;markdown-toc-13设置自定义域名&quot;&gt;13、设置自定义域名&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#14用-rouge-实现代码高亮&quot; id=&quot;markdown-toc-14用-rouge-实现代码高亮&quot;&gt;14、用 rouge 实现代码高亮&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#15一些扩展问题&quot; id=&quot;markdown-toc-15一些扩展问题&quot;&gt;15、一些扩展问题&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#q1我想在网站的首页的每一篇文章标题下显示一个指定的摘要而不是自动从文章内容开头截取的应该如何实现呢&quot; id=&quot;markdown-toc-q1我想在网站的首页的每一篇文章标题下显示一个指定的摘要而不是自动从文章内容开头截取的应该如何实现呢&quot;&gt;Q1：我想在网站的首页的每一篇文章标题下，显示一个指定的摘要，而不是自动从文章内容开头截取的，应该如何实现呢？&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#q2如何支持对每一个分类都可以显示一个该分类下的所有文章的页面&quot; id=&quot;markdown-toc-q2如何支持对每一个分类都可以显示一个该分类下的所有文章的页面&quot;&gt;Q2：如何支持对每一个分类都可以显示一个该分类下的所有文章的页面？&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#q3如何为每篇文章添加一个目录&quot; id=&quot;markdown-toc-q3如何为每篇文章添加一个目录&quot;&gt;Q3：如何为每篇文章添加一个目录&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#q4如何在-jekyll-中支持-katex&quot; id=&quot;markdown-toc-q4如何在-jekyll-中支持-katex&quot;&gt;Q4：如何在 Jekyll 中支持 KaTeX&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#在-githubio-上&quot; id=&quot;markdown-toc-在-githubio-上&quot;&gt;在 GitHub.io 上&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#如果不在-githubio-上则还需要额外工作&quot; id=&quot;markdown-toc-如果不在-githubio-上则还需要额外工作&quot;&gt;如果不在 GitHub.io 上，则还需要额外工作&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#使用示例&quot; id=&quot;markdown-toc-使用示例&quot;&gt;使用示例&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#q5jekyll-中如何支持-graphviz-&quot; id=&quot;markdown-toc-q5jekyll-中如何支持-graphviz-&quot;&gt;Q5：Jekyll 中如何支持 Graphviz ？&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#q6如何显示--或者--&quot; id=&quot;markdown-toc-q6如何显示--或者--&quot;&gt;Q6：如何显示 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{%&lt;/code&gt; 或者 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{{&lt;/code&gt; ？&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#参考&quot; id=&quot;markdown-toc-参考&quot;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;写在前面&quot;&gt;写在前面&lt;/h3&gt;
+
+&lt;p&gt;GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用 GitHub Pages 搭建博客，然后使用 Jekyll 生成的静态网站文件上传到该仓库。花 10 分钟时间，通过本文让你快速地实现了一个免费、简单、快速、安全、支持版本控制、支持自定义域名的独立域名博客。这样实现的优势：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;免费&lt;/strong&gt;：GitHub Pages 允许用户免费使用其托管静态网站。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;简单&lt;/strong&gt;：Jekyll 是一个轻量级的静态网站生成器，它使用简单的 Markdown 格式写文章，不需要数据库或者后端语言的支持。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;快速&lt;/strong&gt;：由于 Jekyll 生成的网站是静态的，所以可以通过 CDN 加速访问速度。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;安全&lt;/strong&gt;：由于 Jekyll 生成的网站是静态的，所以不存在脚本攻击、SQL 注入等安全问题。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;版本控制&lt;/strong&gt;：GitHub 提供了强大的版本控制功能，你可以使用 Git 记录每一次修改，方便查看和回滚。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;自定义域名&lt;/strong&gt;：你可以在仓库的设置页面中自定义域名，让你的博客更专业和个性化。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;使用 Jekyll 和 GitHub Pages 搭建博客，你可以快速、简单、免费地拥有一个个人博客，并且可以享受到较高的安全性、版本控制和自定义域名的优势。&lt;/p&gt;
+
+&lt;p&gt;本文涉及到 macOS 命令行的一点点基础，以及 git 版本控制软件、Web 前端的一点点基础，但是船长会尽量浅显地写在本文，避免太多其他依赖。&lt;/p&gt;
+
+&lt;h3 id=&quot;1github上的准备&quot;&gt;1、GitHub 上的准备&lt;/h3&gt;
+
+&lt;p&gt;在 Github 上创建一个新的仓库，命名为「账户名.github.io」。然后将仓库拉取到本地：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git clone https://github.com/username/username.github.io
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;创建一些 web 文件后再推到 Github 上就可以了：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git add &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Initial commit&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; origin main
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;2了解ruby和jekyll&quot;&gt;2、了解 Ruby 和 Jekyll&lt;/h3&gt;
+
+&lt;p&gt;Ruby 目前业界的主要应用都在 Web 开发领域，有不少框架，比如 Ruby on Rails、Sinatra、Padrino. 我们这里要用到的 Jekyll 是用 Ruby 实现的一个构建静态网站的工具，用 HTML 和 Markdown 作为源码，再通过布局和模板生成网页文件。&lt;/p&gt;
+
+&lt;p&gt;Jekyll 特别适合构建博客，支持标签、分类、搜索，并支持自定义模板和布局。&lt;/p&gt;
+
+&lt;h3 id=&quot;3了解gem&quot;&gt;3、了解 Gem&lt;/h3&gt;
+
+&lt;p&gt;Gem 是 Ruby 常用的一个管理库的工具，类似于 Pip 是 Python 常用的一个管理库的工具。&lt;/p&gt;
+
+&lt;p&gt;为 Gem 配置国内的源，这样访问速度更快：&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem sources --add https://mirrors.tuna.tsinghua.edu.cn/rubygems/ --remove https://rubygems.org/
+gem sources -l
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;4安装homebrew&quot;&gt;4、安装 Homebrew&lt;/h3&gt;
+
+&lt;p&gt;Homebrew 是一个专门为 macOS 设计的开源软件包管理工具，熟悉 Linux 的朋友可以把 Homebrew 理解成 macOS 的 apt-get。先安装 Homebrew：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;/bin/bash &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-fsSL&lt;/span&gt; https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;为了让 Homebrew 在国内安装快一些，可以替换下镜像源：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;以上用的是阿里云的源，也可以用网易的源：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;export HOMEBREW_BOTTLE_DOMAIN=http://mirrors.163.com/homebrew/bottles&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.bash_profile
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Homebrew 安装、卸载软件的命令都很简单，brew install wget和brew uninstall wget。&lt;/p&gt;
+
+&lt;h3 id=&quot;5用homebrew安装ruby&quot;&gt;5、用 Homebrew 安装 Ruby&lt;/h3&gt;
+
+&lt;p&gt;用 Homebrew 安装 chruby 和 ruby-install&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;chruby ruby-install xz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;安装 Ruby 的最新版本：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ruby-install ruby
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这时候提示如下问题：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; Updating ruby versions ...
+&lt;span class=&quot;o&quot;&gt;!!!&lt;/span&gt; Failed to download https://raw.githubusercontent.com/postmodern/ruby-versions/master/ruby/versions.txt &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+to /Users/captain/.cache/ruby-install/ruby/versions.txt!
+&lt;span class=&quot;o&quot;&gt;!!!&lt;/span&gt; Failed to download ruby versions!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;因为 raw.githubusercontent.com 在国内是被 blocked，所以用https://www.ipaddress.com查一下 IP 地址，然后修改下/etc/hosts：&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ echo &quot;185.199.111.133 raw.githubusercontent.com&quot; &amp;gt;&amp;gt; /etc/hosts
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后再运行ruby-install ruby就可以正常安装了，这个过程会非常的慢，安装完成后，配置 zsh 脚本的 .zshrc 文件以便后续可以使用 chruby：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;source &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;brew &lt;span class=&quot;nt&quot;&gt;--prefix&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/opt/chruby/share/chruby/chruby.sh&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.zshrc
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;source &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;brew &lt;span class=&quot;nt&quot;&gt;--prefix&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/opt/chruby/share/chruby/auto.sh&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.zshrc
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;chruby ruby-3.1.2&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.zshrc &lt;span class=&quot;c&quot;&gt;# run &apos;chruby&apos; to see actual version&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;再看下 Ruby 版本对不对：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ruby &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Jekyll 官网要求 Ruby 版本大于 3.1.2p20.&lt;/p&gt;
+
+&lt;h3 id=&quot;6安装jekyll和bundler&quot;&gt;6、安装 Jekyll 和 Bundler&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jekyll bundler
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;上面顺便安装了 Bundler，Bundler 是 Ruby 常用的管理项目依赖关系的工具，类似于 virtualenv 之于 Python，可以简化项目的包依赖管理，帮你维护一份 Gemfile 文件，里面包含了所有依赖关系。这个工具的名字叫 Bundler，使用的时候都是用这个词的动词 bundle 命令。&lt;/p&gt;
+
+&lt;h3 id=&quot;7使用bundle管理包依赖关系&quot;&gt;7、使用 bundle 管理包依赖关系&lt;/h3&gt;
+
+&lt;p&gt;创建 Gemfile 文件，Gemfile 是 Ruby 项目的依赖包管理文件：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;https://rubygems.org&apos;&lt;/span&gt;
+gem &lt;span class=&quot;s1&quot;&gt;&apos;nokogiri&apos;&lt;/span&gt;
+gem &lt;span class=&quot;s1&quot;&gt;&apos;rack&apos;&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&apos;~&amp;gt; 2.2.4&apos;&lt;/span&gt;
+gem &lt;span class=&quot;s1&quot;&gt;&apos;rspec&apos;&lt;/span&gt;
+gem &lt;span class=&quot;s1&quot;&gt;&apos;jekyll&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后安装依赖包，这里默认会根据运行命令时所在的目录的 Gemfile 来安装：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Gemfile.lock 是 Gemfile 的锁定版本，记录了当前项目所使用的所有依赖包的版本信息。下面把这两个文件都加入到 Git 版本控制中。&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git add Gemfile Gemfile.lock
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;8本地启动一下看看&quot;&gt;8、本地启动一下看看&lt;/h3&gt;
+
+&lt;p&gt;先用 bundle 如下命令来启动：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;启动日志如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Configuration file: none
+            Source: /Users/captain/Workspace/poechant.github.io
+       Destination: /Users/captain/Workspace/poechant.github.io/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
+                    done in 0.014 seconds.
+ Auto-regeneration: enabled for &apos;/Users/captain/Workspace/poechant.github.io&apos;
+    Server address: http://127.0.0.1:4000
+  Server running... press ctrl-c to stop.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后打开浏览器输入http://localhost:4000看看效果：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2022-12-21-build-github-pages-with-jekyll-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这就说明 Jekyll 本地配置已经成功了。然后把当前的版本同步到 Git 上：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git pull &lt;span class=&quot;nt&quot;&gt;--no-rebase&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; origin main
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;9用jekyll创建一个项目&quot;&gt;9、用 Jekyll 创建一个项目&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;jekyll new CaptainMikeBlog
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;CaptainMikeBlog
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;jekyll server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;启动日志如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Configuration file: /Users/captain/Workspace/poechant.github.io/CaptainMikeBlog/_config.yml
+            Source: /Users/captain/Workspace/poechant.github.io/CaptainMikeBlog
+       Destination: /Users/captain/Workspace/poechant.github.io/CaptainMikeBlog/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
+       Jekyll Feed: Generating feed for posts
+                    done in 0.365 seconds.
+ Auto-regeneration: enabled for &apos;/Users/captain/Workspace/poechant.github.io/CaptainMikeBlog&apos;
+    Server address: http://127.0.0.1:4000/
+  Server running... press ctrl-c to stop.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;再打开浏览器输入http://localhost:4000看看效果：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2022-12-21-build-github-pages-with-jekyll-2.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;10修改gemfile文件&quot;&gt;10、修改 Gemfile 文件&lt;/h3&gt;
+
+&lt;p&gt;注释掉gem ”jekyll”开头的这一行，修改# gem ”github-pages”开头的这一行为：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gem &lt;span class=&quot;s2&quot;&gt;&quot;github-pages&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;~&amp;gt; GITHUB-PAGES-VERSION&quot;&lt;/span&gt;, group: :jekyll_plugins
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;其中的GITHUB-PAGES-VERSION改为具体的版本号，版本号参考https://pages.github.com/versions/，我写本文的时候github-pages最新版本号是227。关闭 Gemfile 文件然后命令行运行如下命令：&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ bundle install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;再本地启动服务器测试：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;jekyll server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;得到如下提示：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;You have already activated i18n 1.12.0, but your Gemfile requires i18n 0.9.5.
+Prepending &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; to your &lt;span class=&quot;nb&quot;&gt;command &lt;/span&gt;may solve this. &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Gem::LoadError&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;参考https://github.com/Homebrew/brew.sh/issues/845这个 issue 后如下解决：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bundle add webrick
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这里注意jekyll server和bundle exec jekyll serve两个的区别是前者基本本地 Jekyll 版本启动服务，后者基于目录下的 Gemfile 文件启动服务，所以我们要用后者。&lt;/p&gt;
+
+&lt;h3 id=&quot;11配置githubpages&quot;&gt;11、配置 Github Pages&lt;/h3&gt;
+
+&lt;p&gt;在 Github 的仓库页面进入「Settings - Code and Automation - Pages - Build and Deploy」，选择「Deploy from a branch」，然后选择你设定的分支。再选发布源的文件夹，这里我设置为根目录。然后「保存」。再修改 _config.yml 文件：&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;baseurl: &quot;&quot;
+url: &quot;http://your-username.github.io&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;将本地代码push到 Github 仓库中，在浏览器访问your-username.github.io即可，有时候可能要等几分钟。&lt;/p&gt;
+
+&lt;h3 id=&quot;12配置一个jekylltheme&quot;&gt;12、配置一个 Jekyll Theme&lt;/h3&gt;
+
+&lt;p&gt;可以在http://jekyllthemes.org/这个网站上找一下喜欢的 theme，下载后将如下文件都 copy 到你项目目录下：&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;_includes
+_layouts
+_sass
+css
+js
+img
+404.markdown
+index.html
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;不同主题会有所不同，这里只列个大概。&lt;/p&gt;
+
+&lt;h3 id=&quot;13设置自定义域名&quot;&gt;13、设置自定义域名&lt;/h3&gt;
+
+&lt;p&gt;添加四条 A 记录，记录值如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;添加 CNAME，主机记录为www，记录值为your-username.github.io。然后在「Github 你的仓库里 - Settings - Pages - Custom Domain」填写你刚使用的域名，并把Enforce HTTPS打上勾。&lt;/p&gt;
+
+&lt;p&gt;一旦解析成功，Github 上会自动多一个 CNAME 文件。把你最新的代码都 push 到 Github 仓库上，稍等片刻就可以从你自己的域名访问 Github Pages 搭建的博客啦。&lt;/p&gt;
+
+&lt;h3 id=&quot;14用-rouge-实现代码高亮&quot;&gt;14、用 rouge 实现代码高亮&lt;/h3&gt;
+
+&lt;p&gt;我们用支持 Markdown 内代码语法高亮的 Rouge 来实现，首先安装 Rouge：&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install kramdom rouge
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后配置 _config.yml 文件：&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;markdown&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kramdown&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;highlighter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rouge&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;kramdown&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;GFM&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;syntax_highlighter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rouge&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后用 rouge 创建 syntax.css 文件：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rougify style github &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; css/syntax.css
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_include/head.html&lt;/code&gt; 文件中添加：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/css/syntax.css&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;15一些扩展问题&quot;&gt;15、一些扩展问题&lt;/h3&gt;
+
+&lt;h4 id=&quot;q1我想在网站的首页的每一篇文章标题下显示一个指定的摘要而不是自动从文章内容开头截取的应该如何实现呢&quot;&gt;Q1：我想在网站的首页的每一篇文章标题下，显示一个指定的摘要，而不是自动从文章内容开头截取的，应该如何实现呢？&lt;/h4&gt;
+
+&lt;p&gt;在 Jekyll 中，你可以在每篇文章的 front matter 中设置摘要字段。例如，你可以在文章的 front matter 中添加一个 excerpt 字段，然后在该字段中填入你想要在首页显示的摘要内容。&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;这是一篇文章&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;excerpt&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;这是文章的摘要&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+
+这是文章的正文内容
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后，在你的首页模板中，你可以使用``输出文章的摘要。例如：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+  {% for post in paginator.posts %}
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ post.url }}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{{ post.title }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;{{ post.excerpt }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+  {% endfor %}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这样，在首页显示文章列表时，每篇文章就会带上它的摘要内容。&lt;/p&gt;
+
+&lt;p&gt;注意，如果文章的 excerpt 字段没有设置，那么在首页显示时就不会有摘要内容。因此，建议在发布新文章时务必检查 excerpt 字段是否已经设置。&lt;/p&gt;
+
+&lt;h4 id=&quot;q2如何支持对每一个分类都可以显示一个该分类下的所有文章的页面&quot;&gt;Q2：如何支持对每一个分类都可以显示一个该分类下的所有文章的页面？&lt;/h4&gt;
+
+&lt;p&gt;有很多种办法，但是这里我讲一个比较简单且容易维护的方法，不过也有其弊端。首先在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_layouts&lt;/code&gt;目录下创建一个&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;category.html&lt;/code&gt;文件：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+layout: default
+---
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;br&amp;gt;&lt;/span&gt;
+    {% if site.categories[page.category] %}
+      {% for post in site.categories[page.category] %}
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{% if site.baseurl == &quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;/&quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;%}{{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;post.url&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}}{%&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;%}{{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;post.url&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;prepend:&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;site.baseurl&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}}{%&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;endif&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;%}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+            {%if post.header %}{{ post.header }}{% else %}{{ post.title }}{% endif %}
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+      {% endfor %}
+    {% else %}
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;br&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;No posts for this category. If you have something in mind, check &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/write&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Write For Us&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;page.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+    {% endif %}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这样就有了一个可以显示某个 category 下的所有 posts 的布局文件了。然后修改&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;文件：&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;_categories&apos;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;在根目录创建一个&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;categories&lt;/code&gt;目录，并在里面对每个 category 分别创建一个 html 文件，文件名即 category 的名字。但这个文件特别的简单，就是只需要写一个头部，例如我的「AI」分类的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ai.html&lt;/code&gt;如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;category&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;人工智能&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;This is the description.&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;permalink&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/category/ai&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ai&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;category_type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;tech&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;那么之后每次创建文件时，在头部写&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;category&lt;/code&gt;一定要与这些&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;categories&lt;/code&gt;中的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;html&lt;/code&gt;文件对应起来。&lt;/p&gt;
+
+&lt;h4 id=&quot;q3如何为每篇文章添加一个目录&quot;&gt;Q3：如何为每篇文章添加一个目录&lt;/h4&gt;
+
+&lt;p&gt;这个是 Markdown 可以解决的，并不涉及 Jekyll，对于 Jekyll 的 Markdown 引擎可以用如下极其简单的方式实现：&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; TOC
+{:toc}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;q4如何在-jekyll-中支持-katex&quot;&gt;Q4：如何在 Jekyll 中支持 KaTeX&lt;/h4&gt;
+
+&lt;p&gt;Katex 是一个开源的 JavaScript 库，能够在浏览器端快速渲染 LaTeX 格式的数学公式。&lt;/p&gt;
+
+&lt;h5 id=&quot;在-githubio-上&quot;&gt;在 GitHub.io 上&lt;/h5&gt;
+
+&lt;p&gt;先修改 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;：&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;kramdown&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;math_engine&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;katex&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后修改 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_includes/head.html&lt;/code&gt; 文件，在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt; 与 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;/head&amp;gt;&lt;/code&gt; 中间：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--KaTeX--&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;integrity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;crossorigin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;anonymous&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;defer&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;integrity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;crossorigin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;anonymous&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;defer&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;integrity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;crossorigin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;anonymous&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;DOMContentLoaded&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;renderMathInElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+              &lt;span class=&quot;c1&quot;&gt;// ...options...&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;如果不在-githubio-上则还需要额外工作&quot;&gt;如果不在 GitHub.io 上，则还需要额外工作&lt;/h5&gt;
+
+&lt;p&gt;以上方式只适合于 GitHub.io 的网站，如果是自己搭建的网站用 Jekyll 则要自己安装，如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;kramdom-math-katex
+
+gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;katex
+gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;execjs
+
+gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;therubyracer
+gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;therubyrhino
+gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;duktape
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;使用示例&quot;&gt;使用示例&lt;/h5&gt;
+
+&lt;p&gt;以如下方式输入输入如下内容：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% raw %}
+$$ \sum_{i=1}^{n} a_i $$
+{% endraw %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;就会得到一个数学公式：&lt;/p&gt;
+
+\[\sum_{i=1}^{n} a_i\]
+
+&lt;h4 id=&quot;q5jekyll-中如何支持-graphviz-&quot;&gt;Q5：Jekyll 中如何支持 Graphviz ？&lt;/h4&gt;
+
+&lt;p&gt;这要依赖 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll-graphviz-dot&lt;/code&gt;，修改 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; 增加一句：&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;group :jekyll_plugins &lt;span class=&quot;k&quot;&gt;do
+  &lt;/span&gt;gem &lt;span class=&quot;s2&quot;&gt;&quot;jekyll-graphviz-dot&quot;&lt;/span&gt;
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;再修改 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; 配置文件：&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jekyll-graphviz&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;再在本地安装 graphviz，可以通过 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conda install graphviz&lt;/code&gt; 或者 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;brew install graphviz&lt;/code&gt;。然后 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; 再 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt; 在本地下一段看看效果：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-graphviz&quot;&gt;{% graph some graph title %}
+digraph G {
+    a -&amp;gt; b
+    b -&amp;gt; c
+    c -&amp;gt; a
+}
+{% endgraph %}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果看到如下效果，就说明你都配置成功了：&lt;/p&gt;
+
+&lt;div class=&quot;graphviz-wrapper&quot;&gt;
+
+&lt;!-- Generated by graphviz version 2.43.0 (0)
+ --&gt;
+&lt;!-- Title: G Pages: 1 --&gt;
+&lt;svg role=&quot;img&quot; aria-label=&quot;some graph title&quot; width=&quot;89pt&quot; height=&quot;188pt&quot; viewBox=&quot;0.00 0.00 89.00 188.00&quot;&gt;
+&lt;title&gt;some graph title&lt;/title&gt;
+&lt;desc&gt;
+digraph G {
+    a -&amp;gt; b
+    b -&amp;gt; c
+    c -&amp;gt; a
+}
+&lt;/desc&gt;
+
+&lt;g id=&quot;graph0&quot; class=&quot;graph&quot; transform=&quot;scale(1 1) rotate(0) translate(4 184)&quot;&gt;
+&lt;title&gt;G&lt;/title&gt;
+&lt;polygon fill=&quot;white&quot; stroke=&quot;transparent&quot; points=&quot;-4,4 -4,-184 85,-184 85,4 -4,4&quot; /&gt;
+&lt;!-- a --&gt;
+&lt;g id=&quot;node1&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;a&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;54&quot; cy=&quot;-162&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;54&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;a&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- b --&gt;
+&lt;g id=&quot;node2&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;b&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;27&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;b&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- a&amp;#45;&amp;gt;b --&gt;
+&lt;g id=&quot;edge1&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;a&amp;#45;&amp;gt;b&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M47.6,-144.41C44.49,-136.34 40.67,-126.43 37.17,-117.35&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;40.4,-116.03 33.54,-107.96 33.87,-118.55 40.4,-116.03&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- c --&gt;
+&lt;g id=&quot;node3&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;c&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;54&quot; cy=&quot;-18&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;54&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;c&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- b&amp;#45;&amp;gt;c --&gt;
+&lt;g id=&quot;edge2&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;b&amp;#45;&amp;gt;c&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M33.4,-72.41C36.51,-64.34 40.33,-54.43 43.83,-45.35&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;47.13,-46.55 47.46,-35.96 40.6,-44.03 47.13,-46.55&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- c&amp;#45;&amp;gt;a --&gt;
+&lt;g id=&quot;edge3&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;c&amp;#45;&amp;gt;a&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M57.65,-36.09C59.68,-46.43 61.98,-59.91 63,-72 64.34,-87.94 64.34,-92.06 63,-108 62.28,-116.5 60.93,-125.69 59.49,-133.99&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;56.03,-133.44 57.65,-143.91 62.91,-134.71 56.03,-133.44&quot; /&gt;
+&lt;/g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+
+&lt;p&gt;但是 GitHub Pages 默认并不支持 Graphviz 插件，所以还需要如下处理：&lt;/p&gt;
+
+&lt;h4 id=&quot;q6如何显示--或者--&quot;&gt;Q6：如何显示 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{%&lt;/code&gt; 或者 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{{&lt;/code&gt; ？&lt;/h4&gt;
+
+&lt;p&gt;其实也是一个字符转义的问题，我们直接面对一个在 StackOverflow 上会被问的终极 Jekyll 中 Markdown 转义问题（与 Liquid Template Tags 冲突的问题），如何实现显示 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{% raw %}&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{% endraw %}&lt;/code&gt; 呢？方法如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% raw %}{%{% endraw %} raw %}
+{% raw %}{%{% endraw %} endraw %}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;如上，就是用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{% raw %}&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{% endraw %}&lt;/code&gt; 把 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{%&lt;/code&gt; 包起来，但是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%}&lt;/code&gt; 不用包。应该讲的很清楚了吧。&lt;/p&gt;
+
+&lt;h3 id=&quot;参考&quot;&gt;参考&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://bundler.io&quot;&gt;https://bundler.io&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jekyllrb.com/docs/&quot;&gt;https://jekyllrb.com/docs/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/87225594&quot;&gt;https://zhuanlan.zhihu.com/p/87225594&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://chat.openai.com/chat&quot;&gt;https://chat.openai.com/chat&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll&quot;&gt;https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.github.com/zh/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site&quot;&gt;https://docs.github.com/zh/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/dyutibarma/monochrome&quot;&gt;https://github.com/dyutibarma/monochrome&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain&quot;&gt;https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.seanbuscay.com/blog/jekyll-toc-markdown/&quot;&gt;http://www.seanbuscay.com/blog/jekyll-toc-markdown/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/&quot;&gt;https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/DerekStride/jekyll-graphviz&quot;&gt;https://github.com/DerekStride/jekyll-graphviz&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/DerekStride/jekyll-graphviz&quot;&gt;https://github.com/DerekStride/jekyll-graphviz&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="web" /><category term="Jekyll" /><category term="Github Pages" /><category term="前端" /><summary type="html">GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用 GitHub Pages 搭建博客，然后使用 Jekyll 生成的静态网站文件上传到该仓库。花 10 分钟时间，通过本文让你快速地实现了一个免费、简单、快速、安全、支持版本控制、支持自定义域名的独立域名博客 ……</summary></entry><entry><title type="html">欢迎成为「淘宝-天天特卖」团队的创业合伙人！</title><link href="https://www.mikecaptain.com/pages/Poechant/2021/11/11/captain-tttm/" rel="alternate" type="text/html" title="欢迎成为「淘宝-天天特卖」团队的创业合伙人！" /><published>2021-11-11T19:59:43+00:00</published><updated>2021-11-11T19:59:43+00:00</updated><id>https://www.mikecaptain.com/pages/Poechant/2021/11/11/captain-tttm</id><content type="html" xml:base="https://www.mikecaptain.com/pages/Poechant/2021/11/11/captain-tttm/">&lt;p&gt;&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-1.jpg&quot; alt=&quot;imagee&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;天天特卖团队理念&quot;&gt;天天特卖团队理念&lt;/h3&gt;
+
+&lt;h4 id=&quot;特卖合伙人&quot;&gt;特卖合伙人&lt;/h4&gt;
+
+&lt;p&gt;以「特卖合伙人」为基石的、以「使众人行」的战友感为人才基本要求、以「用人做事，而非做事用人」为人才建设核心，是天天特卖团队的组织管理理念。特卖核心管理团队每 Q 会进行一次班子建设通晒。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-9.jpg&quot; alt=&quot;imagee&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;如何理解协作&quot;&gt;如何理解协作？&lt;/h4&gt;
+
+&lt;p&gt;从长时间线来看，我们是为了不断积累信用，像一张信用卡一样，不断获得别人愿意支持我们的更大额度。不要事情结果还可以，而我们却没有积累到信用。互联网本质也是现代工业。而现代工业，一是社会分工，二是社会协作。想取得现代工业项目的结果，就要有更大的人才包容度、环境包容度。工作的结果就是在妥协与博弈中取得的，这是和光同尘的本质，也是现代工业复杂系统拿到结果的本质。只有这样我们才能让越来越多的人追随我们一起 do something，这种追随不一定只有上下级才是，而是愿意并且相信和我们能到达更远的地方。这背后的信用，要我们一步一个脚印地去积累，对他人给予的信任要保持敬畏、如履薄冰、懂得感恩。对每一段阶段性或长或短结束的合作，都要表达感谢。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-8.jpg&quot; alt=&quot;imagee&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;如何看待同学的优势及短板&quot;&gt;如何看待同学的优势及短板？&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;优势：讲优势有两个可能的目的，要么组织会在未来任务分配上重点考虑发挥该同学优势的事情，要告诉 TA，要激励 TA，是 TA 前行的自信来源之一。要么是对于同学也把握不准的特点，我们明确告诉 TA 这是你被我欣赏的优点。&lt;/li&gt;
+  &lt;li&gt;短板：什么是要讲的短板？未来一段时间，最期待你补足提升的。一旦这方面显著进步，就会向上迈进很大一步，甚至可以突破自己当下成长的瓶颈。要花多少篇幅讲？要比优势，有更大篇幅去讲。讲完就结束了么？对这个短板，一定要表达态度，也一定要对是否有方法、什么方法来补足短板要和同学沟通。&lt;/li&gt;
+  &lt;li&gt;无论是优势，还是短板，要说到点儿上，不要说片儿汤话。要让同学们能够引起思考、启发的。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-10.jpg&quot; alt=&quot;imagee&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;天天特卖期待你的加入&quot;&gt;天天特卖期待你的加入！&lt;/h3&gt;
+
+&lt;p&gt;新天天特卖缘起于「手淘下沉市场战役）」，于 2021 年初上线，以「极致性价比货源、裸价直降、全网比价、买贵必赔」打造手淘极致价格敏感人群的购物阵地。目前天天特卖团队有行业运营、用户运营、数据策略、整合营销、直播运营、内容运营等岗位，有兴趣的同学可以钉钉随时找我，期待你的加入！&lt;/p&gt;
+
+&lt;h4 id=&quot;欢迎添加我的微信sinosuperman-推荐自荐--&quot;&gt;欢迎添加我的微信：sinosuperman 推荐、自荐 ^ ^&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-11.jpg&quot; alt=&quot;imagee&quot; /&gt;
+&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-2.jpg&quot; alt=&quot;imagee&quot; /&gt;
+&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-3.jpg&quot; alt=&quot;imagee&quot; /&gt;
+&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-4.jpg&quot; alt=&quot;imagee&quot; /&gt;
+&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-5.jpg&quot; alt=&quot;imagee&quot; /&gt;
+&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-6.jpg&quot; alt=&quot;imagee&quot; /&gt;
+&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-7.jpg&quot; alt=&quot;imagee&quot; /&gt;&lt;/p&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="thinking" /><category term="思考" /><summary type="html">阿里内部创业项目「天天特卖」招合伙人啦！以「特卖合伙人」为基石的、以「使众人行」的战友感为人才基本要求、以「用人做事，而非做事用人」为人才建设核心，是天天特卖团队的组织管理理念。天天特卖期待你的加入！</summary></entry><entry><title type="html">麦克船长的阿里一年香（入职阿里一周年）</title><link href="https://www.mikecaptain.com/pages/Poechant/2021/06/04/captain-alibaba-1st-anniversary/" rel="alternate" type="text/html" title="麦克船长的阿里一年香（入职阿里一周年）" /><published>2021-06-04T15:42:43+00:00</published><updated>2021-06-04T15:42:43+00:00</updated><id>https://www.mikecaptain.com/pages/Poechant/2021/06/04/captain-alibaba-1st-anniversary</id><content type="html" xml:base="https://www.mikecaptain.com/pages/Poechant/2021/06/04/captain-alibaba-1st-anniversary/">&lt;p&gt;To 钟超&lt;/p&gt;
+
+&lt;p&gt;1 周年快乐！很开心我们有这样一段共事的机会，虽开始时有些许波折，但随着进一步相处，我们很快能做到彼此欣赏、英雄相惜、默契配合，也特别感谢你对我的信任和支持，这是一切共事的基础。你强大的自驱力、脑力、对新事物的理解学习能力，都是最近几手新人里比较突出的。特别钦佩于你的执着和初性，对一件事认定后，迸发出的强大战斗力和决心。今天特卖这个新业务需要扎下根基，还真的需要一些舍我其谁的胆魄和更为犀利的突破，我也相信「新特卖」能成为你在阿里又一代表作，我希望我们的团队能为之骄傲和自豪，我们能不负公司所托，真正在下沉市场这场硬仗上有所建树，井取得令我们自己感到骄傲的突破，一起加油。&lt;/p&gt;
+
+&lt;p&gt;From 麦克船长的主管&lt;/p&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="thinking" /><category term="思考" /><summary type="html">本文记录了麦克船长来到阿里巴巴集团整整一年时，麦克船长的主管给的寄语。考虑到公司商业敏感问题，做了一定的删节。现记录于此，用于以后的回顾。</summary></entry><entry><title type="html">担任淘宝产品总负责人的双十一，是怎样的体验？</title><link href="https://www.mikecaptain.com/pages/Poechant/2020/11/11/captain-double-eleven/" rel="alternate" type="text/html" title="担任淘宝产品总负责人的双十一，是怎样的体验？" /><published>2020-11-11T15:59:43+00:00</published><updated>2020-11-11T15:59:43+00:00</updated><id>https://www.mikecaptain.com/pages/Poechant/2020/11/11/captain-double-eleven</id><content type="html" xml:base="https://www.mikecaptain.com/pages/Poechant/2020/11/11/captain-double-eleven/">&lt;p&gt;说是体验，其实本文只记录了一些影像，是关于麦克船长来到阿里巴巴集团的第一个双十一，负责担任淘宝的总PD（产品总负责人）。一年一度的双十一成了淘宝，乃至整个阿里集团的传统，就像阿里这家公司的春节过年一样，气氛热烈，而且消费者和商家朋友们也都会跟我们一同迎来一次购物与销售的狂欢。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-1.jpg&quot; alt=&quot;image&quot; /&gt;
+&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-2.jpg&quot; alt=&quot;image&quot; /&gt;
+&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-3.jpg&quot; alt=&quot;image&quot; /&gt;
+&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-4.jpg&quot; alt=&quot;image&quot; /&gt;
+&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-5.jpg&quot; alt=&quot;image&quot; /&gt;
+&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-6.jpg&quot; alt=&quot;image&quot; /&gt;
+&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-7.jpg&quot; alt=&quot;image&quot; /&gt;
+&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-8.jpg&quot; alt=&quot;image&quot; /&gt;
+&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-9.jpg&quot; alt=&quot;image&quot; /&gt;
+&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-10.jpg&quot; alt=&quot;image&quot; /&gt;
+&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-11.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="thinking" /><category term="思考" /><summary type="html">本文记录了一些影像，是关于麦克船长来到阿里巴巴集团的第一个双十一，负责担任淘宝的总PD（产品总负责人）。一年一度的双十一成了淘宝，乃至整个阿里集团的传统，就像阿里这家公司的春节过年一样，气氛热烈，而且消费者和商家朋友们也都会跟我们一同迎来一次购物与销售的狂欢。</summary></entry></feed>

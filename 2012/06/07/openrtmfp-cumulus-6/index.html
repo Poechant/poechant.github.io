@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>OpenRTMFP/Cumulus 原理、源码及实践 6：独立使用 CumulusLib 源码时的线程安全 Bug 及修复方法</title>
+  	<meta name="description" content="本文是麦克船长《OpenRTMFP/Cumulus 原理、源码及实践》系列文章的其中一篇，相关内容最初首发于 CSDN 的 Poechant 技术博客，后整理于本博客。对于使用 Cumulus 来做二次开发的技术人员，CumulusLib 是一定会使用到的，但是 CumulusLib 的源码在被单独使用时是存在严重的线程安全 Bug 的，这就是本文诞生的原因。YY 的网页版流媒体技术服务端使用到 CumulusLib 时遇到了这个问题，因此修复了这个 Bug。最终的 Bug 修复很简单，但是要先理解 CumulusLib 整体线程安全问题才能确定解决方案。">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/pages/Poechant/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/pages/Poechant/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/pages/Poechant/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/pages/Poechant/booklist/" title="我的书单">我的书单</a>
+	    
+	  
+	    
+	      <a href="/pages/Poechant/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+  <a href="/pages/Poechant/category/web" title="前端技术">前端技术</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/pages/Poechant/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+          <a href="/pages/Poechant/booklist/" title="我的书单">我的书单</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/pages/Poechant/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+  <a href="/pages/Poechant/category/web" title="前端技术">前端技术</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/pages/Poechant/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+          <a href="/pages/Poechant/booklist/" title="我的书单">我的书单</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>OpenRTMFP/Cumulus 原理、源码及实践 6：独立使用 CumulusLib 源码时的线程安全 Bug 及修复方法</h2>		
+	<time datetime="2012-06-07T15:34:18+00:00" class="by-line">07 Jun 2012, 广州 | 作者 麦克船长 | 总计 1538 字</time>
+	<div class="content">
+		<p>OpenRTMFP/Cumulus 提供了 <code class="language-plaintext highlighter-rouge">CumulusLib</code> 可以供其他 RTMFP 应用使用，而不局限于 <code class="language-plaintext highlighter-rouge">CumulusServer</code>。</p>
+
+<p>一般来说，Thread A 会准备好要 <code class="language-plaintext highlighter-rouge">push</code> 的消息，然后 Thread A 向消息队列 <code class="language-plaintext highlighter-rouge">push</code> 消息。</p>
+
+<p>但是 <code class="language-plaintext highlighter-rouge">CumulusLib</code> 中实现的，是 Thread A 向消息队列 <code class="language-plaintext highlighter-rouge">push</code> 消息，然后根据这个消息在队列中的指针，再向消息内填写字段。并期望如下：</p>
+
+<p><img src="/img/src/2012-06-07-openrtmfp-cumulus-6-1.png" alt="image" /></p>
+
+<p>由于在 <code class="language-plaintext highlighter-rouge">CumulusServer</code> 中，一个 Client 只在一个线程内被操作，相应的 <code class="language-plaintext highlighter-rouge">FlowWriter</code> 也不会出现跨线程的问题。但是如果单独使用 <code class="language-plaintext highlighter-rouge">CumulusLib</code>，如果出现线程通信，并且共享 <code class="language-plaintext highlighter-rouge">FlowWriter</code> 的话，就会共享消息队列，此时可能出现这种情况。</p>
+
+<p><img src="/img/src/2012-06-07-openrtmfp-cumulus-6-2.png" alt="image" /></p>
+
+<p>这就导致了很严重的错误，会使得进程崩溃。修正的方式，可以是将消息完全准备好之后，再放入队列，如下：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*
+ * author:  michael
+ * date:    June 6th, 2012
+ * type:    add
+ */</span>
+<span class="n">MessageBuffered</span><span class="o">*</span> <span class="n">FlowWriter</span><span class="o">::</span><span class="n">createAMFMessage</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">)</span>
+ 
+    <span class="c1">// signature.empty() means that we are on the flowWriter of FlowNull</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">_closed</span> <span class="o">||</span> <span class="n">signature</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">||</span> <span class="n">_band</span><span class="p">.</span><span class="n">failed</span><span class="p">()))</span> <span class="p">{</span>
+        <span class="n">MessageBuffered</span><span class="o">*</span> <span class="n">pMessage</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MessageBuffered</span><span class="p">();</span>
+        <span class="n">MessageBuffered</span><span class="o">&amp;</span> <span class="n">message</span><span class="p">(</span><span class="o">*</span><span class="n">pMessage</span><span class="p">);</span>
+        <span class="n">writeResponseHeader</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="n">rawWriter</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">pMessage</span><span class="p">;</span>
+    <span class="p">}</span>
+ 
+    <span class="n">MessageBuffered</span><span class="o">&amp;</span> <span class="n">message</span><span class="p">(</span><span class="n">_MessageNull</span><span class="p">);</span>
+    <span class="n">writeResponseHeader</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="n">rawWriter</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="err">}</span>
+</code></pre></div></div>
+
+<p>然后再调用时最后再增加 <code class="language-plaintext highlighter-rouge">push</code> 操作：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*
+ * author:  michael
+ * date:    June 6th, 2012
+ * type:    add
+ */</span>
+<span class="kt">void</span> <span class="n">FlowWriter</span><span class="o">::</span><span class="n">pushAMFMessage</span><span class="p">(</span><span class="n">MessageBuffered</span><span class="o">*</span> <span class="n">pMessage</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">pMessage</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_messages</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">pMessage</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>这样就使得消息的数据被写完了，才被放入队列中，如下：</p>
+
+<p><img src="/img/src/2012-06-07-openrtmfp-cumulus-6-3.png" alt="image" /></p>
+
+<p>不过如果考虑线程安全，多个线程对同一个消息队列进行操作时，就要加锁：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/*
+ * author:  michael
+ * date:    June 6th, 2012
+ * type:    add
+ */</span>
+<span class="kt">void</span> <span class="n">FlowWriter</span><span class="o">::</span><span class="n">pushAMFMessage</span><span class="p">(</span><span class="n">MessageBuffered</span><span class="o">*</span> <span class="n">pMessage</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">pMessage</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Poco</span><span class="o">::</span><span class="n">Mutex</span><span class="o">::</span><span class="n">ScopedLock</span> <span class="n">lock</span><span class="p">(</span><span class="n">msgQueueMutex</span><span class="p">);</span>
+        <span class="n">_messages</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">pMessage</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>这样就基本解决了这个线程安全问题。</p>
+
+<p>另外，使用 <code class="language-plaintext highlighter-rouge">CumulusLib</code> 要遵循 GPL 协议，一定不要忘记。</p>
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer><span>@2022 - MikeCaptain.com</span></footer>
+
+
+	    <!-- Script -->
+      <script src="/pages/Poechant/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
