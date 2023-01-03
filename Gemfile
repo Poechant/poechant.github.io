@@ -16,7 +16,7 @@ gem "github-pages", "~> 227", group: :jekyll_plugins
 # If you have any plugins, put them here!
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
-  gem "jekyll-graphviz"
+  gem "jekyll-graphviz-dot"
   gem 'jekyll-asciidoc', '~> 2.1.1'
 end
 

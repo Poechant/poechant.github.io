@@ -128,7 +128,8 @@ GEM
     jekyll-github-metadata (2.13.0)
       jekyll (>= 3.4, < 5.0)
       octokit (~> 4.0, != 4.4.0)
-    jekyll-graphviz (0.1.0)
+    jekyll-graphviz-dot (0.1.4)
+      ruby-graphviz (~> 1.2)
     jekyll-include-cache (0.2.1)
       jekyll (>= 3.7, < 5.0)
     jekyll-mentions (1.6.0)
@@ -270,7 +271,7 @@ DEPENDENCIES
   http_parser.rb (~> 0.6.0)
   jekyll-asciidoc (~> 2.1.1)
   jekyll-feed (~> 0.12)
-  jekyll-graphviz
+  jekyll-graphviz-dot
   minima (~> 2.5)
   ruby-graphviz
   tzinfo (>= 1, < 3)
