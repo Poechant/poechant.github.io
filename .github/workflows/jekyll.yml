@@ -1,4 +1,4 @@
-name: Build and deploy Jekyll site to GitHub Pages
+name: jekyll - Build and deploy Jekyll site to GitHub Pages
 on:
   push:
     branches:
