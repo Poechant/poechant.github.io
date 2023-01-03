@@ -3,7 +3,7 @@ layout: default
 ---
 <article id="post-page">
 	<h2>{%if page.header %}{{ page.header }}{% else %}{{ page.title }}{% endif %}</h2>		
-	<time datetime="{{ page.date | date_to_xmlschema }}" class="by-line"><i>{{ page.date | date_to_string }}</i></time>
+	<time datetime="{{ page.date | date_to_xmlschema }}" class="by-line">{{ page.date | date_to_string | append: ", " | append: page.location | append: " | 作者 麦克船长 | 总计 " }}{{ content | strip_html | strip_newlines | split: "" | size | append: " 字"}}</time>
 	<div class="content">
 		{{ content }}
 	</div>

@@ -6,6 +6,7 @@ categories: web
 tags: [Jekyll, Web, 前端]
 description: Jekyll 是一个用 Ruby 实现的、使用 Liquid 模板引擎的静态网站生成器，它可以通过 Markdown 或者 HTML 等文件生成完整的静态网站。它特别适用于博客或者文章类的网站，因为可以自动生成博客的首页、分类页、标签页等等。因为使用 Liquid 引擎所以能在页面中使用变量、循环、条件语句等等，非常方便。虽然基于 Ruby 实现但使用起来并不需要掌握 Ruby，只需要了解一些基本的语法即可。
 excerpt: Jekyll 是一个用 Ruby 实现的、使用 Liquid 模板引擎的静态网站生成器，它可以通过 Markdown 或者 HTML 等文件生成完整的静态网站。它特别适用于博客或者文章类的网站，因为可以自动生成博客的首页、分类页、标签页等等。因为使用 Liquid 引擎所以能在页面中使用变量、循环、条件语句等等，非常方便。虽然基于 Ruby 实现但使用起来并不需要掌握 Ruby，只需要了解一些基本的语法即可 ……
+location: 杭州
 ---
 
 * 作者：麦克船长（钟超）
@@ -112,12 +113,12 @@ Jekyll 中有许多全局变量可供使用，它们可以在模板中调用。�
 这些变量可以在模板中使用，比如：
 
 ```html
-<h1>{{ page.title }}</h1>
-<p>{{ site.description }}</p>
+<h1>{% raw %}{{{% endraw %} page.title }}</h1>
+<p>{% raw %}{{{% endraw %} site.description }}</p>
 <ul>
-  {% for category in site.categories %}
-    <li>{{ category }}</li>
-  {% endfor %}
+  {% raw %}{{{% endraw %} for category in site.categories %}
+    <li>{% raw %}{{{% endraw %} category }}</li>
+  {% raw %}{{{% endraw %} endfor %}
 </ul>    
 ```
 
@@ -148,9 +149,9 @@ my_custom_variable: "Hello World"
 ```site.pages``` 是一个包含所有页面的数组，不仅包括根目录下的页面，还包括所有子目录下的页面。因此，```site.pages``` 中包含的是整个网站中所有的页面。
 
 ```
-{% for page in site.pages %}
-	{{ page.title }}
-{% endfor %}
+{% raw %}{{{% endraw %} for page in site.pages %}
+	{% raw %}{{{% endraw %} page.title }}
+{% raw %}{{{% endraw %} endfor %}
 ```
 
 ##### 3、其他常用属性
@@ -172,19 +173,19 @@ my_custom_variable: "Hello World"
 * ```tags```：表示页面所属的标签列表。
 * ```content```：表示页面的内容（用 Markdown 格式书写）。
 
-在模板中，可以使用 ```{{ page.属性名 }}``` 的方式来访问 ```page``` 变量的属性。例如，如果想在模板中输出页面的标题，可以使用 ```{{ page.title }}```。此外，```page``` 变量还有其他属性，如 ```permalink```、```excerpt```、```url``` 等，可以根据需要调用。
+在模板中，可以使用 ```{% raw %}{{{% endraw %} page.属性名 }}``` 的方式来访问 ```page``` 变量的属性。例如，如果想在模板中输出页面的标题，可以使用 ```{% raw %}{{{% endraw %} page.title }}```。此外，```page``` 变量还有其他属性，如 ```permalink```、```excerpt```、```url``` 等，可以根据需要调用。
 
 ### Part 3、控制结构
 
 #### 1、```if-else``` 分支结构
 
 ```
-{% if tmp_var == "type1" %}
-{% elsif tmp_var == "type2" %}
-{% elsif tmp_var == "type3" %}
-{% elsif tmp_var == "type4" %}
-{% else tmp_var == "type5" %}
-{% endif %}
+{% raw %}{{{% endraw %} if tmp_var == "type1" %}
+{% raw %}{{{% endraw %} elsif tmp_var == "type2" %}
+{% raw %}{{{% endraw %} elsif tmp_var == "type3" %}
+{% raw %}{{{% endraw %} elsif tmp_var == "type4" %}
+{% raw %}{{{% endraw %} else tmp_var == "type5" %}
+{% raw %}{{{% endraw %} endif %}
 ```
 
 #### 2、```for-endfor``` 循环结构
@@ -192,17 +193,17 @@ my_custom_variable: "Hello World"
 不带条件判断的 ```for``` 循环如下：
 
 ```html
-{% for post in paginator.posts %}
+{% raw %}{{{% endraw %} for post in paginator.posts %}
 	<!-- Your other sentences -->
-{% endfor %}
+{% raw %}{{{% endraw %} endfor %}
 ```
 
 带条件循环的 ```for``` 用 Jekyll 里的「过滤器」来实现：
 
 ```html
-{% for page in site.pages | where: "dir", "categories" %}
-	{{ page.title }}
-{% endfor %}
+{% raw %}{{{% endraw %} for page in site.pages | where: "dir", "categories" %}
+	{% raw %}{{{% endraw %} page.title }}
+{% raw %}{{{% endraw %} endfor %}
 ```
 
 ##### 3、Jekyll 支持的其他结构包括：

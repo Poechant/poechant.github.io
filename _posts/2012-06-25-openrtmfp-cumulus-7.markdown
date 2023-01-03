@@ -6,6 +6,7 @@ categories: rt_tech
 tags: [直播技术]
 description: 本文是麦克船长《OpenRTMFP/Cumulus 原理、源码及实践》系列文章的其中一篇，相关内容最初首发于 CSDN 的 Poechant 技术博客，后整理于本博客。Cumulus 启动后，我们可以看到有多个线程被创建，但是有时其中的个别线程没有被成功启动，本文将告诉你如何修复并解决。
 excerpt: 本文是麦克船长《OpenRTMFP/Cumulus 原理、源码及实践》系列文章的其中一篇，相关内容最初首发于 CSDN 的 Poechant 技术博客，后整理于本博客。Cumulus 启动后，我们可以看到有多个线程被创建，但是有时其中的个别线程没有被成功启动，本文将告诉你如何修复并解决。
+location: 广州
 ---
 
 `Cumulus` 中的线程都是继承自 `Startable`，在其中封装 `Poco::Thread` 成员，使得一些有关线程的操作更方便。`Startable` 中的 `start` 函数如下：

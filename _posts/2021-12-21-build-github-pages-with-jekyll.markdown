@@ -6,6 +6,7 @@ categories: web
 tags: [Jekyll, Github Pages, 前端]
 description: GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用 GitHub Pages 搭建博客，然后使用 Jekyll 生成的静态网站文件上传到该仓库。花 10 分钟时间，通过本文让你快速地实现了一个免费、简单、快速、安全、支持版本控制、支持自定义域名的独立域名博客。
 excerpt: GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用 GitHub Pages 搭建博客，然后使用 Jekyll 生成的静态网站文件上传到该仓库。花 10 分钟时间，通过本文让你快速地实现了一个免费、简单、快速、安全、支持版本控制、支持自定义域名的独立域名博客 ……
+location: 杭州
 ---
 
 **本文目录**

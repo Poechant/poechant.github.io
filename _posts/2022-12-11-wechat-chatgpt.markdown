@@ -6,6 +6,7 @@ category: ai
 tags: [人工智能, AI, ChatGPT, OpenAI, 微信]
 description: 最近 OpenAI 的 ChatGPT 非常地出圈，ChatGPT 是一个由 OpenAI 训练的大型语言模型，被设计用来回答用户的问题并提供信息。官方的 Slogan 是「Optimizing Language Models for Dialogue」，所以非常适合做到 IM 里聊天。那么我在想如果用一个微信号，背后是 ChatGPT，是不是很有趣？正当我准备利用 WeChaty 开发一个服务端程序来连接 ChatGPT 时，发现目前 Github 上已经有人做了，刚好可以省去很多工程的工作。
 excerpt: 最近 OpenAI 的 ChatGPT 非常地出圈，ChatGPT 是一个由 OpenAI 训练的大型语言模型，被设计用来回答用户的问题并提供信息。官方的 Slogan 是「Optimizing Language Models for Dialogue」，所以非常适合做到 IM 里聊天。那么我在想如果用一个微信号，背后是 ChatGPT，是不是很有趣？正当我准备利用 WeChaty 开发一个服务端程序来连接 ChatGPT 时，发现目前 Github 上已经有人做了，刚好可以省去很多工程的工作 ……
+location: 杭州
 ---
 
 ![image](/img/src/2022-12-11-wechat-chatgpt-3.png)

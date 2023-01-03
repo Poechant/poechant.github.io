@@ -6,6 +6,7 @@ categories: rt_tech
 tags: [直播技术]
 description: CumulusServer 主进程的主循环分析，看本文一篇就够了。从绑定地址开始，本文介绍了如何接收数据，如何在 CumulusEdge 和 CumulusServer 的 socket 不同情况下的处理逻辑，如何处理发送方 IP 被禁、数据包大小异常等问题。通过本文让你了解 CumulusServer 的主循环，需要你对 POCO 库有一点了解，还要稍微熟悉 C++ 的基本语法。
 excerpt: CumulusServer 主进程的主循环分析，看本文一篇就够了。从绑定地址开始，本文介绍了如何接收数据，如何在 CumulusEdge 和 CumulusServer 的 socket 不同情况下的处理逻辑，如何处理发送方 IP 被禁、数据包大小异常等问题。通过本文让你了解 CumulusServer 的主循环，需要你对 POCO 库有一点了解，还要稍微熟悉 C++ 的基本语法。
+location: 广州
 ---
 
 **本文目录**
