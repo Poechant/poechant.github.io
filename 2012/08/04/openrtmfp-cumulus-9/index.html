@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>OpenRTMFP/Cumulus 原理、源码及实践 9：关键线程逻辑分析</title>
+  	<meta name="description" content="本文是麦克船长《OpenRTMFP/Cumulus 原理、源码及实践》系列文章的其中一篇，相关内容最初首发于 CSDN 的 Poechant 技术博客，后整理于本博客。本文对 RTMFPServer 线程、RTMFPManager 对 RTMFPServer 的影响进行源码解读。">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/pages/Poechant/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/pages/Poechant/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/pages/Poechant/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/pages/Poechant/booklist/" title="我的书单">我的书单</a>
+	    
+	  
+	    
+	      <a href="/pages/Poechant/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+  <a href="/pages/Poechant/category/web" title="前端技术">前端技术</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/pages/Poechant/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+          <a href="/pages/Poechant/booklist/" title="我的书单">我的书单</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/pages/Poechant/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+  <a href="/pages/Poechant/category/web" title="前端技术">前端技术</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/pages/Poechant/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+          <a href="/pages/Poechant/booklist/" title="我的书单">我的书单</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>OpenRTMFP/Cumulus 原理、源码及实践 9：关键线程逻辑分析</h2>		
+	<time datetime="2012-08-04T17:58:17+00:00" class="by-line">04 Aug 2012, 广州 | 作者 麦克船长 | 总计 5236 字</time>
+	<div class="content">
+		<p><strong>本文目录</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#一rtmfpserver-线程的启动和等待" id="markdown-toc-一rtmfpserver-线程的启动和等待">一、<code class="language-plaintext highlighter-rouge">RTMFPServer</code> 线程的启动和等待</a>    <ul>
+      <li><a href="#1pocothread" id="markdown-toc-1pocothread">1、<code class="language-plaintext highlighter-rouge">Poco::Thread</code></a></li>
+      <li><a href="#2封装一个可运行线程的类" id="markdown-toc-2封装一个可运行线程的类">2、封装一个可运行线程的类</a></li>
+      <li><a href="#3启动-rtmfpserver-线程" id="markdown-toc-3启动-rtmfpserver-线程">3、启动 <code class="language-plaintext highlighter-rouge">RTMFPServer</code> 线程</a></li>
+      <li><a href="#4rtmfpserver-线程等待" id="markdown-toc-4rtmfpserver-线程等待">4、<code class="language-plaintext highlighter-rouge">RTMFPServer</code> 线程等待</a></li>
+    </ul>
+  </li>
+  <li><a href="#二rtmfpmanager-对-rtmfpserver-的影响" id="markdown-toc-二rtmfpmanager-对-rtmfpserver-的影响">二、<code class="language-plaintext highlighter-rouge">RTMFPManager</code> 对 <code class="language-plaintext highlighter-rouge">RTMFPServer</code> 的影响</a></li>
+</ul>
+
+<h3 id="一rtmfpserver-线程的启动和等待">一、<code class="language-plaintext highlighter-rouge">RTMFPServer</code> 线程的启动和等待</h3>
+
+<h4 id="1pocothread">1、<code class="language-plaintext highlighter-rouge">Poco::Thread</code></h4>
+
+<p>Cumulus 大量使用了 <code class="language-plaintext highlighter-rouge">Poco</code> 的线程库。一个简单的 Poco 线程的使用实例如下：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">PoechantRunnable</span><span class="o">:</span> <span class="k">public</span> <span class="n">Poco</span><span class="o">::</span><span class="n">Runnable</span> <span class="p">{</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">run</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// your codes</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+ 
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">PoechantRunnable</span> <span class="n">runnable</span><span class="p">;</span>  <span class="c1">// Image that it's a gift</span>
+    <span class="n">Poco</span><span class="o">::</span><span class="n">Thread</span> <span class="kr">thread</span><span class="p">;</span>        <span class="c1">// And… thread is just like your girl</span>
+    <span class="kr">thread</span><span class="p">.</span><span class="n">start</span><span class="p">(</span><span class="n">runnable</span><span class="p">);</span>     <span class="c1">// Okay, give your sweet babe the gift :)</span>
+    <span class="kr">thread</span><span class="p">.</span><span class="n">join</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="2封装一个可运行线程的类">2、封装一个可运行线程的类</h4>
+
+<p><code class="language-plaintext highlighter-rouge">Cumulus</code> 中实现了一个 <code class="language-plaintext highlighter-rouge">StartableProcess</code> 类，该类继承了 <code class="language-plaintext highlighter-rouge">Runnable</code>，就是上面那个 <code class="language-plaintext highlighter-rouge">gift</code> 喽。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">StartableProcess</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Poco</span><span class="o">::</span><span class="n">Runnable</span><span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">StartableProcess</span><span class="p">(</span><span class="n">Startable</span><span class="o">&amp;</span> <span class="n">startable</span><span class="p">);</span>
+<span class="nl">private:</span>
+    <span class="kt">void</span> <span class="n">run</span><span class="p">();</span>
+    <span class="n">Startable</span><span class="o">&amp;</span> <span class="n">_startable</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>可以看到其中有 <code class="language-plaintext highlighter-rouge">Startable&amp; _startable</code> 引用成员，它并没有继承 <code class="language-plaintext highlighter-rouge">Runnable</code>，而是封装了 <code class="language-plaintext highlighter-rouge">StartableProcess</code> 和 <code class="language-plaintext highlighter-rouge">Poco::Thread</code>：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Poco</span><span class="o">::</span><span class="n">Thread</span>            <span class="kr">_thread</span><span class="p">;</span>
+<span class="n">StartableProcess</span>        <span class="n">_process</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>这里 <code class="language-plaintext highlighter-rouge">Startable</code> 封装了一个 <code class="language-plaintext highlighter-rouge">StartableProcess</code> 成员，与 <code class="language-plaintext highlighter-rouge">StartableProcess</code> 是有所区别的。接下俩我们看他们是怎么用的。</p>
+
+<h4 id="3启动-rtmfpserver-线程">3、启动 <code class="language-plaintext highlighter-rouge">RTMFPServer</code> 线程</h4>
+<p>我们可以看到在 <code class="language-plaintext highlighter-rouge">Startable</code> 类的构造函数中初始化了 <code class="language-plaintext highlighter-rouge">_process</code> 成员，初始化线程成员并传入线程名，设定标志域 <code class="language-plaintext highlighter-rouge">（Flag Field）_stop</code> 为 <code class="language-plaintext highlighter-rouge">true</code>，因为它还没有调用启动函数。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Startable</span><span class="o">::</span><span class="n">Startable</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">)</span>
+    <span class="o">:</span> <span class="n">_name</span><span class="p">(</span><span class="n">name</span><span class="p">),</span>
+      <span class="kr">_thread</span><span class="p">(</span><span class="n">name</span><span class="p">),</span>
+      <span class="n">_stop</span><span class="p">(</span><span class="nb">true</span><span class="p">),</span>
+      <span class="n">_haveToJoin</span><span class="p">(</span><span class="nb">false</span><span class="p">),</span>
+      <span class="n">_process</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>初始化 <code class="language-plaintext highlighter-rouge">_process</code> 时，调用 <code class="language-plaintext highlighter-rouge">StartableProcess</code> 构造函数：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">StartableProcess</span><span class="o">::</span><span class="n">StartableProcess</span><span class="p">(</span><span class="n">Startable</span><span class="o">&amp;</span> <span class="n">startable</span><span class="p">)</span>
+    <span class="o">:</span> <span class="n">_startable</span><span class="p">(</span><span class="n">startable</span><span class="p">){</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>传入 <code class="language-plaintext highlighter-rouge">_startable</code> 的引用。在 <code class="language-plaintext highlighter-rouge">Cumulus</code> 中所有的线程的可运行类都是继承自 <code class="language-plaintext highlighter-rouge">Startable</code> 类的，然后通过调用 <code class="language-plaintext highlighter-rouge">start()</code> 来启动，启动后会响应到 <code class="language-plaintext highlighter-rouge">run()</code>。下面我们以 <code class="language-plaintext highlighter-rouge">RTMFPServer</code> 线程为例。</p>
+
+<p><code class="language-plaintext highlighter-rouge">RTMFPServer</code> 类是继承自 <code class="language-plaintext highlighter-rouge">Startable</code> 类的：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">RTMFPServer</span>
+    <span class="o">:</span> <span class="k">private</span> <span class="n">Gateway</span><span class="p">,</span>
+      <span class="k">protected</span> <span class="n">Handler</span><span class="p">,</span>
+      <span class="k">private</span> <span class="n">Startable</span><span class="p">,</span>
+      <span class="k">private</span> <span class="n">SocketHandler</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">RTMFPServer</code> 的构造函数：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">RTMFPServer</span><span class="o">::</span><span class="n">RTMFPServer</span><span class="p">(</span><span class="n">UInt32</span> <span class="n">cores</span><span class="p">)</span>
+    <span class="o">:</span> <span class="n">Startable</span><span class="p">(</span><span class="s">"RTMFPServer"</span><span class="p">),</span>
+      <span class="n">_sendingEngine</span><span class="p">(</span><span class="n">cores</span><span class="p">),</span>
+      <span class="n">_receivingEngine</span><span class="p">(</span><span class="n">cores</span><span class="p">),</span>
+      <span class="n">_pCirrus</span><span class="p">(</span><span class="nb">NULL</span><span class="p">),</span>
+      <span class="n">_handshake</span><span class="p">(</span><span class="n">_receivingEngine</span><span class="p">,</span>
+      <span class="n">_sendingEngine</span><span class="p">,</span>
+      <span class="o">*</span><span class="k">this</span><span class="p">,</span>
+      <span class="n">_edgesSocket</span><span class="p">,</span><span class="o">*</span><span class="k">this</span><span class="p">,</span><span class="o">*</span><span class="k">this</span><span class="p">),</span>
+      <span class="n">_sessions</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>其中在初始化时调用了其父类的构造函数。接下来就要启动RTMFPServer线程了。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>所在线程</th>
+      <th>调用者</th>
+      <th>函数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>主线程</td>
+      <td>main(…)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>主线程</td>
+      <td>RTMFPServer对象</td>
+      <td>RTMFPServer::start()</td>
+    </tr>
+    <tr>
+      <td>主线程</td>
+      <td>RTMFPServer对象</td>
+      <td>Startable::start()</td>
+    </tr>
+    <tr>
+      <td>主线程</td>
+      <td>RTMFPServer从Startable继承来的Thread成员</td>
+      <td>Thread::start(…)</td>
+    </tr>
+    <tr>
+      <td>RTMFPServer</td>
+      <td>RTMFPServer对象从Startable继承来的StartableProcess成员</td>
+      <td>StartableProcess::run()</td>
+    </tr>
+    <tr>
+      <td>RTMFPServer</td>
+      <td>RTMFPServer对象</td>
+      <td>RTMFPServer::prerun()</td>
+    </tr>
+    <tr>
+      <td>RTMFPServer</td>
+      <td>RTMFPServer对象</td>
+      <td>Startable::prerun()</td>
+    </tr>
+    <tr>
+      <td>RTMFPServer</td>
+      <td>RTMFPServer对象</td>
+      <td>RTMFPServer::run()</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="4rtmfpserver-线程等待">4、<code class="language-plaintext highlighter-rouge">RTMFPServer</code> 线程等待</h4>
+
+<p>在 <code class="language-plaintext highlighter-rouge">RTMFPServer::run()</code> 实现线程的持续运行，主要是依靠这两行代码：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">terminate</span><span class="p">)</span>
+    <span class="n">handle</span><span class="p">(</span><span class="n">terminate</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">handle(…)</code> 函数很简单，如下只进行了 <code class="language-plaintext highlighter-rouge">sleep(...)</code> 和 <code class="language-plaintext highlighter-rouge">giveHandle()</code> 两个操作。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">RTMFPServer</span><span class="o">::</span><span class="n">handle</span><span class="p">(</span><span class="kt">bool</span><span class="o">&amp;</span> <span class="n">terminate</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">sleep</span><span class="p">()</span> <span class="o">!=</span> <span class="n">STOP</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">giveHandle</span><span class="p">();</span>
+    <span class="p">}</span> <span class="k">else</span>
+        <span class="n">terminate</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">sleep(…)</code> 是 <code class="language-plaintext highlighter-rouge">RTMFPServer</code> 是从 <code class="language-plaintext highlighter-rouge">Startable</code> 继承而来的，声明如下：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">WakeUpType</span> <span class="nf">sleep</span><span class="p">(</span><span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>定义如下：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Startable</span><span class="o">::</span><span class="n">WakeUpType</span> <span class="n">Startable</span><span class="o">::</span><span class="n">sleep</span><span class="p">(</span><span class="n">UInt32</span> <span class="n">timeout</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_stop</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">STOP</span><span class="p">;</span>
+     <span class="n">WakeUpType</span> <span class="n">result</span> <span class="o">=</span> <span class="n">WAKEUP</span><span class="p">;</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">timeout</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_wakeUpEvent</span><span class="p">.</span><span class="n">tryWait</span><span class="p">(</span><span class="n">timeout</span><span class="p">))</span>
+             <span class="n">result</span> <span class="o">=</span> <span class="n">TIMEOUT</span><span class="p">;</span>
+     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+         <span class="n">_wakeUpEvent</span><span class="p">.</span><span class="n">wait</span><span class="p">();</span>
+     <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_stop</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">STOP</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>在运行状态下，<code class="language-plaintext highlighter-rouge">_stop</code> 为 <code class="language-plaintext highlighter-rouge">false</code>，而默认参数 <code class="language-plaintext highlighter-rouge">timeout</code> 为 0，所以会调用：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">_wakeUpEvent</span><span class="p">.</span><span class="n">wait</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>这个 <code class="language-plaintext highlighter-rouge">_wakeUpEvent</code> 成员是一个 <code class="language-plaintext highlighter-rouge">Poco::Event</code> 对象，<code class="language-plaintext highlighter-rouge">Poco::Event</code> 有一个使用方式就是在调用 <code class="language-plaintext highlighter-rouge">Poco::Event::wait()</code> 后，会一直等待 <code class="language-plaintext highlighter-rouge">Poco::Event::set()</code> 被调用后，才会跳出 <code class="language-plaintext highlighter-rouge">wait</code> 的状态。在 <code class="language-plaintext highlighter-rouge">Cumulus</code> 中 <code class="language-plaintext highlighter-rouge">set</code> 的动作是由：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">RTMFPServer::requestHandle()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">PoolThread::push(Poco::AutoPtr&lt;RunnableType&gt;&amp; pRunnable)</code></li>
+</ul>
+
+<p>执行的。</p>
+
+<h3 id="二rtmfpmanager-对-rtmfpserver-的影响">二、<code class="language-plaintext highlighter-rouge">RTMFPManager</code> 对 <code class="language-plaintext highlighter-rouge">RTMFPServer</code> 的影响</h3>
+
+<p><code class="language-plaintext highlighter-rouge">RTMFPManager</code> 与 <code class="language-plaintext highlighter-rouge">RTMFPServer</code> 同样，继承自 <code class="language-plaintext highlighter-rouge">Startable</code>。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">RTMFPManager</span> <span class="o">:</span> <span class="k">private</span> <span class="n">Task</span><span class="p">,</span> <span class="k">private</span> <span class="n">Startable</span>
+</code></pre></div></div>
+
+<p>在构造函数中将 <code class="language-plaintext highlighter-rouge">RTMFPServer</code> 对象以引用方式传入，用以初始化其 <code class="language-plaintext highlighter-rouge">_server</code> 引用成员。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">RTMFPManager</span><span class="p">(</span><span class="n">RTMFPServer</span><span class="o">&amp;</span> <span class="n">server</span><span class="p">)</span>
+    <span class="o">:</span> <span class="n">_server</span><span class="p">(</span><span class="n">server</span><span class="p">),</span>
+      <span class="n">Task</span><span class="p">(</span><span class="n">server</span><span class="p">),</span>
+      <span class="n">Startable</span><span class="p">(</span><span class="s">"RTMFPManager"</span><span class="p">)</span>  <span class="p">{</span>
+    <span class="n">start</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="cm">/* ...... */</span>
+
+<span class="n">RTMFPServer</span><span class="o">&amp;</span> <span class="n">_server</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>在 <code class="language-plaintext highlighter-rouge">RTMFPManager</code> 的构造函数中调用 <code class="language-plaintext highlighter-rouge">start()</code> 成员函数，是从 <code class="language-plaintext highlighter-rouge">Startable</code> 继承而来的。然后会开启一个新的名为 <code class="language-plaintext highlighter-rouge">RTMFPManager</code> 的线程。然后响应到 <code class="language-plaintext highlighter-rouge">RTMFPManager::run()</code> 函数。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">run</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">setPriority</span><span class="p">(</span><span class="n">Thread</span><span class="o">::</span><span class="n">PRIO_LOW</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span><span class="o">!=</span><span class="n">STOP</span><span class="p">)</span>
+        <span class="n">waitHandle</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>这里要强调的是，这里的 <code class="language-plaintext highlighter-rouge">setPriority</code> 在 Linux 环境下会设置失败，可以参见我在 <code class="language-plaintext highlighter-rouge">Cumulus</code> 在 Github 上开启的 Issue #75，其中就包括这里的线程优先级设置。</p>
+
+<p>在这里我们可以看到 <code class="language-plaintext highlighter-rouge">RTMFPManager</code> 的 <code class="language-plaintext highlighter-rouge">handle(…)</code> 中的 <code class="language-plaintext highlighter-rouge">sleep(…)</code> 是每 2 秒一次，而这是对 <code class="language-plaintext highlighter-rouge">RTMFPServer</code> 线程有影响的。还记得我说的 <code class="language-plaintext highlighter-rouge">RTMFPServer</code> 线程的 <code class="language-plaintext highlighter-rouge">_wakeUpEvent</code> 成员吗？（在第一部分中）它的激活就是在 <code class="language-plaintext highlighter-rouge">RTMFPManager</code> 中进行的，所以这里这个 2 秒是会影响到 <code class="language-plaintext highlighter-rouge">RTMFPServer</code> 的主循环的等待时间的。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Startable</span><span class="o">::</span><span class="n">WakeUpType</span> <span class="n">Startable</span><span class="o">::</span><span class="n">sleep</span><span class="p">(</span><span class="n">UInt32</span> <span class="n">timeout</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_stop</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">STOP</span><span class="p">;</span>
+     <span class="n">WakeUpType</span> <span class="n">result</span> <span class="o">=</span> <span class="n">WAKEUP</span><span class="p">;</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">timeout</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_wakeUpEvent</span><span class="p">.</span><span class="n">tryWait</span><span class="p">(</span><span class="n">timeout</span><span class="p">))</span>
+             <span class="n">result</span> <span class="o">=</span> <span class="n">TIMEOUT</span><span class="p">;</span>
+     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+         <span class="n">_wakeUpEvent</span><span class="p">.</span><span class="n">wait</span><span class="p">();</span>
+     <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_stop</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">STOP</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>你可以自行修改 <code class="language-plaintext highlighter-rouge">RTMFPServer</code> 中 <code class="language-plaintext highlighter-rouge">sleep(...)</code> 的参数，这样就会调用 <code class="language-plaintext highlighter-rouge">_wakeUpEvent.tryWait(timeout)</code> 了，按照指定的等待时间（即 <code class="language-plaintext highlighter-rouge">timeout</code>）来进行睡眠。</p>
+
+<p><code class="language-plaintext highlighter-rouge">RTMFPManager</code> 的作用是什么呢？核心就在于它的 <code class="language-plaintext highlighter-rouge">handle</code> 成员函数：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">handle</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">_server</span><span class="p">.</span><span class="n">manage</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>这里就会调用到 <code class="language-plaintext highlighter-rouge">RTMFPServer::manage()</code>，所以你要在阅读 <code class="language-plaintext highlighter-rouge">RTMFPServer</code> 源码时知道 <code class="language-plaintext highlighter-rouge">RTMFPServer::manage()</code> 函数并不是在 <code class="language-plaintext highlighter-rouge">RTMFPServer</code> 线程内运行的，而是 <code class="language-plaintext highlighter-rouge">RTMFPManager</code> 线程内运行的。它的定义如下：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">RTMFPServer</span><span class="o">::</span><span class="n">manage</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">_handshake</span><span class="p">.</span><span class="n">manage</span><span class="p">();</span>
+    <span class="n">_sessions</span><span class="p">.</span><span class="n">manage</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>它实现对现有 Session 的一些管理，比如终止已经死掉的 <code class="language-plaintext highlighter-rouge">Session</code>。</p>
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer><span>@2022 - MikeCaptain.com</span></footer>
+
+
+	    <!-- Script -->
+      <script src="/pages/Poechant/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
