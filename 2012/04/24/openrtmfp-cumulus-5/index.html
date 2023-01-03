@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>OpenRTMFP/Cumulus 原理、源码及实践 5：IO 管理源码分析</title>
+  	<meta name="description" content="本文是麦克船长《OpenRTMFP/Cumulus 原理、源码及实践》系列文章的其中一篇，相关内容最初首发于 CSDN 的 Poechant 技术博客，后整理于本博客。本篇文章主要介绍 Cumulus 中 Input/Output 管理的源码分析，包括流缓冲区、IO 流、局部内存片。">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/pages/Poechant/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/pages/Poechant/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/pages/Poechant/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/pages/Poechant/booklist/" title="我的书单">我的书单</a>
+	    
+	  
+	    
+	      <a href="/pages/Poechant/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+  <a href="/pages/Poechant/category/web" title="前端技术">前端技术</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/pages/Poechant/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+          <a href="/pages/Poechant/booklist/" title="我的书单">我的书单</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/pages/Poechant/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+  <a href="/pages/Poechant/category/web" title="前端技术">前端技术</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/pages/Poechant/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+          <a href="/pages/Poechant/booklist/" title="我的书单">我的书单</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>OpenRTMFP/Cumulus 原理、源码及实践 5：IO 管理源码分析</h2>		
+	<time datetime="2012-04-24T03:31:10+00:00" class="by-line">24 Apr 2012, 广州 | 作者 麦克船长 | 总计 12668 字</time>
+	<div class="content">
+		<p><strong>本文目录</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#一流缓冲区" id="markdown-toc-一流缓冲区">一、流缓冲区</a>    <ul>
+      <li><a href="#1了解-stdstreambuf" id="markdown-toc-1了解-stdstreambuf">1、了解 <code class="language-plaintext highlighter-rouge">std::streambuf</code></a>        <ul>
+          <li><a href="#11单步移动内置指针" id="markdown-toc-11单步移动内置指针">1.1、单步移动内置指针</a></li>
+          <li><a href="#12获取-get-指针和-put-指针的位置" id="markdown-toc-12获取-get-指针和-put-指针的位置">1.2、获取 get 指针和 put 指针的位置</a></li>
+          <li><a href="#13设置-get-和-put-指针可达区域的上下界" id="markdown-toc-13设置-get-和-put-指针可达区域的上下界">1.3、设置 <code class="language-plaintext highlighter-rouge">get</code> 和 <code class="language-plaintext highlighter-rouge">put</code> 指针可达区域的上下界</a></li>
+        </ul>
+      </li>
+      <li><a href="#2memorystreambuf" id="markdown-toc-2memorystreambuf">2、<code class="language-plaintext highlighter-rouge">MemoryStreamBuf</code></a>        <ul>
+          <li><a href="#21移动内置的-get-和-put-指针" id="markdown-toc-21移动内置的-get-和-put-指针">2.1、移动内置的 <code class="language-plaintext highlighter-rouge">get</code> 和 <code class="language-plaintext highlighter-rouge">put</code> 指针：</a></li>
+          <li><a href="#22获取-get-和-put-指针当前位置" id="markdown-toc-22获取-get-和-put-指针当前位置">2.2、获取 get 和 put 指针当前位置：</a></li>
+          <li><a href="#23获取缓冲区的起始位置和大小" id="markdown-toc-23获取缓冲区的起始位置和大小">2.3、获取缓冲区的起始位置和大小：</a></li>
+          <li><a href="#24缓冲区的已写字节数" id="markdown-toc-24缓冲区的已写字节数">2.4、缓冲区的已写字节数</a></li>
+          <li><a href="#25显式设定-put-和-get-指针位置" id="markdown-toc-25显式设定-put-和-get-指针位置">2.5、显式设定 <code class="language-plaintext highlighter-rouge">put</code> 和 <code class="language-plaintext highlighter-rouge">get</code> 指针位置</a></li>
+          <li><a href="#26-修改缓冲区大小" id="markdown-toc-26-修改缓冲区大小">2.6 修改缓冲区大小</a></li>
+          <li><a href="#27构造函数拷贝构造函数和析构函数" id="markdown-toc-27构造函数拷贝构造函数和析构函数">2.7、构造函数、拷贝构造函数和析构函数</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#二io-流" id="markdown-toc-二io-流">二、IO 流</a>    <ul>
+      <li><a href="#1了解-stdios" id="markdown-toc-1了解-stdios">1、了解 <code class="language-plaintext highlighter-rouge">std::ios</code></a></li>
+      <li><a href="#2memoryios" id="markdown-toc-2memoryios">2、<code class="language-plaintext highlighter-rouge">MemoryIOS</code></a>        <ul>
+          <li><a href="#21构造函数拷贝构造函数和析构函数" id="markdown-toc-21构造函数拷贝构造函数和析构函数">2.1、构造函数、拷贝构造函数和析构函数</a></li>
+          <li><a href="#22得到-memorystreambuf-成员的地址" id="markdown-toc-22得到-memorystreambuf-成员的地址">2.2、得到 <code class="language-plaintext highlighter-rouge">MemoryStreamBuf</code> 成员的地址</a></li>
+          <li><a href="#23当前位置" id="markdown-toc-23当前位置">2.3、当前位置</a></li>
+          <li><a href="#24封装-memorystreambuf-成员的一些函数" id="markdown-toc-24封装-memorystreambuf-成员的一些函数">2.4、封装 <code class="language-plaintext highlighter-rouge">MemoryStreamBuf</code> 成员的一些函数</a></li>
+          <li><a href="#25-缓冲区可读数据的字节数" id="markdown-toc-25-缓冲区可读数据的字节数">2.5 缓冲区可读数据的字节数</a></li>
+        </ul>
+      </li>
+      <li><a href="#3输入流" id="markdown-toc-3输入流">3、输入流</a></li>
+      <li><a href="#4输出流" id="markdown-toc-4输出流">4、输出流</a>        <ul>
+          <li><a href="#41-构造函数拷贝构造函数和析构函数" id="markdown-toc-41-构造函数拷贝构造函数和析构函数">4.1 构造函数、拷贝构造函数和析构函数</a></li>
+          <li><a href="#42-读取和设定已写字节数" id="markdown-toc-42-读取和设定已写字节数">4.2 读取和设定已写字节数</a></li>
+          <li><a href="#43-当前位置" id="markdown-toc-43-当前位置">4.3 当前位置</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#三局部内存片" id="markdown-toc-三局部内存片">三、局部内存片</a>    <ul>
+      <li><a href="#1构造函数" id="markdown-toc-1构造函数">1、构造函数</a></li>
+      <li><a href="#2析构函数" id="markdown-toc-2析构函数">2、析构函数</a></li>
+      <li><a href="#3缓冲区切割" id="markdown-toc-3缓冲区切割">3、缓冲区切割</a></li>
+    </ul>
+  </li>
+  <li><a href="#reference" id="markdown-toc-reference">Reference</a></li>
+</ul>
+
+<p>本文是麦克船长《OpenRTMFP/Cumulus 原理、源码及实践》系列文章的其中一篇，相关内容最初首发于 CSDN 的 Poechant 技术博客，后整理于本博客。本篇文章主要介绍 Cumulus 中 Input/Output 管理的源码分析，包括流缓冲区、IO 流、局部内存片。</p>
+
+<h3 id="一流缓冲区">一、流缓冲区</h3>
+
+<p>这段我们主要分析 MemoryStream.h 文件中定义的类。</p>
+
+<h4 id="1了解-stdstreambuf">1、了解 <code class="language-plaintext highlighter-rouge">std::streambuf</code></h4>
+
+<p>首先要了解 <code class="language-plaintext highlighter-rouge">streambuf</code> 内置了一个 <code class="language-plaintext highlighter-rouge">get</code> 指针和一个 <code class="language-plaintext highlighter-rouge">put</code> 指针。<code class="language-plaintext highlighter-rouge">streambuf</code> 的所有操作基本都是对这两个指针的操作。其一些成员函数的缩写中的 <code class="language-plaintext highlighter-rouge">g</code> 和 <code class="language-plaintext highlighter-rouge">p</code> 就分别表示 get pointer 和 put pointer。</p>
+
+<h5 id="11单步移动内置指针">1.1、单步移动内置指针</h5>
+
+<p>Increase get pointer: Advances the get pointer by <code class="language-plaintext highlighter-rouge">n</code> positions. The get pointer is the internal pointer that points to the next location in the controlled input sequence.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">void</span> <span class="nf">gbump</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">n</span> <span class="p">);</span>
+</code></pre></div></div>
+
+<p>Increase put pointer: Advances the put pointer by <code class="language-plaintext highlighter-rouge">n</code> positions. The put pointer is the internal pointer that points to the next location of the controlled output sequence.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">void</span> <span class="nf">pbump</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">n</span> <span class="p">);</span>
+</code></pre></div></div>
+
+<h5 id="12获取-get-指针和-put-指针的位置">1.2、获取 get 指针和 put 指针的位置</h5>
+
+<p>Pointer to current position of input sequence: Returns a reference to the current element of the controlled input sequence (i.e., the “get pointer”).</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">char</span> <span class="o">*</span> <span class="n">gptr</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Pointer to current position of output sequence: Returns a reference to the current element of the output sequence (the put pointer).</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">char</span> <span class="o">*</span> <span class="n">pptr</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h5 id="13设置-get-和-put-指针可达区域的上下界">1.3、设置 <code class="language-plaintext highlighter-rouge">get</code> 和 <code class="language-plaintext highlighter-rouge">put</code> 指针可达区域的上下界</h5>
+
+<p>Set input sequence pointers: Sets values for the pointers that define both the boundaries of the accessible part of the controlled input sequence and the get pointer itself.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">void</span> <span class="nf">setg</span> <span class="p">(</span> <span class="kt">char</span><span class="o">*</span> <span class="n">gbeg</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">gnext</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">gend</span> <span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">gbeg</code>: New value for the pointer to the beginning of the accessible part of the controlled input sequence.
+gnext: New value for the get pointer, which points to the next element within the controlled input sequence where the next input operation shall be performed.</li>
+  <li><code class="language-plaintext highlighter-rouge">gend</code>: New value for the end pointer, just past the end of the accessible part of the controlled input sequence.</li>
+  <li>Set output sequence pointers: Sets the values that define the boundaries of the accessible part of the controlled output sequence.</li>
+</ul>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">void</span> <span class="nf">setp</span> <span class="p">(</span> <span class="kt">char</span><span class="o">*</span> <span class="n">pbeg</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">pend</span> <span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">pbeg</code>: New value for the pointer to the beginning of the accessible part of the controlled output sequenceand put pointer.</li>
+  <li><code class="language-plaintext highlighter-rouge">pend</code>: New value for the end pointer, just past the end of the accessible part of the controlled output sequence.</li>
+</ul>
+
+<h4 id="2memorystreambuf">2、<code class="language-plaintext highlighter-rouge">MemoryStreamBuf</code></h4>
+
+<p>类定义：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MemoryStreamBuf</span><span class="o">:</span> <span class="k">public</span> <span class="n">std</span><span class="o">::</span><span class="n">streambuf</span> <span class="p">{</span>
+    <span class="k">friend</span> <span class="k">class</span> <span class="nc">ScopedMemoryClip</span><span class="p">;</span>
+<span class="nl">public:</span>
+    <span class="n">MemoryStreamBuf</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">pBuffer</span><span class="p">,</span><span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span> <span class="n">bufferSize</span><span class="p">);</span>
+    <span class="n">MemoryStreamBuf</span><span class="p">(</span><span class="n">MemoryStreamBuf</span><span class="o">&amp;</span><span class="p">);</span>
+    <span class="o">~</span><span class="n">MemoryStreamBuf</span><span class="p">();</span>
+ 
+    <span class="kt">void</span>            <span class="n">next</span><span class="p">(</span><span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span> <span class="n">size</span><span class="p">);</span> <span class="c1">// Explaint below</span>
+    <span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span>    <span class="n">written</span><span class="p">();</span> <span class="c1">// Explaint below</span>
+    <span class="kt">void</span>            <span class="n">written</span><span class="p">(</span><span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span> <span class="n">size</span><span class="p">);</span>
+    <span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span>    <span class="n">size</span><span class="p">();</span>  <span class="c1">// Explaint below</span>
+    <span class="kt">void</span>            <span class="n">resize</span><span class="p">(</span><span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span> <span class="n">newSize</span><span class="p">);</span> <span class="c1">// Explaint below</span>
+    <span class="kt">char</span><span class="o">*</span>           <span class="n">begin</span><span class="p">();</span> <span class="c1">// Explaint below</span>
+    <span class="kt">void</span>            <span class="n">position</span><span class="p">(</span><span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span> <span class="n">pos</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// Explaint below</span>
+    <span class="kt">char</span><span class="o">*</span>           <span class="n">gCurrent</span><span class="p">();</span> <span class="c1">// Explaint below</span>
+    <span class="kt">char</span><span class="o">*</span>           <span class="n">pCurrent</span><span class="p">();</span> <span class="c1">// Explaint below</span>
+ 
+<span class="nl">private:</span>
+    <span class="k">virtual</span> <span class="kt">int</span> <span class="n">overflow</span><span class="p">(</span><span class="n">int_type</span> <span class="n">c</span><span class="p">);</span>
+    <span class="k">virtual</span> <span class="kt">int</span> <span class="n">underflow</span><span class="p">();</span>
+    <span class="k">virtual</span> <span class="kt">int</span> <span class="n">sync</span><span class="p">();</span>
+ 
+    <span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span>    <span class="n">_written</span><span class="p">;</span>
+    <span class="kt">char</span><span class="o">*</span>           <span class="n">_pBuffer</span><span class="p">;</span>
+    <span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span>    <span class="n">_bufferSize</span><span class="p">;</span>
+ 
+    <span class="n">MemoryStreamBuf</span><span class="p">();</span>
+    <span class="n">MemoryStreamBuf</span><span class="o">&amp;</span> <span class="k">operator</span> <span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="n">MemoryStreamBuf</span><span class="o">&amp;</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">ScopedMemoryClip</code> 是 <code class="language-plaintext highlighter-rouge">MemoryStreamBuf</code> 的友元，其内部有 <code class="language-plaintext highlighter-rouge">MemoryStreamBuf</code> 的成员，这里暂且不管。构造函数传入的参数是缓冲区的地址和缓冲区大小（字节数）。拷贝构造函数和析构函数不必赘述。</p>
+
+<h5 id="21移动内置的-get-和-put-指针">2.1、移动内置的 <code class="language-plaintext highlighter-rouge">get</code> 和 <code class="language-plaintext highlighter-rouge">put</code> 指针：</h5>
+
+<p><code class="language-plaintext highlighter-rouge">put</code> 和 <code class="language-plaintext highlighter-rouge">get</code> 指针都移动：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">MemoryStreamBuf</span><span class="o">::</span><span class="n">next</span><span class="p">(</span><span class="n">UInt32</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">pbump</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+    <span class="n">gbump</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h5 id="22获取-get-和-put-指针当前位置">2.2、获取 get 和 put 指针当前位置：</h5>
+
+<p>封装 <code class="language-plaintext highlighter-rouge">streambuf</code> 的 <code class="language-plaintext highlighter-rouge">gptr</code> 和 <code class="language-plaintext highlighter-rouge">pptr</code>：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">char</span><span class="o">*</span> <span class="n">MemoryStreamBuf</span><span class="o">::</span><span class="n">gCurrent</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">gptr</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kr">inline</span> <span class="kt">char</span><span class="o">*</span> <span class="n">MemoryStreamBuf</span><span class="o">::</span><span class="n">pCurrent</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">pptr</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h5 id="23获取缓冲区的起始位置和大小">2.3、获取缓冲区的起始位置和大小：</h5>
+
+<p>依赖于内置成员变量 pBuffer 和 bufferSize：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">char</span><span class="o">*</span> <span class="n">MemoryStreamBuf</span><span class="o">::</span><span class="n">begin</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_pBuffer</span><span class="p">;</span>
+<span class="p">}</span>
+ 
+<span class="kr">inline</span> <span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span> <span class="n">MemoryStreamBuf</span><span class="o">::</span><span class="n">size</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">_bufferSize</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h5 id="24缓冲区的已写字节数">2.4、缓冲区的已写字节数</h5>
+
+<p>读取（其中也可能发生设置操作）：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">UInt32</span> <span class="n">MemoryStreamBuf</span><span class="o">::</span><span class="n">written</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">written</span> <span class="o">=</span> <span class="n">pCurrent</span><span class="p">()</span> <span class="o">-</span> <span class="n">begin</span><span class="p">();</span> <span class="c1">// 已写字节数</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">written</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">written</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">written</span> <span class="o">&gt;</span> <span class="n">_written</span><span class="p">)</span> <span class="c1">// 保存已写字节数</span>
+        <span class="n">_written</span> <span class="o">=</span> <span class="p">(</span><span class="n">UInt32</span><span class="p">)</span><span class="n">written</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">_written</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>设置：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">MemoryStreamBuf</span><span class="o">::</span><span class="n">written</span><span class="p">(</span><span class="n">UInt32</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">_written</span><span class="o">=</span><span class="n">size</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h5 id="25显式设定-put-和-get-指针位置">2.5、显式设定 <code class="language-plaintext highlighter-rouge">put</code> 和 <code class="language-plaintext highlighter-rouge">get</code> 指针位置</h5>
+
+<p>设定 put 和 get 指针为以缓冲区首地址为开始偏移量为 pos 的位置：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">MemoryStreamBuf</span><span class="o">::</span><span class="n">position</span><span class="p">(</span><span class="n">UInt32</span> <span class="n">pos</span><span class="p">)</span> <span class="p">{</span>
+ 
+    <span class="c1">// 保存已写字节数</span>
+    <span class="n">written</span><span class="p">();</span> <span class="c1">// Save nb char written</span>
+ 
+    <span class="c1">// 移动 put 指针</span>
+    <span class="n">setp</span><span class="p">(</span><span class="n">_pBuffer</span><span class="p">,</span> <span class="n">_pBuffer</span> <span class="o">+</span> <span class="n">_bufferSize</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">pos</span> <span class="o">&gt;</span> <span class="n">_bufferSize</span><span class="p">)</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">_bufferSize</span><span class="p">;</span>
+    <span class="n">pbump</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span> <span class="n">pos</span><span class="p">);</span>
+ 
+    <span class="c1">// 移动 get 指针</span>
+    <span class="n">setg</span><span class="p">(</span><span class="n">_pBuffer</span><span class="p">,</span> <span class="n">_pBuffer</span> <span class="o">+</span> <span class="n">pos</span><span class="p">,</span> <span class="n">_pBuffer</span> <span class="o">+</span> <span class="n">_bufferSize</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h5 id="26-修改缓冲区大小">2.6 修改缓冲区大小</h5>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">MemoryStreamBuf</span><span class="o">::</span><span class="n">resize</span><span class="p">(</span><span class="n">UInt32</span> <span class="n">newSize</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 大小标识</span>
+    <span class="n">_bufferSize</span> <span class="o">=</span> <span class="n">newSize</span><span class="p">;</span>
+ 
+    <span class="c1">// gptr 当前位置</span>
+    <span class="kt">int</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">gCurrent</span><span class="p">()</span> <span class="o">-</span> <span class="n">_pBuffer</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">pos</span> <span class="o">&gt;</span> <span class="n">_bufferSize</span><span class="p">)</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">_bufferSize</span><span class="p">;</span>
+ 
+    <span class="c1">// 设置 gptr 可达范围和当前位置</span>
+    <span class="n">setg</span><span class="p">(</span><span class="n">_pBuffer</span><span class="p">,</span> <span class="n">_pBuffer</span> <span class="o">+</span> <span class="n">pos</span><span class="p">,</span> <span class="n">_pBuffer</span> <span class="o">+</span> <span class="n">_bufferSize</span><span class="p">);</span> 
+    <span class="c1">// pptr 当前位置</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">pCurrent</span><span class="p">()</span> <span class="o">-</span> <span class="n">_pBuffer</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">pos</span> <span class="o">&gt;</span> <span class="n">_bufferSize</span><span class="p">)</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">_bufferSize</span><span class="p">;</span>
+ 
+    <span class="c1">// 设置 pptr 可达范围和当前位置</span>
+    <span class="n">setp</span><span class="p">(</span><span class="n">_pBuffer</span><span class="p">,</span><span class="n">_pBuffer</span> <span class="o">+</span> <span class="n">_bufferSize</span><span class="p">);</span>
+        <span class="n">pbump</span><span class="p">(</span><span class="n">pos</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h5 id="27构造函数拷贝构造函数和析构函数">2.7、构造函数、拷贝构造函数和析构函数</h5>
+
+<p>构造函数会设定 <code class="language-plaintext highlighter-rouge">pptr</code> 和 <code class="language-plaintext highlighter-rouge">gptr</code>，并初始化 <code class="language-plaintext highlighter-rouge">pBuffer</code> 和 <code class="language-plaintext highlighter-rouge">bufferSize</code>。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MemoryStreamBuf</span><span class="o">::</span><span class="n">MemoryStreamBuf</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">pBuffer</span><span class="p">,</span> <span class="n">UInt32</span> <span class="n">bufferSize</span><span class="p">)</span><span class="o">:</span>     <span class="n">_pBuffer</span><span class="p">(</span><span class="n">pBuffer</span><span class="p">),</span><span class="n">_bufferSize</span><span class="p">(</span><span class="n">bufferSize</span><span class="p">),</span><span class="n">_written</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">setg</span><span class="p">(</span><span class="n">_pBuffer</span><span class="p">,</span> <span class="n">_pBuffer</span><span class="p">,</span><span class="n">_pBuffer</span> <span class="o">+</span> <span class="n">_bufferSize</span><span class="p">);</span>
+    <span class="n">setp</span><span class="p">(</span><span class="n">_pBuffer</span><span class="p">,</span> <span class="n">_pBuffer</span> <span class="o">+</span> <span class="n">_bufferSize</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>析构函数会拷贝对方的 <code class="language-plaintext highlighter-rouge">pBuffer</code>、<code class="language-plaintext highlighter-rouge">bufferSizse</code>、<code class="language-plaintext highlighter-rouge">_written</code>，并设定 <code class="language-plaintext highlighter-rouge">gptr</code>、<code class="language-plaintext highlighter-rouge">pptr</code>。注意设定 <code class="language-plaintext highlighter-rouge">pptr</code> 时，要分别调用 <code class="language-plaintext highlighter-rouge">setp</code> 和 <code class="language-plaintext highlighter-rouge">pbump</code>，因为 <code class="language-plaintext highlighter-rouge">setp</code> 仅将 <code class="language-plaintext highlighter-rouge">pptr</code> 设定为传入的首个参数值（与可达范围的首地址相同）。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MemoryStreamBuf</span><span class="o">::</span><span class="n">MemoryStreamBuf</span><span class="p">(</span><span class="n">MemoryStreamBuf</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">)</span><span class="o">:</span>   <span class="n">_pBuffer</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">_pBuffer</span><span class="p">),</span><span class="n">_bufferSize</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">_bufferSize</span><span class="p">),</span><span class="n">_written</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">_written</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">setg</span><span class="p">(</span><span class="n">_pBuffer</span><span class="p">,</span> <span class="n">other</span><span class="p">.</span><span class="n">gCurrent</span><span class="p">(),</span> <span class="n">_pBuffer</span> <span class="o">+</span> <span class="n">_bufferSize</span><span class="p">);</span>
+    <span class="n">setp</span><span class="p">(</span><span class="n">_pBuffer</span><span class="p">,</span> <span class="n">_pBuffer</span> <span class="o">+</span> <span class="n">_bufferSize</span><span class="p">);</span>
+    <span class="n">pbump</span><span class="p">((</span><span class="kt">int</span><span class="p">)(</span><span class="n">other</span><span class="p">.</span><span class="n">pCurrent</span><span class="p">()</span><span class="o">-</span><span class="n">_pBuffer</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>析构函数：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MemoryStreamBuf</span><span class="o">::~</span><span class="n">MemoryStreamBuf</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="二io-流">二、IO 流</h3>
+
+<h4 id="1了解-stdios">1、了解 <code class="language-plaintext highlighter-rouge">std::ios</code></h4>
+
+<p>Initialize object [<code class="language-plaintext highlighter-rouge">protected</code>]: This protected member initializes the values of the stream’s internal flags and member variables.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">void</span> <span class="nf">init</span> <span class="p">(</span> <span class="n">streambuf</span><span class="o">*</span> <span class="n">sb</span> <span class="p">);</span>
+</code></pre></div></div>
+
+<p>初始化后如下函数的返回值：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>member function</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>rdbuf()</td>
+      <td>sb</td>
+    </tr>
+    <tr>
+      <td>tie()</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>rdstate()</td>
+      <td>goodbit if sb is not a null pointer, badbit otherwise</td>
+    </tr>
+    <tr>
+      <td>exceptions()</td>
+      <td>goodbit</td>
+    </tr>
+    <tr>
+      <td>flags()</td>
+      <td>skipws | dec</td>
+    </tr>
+    <tr>
+      <td>width()</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>precision()</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>fill()</td>
+      <td>‘ ’ (whitespace)</td>
+    </tr>
+    <tr>
+      <td>getloc()</td>
+      <td>a copy of locale()</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="2memoryios">2、<code class="language-plaintext highlighter-rouge">MemoryIOS</code></h4>
+
+<p><code class="language-plaintext highlighter-rouge">MemoryIOS</code> 封装 <code class="language-plaintext highlighter-rouge">MemoryStreamBuf</code>，且是 <code class="language-plaintext highlighter-rouge">MemoryInputStream</code> 和 <code class="language-plaintext highlighter-rouge">MemoryOutputStream</code>的基类，用以确保流缓冲区和基类的初始化序列的正确性。该类继承自 <code class="language-plaintext highlighter-rouge">std::ios</code>。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MemoryIOS</span><span class="o">:</span> <span class="k">public</span> <span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">ios</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">MemoryIOS</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">pBuffer</span><span class="p">,</span><span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span> <span class="n">bufferSize</span><span class="p">);</span>
+    <span class="n">MemoryIOS</span><span class="p">(</span><span class="n">MemoryIOS</span><span class="o">&amp;</span><span class="p">);</span>
+    <span class="o">~</span><span class="n">MemoryIOS</span><span class="p">();</span>
+    <span class="n">MemoryStreamBuf</span><span class="o">*</span> <span class="n">rdbuf</span><span class="p">();</span>
+    <span class="k">virtual</span> <span class="kt">char</span><span class="o">*</span>   <span class="n">current</span><span class="p">()</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="kt">void</span>            <span class="n">reset</span><span class="p">(</span><span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span> <span class="n">newPos</span><span class="p">);</span>
+    <span class="kt">void</span>            <span class="n">resize</span><span class="p">(</span><span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span> <span class="n">newSize</span><span class="p">);</span>
+    <span class="kt">char</span><span class="o">*</span>           <span class="n">begin</span><span class="p">();</span>
+    <span class="kt">void</span>            <span class="n">next</span><span class="p">(</span><span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span> <span class="n">size</span><span class="p">);</span>
+    <span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span>    <span class="n">available</span><span class="p">();</span>
+<span class="nl">private:</span>
+    <span class="n">MemoryStreamBuf</span> <span class="n">_buf</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h5 id="21构造函数拷贝构造函数和析构函数">2.1、构造函数、拷贝构造函数和析构函数</h5>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MemoryIOS</span><span class="o">::</span><span class="n">MemoryIOS</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">pBuffer</span><span class="p">,</span> <span class="n">UInt32</span> <span class="n">bufferSize</span><span class="p">)</span><span class="o">:</span><span class="n">_buf</span><span class="p">(</span><span class="n">pBuffer</span><span class="p">,</span> <span class="n">bufferSize</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">poco_ios_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">_buf</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">poco_ios_init</code> 为 <code class="language-plaintext highlighter-rouge">init</code> 的宏定义，用于初始化成员 <code class="language-plaintext highlighter-rouge">_buf</code>。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MemoryIOS</span><span class="o">::</span><span class="n">MemoryIOS</span><span class="p">(</span><span class="n">MemoryIOS</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">)</span><span class="o">:</span><span class="n">_buf</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">_buf</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">poco_ios_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">_buf</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>拷贝构造函数同构造函数。如下的析构函数不必赘述：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MemoryIOS</span><span class="o">::~</span><span class="n">MemoryIOS</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h5 id="22得到-memorystreambuf-成员的地址">2.2、得到 <code class="language-plaintext highlighter-rouge">MemoryStreamBuf</code> 成员的地址</h5>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="n">MemoryStreamBuf</span><span class="o">*</span> <span class="n">MemoryIOS</span><span class="o">::</span><span class="n">rdbuf</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&amp;</span><span class="n">_buf</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h5 id="23当前位置">2.3、当前位置</h5>
+
+<p>这是一个纯虚函数，由 <code class="language-plaintext highlighter-rouge">MemoryInputStream</code> 和 <code class="language-plaintext highlighter-rouge">MemoryOutpuStream</code> 继承时实现：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">char</span><span class="o">*</span>   <span class="n">current</span><span class="p">()</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h5 id="24封装-memorystreambuf-成员的一些函数">2.4、封装 <code class="language-plaintext highlighter-rouge">MemoryStreamBuf</code> 成员的一些函数</h5>
+
+<p><code class="language-plaintext highlighter-rouge">begin</code></p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kr">inline</span> <span class="kt">char</span><span class="o">*</span> <span class="n">MemoryIOS</span><span class="o">::</span><span class="n">begin</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">rdbuf</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">begin</span><span class="p">();</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">resize</code></p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kr">inline</span> <span class="kt">void</span> <span class="n">MemoryIOS</span><span class="o">::</span><span class="n">resize</span><span class="p">(</span><span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span> <span class="n">newSize</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">rdbuf</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">resize</span><span class="p">(</span><span class="n">newSize</span><span class="p">);</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">next</code></p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kr">inline</span> <span class="kt">void</span> <span class="n">MemoryIOS</span><span class="o">::</span><span class="n">next</span><span class="p">(</span><span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">rdbuf</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">position</code> 封装为 <code class="language-plaintext highlighter-rouge">reset</code></p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">void</span> <span class="n">MemoryIOS</span><span class="o">::</span><span class="n">reset</span><span class="p">(</span><span class="n">UInt32</span> <span class="n">newPos</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span><span class="n">newPos</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">)</span>
+          <span class="n">rdbuf</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">position</span><span class="p">(</span><span class="n">newPos</span><span class="p">);</span>
+      <span class="n">clear</span><span class="p">();</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<h5 id="25-缓冲区可读数据的字节数">2.5 缓冲区可读数据的字节数</h5>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">UInt32</span> <span class="n">MemoryIOS</span><span class="o">::</span><span class="n">available</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">rdbuf</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="p">(</span><span class="n">current</span><span class="p">()</span> <span class="o">-</span> <span class="n">begin</span><span class="p">());</span> <span class="c1">// 缓冲区剩余可读数据字节数</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">UInt32</span><span class="p">)</span><span class="n">result</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="3输入流">3、输入流</h4>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MemoryInputStream</span><span class="o">:</span> <span class="k">public</span> <span class="n">MemoryIOS</span><span class="p">,</span> <span class="k">public</span> <span class="n">std</span><span class="o">::</span><span class="n">istream</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">MemoryInputStream</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">pBuffer</span><span class="p">,</span><span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span> <span class="n">bufferSize</span><span class="p">);</span>
+        <span class="c1">/// Creates a MemoryInputStream for the given memory area,</span>
+        <span class="c1">/// ready for reading.</span>
+    <span class="n">MemoryInputStream</span><span class="p">(</span><span class="n">MemoryInputStream</span><span class="o">&amp;</span><span class="p">);</span>
+    <span class="o">~</span><span class="n">MemoryInputStream</span><span class="p">();</span>
+        <span class="c1">/// Destroys the MemoryInputStream.</span>
+    <span class="kt">char</span><span class="o">*</span>           <span class="n">current</span><span class="p">();</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>构造函数、拷贝构造函数和析构函数也都没什么可说的，初始化 <code class="language-plaintext highlighter-rouge">MemoryIOS</code> 以及 <code class="language-plaintext highlighter-rouge">istream</code>。<code class="language-plaintext highlighter-rouge">istream</code> 是 <code class="language-plaintext highlighter-rouge">iostream</code> 中的 <code class="language-plaintext highlighter-rouge">basic_istream</code>  别名（<code class="language-plaintext highlighter-rouge">typedef</code>）。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MemoryInputStream</span><span class="o">::</span><span class="n">MemoryInputStream</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">pBuffer</span><span class="p">,</span> <span class="n">UInt32</span> <span class="n">bufferSize</span><span class="p">)</span><span class="o">:</span> 
+    <span class="n">MemoryIOS</span><span class="p">(</span><span class="k">const_cast</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">pBuffer</span><span class="p">),</span> <span class="n">bufferSize</span><span class="p">),</span> <span class="n">istream</span><span class="p">(</span><span class="n">rdbuf</span><span class="p">())</span> <span class="p">{</span>
+<span class="p">}</span>
+ 
+<span class="n">MemoryInputStream</span><span class="o">::</span><span class="n">MemoryInputStream</span><span class="p">(</span><span class="n">MemoryInputStream</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">MemoryIOS</span><span class="p">(</span><span class="n">other</span><span class="p">),</span> <span class="n">istream</span><span class="p">(</span><span class="n">rdbuf</span><span class="p">())</span> <span class="p">{</span>
+<span class="p">}</span>
+ 
+<span class="n">MemoryInputStream</span><span class="o">::~</span><span class="n">MemoryInputStream</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>唯一的一个成员函数是 <code class="language-plaintext highlighter-rouge">current</code>，封装了 <code class="language-plaintext highlighter-rouge">MemoryIOS</code> 的 <code class="language-plaintext highlighter-rouge">MemoryStreamBuf</code> 成员的 <code class="language-plaintext highlighter-rouge">gCurrent</code> 函数：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">char</span><span class="o">*</span> <span class="n">MemoryInputStream</span><span class="o">::</span><span class="n">current</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">rdbuf</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">gCurrent</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="4输出流">4、输出流</h4>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MemoryOutputStream</span><span class="o">:</span> <span class="k">public</span> <span class="n">MemoryIOS</span><span class="p">,</span> <span class="k">public</span> <span class="n">std</span><span class="o">::</span><span class="n">ostream</span>
+    <span class="c1">/// An input stream for reading from a memory area.</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">MemoryOutputStream</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">pBuffer</span><span class="p">,</span><span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span> <span class="n">bufferSize</span><span class="p">);</span>
+        <span class="c1">/// Creates a MemoryOutputStream for the given memory area,</span>
+        <span class="c1">/// ready for writing.</span>
+    <span class="n">MemoryOutputStream</span><span class="p">(</span><span class="n">MemoryOutputStream</span><span class="o">&amp;</span><span class="p">);</span>
+    <span class="o">~</span><span class="n">MemoryOutputStream</span><span class="p">();</span>
+        <span class="c1">/// Destroys the MemoryInputStream.</span>
+ 
+    <span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span>    <span class="n">written</span><span class="p">();</span>
+    <span class="kt">void</span>            <span class="n">written</span><span class="p">(</span><span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span> <span class="n">size</span><span class="p">);</span>
+    <span class="kt">char</span><span class="o">*</span>           <span class="n">current</span><span class="p">();</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h5 id="41-构造函数拷贝构造函数和析构函数">4.1 构造函数、拷贝构造函数和析构函数</h5>
+
+<p>如下，不赘述了。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MemoryOutputStream</span><span class="o">::</span><span class="n">MemoryOutputStream</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">pBuffer</span><span class="p">,</span> <span class="n">UInt32</span> <span class="n">bufferSize</span><span class="p">)</span><span class="o">:</span> 
+    <span class="n">MemoryIOS</span><span class="p">(</span><span class="n">pBuffer</span><span class="p">,</span> <span class="n">bufferSize</span><span class="p">),</span> <span class="n">ostream</span><span class="p">(</span><span class="n">rdbuf</span><span class="p">())</span> <span class="p">{</span>
+<span class="p">}</span>
+<span class="n">MemoryOutputStream</span><span class="o">::</span><span class="n">MemoryOutputStream</span><span class="p">(</span><span class="n">MemoryOutputStream</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">MemoryIOS</span><span class="p">(</span><span class="n">other</span><span class="p">),</span> <span class="n">ostream</span><span class="p">(</span><span class="n">rdbuf</span><span class="p">())</span> <span class="p">{</span>
+<span class="p">}</span>
+ 
+<span class="n">MemoryOutputStream</span><span class="o">::~</span><span class="n">MemoryOutputStream</span><span class="p">(){</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h5 id="42-读取和设定已写字节数">4.2 读取和设定已写字节数</h5>
+
+<p>读取：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span> <span class="n">MemoryOutputStream</span><span class="o">::</span><span class="n">written</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">rdbuf</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">written</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>设定：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">void</span> <span class="n">MemoryOutputStream</span><span class="o">::</span><span class="n">written</span><span class="p">(</span><span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">rdbuf</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">written</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h5 id="43-当前位置">4.3 当前位置</h5>
+
+<p>与 <code class="language-plaintext highlighter-rouge">MemoryInputStream</code> 中的封装类似：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">inline</span> <span class="kt">char</span><span class="o">*</span> <span class="n">MemoryOutputStream</span><span class="o">::</span><span class="n">current</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">rdbuf</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">pCurrent</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="三局部内存片">三、局部内存片</h3>
+
+<p>在第一部分的流缓冲区介绍 <code class="language-plaintext highlighter-rouge">MemoryStreamBuf</code> 时，其中有一个名为 <code class="language-plaintext highlighter-rouge">ScopedMemoryClip</code> 的友元，它就是本文所要介绍的。首先，最重要的是，<code class="language-plaintext highlighter-rouge">ScopedMemoryClip</code> 中有一个 <code class="language-plaintext highlighter-rouge">MemoryStreamBuf</code> 成员。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ScopedMemoryClip</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">ScopedMemoryClip</span><span class="p">(</span><span class="n">MemoryStreamBuf</span><span class="o">&amp;</span> <span class="n">buffer</span><span class="p">,</span><span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span> <span class="n">offset</span><span class="p">);</span>
+    <span class="o">~</span><span class="n">ScopedMemoryClip</span><span class="p">();</span>
+<span class="nl">private:</span>
+    <span class="kt">void</span>                <span class="n">clip</span><span class="p">(</span><span class="n">Poco</span><span class="o">::</span><span class="n">Int32</span> <span class="n">offset</span><span class="p">);</span>
+    <span class="n">Poco</span><span class="o">::</span><span class="n">UInt32</span>        <span class="n">_offset</span><span class="p">;</span>
+    <span class="n">MemoryStreamBuf</span><span class="o">&amp;</span>   <span class="n">_buffer</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h4 id="1构造函数">1、构造函数</h4>
+
+<p>构造函数传入的参数对应的就是 <code class="language-plaintext highlighter-rouge">ScopedMemoryClip</code> 的两个成员值。其中偏移量不能超过 <code class="language-plaintext highlighter-rouge">MemoryStremamBuf</code> 的缓冲区上线值。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ScopedMemoryClip</span><span class="o">::</span><span class="n">ScopedMemoryClip</span><span class="p">(</span><span class="n">MemoryStreamBuf</span><span class="o">&amp;</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">UInt32</span> <span class="n">offset</span><span class="p">)</span>
+    <span class="o">:</span> <span class="n">_offset</span><span class="p">(</span><span class="n">offset</span><span class="p">),</span> <span class="n">_buffer</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_offset</span> <span class="o">&gt;=</span> <span class="n">_buffer</span><span class="p">.</span><span class="n">_bufferSize</span><span class="p">)</span>
+        <span class="n">_offset</span> <span class="o">=</span> <span class="n">_buffer</span><span class="p">.</span><span class="n">_bufferSize</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_offset</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">_offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">clip</span><span class="p">(</span><span class="n">_offset</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="2析构函数">2、析构函数</h4>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ScopedMemoryClip</span><span class="o">::~</span><span class="n">ScopedMemoryClip</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">clip</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">Int32</span><span class="p">)</span><span class="n">_offset</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="3缓冲区切割">3、缓冲区切割</h4>
+
+<p>可以看到构造函数和析构函数中都调用了 <code class="language-plaintext highlighter-rouge">clip</code> 函数，该函数切割完缓冲区，形成局部内存片：</p>
+
+<ul>
+  <li>如果传入的偏移量参数为正，则仅保留切割之后的后一部分。</li>
+  <li>如果传入的参数为负，则相当于向前扩充缓冲区（只发生于析构函数中）。其源码如下。</li>
+</ul>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">ScopedMemoryClip</span><span class="o">::</span><span class="n">clip</span><span class="p">(</span><span class="n">Int32</span> <span class="n">offset</span><span class="p">)</span> <span class="p">{</span>
+ 
+    <span class="c1">// 获取到 gptr</span>
+    <span class="kt">char</span><span class="o">*</span> <span class="n">gpos</span> <span class="o">=</span> <span class="n">_buffer</span><span class="p">.</span><span class="n">gCurrent</span><span class="p">();</span>
+ 
+    <span class="c1">// 偏移缓冲区地址，并修改缓冲区大小</span>
+    <span class="n">_buffer</span><span class="p">.</span><span class="n">_pBuffer</span> <span class="o">+=</span> <span class="n">offset</span><span class="p">;</span>
+    <span class="n">_buffer</span><span class="p">.</span><span class="n">_bufferSize</span> <span class="o">-=</span> <span class="n">offset</span><span class="p">;</span>
+ 
+    <span class="c1">// pptr 的位置减去缓冲区新地址，作为 pptr 的新位置</span>
+    <span class="kt">int</span> <span class="n">ppos</span> <span class="o">=</span> <span class="n">_buffer</span><span class="p">.</span><span class="n">pCurrent</span><span class="p">()</span> <span class="o">-</span> <span class="n">_buffer</span><span class="p">.</span><span class="n">_pBuffer</span><span class="p">;</span>
+ 
+    <span class="c1">// 设置 gptr 可达区域和位置</span>
+    <span class="n">_buffer</span><span class="p">.</span><span class="n">setg</span><span class="p">(</span><span class="n">_buffer</span><span class="p">.</span><span class="n">_pBuffer</span><span class="p">,</span> <span class="n">gpos</span><span class="p">,</span> <span class="n">_buffer</span><span class="p">.</span><span class="n">_pBuffer</span> <span class="o">+</span> <span class="n">_buffer</span><span class="p">.</span><span class="n">_bufferSize</span><span class="p">);</span>
+ 
+    <span class="c1">// 设置 pptr 可达区域和位置</span>
+    <span class="n">_buffer</span><span class="p">.</span><span class="n">setp</span><span class="p">(</span><span class="n">_buffer</span><span class="p">.</span><span class="n">_pBuffer</span><span class="p">,</span> <span class="n">_buffer</span><span class="p">.</span><span class="n">_pBuffer</span> <span class="o">+</span> <span class="n">_buffer</span><span class="p">.</span><span class="n">_bufferSize</span><span class="p">);</span>
+    <span class="n">_buffer</span><span class="p">.</span><span class="n">pbump</span><span class="p">(</span><span class="n">ppos</span><span class="p">);</span>
+ 
+    <span class="c1">// 如果已写数据数小于偏移量，则可以将已写数据数设置为零</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_buffer</span><span class="p">.</span><span class="n">_written</span> <span class="o">&lt;</span> <span class="n">offset</span><span class="p">)</span>
+        <span class="n">_buffer</span><span class="p">.</span><span class="n">_written</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+ 
+    <span class="c1">// 如果已写数据数大于等于偏移量，则减去 offset</span>
+    <span class="k">else</span>
+        <span class="n">_buffer</span><span class="p">.</span><span class="n">_written</span> <span class="o">-=</span> <span class="n">offset</span><span class="p">;</span>
+ 
+    <span class="c1">// 若已写字节数大于缓冲区容量，则设定为缓冲区容量</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_buffer</span><span class="p">.</span><span class="n">_written</span> <span class="o">&gt;</span> <span class="n">_buffer</span><span class="p">.</span><span class="n">_bufferSize</span><span class="p">)</span>
+        <span class="n">_buffer</span><span class="p">.</span><span class="n">_written</span> <span class="o">=</span> <span class="n">_buffer</span><span class="p">.</span><span class="n">_bufferSize</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="reference">Reference</h3>
+
+<ol>
+  <li>http://www.cplusplus.com/reference/iostream/streambuf/gbump/</li>
+  <li>http://www.cplusplus.com/reference/iostream/streambuf/pbump/</li>
+  <li>http://www.cplusplus.com/reference/iostream/ios/init/</li>
+</ol>
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer><span>@2022 - MikeCaptain.com</span></footer>
+
+
+	    <!-- Script -->
+      <script src="/pages/Poechant/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
