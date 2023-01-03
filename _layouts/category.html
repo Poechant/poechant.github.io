@@ -14,7 +14,7 @@ layout: default
     {% if site.categories[page.category] %}
       {% for post in site.categories[page.category] %}
         <!-- <li class="post"> -->
-        <a href="{% if site.baseurl == "/" %}{{ post.url }}{% else %}{{ post.url | prepend: site.baseurl }}{% endif %}">{%if post.header %}{{ post.header }}{% else %}{{ post.title }}{% endif %}</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;<i>{{ post.date | date_to_string | append: ", " | append: post.location }}<br><br>
+        <a href="{% if site.baseurl == "/" %}{{ post.url }}{% else %}{{ post.url | prepend: site.baseurl }}{% endif %}">{%if post.header %}{{ post.header }}{% else %}{{ post.title }}{% endif %}</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;<i>{{ post.date | date_to_string | append: ", " | append: post.location }}</i><br><br>
       {% endfor %}
     {% else %}
       <br>
