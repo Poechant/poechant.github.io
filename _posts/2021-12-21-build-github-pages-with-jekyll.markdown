@@ -555,7 +555,7 @@ jobs:
           enable_jekyll: true
 ```
 
-提交后，会
+提交后，会触发 action。
 
 
 #### Q6：如何显示 `{% raw %}{%{% endraw %}` 或者 `{% raw %}{{{% endraw %}` ？
