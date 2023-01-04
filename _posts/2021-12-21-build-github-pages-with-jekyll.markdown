@@ -472,11 +472,13 @@ $$ \sum_{i=1}^{n} a_i $$
 
 #### Q5：Jekyll 中如何支持 Graphviz ？
 
-这要依赖 `jekyll-graphviz-dot`，修改 `Gemfile` 增加一句：
+#### 本地 Jekyll 先运行起来 Graphviz
+
+这要依赖 `jekyll-graphviz`，修改 `Gemfile` 增加一句：
 
 ```shell
 group :jekyll_plugins do
-  gem "jekyll-graphviz-dot"
+  gem "jekyll-graphviz"
 end
 ```
 
@@ -509,7 +511,52 @@ digraph G {
 }
 {% endgraphviz %}
 
-但是 GitHub Pages 默认并不支持 Graphviz 插件，所以还需要如下处理：
+#### Github Pages 上正常显示 Graphviz
+
+因为 GitHub Pages 默认并不支持 Graphviz 插件，所以还需要如下处理：
+
+* 在 Github 上创建一个分支，可以叫做 gh-pages
+* 配置 Github Pages 的生成来自分支 gh-pages 并且选择目录为 `/` 根目录
+* 在本地项目中创建一个文件 `.github/workflows/gh-pages.yml`，内容如下：
+
+```yaml
+name: Build and deploy Jekyll site to GitHub Pages
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  jekyll:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📂 setup
+        uses: actions/checkout@v2
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v1
+      - name: 💎 setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.2
+      - name: 🔨 install dependencies & build site
+        uses: limjh16/jekyll-action-ts@v2
+        env:
+          NODE_ENV: "production"
+        with:
+          enable_cache: true
+      - name: 🚀 deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          base_url: /
+          publish_dir: ./_site
+          publish_branch: gh-pages
+          cname: www.mikecaptain.com
+          enable_jekyll: true
+```
+
+提交后，会
+
 
 #### Q6：如何显示 `{% raw %}{%{% endraw %}` 或者 `{% raw %}{{{% endraw %}` ？
 
