@@ -366,7 +366,7 @@
 
 			<article id="post-page">
 	<h2>如何使用 Jekyll 基于 Github Pages 搭建个人博客</h2>		
-	<time datetime="2021-12-21T15:53:57+00:00" class="by-line">21 Dec 2021, 杭州 | 作者 麦克船长 | 总计 11651 字</time>
+	<time datetime="2021-12-21T15:53:57+00:00" class="by-line">21 Dec 2021, 杭州 | 作者 麦克船长 | 总计 12687 字</time>
 	<div class="content">
 		<p><strong>本文目录</strong></p>
 <ul id="markdown-toc">
@@ -396,6 +396,8 @@
         </ul>
       </li>
       <li><a href="#q5jekyll-中如何支持-graphviz-" id="markdown-toc-q5jekyll-中如何支持-graphviz-">Q5：Jekyll 中如何支持 Graphviz ？</a></li>
+      <li><a href="#本地-jekyll-先运行起来-graphviz" id="markdown-toc-本地-jekyll-先运行起来-graphviz">本地 Jekyll 先运行起来 Graphviz</a></li>
+      <li><a href="#github-pages-上正常显示-graphviz" id="markdown-toc-github-pages-上正常显示-graphviz">Github Pages 上正常显示 Graphviz</a></li>
       <li><a href="#q6如何显示--或者--" id="markdown-toc-q6如何显示--或者--">Q6：如何显示 <code class="language-plaintext highlighter-rouge">{%</code> 或者 <code class="language-plaintext highlighter-rouge">{{</code> ？</a></li>
     </ul>
   </li>
@@ -833,10 +835,12 @@ $$ \sum_{i=1}^{n} a_i $$
 
 <h4 id="q5jekyll-中如何支持-graphviz-">Q5：Jekyll 中如何支持 Graphviz ？</h4>
 
-<p>这要依赖 <code class="language-plaintext highlighter-rouge">jekyll-graphviz-dot</code>，修改 <code class="language-plaintext highlighter-rouge">Gemfile</code> 增加一句：</p>
+<h4 id="本地-jekyll-先运行起来-graphviz">本地 Jekyll 先运行起来 Graphviz</h4>
+
+<p>这要依赖 <code class="language-plaintext highlighter-rouge">jekyll-graphviz</code>，修改 <code class="language-plaintext highlighter-rouge">Gemfile</code> 增加一句：</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>group :jekyll_plugins <span class="k">do
-  </span>gem <span class="s2">"jekyll-graphviz-dot"</span>
+  </span>gem <span class="s2">"jekyll-graphviz"</span>
 end
 </code></pre></div></div>
 
@@ -917,7 +921,52 @@ digraph G {
 </svg>
 </div>
 
-<p>但是 GitHub Pages 默认并不支持 Graphviz 插件，所以还需要如下处理：</p>
+<h4 id="github-pages-上正常显示-graphviz">Github Pages 上正常显示 Graphviz</h4>
+
+<p>因为 GitHub Pages 默认并不支持 Graphviz 插件，所以还需要如下处理：</p>
+
+<ul>
+  <li>在 Github 上创建一个分支，可以叫做 gh-pages</li>
+  <li>配置 Github Pages 的生成来自分支 gh-pages 并且选择目录为 <code class="language-plaintext highlighter-rouge">/</code> 根目录</li>
+  <li>在本地项目中创建一个文件 <code class="language-plaintext highlighter-rouge">.github/workflows/gh-pages.yml</code>，内容如下：</li>
+</ul>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Build and deploy Jekyll site to GitHub Pages</span>
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">master</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">jekyll</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">📂 setup</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Setup Graphviz</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">ts-graphviz/setup-graphviz@v1</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">💎 setup ruby</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">ruby/setup-ruby@v1</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">ruby-version</span><span class="pi">:</span> <span class="s">3.0.2</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">🔨 install dependencies &amp; build site</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">limjh16/jekyll-action-ts@v2</span>
+        <span class="na">env</span><span class="pi">:</span>
+          <span class="na">NODE_ENV</span><span class="pi">:</span> <span class="s2">"</span><span class="s">production"</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">enable_cache</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">🚀 deploy</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">peaceiris/actions-gh-pages@v3</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">github_token</span><span class="pi">:</span> <span class="s">$</span>
+          <span class="na">base_url</span><span class="pi">:</span> <span class="s">/</span>
+          <span class="na">publish_dir</span><span class="pi">:</span> <span class="s">./_site</span>
+          <span class="na">publish_branch</span><span class="pi">:</span> <span class="s">gh-pages</span>
+          <span class="na">cname</span><span class="pi">:</span> <span class="s">www.mikecaptain.com</span>
+          <span class="na">enable_jekyll</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<p>提交后，会</p>
 
 <h4 id="q6如何显示--或者--">Q6：如何显示 <code class="language-plaintext highlighter-rouge">{%</code> 或者 <code class="language-plaintext highlighter-rouge">{{</code> ？</h4>
 

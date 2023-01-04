@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/pages/Poechant/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/pages/Poechant/" rel="alternate" type="text/html" /><updated>2023-01-04T19:54:12+00:00</updated><id>https://www.mikecaptain.com/pages/Poechant/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">自然语言处理 AIGC 近年的发展脉络、关键论文、技术里程碑和商业应用</title><link href="https://www.mikecaptain.com/pages/Poechant/2022/12/24/captain-nlp-1/" rel="alternate" type="text/html" title="自然语言处理 AIGC 近年的发展脉络、关键论文、技术里程碑和商业应用" /><published>2022-12-24T15:08:01+00:00</published><updated>2022-12-24T15:08:01+00:00</updated><id>https://www.mikecaptain.com/pages/Poechant/2022/12/24/captain-nlp-1</id><content type="html" xml:base="https://www.mikecaptain.com/pages/Poechant/2022/12/24/captain-nlp-1/">&lt;ul&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/pages/Poechant/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/pages/Poechant/" rel="alternate" type="text/html" /><updated>2023-01-04T20:07:58+00:00</updated><id>https://www.mikecaptain.com/pages/Poechant/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">自然语言处理 AIGC 近年的发展脉络、关键论文、技术里程碑和商业应用</title><link href="https://www.mikecaptain.com/pages/Poechant/2022/12/24/captain-nlp-1/" rel="alternate" type="text/html" title="自然语言处理 AIGC 近年的发展脉络、关键论文、技术里程碑和商业应用" /><published>2022-12-24T15:08:01+00:00</published><updated>2022-12-24T15:08:01+00:00</updated><id>https://www.mikecaptain.com/pages/Poechant/2022/12/24/captain-nlp-1</id><content type="html" xml:base="https://www.mikecaptain.com/pages/Poechant/2022/12/24/captain-nlp-1/">&lt;ul&gt;
   &lt;li&gt;作者：麦克船长（钟超）&lt;/li&gt;
   &lt;li&gt;微信：sinosuperman&lt;/li&gt;
 &lt;/ul&gt;
@@ -982,6 +982,8 @@ cosine value :  0.8691698561422959
         &lt;/ul&gt;
       &lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#q5jekyll-中如何支持-graphviz-&quot; id=&quot;markdown-toc-q5jekyll-中如何支持-graphviz-&quot;&gt;Q5：Jekyll 中如何支持 Graphviz ？&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#本地-jekyll-先运行起来-graphviz&quot; id=&quot;markdown-toc-本地-jekyll-先运行起来-graphviz&quot;&gt;本地 Jekyll 先运行起来 Graphviz&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#github-pages-上正常显示-graphviz&quot; id=&quot;markdown-toc-github-pages-上正常显示-graphviz&quot;&gt;Github Pages 上正常显示 Graphviz&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#q6如何显示--或者--&quot; id=&quot;markdown-toc-q6如何显示--或者--&quot;&gt;Q6：如何显示 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{%&lt;/code&gt; 或者 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{{&lt;/code&gt; ？&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
@@ -1419,10 +1421,12 @@ $$ \sum_{i=1}^{n} a_i $$
 
 &lt;h4 id=&quot;q5jekyll-中如何支持-graphviz-&quot;&gt;Q5：Jekyll 中如何支持 Graphviz ？&lt;/h4&gt;
 
-&lt;p&gt;这要依赖 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll-graphviz-dot&lt;/code&gt;，修改 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; 增加一句：&lt;/p&gt;
+&lt;h4 id=&quot;本地-jekyll-先运行起来-graphviz&quot;&gt;本地 Jekyll 先运行起来 Graphviz&lt;/h4&gt;
+
+&lt;p&gt;这要依赖 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll-graphviz&lt;/code&gt;，修改 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; 增加一句：&lt;/p&gt;
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;group :jekyll_plugins &lt;span class=&quot;k&quot;&gt;do
-  &lt;/span&gt;gem &lt;span class=&quot;s2&quot;&gt;&quot;jekyll-graphviz-dot&quot;&lt;/span&gt;
+  &lt;/span&gt;gem &lt;span class=&quot;s2&quot;&gt;&quot;jekyll-graphviz&quot;&lt;/span&gt;
 end
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -1503,7 +1507,52 @@ digraph G {
 &lt;/svg&gt;
 &lt;/div&gt;
 
-&lt;p&gt;但是 GitHub Pages 默认并不支持 Graphviz 插件，所以还需要如下处理：&lt;/p&gt;
+&lt;h4 id=&quot;github-pages-上正常显示-graphviz&quot;&gt;Github Pages 上正常显示 Graphviz&lt;/h4&gt;
+
+&lt;p&gt;因为 GitHub Pages 默认并不支持 Graphviz 插件，所以还需要如下处理：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在 Github 上创建一个分支，可以叫做 gh-pages&lt;/li&gt;
+  &lt;li&gt;配置 Github Pages 的生成来自分支 gh-pages 并且选择目录为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/&lt;/code&gt; 根目录&lt;/li&gt;
+  &lt;li&gt;在本地项目中创建一个文件 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.github/workflows/gh-pages.yml&lt;/code&gt;，内容如下：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Build and deploy Jekyll site to GitHub Pages&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;master&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;jekyll&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ubuntu-latest&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;📂 setup&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;actions/checkout@v2&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Setup Graphviz&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ts-graphviz/setup-graphviz@v1&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;💎 setup ruby&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ruby/setup-ruby@v1&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;ruby-version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;3.0.2&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;🔨 install dependencies &amp;amp; build site&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;limjh16/jekyll-action-ts@v2&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;NODE_ENV&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;production&quot;&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;enable_cache&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;🚀 deploy&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;peaceiris/actions-gh-pages@v3&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;github_token&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;base_url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;publish_dir&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;./_site&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;publish_branch&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;gh-pages&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;cname&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;www.mikecaptain.com&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;enable_jekyll&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;提交后，会&lt;/p&gt;
 
 &lt;h4 id=&quot;q6如何显示--或者--&quot;&gt;Q6：如何显示 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{%&lt;/code&gt; 或者 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{{&lt;/code&gt; ？&lt;/h4&gt;
 
