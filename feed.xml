@@ -1,4 +1,1815 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-01-04T20:34:31+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">自然语言处理 AIGC 近年的发展脉络、关键论文、技术里程碑和商业应用</title><link href="https://www.mikecaptain.com/2022/12/24/captain-nlp-1/" rel="alternate" type="text/html" title="自然语言处理 AIGC 近年的发展脉络、关键论文、技术里程碑和商业应用" /><published>2022-12-24T15:08:01+00:00</published><updated>2022-12-24T15:08:01+00:00</updated><id>https://www.mikecaptain.com/2022/12/24/captain-nlp-1</id><content type="html" xml:base="https://www.mikecaptain.com/2022/12/24/captain-nlp-1/">&lt;ul&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-01-04T20:41:59+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">麦克船长的 NLP 语言模型技术笔记 4：循环神经网络（RNN）</title><link href="https://www.mikecaptain.com/2023/01/01/language-model-4/" rel="alternate" type="text/html" title="麦克船长的 NLP 语言模型技术笔记 4：循环神经网络（RNN）" /><published>2023-01-01T21:01:31+00:00</published><updated>2023-01-01T21:01:31+00:00</updated><id>https://www.mikecaptain.com/2023/01/01/language-model-4</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/01/language-model-4/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#1经典结构的-rnn&quot; id=&quot;markdown-toc-1经典结构的-rnn&quot;&gt;1、经典结构的 RNN&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#2n-vs1-的-rnn&quot; id=&quot;markdown-toc-2n-vs1-的-rnn&quot;&gt;2、N vs.1 的 RNN&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#31-vs-n-的-rnn&quot; id=&quot;markdown-toc-31-vs-n-的-rnn&quot;&gt;3、1 vs. N 的 RNN&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#4lstmlong-short-term-memory长短时记忆网络&quot; id=&quot;markdown-toc-4lstmlong-short-term-memory长短时记忆网络&quot;&gt;4、LSTM（Long Short-Term Memory）长短时记忆网络&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#41如何理解这个-short-term-呢&quot; id=&quot;markdown-toc-41如何理解这个-short-term-呢&quot;&gt;4.1、如何理解这个 Short-Term 呢？&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#42引入遗忘门-f输入门-i输出门-o记忆细胞-c&quot; id=&quot;markdown-toc-42引入遗忘门-f输入门-i输出门-o记忆细胞-c&quot;&gt;4.2、引入遗忘门 f、输入门 i、输出门 o、记忆细胞 c&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#5双向循环神经网络双向-lstm&quot; id=&quot;markdown-toc-5双向循环神经网络双向-lstm&quot;&gt;5、双向循环神经网络、双向 LSTM&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#6堆叠循环神经网络堆叠-lstm&quot; id=&quot;markdown-toc-6堆叠循环神经网络堆叠-lstm&quot;&gt;6、堆叠循环神经网络、堆叠 LSTM&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#7n-vs-m-的-rnn&quot; id=&quot;markdown-toc-7n-vs-m-的-rnn&quot;&gt;7、N vs. M 的 RNN&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;RNN（Recurrent Neural Network）的 R 是 Recurrent 的意思，所以这是一个贷循环的神经网络。首先要明白一点，你并不需要搞懂 CNN 后才能学习 RNN 模型。你只要了解了 MLP 就可以学习 RNN 了。&lt;/p&gt;
+
+&lt;h3 id=&quot;1经典结构的-rnn&quot;&gt;1、经典结构的 RNN&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2022-12-19-language-model-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上图这是一个经典结构的 RNN 示意图，Unfold 箭头右侧是展开示意。输入序列（这里用 x 表示）传递给隐藏层（hidden layer，这里用 h 表示），处理完生成输出序列（这里用 o 表示）。序列的下一个词输入时的、上一步隐藏层会一起影响这一步的输出。U、V、W 都表示权重。在这个经典结构理，你可以看到非常重要的一点，就是输入序列长度与输出序列长度是相同的。&lt;/p&gt;
+
+&lt;p&gt;这种经典结构的应用场景，比如对一段普通话输入它的四川话版本，比如对视频的每一帧进行处理并输出，等等。&lt;/p&gt;
+
+&lt;p&gt;我们知道 RNN 是一个一个序列处理的，每个序列中的数据项都是有序的，所以对于计算一个序列内的所有数据项是无法并行的。但是计算不同序列时，不同序列各自的计算则是可以并行的。如果我们把上一个时刻 t 隐藏层输出的结果（ \(h_{t-1}\) ）传给一个激活函数（比如说用正切函数 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tanh&lt;/code&gt; 函数），然后和当下时刻 t 的这个输入（ \(x_{t}\) ）一起，处理后产生一个时刻 t 的输出（ \(h_t\) ）。然后把隐藏层的输出通过多项逻辑回归（Softmax）生成最终的输出值（ \(\bm{y}\) ），我们可以如下表示这个模型：&lt;/p&gt;
+
+\[\begin{aligned}
+&amp;amp;\bm{h}_t = tanh(\bm{W}^{xh} \cdot \bm{x}_t + \bm{b}^{xh} + \bm{W}^{hh} \cdot \bm{h}_{t-1} + \bm{b}^{hh}) \\
+&amp;amp;\bm{y}_t = Softmax(\bm{W}^{hy} \cdot \bm{h_t} + \bm{b}^{hy})
+\end{aligned}\]
+
+&lt;p&gt;对应的示意图如下：&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center;&quot;&gt;
+&lt;div class=&quot;graphviz-wrapper&quot;&gt;
+
+&lt;!-- Generated by graphviz version 2.43.0 (0)
+ --&gt;
+&lt;!-- Title: G Pages: 1 --&gt;
+&lt;svg role=&quot;img&quot; aria-label=&quot;graphviz-34cd77ba92d6e898bab41a54b23f2324&quot; width=&quot;278pt&quot; height=&quot;188pt&quot; viewBox=&quot;0.00 0.00 278.00 188.00&quot;&gt;
+&lt;title&gt;graphviz-34cd77ba92d6e898bab41a54b23f2324&lt;/title&gt;
+&lt;desc&gt;
+digraph G {
+	rankdir=BT
+	{rank=same h1 h2 hddd hn}
+	{rank=same x1 x2 xddd xn}
+	{rank=same y1 y2 yddd yn}
+	xddd[label=&amp;quot;...&amp;quot;]
+	yddd[label=&amp;quot;...&amp;quot;]
+	hddd[label=&amp;quot;...&amp;quot;]
+
+	y1[shape=plaintext]
+	y2[shape=plaintext]
+	yddd[shape=plaintext]
+	yn[shape=plaintext]
+	x1[shape=plaintext]
+	x2[shape=plaintext]
+	xddd[shape=plaintext]
+	xn[shape=plaintext]
+
+	h1 -&amp;gt; h2
+	h2 -&amp;gt; hddd
+	hddd -&amp;gt; hn
+
+	x1 -&amp;gt; h1
+	x2 -&amp;gt; h2
+	xddd -&amp;gt; hddd
+	xn -&amp;gt; hn
+
+	h1 -&amp;gt; y1
+	h2 -&amp;gt; y2
+	hddd -&amp;gt; yddd
+	hn -&amp;gt; yn
+}
+&lt;/desc&gt;
+
+&lt;g id=&quot;graph0&quot; class=&quot;graph&quot; transform=&quot;scale(1 1) rotate(0) translate(4 184)&quot;&gt;
+&lt;title&gt;G&lt;/title&gt;
+&lt;polygon fill=&quot;white&quot; stroke=&quot;transparent&quot; points=&quot;-4,4 -4,-184 274,-184 274,4 -4,4&quot; /&gt;
+&lt;!-- h1 --&gt;
+&lt;g id=&quot;node1&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h1&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;27&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h2 --&gt;
+&lt;g id=&quot;node2&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h2&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;99&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;99&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h1&amp;#45;&amp;gt;h2 --&gt;
+&lt;g id=&quot;edge1&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h1&amp;#45;&amp;gt;h2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M54,-90C56.61,-90 59.23,-90 61.84,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;61.93,-93.5 71.93,-90 61.93,-86.5 61.93,-93.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- y1 --&gt;
+&lt;g id=&quot;node9&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;y1&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;y1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h1&amp;#45;&amp;gt;y1 --&gt;
+&lt;g id=&quot;edge8&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h1&amp;#45;&amp;gt;y1&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M27,-108.3C27,-116.02 27,-125.29 27,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;23.5,-133.9 27,-143.9 30.5,-133.9 23.5,-133.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- hddd --&gt;
+&lt;g id=&quot;node3&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;hddd&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;171&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;171&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h2&amp;#45;&amp;gt;hddd --&gt;
+&lt;g id=&quot;edge2&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h2&amp;#45;&amp;gt;hddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M126,-90C128.61,-90 131.23,-90 133.84,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;133.93,-93.5 143.93,-90 133.93,-86.5 133.93,-93.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- y2 --&gt;
+&lt;g id=&quot;node10&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;y2&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;99&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;y2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h2&amp;#45;&amp;gt;y2 --&gt;
+&lt;g id=&quot;edge9&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h2&amp;#45;&amp;gt;y2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M99,-108.3C99,-116.02 99,-125.29 99,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;95.5,-133.9 99,-143.9 102.5,-133.9 95.5,-133.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- hn --&gt;
+&lt;g id=&quot;node4&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;hn&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;243&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;243&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;hn&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- hddd&amp;#45;&amp;gt;hn --&gt;
+&lt;g id=&quot;edge3&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;hddd&amp;#45;&amp;gt;hn&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M198,-90C200.61,-90 203.23,-90 205.84,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;205.93,-93.5 215.93,-90 205.93,-86.5 205.93,-93.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- yddd --&gt;
+&lt;g id=&quot;node11&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;yddd&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;171&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- hddd&amp;#45;&amp;gt;yddd --&gt;
+&lt;g id=&quot;edge10&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;hddd&amp;#45;&amp;gt;yddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M171,-108.3C171,-116.02 171,-125.29 171,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;167.5,-133.9 171,-143.9 174.5,-133.9 167.5,-133.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- yn --&gt;
+&lt;g id=&quot;node12&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;yn&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;243&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;yn&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- hn&amp;#45;&amp;gt;yn --&gt;
+&lt;g id=&quot;edge11&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;hn&amp;#45;&amp;gt;yn&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M243,-108.3C243,-116.02 243,-125.29 243,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;239.5,-133.9 243,-143.9 246.5,-133.9 239.5,-133.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- x1 --&gt;
+&lt;g id=&quot;node5&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;x1&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;x1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- x1&amp;#45;&amp;gt;h1 --&gt;
+&lt;g id=&quot;edge4&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;x1&amp;#45;&amp;gt;h1&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M27,-36.3C27,-44.02 27,-53.29 27,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;23.5,-61.9 27,-71.9 30.5,-61.9 23.5,-61.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- x2 --&gt;
+&lt;g id=&quot;node6&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;x2&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;99&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;x2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- x2&amp;#45;&amp;gt;h2 --&gt;
+&lt;g id=&quot;edge5&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;x2&amp;#45;&amp;gt;h2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M99,-36.3C99,-44.02 99,-53.29 99,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;95.5,-61.9 99,-71.9 102.5,-61.9 95.5,-61.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- xddd --&gt;
+&lt;g id=&quot;node7&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;xddd&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;171&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- xddd&amp;#45;&amp;gt;hddd --&gt;
+&lt;g id=&quot;edge6&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;xddd&amp;#45;&amp;gt;hddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M171,-36.3C171,-44.02 171,-53.29 171,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;167.5,-61.9 171,-71.9 174.5,-61.9 167.5,-61.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- xn --&gt;
+&lt;g id=&quot;node8&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;xn&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;243&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;xn&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- xn&amp;#45;&amp;gt;hn --&gt;
+&lt;g id=&quot;edge7&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;xn&amp;#45;&amp;gt;hn&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M243,-36.3C243,-44.02 243,-53.29 243,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;239.5,-61.9 243,-71.9 246.5,-61.9 239.5,-61.9&quot; /&gt;
+&lt;/g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这种输入和输出数据项数一致的 RNN，一般叫做 N vs. N 的 RNN。&lt;/p&gt;
+
+&lt;h3 id=&quot;2n-vs1-的-rnn&quot;&gt;2、N vs.1 的 RNN&lt;/h3&gt;
+
+&lt;p&gt;上面那个图里，如果只保留最后一个输出，那就是一个 N vs. 1 的 RNN 了。这种的应用场景，比如说判断一个文本序列是英语还是德语，比如根据一个输入序列来判断是一个正向情绪内容还是负向或者中性，或者比如根据一段语音输入序列来判断是哪一首曲子（听歌识曲）。&lt;/p&gt;
+
+\[\begin{aligned}
+&amp;amp;\bm{h}_t = tanh(\bm{W^{xh}} \cdot \bm{x}_t + \bm{b^{xh}} + \bm{W^{hh}} \cdot \bm{h}_{t-1} + \bm{b^{hh}}) \\
+&amp;amp;\bm{y} = Softmax(\bm{W^{hy}} \cdot \bm{h}_n + \bm{b^{hy}})
+\end{aligned}\]
+
+&lt;p&gt;即这个模型里，每个序列只有隐藏层对最后一个数据项进行处理时才产生输出  \(h_n\)  如果用示意图表示，则是如下结构：&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center;&quot;&gt;
+&lt;div class=&quot;graphviz-wrapper&quot;&gt;
+
+&lt;!-- Generated by graphviz version 2.43.0 (0)
+ --&gt;
+&lt;!-- Title: G Pages: 1 --&gt;
+&lt;svg role=&quot;img&quot; aria-label=&quot;graphviz-c7d284aff07f0372b0164457429412ff&quot; width=&quot;242pt&quot; height=&quot;206pt&quot; viewBox=&quot;0.00 0.00 242.00 206.00&quot;&gt;
+&lt;title&gt;graphviz-c7d284aff07f0372b0164457429412ff&lt;/title&gt;
+&lt;desc&gt;
+digraph G {
+	rankdir=LR
+	{rank=same h1 h2 hddd hn}
+	hddd[label=&amp;quot;...&amp;quot;]
+	xddd[label=&amp;quot;...&amp;quot;]
+
+	y[shape=plaintext]
+	x1[shape=plaintext]
+	x2[shape=plaintext]
+	xddd[shape=plaintext]
+	xn[shape=plaintext]
+
+	h1 -&amp;gt; h2
+	h2 -&amp;gt; hddd
+	hddd -&amp;gt; hn
+
+	x1 -&amp;gt; h1
+	x2 -&amp;gt; h2
+	xn -&amp;gt; hn
+	xddd -&amp;gt; hddd
+
+	hn -&amp;gt; y
+}
+&lt;/desc&gt;
+
+&lt;g id=&quot;graph0&quot; class=&quot;graph&quot; transform=&quot;scale(1 1) rotate(0) translate(4 202)&quot;&gt;
+&lt;title&gt;G&lt;/title&gt;
+&lt;polygon fill=&quot;white&quot; stroke=&quot;transparent&quot; points=&quot;-4,4 -4,-202 238,-202 238,4 -4,4&quot; /&gt;
+&lt;!-- h1 --&gt;
+&lt;g id=&quot;node1&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h1&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;117&quot; cy=&quot;-180&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;117&quot; y=&quot;-176.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h2 --&gt;
+&lt;g id=&quot;node2&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h2&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;117&quot; cy=&quot;-126&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;117&quot; y=&quot;-122.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h1&amp;#45;&amp;gt;h2 --&gt;
+&lt;g id=&quot;edge1&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h1&amp;#45;&amp;gt;h2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M117,-161.79C117,-159.31 117,-156.83 117,-154.34&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;120.5,-154.14 117,-144.14 113.5,-154.14 120.5,-154.14&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- hddd --&gt;
+&lt;g id=&quot;node3&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;hddd&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;117&quot; cy=&quot;-72&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;117&quot; y=&quot;-68.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h2&amp;#45;&amp;gt;hddd --&gt;
+&lt;g id=&quot;edge2&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h2&amp;#45;&amp;gt;hddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M117,-107.79C117,-105.31 117,-102.83 117,-100.34&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;120.5,-100.14 117,-90.14 113.5,-100.14 120.5,-100.14&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- hn --&gt;
+&lt;g id=&quot;node4&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;hn&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;117&quot; cy=&quot;-18&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;117&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;hn&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- hddd&amp;#45;&amp;gt;hn --&gt;
+&lt;g id=&quot;edge3&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;hddd&amp;#45;&amp;gt;hn&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M117,-53.79C117,-51.31 117,-48.83 117,-46.34&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;120.5,-46.14 117,-36.14 113.5,-46.14 120.5,-46.14&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- y --&gt;
+&lt;g id=&quot;node6&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;y&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;207&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;y&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- hn&amp;#45;&amp;gt;y --&gt;
+&lt;g id=&quot;edge8&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;hn&amp;#45;&amp;gt;y&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M144.4,-18C152.39,-18 161.31,-18 169.82,-18&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;169.92,-21.5 179.92,-18 169.92,-14.5 169.92,-21.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- xddd --&gt;
+&lt;g id=&quot;node5&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;xddd&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-68.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- xddd&amp;#45;&amp;gt;hddd --&gt;
+&lt;g id=&quot;edge7&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;xddd&amp;#45;&amp;gt;hddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M54.4,-72C62.39,-72 71.31,-72 79.82,-72&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;79.92,-75.5 89.92,-72 79.92,-68.5 79.92,-75.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- x1 --&gt;
+&lt;g id=&quot;node7&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;x1&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-176.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;x1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- x1&amp;#45;&amp;gt;h1 --&gt;
+&lt;g id=&quot;edge4&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;x1&amp;#45;&amp;gt;h1&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M54.4,-180C62.39,-180 71.31,-180 79.82,-180&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;79.92,-183.5 89.92,-180 79.92,-176.5 79.92,-183.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- x2 --&gt;
+&lt;g id=&quot;node8&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;x2&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-122.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;x2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- x2&amp;#45;&amp;gt;h2 --&gt;
+&lt;g id=&quot;edge5&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;x2&amp;#45;&amp;gt;h2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M54.4,-126C62.39,-126 71.31,-126 79.82,-126&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;79.92,-129.5 89.92,-126 79.92,-122.5 79.92,-129.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- xn --&gt;
+&lt;g id=&quot;node9&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;xn&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;xn&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- xn&amp;#45;&amp;gt;hn --&gt;
+&lt;g id=&quot;edge6&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;xn&amp;#45;&amp;gt;hn&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M54.4,-18C62.39,-18 71.31,-18 79.82,-18&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;79.92,-21.5 89.92,-18 79.92,-14.5 79.92,-21.5&quot; /&gt;
+&lt;/g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;31-vs-n-的-rnn&quot;&gt;3、1 vs. N 的 RNN&lt;/h3&gt;
+
+&lt;p&gt;反过来，上面那个图里，如果只保留一个 x，那么就是一个 1 vs. N 的 RNN 了。这种场景的应用，比如 AI 创作音乐，还有通过一个 image 提炼或识别某些文本内容输出。&lt;/p&gt;
+
+\[\begin{aligned}
+&amp;amp;\bm{h}_t = \begin{cases} tanh(\bm{W^{xh}} \cdot \bm{x} + \bm{b^{xh}} + 0 + \bm{b^{hh}}) &amp;amp; (t=1) \\
+tanh(0 + \bm{b^{xh}} + \bm{W^{hh}} \cdot \bm{h}_{t-1} + \bm{b^{hh}}) &amp;amp; (t&amp;gt;1) \end{cases} \\
+&amp;amp;\bm{y} = Softmax(\bm{W^{hy}} \cdot \bm{h}_n + \bm{b^{hy}})
+\end{aligned}\]
+
+&lt;p&gt;示意图如下：&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center;&quot;&gt;
+&lt;div class=&quot;graphviz-wrapper&quot;&gt;
+
+&lt;!-- Generated by graphviz version 2.43.0 (0)
+ --&gt;
+&lt;!-- Title: G Pages: 1 --&gt;
+&lt;svg role=&quot;img&quot; aria-label=&quot;graphviz-aecb5ea5cd91fc1106b18c3c4059fa0a&quot; width=&quot;278pt&quot; height=&quot;188pt&quot; viewBox=&quot;0.00 0.00 278.00 188.00&quot;&gt;
+&lt;title&gt;graphviz-aecb5ea5cd91fc1106b18c3c4059fa0a&lt;/title&gt;
+&lt;desc&gt;
+digraph G {
+	rankdir=BT
+	{rank=same h1 h2 hddd hn}
+	{rank=same y1 y2 yddd yn}
+	hddd[label=&amp;quot;...&amp;quot;]
+	yddd[label=&amp;quot;...&amp;quot;]
+
+	y1[shape=plaintext]
+	y2[shape=plaintext]
+	yddd[shape=plaintext]
+	yn[shape=plaintext]
+	x[shape=plaintext]
+
+	h1 -&amp;gt; h2
+	h2 -&amp;gt; hddd
+	hddd -&amp;gt; hn
+
+	x -&amp;gt; h1
+
+	h1 -&amp;gt; y1
+	h2 -&amp;gt; y2
+	hddd -&amp;gt; yddd
+	hn -&amp;gt; yn
+}
+&lt;/desc&gt;
+
+&lt;g id=&quot;graph0&quot; class=&quot;graph&quot; transform=&quot;scale(1 1) rotate(0) translate(4 184)&quot;&gt;
+&lt;title&gt;G&lt;/title&gt;
+&lt;polygon fill=&quot;white&quot; stroke=&quot;transparent&quot; points=&quot;-4,4 -4,-184 274,-184 274,4 -4,4&quot; /&gt;
+&lt;!-- h1 --&gt;
+&lt;g id=&quot;node1&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h1&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;27&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h2 --&gt;
+&lt;g id=&quot;node2&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h2&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;99&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;99&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h1&amp;#45;&amp;gt;h2 --&gt;
+&lt;g id=&quot;edge1&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h1&amp;#45;&amp;gt;h2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M54,-90C56.61,-90 59.23,-90 61.84,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;61.93,-93.5 71.93,-90 61.93,-86.5 61.93,-93.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- y1 --&gt;
+&lt;g id=&quot;node5&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;y1&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;y1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h1&amp;#45;&amp;gt;y1 --&gt;
+&lt;g id=&quot;edge5&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h1&amp;#45;&amp;gt;y1&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M27,-108.3C27,-116.02 27,-125.29 27,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;23.5,-133.9 27,-143.9 30.5,-133.9 23.5,-133.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- hddd --&gt;
+&lt;g id=&quot;node3&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;hddd&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;171&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;171&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h2&amp;#45;&amp;gt;hddd --&gt;
+&lt;g id=&quot;edge2&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h2&amp;#45;&amp;gt;hddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M126,-90C128.61,-90 131.23,-90 133.84,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;133.93,-93.5 143.93,-90 133.93,-86.5 133.93,-93.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- y2 --&gt;
+&lt;g id=&quot;node6&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;y2&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;99&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;y2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h2&amp;#45;&amp;gt;y2 --&gt;
+&lt;g id=&quot;edge6&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h2&amp;#45;&amp;gt;y2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M99,-108.3C99,-116.02 99,-125.29 99,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;95.5,-133.9 99,-143.9 102.5,-133.9 95.5,-133.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- hn --&gt;
+&lt;g id=&quot;node4&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;hn&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;243&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;243&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;hn&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- hddd&amp;#45;&amp;gt;hn --&gt;
+&lt;g id=&quot;edge3&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;hddd&amp;#45;&amp;gt;hn&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M198,-90C200.61,-90 203.23,-90 205.84,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;205.93,-93.5 215.93,-90 205.93,-86.5 205.93,-93.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- yddd --&gt;
+&lt;g id=&quot;node7&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;yddd&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;171&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- hddd&amp;#45;&amp;gt;yddd --&gt;
+&lt;g id=&quot;edge7&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;hddd&amp;#45;&amp;gt;yddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M171,-108.3C171,-116.02 171,-125.29 171,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;167.5,-133.9 171,-143.9 174.5,-133.9 167.5,-133.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- yn --&gt;
+&lt;g id=&quot;node8&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;yn&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;243&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;yn&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- hn&amp;#45;&amp;gt;yn --&gt;
+&lt;g id=&quot;edge8&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;hn&amp;#45;&amp;gt;yn&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M243,-108.3C243,-116.02 243,-125.29 243,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;239.5,-133.9 243,-143.9 246.5,-133.9 239.5,-133.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- x --&gt;
+&lt;g id=&quot;node9&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;x&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;x&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- x&amp;#45;&amp;gt;h1 --&gt;
+&lt;g id=&quot;edge4&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;x&amp;#45;&amp;gt;h1&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M27,-36.3C27,-44.02 27,-53.29 27,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;23.5,-61.9 27,-71.9 30.5,-61.9 23.5,-61.9&quot; /&gt;
+&lt;/g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;到这里我们可以看到，在 RNN 的隐藏层是能够存储一些有关于输入数据的一些相关内容的，所以也常把 RNN 的隐藏层叫做记忆单元。&lt;/p&gt;
+
+&lt;h3 id=&quot;4lstmlong-short-term-memory长短时记忆网络&quot;&gt;4、LSTM（Long Short-Term Memory）长短时记忆网络&lt;/h3&gt;
+
+&lt;h4 id=&quot;41如何理解这个-short-term-呢&quot;&gt;4.1、如何理解这个 Short-Term 呢？&lt;/h4&gt;
+
+&lt;p&gt;1997 年论文《Long Short-Term Memory》中提出 LSTM 模型。我们先从模型的定义，精确地来理解一下：&lt;/p&gt;
+
+\[\begin{aligned}
+&amp;amp;\bm{h}_t = \bm{h}_{t-1} + tanh(\bm{W}^{xh} \cdot \bm{x}_t + \bm{b}^{xh} + \bm{W}^{hh} \cdot \bm{h}_{t-1} + \bm{b}^{hh}) \\
+&amp;amp;\bm{y}_t = Softmax(\bm{W}^{hy} \cdot \bm{h_t} + \bm{b}^{hy})
+\end{aligned}\]
+
+&lt;p&gt;上式中与经典结构的 RNN（输入与输出是 N vs. N）相比，唯一的区别是第一个式子中多了一个「 \(\bm{h}_{t-1}\) 」。如果我们把第一个式子的  \(tanh\)  部分记作  \(u_t\) ：&lt;/p&gt;
+
+\[\bm{u}_t = tanh(\bm{W}^{xh} \cdot \bm{x}_t + \bm{b}^{xh} + \bm{W}^{hh} \cdot \bm{h}_{t-1} + \bm{b}^{hh})\]
+
+&lt;p&gt;所以：&lt;/p&gt;
+
+\[\bm{h}_t = \bm{h}_{t-1} + \bm{u}_t\]
+
+&lt;p&gt;那么可以展开出如下一组式子：&lt;/p&gt;
+
+\[\begin{aligned}
+\bm{h}_{k+1} &amp;amp;= \bm{h}_k + \bm{u}_{k+1} \\
+\bm{h}_{k+2} &amp;amp;= \bm{h}_{k+1} + \bm{u}_{k+2} \\
+&amp;amp;...... \\
+\bm{h}_{t-1} &amp;amp;= \bm{h}_{t-2} + \bm{u}_{t-1} \\
+\bm{h}_t &amp;amp;= \bm{h}_{t-1} + \bm{u}_t
+\end{aligned}\]
+
+&lt;p&gt;如果我们从  \(h_{k+1}\)  到  \(h_n\)  的所有式子左侧相加、右侧相加，我们就得到如下式子：&lt;/p&gt;
+
+\[\begin{aligned}
+&amp;amp;\bm{h}_{k+1} + ... + \bm{h}_{t-1} + \bm{h}_t \\
+= &amp;amp;\bm{h}_k + \bm{h}_{k+1} + ... + \bm{h}_{t-2} + \bm{h}_{t-1} \\+ &amp;amp;\bm{u}_{k+1} + \bm{u}_{k+2} + ... + \bm{u}_{t-1} + \bm{u}_t
+\end{aligned}\]
+
+&lt;p&gt;进而推导出：&lt;/p&gt;
+
+\[\bm{h}_t = \bm{h}_k + \bm{u}_{k+1} + \bm{h}_{k+2} + ... + \bm{u}_{t-1} + \bm{u}_t\]
+
+&lt;p&gt;从这里我们就可以看到，第 t 时刻的隐藏层输出，直接关联到第 k 时刻的输出，t 到 k 时刻的相关性则用  \(\bm{u}_{k+1}\)  到  \(\bm{u}_t\)  相加表示。也就是有 t-k 的短期（Short Term）记忆。&lt;/p&gt;
+
+&lt;h4 id=&quot;42引入遗忘门-f输入门-i输出门-o记忆细胞-c&quot;&gt;4.2、引入遗忘门 f、输入门 i、输出门 o、记忆细胞 c&lt;/h4&gt;
+
+&lt;p&gt;如果我们为式子  \(\bm{h}_t = \bm{h}_{t-1} + \bm{u}_t\)  右侧两项分配一个权重呢？就是隐藏层对上一个数据项本身被上一个数据项经过隐藏层计算的结果，这两者做一对权重考虑配比，如下：&lt;/p&gt;
+
+\[\begin{aligned}
+&amp;amp;\bm{f}_t = sigmoid(\bm{W}^{f,xh} \cdot \bm{x}_t + \bm{b}^{f,xh} + \bm{W}^{f,hh} \cdot \bm{x}_{t-1} + \bm{b}^{f,hh}) \\
+&amp;amp;\bm{h}_t = \bm{f}_t \odot \bm{h}_{t-1} + (1 - \bm{f}_t) \odot \bm{u}_t
+\end{aligned}\]
+
+&lt;p&gt;其中：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;\(\odot\)  是 Hardamard 乘积，即张量的对应元素相乘。&lt;/li&gt;
+  &lt;li&gt;\(\bm{f}_t\)  是「遗忘门（Forget Gate）」，该值很小时 t-1 时刻的权重就很小，也就是「此刻遗忘上一刻」。该值应根据 t 时刻的输入数据、t-1 时刻数据在隐藏层的输出计算，而且其每个元素必须是 (0, 1) 之间的值，所以可以用 sigmoid 函数来得到该值：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;但这种方式，对于过去  \(\bm{h}_{t-1}\)  和当下  \(\bm{u}_t\)  形成了互斥，只能此消彼长。但其实过去和当下可能都很重要，有可能都恨不重要，所以我们对过去继续采用  \(\bm{f}_t\)  遗忘门，对当下采用  \(\bm{i}_t\)  输入门（Input Gate）：&lt;/p&gt;
+
+\[\begin{aligned}
+&amp;amp;\bm{f}_t = sigmoid(\bm{W}^{f,xh} \cdot \bm{x}_t + \bm{b}^{f,xh} + \bm{W}^{f,hh} \cdot \bm{x}_{t-1} + \bm{b}^{f,hh}) \\
+&amp;amp;\bm{i}_t = sigmoid(\bm{W}^{i,xh} \cdot \bm{x}_t + \bm{b}^{i,xh} + \bm{W}^{i,hh} \cdot \bm{h}_{t-1} + \bm{b}^{i,hh}) \\
+&amp;amp;\bm{h}_t = \bm{f}_t \odot \bm{h}_{t-1} + \bm{i}_t \odot \bm{u}_t
+\end{aligned}\]
+
+&lt;p&gt;其中：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;与  \(\bm{f}_t\)  类似地，定义输入门  \(\bm{i}_t\)  ，但是注意  \(\bm{f}_t\)  与  \(\bm{h}_{t-1}\)  而非  \(\bm{x}_{t-1}\)  有关。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;再引入一个输出门：&lt;/p&gt;
+
+\[\bm{o}_t = sigmoid(\bm{W}^{o,xh} \cdot \bm{x}_t + \bm{b}^{o,xh} + \bm{W}^{o,hh} \cdot \bm{x}_{t-1} + \bm{b}^{o,hh})\]
+
+&lt;p&gt;再引入记忆细胞  \(\bm{c}_t\) ，它是原来  \(\bm{h}_t\)  的变体，与 t-1 时刻的记忆细胞有遗忘关系（通过遗忘门），与当下时刻有输入门的关系：&lt;/p&gt;
+
+\[\bm{c}_t = \bm{f}_t \odot \bm{c}_{t-1} + \bm{i}_t \odot \bm{u}_t\]
+
+&lt;p&gt;那么此时  \(\bm{h}_t\)  ，我们可以把  \(\bm{h}_t\)  变成：&lt;/p&gt;
+
+\[\bm{h}_t = \bm{o}_t \odot tanh(\bm{c}_t)\]
+
+&lt;p&gt;记忆细胞这个概念还有有一点点形象的，它存储了过去的一些信息。OK，到此我们整体的 LSTM 模型就变成了这个样子：&lt;/p&gt;
+
+\[\begin{aligned}
+&amp;amp;\bm{f}_t = sigmoid(\bm{W}^{f,xh} \cdot \bm{x}_t + \bm{b}^{f,xh} + \bm{W}^{f,hh} \cdot \bm{x}_{t-1} + \bm{b}^{f,hh}) \\
+&amp;amp;\bm{i}_t = sigmoid(\bm{W}^{i,xh} \cdot \bm{x}_t + \bm{b}^{i,xh} + \bm{W}^{i,hh} \cdot \bm{h}_{t-1} + \bm{b}^{i,hh}) \\
+&amp;amp;\bm{o}_t = sigmoid(\bm{W}^{o,xh} \cdot \bm{x}_t + \bm{b}^{o,xh} + \bm{W}^{o,hh} \cdot \bm{x}_{t-1} + \bm{b}^{o,hh}) \\
+&amp;amp;\bm{u}_t = tanh(\bm{W}^{xh} \cdot \bm{x}_t + \bm{b}^{xh} + \bm{W}^{hh} \cdot \bm{h}_{t-1} + \bm{b}^{hh}) \\
+&amp;amp;\bm{c}_t = \bm{f}_t \odot \bm{c}_{t-1} + \bm{i}_t \odot \bm{u}_t \\
+&amp;amp;\bm{h}_t = \bm{o}_t \odot tanh(\bm{c}_t) \\
+&amp;amp;\bm{y}_t = Softmax(\bm{W}^{hy} \cdot \bm{h_t} + \bm{b}^{hy})
+\end{aligned}\]
+
+&lt;h3 id=&quot;5双向循环神经网络双向-lstm&quot;&gt;5、双向循环神经网络、双向 LSTM&lt;/h3&gt;
+
+&lt;div style=&quot;text-align: center;&quot;&gt;
+&lt;div class=&quot;graphviz-wrapper&quot;&gt;
+
+&lt;!-- Generated by graphviz version 2.43.0 (0)
+ --&gt;
+&lt;!-- Title: G Pages: 1 --&gt;
+&lt;svg role=&quot;img&quot; aria-label=&quot;graphviz-5d130f67fc1bf07abc38d62da6ddb01a&quot; width=&quot;278pt&quot; height=&quot;188pt&quot; viewBox=&quot;0.00 0.00 278.00 188.00&quot;&gt;
+&lt;title&gt;graphviz-5d130f67fc1bf07abc38d62da6ddb01a&lt;/title&gt;
+&lt;desc&gt;
+digraph G {
+	rankdir=BT
+	{rank=same h1 h2 hddd hn}
+
+	hddd[label=&amp;quot;...&amp;quot;]
+	xddd[label=&amp;quot;...&amp;quot;]
+	yddd[label=&amp;quot;...&amp;quot;]
+
+	y1[shape=plaintext]
+	y2[shape=plaintext]
+	yddd[shape=plaintext]
+	yn[shape=plaintext]
+	x1[shape=plaintext]
+	x2[shape=plaintext]
+	xddd[shape=plaintext]
+	xn[shape=plaintext]
+
+	h1 -&amp;gt; y1
+	h2 -&amp;gt; y2
+	hddd -&amp;gt; yddd
+	hn -&amp;gt; yn
+
+	h1 -&amp;gt; h2
+	h2 -&amp;gt; hddd
+	hddd -&amp;gt; hn
+
+	hn -&amp;gt; hddd
+	hddd -&amp;gt; h2
+	h2 -&amp;gt; h1
+
+	x1 -&amp;gt; h1
+	x2 -&amp;gt; h2
+	xddd -&amp;gt; hddd
+	xn -&amp;gt; hn
+}
+&lt;/desc&gt;
+
+&lt;g id=&quot;graph0&quot; class=&quot;graph&quot; transform=&quot;scale(1 1) rotate(0) translate(4 184)&quot;&gt;
+&lt;title&gt;G&lt;/title&gt;
+&lt;polygon fill=&quot;white&quot; stroke=&quot;transparent&quot; points=&quot;-4,4 -4,-184 274,-184 274,4 -4,4&quot; /&gt;
+&lt;!-- h1 --&gt;
+&lt;g id=&quot;node1&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h1&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;27&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h2 --&gt;
+&lt;g id=&quot;node2&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h2&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;99&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;99&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h1&amp;#45;&amp;gt;h2 --&gt;
+&lt;g id=&quot;edge5&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h1&amp;#45;&amp;gt;h2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M48.38,-101.27C54.78,-103.22 61.18,-103.89 67.58,-103.28&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;68.52,-106.66 77.64,-101.27 67.15,-99.8 68.52,-106.66&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- y1 --&gt;
+&lt;g id=&quot;node7&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;y1&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;y1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h1&amp;#45;&amp;gt;y1 --&gt;
+&lt;g id=&quot;edge1&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h1&amp;#45;&amp;gt;y1&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M27,-108.3C27,-116.02 27,-125.29 27,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;23.5,-133.9 27,-143.9 30.5,-133.9 23.5,-133.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h2&amp;#45;&amp;gt;h1 --&gt;
+&lt;g id=&quot;edge10&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h2&amp;#45;&amp;gt;h1&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M77.64,-78.73C71.24,-76.78 64.84,-76.11 58.44,-76.72&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;57.49,-73.34 48.38,-78.73 58.87,-80.2 57.49,-73.34&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- hddd --&gt;
+&lt;g id=&quot;node3&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;hddd&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;171&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;171&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h2&amp;#45;&amp;gt;hddd --&gt;
+&lt;g id=&quot;edge6&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h2&amp;#45;&amp;gt;hddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M120.38,-101.27C126.78,-103.22 133.18,-103.89 139.58,-103.28&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;140.52,-106.66 149.64,-101.27 139.15,-99.8 140.52,-106.66&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- y2 --&gt;
+&lt;g id=&quot;node8&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;y2&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;99&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;y2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h2&amp;#45;&amp;gt;y2 --&gt;
+&lt;g id=&quot;edge2&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h2&amp;#45;&amp;gt;y2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M99,-108.3C99,-116.02 99,-125.29 99,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;95.5,-133.9 99,-143.9 102.5,-133.9 95.5,-133.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- hddd&amp;#45;&amp;gt;h2 --&gt;
+&lt;g id=&quot;edge9&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;hddd&amp;#45;&amp;gt;h2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M149.64,-78.73C143.24,-76.78 136.84,-76.11 130.44,-76.72&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;129.49,-73.34 120.38,-78.73 130.87,-80.2 129.49,-73.34&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- hn --&gt;
+&lt;g id=&quot;node4&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;hn&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;243&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;243&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;hn&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- hddd&amp;#45;&amp;gt;hn --&gt;
+&lt;g id=&quot;edge7&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;hddd&amp;#45;&amp;gt;hn&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M192.38,-101.27C198.78,-103.22 205.18,-103.89 211.58,-103.28&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;212.52,-106.66 221.64,-101.27 211.15,-99.8 212.52,-106.66&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- yddd --&gt;
+&lt;g id=&quot;node6&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;yddd&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;171&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- hddd&amp;#45;&amp;gt;yddd --&gt;
+&lt;g id=&quot;edge3&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;hddd&amp;#45;&amp;gt;yddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M171,-108.3C171,-116.02 171,-125.29 171,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;167.5,-133.9 171,-143.9 174.5,-133.9 167.5,-133.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- hn&amp;#45;&amp;gt;hddd --&gt;
+&lt;g id=&quot;edge8&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;hn&amp;#45;&amp;gt;hddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M221.64,-78.73C215.24,-76.78 208.84,-76.11 202.44,-76.72&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;201.49,-73.34 192.38,-78.73 202.87,-80.2 201.49,-73.34&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- yn --&gt;
+&lt;g id=&quot;node9&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;yn&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;243&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;yn&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- hn&amp;#45;&amp;gt;yn --&gt;
+&lt;g id=&quot;edge4&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;hn&amp;#45;&amp;gt;yn&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M243,-108.3C243,-116.02 243,-125.29 243,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;239.5,-133.9 243,-143.9 246.5,-133.9 239.5,-133.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- xddd --&gt;
+&lt;g id=&quot;node5&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;xddd&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;171&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- xddd&amp;#45;&amp;gt;hddd --&gt;
+&lt;g id=&quot;edge13&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;xddd&amp;#45;&amp;gt;hddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M171,-36.3C171,-44.02 171,-53.29 171,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;167.5,-61.9 171,-71.9 174.5,-61.9 167.5,-61.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- x1 --&gt;
+&lt;g id=&quot;node10&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;x1&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;x1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- x1&amp;#45;&amp;gt;h1 --&gt;
+&lt;g id=&quot;edge11&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;x1&amp;#45;&amp;gt;h1&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M27,-36.3C27,-44.02 27,-53.29 27,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;23.5,-61.9 27,-71.9 30.5,-61.9 23.5,-61.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- x2 --&gt;
+&lt;g id=&quot;node11&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;x2&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;99&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;x2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- x2&amp;#45;&amp;gt;h2 --&gt;
+&lt;g id=&quot;edge12&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;x2&amp;#45;&amp;gt;h2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M99,-36.3C99,-44.02 99,-53.29 99,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;95.5,-61.9 99,-71.9 102.5,-61.9 95.5,-61.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- xn --&gt;
+&lt;g id=&quot;node12&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;xn&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;243&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;xn&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- xn&amp;#45;&amp;gt;hn --&gt;
+&lt;g id=&quot;edge14&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;xn&amp;#45;&amp;gt;hn&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M243,-36.3C243,-44.02 243,-53.29 243,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;239.5,-61.9 243,-71.9 246.5,-61.9 239.5,-61.9&quot; /&gt;
+&lt;/g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;6堆叠循环神经网络堆叠-lstm&quot;&gt;6、堆叠循环神经网络、堆叠 LSTM&lt;/h3&gt;
+
+&lt;div style=&quot;text-align: center;&quot;&gt;
+&lt;div class=&quot;graphviz-wrapper&quot;&gt;
+
+&lt;!-- Generated by graphviz version 2.43.0 (0)
+ --&gt;
+&lt;!-- Title: G Pages: 1 --&gt;
+&lt;svg role=&quot;img&quot; aria-label=&quot;graphviz-79478ee70f94925103b38a21c70c2539&quot; width=&quot;288pt&quot; height=&quot;260pt&quot; viewBox=&quot;0.00 0.00 288.19 260.00&quot;&gt;
+&lt;title&gt;graphviz-79478ee70f94925103b38a21c70c2539&lt;/title&gt;
+&lt;desc&gt;
+digraph G {
+	rankdir=BT
+	{rank=same h11 h12 h1ddd h1n}
+	{rank=same h21 h22 h2ddd h2n}
+
+	h1ddd[label=&amp;quot;...&amp;quot;]
+	h2ddd[label=&amp;quot;...&amp;quot;]
+	xddd[label=&amp;quot;...&amp;quot;]
+	yddd[label=&amp;quot;...&amp;quot;]
+
+	y1[shape=plaintext]
+	y2[shape=plaintext]
+	yddd[shape=plaintext]
+	yn[shape=plaintext]
+	x1[shape=plaintext]
+	x2[shape=plaintext]
+	xddd[shape=plaintext]
+	xn[shape=plaintext]
+
+	h11 -&amp;gt; y1
+	h12 -&amp;gt; y2
+	h1ddd -&amp;gt; yddd
+	h1n -&amp;gt; yn
+
+	h11 -&amp;gt; h12
+	h12 -&amp;gt; h1ddd
+	h1ddd -&amp;gt; h1n
+
+	h21 -&amp;gt; h22
+	h22 -&amp;gt; h2ddd
+	h2ddd -&amp;gt; h2n
+
+	h21 -&amp;gt; h11
+	h22 -&amp;gt; h12
+	h2ddd -&amp;gt; h1ddd
+	h2n -&amp;gt; h1n
+
+	x1 -&amp;gt; h21
+	x2 -&amp;gt; h22
+	xddd -&amp;gt; h2ddd
+	xn -&amp;gt; h2n
+}
+&lt;/desc&gt;
+
+&lt;g id=&quot;graph0&quot; class=&quot;graph&quot; transform=&quot;scale(1 1) rotate(0) translate(4 256)&quot;&gt;
+&lt;title&gt;G&lt;/title&gt;
+&lt;polygon fill=&quot;white&quot; stroke=&quot;transparent&quot; points=&quot;-4,4 -4,-256 284.19,-256 284.19,4 -4,4&quot; /&gt;
+&lt;!-- h11 --&gt;
+&lt;g id=&quot;node1&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h11&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;28.6&quot; cy=&quot;-162&quot; rx=&quot;28.7&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;28.6&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h11&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h12 --&gt;
+&lt;g id=&quot;node2&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h12&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;103.6&quot; cy=&quot;-162&quot; rx=&quot;28.7&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;103.6&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h12&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h11&amp;#45;&amp;gt;h12 --&gt;
+&lt;g id=&quot;edge5&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h11&amp;#45;&amp;gt;h12&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M57.31,-162C59.75,-162 62.19,-162 64.63,-162&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;64.67,-165.5 74.67,-162 64.67,-158.5 64.67,-165.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- y1 --&gt;
+&lt;g id=&quot;node11&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;y1&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;28.6&quot; y=&quot;-230.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;y1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h11&amp;#45;&amp;gt;y1 --&gt;
+&lt;g id=&quot;edge1&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h11&amp;#45;&amp;gt;y1&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M28.6,-180.3C28.6,-188.02 28.6,-197.29 28.6,-205.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;25.1,-205.9 28.6,-215.9 32.1,-205.9 25.1,-205.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h1ddd --&gt;
+&lt;g id=&quot;node3&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h1ddd&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;177.6&quot; cy=&quot;-162&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;177.6&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h12&amp;#45;&amp;gt;h1ddd --&gt;
+&lt;g id=&quot;edge6&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h12&amp;#45;&amp;gt;h1ddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M132.21,-162C134.85,-162 137.49,-162 140.13,-162&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;140.3,-165.5 150.3,-162 140.3,-158.5 140.3,-165.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- y2 --&gt;
+&lt;g id=&quot;node12&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;y2&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;103.6&quot; y=&quot;-230.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;y2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h12&amp;#45;&amp;gt;y2 --&gt;
+&lt;g id=&quot;edge2&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h12&amp;#45;&amp;gt;y2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M103.6,-180.3C103.6,-188.02 103.6,-197.29 103.6,-205.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;100.1,-205.9 103.6,-215.9 107.1,-205.9 100.1,-205.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h1n --&gt;
+&lt;g id=&quot;node4&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h1n&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;251.6&quot; cy=&quot;-162&quot; rx=&quot;28.7&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;251.6&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h1n&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h1ddd&amp;#45;&amp;gt;h1n --&gt;
+&lt;g id=&quot;edge7&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h1ddd&amp;#45;&amp;gt;h1n&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M204.77,-162C207.38,-162 210,-162 212.61,-162&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;212.7,-165.5 222.7,-162 212.7,-158.5 212.7,-165.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- yddd --&gt;
+&lt;g id=&quot;node10&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;yddd&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;177.6&quot; y=&quot;-230.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h1ddd&amp;#45;&amp;gt;yddd --&gt;
+&lt;g id=&quot;edge3&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h1ddd&amp;#45;&amp;gt;yddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M177.6,-180.3C177.6,-188.02 177.6,-197.29 177.6,-205.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;174.1,-205.9 177.6,-215.9 181.1,-205.9 174.1,-205.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- yn --&gt;
+&lt;g id=&quot;node13&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;yn&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;251.6&quot; y=&quot;-230.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;yn&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h1n&amp;#45;&amp;gt;yn --&gt;
+&lt;g id=&quot;edge4&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h1n&amp;#45;&amp;gt;yn&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M251.6,-180.3C251.6,-188.02 251.6,-197.29 251.6,-205.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;248.1,-205.9 251.6,-215.9 255.1,-205.9 248.1,-205.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h21 --&gt;
+&lt;g id=&quot;node5&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h21&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;28.6&quot; cy=&quot;-90&quot; rx=&quot;28.7&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;28.6&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h21&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h21&amp;#45;&amp;gt;h11 --&gt;
+&lt;g id=&quot;edge11&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h21&amp;#45;&amp;gt;h11&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M28.6,-108.3C28.6,-116.02 28.6,-125.29 28.6,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;25.1,-133.9 28.6,-143.9 32.1,-133.9 25.1,-133.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h22 --&gt;
+&lt;g id=&quot;node6&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h22&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;103.6&quot; cy=&quot;-90&quot; rx=&quot;28.7&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;103.6&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h22&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h21&amp;#45;&amp;gt;h22 --&gt;
+&lt;g id=&quot;edge8&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h21&amp;#45;&amp;gt;h22&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M57.31,-90C59.75,-90 62.19,-90 64.63,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;64.67,-93.5 74.67,-90 64.67,-86.5 64.67,-93.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h22&amp;#45;&amp;gt;h12 --&gt;
+&lt;g id=&quot;edge12&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h22&amp;#45;&amp;gt;h12&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M103.6,-108.3C103.6,-116.02 103.6,-125.29 103.6,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;100.1,-133.9 103.6,-143.9 107.1,-133.9 100.1,-133.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h2ddd --&gt;
+&lt;g id=&quot;node7&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h2ddd&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;177.6&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;177.6&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h22&amp;#45;&amp;gt;h2ddd --&gt;
+&lt;g id=&quot;edge9&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h22&amp;#45;&amp;gt;h2ddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M132.21,-90C134.85,-90 137.49,-90 140.13,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;140.3,-93.5 150.3,-90 140.3,-86.5 140.3,-93.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h2ddd&amp;#45;&amp;gt;h1ddd --&gt;
+&lt;g id=&quot;edge13&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h2ddd&amp;#45;&amp;gt;h1ddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M177.6,-108.3C177.6,-116.02 177.6,-125.29 177.6,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;174.1,-133.9 177.6,-143.9 181.1,-133.9 174.1,-133.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h2n --&gt;
+&lt;g id=&quot;node8&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h2n&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;251.6&quot; cy=&quot;-90&quot; rx=&quot;28.7&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;251.6&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h2n&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h2ddd&amp;#45;&amp;gt;h2n --&gt;
+&lt;g id=&quot;edge10&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h2ddd&amp;#45;&amp;gt;h2n&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M204.77,-90C207.38,-90 210,-90 212.61,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;212.7,-93.5 222.7,-90 212.7,-86.5 212.7,-93.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h2n&amp;#45;&amp;gt;h1n --&gt;
+&lt;g id=&quot;edge14&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h2n&amp;#45;&amp;gt;h1n&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M251.6,-108.3C251.6,-116.02 251.6,-125.29 251.6,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;248.1,-133.9 251.6,-143.9 255.1,-133.9 248.1,-133.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- xddd --&gt;
+&lt;g id=&quot;node9&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;xddd&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;177.6&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- xddd&amp;#45;&amp;gt;h2ddd --&gt;
+&lt;g id=&quot;edge17&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;xddd&amp;#45;&amp;gt;h2ddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M177.6,-36.3C177.6,-44.02 177.6,-53.29 177.6,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;174.1,-61.9 177.6,-71.9 181.1,-61.9 174.1,-61.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- x1 --&gt;
+&lt;g id=&quot;node14&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;x1&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;28.6&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;x1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- x1&amp;#45;&amp;gt;h21 --&gt;
+&lt;g id=&quot;edge15&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;x1&amp;#45;&amp;gt;h21&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M28.6,-36.3C28.6,-44.02 28.6,-53.29 28.6,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;25.1,-61.9 28.6,-71.9 32.1,-61.9 25.1,-61.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- x2 --&gt;
+&lt;g id=&quot;node15&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;x2&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;103.6&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;x2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- x2&amp;#45;&amp;gt;h22 --&gt;
+&lt;g id=&quot;edge16&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;x2&amp;#45;&amp;gt;h22&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M103.6,-36.3C103.6,-44.02 103.6,-53.29 103.6,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;100.1,-61.9 103.6,-71.9 107.1,-61.9 100.1,-61.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- xn --&gt;
+&lt;g id=&quot;node16&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;xn&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;251.6&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;xn&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- xn&amp;#45;&amp;gt;h2n --&gt;
+&lt;g id=&quot;edge18&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;xn&amp;#45;&amp;gt;h2n&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M251.6,-36.3C251.6,-44.02 251.6,-53.29 251.6,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;248.1,-61.9 251.6,-71.9 255.1,-61.9 248.1,-61.9&quot; /&gt;
+&lt;/g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;7n-vs-m-的-rnn&quot;&gt;7、N vs. M 的 RNN&lt;/h3&gt;
+
+&lt;p&gt;对于输入序列长度（长度 N）和输出序列长度（长度 M）不一样的 RNN 模型结构，也可以叫做 Encoder-Decoder 模型，也可以叫 Seq2Seq 模型。首先接收输入序列的 Encoder 先将输入序列转成一个隐藏态的上下文表示 C。C 可以只与最后一个隐藏层有关，甚至可以是最后一个隐藏层生成的隐藏态直接设置为 C，C 还可以与所有隐藏层有关。&lt;/p&gt;
+
+&lt;p&gt;有了这个 C 之后，再用 Decoder 进行解码，也就是从把 C 作为输入状态开始，生成输出序列。&lt;/p&gt;
+
+&lt;p&gt;这种的应用就非常广了，因为大多数时候输入序列与输出序列的长度都是不同的，比如最常见的应用「翻译」，从一个语言翻译成另一个语言；再比如 AI 的一个领域「语音识别」，将语音序列输入后生成所识别的文本内容；还有比如 ChatGPT 这种问答应用等等。&lt;/p&gt;
+
+&lt;p&gt;但是 Seq2Seq 模型有一个很显著的问题，就是当输入序列很长时，Encoder 生成的 Context 可能就会出现所捕捉的信息不充分的情况，导致 Decoder 最终的输出是不尽如人意的。&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center;&quot;&gt;
+&lt;div class=&quot;graphviz-wrapper&quot;&gt;
+
+&lt;!-- Generated by graphviz version 2.43.0 (0)
+ --&gt;
+&lt;!-- Title: G Pages: 1 --&gt;
+&lt;svg role=&quot;img&quot; aria-label=&quot;graphviz-094de5e41d0af67d4c5617e0f04d7b57&quot; width=&quot;638pt&quot; height=&quot;188pt&quot; viewBox=&quot;0.00 0.00 638.00 188.00&quot;&gt;
+&lt;title&gt;graphviz-094de5e41d0af67d4c5617e0f04d7b57&lt;/title&gt;
+&lt;desc&gt;
+digraph G {
+	rankdir=BT
+	{rank=same e1 e2 eddd en C d1 d2 dddd dm}
+
+	eddd[label=&amp;quot;...&amp;quot;]
+	dddd[label=&amp;quot;...&amp;quot;]
+	xddd[label=&amp;quot;...&amp;quot;]
+	yddd[label=&amp;quot;...&amp;quot;]
+	C[shape=plaintext]
+	x1[shape=plaintext]
+	x2[shape=plaintext]
+	xddd[shape=plaintext]
+	xn[shape=plaintext]
+	y1[shape=plaintext]
+	y2[shape=plaintext]
+	yddd[shape=plaintext]
+	yn[shape=plaintext]
+
+	x1 -&amp;gt; e1
+	x2 -&amp;gt; e2
+	xddd -&amp;gt; eddd
+	xn -&amp;gt; en
+
+	e1 -&amp;gt; e2
+	e2 -&amp;gt; eddd
+	eddd -&amp;gt; en
+
+	en -&amp;gt; C
+	C -&amp;gt; d1
+
+	d1 -&amp;gt; y1
+	d2 -&amp;gt; y2
+	dddd -&amp;gt; yddd
+	dm -&amp;gt; yn
+
+	d1 -&amp;gt; d2
+	d2 -&amp;gt; dddd
+	dddd -&amp;gt; dm
+}
+&lt;/desc&gt;
+
+&lt;g id=&quot;graph0&quot; class=&quot;graph&quot; transform=&quot;scale(1 1) rotate(0) translate(4 184)&quot;&gt;
+&lt;title&gt;G&lt;/title&gt;
+&lt;polygon fill=&quot;white&quot; stroke=&quot;transparent&quot; points=&quot;-4,4 -4,-184 634,-184 634,4 -4,4&quot; /&gt;
+&lt;!-- e1 --&gt;
+&lt;g id=&quot;node1&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;e1&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;27&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;e1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- e2 --&gt;
+&lt;g id=&quot;node2&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;e2&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;99&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;99&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;e2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- e1&amp;#45;&amp;gt;e2 --&gt;
+&lt;g id=&quot;edge5&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;e1&amp;#45;&amp;gt;e2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M54,-90C56.61,-90 59.23,-90 61.84,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;61.93,-93.5 71.93,-90 61.93,-86.5 61.93,-93.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- eddd --&gt;
+&lt;g id=&quot;node3&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;eddd&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;171&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;171&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- e2&amp;#45;&amp;gt;eddd --&gt;
+&lt;g id=&quot;edge6&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;e2&amp;#45;&amp;gt;eddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M126,-90C128.61,-90 131.23,-90 133.84,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;133.93,-93.5 143.93,-90 133.93,-86.5 133.93,-93.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- en --&gt;
+&lt;g id=&quot;node4&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;en&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;243&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;243&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;en&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- eddd&amp;#45;&amp;gt;en --&gt;
+&lt;g id=&quot;edge7&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;eddd&amp;#45;&amp;gt;en&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M198,-90C200.61,-90 203.23,-90 205.84,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;205.93,-93.5 215.93,-90 205.93,-86.5 205.93,-93.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- C --&gt;
+&lt;g id=&quot;node5&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;C&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;315&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;C&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- en&amp;#45;&amp;gt;C --&gt;
+&lt;g id=&quot;edge8&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;en&amp;#45;&amp;gt;C&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M270,-90C272.61,-90 275.23,-90 277.84,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;277.93,-93.5 287.93,-90 277.93,-86.5 277.93,-93.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- d1 --&gt;
+&lt;g id=&quot;node6&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;d1&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;387&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;387&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;d1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- C&amp;#45;&amp;gt;d1 --&gt;
+&lt;g id=&quot;edge9&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;C&amp;#45;&amp;gt;d1&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M342.28,-90C344.74,-90 347.19,-90 349.65,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;349.75,-93.5 359.75,-90 349.75,-86.5 349.75,-93.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- d2 --&gt;
+&lt;g id=&quot;node7&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;d2&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;459&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;459&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;d2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- d1&amp;#45;&amp;gt;d2 --&gt;
+&lt;g id=&quot;edge14&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;d1&amp;#45;&amp;gt;d2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M414,-90C416.61,-90 419.23,-90 421.84,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;421.93,-93.5 431.93,-90 421.93,-86.5 421.93,-93.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- y1 --&gt;
+&lt;g id=&quot;node15&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;y1&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;387&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;y1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- d1&amp;#45;&amp;gt;y1 --&gt;
+&lt;g id=&quot;edge10&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;d1&amp;#45;&amp;gt;y1&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M387,-108.3C387,-116.02 387,-125.29 387,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;383.5,-133.9 387,-143.9 390.5,-133.9 383.5,-133.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- dddd --&gt;
+&lt;g id=&quot;node8&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;dddd&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;531&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;531&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- d2&amp;#45;&amp;gt;dddd --&gt;
+&lt;g id=&quot;edge15&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;d2&amp;#45;&amp;gt;dddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M486,-90C488.61,-90 491.23,-90 493.84,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;493.93,-93.5 503.93,-90 493.93,-86.5 493.93,-93.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- y2 --&gt;
+&lt;g id=&quot;node16&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;y2&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;459&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;y2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- d2&amp;#45;&amp;gt;y2 --&gt;
+&lt;g id=&quot;edge11&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;d2&amp;#45;&amp;gt;y2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M459,-108.3C459,-116.02 459,-125.29 459,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;455.5,-133.9 459,-143.9 462.5,-133.9 455.5,-133.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- dm --&gt;
+&lt;g id=&quot;node9&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;dm&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;603&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;603&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;dm&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- dddd&amp;#45;&amp;gt;dm --&gt;
+&lt;g id=&quot;edge16&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;dddd&amp;#45;&amp;gt;dm&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M558,-90C560.61,-90 563.23,-90 565.84,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;565.93,-93.5 575.93,-90 565.93,-86.5 565.93,-93.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- yddd --&gt;
+&lt;g id=&quot;node11&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;yddd&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;531&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- dddd&amp;#45;&amp;gt;yddd --&gt;
+&lt;g id=&quot;edge12&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;dddd&amp;#45;&amp;gt;yddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M531,-108.3C531,-116.02 531,-125.29 531,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;527.5,-133.9 531,-143.9 534.5,-133.9 527.5,-133.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- yn --&gt;
+&lt;g id=&quot;node17&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;yn&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;603&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;yn&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- dm&amp;#45;&amp;gt;yn --&gt;
+&lt;g id=&quot;edge13&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;dm&amp;#45;&amp;gt;yn&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M603,-108.3C603,-116.02 603,-125.29 603,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;599.5,-133.9 603,-143.9 606.5,-133.9 599.5,-133.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- xddd --&gt;
+&lt;g id=&quot;node10&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;xddd&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;171&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- xddd&amp;#45;&amp;gt;eddd --&gt;
+&lt;g id=&quot;edge3&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;xddd&amp;#45;&amp;gt;eddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M171,-36.3C171,-44.02 171,-53.29 171,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;167.5,-61.9 171,-71.9 174.5,-61.9 167.5,-61.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- x1 --&gt;
+&lt;g id=&quot;node12&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;x1&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;x1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- x1&amp;#45;&amp;gt;e1 --&gt;
+&lt;g id=&quot;edge1&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;x1&amp;#45;&amp;gt;e1&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M27,-36.3C27,-44.02 27,-53.29 27,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;23.5,-61.9 27,-71.9 30.5,-61.9 23.5,-61.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- x2 --&gt;
+&lt;g id=&quot;node13&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;x2&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;99&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;x2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- x2&amp;#45;&amp;gt;e2 --&gt;
+&lt;g id=&quot;edge2&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;x2&amp;#45;&amp;gt;e2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M99,-36.3C99,-44.02 99,-53.29 99,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;95.5,-61.9 99,-71.9 102.5,-61.9 95.5,-61.9&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- xn --&gt;
+&lt;g id=&quot;node14&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;xn&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;243&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;xn&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- xn&amp;#45;&amp;gt;en --&gt;
+&lt;g id=&quot;edge4&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;xn&amp;#45;&amp;gt;en&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M243,-36.3C243,-44.02 243,-53.29 243,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;239.5,-61.9 243,-71.9 246.5,-61.9 239.5,-61.9&quot; /&gt;
+&lt;/g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;/div&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="RNN" /><category term="循环神经网络" /><category term="LSTM" /><summary type="html">本文目录</summary></entry><entry><title type="html">麦克船长的 NLP 语言模型技术笔记 2：多层感知器（MLP）</title><link href="https://www.mikecaptain.com/2022/12/30/language-model-2/" rel="alternate" type="text/html" title="麦克船长的 NLP 语言模型技术笔记 2：多层感知器（MLP）" /><published>2022-12-30T19:44:09+00:00</published><updated>2022-12-30T19:44:09+00:00</updated><id>https://www.mikecaptain.com/2022/12/30/language-model-2</id><content type="html" xml:base="https://www.mikecaptain.com/2022/12/30/language-model-2/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#1感知器perceptron解决二元分类任务的前馈神经网络&quot; id=&quot;markdown-toc-1感知器perceptron解决二元分类任务的前馈神经网络&quot;&gt;1、感知器（Perceptron）：解决二元分类任务的前馈神经网络&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#2线性回归linear-regression从离散值的感知器解决类问题到连续值的线性回归解决回归问题&quot; id=&quot;markdown-toc-2线性回归linear-regression从离散值的感知器解决类问题到连续值的线性回归解决回归问题&quot;&gt;2、线性回归（Linear Regression）：从离散值的感知器（解决类问题），到连续值的线性回归（解决回归问题）&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#3逻辑回归logistic-regression没有值域约束的线性回归到限定在一个范围内的逻辑回归常用于分类问题&quot; id=&quot;markdown-toc-3逻辑回归logistic-regression没有值域约束的线性回归到限定在一个范围内的逻辑回归常用于分类问题&quot;&gt;3、逻辑回归（Logistic Regression）：没有值域约束的线性回归，到限定在一个范围内的逻辑回归（常用于分类问题）&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#4sigmoid-回归sigmoid-regression归一化的逻辑回归一般用于二元分类任务&quot; id=&quot;markdown-toc-4sigmoid-回归sigmoid-regression归一化的逻辑回归一般用于二元分类任务&quot;&gt;4、Sigmoid 回归（Sigmoid Regression）：归一化的逻辑回归，一般用于二元分类任务&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#5softmax-回归softmax-regression从解决二元任务的-sigmoid到解决多元分类任务的-softmax&quot; id=&quot;markdown-toc-5softmax-回归softmax-regression从解决二元任务的-sigmoid到解决多元分类任务的-softmax&quot;&gt;5、Softmax 回归（Softmax Regression）：从解决二元任务的 sigmoid，到解决多元分类任务的 Softmax&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#6多层感知器multi-layer-perceptron&quot; id=&quot;markdown-toc-6多层感知器multi-layer-perceptron&quot;&gt;6、多层感知器（Multi-Layer Perceptron）&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#7mlp-的一个显著问题帮我们引出-cnn-模型&quot; id=&quot;markdown-toc-7mlp-的一个显著问题帮我们引出-cnn-模型&quot;&gt;7、MLP 的一个显著问题，帮我们引出 CNN 模型&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;本文关键词：感知器、线性回归、逻辑回归、激活函数、Sigmoid 函数/归一化/回归、Softmax 回归。&lt;/p&gt;
+
+&lt;p&gt;1957 年感知机（Perceptron）模型被提出，1959 年多层感知机（MLP）模型被提出。MLP 有时候也被称为 ANN，即 Artificial Neural Network，接下来我们来深入浅出地了解一下，并有一些动手的练习。&lt;/p&gt;
+
+&lt;h3 id=&quot;1感知器perceptron解决二元分类任务的前馈神经网络&quot;&gt;1、感知器（Perceptron）：解决二元分类任务的前馈神经网络&lt;/h3&gt;
+
+&lt;p&gt;\(x\) 是一个输入向量，\(\omega\) 是一个权重向量（对输入向量里的而每个值分配一个权重值所组成的向量）。举一个具体任务例子，比如如果这两个响亮的内积超过某个值，则判断为 1，否则为 0，这其实就是一个分类任务。那么这个最终输出值可以如下表示：&lt;/p&gt;
+
+\[y = \begin{cases} 1 &amp;amp; (\omega \cdot x \geq 0) \\ 0 &amp;amp; (\omega \cdot x \lt 0) \end{cases}\]
+
+&lt;p&gt;这就是一个典型的感知器（Perceptron，一般用来解决分类问题。还可以再增加一个偏差项（bias），如下：&lt;/p&gt;
+
+\[y = \begin{cases} 1 &amp;amp; (\omega \cdot x + b \geq 0) \\ 0 &amp;amp; (\omega \cdot x + b \lt 0) \end{cases}\]
+
+&lt;p&gt;感知器其实就是一个前馈神经网络，由输入层、输出层组成，没有隐藏层。而且输出是一个二元函数，用于解决二元分类问题。&lt;/p&gt;
+
+&lt;h3 id=&quot;2线性回归linear-regression从离散值的感知器解决类问题到连续值的线性回归解决回归问题&quot;&gt;2、线性回归（Linear Regression）：从离散值的感知器（解决类问题），到连续值的线性回归（解决回归问题）&lt;/h3&gt;
+
+&lt;p&gt;一般来说，我们认为感知器的输出结果，是离散值。一般来说，我们认为离散值作为输出解决的问题，是分类问题；相应地，连续值解决的问题是回归（Regression）。比如对于上面的感知器，如果我们直接将 \(\omega \cdot x + b\) 作为输出值，则就变成了一个线性回归问题的模型了。&lt;/p&gt;
+
+&lt;p&gt;下面我们用 PyTorch 来实现一个线性回归的代码示例，首先我们要了解在 PyTorch 库里有一个非常常用的函数：&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Linear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;in_features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out_features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这个函数在创建时会自动初始化权值和偏置，并且可以通过调用它的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;forward&lt;/code&gt; 函数来计算输入数据的线性变换。具体来说，当输入为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; 时，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;forward&lt;/code&gt; 函数会计算 \(y = \omega \cdot x + b\)，其中  \(W\)  和  \(b\)  分别是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nn.Linear&lt;/code&gt; 图层的权值和偏置。&lt;/p&gt;
+
+&lt;p&gt;我们来一个完整的代码示例：&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;torch&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;torch.nn&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 定义模型
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LinearRegression&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LinearRegression&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linear&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Linear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;forward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 初始化模型
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LinearRegression&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 定义损失函数和优化器
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;criterion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MSELoss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;optimizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;optim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SGD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.01&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 创建输入特征 X 和标签 y
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tensor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]])&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tensor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]])&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 训练模型
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;epoch&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# 前向传播
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;predictions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;loss&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;criterion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predictions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# 反向传播
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;optimizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zero_grad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;loss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;backward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;optimizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 创建测试数据 X_test 和标签 y_test
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_test&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tensor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]])&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;y_test&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tensor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]])&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 测试模型
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;no_grad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;predictions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;loss&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;criterion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predictions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;Test loss: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;上述代码，一开始先创建一个 LinearRegression 线性回归模型的类，其中有一个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;forward&lt;/code&gt; 前向传播函数，调用时其实就是计算一下输出值 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;主程序，一开始创建一个线性回归模型实例，然后定义一个用于评价模型效果的损失函数评价器，和用随机梯度下降（Stochastic Gradient Descent）作为优化器。&lt;/p&gt;
+
+&lt;p&gt;然后创建一个输入特征张量，和标签张量。用这组特征和标签进行训练，训练的过程就是根据 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;X&lt;/code&gt; 计算与测试 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;predictions&lt;/code&gt; 向量，再把它和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y&lt;/code&gt; 一起给评价器算出损失 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;loss&lt;/code&gt;，然后进行反向传播。注意反向传播的三行代码：&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;optimizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zero_grad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;loss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;backward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;optimizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;如此训练 100 次（每一次都会黑盒化地更新模型的参数，一个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;epoch&lt;/code&gt; 就是一次训练过程，有时也称为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iteration&lt;/code&gt; 或者 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;step&lt;/code&gt;，不断根据 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;loss&lt;/code&gt; 训练优化模型参数。&lt;/p&gt;
+
+&lt;p&gt;然后我们创建了一组测试特征值张量 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;X_test&lt;/code&gt;，和测试标签张量 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y_test&lt;/code&gt;，然后用它们测试模型性能，把测试特征得到的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;predictions&lt;/code&gt; 与 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y_test&lt;/code&gt; 共同传给评价器，得到 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;loss&lt;/code&gt;。在这个例子中我们会得到如下结果：&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Test&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0034&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;3逻辑回归logistic-regression没有值域约束的线性回归到限定在一个范围内的逻辑回归常用于分类问题&quot;&gt;3、逻辑回归（Logistic Regression）：没有值域约束的线性回归，到限定在一个范围内的逻辑回归（常用于分类问题）&lt;/h3&gt;
+
+&lt;p&gt;可以看到线性回归问题，输出值是没有范围限定的。如果限定（limit）在特定的  \((0, L)\)  范围内，则就叫做逻辑回归了。那么如何将一个线性回归变成逻辑回归呢？一般通过如下公式变换：&lt;/p&gt;
+
+\[y = \frac{L}{1 + e^{-k(z-z_0)}}\]
+
+&lt;p&gt;这样原来的  \(z \in (-\infty, +\infty)\)  就被变换成了  \(y \in (0, L)\)  了。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;激活函数&lt;/strong&gt;：这种把输出值限定在一个目标范围内的函数，被叫做 &lt;strong&gt;激活函数（Activation Function）&lt;/strong&gt;。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;函数的陡峭程度&lt;/strong&gt; 由  \(k\)  控制，越大越陡。&lt;/li&gt;
+  &lt;li&gt;当  \(z = z_0\)  时， \(y = \frac{L}{2}\) 。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;下面给出一个基于 Python 的 scikit-learn 库的示例代码：&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.linear_model&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LogisticRegression&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.datasets&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;load_iris&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.model_selection&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_test_split&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;这是&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scikit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;learn&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;库里的一个简单的数据集&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;iris&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;load_iris&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;把&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iris&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;数据集拆分成训练集和测试集两部分&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;X_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X_test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_test&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_test_split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iris&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iris&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random_state&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;用&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scikit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;learn&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;库创建一个逻辑回归模型的实例&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;lr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LogisticRegression&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;用上边&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;split&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;出来的训练集数据&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;训练&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lr&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;模型实例&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;lr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;用训练过的模型&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;拿测试集的输入数据做测试&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;predictions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;用测试集的数据验证精确性&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;accuracy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;score&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;predictions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;accuracy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;4sigmoid-回归sigmoid-regression归一化的逻辑回归一般用于二元分类任务&quot;&gt;4、Sigmoid 回归（Sigmoid Regression）：归一化的逻辑回归，一般用于二元分类任务&lt;/h3&gt;
+
+&lt;p&gt;当  \(L = 1, k = 1, z_0 = 0\) ，此时的激活函数就是 &lt;strong&gt;Sigmoid&lt;/strong&gt; 函数，如下：&lt;/p&gt;
+
+\[y = \frac{1}{1 + e^{-z}}\]
+
+&lt;p&gt;Sigmoid 回归的值域，恰好在 (0, 1) 之间，所以常备作为用来归一化的激活函数。而一个线性回归模型，再用 sigmoid 函数归一化，这种也常被称为「Sigmoid 回归」。Sigmoid 这个单词的意思也就是 S 形，我们可以看下它的函数图像如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2022-12-19-language-model-2.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;因为归一化，所以也可以把输出值理解为一个概率。比如我们面对一个二元分类问题，那么输出结果就对应属于这个类别的概率。&lt;/p&gt;
+
+&lt;p&gt;这样一个 sigmoid 模型可以表示为：&lt;/p&gt;
+
+\[\bold{y} = Sigmoid(\bold{W} \cdot \bold{x} + \bold{b})\]
+
+&lt;p&gt;另外 sigmoid 函数的导数（即梯度）是很好算的： \(y&apos; = y \cdot (1-y)\) 。这非常方便用于「梯度下降算法」根据 loss 对模型参数进行优化。Sigmoid 回归，一般用于二元分类任务。那么对于超过二元的情况怎么办呢？这就引出了下面的 Softmax 回归。&lt;/p&gt;
+
+&lt;h3 id=&quot;5softmax-回归softmax-regression从解决二元任务的-sigmoid到解决多元分类任务的-softmax&quot;&gt;5、Softmax 回归（Softmax Regression）：从解决二元任务的 sigmoid，到解决多元分类任务的 Softmax&lt;/h3&gt;
+
+&lt;p&gt;相对逻辑回归，Softmax 也称为多项逻辑回归。上面说 Sigmoid 一般用于解决二元分类问题，那么多元问题就要用 Softmax 回归了。我们来拿一个具体问题来解释，比如问题是对于任意输入的一个电商商品的图片，来判断这个图片所代表的的商品，属于哪个商品类目。假设我们一共有 100 个类目。那么一个图片比如说其所有像素值作为输入特征值，输出就是一个 100 维的向量 ** \(z\) **，输出向量中的每个值  \(z_i\)  表示属于相对应类目的概率  \(y_i\)  ：&lt;/p&gt;
+
+\[y_i = Softmax(\bold{z})_i = \frac{e^{z_i}}{e^{z_1} + e^{z_2} + ... + e^{z_100}}\]
+
+&lt;p&gt;那么最后得到的  \(y\)  向量中的每一项就对应这个输入  \(z\)  属于这 100 个类目的各自概率了。所以如果回归到一般问题，这个 Softmax 回归的模型就如下：&lt;/p&gt;
+
+\[\bold{y} = Softmax(\bold{W} \cdot \bold{x} + \bold{b})\]
+
+&lt;p&gt;对于上面电商商品图片的例子，假设每个图片的尺寸是 512x512，这个模型展开式如下：&lt;/p&gt;
+
+\[\begin{bmatrix} y_1 \\ y_2 \\ ... \\ y_{100} \end{bmatrix} = Softmax(\begin{bmatrix} w_{1,1}, &amp;amp; w_{1,2}, &amp;amp; ... &amp;amp; w_{1, 512} \\ w_{2,1}, &amp;amp; w_{2,2}, &amp;amp; ... &amp;amp; w_{2, 512} \\ ... &amp;amp; ... &amp;amp; ... &amp;amp; ... \\ w_{100,1}, &amp;amp; w_{100,2}, &amp;amp; ... &amp;amp; w_{100, 512} \end{bmatrix} \cdot \begin{bmatrix} x_1 \\ x_2 \\ ... \\ x_{512} \end{bmatrix} + \begin{bmatrix} b_1 \\ b_2 \\ ... \\ b_{512} \end{bmatrix})\]
+
+&lt;p&gt;这个对输入向量  \(x\)  执行  \(w \cdot x + b\)  运算，一般也常称为「线性映射/线性变化」。&lt;/p&gt;
+
+&lt;h3 id=&quot;6多层感知器multi-layer-perceptron&quot;&gt;6、多层感知器（Multi-Layer Perceptron）&lt;/h3&gt;
+
+&lt;p&gt;上面我们遇到的所有任务，都是用线性模型（Linear Models）解决的。有时候问题复杂起来，我们就要引入非线性模型了。&lt;/p&gt;
+
+&lt;p&gt;这里我们要介绍一个新的激活函数 —— ReLU（Rectified Linear Unit）—— 一个非线性激活函数，其定义如下：&lt;/p&gt;
+
+\[ReLU(\bold{z}) = max(0, \bold{z})\]
+
+&lt;p&gt;比如对于 MNIST 数据集的手写数字分类问题，就是一个典型的非线性的分类任务，下面给出一个示例代码：&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;torch&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;torch.nn&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;torchvision&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;torchvision.transforms&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;transforms&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 定义多层感知器模型
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MLP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_classes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MLP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fc1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Linear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;relu&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ReLU&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fc2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Linear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_classes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;forward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fc1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;relu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fc2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 超参数
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;784&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;num_classes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;num_epochs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;batch_size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;learning_rate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.001&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 加载 MNIST 数据集
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train_dataset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datasets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MNIST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;../../data&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                               &lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                               &lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transforms&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ToTensor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
+                               &lt;span class=&quot;n&quot;&gt;download&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;test_dataset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datasets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MNIST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;../../data&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                              &lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                              &lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transforms&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ToTensor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 数据加载器
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train_loader&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;utils&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DataLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dataset&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train_dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                           &lt;span class=&quot;n&quot;&gt;batch_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;batch_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                           &lt;span class=&quot;n&quot;&gt;shuffle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;test_loader&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;utils&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DataLoader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dataset&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test_dataset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                          &lt;span class=&quot;n&quot;&gt;batch_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;batch_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                          &lt;span class=&quot;n&quot;&gt;shuffle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MLP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_classes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 定义损失函数和优化器
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;criterion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CrossEntropyLoss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;optimizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;optim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Adam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;learning_rate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 训练模型
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;epoch&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num_epochs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;images&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_loader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# 前向传播
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;outputs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;images&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;loss&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;criterion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;outputs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# 反向传播
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;optimizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zero_grad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;loss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;backward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;optimizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# 输出训练损失
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;Epoch &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;epoch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;, Training Loss: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loss&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这段代码里，我们能看到 MLP 的模型定义是：&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Linear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ReLU&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Linear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_classes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;与前面的模型示例代码类似，也都用到了反向传播、损失函数评价器、优化器。如果用公式表示的话，就是如下的模型定义：&lt;/p&gt;
+
+\[\begin{aligned}
+&amp;amp;\bold{z} = \bold{W}_1 \cdot \bold{x} + \bold{b}_1 \\
+&amp;amp;\bold{h} = ReLU(\bold{z}) \\
+&amp;amp;\bold{y} = \bold{W}_2 \cdot \bold{h} + \bold{b}_2
+\end{aligned}\]
+
+&lt;p&gt;我们知道 MLP 通常是一个输入和输出长度相同的模型，但少数情况下也可以构建输入和输出长度不同的 MLP 模型，比如输入一组序列后，输出是一个离散的分类结果。&lt;/p&gt;
+
+&lt;h3 id=&quot;7mlp-的一个显著问题帮我们引出-cnn-模型&quot;&gt;7、MLP 的一个显著问题，帮我们引出 CNN 模型&lt;/h3&gt;
+
+&lt;p&gt;我们可以看到，在 MLP 中，不论有多少层，某一层的输出向量  \(h_n\)  中的每个值，都会在下一层计算输出向量  \(h_{n+1}\)  的每个值时用到。具体来说，如果对于某一层的输出值如下：&lt;/p&gt;
+
+\[\bold{h}_{n+1} = Softmax(\bold{W}_{n+1} \cdot \bold{h}_n + \bold{b}_{n+1})\]
+
+&lt;p&gt;上一段话里所谓的「用到」，其实就是要针对  \(h_n\)  生成相应的特征值  \(W_{n+1}\)  权重矩阵中的每个行列里的数值和  \(b_{n+1}\) 偏差向量 里的每个值。如果用图画出来，就是：&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center;&quot;&gt;
+&lt;div class=&quot;graphviz-wrapper&quot;&gt;
+
+&lt;!-- Generated by graphviz version 2.43.0 (0)
+ --&gt;
+&lt;!-- Title: G Pages: 1 --&gt;
+&lt;svg role=&quot;img&quot; aria-label=&quot;graphviz-1b1299448dc08c90d29bebf8b1f045c1&quot; width=&quot;428pt&quot; height=&quot;116pt&quot; viewBox=&quot;0.00 0.00 427.64 116.00&quot;&gt;
+&lt;title&gt;graphviz-1b1299448dc08c90d29bebf8b1f045c1&lt;/title&gt;
+&lt;desc&gt;
+digraph G {
+	rankdir=TB
+	a[label=&amp;quot;...&amp;quot;]
+	b[label=&amp;quot;...&amp;quot;]
+	h_2_1[label=&amp;quot;h_n+1_1&amp;quot;]
+	h_2_2[label=&amp;quot;h_n+1_2&amp;quot;]
+	h_2_m[label=&amp;quot;h_n+1_m&amp;quot;]
+
+	{rank=same h_n_1 h_n_2 b h_n_m}
+	{rank=same h_2_1 h_2_2 a h_2_m}
+
+	h_n_1 -&amp;gt; h_2_1
+	h_n_1 -&amp;gt; h_2_2
+	h_n_1 -&amp;gt; a
+	h_n_1 -&amp;gt; h_2_m
+
+	h_n_1 -&amp;gt; h_2_1
+	h_n_2 -&amp;gt; h_2_2
+	h_n_2 -&amp;gt; a
+	h_n_2 -&amp;gt; h_2_m
+
+	b -&amp;gt; h_2_1
+	b -&amp;gt; h_2_2
+	b -&amp;gt; a
+	b -&amp;gt; h_2_m
+
+	h_n_m -&amp;gt; h_2_1
+	h_n_m -&amp;gt; h_2_2
+	h_n_m -&amp;gt; a
+	h_n_m -&amp;gt; h_2_m
+}
+&lt;/desc&gt;
+
+&lt;g id=&quot;graph0&quot; class=&quot;graph&quot; transform=&quot;scale(1 1) rotate(0) translate(4 112)&quot;&gt;
+&lt;title&gt;G&lt;/title&gt;
+&lt;polygon fill=&quot;white&quot; stroke=&quot;transparent&quot; points=&quot;-4,4 -4,-112 423.64,-112 423.64,4 -4,4&quot; /&gt;
+&lt;!-- a --&gt;
+&lt;g id=&quot;node1&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;a&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;146.7&quot; cy=&quot;-18&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;146.7&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- b --&gt;
+&lt;g id=&quot;node2&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;b&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;151.7&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;151.7&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- b&amp;#45;&amp;gt;a --&gt;
+&lt;g id=&quot;edge11&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;b&amp;#45;&amp;gt;a&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M150.46,-71.7C149.91,-63.98 149.25,-54.71 148.63,-46.11&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;152.12,-45.83 147.92,-36.1 145.14,-46.33 152.12,-45.83&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h_2_1 --&gt;
+&lt;g id=&quot;node3&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h_2_1&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;50.7&quot; cy=&quot;-18&quot; rx=&quot;50.89&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;50.7&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h_n+1_1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- b&amp;#45;&amp;gt;h_2_1 --&gt;
+&lt;g id=&quot;edge9&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;b&amp;#45;&amp;gt;h_2_1&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M133.64,-76.49C119.14,-66.44 98.46,-52.11 81.38,-40.27&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;83.04,-37.16 72.83,-34.34 79.05,-42.91 83.04,-37.16&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h_2_2 --&gt;
+&lt;g id=&quot;node4&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h_2_2&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;242.7&quot; cy=&quot;-18&quot; rx=&quot;50.89&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;242.7&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h_n+1_2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- b&amp;#45;&amp;gt;h_2_2 --&gt;
+&lt;g id=&quot;edge10&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;b&amp;#45;&amp;gt;h_2_2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M168.81,-75.83C181.67,-65.94 199.56,-52.18 214.52,-40.67&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;216.69,-43.42 222.48,-34.55 212.42,-37.87 216.69,-43.42&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h_2_m --&gt;
+&lt;g id=&quot;node5&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h_2_m&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;365.7&quot; cy=&quot;-18&quot; rx=&quot;53.89&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;365.7&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h_n+1_m&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- b&amp;#45;&amp;gt;h_2_m --&gt;
+&lt;g id=&quot;edge12&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;b&amp;#45;&amp;gt;h_2_m&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M172.78,-78.39C177.62,-76.14 182.79,-73.88 187.7,-72 211.14,-63.03 271.93,-45.36 315.95,-32.9&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;316.96,-36.25 325.63,-30.16 315.05,-29.51 316.96,-36.25&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h_n_1 --&gt;
+&lt;g id=&quot;node6&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h_n_1&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;69.7&quot; cy=&quot;-90&quot; rx=&quot;37.09&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;69.7&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h_n_1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h_n_1&amp;#45;&amp;gt;a --&gt;
+&lt;g id=&quot;edge3&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h_n_1&amp;#45;&amp;gt;a&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M86.4,-73.81C97.36,-63.85 111.83,-50.7 123.85,-39.77&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;126.28,-42.29 131.33,-32.97 121.57,-37.11 126.28,-42.29&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h_n_1&amp;#45;&amp;gt;h_2_1 --&gt;
+&lt;g id=&quot;edge1&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h_n_1&amp;#45;&amp;gt;h_2_1&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M59.35,-72.41C56.39,-64.62 53.56,-55.14 51.51,-46.33&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;54.92,-45.55 49.5,-36.45 48.06,-46.94 54.92,-45.55&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h_n_1&amp;#45;&amp;gt;h_2_1 --&gt;
+&lt;g id=&quot;edge5&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h_n_1&amp;#45;&amp;gt;h_2_1&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M70.91,-71.7C69.57,-63.7 67.15,-54.02 64.35,-45.15&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;67.63,-43.93 61.05,-35.62 61.01,-46.22 67.63,-43.93&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h_n_1&amp;#45;&amp;gt;h_2_2 --&gt;
+&lt;g id=&quot;edge2&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h_n_1&amp;#45;&amp;gt;h_2_2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M97.49,-77.75C125.45,-66.44 168.9,-48.86 200.99,-35.87&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;202.6,-39 210.56,-32 199.97,-32.51 202.6,-39&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h_n_1&amp;#45;&amp;gt;h_2_m --&gt;
+&lt;g id=&quot;edge4&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h_n_1&amp;#45;&amp;gt;h_2_m&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M97.68,-77.83C103.57,-75.71 109.79,-73.65 115.7,-72 197.22,-49.25 220.23,-55.04 302.7,-36 307.03,-35 311.53,-33.9 316.02,-32.77&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;317.01,-36.13 325.81,-30.24 315.26,-29.35 317.01,-36.13&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h_n_2 --&gt;
+&lt;g id=&quot;node7&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h_n_2&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;331.7&quot; cy=&quot;-90&quot; rx=&quot;37.09&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;331.7&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h_n_2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h_n_2&amp;#45;&amp;gt;a --&gt;
+&lt;g id=&quot;edge7&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h_n_2&amp;#45;&amp;gt;a&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M303.01,-78.31C297.28,-76.2 291.3,-74.02 285.7,-72 240.06,-55.59 227.57,-54.38 182.7,-36 180.87,-35.25 179.01,-34.46 177.14,-33.65&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;178.4,-30.38 167.85,-29.44 175.52,-36.75 178.4,-30.38&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h_n_2&amp;#45;&amp;gt;h_2_2 --&gt;
+&lt;g id=&quot;edge6&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h_n_2&amp;#45;&amp;gt;h_2_2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M312.82,-74.15C300.65,-64.58 284.6,-51.96 270.93,-41.21&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;272.8,-38.23 262.78,-34.8 268.48,-43.73 272.8,-38.23&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h_n_2&amp;#45;&amp;gt;h_2_m --&gt;
+&lt;g id=&quot;edge8&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h_n_2&amp;#45;&amp;gt;h_2_m&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M339.75,-72.41C343.72,-64.25 348.59,-54.22 353.04,-45.07&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;356.24,-46.48 357.46,-35.96 349.94,-43.42 356.24,-46.48&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h_n_m --&gt;
+&lt;g id=&quot;node8&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;h_n_m&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;236.7&quot; cy=&quot;-90&quot; rx=&quot;40.09&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;236.7&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h_n_m&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- h_n_m&amp;#45;&amp;gt;a --&gt;
+&lt;g id=&quot;edge15&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h_n_m&amp;#45;&amp;gt;a&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M217.17,-73.81C203.86,-63.46 186.11,-49.66 171.76,-38.49&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;173.8,-35.65 163.76,-32.27 169.5,-41.17 173.8,-35.65&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h_n_m&amp;#45;&amp;gt;h_2_1 --&gt;
+&lt;g id=&quot;edge13&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h_n_m&amp;#45;&amp;gt;h_2_1&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M206.81,-77.75C176.21,-66.24 128.35,-48.22 93.68,-35.18&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;94.87,-31.89 84.28,-31.64 92.41,-38.44 94.87,-31.89&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h_n_m&amp;#45;&amp;gt;h_2_2 --&gt;
+&lt;g id=&quot;edge14&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h_n_m&amp;#45;&amp;gt;h_2_2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M238.18,-71.7C238.84,-63.98 239.63,-54.71 240.37,-46.11&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;243.86,-46.37 241.23,-36.1 236.89,-45.77 243.86,-46.37&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- h_n_m&amp;#45;&amp;gt;h_2_m --&gt;
+&lt;g id=&quot;edge16&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;h_n_m&amp;#45;&amp;gt;h_2_m&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M261.26,-75.67C280.58,-65.19 307.78,-50.43 329.57,-38.6&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;331.42,-41.58 338.54,-33.73 328.08,-35.43 331.42,-41.58&quot; /&gt;
+&lt;/g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;可以看到，输入的所有元素都被连接，即被分配权重 w 和偏差项 b，所以这被称为一个「全连接层（&lt;strong&gt;Fully Connected Layer&lt;/strong&gt;）」或者「&lt;strong&gt;稠密层（Dense Layer）&lt;/strong&gt;」。但是对于一些任务这样做是很蠢的，会付出大量无效的计算。&lt;/p&gt;
+
+&lt;p&gt;因此我们需要 focus 在更少量计算成本的模型，于是有了卷积神经网络（CNN）。关于 CNN 请看本系列博客的第「3」篇。&lt;/p&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="ai" /><category term="MLP" /><category term="感知器" /><summary type="html">本文目录</summary></entry><entry><title type="html">自然语言处理 AIGC 近年的发展脉络、关键论文、技术里程碑和商业应用</title><link href="https://www.mikecaptain.com/2022/12/24/captain-nlp-1/" rel="alternate" type="text/html" title="自然语言处理 AIGC 近年的发展脉络、关键论文、技术里程碑和商业应用" /><published>2022-12-24T15:08:01+00:00</published><updated>2022-12-24T15:08:01+00:00</updated><id>https://www.mikecaptain.com/2022/12/24/captain-nlp-1</id><content type="html" xml:base="https://www.mikecaptain.com/2022/12/24/captain-nlp-1/">&lt;ul&gt;
   &lt;li&gt;作者：麦克船长（钟超）&lt;/li&gt;
   &lt;li&gt;微信：sinosuperman&lt;/li&gt;
 &lt;/ul&gt;
@@ -1620,20 +3431,4 @@ digraph G {
 &lt;img src=&quot;/img/src/2021-11-11-captain-tttm-4.jpg&quot; alt=&quot;imagee&quot; /&gt;
 &lt;img src=&quot;/img/src/2021-11-11-captain-tttm-5.jpg&quot; alt=&quot;imagee&quot; /&gt;
 &lt;img src=&quot;/img/src/2021-11-11-captain-tttm-6.jpg&quot; alt=&quot;imagee&quot; /&gt;
-&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-7.jpg&quot; alt=&quot;imagee&quot; /&gt;&lt;/p&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="thinking" /><category term="思考" /><summary type="html">阿里内部创业项目「天天特卖」招合伙人啦！以「特卖合伙人」为基石的、以「使众人行」的战友感为人才基本要求、以「用人做事，而非做事用人」为人才建设核心，是天天特卖团队的组织管理理念。天天特卖期待你的加入！</summary></entry><entry><title type="html">麦克船长的阿里一年香（入职阿里一周年）</title><link href="https://www.mikecaptain.com/2021/06/04/captain-alibaba-1st-anniversary/" rel="alternate" type="text/html" title="麦克船长的阿里一年香（入职阿里一周年）" /><published>2021-06-04T15:42:43+00:00</published><updated>2021-06-04T15:42:43+00:00</updated><id>https://www.mikecaptain.com/2021/06/04/captain-alibaba-1st-anniversary</id><content type="html" xml:base="https://www.mikecaptain.com/2021/06/04/captain-alibaba-1st-anniversary/">&lt;p&gt;To 钟超&lt;/p&gt;
-
-&lt;p&gt;1 周年快乐！很开心我们有这样一段共事的机会，虽开始时有些许波折，但随着进一步相处，我们很快能做到彼此欣赏、英雄相惜、默契配合，也特别感谢你对我的信任和支持，这是一切共事的基础。你强大的自驱力、脑力、对新事物的理解学习能力，都是最近几手新人里比较突出的。特别钦佩于你的执着和初性，对一件事认定后，迸发出的强大战斗力和决心。今天特卖这个新业务需要扎下根基，还真的需要一些舍我其谁的胆魄和更为犀利的突破，我也相信「新特卖」能成为你在阿里又一代表作，我希望我们的团队能为之骄傲和自豪，我们能不负公司所托，真正在下沉市场这场硬仗上有所建树，井取得令我们自己感到骄傲的突破，一起加油。&lt;/p&gt;
-
-&lt;p&gt;From 麦克船长的主管&lt;/p&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="thinking" /><category term="思考" /><summary type="html">本文记录了麦克船长来到阿里巴巴集团整整一年时，麦克船长的主管给的寄语。考虑到公司商业敏感问题，做了一定的删节。现记录于此，用于以后的回顾。</summary></entry><entry><title type="html">担任淘宝产品总负责人的双十一，是怎样的体验？</title><link href="https://www.mikecaptain.com/2020/11/11/captain-double-eleven/" rel="alternate" type="text/html" title="担任淘宝产品总负责人的双十一，是怎样的体验？" /><published>2020-11-11T15:59:43+00:00</published><updated>2020-11-11T15:59:43+00:00</updated><id>https://www.mikecaptain.com/2020/11/11/captain-double-eleven</id><content type="html" xml:base="https://www.mikecaptain.com/2020/11/11/captain-double-eleven/">&lt;p&gt;说是体验，其实本文只记录了一些影像，是关于麦克船长来到阿里巴巴集团的第一个双十一，负责担任淘宝的总PD（产品总负责人）。一年一度的双十一成了淘宝，乃至整个阿里集团的传统，就像阿里这家公司的春节过年一样，气氛热烈，而且消费者和商家朋友们也都会跟我们一同迎来一次购物与销售的狂欢。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-1.jpg&quot; alt=&quot;image&quot; /&gt;
-&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-2.jpg&quot; alt=&quot;image&quot; /&gt;
-&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-3.jpg&quot; alt=&quot;image&quot; /&gt;
-&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-4.jpg&quot; alt=&quot;image&quot; /&gt;
-&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-5.jpg&quot; alt=&quot;image&quot; /&gt;
-&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-6.jpg&quot; alt=&quot;image&quot; /&gt;
-&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-7.jpg&quot; alt=&quot;image&quot; /&gt;
-&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-8.jpg&quot; alt=&quot;image&quot; /&gt;
-&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-9.jpg&quot; alt=&quot;image&quot; /&gt;
-&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-10.jpg&quot; alt=&quot;image&quot; /&gt;
-&lt;img src=&quot;/img/src/2020-11-11-captain-double-eleven-11.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="thinking" /><category term="思考" /><summary type="html">本文记录了一些影像，是关于麦克船长来到阿里巴巴集团的第一个双十一，负责担任淘宝的总PD（产品总负责人）。一年一度的双十一成了淘宝，乃至整个阿里集团的传统，就像阿里这家公司的春节过年一样，气氛热烈，而且消费者和商家朋友们也都会跟我们一同迎来一次购物与销售的狂欢。</summary></entry></feed>
+&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-7.jpg&quot; alt=&quot;imagee&quot; /&gt;&lt;/p&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="thinking" /><category term="思考" /><summary type="html">阿里内部创业项目「天天特卖」招合伙人啦！以「特卖合伙人」为基石的、以「使众人行」的战友感为人才基本要求、以「用人做事，而非做事用人」为人才建设核心，是天天特卖团队的组织管理理念。天天特卖期待你的加入！</summary></entry></feed>
