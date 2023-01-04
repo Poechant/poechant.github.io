@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>OpenRTMFP/Cumulus 原理、源码及实践 2：CumulusServer 源码启动流程分析</title>
+  	<meta name="description" content="本文是麦克船长《OpenRTMFP/Cumulus 原理、源码及实践》系列文章的第二篇，相关内容最初首发于 CSDN 的 Poechant 技术博客，后整理于本博客。本文对 CumulusServer 的启动流程进行了详细的源码解读，其中还包括 CumulusServer 如何处理命令行的各个输入选项、各项命令、如何 dump logs、载入配置、处理日志。">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/pages/Poechant/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/pages/Poechant/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/pages/Poechant/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/pages/Poechant/booklist/" title="我的书单">我的书单</a>
+	    
+	  
+	    
+	      <a href="/pages/Poechant/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+  <a href="/pages/Poechant/category/web" title="前端技术">前端技术</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/pages/Poechant/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+          <a href="/pages/Poechant/booklist/" title="我的书单">我的书单</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/pages/Poechant/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+  <a href="/pages/Poechant/category/web" title="前端技术">前端技术</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/pages/Poechant/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+          <a href="/pages/Poechant/booklist/" title="我的书单">我的书单</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>OpenRTMFP/Cumulus 原理、源码及实践 2：CumulusServer 源码启动流程分析</h2>		
+	<time datetime="2012-04-14T11:20:46+00:00" class="by-line">14 Apr 2012, 广州 | 作者 麦克船长 | 总计 18890 字</time>
+	<div class="content">
+		<p><strong>本文目录</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#一cumulus-启动源码分析" id="markdown-toc-一cumulus-启动源码分析">一、Cumulus 启动源码分析</a>    <ul>
+      <li><a href="#1maincpp-中的-main-函数" id="markdown-toc-1maincpp-中的-main-函数">1、<code class="language-plaintext highlighter-rouge">main.cpp</code> 中的 <code class="language-plaintext highlighter-rouge">main()</code> 函数</a></li>
+      <li><a href="#2maincpp-中的-cumulusserver-构造函数" id="markdown-toc-2maincpp-中的-cumulusserver-构造函数">2、<code class="language-plaintext highlighter-rouge">main.cpp</code> 中的 <code class="language-plaintext highlighter-rouge">CumulusServer()</code> 构造函数</a></li>
+      <li><a href="#3maincpp-中的-cumulusserver-的-initialize-成员函数" id="markdown-toc-3maincpp-中的-cumulusserver-的-initialize-成员函数">3、<code class="language-plaintext highlighter-rouge">main.cpp</code> 中的 <code class="language-plaintext highlighter-rouge">CumulusServer</code> 的 <code class="language-plaintext highlighter-rouge">initialize()</code> 成员函数</a></li>
+      <li><a href="#4maincpp-中的-cumulusserver-的-main-成员函数" id="markdown-toc-4maincpp-中的-cumulusserver-的-main-成员函数">4、<code class="language-plaintext highlighter-rouge">main.cpp</code> 中的 <code class="language-plaintext highlighter-rouge">CumulusServer</code> 的 <code class="language-plaintext highlighter-rouge">main()</code> 成员函数</a></li>
+      <li><a href="#5cumulusserver-是-serverapplication-的子类" id="markdown-toc-5cumulusserver-是-serverapplication-的子类">5、<code class="language-plaintext highlighter-rouge">CumulusServer</code> 是 <code class="language-plaintext highlighter-rouge">ServerApplication</code> 的子类</a></li>
+      <li><a href="#6serverapplication-是-application-的子类" id="markdown-toc-6serverapplication-是-application-的子类">6、<code class="language-plaintext highlighter-rouge">ServerApplication</code> 是 <code class="language-plaintext highlighter-rouge">Application</code> 的子类</a></li>
+      <li><a href="#7反初始化" id="markdown-toc-7反初始化">7、反初始化</a></li>
+    </ul>
+  </li>
+  <li><a href="#二cumulusserver-各项交互功能的源码解读" id="markdown-toc-二cumulusserver-各项交互功能的源码解读">二、<code class="language-plaintext highlighter-rouge">CumulusServer</code> 各项交互功能的源码解读</a>    <ul>
+      <li><a href="#1命令行选项设定" id="markdown-toc-1命令行选项设定">1、命令行选项设定</a></li>
+      <li><a href="#2处理命令行选项" id="markdown-toc-2处理命令行选项">2、处理命令行选项</a></li>
+      <li><a href="#6dump-logs" id="markdown-toc-6dump-logs">6、Dump logs</a></li>
+      <li><a href="#3停止运行" id="markdown-toc-3停止运行">3、停止运行</a></li>
+      <li><a href="#4载入配置" id="markdown-toc-4载入配置">4、载入配置</a></li>
+      <li><a href="#5处理日志" id="markdown-toc-5处理日志">5、处理日志</a></li>
+    </ul>
+  </li>
+  <li><a href="#三maincpp-的-main-函数源码分析" id="markdown-toc-三maincpp-的-main-函数源码分析">三、<code class="language-plaintext highlighter-rouge">main.cpp</code> 的 <code class="language-plaintext highlighter-rouge">main()</code> 函数源码分析</a>    <ul>
+      <li><a href="#1maincpp-中的-main-函数中的-server" id="markdown-toc-1maincpp-中的-main-函数中的-server">1、<code class="language-plaintext highlighter-rouge">main.cpp</code> 中的 <code class="language-plaintext highlighter-rouge">main()</code> 函数中的 <code class="language-plaintext highlighter-rouge">server</code></a></li>
+      <li><a href="#2maincpp-中-main-函数的-serverstart" id="markdown-toc-2maincpp-中-main-函数的-serverstart">2、<code class="language-plaintext highlighter-rouge">main.cpp</code> 中 <code class="language-plaintext highlighter-rouge">main()</code> 函数的 <code class="language-plaintext highlighter-rouge">server.start()</code></a></li>
+      <li><a href="#3回顾一下整个启动流程" id="markdown-toc-3回顾一下整个启动流程">3、回顾一下整个启动流程</a></li>
+      <li><a href="#4rtmfpserverprerunstartableprerun-和-rtmfpserverrun-函数源码" id="markdown-toc-4rtmfpserverprerunstartableprerun-和-rtmfpserverrun-函数源码">4、<code class="language-plaintext highlighter-rouge">RTMFPServer::prerun()</code>、<code class="language-plaintext highlighter-rouge">Startable::prerun()</code> 和 <code class="language-plaintext highlighter-rouge">RTMFPServer::run(...)</code> 函数源码</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>本文对 CumulusServer 的启动流程进行了详细的源码解读，其中还包括 CumulusServer 如何处理命令行的各个输入选项、各项命令、如何 dump logs、载入配置、处理日志。首先要知道的是，OpenRTMFP/Cumulus 中使用到的库有 Poco、OpenSSL 和 Lua。</p>
+
+<h3 id="一cumulus-启动源码分析">一、Cumulus 启动源码分析</h3>
+
+<h4 id="1maincpp-中的-main-函数">1、<code class="language-plaintext highlighter-rouge">main.cpp</code> 中的 <code class="language-plaintext highlighter-rouge">main()</code> 函数</h4>
+
+<p>入口在 <code class="language-plaintext highlighter-rouge">main.cpp</code> 中：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+</code></pre></div></div>
+
+<p>先检查内存泄露，不过目前这个开发中的项目还没有实现这个功能，只是个空函数：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">DetectMemoryLeak</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>然后会创建一个匿名的 <code class="language-plaintext highlighter-rouge">CumulusServer</code> 对象，并调用其 <code class="language-plaintext highlighter-rouge">run()</code> 函数，该函数由 <code class="language-plaintext highlighter-rouge">CumulusServer</code> 从 <code class="language-plaintext highlighter-rouge">ServerApplication</code> 中继承而来，而 <code class="language-plaintext highlighter-rouge">ServerApplication</code> 由是从 <code class="language-plaintext highlighter-rouge">Application</code> 继承而来的。<code class="language-plaintext highlighter-rouge">CumulusServer</code> 对象调用 <code class="language-plaintext highlighter-rouge">run()</code> 函数，实际是 <code class="language-plaintext highlighter-rouge">ServerApplication</code> 的 <code class="language-plaintext highlighter-rouge">run()</code> 函数，<code class="language-plaintext highlighter-rouge">ServerApplication</code> 的 <code class="language-plaintext highlighter-rouge">run()</code> 函数则是调用 <code class="language-plaintext highlighter-rouge">Application</code> 的函数，而该 <code class="language-plaintext highlighter-rouge">run()</code> 函数则是先调用 <code class="language-plaintext highlighter-rouge">initialize()</code> 函数，然后调用 <code class="language-plaintext highlighter-rouge">main()</code> 函数，然后调用 <code class="language-plaintext highlighter-rouge">uninitialize()</code> 函数。如果 <code class="language-plaintext highlighter-rouge">initialize()</code> 函数被调用时抛出异常，则不会执行 <code class="language-plaintext highlighter-rouge">main()</code> 函数，但仍然会执行 <code class="language-plaintext highlighter-rouge">uninitialize()</code> 函数：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1">// Runs the application by performing additional initializations</span>
+    <span class="c1">// and calling the main() method.</span>
+    <span class="k">return</span> <span class="nf">CumulusServer</span><span class="p">().</span><span class="n">run</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+<span class="err">}</span>
+</code></pre></div></div>
+
+<h4 id="2maincpp-中的-cumulusserver-构造函数">2、<code class="language-plaintext highlighter-rouge">main.cpp</code> 中的 <code class="language-plaintext highlighter-rouge">CumulusServer()</code> 构造函数</h4>
+
+<p><code class="language-plaintext highlighter-rouge">CumulusServer</code> 的构造函数定义为：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">CumulusServer</span><span class="p">()</span><span class="o">:</span> <span class="n">_helpRequested</span><span class="p">(</span><span class="nb">false</span><span class="p">),</span> <span class="c1">// 显示帮助信息</span>
+                 <span class="n">_pCirrus</span><span class="p">(</span><span class="nb">NULL</span><span class="p">),</span>
+                 <span class="n">_middle</span><span class="p">(</span><span class="nb">false</span><span class="p">),</span>
+                 <span class="n">_isInteractive</span><span class="p">(</span><span class="nb">true</span><span class="p">),</span>
+                 <span class="n">_pLogFile</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="3maincpp-中的-cumulusserver-的-initialize-成员函数">3、<code class="language-plaintext highlighter-rouge">main.cpp</code> 中的 <code class="language-plaintext highlighter-rouge">CumulusServer</code> 的 <code class="language-plaintext highlighter-rouge">initialize()</code> 成员函数</h4>
+
+<p>在执行 <code class="language-plaintext highlighter-rouge">main()</code> 函数之前，<code class="language-plaintext highlighter-rouge">CumulusServer</code> 会启动 <code class="language-plaintext highlighter-rouge">initialize()</code> 函数，传入的参数就是 <code class="language-plaintext highlighter-rouge">CumulusServer</code> 自己，可以猜到 <code class="language-plaintext highlighter-rouge">Poco::Util::Application</code> 的 <code class="language-plaintext highlighter-rouge">run</code> 方法中，调用该函数时的参数是 <code class="language-plaintext highlighter-rouge">this</code>。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">Application</span><span class="o">&amp;</span> <span class="n">self</span><span class="p">)</span> <span class="p">{</span>
+</code></pre></div></div>
+
+<p>调用父函数 <code class="language-plaintext highlighter-rouge">ServerApplication</code> 的初始化函数：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ServerApplication</span><span class="o">::</span><span class="n">initialize</span><span class="p">(</span><span class="n">self</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>再继续下面的源码分析之前，先要知道，根据 <code class="language-plaintext highlighter-rouge">Poco::Util::Application</code> ，<code class="language-plaintext highlighter-rouge">Application</code> 类有一些内置的配置属性，如下：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">application.path</code>: 可执行文件的绝对路径；</li>
+  <li><code class="language-plaintext highlighter-rouge">application.name</code>: 可执行文件的文件名（含扩展名）；</li>
+  <li><code class="language-plaintext highlighter-rouge">application.baseName</code>: 可执行文件的文件名（不含扩展名）</li>
+  <li><code class="language-plaintext highlighter-rouge">application.dir</code>: 可执行文件的所在目录；</li>
+  <li><code class="language-plaintext highlighter-rouge">application.configDir</code>: 配置文件所在目录；</li>
+</ul>
+
+<p>所以下面就读取了可执行文件的所在目录，其中第二个参数表示默认值（即当前目录）：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">string</span> <span class="n">dir</span> <span class="o">=</span> <span class="n">config</span><span class="p">().</span><span class="n">getString</span><span class="p">(</span><span class="s">"application.dir"</span><span class="p">,</span> <span class="s">"./"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>然后读取配置文件，目录为上一句所得到的 <code class="language-plaintext highlighter-rouge">dir</code>，文件名（不含扩展名）为 <code class="language-plaintext highlighter-rouge">application.basename</code> 内置配置属性值，其默认值为 <code class="language-plaintext highlighter-rouge">CumulusServer</code>，然后加上点和扩展名 <code class="language-plaintext highlighter-rouge">.ini</code>。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">loadConfiguration</span><span class="p">(</span><span class="n">dir</span>
+        <span class="o">+</span> <span class="n">config</span><span class="p">().</span><span class="n">getString</span><span class="p">(</span><span class="s">"application.baseName"</span><span class="p">,</span> <span class="s">"CumulusServer"</span><span class="p">)</span>
+        <span class="o">+</span> <span class="s">".ini"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>这样就加载完配置了。然后查看当前的进程是从命令行运行的（命令行是交互的，所以是 interactive），还是以 daemon 方式运行的，这个函数是ServerApplication的一个成员函数：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">_isInteractive</span> <span class="o">=</span> <span class="n">isInteractive</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>然后获取表示日志文件所在目录的字符串，其中 <code class="language-plaintext highlighter-rouge">logs.directory</code> 是外置配置属性（配置文件中），其默认值为上面获取到的可执行文件路径（一般为当前路径）与 <code class="language-plaintext highlighter-rouge">logs</code> 的组合，即一般为当前目录下的 <code class="language-plaintext highlighter-rouge">logs</code> 目录：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">string</span> <span class="nf">logDir</span><span class="p">(</span><span class="n">config</span><span class="p">().</span><span class="n">getString</span><span class="p">(</span><span class="s">"logs.directory"</span><span class="p">,</span> <span class="n">dir</span> <span class="o">+</span> <span class="s">"logs"</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>创建日志文件目录：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">File</span><span class="p">(</span><span class="n">logDir</span><span class="p">).</span><span class="n">createDirectory</span><span class="p">();</span>
+
+</code></pre></div></div>
+
+<p>日志文件绝对路径，<code class="language-plaintext highlighter-rouge">logs</code> 为默认的日志文件名（不含扩展名的部分），扩展名用0：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">_logPath</span> <span class="o">=</span> <span class="n">logDir</span> <span class="o">+</span> <span class="s">"/"</span> <span class="o">+</span> <span class="n">config</span><span class="p">().</span><span class="n">getString</span><span class="p">(</span><span class="s">"logs.name"</span><span class="p">,</span> <span class="s">"log"</span><span class="p">)</span> <span class="o">+</span> <span class="s">"."</span><span class="p">;</span>
+    <span class="n">_pLogFile</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">File</span><span class="p">(</span><span class="n">_logPath</span> <span class="o">+</span> <span class="s">"0"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>用日志流打开日志文件（方式为追加写入）：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">_logStream</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">_pLogFile</span><span class="o">-&gt;</span><span class="n">path</span><span class="p">(),</span> <span class="n">ios</span><span class="o">::</span><span class="n">in</span> <span class="o">|</span> <span class="n">ios</span><span class="o">::</span><span class="n">ate</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Logs</code> 是一个方法类（其中的 <code class="language-plaintext highlighter-rouge">public</code> 函数都是静态的），<code class="language-plaintext highlighter-rouge">SetLogger</code> 的作用就是将Logs中的似有静态成员设置为某个 <code class="language-plaintext highlighter-rouge">Cumulus::Logger</code> 对象（由于 <code class="language-plaintext highlighter-rouge">CumulusServer</code> 继承了 <code class="language-plaintext highlighter-rouge">Cumulus::Logger</code>）。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">Logs</span><span class="o">::</span><span class="n">SetLogger</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span>
+<span class="err">}</span>
+</code></pre></div></div>
+
+<h4 id="4maincpp-中的-cumulusserver-的-main-成员函数">4、<code class="language-plaintext highlighter-rouge">main.cpp</code> 中的 <code class="language-plaintext highlighter-rouge">CumulusServer</code> 的 <code class="language-plaintext highlighter-rouge">main()</code> 成员函数</h4>
+
+<p>OpenRTMFP/Cumulus 是一个基于 <code class="language-plaintext highlighter-rouge">Poco::Util::Application</code> 的服务端应用（准确的说是基于 <code class="language-plaintext highlighter-rouge">Poco::Util::ServerApplication</code> 的服务端应用）。如果没有特殊的启动要求，可以调用 <code class="language-plaintext highlighter-rouge">Poco/Application.h</code> 中定义的宏 <code class="language-plaintext highlighter-rouge">POCO_APP_MAIN</code> 来完成初始化、日志和启动（该宏会根据不同的平台启用不同的 <code class="language-plaintext highlighter-rouge">main()</code> 函数）。</p>
+
+<p><code class="language-plaintext highlighter-rouge">run()</code> 函数在调用完 <code class="language-plaintext highlighter-rouge">initialize()</code> 函数后，会调用 <code class="language-plaintext highlighter-rouge">CumulusServer</code> 中的 <code class="language-plaintext highlighter-rouge">main()</code> 函数，该 <code class="language-plaintext highlighter-rouge">main()</code> 函数的定义在 <code class="language-plaintext highlighter-rouge">main.cpp</code> 中：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&amp;</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+</code></pre></div></div>
+
+<p>首先看是否是要求帮助信息，<code class="language-plaintext highlighter-rouge">displayHelp</code> 是借助 <code class="language-plaintext highlighter-rouge">Poco::Util::HelpFormatter</code> 实现的，<code class="language-plaintext highlighter-rouge">CumulusServer</code> 的构造函数会在调用时将 <code class="language-plaintext highlighter-rouge">_helpRequested</code> 设置为 <code class="language-plaintext highlighter-rouge">false</code>。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">if</span> <span class="p">(</span><span class="n">_helpRequested</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">displayHelp</span><span class="p">();</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>如果不是，则进入启动状态，首先创建一个 <code class="language-plaintext highlighter-rouge">RTMFPServerParams</code> 对象 <code class="language-plaintext highlighter-rouge">params</code>，用来存储 OpenRTMFP/CumulusServer 的基本配置信息。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">else</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">RTMFPServerParams</span> <span class="n">params</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">params</code> 存储 <code class="language-plaintext highlighter-rouge">CumulusServer</code> 的端口号和 <code class="language-plaintext highlighter-rouge">CumulusEdge</code> 的端口号：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            <span class="n">params</span><span class="p">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">config</span><span class="p">().</span><span class="n">getInt</span><span class="p">(</span><span class="s">"port"</span><span class="p">,</span> <span class="n">params</span><span class="p">.</span><span class="n">port</span><span class="p">);</span>
+            <span class="n">UInt16</span> <span class="n">edgesPort</span> <span class="o">=</span> <span class="n">config</span><span class="p">().</span><span class="n">getInt</span><span class="p">(</span><span class="s">"edges.port"</span><span class="p">,</span>
+                <span class="n">RTMFP_DEFAULT_PORT</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">config</span><span class="p">().</span><span class="n">getBool</span><span class="p">(</span><span class="s">"edges.activated"</span><span class="p">,</span><span class="nb">false</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">edgesPort</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+                    <span class="n">WARN</span><span class="p">(</span><span class="s">"edges.port must have a positive value if \
+                          edges.activated is true. Server edges is \
+                          disactivated."</span><span class="p">);</span>
+                <span class="n">params</span><span class="p">.</span><span class="n">edgesPort</span><span class="o">=</span><span class="n">edgesPort</span><span class="p">;</span>
+            <span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">_pCirrus</code> 为 <code class="language-plaintext highlighter-rouge">SocketAddress</code> 的成员，是封装IP地址和端口号的对象。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            <span class="n">params</span><span class="p">.</span><span class="n">pCirrus</span> <span class="o">=</span> <span class="n">_pCirrus</span><span class="p">;</span>
+            <span class="n">params</span><span class="p">.</span><span class="n">middle</span> <span class="o">=</span> <span class="n">_middle</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>UDB 所使用的缓冲区大小：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            <span class="n">params</span><span class="p">.</span><span class="n">udpBufferSize</span> <span class="o">=</span> <span class="n">config</span><span class="p">().</span><span class="n">getInt</span><span class="p">(</span><span class="s">"udpBufferSize"</span><span class="p">,</span>
+                <span class="n">params</span><span class="p">.</span><span class="n">udpBufferSize</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            <span class="n">params</span><span class="p">.</span><span class="n">keepAliveServer</span> <span class="o">=</span> <span class="n">config</span><span class="p">().</span><span class="n">getInt</span><span class="p">(</span>
+                <span class="s">"keepAliveServer"</span><span class="p">,</span><span class="n">params</span><span class="p">.</span><span class="n">keepAliveServer</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            <span class="n">params</span><span class="p">.</span><span class="n">keepAlivePeer</span> <span class="o">=</span> <span class="n">config</span><span class="p">().</span><span class="n">getInt</span><span class="p">(</span><span class="s">"keepAlivePeer"</span><span class="p">,</span>
+                <span class="n">params</span><span class="p">.</span><span class="n">keepAlivePeer</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>失败前 CumulusEdge 的尝试次数：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            <span class="n">params</span><span class="p">.</span><span class="n">edgesAttemptsBeforeFallback</span> <span class="o">=</span> <span class="n">config</span><span class="p">().</span><span class="n">getInt</span><span class="p">(</span>
+                <span class="s">"edges.attemptsBeforeFallback"</span><span class="p">,</span>
+                <span class="n">params</span><span class="p">.</span><span class="n">edgesAttemptsBeforeFallback</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            <span class="n">Server</span> <span class="nf">server</span><span class="p">(</span><span class="n">config</span><span class="p">().</span><span class="n">getString</span><span class="p">(</span><span class="s">"application.dir"</span><span class="p">,</span><span class="s">"./"</span><span class="p">),</span>
+                <span class="o">*</span><span class="k">this</span><span class="p">,</span><span class="n">config</span><span class="p">());</span>
+</code></pre></div></div>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            <span class="n">server</span><span class="p">.</span><span class="n">start</span><span class="p">(</span><span class="n">params</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">waitForTerminationRequest()</code> 函数是 <code class="language-plaintext highlighter-rouge">main()</code> 函数中必须调用的，意为等待终止运行的操作请求。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            <span class="c1">// wait for CTRL-C or kill</span>
+            <span class="n">waitForTerminationRequest</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>一旦接收到终止操作的请求，就会执行下面这句，用以退出 OpenRTMFP/Cumulus 的运行：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>            <span class="c1">// Stop the server</span>
+            <span class="n">server</span><span class="p">.</span><span class="n">stop</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">catch</code> 一些可能产生的异常：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="err">}</span> <span class="k">catch</span><span class="p">(</span><span class="n">Exception</span><span class="o">&amp;</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">FATAL</span><span class="p">(</span><span class="s">"Configuration problem : %s"</span><span class="p">,</span><span class="n">ex</span><span class="p">.</span><span class="n">displayText</span><span class="p">().</span><span class="n">c_str</span><span class="p">());</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">exception</span><span class="o">&amp;</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">FATAL</span><span class="p">(</span><span class="s">"CumulusServer : %s"</span><span class="p">,</span><span class="n">ex</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(...)</span> <span class="p">{</span>
+            <span class="n">FATAL</span><span class="p">(</span><span class="s">"CumulusServer unknown error"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="err">}</span>
+</code></pre></div></div>
+
+<p>OpenRTMFP/CumulusServer 停止运行：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">return</span> <span class="n">Application</span><span class="o">::</span><span class="n">EXIT_OK</span><span class="p">;</span>
+<span class="err">}</span>
+</code></pre></div></div>
+
+<h4 id="5cumulusserver-是-serverapplication-的子类">5、<code class="language-plaintext highlighter-rouge">CumulusServer</code> 是 <code class="language-plaintext highlighter-rouge">ServerApplication</code> 的子类</h4>
+
+<p><code class="language-plaintext highlighter-rouge">ServerApplication</code> 对其子类有如下要求：</p>
+
+<ul>
+  <li>Subsystems must be registered in the constructor.</li>
+  <li>All non-trivial initializations must be made in the <code class="language-plaintext highlighter-rouge">initialize()</code>` method.</li>
+  <li>At the end of the <code class="language-plaintext highlighter-rouge">main()</code> method, <code class="language-plaintext highlighter-rouge">waitForTerminationRequest()</code> should be called.</li>
+</ul>
+
+<h4 id="6serverapplication-是-application-的子类">6、<code class="language-plaintext highlighter-rouge">ServerApplication</code> 是 <code class="language-plaintext highlighter-rouge">Application</code> 的子类</h4>
+
+<p>Application 对其子类的要求是，如下这些成员函数必须被覆盖：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">initialize()</code> (the one-argument, protected variant)：上一篇已介绍过。</li>
+  <li><code class="language-plaintext highlighter-rouge">uninitialize()</code>：下面会介绍，Application 的 <code class="language-plaintext highlighter-rouge">run()</code> 函数会在调用 <code class="language-plaintext highlighter-rouge">main()</code> 函数后调用 <code class="language-plaintext highlighter-rouge">uninitialize()</code> 函数。</li>
+  <li><code class="language-plaintext highlighter-rouge">reinitialize()</code></li>
+  <li><code class="language-plaintext highlighter-rouge">defineOptions()</code>：定义命令行启动选项。</li>
+  <li><code class="language-plaintext highlighter-rouge">handleOption()</code>：响应相应的命令行选项。</li>
+  <li><code class="language-plaintext highlighter-rouge">main()</code></li>
+</ul>
+
+<h4 id="7反初始化">7、反初始化</h4>
+
+<p><code class="language-plaintext highlighter-rouge">CumulusServer</code> 是继承 <code class="language-plaintext highlighter-rouge">ServerApplication</code> 的，<code class="language-plaintext highlighter-rouge">ServerApplication</code> 是继承 <code class="language-plaintext highlighter-rouge">Application</code> 的。<code class="language-plaintext highlighter-rouge">Application</code> 的 <code class="language-plaintext highlighter-rouge">run()</code> 函数会先调用 <code class="language-plaintext highlighter-rouge">initialize()</code>，然后调用 <code class="language-plaintext highlighter-rouge">main()</code>，最后调用 <code class="language-plaintext highlighter-rouge">uninitialize</code>。最后这个反初始化过程，在 <code class="language-plaintext highlighter-rouge">CumulusServer</code> 就是直接调用父类的 <code class="language-plaintext highlighter-rouge">uninitialize</code> 函数。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">uninitialize</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">ServerApplication</span><span class="o">::</span><span class="n">uninitialize</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="二cumulusserver-各项交互功能的源码解读">二、<code class="language-plaintext highlighter-rouge">CumulusServer</code> 各项交互功能的源码解读</h3>
+
+<h4 id="1命令行选项设定">1、命令行选项设定</h4>
+
+<p><code class="language-plaintext highlighter-rouge">CumulusServer</code> 的命令行选项有：<code class="language-plaintext highlighter-rouge">log（l）</code>、<code class="language-plaintext highlighter-rouge">dump（d）</code>、<code class="language-plaintext highlighter-rouge">cirrus（c）</code>、<code class="language-plaintext highlighter-rouge">middle（m）</code>、<code class="language-plaintext highlighter-rouge">help（h）</code>。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">defineOptions</span><span class="p">(</span><span class="n">OptionSet</span><span class="o">&amp;</span> <span class="n">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ServerApplication</span><span class="o">::</span><span class="n">defineOptions</span><span class="p">(</span><span class="n">options</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>设定日志级别（0 - 8，默认是 6，表示 info 级别）。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">options</span><span class="p">.</span><span class="n">addOption</span><span class="p">(</span>
+        <span class="n">Option</span><span class="p">(</span><span class="s">"log"</span><span class="p">,</span> <span class="s">"l"</span><span class="p">,</span> <span class="s">"Log level argument, must be beetween 0 and 8 : \
+            nothing, fatal, critic, error, warn, note, info, debug, trace. \
+            Default value is 6 (info), all logs until info level are displayed."</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">required</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">argument</span><span class="p">(</span><span class="s">"level"</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">repeatable</span><span class="p">(</span><span class="nb">false</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>其他一些选项：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">options</span><span class="p">.</span><span class="n">addOption</span><span class="p">(</span>
+        <span class="n">Option</span><span class="p">(</span><span class="s">"dump"</span><span class="p">,</span> <span class="s">"d"</span><span class="p">,</span> <span class="s">"Enables packet traces in logs. Optional arguments \
+            are 'middle' or 'all' respectively to displays just middle packet \
+            process or all packet process. If no argument is given, just outside \
+            packet process will be dumped."</span><span class="p">,</span><span class="nb">false</span><span class="p">,</span><span class="s">"middle|all"</span><span class="p">,</span><span class="nb">false</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">repeatable</span><span class="p">(</span><span class="nb">false</span><span class="p">));</span>
+</code></pre></div></div>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">options</span><span class="p">.</span><span class="n">addOption</span><span class="p">(</span>
+        <span class="n">Option</span><span class="p">(</span><span class="s">"cirrus"</span><span class="p">,</span> <span class="s">"c"</span><span class="p">,</span> <span class="s">"Cirrus address to activate a 'man-in-the-middle' \
+            developer mode in bypassing flash packets to the official cirrus \
+            server of your choice, it's a instable mode to help Cumulus developers, \
+            </span><span class="se">\"</span><span class="s">p2p.rtmfp.net:10000</span><span class="se">\"</span><span class="s"> for example. By adding the 'dump' argument, \
+            you will able to display Cirrus/Flash packet exchange in your logs \
+            (see 'dump' argument)."</span><span class="p">,</span><span class="nb">false</span><span class="p">,</span><span class="s">"address"</span><span class="p">,</span><span class="nb">true</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">repeatable</span><span class="p">(</span><span class="nb">false</span><span class="p">));</span>
+</code></pre></div></div>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">options</span><span class="p">.</span><span class="n">addOption</span><span class="p">(</span>
+        <span class="n">Option</span><span class="p">(</span><span class="s">"middle"</span><span class="p">,</span> <span class="s">"m"</span><span class="p">,</span><span class="s">"Enables a 'man-in-the-middle' developer mode \
+            between two peers. It's a instable mode to help Cumulus developers. \
+            By adding the 'dump' argument, you will able to display Flash/Flash \
+            packet exchange in your logs (see 'dump' argument)."</span><span class="p">)</span>
+                <span class="p">.</span><span class="n">repeatable</span><span class="p">(</span><span class="nb">false</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>显示帮助信息的选项：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">options</span><span class="p">.</span><span class="n">addOption</span><span class="p">(</span>
+        <span class="n">Option</span><span class="p">(</span><span class="s">"help"</span><span class="p">,</span> <span class="s">"h"</span><span class="p">,</span> <span class="s">"Displays help information about command-line usage."</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">required</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+            <span class="p">.</span><span class="n">repeatable</span><span class="p">(</span><span class="nb">false</span><span class="p">));</span>
+<span class="err">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">OptionSet</code> 是 <code class="language-plaintext highlighter-rouge">Poco::Util::OptionSet</code>，调用addOption可以向其中增加选项Option。其中required和repeatable表示：</p>
+
+<p>Sets whether the option is required (flag == true) or optional (flag == false).
+Returns true if the option can be specified more than once, or false if at most once.
+当需要显示帮助信息时，调用如下函数：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">displayHelp</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">HelpFormatter</span> <span class="n">helpFormatter</span><span class="p">(</span><span class="n">options</span><span class="p">());</span>
+    <span class="n">helpFormatter</span><span class="p">.</span><span class="n">setCommand</span><span class="p">(</span><span class="n">commandName</span><span class="p">());</span>
+    <span class="n">helpFormatter</span><span class="p">.</span><span class="n">setUsage</span><span class="p">(</span><span class="s">"OPTIONS"</span><span class="p">);</span>
+    <span class="n">helpFormatter</span><span class="p">.</span><span class="n">setHeader</span><span class="p">(</span><span class="s">"CumulusServer, open source RTMFP server"</span><span class="p">);</span>
+    <span class="n">helpFormatter</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">cout</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">setCommand()</code>: Sets the command name.</li>
+  <li><code class="language-plaintext highlighter-rouge">setUsage()</code>: Sets the usage string.</li>
+  <li><code class="language-plaintext highlighter-rouge">setHeader()</code>: Sets the header string.</li>
+  <li><code class="language-plaintext highlighter-rouge">format()</code>: Writes the formatted help text to the given stream.</li>
+</ul>
+
+<h4 id="2处理命令行选项">2、处理命令行选项</h4>
+
+<p>参数是选项名和选项值。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">handleOption</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">name</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ServerApplication</span><span class="o">::</span><span class="n">handleOption</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>如果选项是帮助：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s">"help"</span><span class="p">)</span>
+        <span class="n">_helpRequested</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>如果是cirrus，即该服务的 IP 和端口号，Poco::URI 中有协议名（Scheme）、IP 地址（Host）、端口号（Port）、查询串（Query）等等。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s">"cirrus"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">URI</span> <span class="n">uri</span><span class="p">(</span><span class="s">"rtmfp://"</span><span class="o">+</span><span class="n">value</span><span class="p">);</span>
+            <span class="n">_pCirrus</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SocketAddress</span><span class="p">(</span><span class="n">uri</span><span class="p">.</span><span class="n">getHost</span><span class="p">(),</span><span class="n">uri</span><span class="p">.</span><span class="n">getPort</span><span class="p">());</span>
+            <span class="n">NOTE</span><span class="p">(</span><span class="s">"Mode 'man in the middle' : the exchange will bypass to '%s'"</span><span class="p">,</span><span class="n">value</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+        <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="n">Exception</span><span class="o">&amp;</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ERROR</span><span class="p">(</span><span class="s">"Mode 'man in the middle' error : %s"</span><span class="p">,</span><span class="n">ex</span><span class="p">.</span><span class="n">message</span><span class="p">().</span><span class="n">c_str</span><span class="p">());</span>
+        <span class="p">}</span>
+</code></pre></div></div>
+
+<p>如果选项是dump日志：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="err">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s">"dump"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">value</span> <span class="o">==</span> <span class="s">"all"</span><span class="p">)</span>
+            <span class="n">Logs</span><span class="o">::</span><span class="n">SetDump</span><span class="p">(</span><span class="n">Logs</span><span class="o">::</span><span class="n">ALL</span><span class="p">);</span>
+        <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">value</span> <span class="o">==</span> <span class="s">"middle"</span><span class="p">)</span>
+            <span class="n">Logs</span><span class="o">::</span><span class="n">SetDump</span><span class="p">(</span><span class="n">Logs</span><span class="o">::</span><span class="n">MIDDLE</span><span class="p">);</span>
+        <span class="k">else</span>
+            <span class="n">Logs</span><span class="o">::</span><span class="n">SetDump</span><span class="p">(</span><span class="n">Logs</span><span class="o">::</span><span class="n">EXTERNAL</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>如果选项是middle：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="err">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s">"middle"</span><span class="p">)</span>
+        <span class="n">_middle</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>如果选项是log，表示设定日志级别：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s">"log"</span><span class="p">)</span>
+        <span class="n">Logs</span><span class="o">::</span><span class="n">SetLevel</span><span class="p">(</span><span class="n">atoi</span><span class="p">(</span><span class="n">value</span><span class="p">.</span><span class="n">c_str</span><span class="p">()));</span>
+<span class="err">}</span>
+</code></pre></div></div>
+
+<h4 id="6dump-logs">6、Dump logs</h4>
+
+<p>先加一个作用域锁，然后再向日志流写数据。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">dumpHandler</span><span class="p">(</span><span class="k">const</span> <span class="n">UInt8</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span><span class="n">UInt32</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ScopedLock</span><span class="o">&lt;</span><span class="n">FastMutex</span><span class="o">&gt;</span> <span class="n">lock</span><span class="p">(</span><span class="n">_logMutex</span><span class="p">);</span>
+    <span class="n">cout</span><span class="p">.</span><span class="n">write</span><span class="p">((</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+    <span class="n">_logStream</span><span class="p">.</span><span class="n">write</span><span class="p">((</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">data</span><span class="p">,</span><span class="n">size</span><span class="p">);</span>
+    <span class="n">manageLogFile</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>调用 manageLogFile，主要做一些日志大小超出限制的处理。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">manageLogFile</span><span class="p">()</span> <span class="p">{</span>
+</code></pre></div></div>
+
+<p>先判断是否超过日志文件的大小上线，LOG_SIZE是1000000字节（即约 1 MB）。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">if</span> <span class="p">(</span><span class="n">_pLogFile</span><span class="o">-&gt;</span><span class="n">getSize</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">LOG_SIZE</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_logStream</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>打开新日志文件：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="n">File</span> <span class="nf">file</span><span class="p">(</span><span class="n">_logPath</span> <span class="o">+</span> <span class="s">"10"</span><span class="p">);</span>
+
+</code></pre></div></div>
+
+<p>如果该文件已经存在，则先删除：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="k">if</span> <span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="n">exists</span><span class="p">())</span>
+            <span class="n">file</span><span class="p">.</span><span class="n">remove</span><span class="p">();</span>
+
+        <span class="k">while</span> <span class="p">(</span><span class="o">--</span><span class="n">num</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">file</span> <span class="o">=</span> <span class="n">_logPath</span> <span class="o">+</span> <span class="n">NumberFormatter</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="n">exists</span><span class="p">())</span>
+                <span class="n">file</span><span class="p">.</span><span class="n">renameTo</span><span class="p">(</span><span class="n">_logPath</span> <span class="o">+</span> <span class="n">NumberFormatter</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="n">num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="n">_logStream</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">_pLogFile</span><span class="o">-&gt;</span><span class="n">path</span><span class="p">(),</span> <span class="n">ios</span><span class="o">::</span><span class="n">in</span> <span class="o">|</span> <span class="n">ios</span><span class="o">::</span><span class="n">ate</span><span class="p">);</span>
+    <span class="err">}</span>   
+<span class="err">}</span>
+</code></pre></div></div>
+
+<h4 id="3停止运行">3、停止运行</h4>
+
+<p><code class="language-plaintext highlighter-rouge">CumulusServer</code> 继承了 <code class="language-plaintext highlighter-rouge">ApplicationKiller</code>，该类中有纯虚函数 <code class="language-plaintext highlighter-rouge">kill()</code> 需要被实现，于是有：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">kill</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">terminate</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">ApplicationKiller</code> 的定义在 <code class="language-plaintext highlighter-rouge">ApplicationKiller.h</code> 中，如下：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ApplicationKiller</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">ApplicationKiller</span><span class="p">(){}</span>
+    <span class="k">virtual</span> <span class="o">~</span><span class="n">ApplicationKiller</span><span class="p">(){}</span>
+ 
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">kill</span><span class="p">()</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h4 id="4载入配置">4、载入配置</h4>
+
+<p>在initialize()函数中调用，上一篇已提到过。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">loadConfiguration</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">path</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="n">ServerApplication</span><span class="o">::</span><span class="n">loadConfiguration</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span><span class="p">(...)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="5处理日志">5、处理日志</h4>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">logHandler</span><span class="p">(</span><span class="n">Thread</span><span class="o">::</span><span class="n">TID</span> <span class="n">threadId</span><span class="p">,</span>
+                <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">threadName</span><span class="p">,</span>
+                <span class="n">Priority</span> <span class="n">priority</span><span class="p">,</span>
+                <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">filePath</span><span class="p">,</span>
+                <span class="kt">long</span> <span class="n">line</span><span class="p">,</span> 
+                <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">text</span><span class="p">)</span> <span class="p">{</span>
+</code></pre></div></div>
+
+<p>作用域锁：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">ScopedLock</span><span class="o">&lt;</span><span class="n">FastMutex</span><span class="o">&gt;</span> <span class="n">lock</span><span class="p">(</span><span class="n">_logMutex</span><span class="p">);</span>
+ 
+    <span class="n">Path</span> <span class="nf">path</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span>
+    <span class="n">string</span> <span class="n">file</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">getExtension</span><span class="p">()</span> <span class="o">==</span> <span class="s">"lua"</span><span class="p">)</span>
+        <span class="n">file</span> <span class="o">+=</span> <span class="n">path</span><span class="p">.</span><span class="n">directory</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">depth</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s">"/"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>如果是命令行交互模式（即不是 daemon 模式）：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">if</span> <span class="p">(</span><span class="n">_isInteractive</span><span class="p">)</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%s  %s[%ld] %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+            <span class="n">g_logPriorities</span><span class="p">[</span><span class="n">priority</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="p">(</span><span class="n">file</span> <span class="o">+</span> <span class="n">path</span><span class="p">.</span><span class="n">getBaseName</span><span class="p">()).</span><span class="n">c_str</span><span class="p">(),</span>
+            <span class="n">line</span><span class="p">,</span>
+            <span class="n">text</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>向日志流输出一句日志：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">_logStream</span> <span class="o">&lt;&lt;</span> <span class="n">DateTimeFormatter</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="n">LocalDateTime</span><span class="p">(),</span><span class="s">"%d/%m %H:%M:%S.%c  "</span><span class="p">)</span>
+            <span class="o">&lt;&lt;</span> <span class="n">g_logPriorities</span><span class="p">[</span><span class="n">priority</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> 
+            <span class="o">&lt;&lt;</span> <span class="sc">'\t'</span> <span class="o">&lt;&lt;</span> <span class="n">threadName</span> 
+            <span class="o">&lt;&lt;</span> <span class="sc">'('</span> <span class="o">&lt;&lt;</span> <span class="n">threadId</span> <span class="o">&lt;&lt;</span> <span class="s">")</span><span class="se">\t</span><span class="s">"</span>
+            <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">file</span> <span class="o">+</span> <span class="n">path</span><span class="p">.</span><span class="n">getFileName</span><span class="p">())</span> 
+            <span class="o">&lt;&lt;</span> <span class="sc">'['</span> <span class="o">&lt;&lt;</span> <span class="n">line</span> <span class="o">&lt;&lt;</span> <span class="s">"]  "</span> 
+            <span class="o">&lt;&lt;</span> <span class="n">text</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+ 
+    <span class="n">_logStream</span><span class="p">.</span><span class="n">flush</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>日志文件的善后处理（主要处理文件大小限制可能产生的问题）：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">manageLogFile</span><span class="p">();</span>
+<span class="err">}</span>
+</code></pre></div></div>
+
+<h3 id="三maincpp-的-main-函数源码分析">三、<code class="language-plaintext highlighter-rouge">main.cpp</code> 的 <code class="language-plaintext highlighter-rouge">main()</code> 函数源码分析</h3>
+
+<h4 id="1maincpp-中的-main-函数中的-server">1、<code class="language-plaintext highlighter-rouge">main.cpp</code> 中的 <code class="language-plaintext highlighter-rouge">main()</code> 函数中的 <code class="language-plaintext highlighter-rouge">server</code></h4>
+
+<p><code class="language-plaintext highlighter-rouge">main.cpp</code> 中真正启动的是 <code class="language-plaintext highlighter-rouge">server</code>，它继承自 <code class="language-plaintext highlighter-rouge">Cumulus::RTMFPServer</code>，而 <code class="language-plaintext highlighter-rouge">Cumulus::RTMFPServer</code> 又继承自 <code class="language-plaintext highlighter-rouge">Cumulus::Startable</code>、<code class="language-plaintext highlighter-rouge">Cumulus::Gateway</code>、<code class="language-plaintext highlighter-rouge">Cumulus::Handler</code>。而 <code class="language-plaintext highlighter-rouge">Cumulus::Startable</code> 继承自 <code class="language-plaintext highlighter-rouge">Poco::Runnable</code>，所以其是一个可以运行的线程。在 <code class="language-plaintext highlighter-rouge">OpenRTMFP/CumulusServer</code> 中，这是主线程。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Server</span> <span class="nf">server</span><span class="p">(</span><span class="n">config</span><span class="p">().</span><span class="n">getString</span><span class="p">(</span><span class="s">"application.dir"</span><span class="p">,</span> <span class="s">"./"</span><span class="p">),</span> <span class="o">*</span><span class="k">this</span><span class="p">,</span> <span class="n">config</span><span class="p">());</span>
+<span class="n">server</span><span class="p">.</span><span class="n">start</span><span class="p">(</span><span class="n">params</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>这是 <code class="language-plaintext highlighter-rouge">CumulusServer/Server.h</code> 中定义的，其构造函数的原型为：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Server</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">root</span><span class="p">,</span>
+       <span class="n">ApplicationKiller</span><span class="o">&amp;</span> <span class="n">applicationKiller</span><span class="p">,</span>
+       <span class="k">const</span> <span class="n">Poco</span><span class="o">::</span><span class="n">Util</span><span class="o">::</span><span class="n">AbstractConfiguration</span><span class="o">&amp;</span> <span class="n">configurations</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>个参数含义如下：</p>
+
+<blockquote>
+  <p>The Path Root for the Server Application Killer for Termanting the Server Application Server Configuration</p>
+</blockquote>
+
+<p>距离来说，在我的 Worksapce 中：</p>
+
+<p><code class="language-plaintext highlighter-rouge">root</code> 是 <code class="language-plaintext highlighter-rouge">/Users/michael/Development/workspace/eclipse/OpenRTMFP-Cumulus/Debug/</code> 构造函数的初始化列表极长：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Server</span><span class="o">::</span><span class="n">Server</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">root</span><span class="p">,</span>
+               <span class="n">ApplicationKiller</span><span class="o">&amp;</span> <span class="n">applicationKiller</span><span class="p">,</span>
+               <span class="k">const</span> <span class="n">Util</span><span class="o">::</span><span class="n">AbstractConfiguration</span><span class="o">&amp;</span> <span class="n">configurations</span><span class="p">)</span> 
+    <span class="o">:</span> <span class="n">_blacklist</span><span class="p">(</span><span class="n">root</span> <span class="o">+</span> <span class="s">"blacklist"</span><span class="p">,</span> <span class="o">*</span><span class="k">this</span><span class="p">),</span>
+      <span class="n">_applicationKiller</span><span class="p">(</span><span class="n">applicationKiller</span><span class="p">),</span>
+      <span class="n">_hasOnRealTime</span><span class="p">(</span><span class="nb">true</span><span class="p">),</span>
+      <span class="n">_pService</span><span class="p">(</span><span class="nb">NULL</span><span class="p">),</span>
+      <span class="n">luaMail</span><span class="p">(</span><span class="n">_pState</span><span class="o">=</span><span class="n">Script</span><span class="o">::</span><span class="n">CreateState</span><span class="p">(),</span>
+              <span class="n">configurations</span><span class="p">.</span><span class="n">getString</span><span class="p">(</span><span class="s">"smtp.host"</span><span class="p">,</span><span class="s">"localhost"</span><span class="p">),</span>
+              <span class="n">configurations</span><span class="p">.</span><span class="n">getInt</span><span class="p">(</span><span class="s">"smtp.port"</span><span class="p">,</span><span class="n">SMTPSession</span><span class="o">::</span><span class="n">SMTP_PORT</span><span class="p">),</span>
+              <span class="n">configurations</span><span class="p">.</span><span class="n">getInt</span><span class="p">(</span><span class="s">"smtp.timeout"</span><span class="p">,</span><span class="mi">60</span><span class="p">))</span> <span class="p">{</span>
+</code></pre></div></div>
+
+<p>下面调用 <code class="language-plaintext highlighter-rouge">Poco::File</code> 创建目录：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">File</span><span class="p">((</span><span class="n">string</span><span class="o">&amp;</span><span class="p">)</span><span class="n">WWWPath</span> <span class="o">=</span> <span class="n">root</span> <span class="o">+</span> <span class="s">"www"</span><span class="p">).</span><span class="n">createDirectory</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>因为 <code class="language-plaintext highlighter-rouge">roor</code> 是 <code class="language-plaintext highlighter-rouge">/Users/michael/Development/workspace/eclipse/OpenRTMFP-Cumulus/Debug/</code> 目录，所以 <code class="language-plaintext highlighter-rouge">WWWPath</code> 就是 <code class="language-plaintext highlighter-rouge">/Users/michael/Development/workspace/eclipse/OpenRTMFP-Cumulus/Debug/www</code> 目录。然后初始化 <code class="language-plaintext highlighter-rouge">GlobalTable</code>，这个 <code class="language-plaintext highlighter-rouge">GlobalTable</code> 是和 Lua 有关的东东，这里暂不细说，先知道与 Lua 相关就好。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">Service</span><span class="o">::</span><span class="n">InitGlobalTable</span><span class="p">(</span><span class="n">_pState</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>下面就涉及到了 Lua script 了：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">SCRIPT_BEGIN</span><span class="p">(</span><span class="n">_pState</span><span class="p">)</span>
+        <span class="n">SCRIPT_CREATE_PERSISTENT_OBJECT</span><span class="p">(</span><span class="n">Invoker</span><span class="p">,</span><span class="n">LUAInvoker</span><span class="p">,</span><span class="o">*</span><span class="k">this</span><span class="p">)</span>
+        <span class="n">readNextConfig</span><span class="p">(</span><span class="n">_pState</span><span class="p">,</span><span class="n">configurations</span><span class="p">,</span><span class="s">""</span><span class="p">);</span>
+        <span class="n">lua_setglobal</span><span class="p">(</span><span class="n">_pState</span><span class="p">,</span><span class="s">"cumulus.configs"</span><span class="p">);</span>
+    <span class="n">SCRIPT_END</span>
+<span class="err">}</span>
+</code></pre></div></div>
+
+<p>其中 <code class="language-plaintext highlighter-rouge">SCRIPT_BEGIN</code>、<code class="language-plaintext highlighter-rouge">SCRIPT_CREATE_PERSISTENT_OBJECT和SCRIPT_END</code> 都是宏，其定义在 <code class="language-plaintext highlighter-rouge">Script.h</code> 文件中，如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#define SCRIPT_BEGIN(STATE) \
+    if (lua_State* __pState = STATE) { \
+        const char* __error=NULL;
+ 
+#define SCRIPT_CREATE_PERSISTENT_OBJECT(TYPE,LUATYPE,OBJ) \
+    Script::WritePersistentObject&lt;TYPE,LUATYPE&gt;(__pState,OBJ); \
+    lua_pop(__pState,1);
+ 
+#define SCRIPT_END }
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">SCRIPT_BEGIN和SCRIPT_END</code> 经常用到，当与 Lua 相关的操作出现时，都会以这两个宏作为开头和结尾。</p>
+
+<h4 id="2maincpp-中-main-函数的-serverstart">2、<code class="language-plaintext highlighter-rouge">main.cpp</code> 中 <code class="language-plaintext highlighter-rouge">main()</code> 函数的 <code class="language-plaintext highlighter-rouge">server.start()</code></h4>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">RTMFPServer</span><span class="o">::</span><span class="n">start</span><span class="p">(</span><span class="n">RTMFPServerParams</span><span class="o">&amp;</span> <span class="n">params</span><span class="p">)</span> <span class="p">{</span>
+</code></pre></div></div>
+
+<p>如果 <code class="language-plaintext highlighter-rouge">OpenRTMFP/CumulusServer</code> 正在运行，则返回并终止启动。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">if</span><span class="p">(</span><span class="n">running</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">ERROR</span><span class="p">(</span><span class="s">"RTMFPServer server is yet running, call stop method before"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>设定端口号，如果端口号为 0，则返回并终止启动。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">_port</span> <span class="o">=</span> <span class="n">params</span><span class="p">.</span><span class="n">port</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">_port</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ERROR</span><span class="p">(</span><span class="s">"RTMFPServer port must have a positive value"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>设定 <code class="language-plaintext highlighter-rouge">OpenRTMFP/CumulusEdge</code> 的端口号，如果其端口号与 <code class="language-plaintext highlighter-rouge">OpenRTMFP/CumulusSever</code> 端口号相同，则返回并终止启动：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">_edgesPort</span> <span class="o">=</span> <span class="n">params</span><span class="p">.</span><span class="n">edgesPort</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">_port</span> <span class="o">==</span> <span class="n">_edgesPort</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ERROR</span><span class="p">(</span><span class="s">"RTMFPServer port must different than RTMFPServer edges.port"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Cirrus：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">_freqManage</span> <span class="o">=</span> <span class="mi">2000000</span><span class="p">;</span> <span class="c1">// 2 sec by default</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">params</span><span class="p">.</span><span class="n">pCirrus</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_pCirrus</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Target</span><span class="p">(</span><span class="o">*</span><span class="n">params</span><span class="p">.</span><span class="n">pCirrus</span><span class="p">);</span>
+        <span class="n">_freqManage</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// no waiting, direct process in the middle case!</span>
+        <span class="n">NOTE</span><span class="p">(</span><span class="s">"RTMFPServer started in man-in-the-middle mode with server %s \
+             (unstable debug mode)"</span><span class="p">,</span> <span class="n">_pCirrus</span><span class="o">-&gt;</span><span class="n">address</span><span class="p">.</span><span class="n">toString</span><span class="p">().</span><span class="n">c_str</span><span class="p">());</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>middle：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">_middle</span> <span class="o">=</span> <span class="n">params</span><span class="p">.</span><span class="n">middle</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">_middle</span><span class="p">)</span>
+        <span class="n">NOTE</span><span class="p">(</span><span class="s">"RTMFPServer started in man-in-the-middle mode between peers \
+              (unstable debug mode)"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>UDP Buffer：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="p">(</span><span class="n">UInt32</span><span class="o">&amp;</span><span class="p">)</span><span class="n">udpBufferSize</span> <span class="o">=</span> 
+        <span class="n">params</span><span class="p">.</span><span class="n">udpBufferSize</span><span class="o">==</span><span class="mi">0</span> <span class="o">?</span> 
+            <span class="n">_socket</span><span class="p">.</span><span class="n">getReceiveBufferSize</span><span class="p">()</span> <span class="o">:</span> <span class="n">params</span><span class="p">.</span><span class="n">udpBufferSize</span><span class="p">;</span>
+ 
+    <span class="n">_socket</span><span class="p">.</span><span class="n">setReceiveBufferSize</span><span class="p">(</span><span class="n">udpBufferSize</span><span class="p">);</span>
+    <span class="n">_socket</span><span class="p">.</span><span class="n">setSendBufferSize</span><span class="p">(</span><span class="n">udpBufferSize</span><span class="p">);</span>
+    <span class="n">_edgesSocket</span><span class="p">.</span><span class="n">setReceiveBufferSize</span><span class="p">(</span><span class="n">udpBufferSize</span><span class="p">);</span>
+    <span class="n">_edgesSocket</span><span class="p">.</span><span class="n">setSendBufferSize</span><span class="p">(</span><span class="n">udpBufferSize</span><span class="p">);</span>
+ 
+    <span class="n">DEBUG</span><span class="p">(</span><span class="s">"Socket buffer receving/sending size = %u/%u"</span><span class="p">,</span>
+        <span class="n">udpBufferSize</span><span class="p">,</span>
+        <span class="n">udpBufferSize</span><span class="p">);</span>
+ 
+    <span class="p">(</span><span class="n">UInt32</span><span class="o">&amp;</span><span class="p">)</span><span class="n">keepAliveServer</span> <span class="o">=</span> 
+        <span class="n">params</span><span class="p">.</span><span class="n">keepAliveServer</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="o">?</span> <span class="mi">5000</span> <span class="o">:</span> <span class="n">params</span><span class="p">.</span><span class="n">keepAliveServer</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span>
+    <span class="p">(</span><span class="n">UInt32</span><span class="o">&amp;</span><span class="p">)</span><span class="n">keepAlivePeer</span> <span class="o">=</span> 
+        <span class="n">params</span><span class="p">.</span><span class="n">keepAlivePeer</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="o">?</span> <span class="mi">5000</span> <span class="o">:</span> <span class="n">params</span><span class="p">.</span><span class="n">keepAlivePeer</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">;</span>
+    <span class="p">(</span><span class="n">UInt8</span><span class="o">&amp;</span><span class="p">)</span><span class="n">edgesAttemptsBeforeFallback</span> <span class="o">=</span> <span class="n">params</span><span class="p">.</span><span class="n">edgesAttemptsBeforeFallback</span><span class="p">;</span>
+ 
+    <span class="n">setPriority</span><span class="p">(</span><span class="n">params</span><span class="p">.</span><span class="n">threadPriority</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>启动线程，进入循环运行：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">Startable</span><span class="o">::</span><span class="n">start</span><span class="p">();</span>
+<span class="err">}</span>
+</code></pre></div></div>
+
+<p>上句具体的源码实现为：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">Startable</span><span class="o">::</span><span class="n">start</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">running</span><span class="p">())</span>
+        <span class="k">return</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>如果在运行则返回并终止启动。然后加一个局部锁。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">ScopedLock</span><span class="o">&lt;</span><span class="n">FastMutex</span><span class="o">&gt;</span> <span class="n">lock</span><span class="p">(</span><span class="n">_mutex</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>如果不得不join()到主线程中，那就join()吧</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">if</span><span class="p">(</span><span class="n">_haveToJoin</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kr">_thread</span><span class="p">.</span><span class="n">join</span><span class="p">();</span>
+        <span class="n">_haveToJoin</span><span class="o">=</span><span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>然后就运行这个线程吧：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">_terminate</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="kr">_thread</span><span class="p">.</span><span class="n">start</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span>
+    <span class="n">_haveToJoin</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="err">}</span>
+</code></pre></div></div>
+
+<h4 id="3回顾一下整个启动流程">3、回顾一下整个启动流程</h4>
+
+<p>到此我们先回顾一下启动过程：</p>
+
+<p>从 <code class="language-plaintext highlighter-rouge">main.cpp</code> 的启动入口 <code class="language-plaintext highlighter-rouge">main()</code> 函数开始，创建 <code class="language-plaintext highlighter-rouge">Server</code> 对象并启动（调用 <code class="language-plaintext highlighter-rouge">start()</code> 函数）。<code class="language-plaintext highlighter-rouge">Server::start()</code> 中调用其父类（<code class="language-plaintext highlighter-rouge">RTMFPServer</code>）的父类（<code class="language-plaintext highlighter-rouge">Startable</code>）的方法 <code class="language-plaintext highlighter-rouge">Startable::start()</code> 开启线程。
+调用 <code class="language-plaintext highlighter-rouge">Startable::start()</code> 函数后，开启线城时传入的参数为 <code class="language-plaintext highlighter-rouge">*this</code>，所以就会运行 <code class="language-plaintext highlighter-rouge">Startable::run()</code>；</p>
+
+<h4 id="4rtmfpserverprerunstartableprerun-和-rtmfpserverrun-函数源码">4、<code class="language-plaintext highlighter-rouge">RTMFPServer::prerun()</code>、<code class="language-plaintext highlighter-rouge">Startable::prerun()</code> 和 <code class="language-plaintext highlighter-rouge">RTMFPServer::run(...)</code> 函数源码</h4>
+
+<p><code class="language-plaintext highlighter-rouge">Startable::run()</code> 调用 <code class="language-plaintext highlighter-rouge">Startable::prerun()</code> 函数，但这个函数被 <code class="language-plaintext highlighter-rouge">RTMFPServer</code> 覆盖，所以会运行 <code class="language-plaintext highlighter-rouge">RTMFPServer::prerun()</code>，其源码如下：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">RTMFPServer</span><span class="o">::</span><span class="n">prerun</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">NOTE</span><span class="p">(</span><span class="s">"RTMFP server starts on %u port"</span><span class="p">,</span><span class="n">_port</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>如果CumulusEdge：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">if</span> <span class="p">(</span><span class="n">_edgesPort</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">NOTE</span><span class="p">(</span><span class="s">"RTMFP edges server starts on %u port"</span><span class="p">,</span><span class="n">_edgesPort</span><span class="p">);</span>
+ 
+    <span class="kt">bool</span> <span class="n">result</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="n">onStart</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>运行线程：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="n">result</span> <span class="o">=</span> <span class="n">Startable</span><span class="o">::</span><span class="n">prerun</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>处理异常：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="err">}</span> <span class="k">catch</span><span class="p">(</span><span class="n">Exception</span><span class="o">&amp;</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">FATAL</span><span class="p">(</span><span class="s">"RTMFPServer : %s"</span><span class="p">,</span><span class="n">ex</span><span class="p">.</span><span class="n">displayText</span><span class="p">().</span><span class="n">c_str</span><span class="p">());</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">exception</span><span class="o">&amp;</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">FATAL</span><span class="p">(</span><span class="s">"RTMFPServer : %s"</span><span class="p">,</span><span class="n">ex</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(...)</span> <span class="p">{</span>
+        <span class="n">FATAL</span><span class="p">(</span><span class="s">"RTMFPServer unknown error"</span><span class="p">);</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>如果跳出了，则终止运行：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">onStop</span><span class="p">();</span>
+ 
+    <span class="n">NOTE</span><span class="p">(</span><span class="s">"RTMFP server stops"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="err">}</span>
+</code></pre></div></div>
+
+<p>该函数内部又会调用父类的 <code class="language-plaintext highlighter-rouge">Startable::prerun()</code> 函数，该函数调用：</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">virtual</span> <span class="kt">void</span> <span class="n">Startable</span><span class="o">::</span><span class="n">run</span><span class="p">(</span><span class="k">const</span> <span class="k">volatile</span> <span class="kt">bool</span><span class="o">&amp;</span> <span class="n">terminate</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>它是一个纯虚函数，由 <code class="language-plaintext highlighter-rouge">RTMFPServer</code> 实现。</p>
+
+<p><code class="language-plaintext highlighter-rouge">Startable::prerun()</code> 会调用 <code class="language-plaintext highlighter-rouge">void run(const volatile bool&amp; terminate)</code> 方法，该方法被 <code class="language-plaintext highlighter-rouge">RTMFPServer</code> 覆盖了。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">Startable</span><span class="o">::</span><span class="n">prerun</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">run</span><span class="p">(</span><span class="n">_terminate</span><span class="p">);</span>
+    <span class="k">return</span> <span class="o">!</span><span class="n">_terminate</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">RTMFPServer</code> 覆盖 <code class="language-plaintext highlighter-rouge">Startable</code> 的 <code class="language-plaintext highlighter-rouge">run(const volatile bool &amp;terminate)</code> 方法。</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">RTMFPServer</span><span class="o">::</span><span class="n">run</span><span class="p">(</span><span class="k">const</span> <span class="k">volatile</span> <span class="kt">bool</span><span class="o">&amp;</span> <span class="n">terminate</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer><span>@2022 - MikeCaptain.com</span></footer>
+
+
+	    <!-- Script -->
+      <script src="/pages/Poechant/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
