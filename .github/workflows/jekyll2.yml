@@ -30,6 +30,7 @@ jobs:
 
       - name: Setup Graphviz
         uses: ts-graphviz/setup-graphviz@v1
+
       - name: 💎 setup ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -38,11 +39,18 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
 
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
+      - name: 🔨 install dependencies & build site
+        uses: limjh16/jekyll-action-ts@v2
+        env:
+          NODE_ENV: "production"
         with:
-          source: ./
-          destination: ./_site
+          enable_cache: true
+          
+      # - name: Build with Jekyll
+      #   uses: actions/jekyll-build-pages@v1
+      #   with:
+      #     source: ./
+      #     destination: ./_site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
