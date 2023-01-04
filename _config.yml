@@ -19,7 +19,7 @@ kramdown:
 
 # Build settings
 repository: Poechant/poechant.github.io
-baseurl: / # Change this to your relative path (ex: /blog/), or leave just a /
+baseurl:  # Change this to your relative path (ex: /blog/), or leave just a /
 source: .
 destination: ./_site
 permalink: /:title
