@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>OpenRTMFP/Cumulus 原理、源码及实践 1：入门介绍、部署与 Hello World</title>
+  	<meta name="description" content="RTMFP 是 Adobe 开发的基于 UDP 协议的实时传输媒体流协议，支持 P2P 传输，具有较高的实时性和安全性。它的主要应用场景是视频通信、语音通信和网络游戏。OpenRTMFP 是一个开源的 RTMFP 实现，可以用于构建基于 RTMFP 的应用程序。Cumulus 是一个基于 OpenRTMFP 的服务器，提供 RTMFP 服务。它具有轻量级、跨平台和可扩展的特点，并且还提供了负载均衡和可扩展性解决方案。YY 语音的 Web 端音视频流媒体能力，正是基于 RTMFP 协议做的迭代优化实现的。本文是船长关于这个系列文章的第一篇。">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/pages/Poechant/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/pages/Poechant/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/pages/Poechant/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/pages/Poechant/booklist/" title="我的书单">我的书单</a>
+	    
+	  
+	    
+	      <a href="/pages/Poechant/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+  <a href="/pages/Poechant/category/web" title="前端技术">前端技术</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/pages/Poechant/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+          <a href="/pages/Poechant/booklist/" title="我的书单">我的书单</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/pages/Poechant/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+  <a href="/pages/Poechant/category/web" title="前端技术">前端技术</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/pages/Poechant/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+          <a href="/pages/Poechant/booklist/" title="我的书单">我的书单</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>OpenRTMFP/Cumulus 原理、源码及实践 1：入门介绍、部署与 Hello World</h2>		
+	<time datetime="2012-04-09T18:57:19+00:00" class="by-line">09 Apr 2012, 广州 | 作者 麦克船长 | 总计 8401 字</time>
+	<div class="content">
+		<p><strong>本文目录</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#一rtmfp是什么" id="markdown-toc-一rtmfp是什么">一、RTMFP 是什么？</a>    <ul>
+      <li><a href="#文件分享-p2p-和实时流媒体-p2p-的区别是什么" id="markdown-toc-文件分享-p2p-和实时流媒体-p2p-的区别是什么">文件分享 P2P 和实时流媒体 P2P 的区别是什么？</a></li>
+      <li><a href="#rtmfp-和-rtmp-之间的区别是什么" id="markdown-toc-rtmfp-和-rtmp-之间的区别是什么">RTMFP 和 RTMP 之间的区别是什么？</a></li>
+      <li><a href="#flash-player-支持-rtmfp-吗" id="markdown-toc-flash-player-支持-rtmfp-吗">Flash Player 支持 RTMFP 吗？</a></li>
+      <li><a href="#cumulus-使用-adobe-的-cirrus-key-吗" id="markdown-toc-cumulus-使用-adobe-的-cirrus-key-吗">Cumulus 使用 Adobe 的 Cirrus Key 吗？</a></li>
+      <li><a href="#这个开源项目合法吗" id="markdown-toc-这个开源项目合法吗">这个开源项目合法吗？</a></li>
+    </ul>
+  </li>
+  <li><a href="#二openrtmfp和cumulus" id="markdown-toc-二openrtmfp和cumulus">二、OpenRTMFP 和 Cumulus</a></li>
+  <li><a href="#三入门介绍与部署cumulusserver" id="markdown-toc-三入门介绍与部署cumulusserver">三、入门介绍与部署 CumulusServer</a>    <ul>
+      <li><a href="#1背景介绍" id="markdown-toc-1背景介绍">1、背景介绍</a></li>
+      <li><a href="#2准备工作" id="markdown-toc-2准备工作">2、准备工作</a></li>
+      <li><a href="#3安装" id="markdown-toc-3安装">3、安装</a>        <ul>
+          <li><a href="#31外部依赖的安装" id="markdown-toc-31外部依赖的安装">3.1、外部依赖的安装</a></li>
+          <li><a href="#32安装openrtmfpcumulus" id="markdown-toc-32安装openrtmfpcumulus">3.2、安装 OpenRTMFP/Cumulus</a></li>
+        </ul>
+      </li>
+      <li><a href="#4配置" id="markdown-toc-4配置">4、配置</a></li>
+      <li><a href="#5启动" id="markdown-toc-5启动">5、启动</a></li>
+      <li><a href="#6基本使用" id="markdown-toc-6基本使用">6、基本使用</a></li>
+      <li><a href="#7扩展cumulusserverserverapplication" id="markdown-toc-7扩展cumulusserverserverapplication">7、扩展 CumulusServer（Server Application）</a></li>
+    </ul>
+  </li>
+  <li><a href="#三用lua编写helloworld应用扩展cumulusserver" id="markdown-toc-三用lua编写helloworld应用扩展cumulusserver">三、用 Lua 编写 HelloWorld 应用扩展 CumulusServer</a>    <ul>
+      <li><a href="#1server-side" id="markdown-toc-1server-side">1、Server-side</a>        <ul>
+          <li><a href="#11serverconfiguration" id="markdown-toc-11serverconfiguration">1.1、Server configuration</a></li>
+          <li><a href="#12applicationfile" id="markdown-toc-12applicationfile">1.2、Application file</a></li>
+        </ul>
+      </li>
+      <li><a href="#2client-side" id="markdown-toc-2client-side">2、Client-side</a></li>
+      <li><a href="#3运行结果" id="markdown-toc-3运行结果">3、运行结果</a></li>
+      <li><a href="#4远程测试一个免费的测试服务器" id="markdown-toc-4远程测试一个免费的测试服务器">4、远程测试：一个免费的测试服务器</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="一rtmfp是什么">一、RTMFP 是什么？</h3>
+
+<p>Real-Time Media Flow Protocol（RTMFP）是 Adobe 开发的一种基于 UDP 并支持 P2P 的实时传输媒体流。主要特点是：高传输效率（可以使用压缩和算法来优化流量从而提高传输效率）、高实时性（可以保证媒体流的实时性使得视频通信和其他实时通信更加流畅）、支持 P2P 传输（减少对服务器的依赖从而减少带宽和服务器资源消耗）、高安全性（加密媒体流从而保证其安全性）。</p>
+
+<p>RTMFP 的主要应用场景包括：视频通信（视频聊天和视频会议）、语音通信（语音聊天、电话）、网络游戏。不过 RTMFP 目前仅有 Adobe 开发的版本，所以它并不是个开源项目，而是个商业化服务。那么有没有开源版本呢？</p>
+
+<h4 id="文件分享-p2p-和实时流媒体-p2p-的区别是什么">文件分享 P2P 和实时流媒体 P2P 的区别是什么？</h4>
+
+<p>RTMFP 是一个 P2P 系统，但它仅针对实时通信时直接用户到用户之间的通信而设计，不能用于多个对等方之间进行文件共享（使用分段下载）。Facebook 在其 Pipe 应用中使用此协议将大文件直接在两个用户之间传输。</p>
+
+<h4 id="rtmfp-和-rtmp-之间的区别是什么">RTMFP 和 RTMP 之间的区别是什么？</h4>
+
+<p>RTMP 是实时消息协议，RTMFP 代表实时媒体流协议。RTMFP 基于用户数据报协议（UDP），而 RTMP 基于传输控制协议（TCP）。
+与 RTMP 不同，RTMFP 还支持直接从一个 Adobe Flash Player 传输数据到另一个，而无需经过服务器。</p>
+
+<h4 id="flash-player-支持-rtmfp-吗">Flash Player 支持 RTMFP 吗？</h4>
+
+<p>RTMFP 是基于用户数据报协议（UDP）的，而 RTMP 是基于传输控制协议（TCP）的。与 RTMP 不同，RTMFP 还支持直接在两个 Adobe Flash Player 之间发送数据，而不经过服务器。Flash Player 10.0 仅允许一对一通信进行 P2P，但从 10.1 开始允许应用程序级别的多播。Flash Player 查找适当的分发路由（覆盖网络），并可以将其分发到通过 P2P 连接的组。</p>
+
+<h4 id="cumulus-使用-adobe-的-cirrus-key-吗">Cumulus 使用 Adobe 的 Cirrus Key 吗？</h4>
+
+<p>不！当然，这是Cumulus的主要目标：成为Cirrus GPL的替代品。唯一的限制是：你的CPU，内存和单台机器的端口数。</p>
+
+<h4 id="这个开源项目合法吗">这个开源项目合法吗？</h4>
+
+<p>在美国，数字千年版权法（Digital Millennium Copyright Act）规定，逆向工程用于协议互操作性是合法的。你可以在 WikiPedia 上查看相关讨论：</p>
+
+<ul>
+  <li>http://en.wikipedia.org/wiki/Real_Time_Media_Flow_Protocol</li>
+  <li>http://en.wikipedia.org/wiki/Proprietary_protocol</li>
+  <li>http://en.wikipedia.org/wiki/Digital_Millennium_Copyright_Act</li>
+</ul>
+
+<p>当逆向工程的目的是协议互操作性时，有法律先例。在美国，数字千年版权法（Digital Millennium Copyright Act）为逆向工程软件以使其与其他软件互操作提供了安全保障。</p>
+
+<h3 id="二openrtmfp和cumulus">二、OpenRTMFP 和 Cumulus</h3>
+
+<p>OpenRTMFP 是一个开源的 RTMFP 实现，可以用于构建基于 RTMFP 的应用程序。它包含了 RTMFP 协议的实现，以及一些额外的功能，如媒体流传输、P2P 通信、脚本引擎和数据存储。</p>
+
+<p>Cumulus 是一个基于 OpenRTMFP 的服务器，是一个完整的开源且跨平台的 RTMFP 服务器，可通过脚本进行扩展。CumulusServer 根据 GPL 许可在考虑以下 4 个概念的情况下开发：速度、轻量、跨平台和可扩展。尽管尚未发布版本，但只有在 CumulusServer 经过测试和批准后才会将代码推送到 github。实际上，主要稳定的功能有：</p>
+
+<ul>
+  <li>P2P rendez-vous service</li>
+  <li>live streaming</li>
+  <li>RPC、pull、push exchange，实际上客户端和服务器之间的所有 AMF 可能交换</li>
+  <li>脚本引擎，用于创建自己的应用服务器或扩展 Cumulus 的功能</li>
+  <li>可扩展性和负载均衡解决方案</li>
+</ul>
+
+<p>下面的内容是本篇 blog 的重点，包括两部分：先是 OpenRTMFP 应用的核心 CumulusServer 的入门介绍与部署，然后用 Lua 编写 HelloWorld 应用扩展 CumulusServer，我们开始吧！</p>
+
+<h3 id="三入门介绍与部署cumulusserver">三、入门介绍与部署 CumulusServer</h3>
+
+<h4 id="1背景介绍">1、背景介绍</h4>
+
+<p>OpenRTMFP 可以帮助你实现 Flash 的实时应用的高并发扩展，OpenRTMFP/Cumulus 是基于 GNU General Public License 的。</p>
+
+<p>POCO：POrtable COmponents，是一个强大的开源 C++ 库。其在 C++ 开发中的角色，相当于 Java Class Library、苹果的 Cocoa、.NET framework。</p>
+
+<h4 id="2准备工作">2、准备工作</h4>
+
+<p>下载：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>External Dependencies</strong></th>
+      <th><strong>Official Site</strong></th>
+      <th><strong>Windows</strong></th>
+      <th><strong>Linux/OSX</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>OpenSSL</td>
+      <td><a href="http://www.slproweb.com/products/Win32OpenSSL.html">Official Site</a></td>
+      <td><a href="http://www.slproweb.com/download/Win32OpenSSL_Light-1_0_1.exe">Download</a></td>
+      <td><a href="http://www.openssl.org/source/openssl-1.0.1.tar.gz">Download</a></td>
+    </tr>
+    <tr>
+      <td>Lua</td>
+      <td><a href="http://www.lua.org/">Official Site</a></td>
+      <td><a href="http://luaforwindows.googlecode.com/files/LuaForWindows_v5.1.4-45.exe">Download</a></td>
+      <td><a href="http://www.lua.org/ftp/lua-5.1.5.tar.gz">Download</a></td>
+    </tr>
+    <tr>
+      <td>POCO</td>
+      <td><a href="http://pocoproject.org/">Official Site</a></td>
+      <td><a href="http://downloads.sourceforge.net/project/poco/sources/poco-1.4.3/poco-1.4.3p1.zip">Download</a></td>
+      <td><a href="https://sourceforge.net/projects/poco/files/sources/poco-1.4.3/poco-1.4.3p1.tar.gz/download">Download</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>注意：POCO for linux  版本必须是 1.4.0 或更高，否则会引起 TCP 相关的 bug。</p>
+
+<h4 id="3安装">3、安装</h4>
+
+<h5 id="31外部依赖的安装">3.1、外部依赖的安装</h5>
+
+<p>Windows 下略，Linux 下基本就是：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./configuremakesudo
+<span class="nv">$ </span>make <span class="nb">install</span>
+</code></pre></div></div>
+
+<h5 id="32安装openrtmfpcumulus">3.2、安装 OpenRTMFP/Cumulus</h5>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>OpenRTMFP-Cumulus/CumulusLib
+<span class="nv">$ </span>make
+<span class="nv">$ </span><span class="nb">cd</span> ../CumulusServer
+<span class="nv">$ </span>make
+</code></pre></div></div>
+
+<p>如果出现了 <code class="language-plaintext highlighter-rouge">.h</code> 文件、lib 库找不到的情况，请修改 OpenRTMFP-Cumulus/CumulusLib/Makefile 或 OpenRTMFP-Cumulus/CumulusServer/Makefile。</p>
+
+<h4 id="4配置">4、配置</h4>
+
+<p>通过编写 <code class="language-plaintext highlighter-rouge">OpenRTMFP-Cumulus/CumulusServer/CumulusServer.ini</code> 文件来为 OpenRTMFP-Cumulus 进行个性化配置（默认是没有这个文件的），这个文件的内容形如：</p>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">;</span><span class="n">CumulusServer</span><span class="p">.</span><span class="n">ini</span>
+<span class="n">port</span> <span class="o">=</span> <span class="mi">1985</span>
+<span class="n">udpBufferSize</span> <span class="o">=</span> <span class="mi">114688</span>
+<span class="n">keepAlivePeer</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">keepAliveServer</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="p">[</span><span class="n">logs</span><span class="p">]</span>
+<span class="n">name</span><span class="o">=</span><span class="n">log</span>
+<span class="n">directory</span><span class="o">=</span><span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">CumulusServer</span><span class="o">/</span><span class="n">logs</span>
+</code></pre></div></div>
+
+<p>一些字段的设置含义如下，摘自：<a href="https://github.com/OpenRTMFP/Cumulus/wiki/Installation">地址</a>。</p>
+
+<ul>
+  <li>公开给 Client 的端口号 <code class="language-plaintext highlighter-rouge">port</code>，默认值是 1935（RTMFP 服务器的默认端口），用于 CumulusServer 监听 RTMFP 请求。</li>
+  <li>UDP 缓冲区字节数 <code class="language-plaintext highlighter-rouge">udpBufferSize</code>, allows to change the size in bytes of UDP reception and sending buffer. Increases this value if your operating system has a default value too lower for important loads.</li>
+  <li><code class="language-plaintext highlighter-rouge">keepAliveServer</code>, time in seconds for periodically sending packets keep-alive with server, 15s by default (valid value is from 5s to 255s).</li>
+  <li><code class="language-plaintext highlighter-rouge">keepAlivePeer</code>, time in seconds for periodically sending packets keep-alive between peers, 10s by default (valid value is from 5s to 255s).</li>
+  <li><code class="language-plaintext highlighter-rouge">edges.activated</code>, activate or not the edges server on the RTMFP server (see CumulusEdge, Scalability page for more details about CumulusEdge). By default, CumulusServer stays a RTMFP server without edges ability (default value is false).</li>
+  <li><code class="language-plaintext highlighter-rouge">edges.port</code>, port for the edges server, to accept incoming new CumulusEdge instances (see CumulusEdge, Scalability page for more details about CumulusEdge). By default, it’s the port 1936.</li>
+</ul>
+
+<blockquote>
+  <p>Warning: This port will receive plain text request from edges, for this purpose it should not be made public. It’s very important for security consideration. It must be available only for CumulusEdge instances, and anything else.</p>
+</blockquote>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">edges.attemptsBeforeFallback</code>, number of CumulusEdge attempt connections before falling back to CumulusServer (see CumulusEdge, Scalability page for more details about CumulusEdge). By default the value is 2 (in practical, 2 attempts happens after 5 sec approximately).</li>
+  <li>SMTP IP 地址 <code class="language-plaintext highlighter-rouge">smtp.host</code>, configure a SMTP host to use mails feature provided by Cumulus in server application (see Server Application, Sockets page for more details about mails feature). By default the value is localhost.</li>
+  <li>SMTP 端口 <code class="language-plaintext highlighter-rouge">smtp.port</code>, configure a SMTP port to use mails feature provided by Cumulus in server application (see Server Application, Sockets page for more details about mails feature). By default the value is 25.</li>
+  <li><code class="language-plaintext highlighter-rouge">smtp.timeout</code>, configure a SMTP timeout session in seconds to use mails feature provided by Cumulus in server application (see Server Application, Sockets page for more details about mails feature). By default the value is 60 seconds.</li>
+  <li>日志路径 <code class="language-plaintext highlighter-rouge">logs.directory</code>，默认是 <code class="language-plaintext highlighter-rouge">CumulusServer/logsby</code>。</li>
+  <li>日志文件名称 <code class="language-plaintext highlighter-rouge">logs.name</code>，默认是<code class="language-plaintext highlighter-rouge">log</code>。</li>
+</ul>
+
+<h4 id="5启动">5、启动</h4>
+
+<p>Windows 下的启动方法为：</p>
+
+<pre><code class="language-dos">$ CumulusServer.exe /registerService [/displayName=CumulusServer /description="Open Source RTMFP Server" /startup=automatic]
+</code></pre>
+
+<p>Unix-like 下的启动方法为：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo</span> ./CumulusServer <span class="nt">--daemon</span> <span class="o">[</span><span class="nt">--pidfile</span><span class="o">=</span>/var/run/CumulusServer.pid]
+</code></pre></div></div>
+
+<p>具体地，我的启动命令为：</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo</span> ./CumulusServer <span class="nt">--daemon</span> <span class="nt">--pidfile</span><span class="o">=</span>./CumulusServer.pid
+</code></pre></div></div>
+
+<h4 id="6基本使用">6、基本使用</h4>
+
+<p>本地 Flash client 可以通过如下语句连接：</p>
+
+<div class="language-as highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="kd">var</span> <span class="nx">nc</span><span class="o">:</span><span class="nx">NetConnection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NetConnection</span><span class="p">()</span><span class="o">;</span><span class="nx">nc</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="s2">"rtmfp://localhost/"</span><span class="p">)</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>RTMFP默认是采用1935端口，如果你特别指定了其他端口，比如12345，请使用如下方式：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc.connect("rtmfp://localhost:12345/");
+</code></pre></div></div>
+
+<h4 id="7扩展cumulusserverserverapplication">7、扩展 CumulusServer（Server Application）</h4>
+
+<p>启动CumulusServer后，会在可执行文件的目录下出现一个www目录，该目录的作用，就是作为 Server Application 的默认根目录。具体的对应关系如下：</p>
+
+<blockquote>
+  <p>rtmfp://host:port/                            -&gt; [CumulusServer folder]/www/main.lua (root application)</p>
+</blockquote>
+
+<blockquote>
+  <p>rtmfp://host:port/myApplication     -&gt; [CumulusServer folder]/www/myApplication/main.lua</p>
+</blockquote>
+
+<blockquote>
+  <p>rtmfp://host:port/Games/myGame -&gt; [CumulusServer folder]/www/Games/myGame/main.lua</p>
+</blockquote>
+
+<p>另外要提醒的是，如果main.lua文件被修改，则不需要重启 CumulusServer，因为 Server Application 的创建是一种动态的方式。</p>
+
+<h3 id="三用lua编写helloworld应用扩展cumulusserver">三、用 Lua 编写 HelloWorld 应用扩展 CumulusServer</h3>
+
+<p>下面的这个实例是在本地（Client 与 Server 位于同一机器上）测试的。</p>
+
+<h4 id="1server-side">1、Server-side</h4>
+
+<h5 id="11serverconfiguration">1.1、Server configuration</h5>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">;</span> <span class="n">CumulusServer</span><span class="p">.</span><span class="n">ini</span>
+<span class="n">port</span> <span class="o">=</span> <span class="mi">1935</span>
+<span class="n">udpBufferSize</span> <span class="o">=</span> <span class="mi">114688</span>
+<span class="n">keepAlivePeer</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">keepAliveServer</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="p">[</span><span class="n">logs</span><span class="p">]</span><span class="n">name</span> <span class="o">=</span> <span class="n">log</span>
+<span class="n">directory</span> <span class="o">=</span> <span class="n">logs</span>
+</code></pre></div></div>
+
+<h5 id="12applicationfile">1.2、Application file</h5>
+
+<div class="language-lua highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">function</span> <span class="nf">onConnection</span><span class="p">(</span><span class="n">client</span><span class="p">,</span><span class="n">response</span><span class="p">,</span><span class="o">...</span><span class="p">)</span>
+      <span class="k">function</span> <span class="nf">client</span><span class="p">:</span><span class="n">test</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+        <span class="n">name</span><span class="p">,</span><span class="n">firstname</span> <span class="o">=</span> <span class="n">unpack</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">"Hello "</span><span class="o">..</span><span class="n">firstname</span><span class="o">..</span><span class="s2">" "</span><span class="o">..</span><span class="n">name</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+</code></pre></div></div>
+
+<h4 id="2client-side">2、Client-side</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// CumulusClient.as</span>
+
+<span class="kn">package</span> <span class="err">{</span>
+  <span class="nn">import</span> <span class="n">flash</span><span class="o">.</span><span class="na">display</span><span class="o">.</span><span class="na">Sprite</span><span class="o">;</span>
+  <span class="kn">import</span> <span class="nn">flash.net.NetConnection</span><span class="o">;</span>
+  <span class="kn">import</span> <span class="nn">flash.net.NetStream</span><span class="o">;</span>
+  <span class="kn">import</span> <span class="nn">flash.net.Responder</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CumulusClient</span> <span class="kd">extends</span> <span class="nc">Sprite</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">var</span> <span class="nl">nc:</span><span class="nc">NetConnection</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+  	<span class="kd">private</span> <span class="kt">var</span> <span class="nl">ns:</span><span class="nc">NetStream</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+  	
+  	<span class="kd">public</span> <span class="n">function</span> <span class="nf">CumulusClient</span><span class="o">()</span> <span class="o">{</span>
+      <span class="n">nc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NetConnection</span><span class="o">();</span>
+      <span class="n">nc</span><span class="o">.</span><span class="na">connect</span><span class="o">(</span><span class="s">"rtmfp://localhost"</span><span class="o">);</span>
+      <span class="n">nc</span><span class="o">.</span><span class="na">client</span> <span class="o">=</span> <span class="k">this</span><span class="o">;</span>
+      <span class="n">nc</span><span class="o">.</span><span class="na">call</span><span class="o">(</span><span class="s">"test"</span><span class="o">,</span><span class="k">new</span> <span class="nc">Responder</span><span class="o">(</span><span class="n">onResult</span><span class="o">,</span><span class="n">onStatus</span><span class="o">),</span> <span class="s">"OpenRTMFP/Cumulus"</span><span class="o">,</span> <span class="s">"World"</span><span class="o">)</span>
+    <span class="o">}</span>
+  
+  	<span class="kd">public</span> <span class="n">function</span> <span class="nf">close</span><span class="o">():</span><span class="kt">void</span> <span class="o">{</span>            
+			<span class="n">nc</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+  	<span class="o">}</span>
+  
+  	<span class="kd">public</span> <span class="n">function</span> <span class="nf">onStatus</span><span class="o">(</span><span class="nl">status:</span><span class="nc">Object</span><span class="o">):</span><span class="kt">void</span> <span class="o">{</span>
+    	<span class="n">trace</span><span class="o">(</span><span class="n">status</span><span class="o">.</span><span class="na">description</span><span class="o">)</span>
+	  <span class="o">}</span>
+  
+  	<span class="kd">public</span> <span class="n">function</span> <span class="nf">onResult</span><span class="o">(</span><span class="nl">response:</span><span class="nc">Object</span><span class="o">):</span><span class="kt">void</span> <span class="o">{</span>
+    	<span class="n">trace</span><span class="o">(</span><span class="n">response</span><span class="o">)</span> <span class="c1">// expected to display "Hello World OpenRTMFP/Cumulus"        </span>
+	  <span class="o">}</span>    
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="3运行结果">3、运行结果</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Hello World OpenRTMFP/Cumulus
+[SWF] CumulusClient.swf - 解压缩后为 1,776 个字节
+[卸装 SWF] CumulusClient.swf
+</code></pre></div></div>
+
+<h4 id="4远程测试一个免费的测试服务器">4、远程测试：一个免费的测试服务器</h4>
+
+<p>获取 Developer Key 的地址：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://108.59.252.39:8080/CumulusServer/index.jsp
+</code></pre></div></div>
+
+<p>服务器配置信息：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Server: amd64 OS: Linux 2.6.18-028stab095.1
+Server IP: 108.59.252.39
+OpenRTMFP as of: 22.Feb.2012
+</code></pre></div></div>
+
+<p>编写服务器段应用地址：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://108.59.252.39:8080/CumulusServer/manage_ssls.jsp
+</code></pre></div></div>
+
+<p>快去试试吧 :)</p>
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer><span>@2022 - MikeCaptain.com</span></footer>
+
+
+	    <!-- Script -->
+      <script src="/pages/Poechant/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
