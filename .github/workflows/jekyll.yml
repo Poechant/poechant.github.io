@@ -1,8 +1,8 @@
-name: jekyll - Build and deploy Jekyll site to GitHub Pages
+name: Build and deploy Jekyll site to GitHub Pages
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   jekyll:
@@ -26,9 +26,8 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site
+          publish_dir: ./
           publish_branch: gh-pages
-          repo: Poechant/poechant.github.io
 
 
 ####################
