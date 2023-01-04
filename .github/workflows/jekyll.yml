@@ -29,7 +29,7 @@ jobs:
           publish_dir: ./
           publish_branch: gh-pages
           enable_jekyll: true
-          cname: www.mikecaptain.com
+          cname: www.mikecaptain.com 
 
 
 ####################
