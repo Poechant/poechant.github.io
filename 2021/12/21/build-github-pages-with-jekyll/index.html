@@ -366,7 +366,7 @@
 
 			<article id="post-page">
 	<h2>如何使用 Jekyll 基于 Github Pages 搭建个人博客</h2>		
-	<time datetime="2021-12-21T15:53:57+00:00" class="by-line">21 Dec 2021, 杭州 | 作者 麦克船长 | 总计 12697 字</time>
+	<time datetime="2021-12-21T15:53:57+00:00" class="by-line">21 Dec 2021, 杭州 | 作者 麦克船长 | 总计 12823 字</time>
 	<div class="content">
 		<p><strong>本文目录</strong></p>
 <ul id="markdown-toc">
@@ -966,7 +966,10 @@ digraph G {
           <span class="na">enable_jekyll</span><span class="pi">:</span> <span class="no">true</span>
 </code></pre></div></div>
 
-<p>提交后，会触发 action。</p>
+<p>如果你遇到了生成的网站中所有 URL 都带着 <code class="language-plaintext highlighter-rouge">pages/username</code>，那么这个问题修改 <code class="language-plaintext highlighter-rouge">_config.yml</code> 即可：</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">baseurl</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span> <span class="c1"># Change this to your relative path (ex: /blog/), or leave just a /</span>
+</code></pre></div></div>
 
 <h4 id="q6如何显示--或者--">Q6：如何显示 <code class="language-plaintext highlighter-rouge">{%</code> 或者 <code class="language-plaintext highlighter-rouge">{{</code> ？</h4>
 

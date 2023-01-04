@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	<meta name="generator" content="Jekyll">
 
-	<title>OpenRTMFP/Cumulus 原理、源码及实践 7：Cumulus 源码的一个线程启动 Bug 及修复方法</title>
+	<title>麦克船长的 OpenRTMFP/Cumulus 原理、源码及实践 7：Cumulus 源码的一个线程启动 Bug 及修复方法</title>
   	<meta name="description" content="本文是麦克船长《OpenRTMFP/Cumulus 原理、源码及实践》系列文章的其中一篇，相关内容最初首发于 CSDN 的 Poechant 技术博客，后整理于本博客。Cumulus 启动后，我们可以看到有多个线程被创建，但是有时其中的个别线程没有被成功启动，本文将告诉你如何修复并解决。">
 
 	<!-- CSS & fonts -->
@@ -365,7 +365,7 @@
 		<main>
 
 			<article id="post-page">
-	<h2>OpenRTMFP/Cumulus 原理、源码及实践 7：Cumulus 源码的一个线程启动 Bug 及修复方法</h2>		
+	<h2>麦克船长的 OpenRTMFP/Cumulus 原理、源码及实践 7：Cumulus 源码的一个线程启动 Bug 及修复方法</h2>		
 	<time datetime="2012-06-25T02:56:26+00:00" class="by-line">25 Jun 2012, 广州 | 作者 麦克船长 | 总计 2111 字</time>
 	<div class="content">
 		<p><code class="language-plaintext highlighter-rouge">Cumulus</code> 中的线程都是继承自 <code class="language-plaintext highlighter-rouge">Startable</code>，在其中封装 <code class="language-plaintext highlighter-rouge">Poco::Thread</code> 成员，使得一些有关线程的操作更方便。<code class="language-plaintext highlighter-rouge">Startable</code> 中的 <code class="language-plaintext highlighter-rouge">start</code> 函数如下：</p>
