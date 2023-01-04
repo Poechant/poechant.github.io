@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  OpenRTMFP/Cumulus 原理、源码及实践 7：Cumulus 源码的一个线程启动 Bug 及修复方法
+title:  麦克船长的 OpenRTMFP/Cumulus 原理、源码及实践 7：Cumulus 源码的一个线程启动 Bug 及修复方法
 date:   2012-06-25 10:56:26 +0800
 categories: rt_tech
 tags: [直播技术]

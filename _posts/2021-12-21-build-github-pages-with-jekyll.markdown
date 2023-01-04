@@ -555,8 +555,11 @@ jobs:
           enable_jekyll: true
 ```
 
-提交后，会触发 action。
+如果你遇到了生成的网站中所有 URL 都带着 `pages/username`，那么这个问题修改 `_config.yml` 即可：
 
+```yaml
+baseurl: "" # Change this to your relative path (ex: /blog/), or leave just a /
+```
 
 #### Q6：如何显示 `{% raw %}{%{% endraw %}` 或者 `{% raw %}{{{% endraw %}` ？
 

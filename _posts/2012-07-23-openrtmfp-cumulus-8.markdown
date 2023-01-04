@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  OpenRTMFP/Cumulus 原理、源码及实践 8：经由服务器的 Pub/Sub 流程的关键点
+title:  麦克船长的 OpenRTMFP/Cumulus 原理、源码及实践 8：经由服务器的 Pub/Sub 流程的关键点
 date:   2012-07-23 11:07:43 +0800
 categories: rt_tech
 tags: [直播技术]

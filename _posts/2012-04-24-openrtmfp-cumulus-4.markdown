@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  OpenRTMFP/Cumulus 原理、源码及实践 4：AMF 解析源码分析
+title:  麦克船长的 OpenRTMFP/Cumulus 原理、源码及实践 4：AMF 解析源码分析
 date:   2012-04-24 10:04:55 +0800
 categories: rt_tech
 tags: [直播技术]

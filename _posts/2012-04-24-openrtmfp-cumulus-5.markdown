@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  OpenRTMFP/Cumulus 原理、源码及实践 5：IO 管理源码分析
+title:  麦克船长的 OpenRTMFP/Cumulus 原理、源码及实践 5：IO 管理源码分析
 date:   2012-04-24 11:31:10 +0800
 categories: rt_tech
 tags: [直播技术]

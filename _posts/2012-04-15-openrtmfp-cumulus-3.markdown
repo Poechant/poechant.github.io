@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  OpenRTMFP/Cumulus 原理、源码及实践 3：CumulusServer 源码主进程主循环分析
+title:  麦克船长的 OpenRTMFP/Cumulus 原理、源码及实践 3：CumulusServer 源码主进程主循环分析
 date:   2012-04-15 22:26:58 +0800
 categories: rt_tech
 tags: [直播技术]
