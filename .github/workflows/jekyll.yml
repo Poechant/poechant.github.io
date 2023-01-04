@@ -4,10 +4,10 @@ on:
     branches:
       - master
 
-# jobs:
-#   jekyll:
-#     runs-on: ubuntu-latest
-#     steps:
+jobs:
+  jekyll:
+    runs-on: ubuntu-latest
+    steps:
 #       - name: 📂 setup
 #         uses: actions/checkout@v2
 #       - name: Setup Graphviz
