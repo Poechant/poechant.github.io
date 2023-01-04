@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>你可能已经听说 GPT-3，但是你也不能不知道 BERT —— 跟我一起用 BERT 跑个小用例</title>
+  	<meta name="description" content="2018 年 Google 发布了 BERT 模型后迅速席卷 NLP 领域，这家伙可是比 ChatGPT 背后的 GPT 还要早的。本文简单介绍了 BERT 后主要是希望大家都手试一下，所以文中提到了一个小的中文模型供大家练手，以及一个小用例。">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/pages/Poechant/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/pages/Poechant/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/pages/Poechant/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/pages/Poechant/booklist/" title="我的书单">我的书单</a>
+	    
+	  
+	    
+	      <a href="/pages/Poechant/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+  <a href="/pages/Poechant/category/web" title="前端技术">前端技术</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/pages/Poechant/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+          <a href="/pages/Poechant/booklist/" title="我的书单">我的书单</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/pages/Poechant/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+  <a href="/pages/Poechant/category/web" title="前端技术">前端技术</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/pages/Poechant/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/pages/Poechant/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+          <a href="/pages/Poechant/booklist/" title="我的书单">我的书单</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>你可能已经听说 GPT-3，但是你也不能不知道 BERT —— 跟我一起用 BERT 跑个小用例</h2>		
+	<time datetime="2022-12-17T15:08:01+00:00" class="by-line">17 Dec 2022, 杭州 | 作者 麦克船长 | 总计 7275 字</time>
+	<div class="content">
+		<p><strong>本文目录</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#一关于-bert-的一些背景" id="markdown-toc-一关于-bert-的一些背景">一、关于 BERT 的一些背景</a></li>
+  <li><a href="#二开始一个-bert-的动手小试验" id="markdown-toc-二开始一个-bert-的动手小试验">二、开始一个 BERT 的动手小试验</a>    <ul>
+      <li><a href="#1安装-anaconda-来为部署-bert-做环境准备" id="markdown-toc-1安装-anaconda-来为部署-bert-做环境准备">1、安装 Anaconda 来为部署 BERT 做环境准备</a></li>
+      <li><a href="#2安装-bert-所需要的各种依赖" id="markdown-toc-2安装-bert-所需要的各种依赖">2、安装 BERT 所需要的各种依赖</a></li>
+      <li><a href="#3下载一个预训练pre-train过的-bert-模型" id="markdown-toc-3下载一个预训练pre-train过的-bert-模型">3、下载一个预训练（Pre-Train）过的 BERT 模型</a></li>
+      <li><a href="#5启动-bert-服务端" id="markdown-toc-5启动-bert-服务端">5、启动 BERT 服务端</a></li>
+      <li><a href="#6在-pycharm-中使用-conda-的环境" id="markdown-toc-6在-pycharm-中使用-conda-的环境">6、在 PyCharm 中使用 Conda 的环境</a></li>
+      <li><a href="#7编写程序实现-bert-客户端" id="markdown-toc-7编写程序实现-bert-客户端">7、编写程序实现 BERT 客户端</a></li>
+    </ul>
+  </li>
+  <li><a href="#三bert-模型的优劣势及其原因" id="markdown-toc-三bert-模型的优劣势及其原因">三、BERT 模型的优劣势及其原因</a>    <ul>
+      <li><a href="#1bert-的优势是很明显的" id="markdown-toc-1bert-的优势是很明显的">1、BERT 的优势是很明显的</a>        <ul>
+          <li><a href="#11mlm-和-nsp-预训练能够捕捉到自然语言中的各种复杂细节" id="markdown-toc-11mlm-和-nsp-预训练能够捕捉到自然语言中的各种复杂细节">1.1、MLM 和 NSP 预训练能够捕捉到自然语言中的各种复杂细节</a></li>
+          <li><a href="#12识别并专注于较重要的部分进行文本处理" id="markdown-toc-12识别并专注于较重要的部分进行文本处理">1.2、识别并专注于较重要的部分进行文本处理</a></li>
+          <li><a href="#13快速构建针对具体任务的-nlp-系统" id="markdown-toc-13快速构建针对具体任务的-nlp-系统">1.3、快速构建针对具体任务的 NLP 系统</a></li>
+        </ul>
+      </li>
+      <li><a href="#2bert-模型的劣势及其原因" id="markdown-toc-2bert-模型的劣势及其原因">2、BERT 模型的劣势及其原因</a>        <ul>
+          <li><a href="#21随机挖-mask-的完形填空题是有隐患的" id="markdown-toc-21随机挖-mask-的完形填空题是有隐患的">2.1、随机挖 MASK 的完形填空题是有隐患的</a></li>
+          <li><a href="#22nsp-任务有必要吗" id="markdown-toc-22nsp-任务有必要吗">2.2、NSP 任务有必要吗？</a></li>
+          <li><a href="#23针对两个或以上词组成的连续词的词义被丢失" id="markdown-toc-23针对两个或以上词组成的连续词的词义被丢失">2.3、针对两个或以上词组成的连续词的词义被丢失</a></li>
+          <li><a href="#24需要的算力高" id="markdown-toc-24需要的算力高">2.4、需要的算力高</a></li>
+          <li><a href="#25需要的模型大" id="markdown-toc-25需要的模型大">2.5、需要的模型大</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#四一些关于-bert-的问题" id="markdown-toc-四一些关于-bert-的问题">四、一些关于 BERT 的问题</a>    <ul>
+      <li><a href="#1bert-模型的所谓双向与-bilstm-的双向是啥区别" id="markdown-toc-1bert-模型的所谓双向与-bilstm-的双向是啥区别">1、BERT 模型的所谓「双向」与 BiLSTM 的「双向」是啥区别？</a></li>
+      <li><a href="#2为什么-bert-可以比-rnn-更好地并行化" id="markdown-toc-2为什么-bert-可以比-rnn-更好地并行化">2、为什么 BERT 可以比 RNN 更好地并行化</a></li>
+    </ul>
+  </li>
+  <li><a href="#reference" id="markdown-toc-reference">Reference</a></li>
+</ul>
+
+<h3 id="一关于-bert-的一些背景">一、关于 BERT 的一些背景</h3>
+
+<p>2018 年 Google 发布 BERT 后迅速在 NLP 领域引起广泛关注。BERT（Bidirectional Encoder Representations from Transformers）是一种自然语言处理（NLP）的深度学习模型，它可以进行语言模型预测、序列标注和问答等任务。BERT 采用双向的 Transformer 编码器架构，使用了大量的数据和计算资源进行训练，因此具有较强的泛化能力。</p>
+
+<p>BERT 的训练方法是通过让模型对给定的输入文本进行自监督学习，即使用未标记的语料进行训练。BERT 可以在很多 NLP 任务中获得较好的性能，并且由于其双向的编码方式，能够更好地理解语境信息。</p>
+
+<p>BERT 的训练需要大量的计算资源，因此它常常被用来作为解决 NLP 问题的预训练模型，可以用来初始化其他模型的权重，使得这些模型能够更快速地收敛。</p>
+
+<h3 id="二开始一个-bert-的动手小试验">二、开始一个 BERT 的动手小试验</h3>
+
+<p>为了让 conda 使用 Python 3.7，你可以按照这些步骤来操作。</p>
+
+<h4 id="1安装-anaconda-来为部署-bert-做环境准备">1、安装 Anaconda 来为部署 BERT 做环境准备</h4>
+
+<p>先了解几个概念：Anaconda 是一个软件包管理系统，其中包含了 conda 和许多其他的工具。Conda 是 Anaconda 中的一个组件，用于安装和管理软件包。
+我们需要用 conda 创建一个环境，在这个环境里去启用我们想要使用的 BERT 所需要的各种依赖。</p>
+
+<p>更新 conda 到最新版本：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda update <span class="nt">-n</span> base conda
+</code></pre></div></div>
+
+<p>使用 Python 3.7 创建一个新的环境：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create <span class="nt">-n</span> py37 <span class="nv">python</span><span class="o">=</span>3.7
+</code></pre></div></div>
+
+<p>激活这个新环境：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate py37
+</code></pre></div></div>
+
+<p>验证正在使用的是正确版本的 Python</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python <span class="nt">--version</span>
+</code></pre></div></div>
+
+<p>另外你可能还会用到的 conda 命令有：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 你之后一定会需要 deactivate 一个环境，命令如下：</span>
+conda deactivate py37
+
+<span class="c"># 查看 conda 当前安装的所有库</span>
+conda list
+</code></pre></div></div>
+
+<h4 id="2安装-bert-所需要的各种依赖">2、安装 BERT 所需要的各种依赖</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span><span class="nv">tensorflow</span><span class="o">==</span>1.14.0
+</code></pre></div></div>
+
+<p>验证 tensorflow 是否安装正确：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="k">print</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">__version__</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="3下载一个预训练pre-train过的-bert-模型">3、下载一个预训练（Pre-Train）过的 BERT 模型</h4>
+
+<p>官方的模型在这里浏览：https://github.com/google-research/bert#pre-trained-models</p>
+
+<p>也有一些中文的模型，以下是 ChatGPT 推荐的三个：</p>
+
+<ul>
+  <li>BERT-Base, Chinese：这是 Google 官方提供的中文 BERT 模型，在中文 NLP 任务中表现良好。你可以从 这里下载这个模型。</li>
+  <li>ERNIE：这是由中科院自然语言所提供的中文 BERT 模型，包含了额外的语义信息。你可以从 这里下载这个模型。</li>
+  <li>RoBERTa-wwm-ext：这是由清华大学自然语言处理实验室提供的中文 BERT 模型，在多种中文 NLP 任务中表现良好。你可以从 这里下载这个模型。</li>
+</ul>
+
+<p>4、安装 BERT 的服务端和客户端</p>
+
+<p>这里我们使用 bert-as-service，bert-as-service 是一种将 BERT 模型部署为服务的方式。该工具使用 TensorFlow Serving 来运行 BERT 模型，并允许通过 REST API 进行调用。根据 bert-as-service 的文档，它已经在 TensorFlow 1.14.0 上测试过。</p>
+
+<p>在你激活的环境里，安装 <code class="language-plaintext highlighter-rouge">bert-as-service</code>：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 安装服务端和客户端</span>
+<span class="c"># 更多关于 bert-serving-server 的信息可以参考：https://bert-serving.readthedocs.io/en/latest/index.html</span>
+conda <span class="nb">install </span>bert-serving-server bert-serving-client 
+验证 bert-as-service 是否安装成功
+bert-serving-start <span class="nt">-h</span>
+</code></pre></div></div>
+
+<h4 id="5启动-bert-服务端">5、启动 BERT 服务端</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 命令行下启动BERT服务</span>
+<span class="c"># -num_worker 表示启动几个worker服务，即可以处理几个并发请求，超过这个数字的请求将会在LBS（负载均衡器）中排队等待</span>
+bert-serving-start <span class="nt">-model_dir</span> /模型/的/绝对/路径 <span class="nt">-num_worker</span><span class="o">=</span>4
+</code></pre></div></div>
+
+<h4 id="6在-pycharm-中使用-conda-的环境">6、在 PyCharm 中使用 Conda 的环境</h4>
+
+<p>在 PyCharm 中启用 Interpreter 为 Anaconda，macOS 上具体地是在「Preference - Project - Python Interpreter - Add Interpreter - Add Local Interpreter - Conda Environment」。</p>
+
+<p>接下来还有一项重要的步骤就是选择该 project 要加载包文件的路径。如果不进行这一步，那该 project 还是从系统环境变量中的路径来搜索你要加载的包，这样在你用 Anaconda 新建的这个环境中所特有的包就会出现无法加载的问题。单击菜单栏 Run 选择 Edit Configuration。在Environment variables中添加一个新的 Path。新的路径为你用 Anaconda 新建的环境的文件夹中的<code class="language-plaintext highlighter-rouge">「/Users/captain/opt/anaconda3/bin/python」</code>。</p>
+
+<p>配置 PyCharm 这里参考：https://docs.anaconda.com/anaconda/user-guide/tasks/pycharm/</p>
+
+<h4 id="7编写程序实现-bert-客户端">7、编写程序实现 BERT 客户端</h4>
+
+<p>这里有一些客户端例子可以参考：https://blog.csdn.net/qq_18256855/article/details/123860126</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">bert_serving.client</span> <span class="kn">import</span> <span class="n">BertClient</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="c1"># 定义类
+</span><span class="k">class</span> <span class="nc">BertModel</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">bert_client</span> <span class="o">=</span> <span class="n">BertClient</span><span class="p">(</span><span class="n">ip</span><span class="o">=</span><span class="s">'127.0.0.1'</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">5555</span><span class="p">,</span> <span class="n">port_out</span><span class="o">=</span><span class="mi">5556</span><span class="p">)</span>  <span class="c1"># 创建客户端对象
+</span>            <span class="c1"># 注意：可以参考API，查看其它参数的设置
+</span>            <span class="c1"># 127.0.0.1 表示本机IP，也可以用localhost
+</span>        <span class="k">except</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="nb">Exception</span><span class="p">(</span><span class="s">"cannot create BertClient"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">close_bert</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">bert_client</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># 关闭服务
+</span>
+    <span class="k">def</span> <span class="nf">sentence_embedding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="s">'''对输入文本进行embedding
+          Args:
+            text: str, 输入文本
+          Returns:
+            text_vector: float, 返回一个列表，包含text的embedding编码值
+        '''</span>
+        <span class="n">text_vector</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">bert_client</span><span class="p">.</span><span class="n">encode</span><span class="p">([</span><span class="n">text</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">text_vector</span>  <span class="c1"># 获取输出结果
+</span>
+    <span class="k">def</span> <span class="nf">caculate_similarity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vec_1</span><span class="p">,</span> <span class="n">vec_2</span><span class="p">):</span>
+        <span class="s">'''根据两个语句的vector，计算它们的相似性
+          Args:
+            vec_1: float, 语句1的vector
+            vec_2: float, 语句2的vector
+          Returns:
+            sim_value: float, 返回相似性的计算值
+        '''</span>
+        <span class="c1"># 根据cosine的计算公式
+</span>        <span class="n">v1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mat</span><span class="p">(</span><span class="n">vec_1</span><span class="p">)</span>
+        <span class="n">v2</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mat</span><span class="p">(</span><span class="n">vec_2</span><span class="p">)</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">v1</span> <span class="o">*</span> <span class="n">v2</span><span class="p">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v2</span><span class="p">)</span>
+        <span class="n">cosine</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
+        <span class="k">return</span> <span class="n">cosine</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="c1"># 创建bert对象
+</span>    <span class="n">bert</span> <span class="o">=</span> <span class="n">BertModel</span><span class="p">()</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="c1"># --- 输入语句 ----
+</span>        <span class="n">input_a</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'请输入语句1: '</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">input_a</span> <span class="o">==</span> <span class="s">"N"</span> <span class="ow">or</span> <span class="n">input_a</span> <span class="o">==</span> <span class="s">"n"</span><span class="p">:</span>
+            <span class="n">bert</span><span class="p">.</span><span class="n">close_bert</span><span class="p">()</span>  <span class="c1"># 关闭服务
+</span>            <span class="k">break</span>
+
+        <span class="n">input_b</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">'请输入语句2: '</span><span class="p">)</span>
+
+        <span class="c1"># --- 对输入语句进行embedding ---
+</span>
+        <span class="n">a_vec</span> <span class="o">=</span> <span class="n">bert</span><span class="p">.</span><span class="n">sentence_embedding</span><span class="p">(</span><span class="n">input_a</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'a_vec shape : '</span><span class="p">,</span> <span class="n">a_vec</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+
+        <span class="n">b_vec</span> <span class="o">=</span> <span class="n">bert</span><span class="p">.</span><span class="n">sentence_embedding</span><span class="p">(</span><span class="n">input_b</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'b_vec shape : '</span><span class="p">,</span> <span class="n">b_vec</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+
+        <span class="c1"># 计算两个语句的相似性
+</span>        <span class="n">cos</span> <span class="o">=</span> <span class="n">bert</span><span class="p">.</span><span class="n">caculate_similarity</span><span class="p">(</span><span class="n">a_vec</span><span class="p">,</span> <span class="n">b_vec</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'cosine value : '</span><span class="p">,</span> <span class="n">cos</span><span class="p">)</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n\n</span><span class="s">'</span><span class="p">)</span>
+
+        <span class="c1"># 如果相似性值大于0.85，则输出相似，否则，输出不同
+</span>        <span class="k">if</span> <span class="n">cos</span> <span class="o">&gt;</span> <span class="mf">0.85</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"2个语句的含义相似"</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"不相似"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>在使用 <code class="language-plaintext highlighter-rouge">bert-serving-client</code> 连接 <code class="language-plaintext highlighter-rouge">bert-serving-server</code> 时，你需要确保 <code class="language-plaintext highlighter-rouge">bert-serving-server</code> 使用的模型和 <code class="language-plaintext highlighter-rouge">bert-serving-client</code> 使用的模型是匹配的，否则会出现错误。</p>
+
+<p>程序正常运行后，将要求你输入两句话，然后 BERT 计算两句话的相似性。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>请输入语句1: 
+请输入语句2: 
+</code></pre></div></div>
+
+<p>两句输入好确认后，得到如下形式的结果：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a_vec shape :  (768,)
+b_vec shape :  (768,)
+cosine value :  0.8691698561422959
+</code></pre></div></div>
+
+<p>其实这个小试验蛮没意思的，而且准确性也比较令人质疑。</p>
+
+<h3 id="三bert-模型的优劣势及其原因">三、BERT 模型的优劣势及其原因</h3>
+
+<p>论文地址：<a href="https://arxiv.org/abs/1810.04805">《BERT: Pre-Training of Deep Bidirectional Transformers for Language Understanding》</a> 。</p>
+
+<h4 id="1bert-的优势是很明显的">1、BERT 的优势是很明显的</h4>
+
+<p>复旦大学的邱锡鹏教授层评价 BERT 的「里程碑意义」在于：</p>
+
+<blockquote>
+  <p>证明了一个非常深的模型可以显著提高 NLP 任务的准确率，而这个模型可以从无标记数据集中预训练得到。</p>
+</blockquote>
+
+<h5 id="11mlm-和-nsp-预训练能够捕捉到自然语言中的各种复杂细节">1.1、MLM 和 NSP 预训练能够捕捉到自然语言中的各种复杂细节</h5>
+
+<p>因为 BERT 采用了双向的自注意力机制，这里的「双向」意味着 BERT 模型可以同时利用输入文本的前后文信息来预测下一个词是什么、下一句是什么。这样 BERT 模型就可以捕捉到自然语言中的各种隐藏的细节，比如语义关系、语法结构、语义暗示等等。</p>
+
+<p>具体地，BERT 采用了 Masked Language Model（MLM）来做「下一个词是什么」的预训练，采用了 Next Sentence Prediction（NSP）来做「下一句是什么」的预训练。MLM 的方式其实就很像英语考试里的「完形填空」，而 NSP 的方式，就像整句的完形填空。</p>
+
+<h5 id="12识别并专注于较重要的部分进行文本处理">1.2、识别并专注于较重要的部分进行文本处理</h5>
+
+<p>这要得益于因为 BERT 采用了自注意力机制。自注意力机制，通过计算输入单元的权重值，来确定在一个输入序列中哪些输入单元是重要的。具体地，一个输入单元与其他单元的相似性越高，按照我们自然语言的逻辑，那么这部分是在被重复、强调、翻来覆去用不同的方式在解释，那么这部分就是重要的，权重值就更高。</p>
+
+<h5 id="13快速构建针对具体任务的-nlp-系统">1.3、快速构建针对具体任务的 NLP 系统</h5>
+
+<p>因为 BERT 采用了预训练模型，能够在没有监督标注数据的情况下从大量文本中学习语言模型。因为我们认为上下文信息本身就能推测出某个词，所以大量的文本数据本身就是一种「自带标注」的数据，所以 BERT 能够无监督学习。</p>
+
+<h4 id="2bert-模型的劣势及其原因">2、BERT 模型的劣势及其原因</h4>
+
+<h5 id="21随机挖-mask-的完形填空题是有隐患的">2.1、随机挖 MASK 的完形填空题是有隐患的</h5>
+
+<p>对于上面提到的 MLM、NSP 方法做预训练，那么问题也就显而易见了，如果我们挖掉的一组 MASK 完形填空词，是强关联的（非条件独立），那么这一组词的预测就都会出现问题。</p>
+
+<h5 id="22nsp-任务有必要吗">2.2、NSP 任务有必要吗？</h5>
+
+<p>论文《Crosslingual language model pretraining》中提到 BERT 的 NSP 可能是非必要的，针对这个问题，后续出现的模型都移除了 NSP 任务，比如 RoBERTa、spanBERT、ALBERT。</p>
+
+<h5 id="23针对两个或以上词组成的连续词的词义被丢失">2.3、针对两个或以上词组成的连续词的词义被丢失</h5>
+
+<p>比如 cutting-edge，MLM 的方式可能会割裂这两个子词的相关性，导致模型丢失这个词的词义，针对这个问题 Google 后来发表了 BERT-WWM，WWM 即 Whole Word Masking，从字面就能理解针对的问题。哈尔滨工业大学的科大讯飞联合实验室后来推出了 Chinese-BERT-WWM 专门针对中文解决了这个问题。</p>
+
+<h5 id="24需要的算力高">2.4、需要的算力高</h5>
+
+<p>算力高，自然需要的计算成本运行更高。不过算力成本高这种问题总有办法优化，通常来说不是模型本身所处理问题的局限性和先决条件的局限性（比如依赖大量人工工作）就非常好了。</p>
+
+<h5 id="25需要的模型大">2.5、需要的模型大</h5>
+
+<p>模型大，自然存储成本也就高了。这也类似于上一点，而且算力、存储成本高，可以在大型应用中把成本均摊下来，比如 BERT 如果支持的某个 AGI 应用得到广泛普及。</p>
+
+<h3 id="四一些关于-bert-的问题">四、一些关于 BERT 的问题</h3>
+
+<h4 id="1bert-模型的所谓双向与-bilstm-的双向是啥区别">1、BERT 模型的所谓「双向」与 BiLSTM 的「双向」是啥区别？</h4>
+
+<p>BiLSTM 是把句子再倒序一遍，而 BERT 的双向是指在 Encoder 的自注意力机制下编码一个 token 时「同时利用上下文」的 token。</p>
+
+<h4 id="2为什么-bert-可以比-rnn-更好地并行化">2、为什么 BERT 可以比 RNN 更好地并行化</h4>
+
+<p>RNN 因为有时序概念，即后面的特征计算，依赖于前面计算的结果，所以就形成了循环（Recurrent）。而 BERT 采用了自注意力机制则没有时序概念，每个词特征都依赖其上下文独立计算，因此更容易并行化。</p>
+
+<h3 id="reference">Reference</h3>
+
+<ol>
+  <li>https://arxiv.org/abs/1810.04805</li>
+  <li>https://github.com/google-research/bert</li>
+  <li>https://github.com/ymcui/Chinese-BERT-wwm</li>
+  <li>https://zhuanlan.zhihu.com/p/195723105</li>
+  <li>https://www.jiqizhixin.com/articles/2018-10-24-13</li>
+</ol>
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer><span>@2022 - MikeCaptain.com</span></footer>
+
+
+	    <!-- Script -->
+      <script src="/pages/Poechant/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
