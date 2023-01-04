@@ -1,0 +1,40 @@
+/*- Custom style -*/
+
+// -- Put custom style under this point -- //
+pre {
+	background-color: #f9f9f9;
+	border: 1px solid #e8e8e8;
+	padding: 1em;
+}
+
+pre code {
+	background-color: #f9f9f9;
+	border: none;
+}
+
+code {
+	background-color: #f9f9f9;
+	border: 1px solid #e8e8e8;
+}
+
+#markdown-toc {
+	background-color: #f9f9f9;
+	font-size: 0.7em;
+	font-style: normal;
+}
+
+/*li a {
+	color: #1e6afe;
+	&:hover,
+	&:focus {
+		color: #6297ff;
+	}
+}*/
+
+p a {
+	color: #1e6afe;
+	&:hover,
+	&:focus {
+		color: #6297ff;
+	}
+}
