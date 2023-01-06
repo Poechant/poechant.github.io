@@ -152,7 +152,7 @@ BERT 模型是在一篇于 2018 年发表的叫做《BERT: Pre-training of Deep 
 因为图片生成的容错率非常高，也就是在应用上的包容度更高，相比之下文本或语音的生成，是对结果容错非常低的，比如不容许事实错误、逻辑错误等等。这类的应用，我们能想到：
 
 * 虚拟客服（可以乱真的）
-* 智能助理：AI 家庭教师、AI 非诉律师、AI 医生助手、AI 新闻编辑
+* 智能助理：AI 家庭教师、AI 非诉律师、AI 医生助手、AI 新闻编辑、AI 设计助理
 * 智能翻译
 * 智能导购员：如果叠加虚拟人技术、语音合成技术，可以应用于电商
 * AI 广告公司：替代传统广告公司
@@ -163,15 +163,19 @@ BERT 模型是在一篇于 2018 年发表的叫做《BERT: Pre-training of Deep 
 
 所以下面除了大家耳熟能详的 CV 领域的 AIGC 产品 Disco Diffusion、MidJourney、DALL·E 2、Stable Diffusion 之外，我们重点关注非图片生成类的应用。
 
-* 用于营销场景的 AI 写手与图像生成工具 Jasper.ai，常被用于生成互联网营销文案（比如用于 Instagram、Tik Tok、Facebook、博客、email、论坛帖子 等等）。
+* 用于营销场景的 AI 写手与图像生成工具「**Jasper.ai**」，常被用于生成互联网营销文案（比如用于 Instagram、Tik Tok、Facebook、博客、email、论坛帖子 等等）。
 
 ![image](/img/src/2022-12-24-captain-nlp-7.png)
 
-* 2021 年 6 月，微软与 OpenAI 共同推出的的代码辅助生成 AI 工具 GitHub Copilot（https://github.com/features/copilot） 发布。
+* 2021 年 6 月，微软与 OpenAI 共同推出的的代码辅助生成 AI 工具「[GitHub Copilot](https://github.com/features/copilot)」发布。
 
 ![image](/img/src/2022-12-24-captain-nlp-2.jpg)
 
-* 虚拟客服 DialogFlow，能理解电话、语音内容等输入，并且给出文本或语音合成的输出。
+* 文案神器「**Copy.ai**」：
+
+![image](/img/src/2022-12-24-captain-nlp-9.png)
+
+* 虚拟客服「**DialogFlow**」，能理解电话、语音内容等输入，并且给出文本或语音合成的输出。
 
 ![image](/img/src/2022-12-24-captain-nlp-8.png)
 

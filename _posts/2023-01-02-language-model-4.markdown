@@ -76,7 +76,86 @@ digraph G {
 {% endgraphviz %}
 </div>
 
-这种输入和输出数据项数一致的 RNN，一般叫做 N vs. N 的 RNN。
+这种输入和输出数据项数一致的 RNN，一般叫做 N vs. N 的 RNN。如果我们用 PyTorch 来实现一个非常简单的经典 RNN 则如下：
+
+```python
+import torch
+import torch.nn as nn
+
+# 创建一个 RNN 实例
+# 第一个参数
+rnn = nn.RNN(10, 20, 1, batch_first=True)  # 实例化一个单向单层RNN
+
+# 输入是一个形状为 (5, 3, 10) 的张量
+# 5 个输入数据项（也可以说是样本）
+# 3 个数据项是一个序列，有 3 个 steps
+# 每个 step 有 10 个特征
+input = torch.randn(5, 3, 10)
+
+# 隐藏层是一个 (1, 5, 20) 的张量
+h0 = torch.randn(1, 5, 20)
+
+# 调用 rnn 函数后，返回输出、最终的隐藏状态
+output, hn = rnn(input, h0)
+
+print(output)
+print(hn)
+```
+
+我们来解读一下这段代码：
+
+* 这段代码实例化了一个带有 1 个隐藏层的 RNN 网络。
+* 它的输入是一个形状为 (5, 3, 10) 的张量，表示有 5 个样本，每个样本有 3 个时间步，每个时间步的特征维度是 10。
+* 初始隐藏状态是一个形状为 (1, 5, 20) 的张量。
+* 调用 rnn 函数后，会返回输出和最终的隐藏状态。
+* 输出的形状是 (5, 3, 20)，表示有 5 个样本，每个样本有 3 个时间步，每个时间步的输出维度是 20。
+* 最终的隐藏状态的形状是 (1, 5, 20)，表示最后的隐藏状态是 5
+
+但是上面的代码示例，并没有自己编写一个具体的 RNN，而是用了默认的 PyTorch 的 RNN，那么下面我们就自己编写一个：
+
+```python
+class MikeCaptainRNN(nn.Module):
+    def __init__(self, input_size, hidden_size):
+        super().__init__()
+
+        # 对于 RNN，输入维度就是序列数
+        self.input_size = input_size
+
+        # 隐藏层有多少个节点/神经元，经常将 hidden_size 设置为与序列长度相同
+        self.hidden_size = hidden_size
+
+        # 输入层到隐藏层的 W^{ih} 权重、bias^{ih} 偏置项
+        self.weight_ih = torch.randn(self.hidden_size, self.input_size) * 0.01
+        self.bias_ih = torch.randn(self.hidden_size)
+
+        # 隐藏层到隐藏层的 W^{hh} 权重、bias^{hh} 偏置项
+        self.weight_hh = torch.randn(self.hidden_size, self.hidden_size) * 0.01
+        self.bias_hh = torch.randn(self.hidden_size)
+
+    # 前向传播
+    def forward(self, input, h0):
+
+    	# 取出这个张量的形状
+        N, L, input_size = input.shape
+
+        # 初始化一个全零张量
+        output = torch.zeros(N, L, self.hidden_size)
+
+        # 处理每个时刻的输入特征
+        for t in range(L):
+
+        	# 获得当前时刻的输入特征，[N, input_size, 1]。unsqueeze(n)，在第 n 维上增加一维
+            x = input[:, t, :].unsqueeze(2)  
+            w_ih_batch = self.weight_ih.unsqueeze(0).tile(N, 1, 1)  # [N, hidden_size, input_size]
+            w_hh_batch = self.weight_hh.unsqueeze(0).tile(N, 1, 1)  # [N, hidden_size, hidden_size]
+
+            # bmm 是矩阵乘法函数
+            w_times_x = torch.bmm(w_ih_batch, x).squeeze(-1)  # [N, hidden_size]。squeeze(n)，在第n维上减小一维
+            w_times_h = torch.bmm(w_hh_batch, h0.unsqueeze(2)).squeeze(-1)  # [N, hidden_size]
+            h0 = torch.tanh(w_times_x + self.bias_ih + w_times_h + self.bias_hh)
+            output[:, t, :] = h0
+        return output, h0.unsqueeze(0)
+```
 
 ### 2、N vs.1 的 RNN
 
@@ -308,6 +387,8 @@ $$
 
 ### 5、双向循环神经网络、双向 LSTM
 
+双向循环神经网络很好理解，就是两个方向都有，例如下图：
+
 <div style="text-align: center;">
 {% graphviz %}
 digraph G {
@@ -347,6 +428,12 @@ digraph G {
 }
 {% endgraphviz %}
 </div>
+
+在 PyTorch 中使用 `nn.RNN` 就有参数表示双向：
+
+> bidirectional – If True, becomes a bidirectional RNN. Default: False
+
+bidirectional：默认设置为 False。若为 True，即为双向 RNN。
 
 ### 6、堆叠循环神经网络、堆叠 LSTM
 
@@ -396,6 +483,12 @@ digraph G {
 }
 {% endgraphviz %}
 </div>
+
+在 PyTorch 中使用 `nn.RNN` 就有参数表示双向：
+
+> num_layers – Number of recurrent layers. E.g., setting num_layers=2 would mean stacking two RNNs together to form a stacked RNN, with the second RNN taking in outputs of the first RNN and computing the final results. Default: 1
+
+num_layers：隐藏层层数，默认设置为 1 层。当 `num_layers` >= 2 时，就是一个 stacked RNN 了。
 
 ### 7、N vs. M 的 RNN
 
@@ -450,3 +543,7 @@ digraph G {
 }
 {% endgraphviz %}
 </div>
+
+Reference
+
+* https://www.cnblogs.com/engpj/p/16906911.html
