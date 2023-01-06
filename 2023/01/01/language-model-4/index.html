@@ -1277,10 +1277,10 @@ digraph G {
 <p>在 PyTorch 中使用 <code class="language-plaintext highlighter-rouge">nn.RNN</code> 就有参数表示双向：</p>
 
 <blockquote>
-  <p>bidirectional – If True, becomes a bidirectional RNN. Default: False</p>
+  <p><code class="language-plaintext highlighter-rouge">bidirectional</code> – If True, becomes a bidirectional RNN. Default: False</p>
 </blockquote>
 
-<p>bidirectional：默认设置为 False。若为 True，即为双向 RNN。</p>
+<p><code class="language-plaintext highlighter-rouge">bidirectional</code>：默认设置为 <code class="language-plaintext highlighter-rouge">False</code>。若为 <code class="language-plaintext highlighter-rouge">True</code>，即为双向 RNN。</p>
 
 <h3 id="6堆叠循环神经网络堆叠-lstm">6、堆叠循环神经网络、堆叠 LSTM</h3>
 
@@ -1547,7 +1547,7 @@ digraph G {
   <p>num_layers – Number of recurrent layers. E.g., setting num_layers=2 would mean stacking two RNNs together to form a stacked RNN, with the second RNN taking in outputs of the first RNN and computing the final results. Default: 1</p>
 </blockquote>
 
-<p>num_layers：隐藏层层数，默认设置为 1 层。当 <code class="language-plaintext highlighter-rouge">num_layers</code> &gt;= 2 时，就是一个 stacked RNN 了。</p>
+<p><code class="language-plaintext highlighter-rouge">num_layers</code>：隐藏层层数，默认设置为 1 层。当 <code class="language-plaintext highlighter-rouge">num_layers</code> &gt;= 2 时，就是一个 stacked RNN 了。</p>
 
 <h3 id="7n-vs-m-的-rnn">7、N vs. M 的 RNN</h3>
 
