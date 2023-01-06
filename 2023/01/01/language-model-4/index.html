@@ -369,7 +369,7 @@
 
 			<article id="post-page">
 	<h2>麦克船长的 NLP 语言模型技术笔记 4：循环神经网络（RNN）</h2>		
-	<time datetime="2023-01-01T21:01:31+00:00" class="by-line">01 Jan 2023, 杭州 | 作者 麦克船长 | 总计 10854 字</time>
+	<time datetime="2023-01-01T21:01:31+00:00" class="by-line">01 Jan 2023, 杭州 | 作者 麦克船长 | 总计 13609 字</time>
 	<div class="content">
 		<p><strong>本文目录</strong></p>
 <ul id="markdown-toc">
@@ -588,7 +588,86 @@ digraph G {
 </div>
 </div>
 
-<p>这种输入和输出数据项数一致的 RNN，一般叫做 N vs. N 的 RNN。</p>
+<p>这种输入和输出数据项数一致的 RNN，一般叫做 N vs. N 的 RNN。如果我们用 PyTorch 来实现一个非常简单的经典 RNN 则如下：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="n">nn</span>
+
+<span class="c1"># 创建一个 RNN 实例
+# 第一个参数
+</span><span class="n">rnn</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">RNN</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># 实例化一个单向单层RNN
+</span>
+<span class="c1"># 输入是一个形状为 (5, 3, 10) 的张量
+# 5 个输入数据项（也可以说是样本）
+# 3 个数据项是一个序列，有 3 个 steps
+# 每个 step 有 10 个特征
+</span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># 隐藏层是一个 (1, 5, 20) 的张量
+</span><span class="n">h0</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># 调用 rnn 函数后，返回输出、最终的隐藏状态
+</span><span class="n">output</span><span class="p">,</span> <span class="n">hn</span> <span class="o">=</span> <span class="n">rnn</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">h0</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">hn</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>我们来解读一下这段代码：</p>
+
+<ul>
+  <li>这段代码实例化了一个带有 1 个隐藏层的 RNN 网络。</li>
+  <li>它的输入是一个形状为 (5, 3, 10) 的张量，表示有 5 个样本，每个样本有 3 个时间步，每个时间步的特征维度是 10。</li>
+  <li>初始隐藏状态是一个形状为 (1, 5, 20) 的张量。</li>
+  <li>调用 rnn 函数后，会返回输出和最终的隐藏状态。</li>
+  <li>输出的形状是 (5, 3, 20)，表示有 5 个样本，每个样本有 3 个时间步，每个时间步的输出维度是 20。</li>
+  <li>最终的隐藏状态的形状是 (1, 5, 20)，表示最后的隐藏状态是 5</li>
+</ul>
+
+<p>但是上面的代码示例，并没有自己编写一个具体的 RNN，而是用了默认的 PyTorch 的 RNN，那么下面我们就自己编写一个：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MikeCaptainRNN</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">()</span>
+
+        <span class="c1"># 对于 RNN，输入维度就是序列数
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">input_size</span> <span class="o">=</span> <span class="n">input_size</span>
+
+        <span class="c1"># 隐藏层有多少个节点/神经元，经常将 hidden_size 设置为与序列长度相同
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">hidden_size</span> <span class="o">=</span> <span class="n">hidden_size</span>
+
+        <span class="c1"># 输入层到隐藏层的 W^{ih} 权重、bias^{ih} 偏置项
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">weight_ih</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">input_size</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.01</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">bias_ih</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">hidden_size</span><span class="p">)</span>
+
+        <span class="c1"># 隐藏层到隐藏层的 W^{hh} 权重、bias^{hh} 偏置项
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">weight_hh</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">hidden_size</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.01</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">bias_hh</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">hidden_size</span><span class="p">)</span>
+
+    <span class="c1"># 前向传播
+</span>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">h0</span><span class="p">):</span>
+
+    	<span class="c1"># 取出这个张量的形状
+</span>        <span class="n">N</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">input_size</span> <span class="o">=</span> <span class="nb">input</span><span class="p">.</span><span class="n">shape</span>
+
+        <span class="c1"># 初始化一个全零张量
+</span>        <span class="n">output</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">hidden_size</span><span class="p">)</span>
+
+        <span class="c1"># 处理每个时刻的输入特征
+</span>        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+
+        	<span class="c1"># 获得当前时刻的输入特征，[N, input_size, 1]。unsqueeze(n)，在第 n 维上增加一维
+</span>            <span class="n">x</span> <span class="o">=</span> <span class="nb">input</span><span class="p">[:,</span> <span class="n">t</span><span class="p">,</span> <span class="p">:].</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  
+            <span class="n">w_ih_batch</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">weight_ih</span><span class="p">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">tile</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># [N, hidden_size, input_size]
+</span>            <span class="n">w_hh_batch</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">weight_hh</span><span class="p">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">tile</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># [N, hidden_size, hidden_size]
+</span>
+            <span class="c1"># bmm 是矩阵乘法函数
+</span>            <span class="n">w_times_x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">bmm</span><span class="p">(</span><span class="n">w_ih_batch</span><span class="p">,</span> <span class="n">x</span><span class="p">).</span><span class="n">squeeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># [N, hidden_size]。squeeze(n)，在第n维上减小一维
+</span>            <span class="n">w_times_h</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">bmm</span><span class="p">(</span><span class="n">w_hh_batch</span><span class="p">,</span> <span class="n">h0</span><span class="p">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">2</span><span class="p">)).</span><span class="n">squeeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># [N, hidden_size]
+</span>            <span class="n">h0</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">w_times_x</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">bias_ih</span> <span class="o">+</span> <span class="n">w_times_h</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">bias_hh</span><span class="p">)</span>
+            <span class="n">output</span><span class="p">[:,</span> <span class="n">t</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">h0</span>
+        <span class="k">return</span> <span class="n">output</span><span class="p">,</span> <span class="n">h0</span><span class="p">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
 
 <h3 id="2n-vs1-的-rnn">2、N vs.1 的 RNN</h3>
 
@@ -991,6 +1070,8 @@ digraph G {
 
 <h3 id="5双向循环神经网络双向-lstm">5、双向循环神经网络、双向 LSTM</h3>
 
+<p>双向循环神经网络很好理解，就是两个方向都有，例如下图：</p>
+
 <div style="text-align: center;">
 <div class="graphviz-wrapper">
 
@@ -1192,6 +1273,14 @@ digraph G {
 </svg>
 </div>
 </div>
+
+<p>在 PyTorch 中使用 <code class="language-plaintext highlighter-rouge">nn.RNN</code> 就有参数表示双向：</p>
+
+<blockquote>
+  <p>bidirectional – If True, becomes a bidirectional RNN. Default: False</p>
+</blockquote>
+
+<p>bidirectional：默认设置为 False。若为 True，即为双向 RNN。</p>
 
 <h3 id="6堆叠循环神经网络堆叠-lstm">6、堆叠循环神经网络、堆叠 LSTM</h3>
 
@@ -1452,6 +1541,14 @@ digraph G {
 </div>
 </div>
 
+<p>在 PyTorch 中使用 <code class="language-plaintext highlighter-rouge">nn.RNN</code> 就有参数表示双向：</p>
+
+<blockquote>
+  <p>num_layers – Number of recurrent layers. E.g., setting num_layers=2 would mean stacking two RNNs together to form a stacked RNN, with the second RNN taking in outputs of the first RNN and computing the final results. Default: 1</p>
+</blockquote>
+
+<p>num_layers：隐藏层层数，默认设置为 1 层。当 <code class="language-plaintext highlighter-rouge">num_layers</code> &gt;= 2 时，就是一个 stacked RNN 了。</p>
+
 <h3 id="7n-vs-m-的-rnn">7、N vs. M 的 RNN</h3>
 
 <p>对于输入序列长度（长度 N）和输出序列长度（长度 M）不一样的 RNN 模型结构，也可以叫做 Encoder-Decoder 模型，也可以叫 Seq2Seq 模型。首先接收输入序列的 Encoder 先将输入序列转成一个隐藏态的上下文表示 C。C 可以只与最后一个隐藏层有关，甚至可以是最后一个隐藏层生成的隐藏态直接设置为 C，C 还可以与所有隐藏层有关。</p>
@@ -1708,6 +1805,12 @@ digraph G {
 </svg>
 </div>
 </div>
+
+<p>Reference</p>
+
+<ul>
+  <li>https://www.cnblogs.com/engpj/p/16906911.html</li>
+</ul>
 
 	</div>
 </article>

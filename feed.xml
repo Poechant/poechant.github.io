@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-01-05T05:36:30+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">麦克船长的 NLP 语言模型技术笔记 4：循环神经网络（RNN）</title><link href="https://www.mikecaptain.com/2023/01/01/language-model-4/" rel="alternate" type="text/html" title="麦克船长的 NLP 语言模型技术笔记 4：循环神经网络（RNN）" /><published>2023-01-01T21:01:31+00:00</published><updated>2023-01-01T21:01:31+00:00</updated><id>https://www.mikecaptain.com/2023/01/01/language-model-4</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/01/language-model-4/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-01-06T15:00:28+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">麦克船长的 NLP 语言模型技术笔记 4：循环神经网络（RNN）</title><link href="https://www.mikecaptain.com/2023/01/01/language-model-4/" rel="alternate" type="text/html" title="麦克船长的 NLP 语言模型技术笔记 4：循环神经网络（RNN）" /><published>2023-01-01T21:01:31+00:00</published><updated>2023-01-01T21:01:31+00:00</updated><id>https://www.mikecaptain.com/2023/01/01/language-model-4</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/01/language-model-4/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#1经典结构的-rnn&quot; id=&quot;markdown-toc-1经典结构的-rnn&quot;&gt;1、经典结构的 RNN&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#2n-vs1-的-rnn&quot; id=&quot;markdown-toc-2n-vs1-的-rnn&quot;&gt;2、N vs.1 的 RNN&lt;/a&gt;&lt;/li&gt;
@@ -215,7 +215,86 @@ digraph G {
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;p&gt;这种输入和输出数据项数一致的 RNN，一般叫做 N vs. N 的 RNN。&lt;/p&gt;
+&lt;p&gt;这种输入和输出数据项数一致的 RNN，一般叫做 N vs. N 的 RNN。如果我们用 PyTorch 来实现一个非常简单的经典 RNN 则如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;torch&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;torch.nn&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 创建一个 RNN 实例
+# 第一个参数
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rnn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RNN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;batch_first&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 实例化一个单向单层RNN
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# 输入是一个形状为 (5, 3, 10) 的张量
+# 5 个输入数据项（也可以说是样本）
+# 3 个数据项是一个序列，有 3 个 steps
+# 每个 step 有 10 个特征
+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 隐藏层是一个 (1, 5, 20) 的张量
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 调用 rnn 函数后，返回输出、最终的隐藏状态
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rnn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;我们来解读一下这段代码：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;这段代码实例化了一个带有 1 个隐藏层的 RNN 网络。&lt;/li&gt;
+  &lt;li&gt;它的输入是一个形状为 (5, 3, 10) 的张量，表示有 5 个样本，每个样本有 3 个时间步，每个时间步的特征维度是 10。&lt;/li&gt;
+  &lt;li&gt;初始隐藏状态是一个形状为 (1, 5, 20) 的张量。&lt;/li&gt;
+  &lt;li&gt;调用 rnn 函数后，会返回输出和最终的隐藏状态。&lt;/li&gt;
+  &lt;li&gt;输出的形状是 (5, 3, 20)，表示有 5 个样本，每个样本有 3 个时间步，每个时间步的输出维度是 20。&lt;/li&gt;
+  &lt;li&gt;最终的隐藏状态的形状是 (1, 5, 20)，表示最后的隐藏状态是 5&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;但是上面的代码示例，并没有自己编写一个具体的 RNN，而是用了默认的 PyTorch 的 RNN，那么下面我们就自己编写一个：&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MikeCaptainRNN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# 对于 RNN，输入维度就是序列数
+&lt;/span&gt;        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_size&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# 隐藏层有多少个节点/神经元，经常将 hidden_size 设置为与序列长度相同
+&lt;/span&gt;        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# 输入层到隐藏层的 W^{ih} 权重、bias^{ih} 偏置项
+&lt;/span&gt;        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weight_ih&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.01&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_ih&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# 隐藏层到隐藏层的 W^{hh} 权重、bias^{hh} 偏置项
+&lt;/span&gt;        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weight_hh&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.01&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_hh&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# 前向传播
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;forward&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+
+    	&lt;span class=&quot;c1&quot;&gt;# 取出这个张量的形状
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;L&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# 初始化一个全零张量
+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;L&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# 处理每个时刻的输入特征
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;L&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+
+        	&lt;span class=&quot;c1&quot;&gt;# 获得当前时刻的输入特征，[N, input_size, 1]。unsqueeze(n)，在第 n 维上增加一维
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unsqueeze&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  
+            &lt;span class=&quot;n&quot;&gt;w_ih_batch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weight_ih&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unsqueeze&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# [N, hidden_size, input_size]
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;w_hh_batch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weight_hh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unsqueeze&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# [N, hidden_size, hidden_size]
+&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;# bmm 是矩阵乘法函数
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;w_times_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bmm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w_ih_batch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;squeeze&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# [N, hidden_size]。squeeze(n)，在第n维上减小一维
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;w_times_h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bmm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w_hh_batch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unsqueeze&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;squeeze&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# [N, hidden_size]
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;h0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tanh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w_times_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_ih&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w_times_h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_hh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h0&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unsqueeze&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;2n-vs1-的-rnn&quot;&gt;2、N vs.1 的 RNN&lt;/h3&gt;
 
@@ -618,6 +697,8 @@ digraph G {
 
 &lt;h3 id=&quot;5双向循环神经网络双向-lstm&quot;&gt;5、双向循环神经网络、双向 LSTM&lt;/h3&gt;
 
+&lt;p&gt;双向循环神经网络很好理解，就是两个方向都有，例如下图：&lt;/p&gt;
+
 &lt;div style=&quot;text-align: center;&quot;&gt;
 &lt;div class=&quot;graphviz-wrapper&quot;&gt;
 
@@ -819,6 +900,14 @@ digraph G {
 &lt;/svg&gt;
 &lt;/div&gt;
 &lt;/div&gt;
+
+&lt;p&gt;在 PyTorch 中使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nn.RNN&lt;/code&gt; 就有参数表示双向：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;bidirectional – If True, becomes a bidirectional RNN. Default: False&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;bidirectional：默认设置为 False。若为 True，即为双向 RNN。&lt;/p&gt;
 
 &lt;h3 id=&quot;6堆叠循环神经网络堆叠-lstm&quot;&gt;6、堆叠循环神经网络、堆叠 LSTM&lt;/h3&gt;
 
@@ -1079,6 +1168,14 @@ digraph G {
 &lt;/div&gt;
 &lt;/div&gt;
 
+&lt;p&gt;在 PyTorch 中使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nn.RNN&lt;/code&gt; 就有参数表示双向：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;num_layers – Number of recurrent layers. E.g., setting num_layers=2 would mean stacking two RNNs together to form a stacked RNN, with the second RNN taking in outputs of the first RNN and computing the final results. Default: 1&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;num_layers：隐藏层层数，默认设置为 1 层。当 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;num_layers&lt;/code&gt; &amp;gt;= 2 时，就是一个 stacked RNN 了。&lt;/p&gt;
+
 &lt;h3 id=&quot;7n-vs-m-的-rnn&quot;&gt;7、N vs. M 的 RNN&lt;/h3&gt;
 
 &lt;p&gt;对于输入序列长度（长度 N）和输出序列长度（长度 M）不一样的 RNN 模型结构，也可以叫做 Encoder-Decoder 模型，也可以叫 Seq2Seq 模型。首先接收输入序列的 Encoder 先将输入序列转成一个隐藏态的上下文表示 C。C 可以只与最后一个隐藏层有关，甚至可以是最后一个隐藏层生成的隐藏态直接设置为 C，C 还可以与所有隐藏层有关。&lt;/p&gt;
@@ -1334,7 +1431,13 @@ digraph G {
 &lt;/g&gt;
 &lt;/svg&gt;
 &lt;/div&gt;
-&lt;/div&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="RNN" /><category term="循环神经网络" /><category term="LSTM" /><summary type="html">如果您喜欢机器学习，那么您一定会喜欢这篇文章。在这篇文章中，我们将深入探讨 RNN（循环神经网络），这是一种强大的神经网络模型，能够预测序列数据，例如文本、语音和时间序列。我们将通过生动的代码示例和实际案例来演示如何使用 RNN，并在日常生活中真实地体验它的功能。您将学习到如何使用 RNN 解决各种机器学习问题，并动手尝试运用 RNN 解决实际问题。这篇文章将为您提供一个完整的 RNN 入门指南，并使您对 RNN 有更深入的了解。</summary></entry><entry><title type="html">麦克船长的 NLP 语言模型技术笔记 2：多层感知器（MLP）</title><link href="https://www.mikecaptain.com/2022/12/30/language-model-2/" rel="alternate" type="text/html" title="麦克船长的 NLP 语言模型技术笔记 2：多层感知器（MLP）" /><published>2022-12-30T19:44:09+00:00</published><updated>2022-12-30T19:44:09+00:00</updated><id>https://www.mikecaptain.com/2022/12/30/language-model-2</id><content type="html" xml:base="https://www.mikecaptain.com/2022/12/30/language-model-2/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Reference&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;https://www.cnblogs.com/engpj/p/16906911.html&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="RNN" /><category term="循环神经网络" /><category term="LSTM" /><summary type="html">如果您喜欢机器学习，那么您一定会喜欢这篇文章。在这篇文章中，我们将深入探讨 RNN（循环神经网络），这是一种强大的神经网络模型，能够预测序列数据，例如文本、语音和时间序列。我们将通过生动的代码示例和实际案例来演示如何使用 RNN，并在日常生活中真实地体验它的功能。您将学习到如何使用 RNN 解决各种机器学习问题，并动手尝试运用 RNN 解决实际问题。这篇文章将为您提供一个完整的 RNN 入门指南，并使您对 RNN 有更深入的了解。</summary></entry><entry><title type="html">麦克船长的 NLP 语言模型技术笔记 2：多层感知器（MLP）</title><link href="https://www.mikecaptain.com/2022/12/30/language-model-2/" rel="alternate" type="text/html" title="麦克船长的 NLP 语言模型技术笔记 2：多层感知器（MLP）" /><published>2022-12-30T19:44:09+00:00</published><updated>2022-12-30T19:44:09+00:00</updated><id>https://www.mikecaptain.com/2022/12/30/language-model-2</id><content type="html" xml:base="https://www.mikecaptain.com/2022/12/30/language-model-2/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#1感知器perceptron解决二元分类任务的前馈神经网络&quot; id=&quot;markdown-toc-1感知器perceptron解决二元分类任务的前馈神经网络&quot;&gt;1、感知器（Perceptron）：解决二元分类任务的前馈神经网络&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#2线性回归linear-regression从离散值的感知器解决类问题到连续值的线性回归解决回归问题&quot; id=&quot;markdown-toc-2线性回归linear-regression从离散值的感知器解决类问题到连续值的线性回归解决回归问题&quot;&gt;2、线性回归（Linear Regression）：从离散值的感知器（解决类问题），到连续值的线性回归（解决回归问题）&lt;/a&gt;&lt;/li&gt;
@@ -1987,7 +2090,7 @@ digraph G {
 
 &lt;ul&gt;
   &lt;li&gt;虚拟客服（可以乱真的）&lt;/li&gt;
-  &lt;li&gt;智能助理：AI 家庭教师、AI 非诉律师、AI 医生助手、AI 新闻编辑&lt;/li&gt;
+  &lt;li&gt;智能助理：AI 家庭教师、AI 非诉律师、AI 医生助手、AI 新闻编辑、AI 设计助理&lt;/li&gt;
   &lt;li&gt;智能翻译&lt;/li&gt;
   &lt;li&gt;智能导购员：如果叠加虚拟人技术、语音合成技术，可以应用于电商&lt;/li&gt;
   &lt;li&gt;AI 广告公司：替代传统广告公司&lt;/li&gt;
@@ -2000,19 +2103,25 @@ digraph G {
 &lt;p&gt;所以下面除了大家耳熟能详的 CV 领域的 AIGC 产品 Disco Diffusion、MidJourney、DALL·E 2、Stable Diffusion 之外，我们重点关注非图片生成类的应用。&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;用于营销场景的 AI 写手与图像生成工具 Jasper.ai，常被用于生成互联网营销文案（比如用于 Instagram、Tik Tok、Facebook、博客、email、论坛帖子 等等）。&lt;/li&gt;
+  &lt;li&gt;用于营销场景的 AI 写手与图像生成工具「&lt;strong&gt;Jasper.ai&lt;/strong&gt;」，常被用于生成互联网营销文案（比如用于 Instagram、Tik Tok、Facebook、博客、email、论坛帖子 等等）。&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/src/2022-12-24-captain-nlp-7.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;2021 年 6 月，微软与 OpenAI 共同推出的的代码辅助生成 AI 工具 GitHub Copilot（https://github.com/features/copilot） 发布。&lt;/li&gt;
+  &lt;li&gt;2021 年 6 月，微软与 OpenAI 共同推出的的代码辅助生成 AI 工具「&lt;a href=&quot;https://github.com/features/copilot&quot;&gt;GitHub Copilot&lt;/a&gt;」发布。&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/src/2022-12-24-captain-nlp-2.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;虚拟客服 DialogFlow，能理解电话、语音内容等输入，并且给出文本或语音合成的输出。&lt;/li&gt;
+  &lt;li&gt;文案神器「&lt;strong&gt;Copy.ai&lt;/strong&gt;」：&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2022-12-24-captain-nlp-9.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;虚拟客服「&lt;strong&gt;DialogFlow&lt;/strong&gt;」，能理解电话、语音内容等输入，并且给出文本或语音合成的输出。&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/src/2022-12-24-captain-nlp-8.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
