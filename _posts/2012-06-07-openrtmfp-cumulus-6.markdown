@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  麦克船长的 OpenRTMFP/Cumulus 原理、源码及实践 6：独立使用 CumulusLib 源码时的线程安全 Bug 及修复方法
+title:  麦克船长的 OpenRTMFP/Cumulus 原理、源码及实践 6：独立使用 CumulusLib 的线程安全 Bug 修复方法
 date:   2012-06-07 23:34:18 +0800
 categories: rt_tech
 tags: [直播技术]
