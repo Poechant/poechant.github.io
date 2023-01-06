@@ -431,9 +431,9 @@ digraph G {
 
 在 PyTorch 中使用 `nn.RNN` 就有参数表示双向：
 
-> bidirectional – If True, becomes a bidirectional RNN. Default: False
+> `bidirectional` – If True, becomes a bidirectional RNN. Default: False
 
-bidirectional：默认设置为 False。若为 True，即为双向 RNN。
+`bidirectional`：默认设置为 `False`。若为 `True`，即为双向 RNN。
 
 ### 6、堆叠循环神经网络、堆叠 LSTM
 
@@ -488,7 +488,7 @@ digraph G {
 
 > num_layers – Number of recurrent layers. E.g., setting num_layers=2 would mean stacking two RNNs together to form a stacked RNN, with the second RNN taking in outputs of the first RNN and computing the final results. Default: 1
 
-num_layers：隐藏层层数，默认设置为 1 层。当 `num_layers` >= 2 时，就是一个 stacked RNN 了。
+`num_layers`：隐藏层层数，默认设置为 1 层。当 `num_layers` >= 2 时，就是一个 stacked RNN 了。
 
 ### 7、N vs. M 的 RNN
 
