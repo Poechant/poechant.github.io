@@ -80,7 +80,13 @@ location: 杭州
 
 以下重量级的论文，每一篇都不短，B 站上有一些二手解读，虽然二手但是也值得高效地看下，这些论文我罗列如下。我的理解也不深，欢迎随时交流。
 
+#### 0、提出 Attention 机制的《Neural Machine Translation by Jointly Learning to Align and Translate》（2015）
+
+Bahdanau 等人在 2015 年提出了 Attention 机制，论文地址：[https://arxiv.org/pdf/1409.0473.pdf](https://arxiv.org/pdf/1409.0473.pdf)
+
 #### 1、提出 Transformer 的《Attention is All You Need》（2017）
+
+论文地址：[https://arxiv.org/pdf/1706.03762.pdf](https://arxiv.org/pdf/1706.03762.pdf)
 
 Google 的 Lamda、BERT，OpenAI 的 GPT-3 都是基于 Transformer 的。
 
@@ -201,6 +207,11 @@ OpenAI 创始人兼 CEO Sam Altman 曾表示：
 
 > 通用人工智能的建成会比大多数人想象得更快，并且它会改变大多数人想象中的一切。」
 
+另外还有一个喜欢写博客的 AI 从业者，其博客值得我们学习与了解，就是 OpenAI 应用人工智能研究负责人 Lilian Weng，主要从事机器学习、深度学习和网络科学研究。她本科毕业于香港大学，硕士就读于北京大学信息系统与计算机科学系，之后前往印度安纳大学布鲁顿分校攻读博士。
+
+她的 Blog：[https://lilianweng.github.io/](https://lilianweng.github.io/)
+她的 Twitter：[https://twitter.com/lilianweng](https://twitter.com/lilianweng)
+
 ### Reference
 
 1. https://beta.openai.com/docs/models
@@ -212,3 +223,4 @@ OpenAI 创始人兼 CEO Sam Altman 曾表示：
 7. http://tech.sina.com.cn/csj/2018-10-13/doc-ihmhafir3634167.shtml
 8. https://colab.research.google.com/github/alembics/disco-diffusion/blob/main/Disco_Diffusion.ipynb#scrollTo=DefMidasFns
 9. https://en.wikipedia.org/wiki/BERT_(language_model)
+10. https://www.mikecaptain.com/2022/12/17/ai-bert-1/

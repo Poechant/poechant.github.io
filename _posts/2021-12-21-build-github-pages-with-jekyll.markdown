@@ -439,6 +439,10 @@ kramdown:
   </script>
 ```
 
+##### 本问题参考：
+
+* [https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/](https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/)
+
 ##### 如果不在 GitHub.io 上，则还需要额外工作
 
 以上方式只适合于 GitHub.io 的网站，如果是自己搭建的网站用 Jekyll 则要自己安装，如下：
@@ -561,6 +565,10 @@ jobs:
 baseurl: "" # Change this to your relative path (ex: /blog/), or leave just a /
 ```
 
+##### 本问题参考：
+
+* [https://github.com/DerekStride/jekyll-graphviz](https://github.com/DerekStride/jekyll-graphviz)
+
 #### Q6：如何显示 `{% raw %}{%{% endraw %}` 或者 `{% raw %}{{{% endraw %}` ？
 
 其实也是一个字符转义的问题，我们直接面对一个在 StackOverflow 上会被问的终极 Jekyll 中 Markdown 转义问题（与 Liquid Template Tags 冲突的问题），如何实现显示 `{% raw %}{%{% endraw %} raw %}` 和 `{% raw %}{%{% endraw %} endraw %}` 呢？方法如下：
@@ -583,6 +591,3 @@ baseurl: "" # Change this to your relative path (ex: /blog/), or leave just a /
 7. [https://github.com/dyutibarma/monochrome](https://github.com/dyutibarma/monochrome)
 8. [https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain](https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain)
 9. [http://www.seanbuscay.com/blog/jekyll-toc-markdown/](http://www.seanbuscay.com/blog/jekyll-toc-markdown/)
-10. [https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/](https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/)
-11. [https://github.com/DerekStride/jekyll-graphviz](https://github.com/DerekStride/jekyll-graphviz)
-12. [https://github.com/DerekStride/jekyll-graphviz](https://github.com/DerekStride/jekyll-graphviz)

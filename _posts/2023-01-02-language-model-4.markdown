@@ -7,7 +7,7 @@ tags: [AI, 人工智能, RNN, 循环神经网络, LSTM]
 description: 如果您喜欢机器学习，那么您一定会喜欢这篇文章。在这篇文章中，我们将深入探讨 RNN（循环神经网络），这是一种强大的神经网络模型，能够预测序列数据，例如文本、语音和时间序列。我们将通过生动的代码示例和实际案例来演示如何使用 RNN，并在日常生活中真实地体验它的功能。您将学习到如何使用 RNN 解决各种机器学习问题，并动手尝试运用 RNN 解决实际问题。这篇文章将为您提供一个完整的 RNN 入门指南，并使您对 RNN 有更深入的了解。
 excerpt: 如果您喜欢机器学习，那么您一定会喜欢这篇文章。在这篇文章中，我们将深入探讨 RNN（循环神经网络），这是一种强大的神经网络模型，能够预测序列数据，例如文本、语音和时间序列。我们将通过生动的代码示例和实际案例来演示如何使用 RNN，并在日常生活中真实地体验它的功能。您将学习到如何使用 RNN 解决各种机器学习问题，并动手尝试运用 RNN 解决实际问题。这篇文章将为您提供一个完整的 RNN 入门指南，并使您对 RNN 有更深入的了解。
 katex: True
-location: 杭州
+location: 上海
 ---
 
 **本文目录**
@@ -124,9 +124,9 @@ class MikeCaptainRNN(nn.Module):
         # 隐藏层有多少个节点/神经元，经常将 hidden_size 设置为与序列长度相同
         self.hidden_size = hidden_size
 
-        # 输入层到隐藏层的 W^{ih} 权重、bias^{ih} 偏置项
-        self.weight_ih = torch.randn(self.hidden_size, self.input_size) * 0.01
-        self.bias_ih = torch.randn(self.hidden_size)
+        # 输入层到隐藏层的 W^{xh} 权重、bias^{xh} 偏置项
+        self.weight_xh = torch.randn(self.hidden_size, self.input_size) * 0.01
+        self.bias_xh = torch.randn(self.hidden_size)
 
         # 隐藏层到隐藏层的 W^{hh} 权重、bias^{hh} 偏置项
         self.weight_hh = torch.randn(self.hidden_size, self.hidden_size) * 0.01
@@ -146,16 +146,18 @@ class MikeCaptainRNN(nn.Module):
 
         	# 获得当前时刻的输入特征，[N, input_size, 1]。unsqueeze(n)，在第 n 维上增加一维
             x = input[:, t, :].unsqueeze(2)  
-            w_ih_batch = self.weight_ih.unsqueeze(0).tile(N, 1, 1)  # [N, hidden_size, input_size]
+            w_xh_batch = self.weight_xh.unsqueeze(0).tile(N, 1, 1)  # [N, hidden_size, input_size]
             w_hh_batch = self.weight_hh.unsqueeze(0).tile(N, 1, 1)  # [N, hidden_size, hidden_size]
 
             # bmm 是矩阵乘法函数
-            w_times_x = torch.bmm(w_ih_batch, x).squeeze(-1)  # [N, hidden_size]。squeeze(n)，在第n维上减小一维
+            w_times_x = torch.bmm(w_xh_batch, x).squeeze(-1)  # [N, hidden_size]。squeeze(n)，在第n维上减小一维
             w_times_h = torch.bmm(w_hh_batch, h0.unsqueeze(2)).squeeze(-1)  # [N, hidden_size]
             h0 = torch.tanh(w_times_x + self.bias_ih + w_times_h + self.bias_hh)
             output[:, t, :] = h0
         return output, h0.unsqueeze(0)
 ```
+
+上述代码中 `weight_xh`、`bias_xh`。`weighthh`
 
 ### 2、N vs.1 的 RNN
 
@@ -175,7 +177,7 @@ $$
 <div style="text-align: center;">
 {% graphviz %}
 digraph G {
-	rankdir=LR
+	rankdir=BT
 	{rank=same h1 h2 hddd hn}
 	hddd[label="..."]
 	xddd[label="..."]
@@ -209,7 +211,7 @@ $$
 \begin{aligned}
 &\bm{h}_t = \begin{cases} tanh(\bm{W^{xh}} \cdot \bm{x} + \bm{b^{xh}} + 0 + \bm{b^{hh}}) & (t=1) \\
 tanh(0 + \bm{b^{xh}} + \bm{W^{hh}} \cdot \bm{h}_{t-1} + \bm{b^{hh}}) & (t>1) \end{cases} \\
-&\bm{y} = Softmax(\bm{W^{hy}} \cdot \bm{h}_n + \bm{b^{hy}})
+&\bm{y}_t = Softmax(\bm{W^{hy}} \cdot \bm{h}_t + \bm{b^{hy}})
 \end{aligned}
 $$
 {% endraw %}
@@ -306,7 +308,7 @@ $$
 
 {% raw %}
 $$
-\bm{h}_t = \bm{h}_k + \bm{u}_{k+1} + \bm{h}_{k+2} + ... + \bm{u}_{t-1} + \bm{u}_t
+\bm{h}_t = \bm{h}_k + \bm{u}_{k+1} + \bm{u}_{k+2} + ... + \bm{u}_{t-1} + \bm{u}_t
 $$
 {% endraw %}
 
@@ -496,10 +498,6 @@ digraph G {
 
 有了这个 C 之后，再用 Decoder 进行解码，也就是从把 C 作为输入状态开始，生成输出序列。
 
-这种的应用就非常广了，因为大多数时候输入序列与输出序列的长度都是不同的，比如最常见的应用「翻译」，从一个语言翻译成另一个语言；再比如 AI 的一个领域「语音识别」，将语音序列输入后生成所识别的文本内容；还有比如 ChatGPT 这种问答应用等等。
-
-但是 Seq2Seq 模型有一个很显著的问题，就是当输入序列很长时，Encoder 生成的 Context 可能就会出现所捕捉的信息不充分的情况，导致 Decoder 最终的输出是不尽如人意的。
-
 <div style="text-align: center;">
 {% graphviz %}
 digraph G {
@@ -544,6 +542,39 @@ digraph G {
 {% endgraphviz %}
 </div>
 
-Reference
+具体地，可以如下表示：
 
+{% raw %}
+$$
+\begin{aligned}
+&\bm{C} = Encoder(\bm{X}) \\
+&\bm{Y} = Decoder(\bm{C}) \\
+\end{aligned}
+$$
+{% endraw %}
+
+进一步展开：
+
+{% raw %}
+$$
+\begin{aligned}
+e_t &= Encoder_{LSTM/GRU}(x_t, e_{t-1}) \\
+\bm{C} &= f_1(e_n) \\
+d_t &= f_2(d_{t-1}, \bm{C}) \\
+y_t &= Decoder_{LSTM/GRU}(y_{t-1}, d_{t-1}, \bm{C})
+\end{aligned}
+$$
+{% endraw %}
+
+这种的应用就非常广了，因为大多数时候输入序列与输出序列的长度都是不同的，比如最常见的应用「翻译」，从一个语言翻译成另一个语言；再比如 AI 的一个领域「语音识别」，将语音序列输入后生成所识别的文本内容；还有比如 ChatGPT 这种问答应用等等。
+
+Seq2Seq 模型非常出色，一直到 2018 年之前 NLP 领域里该模型已成为主流。但是它有很显著的问题：
+
+* 当输入序列很长时，Encoder 生成的 Context 可能就会出现所捕捉的信息不充分的情况，导致 Decoder 最终的输出是不尽如人意的。具体地，毕竟还是 RNN 模型，还是会有梯度消失问题，根本原因在于用到了「递归」。当递归作用在同一个 weight matrix 上时，使得如果这个矩阵满足条件的话，其最大的特征值要是小于 1 的话，就一定出现梯度消失问题。后来的 LSTM 和 GRU 也仅仅能缓解问题，并不能根本解决。
+* 并行效果差：每个时刻的结果依赖前一时刻。
+
+### Reference
+
+* 《自然语言处理：基于预训练模型的方法》车万翔 等
+* 《自然语言处理实战：预训练模型应用及其产品化》安库·A·帕特尔 等
 * https://www.cnblogs.com/engpj/p/16906911.html
