@@ -366,7 +366,7 @@
 
 			<article id="post-page">
 	<h2>如何使用 Jekyll 基于 Github Pages 搭建个人博客</h2>		
-	<time datetime="2021-12-21T15:53:57+00:00" class="by-line">21 Dec 2021, 杭州 | 作者 麦克船长 | 总计 12823 字</time>
+	<time datetime="2021-12-21T15:53:57+00:00" class="by-line">21 Dec 2021, 杭州 | 作者 麦克船长 | 总计 12841 字</time>
 	<div class="content">
 		<p><strong>本文目录</strong></p>
 <ul id="markdown-toc">
@@ -391,13 +391,17 @@
       <li><a href="#q3如何为每篇文章添加一个目录" id="markdown-toc-q3如何为每篇文章添加一个目录">Q3：如何为每篇文章添加一个目录</a></li>
       <li><a href="#q4如何在-jekyll-中支持-katex" id="markdown-toc-q4如何在-jekyll-中支持-katex">Q4：如何在 Jekyll 中支持 KaTeX</a>        <ul>
           <li><a href="#在-githubio-上" id="markdown-toc-在-githubio-上">在 GitHub.io 上</a></li>
+          <li><a href="#本问题参考" id="markdown-toc-本问题参考">本问题参考：</a></li>
           <li><a href="#如果不在-githubio-上则还需要额外工作" id="markdown-toc-如果不在-githubio-上则还需要额外工作">如果不在 GitHub.io 上，则还需要额外工作</a></li>
           <li><a href="#使用示例" id="markdown-toc-使用示例">使用示例</a></li>
         </ul>
       </li>
       <li><a href="#q5jekyll-中如何支持-graphviz-" id="markdown-toc-q5jekyll-中如何支持-graphviz-">Q5：Jekyll 中如何支持 Graphviz ？</a></li>
       <li><a href="#本地-jekyll-先运行起来-graphviz" id="markdown-toc-本地-jekyll-先运行起来-graphviz">本地 Jekyll 先运行起来 Graphviz</a></li>
-      <li><a href="#github-pages-上正常显示-graphviz" id="markdown-toc-github-pages-上正常显示-graphviz">Github Pages 上正常显示 Graphviz</a></li>
+      <li><a href="#github-pages-上正常显示-graphviz" id="markdown-toc-github-pages-上正常显示-graphviz">Github Pages 上正常显示 Graphviz</a>        <ul>
+          <li><a href="#本问题参考-1" id="markdown-toc-本问题参考-1">本问题参考：</a></li>
+        </ul>
+      </li>
       <li><a href="#q6如何显示--或者--" id="markdown-toc-q6如何显示--或者--">Q6：如何显示 <code class="language-plaintext highlighter-rouge">{%</code> 或者 <code class="language-plaintext highlighter-rouge">{{</code> ？</a></li>
     </ul>
   </li>
@@ -806,6 +810,12 @@ layout: default
   <span class="nt">&lt;/script&gt;</span>
 </code></pre></div></div>
 
+<h5 id="本问题参考">本问题参考：</h5>
+
+<ul>
+  <li><a href="https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/">https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/</a></li>
+</ul>
+
 <h5 id="如果不在-githubio-上则还需要额外工作">如果不在 GitHub.io 上，则还需要额外工作</h5>
 
 <p>以上方式只适合于 GitHub.io 的网站，如果是自己搭建的网站用 Jekyll 则要自己安装，如下：</p>
@@ -971,6 +981,12 @@ digraph G {
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">baseurl</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span> <span class="c1"># Change this to your relative path (ex: /blog/), or leave just a /</span>
 </code></pre></div></div>
 
+<h5 id="本问题参考-1">本问题参考：</h5>
+
+<ul>
+  <li><a href="https://github.com/DerekStride/jekyll-graphviz">https://github.com/DerekStride/jekyll-graphviz</a></li>
+</ul>
+
 <h4 id="q6如何显示--或者--">Q6：如何显示 <code class="language-plaintext highlighter-rouge">{%</code> 或者 <code class="language-plaintext highlighter-rouge">{{</code> ？</h4>
 
 <p>其实也是一个字符转义的问题，我们直接面对一个在 StackOverflow 上会被问的终极 Jekyll 中 Markdown 转义问题（与 Liquid Template Tags 冲突的问题），如何实现显示 <code class="language-plaintext highlighter-rouge">{% raw %}</code> 和 <code class="language-plaintext highlighter-rouge">{% endraw %}</code> 呢？方法如下：</p>
@@ -993,9 +1009,6 @@ digraph G {
   <li><a href="https://github.com/dyutibarma/monochrome">https://github.com/dyutibarma/monochrome</a></li>
   <li><a href="https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain">https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain</a></li>
   <li><a href="http://www.seanbuscay.com/blog/jekyll-toc-markdown/">http://www.seanbuscay.com/blog/jekyll-toc-markdown/</a></li>
-  <li><a href="https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/">https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/</a></li>
-  <li><a href="https://github.com/DerekStride/jekyll-graphviz">https://github.com/DerekStride/jekyll-graphviz</a></li>
-  <li><a href="https://github.com/DerekStride/jekyll-graphviz">https://github.com/DerekStride/jekyll-graphviz</a></li>
 </ol>
 
 	</div>

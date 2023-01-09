@@ -369,7 +369,7 @@
 
 			<article id="post-page">
 	<h2>麦克船长的 NLP 语言模型技术笔记 2：多层感知器（MLP）</h2>		
-	<time datetime="2022-12-30T19:44:09+00:00" class="by-line">30 Dec 2022, 杭州 | 作者 麦克船长 | 总计 9404 字</time>
+	<time datetime="2022-12-30T19:44:09+00:00" class="by-line">30 Dec 2022, 杭州 | 作者 麦克船长 | 总计 9507 字</time>
 	<div class="content">
 		<p><strong>本文目录</strong></p>
 <ul id="markdown-toc">
@@ -380,6 +380,7 @@
   <li><a href="#5softmax-回归softmax-regression从解决二元任务的-sigmoid到解决多元分类任务的-softmax" id="markdown-toc-5softmax-回归softmax-regression从解决二元任务的-sigmoid到解决多元分类任务的-softmax">5、Softmax 回归（Softmax Regression）：从解决二元任务的 sigmoid，到解决多元分类任务的 Softmax</a></li>
   <li><a href="#6多层感知器multi-layer-perceptron" id="markdown-toc-6多层感知器multi-layer-perceptron">6、多层感知器（Multi-Layer Perceptron）</a></li>
   <li><a href="#7mlp-的一个显著问题帮我们引出-cnn-模型" id="markdown-toc-7mlp-的一个显著问题帮我们引出-cnn-模型">7、MLP 的一个显著问题，帮我们引出 CNN 模型</a></li>
+  <li><a href="#reference" id="markdown-toc-reference">Reference</a></li>
 </ul>
 
 <p>本文关键词：感知器、线性回归、逻辑回归、激活函数、Sigmoid 函数/归一化/回归、Softmax 回归。</p>
@@ -517,7 +518,7 @@
 
 <h3 id="4sigmoid-回归sigmoid-regression归一化的逻辑回归一般用于二元分类任务">4、Sigmoid 回归（Sigmoid Regression）：归一化的逻辑回归，一般用于二元分类任务</h3>
 
-<p>当  \(L = 1, k = 1, z_0 = 0\) ，此时的激活函数就是 <strong>Sigmoid</strong> 函数，如下：</p>
+<p>当  \(L = 1, k = 1, z_0 = 0\) ，此时的激活函数就是 <strong>Sigmoid</strong> 函数，也常表示为  \(\sigma\)  函数，如下：</p>
 
 \[y = \frac{1}{1 + e^{-z}}\]
 
@@ -849,6 +850,13 @@ digraph G {
 <p>可以看到，输入的所有元素都被连接，即被分配权重 w 和偏差项 b，所以这被称为一个「全连接层（<strong>Fully Connected Layer</strong>）」或者「<strong>稠密层（Dense Layer）</strong>」。但是对于一些任务这样做是很蠢的，会付出大量无效的计算。</p>
 
 <p>因此我们需要 focus 在更少量计算成本的模型，于是有了卷积神经网络（CNN）。关于 CNN 请看本系列博客的第「3」篇。</p>
+
+<h3 id="reference">Reference</h3>
+
+<ul>
+  <li>《自然语言处理：基于预训练模型的方法》车万翔 等</li>
+  <li>《自然语言处理实战：预训练模型应用及其产品化》安库·A·帕特尔 等</li>
+</ul>
 
 	</div>
 </article>

@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>麦克船长的 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）</title>
+  	<meta name="description" content="麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+  	<!-- KaTeX -->
+  	<link rel="stylesheet" href="/assets/plugins/katex.0.11.1/katex.min.css">
+  	
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/booklist/" title="我的书单">我的书单</a>
+	    
+	  
+	    
+	      <a href="/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+  <a href="/category/web" title="前端技术">前端技术</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="我的书单">我的书单</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+  <a href="/category/web" title="前端技术">前端技术</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="我的书单">我的书单</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>麦克船长的 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）</h2>		
+	<time datetime="2023-01-04T18:13:09+00:00" class="by-line">04 Jan 2023, 杭州 | 作者 麦克船长 | 总计 9325 字</time>
+	<div class="content">
+		<p><strong>本文目录</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#一为什么说-rnn-模型没有体现注意力" id="markdown-toc-一为什么说-rnn-模型没有体现注意力">一、为什么说 RNN 模型没有体现「注意力」？</a></li>
+  <li><a href="#二基于-attention-机制的-encoder-decoder-模型" id="markdown-toc-二基于-attention-机制的-encoder-decoder-模型">二、基于 Attention 机制的 Encoder-Decoder 模型</a></li>
+  <li><a href="#三transformer-在-2017-年横空出世" id="markdown-toc-三transformer-在-2017-年横空出世">三、Transformer 在 2017 年横空出世</a>    <ul>
+      <li><a href="#1自注意力机制self-attention" id="markdown-toc-1自注意力机制self-attention">1、自注意力机制（Self-Attention）</a>        <ul>
+          <li><a href="#11一段自然语言内容其自身就暗含很多内部关联信息" id="markdown-toc-11一段自然语言内容其自身就暗含很多内部关联信息">1.1、一段自然语言内容，其自身就「暗含」很多内部关联信息</a></li>
+          <li><a href="#12如何计算--q--k--v" id="markdown-toc-12如何计算--q--k--v">1.2、如何计算  \(Q\) 、 \(K\) 、 \(V\)</a></li>
+          <li><a href="#13注意力函数如何通过--q--k--v--得到--z" id="markdown-toc-13注意力函数如何通过--q--k--v--得到--z">1.3、注意力函数：如何通过  \(Q\) 、 \(K\) 、 \(V\)  得到  \(Z\)</a></li>
+          <li><a href="#14其他注意力函数" id="markdown-toc-14其他注意力函数">1.4、其他注意力函数</a></li>
+        </ul>
+      </li>
+      <li><a href="#2多头注意力" id="markdown-toc-2多头注意力">2、多头注意力</a></li>
+      <li><a href="#3退化现象残差网络与-short-cut" id="markdown-toc-3退化现象残差网络与-short-cut">3、退化现象、残差网络与 Short-Cut</a>        <ul>
+          <li><a href="#31退化现象" id="markdown-toc-31退化现象">3.1、退化现象</a></li>
+          <li><a href="#32恒等映射" id="markdown-toc-32恒等映射">3.2、恒等映射</a></li>
+          <li><a href="#33残差网络residual-network与捷径short-cut" id="markdown-toc-33残差网络residual-network与捷径short-cut">3.3、残差网络（Residual Network）与捷径（Short-Cut）</a></li>
+        </ul>
+      </li>
+      <li><a href="#4位置编码" id="markdown-toc-4位置编码">4、位置编码</a></li>
+      <li><a href="#5transformer-模型整体" id="markdown-toc-5transformer-模型整体">5、Transformer 模型整体</a></li>
+      <li><a href="#6来看一段用-pytorch-实现的-transformer-示例" id="markdown-toc-6来看一段用-pytorch-实现的-transformer-示例">6、来看一段用 PyTorch 实现的 Transformer 示例</a></li>
+    </ul>
+  </li>
+  <li><a href="#参考" id="markdown-toc-参考">参考</a></li>
+</ul>
+
+<h3 id="一为什么说-rnn-模型没有体现注意力">一、为什么说 RNN 模型没有体现「注意力」？</h3>
+
+<p>Encoder-Decoder 的一个非常严重的问题，是依赖中间那个 context 向量，则无法处理特别长的输入序列 —— 记忆力不足，会忘事儿。而忘事儿的根本原因，是没有「注意力」。</p>
+
+<p>对于一般的 RNN 模型，Encoder-Decoder 结构并没有体现「注意力」—— 这句话怎么理解？当输入序列经过 Encoder 生成的中间结果（上下文 C），被喂给 Decoder 时，这些中间结果对所生成序列里的哪个词，都没有区别（没有特别关照谁）。这相当于在说：输入序列里的每个词，对于生成任何一个输出的词的影响，是一样的，而不是输出某个词时是聚焦特定的一些输入词。这就是模型没有注意力机制。</p>
+
+<p>人脑的注意力模型，其实是资源分配模型。NLP 领域的注意力模型，是在 2014 年被提出的，后来逐渐成为 NLP 领域的一个广泛应用的机制。可以应用的场景，比如对于一个电商平台中很常见的白底图，其边缘的白色区域都是无用的，那么就不应该被关注（关注权重为 0）。比如机器翻译中，翻译词都是对局部输入重点关注的。</p>
+
+<p>所以 Attention 机制，就是在 Decoder 时，不是所有输出都依赖相同的「上下文  \(\bm{C}_t\) 」，而是时刻 t 的输出，使用  \(\bm{C}_t\) ，而这个  \(\bm{C}_t\)  来自对每个输入数据项根据「注意力」进行的加权。</p>
+
+<h3 id="二基于-attention-机制的-encoder-decoder-模型">二、基于 Attention 机制的 Encoder-Decoder 模型</h3>
+
+<p>下图中  \(e_i\)  表示编码器的隐藏层输出， \(d_i\)  表示解码器的隐藏层输出</p>
+
+<div style="text-align: center;">
+<div class="graphviz-wrapper">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg role="img" aria-label="graphviz-f66c634a9c7c02915e5610af76c3b1b7" width="436pt" height="336pt" viewBox="0.00 0.00 436.00 336.00">
+<title>graphviz-f66c634a9c7c02915e5610af76c3b1b7</title>
+<desc>
+digraph G {
+	rankdir=BT
+	splines=ortho
+	{rank=same e1 e2 eddd en}
+	{rank=same d1 d2 dddd dt0 dt dddd2}
+
+	eddd[label=&quot;...&quot;]
+	dddd[label=&quot;...&quot;]
+	xddd[label=&quot;...&quot;]
+	yddd[label=&quot;...&quot;]
+	dt[label=&quot;d_t&quot;]
+	dt0[label=&quot;d_t-1&quot;]
+	yt[label=&quot;y_t&quot;]
+	yt0[label=&quot;y_t-1&quot;]
+	Ct[shape=plaintext]
+	x1[shape=plaintext]
+	x2[shape=plaintext]
+	xddd[shape=plaintext]
+	xn[shape=plaintext]
+	y1[shape=plaintext]
+	y2[shape=plaintext]
+	yddd[shape=plaintext]
+	dddd2[shape=plaintext, label=&quot;&quot;]
+	Ct[label=&quot;C_t&quot;, shape=&quot;square&quot;]
+
+	x1 -&gt; e1
+	x2 -&gt; e2
+	xddd -&gt; eddd
+	xn -&gt; en
+
+	e1 -&gt; e2
+	e2 -&gt; eddd
+	eddd -&gt; en
+
+	Ct -&gt; dt
+
+	d1 -&gt; y1
+	d2 -&gt; y2
+	dddd -&gt; yddd
+	dt0 -&gt; yt0
+	dt -&gt; yt
+
+	d1 -&gt; d2
+	d2 -&gt; dddd
+	dddd -&gt; dt0
+	dt0 -&gt; dt
+
+	e1 -&gt; Ct
+	e2 -&gt; Ct
+	eddd -&gt; Ct
+	en -&gt; Ct
+
+	dt -&gt; dddd2
+	dt0 -&gt; Ct
+}
+</desc>
+
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 332)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-332 432,-332 432,4 -4,4" />
+<!-- e1 -->
+<g id="node1" class="node">
+<title>e1</title>
+<ellipse fill="none" stroke="black" cx="181" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="181" y="-86.3" font-family="Times,serif" font-size="14.00">e1</text>
+</g>
+<!-- e2 -->
+<g id="node2" class="node">
+<title>e2</title>
+<ellipse fill="none" stroke="black" cx="253" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="253" y="-86.3" font-family="Times,serif" font-size="14.00">e2</text>
+</g>
+<!-- e1&#45;&gt;e2 -->
+<g id="edge5" class="edge">
+<title>e1&#45;&gt;e2</title>
+<path fill="none" stroke="black" d="M208.22,-90C208.22,-90 215.74,-90 215.74,-90" />
+<polygon fill="black" stroke="black" points="215.74,-93.5 225.74,-90 215.74,-86.5 215.74,-93.5" />
+</g>
+<!-- Ct -->
+<g id="node15" class="node">
+<title>Ct</title>
+<polygon fill="none" stroke="black" points="309,-184 269,-184 269,-144 309,-144 309,-184" />
+<text text-anchor="middle" x="289" y="-160.3" font-family="Times,serif" font-size="14.00">C_t</text>
+</g>
+<!-- e1&#45;&gt;Ct -->
+<g id="edge18" class="edge">
+<title>e1&#45;&gt;Ct</title>
+<path fill="none" stroke="black" d="M203,-100.6C203,-121.06 203,-164 203,-164 203,-164 258.62,-164 258.62,-164" />
+<polygon fill="black" stroke="black" points="258.62,-167.5 268.62,-164 258.62,-160.5 258.62,-167.5" />
+</g>
+<!-- eddd -->
+<g id="node3" class="node">
+<title>eddd</title>
+<ellipse fill="none" stroke="black" cx="325" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="325" y="-86.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- e2&#45;&gt;eddd -->
+<g id="edge6" class="edge">
+<title>e2&#45;&gt;eddd</title>
+<path fill="none" stroke="black" d="M280.22,-90C280.22,-90 287.74,-90 287.74,-90" />
+<polygon fill="black" stroke="black" points="287.74,-93.5 297.74,-90 287.74,-86.5 287.74,-93.5" />
+</g>
+<!-- e2&#45;&gt;Ct -->
+<g id="edge19" class="edge">
+<title>e2&#45;&gt;Ct</title>
+<path fill="none" stroke="black" d="M274.5,-100.92C274.5,-100.92 274.5,-133.82 274.5,-133.82" />
+<polygon fill="black" stroke="black" points="271,-133.82 274.5,-143.82 278,-133.82 271,-133.82" />
+</g>
+<!-- en -->
+<g id="node4" class="node">
+<title>en</title>
+<ellipse fill="none" stroke="black" cx="397" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="397" y="-86.3" font-family="Times,serif" font-size="14.00">en</text>
+</g>
+<!-- eddd&#45;&gt;en -->
+<g id="edge7" class="edge">
+<title>eddd&#45;&gt;en</title>
+<path fill="none" stroke="black" d="M352.22,-90C352.22,-90 359.74,-90 359.74,-90" />
+<polygon fill="black" stroke="black" points="359.74,-93.5 369.74,-90 359.74,-86.5 359.74,-93.5" />
+</g>
+<!-- eddd&#45;&gt;Ct -->
+<g id="edge20" class="edge">
+<title>eddd&#45;&gt;Ct</title>
+<path fill="none" stroke="black" d="M303.5,-100.92C303.5,-100.92 303.5,-133.82 303.5,-133.82" />
+<polygon fill="black" stroke="black" points="300,-133.82 303.5,-143.82 307,-133.82 300,-133.82" />
+</g>
+<!-- en&#45;&gt;Ct -->
+<g id="edge21" class="edge">
+<title>en&#45;&gt;Ct</title>
+<path fill="none" stroke="black" d="M399,-108.29C399,-130.21 399,-164 399,-164 399,-164 319.18,-164 319.18,-164" />
+<polygon fill="black" stroke="black" points="319.18,-160.5 309.18,-164 319.18,-167.5 319.18,-160.5" />
+</g>
+<!-- d1 -->
+<g id="node5" class="node">
+<title>d1</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-238" rx="27" ry="18" />
+<text text-anchor="middle" x="27" y="-234.3" font-family="Times,serif" font-size="14.00">d1</text>
+</g>
+<!-- d2 -->
+<g id="node6" class="node">
+<title>d2</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-238" rx="27" ry="18" />
+<text text-anchor="middle" x="99" y="-234.3" font-family="Times,serif" font-size="14.00">d2</text>
+</g>
+<!-- d1&#45;&gt;d2 -->
+<g id="edge14" class="edge">
+<title>d1&#45;&gt;d2</title>
+<path fill="none" stroke="black" d="M54.22,-238C54.22,-238 61.74,-238 61.74,-238" />
+<polygon fill="black" stroke="black" points="61.74,-241.5 71.74,-238 61.74,-234.5 61.74,-241.5" />
+</g>
+<!-- y1 -->
+<g id="node19" class="node">
+<title>y1</title>
+<text text-anchor="middle" x="27" y="-306.3" font-family="Times,serif" font-size="14.00">y1</text>
+</g>
+<!-- d1&#45;&gt;y1 -->
+<g id="edge9" class="edge">
+<title>d1&#45;&gt;y1</title>
+<path fill="none" stroke="black" d="M27,-256.17C27,-256.17 27,-281.59 27,-281.59" />
+<polygon fill="black" stroke="black" points="23.5,-281.59 27,-291.59 30.5,-281.59 23.5,-281.59" />
+</g>
+<!-- dddd -->
+<g id="node7" class="node">
+<title>dddd</title>
+<ellipse fill="none" stroke="black" cx="171" cy="-238" rx="27" ry="18" />
+<text text-anchor="middle" x="171" y="-234.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- d2&#45;&gt;dddd -->
+<g id="edge15" class="edge">
+<title>d2&#45;&gt;dddd</title>
+<path fill="none" stroke="black" d="M126.22,-238C126.22,-238 133.74,-238 133.74,-238" />
+<polygon fill="black" stroke="black" points="133.74,-241.5 143.74,-238 133.74,-234.5 133.74,-241.5" />
+</g>
+<!-- y2 -->
+<g id="node20" class="node">
+<title>y2</title>
+<text text-anchor="middle" x="99" y="-306.3" font-family="Times,serif" font-size="14.00">y2</text>
+</g>
+<!-- d2&#45;&gt;y2 -->
+<g id="edge10" class="edge">
+<title>d2&#45;&gt;y2</title>
+<path fill="none" stroke="black" d="M99,-256.17C99,-256.17 99,-281.59 99,-281.59" />
+<polygon fill="black" stroke="black" points="95.5,-281.59 99,-291.59 102.5,-281.59 95.5,-281.59" />
+</g>
+<!-- dt0 -->
+<g id="node8" class="node">
+<title>dt0</title>
+<ellipse fill="none" stroke="black" cx="250" cy="-238" rx="33.6" ry="18" />
+<text text-anchor="middle" x="250" y="-234.3" font-family="Times,serif" font-size="14.00">d_t&#45;1</text>
+</g>
+<!-- dddd&#45;&gt;dt0 -->
+<g id="edge16" class="edge">
+<title>dddd&#45;&gt;dt0</title>
+<path fill="none" stroke="black" d="M198.19,-238C198.19,-238 206.2,-238 206.2,-238" />
+<polygon fill="black" stroke="black" points="206.2,-241.5 216.2,-238 206.2,-234.5 206.2,-241.5" />
+</g>
+<!-- yddd -->
+<g id="node12" class="node">
+<title>yddd</title>
+<text text-anchor="middle" x="171" y="-306.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- dddd&#45;&gt;yddd -->
+<g id="edge11" class="edge">
+<title>dddd&#45;&gt;yddd</title>
+<path fill="none" stroke="black" d="M171,-256.17C171,-256.17 171,-281.59 171,-281.59" />
+<polygon fill="black" stroke="black" points="167.5,-281.59 171,-291.59 174.5,-281.59 167.5,-281.59" />
+</g>
+<!-- dt -->
+<g id="node9" class="node">
+<title>dt</title>
+<ellipse fill="none" stroke="black" cx="329" cy="-238" rx="27" ry="18" />
+<text text-anchor="middle" x="329" y="-234.3" font-family="Times,serif" font-size="14.00">d_t</text>
+</g>
+<!-- dt0&#45;&gt;dt -->
+<g id="edge17" class="edge">
+<title>dt0&#45;&gt;dt</title>
+<path fill="none" stroke="black" d="M283.96,-238C283.96,-238 291.98,-238 291.98,-238" />
+<polygon fill="black" stroke="black" points="291.98,-241.5 301.98,-238 291.98,-234.5 291.98,-241.5" />
+</g>
+<!-- yt0 -->
+<g id="node14" class="node">
+<title>yt0</title>
+<ellipse fill="none" stroke="black" cx="250" cy="-310" rx="33.29" ry="18" />
+<text text-anchor="middle" x="250" y="-306.3" font-family="Times,serif" font-size="14.00">y_t&#45;1</text>
+</g>
+<!-- dt0&#45;&gt;yt0 -->
+<g id="edge12" class="edge">
+<title>dt0&#45;&gt;yt0</title>
+<path fill="none" stroke="black" d="M250,-256.17C250,-256.17 250,-281.59 250,-281.59" />
+<polygon fill="black" stroke="black" points="246.5,-281.59 250,-291.59 253.5,-281.59 246.5,-281.59" />
+</g>
+<!-- dt0&#45;&gt;Ct -->
+<g id="edge23" class="edge">
+<title>dt0&#45;&gt;Ct</title>
+<path fill="none" stroke="black" d="M276.4,-226.44C276.4,-226.44 276.4,-194.12 276.4,-194.12" />
+<polygon fill="black" stroke="black" points="279.9,-194.12 276.4,-184.12 272.9,-194.12 279.9,-194.12" />
+</g>
+<!-- dddd2 -->
+<g id="node10" class="node">
+<title>dddd2</title>
+</g>
+<!-- dt&#45;&gt;dddd2 -->
+<g id="edge22" class="edge">
+<title>dt&#45;&gt;dddd2</title>
+<path fill="none" stroke="black" d="M356.22,-238C356.22,-238 363.74,-238 363.74,-238" />
+<polygon fill="black" stroke="black" points="363.74,-241.5 373.74,-238 363.74,-234.5 363.74,-241.5" />
+</g>
+<!-- yt -->
+<g id="node13" class="node">
+<title>yt</title>
+<ellipse fill="none" stroke="black" cx="329" cy="-310" rx="27" ry="18" />
+<text text-anchor="middle" x="329" y="-306.3" font-family="Times,serif" font-size="14.00">y_t</text>
+</g>
+<!-- dt&#45;&gt;yt -->
+<g id="edge13" class="edge">
+<title>dt&#45;&gt;yt</title>
+<path fill="none" stroke="black" d="M329,-256.17C329,-256.17 329,-281.59 329,-281.59" />
+<polygon fill="black" stroke="black" points="325.5,-281.59 329,-291.59 332.5,-281.59 325.5,-281.59" />
+</g>
+<!-- xddd -->
+<g id="node11" class="node">
+<title>xddd</title>
+<text text-anchor="middle" x="325" y="-14.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- xddd&#45;&gt;eddd -->
+<g id="edge3" class="edge">
+<title>xddd&#45;&gt;eddd</title>
+<path fill="none" stroke="black" d="M325,-36.17C325,-36.17 325,-61.59 325,-61.59" />
+<polygon fill="black" stroke="black" points="321.5,-61.59 325,-71.59 328.5,-61.59 321.5,-61.59" />
+</g>
+<!-- Ct&#45;&gt;dt -->
+<g id="edge8" class="edge">
+<title>Ct&#45;&gt;dt</title>
+<path fill="none" stroke="black" d="M305.5,-184.22C305.5,-184.22 305.5,-218.8 305.5,-218.8" />
+<polygon fill="black" stroke="black" points="302,-218.8 305.5,-228.8 309,-218.8 302,-218.8" />
+</g>
+<!-- x1 -->
+<g id="node16" class="node">
+<title>x1</title>
+<text text-anchor="middle" x="181" y="-14.3" font-family="Times,serif" font-size="14.00">x1</text>
+</g>
+<!-- x1&#45;&gt;e1 -->
+<g id="edge1" class="edge">
+<title>x1&#45;&gt;e1</title>
+<path fill="none" stroke="black" d="M181,-36.17C181,-36.17 181,-61.59 181,-61.59" />
+<polygon fill="black" stroke="black" points="177.5,-61.59 181,-71.59 184.5,-61.59 177.5,-61.59" />
+</g>
+<!-- x2 -->
+<g id="node17" class="node">
+<title>x2</title>
+<text text-anchor="middle" x="253" y="-14.3" font-family="Times,serif" font-size="14.00">x2</text>
+</g>
+<!-- x2&#45;&gt;e2 -->
+<g id="edge2" class="edge">
+<title>x2&#45;&gt;e2</title>
+<path fill="none" stroke="black" d="M253,-36.17C253,-36.17 253,-61.59 253,-61.59" />
+<polygon fill="black" stroke="black" points="249.5,-61.59 253,-71.59 256.5,-61.59 249.5,-61.59" />
+</g>
+<!-- xn -->
+<g id="node18" class="node">
+<title>xn</title>
+<text text-anchor="middle" x="397" y="-14.3" font-family="Times,serif" font-size="14.00">xn</text>
+</g>
+<!-- xn&#45;&gt;en -->
+<g id="edge4" class="edge">
+<title>xn&#45;&gt;en</title>
+<path fill="none" stroke="black" d="M397,-36.17C397,-36.17 397,-61.59 397,-61.59" />
+<polygon fill="black" stroke="black" points="393.5,-61.59 397,-71.59 400.5,-61.59 393.5,-61.59" />
+</g>
+</g>
+</svg>
+</div>
+</div>
+
+<p>更进一步细化关于  \(\bm{C}_t\)  部分，我们引用《基于深度学习的道路短期交通状态时空序列预测》一书中的图：</p>
+
+<p><img src="/img/src/2023-01-04-captain-nlp-5.png" alt="image" /></p>
+
+<p>这个图里的  \(\widetilde{h}_i\)  与上一个图里的  \(d_i\)  对应， \(h_i\)  与上一个图里的  \(e_i\)  对应。</p>
+
+<p>针对时刻  \(t\)  要产出的输出，隐藏层每一个隐藏细胞都与  \(\bm{C}_t\)  有一个权重关系  \(\alpha_{t,i}\)  其中  \(1\le i\le n\) ，这个权重值与「输入项经过编码器后隐藏层后的输出 \(e_i（1\le i\le n）\) 、解码器的前一时刻隐藏层输出  \(d_{t-1}\) 」两者有关：</p>
+
+\[\begin{aligned}
+&amp;s_{i,t} = score(\bm{e}_i,\bm{d}_{t-1}) \\
+&amp;\alpha_{i,t} = \frac{exp(s_{i,t})}{\textstyle\sum_{j=1}^n exp(s_{j,t})}
+\end{aligned}\]
+
+<p>常用的  \(score\)  函数有：</p>
+
+<ul>
+  <li>点积（Dot Product）模型： \(s_{i,t} = {\bm{d}_{t-1}}^T \cdot \bm{e}_i\)</li>
+  <li>缩放点积（Scaled Dot-Product）模型： \(s_{i,t} = \frac{{\bm{d}_{t-1}}^T \cdot \bm{e}_i}{\sqrt{\smash[b]{dimensions\:of\:d_{t-1}\:or\:e_i}}}\) ，可避免因为向量维度过大导致点积结果太大</li>
+</ul>
+
+<p>然后上下文向量就表示成：</p>
+
+\[\begin{aligned}
+&amp;\bm{C}_t = \displaystyle\sum_{i=1}^n \alpha_{i,t} \bm{e}_i
+\end{aligned}\]
+
+<p>还记得 RNN 那部分里我们讲到的 Encoder-Decoder 模型的公式表示吗？</p>
+
+\[\begin{aligned}
+e_t &amp;= Encoder_{LSTM/GRU}(x_t, e_{t-1}) \\
+\bm{C} &amp;= f_1(e_n) \\
+d_t &amp;= f_2(d_{t-1}, \bm{C}) \\
+y_t &amp;= Decoder_{LSTM/GRU}(y_{t-1}, d_{t-1}, \bm{C})
+\end{aligned}\]
+
+<p>加入 Attention 机制的 Encoder-Decoder 模型如下：</p>
+
+\[\begin{aligned}
+e_t &amp;= Encoder_{LSTM/GRU}(x_t, e_{t-1}) \\
+\bm{C}_t &amp;= f_1(e_1,e_2...e_n,d_{t-1}) \\
+d_t &amp;= f_2(d_{t-1}, \bm{C}_t) \\
+y_t &amp;= Decoder_{LSTM/GRU}(y_{t-1}, d_{t-1}, \bm{C}_t)
+\end{aligned}\]
+
+<p>可以看到最核心的区别是第二个公式  \(C_t\) 。加入 Attention 后，对所有数据给予不同的注意力分布。具体地，比如我们用如下的函数来定义这个模型：</p>
+
+\[\begin{aligned}
+\bm{e} &amp;= tanh(\bm{W}^{xe} \cdot \bm{x} + \bm{b}^{xe}) \\
+s_{i,t} &amp;= score(\bm{e}_i,\bm{d}_{t-1}) \\
+\alpha_{i,t} &amp;= \frac{e^{s_{i,t}}}{\textstyle\sum_{j=1}^n e^{s_{j,t}}} \\
+\bm{C}_t &amp;= \displaystyle\sum_{i=1}^n \alpha_{i,t} \bm{e}_i \\
+\bm{d}_t &amp;= tanh(\bm{W}^{dd} \cdot \bm{d}_{t-1} + \bm{b}^{dd} +
+				 \bm{W}^{yd} \cdot \bm{y}_{t-1} + \bm{b}^{yd} +
+				 \bm{W}^{cd} \cdot \bm{C}_t + \bm{b}^{cd}) \\
+\bm{y} &amp;= Softmax(\bm{W}^{dy} \cdot \bm{d} + \bm{b}^{dy})
+\end{aligned}\]
+
+<p>到这里你能发现注意力机制的什么问题不？</p>
+
+<ul>
+  <li>这个注意力机制忽略了位置信息。比如 Tigers love rabbits 和 Rabbits love tigers 会产生一样的注意力分数。</li>
+</ul>
+
+<h3 id="三transformer-在-2017-年横空出世">三、Transformer 在 2017 年横空出世</h3>
+
+<p>中文网络里找到的解释得比较好的 blogs、answers，几乎都指向了同一篇博客：Jay Alammar 的<a href="http://jalammar.github.io/illustrated-transformer/">《The Illustrated Transformer》</a>，所以建议读者搭配该篇文章阅读。</p>
+
+<p>Transformer 模型中用到了自注意力（Self-Attention）、多头注意力（Multiple-Head Attention）、残差网络（ResNet）与捷径（Short-Cut）。下面我们先通过第 1 到第 4 小节把几个基本概念讲清楚，然后在第 5 小节讲解整体 Transformer 模型就会好理解很多了。最后第 6 小节我们来一段动手实践。</p>
+
+<h4 id="1自注意力机制self-attention">1、自注意力机制（Self-Attention）</h4>
+
+<p>自注意力是理解 Transformer 的关键，原作者在论文中限于篇幅，没有给出过多的解释。以下是我自己的理解，能够比较通透、符合常识地去理解 Transformer 中的一些神来之笔的概念。</p>
+
+<h5 id="11一段自然语言内容其自身就暗含很多内部关联信息">1.1、一段自然语言内容，其自身就「暗含」很多内部关联信息</h5>
+
+<p>在加入了 Attention 的 Encoder-Decoder 模型中，对输出序列 Y 中的一个词的注意力来自于输入序列 X，那么如果 X 和 Y 相等呢？什么场景会有这个需求？因为我们认为一段文字里某些词就是由于另外某些词而决定的，可以粗暴地理解为「完形填空」的原理。那么这样一段文字，其实就存在其中每个词的自注意力，举个例子：</p>
+
+<blockquote>
+  <p>老王是我的主管，我很喜欢他的平易近人。</p>
+</blockquote>
+
+<p>对这句话里的「他」，如果基于这句话计算自注意力的话，显然应该给予「老王」最多的注意力。受此启发，我们认为：</p>
+
+<blockquote>
+  <p>一段自然语言中，其实暗含了：为了得到关于某方面信息 Q，可以通过关注某些信息 K，进而得到某些信息（V）作为结果。</p>
+</blockquote>
+
+<p>Q 就是 query 检索/查询，K、V 分别是 key、value。所以类似于我们在图书检索系统里搜索「NLP书籍」（这是 Q），得到了一本叫《自然语言处理实战》的电子书，书名就是 key，这本电子书就是 value。只是对于自然语言的理解，我们认为任何一段内容里，都自身暗含了很多潜在 Q-K-V 的关联。这是整体受到信息检索领域里 query-key-value 的启发的。</p>
+
+<p>基于这个启发，我们将自注意力的公式表示为：</p>
+
+\[\begin{aligned}
+Z = SelfAttention(X) = Attention(Q,K,V)
+\end{aligned}\]
+
+<p>X 经过自注意力计算后，得到的「暗含」了大量原数据内部信息的 Z。然后我们拿着这个带有自注意力信息的 Z 进行后续的操作。这里要强调的是，Z 向量中的每个元素 z_i 都与 X 的所有元素有某种关联，而不是只与 x_i 有关联。</p>
+
+<h5 id="12如何计算--q--k--v">1.2、如何计算  \(Q\) 、 \(K\) 、 \(V\)</h5>
+
+<p>Q、K、V 全部来自输入 X 的线性变换：</p>
+
+\[\begin{aligned}
+Q &amp;= W^Q \cdot X \\
+K &amp;= W^K \cdot K \\
+V &amp;= W^V \cdot V \\
+\end{aligned}\]
+
+<p>对于 X 中的每一个词向量 x_i，经过这个变换后得到了：</p>
+
+\[\begin{aligned}
+q_i &amp;= W^Q \cdot x_i \\
+k_i &amp;= W^K \cdot k_i \\
+v_i &amp;= W^V \cdot v_i \\
+\end{aligned}\]
+
+<h5 id="13注意力函数如何通过--q--k--v--得到--z">1.3、注意力函数：如何通过  \(Q\) 、 \(K\) 、 \(V\)  得到  \(Z\)</h5>
+
+<p>基于上面的启发，我们认为 X 经过自注意力的挖掘后，得到了：</p>
+
+<ul>
+  <li>暗含信息 1：一组 query 与一组 key 之间的关联，记作 qk（想一下信息检索系统要用 query 先招到 key）</li>
+  <li>暗含信息 2：一组 value</li>
+  <li>暗含信息 3：qk 与 value 的某种关联</li>
+</ul>
+
+<p>这三组信息，分别如何表示呢？这里又需要一些启发了，因为计算机科学其实是在「模拟还原」现实世界，在 AI 的领域目前的研究方向就是模拟还原人脑的思考。所以这种「模拟还原」都是寻找某一种近似方法，因此不能按照数学、物理的逻辑推理来理解，而应该按照「工程」或者「计算科学」来理解，想想我们大学时学的「计算方法」这门课，因此常需要一些启发来找到某种「表示」。</p>
+
+<p>这里 Transformer 的作者，认为  \(Q\)  和  \(K\)  两个向量之间的关联，是我们在用  \(Q\)  找其在  \(K\)  上的投影，如果  \(Q\) 、 \(K\)  是单位长度的向量，那么这个投影其实可以理解为找「 \(Q\)  和  \(K\)  向量之间的相似度」：</p>
+
+<ul>
+  <li>如果  \(Q\)  和  \(K\)  垂直，那么两个向量正交，其点积（Dot Product）为 0；</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>如果  \(Q\)  和  \(K\)  平行，那么两个向量点积为两者模积  $$</td>
+          <td>Q</td>
+          <td> </td>
+          <td>K</td>
+          <td>$$ ；</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>如果  \(Q\)  和  \(K\)  呈某个夹角，则点积就是  \(Q\)  在  \(K\)  上的投影的模。</li>
+</ul>
+
+<p>因此「暗含信息 1」就可以用「 \(Q\cdot K\) 」再经过 Softmax 归一化来表示。这个表示，是一个所有元素都是 0~1 的矩阵，可以理解成对应注意力机制里的「注意力分数」，也就是一个「注意力分数矩阵（Attention Score Matrix）」。</p>
+
+<p>而「暗含信息 2」则是输入  \(X\)  经过的线性变换后的特征，看做  \(X\)  的另一种表示。然后我们用这个「注意力分数矩阵」来加持一下  \(V\) ，这个点积过程就表示了「暗含信息 3」了。所以我们有了如下公式：</p>
+
+\[\begin{aligned}
+Z = Attention(Q,K,V) = Softmax(Q \cdot K^T) \cdot V
+\end{aligned}\]
+
+<p>其实到这里，这个注意力函数已经可以用了。有时候，为了避免因为向量维度过大，导致  \(Q \cdot K^T\)  点积结果过大，我们再加一步处理：</p>
+
+\[\begin{aligned}
+Z = Attention(Q,K,V) = Softmax(\frac{Q \cdot K^T}{\sqrt{\smash[b]{d_k}}}) \cdot V
+\end{aligned}\]
+
+<p>这里  \(d_k\)  是向量的维度。对于</p>
+
+<p>这一步修正还有进一步的解释，即如果经过 Softmax 归一化后模型稳定性存在问题。怎么理解？如果假设 Q 和 K 中的每个向量的每一维数据都具有零均值、单位方差，这样输入数据是具有稳定性的，那么如何让「暗含信息 1」计算后仍然具有稳定性呢？即运算结果依然保持零均值、单位方差，就是除以「 \(d_k\) 」。</p>
+
+<h5 id="14其他注意力函数">1.4、其他注意力函数</h5>
+
+<p>为了提醒大家这种暗含信息的表示，都只是计算方法上的一种选择，好坏全靠结果评定，所以包括上面的在内，常见的注意力函数有（甚至你也可以自己定义）：</p>
+
+\[Attention(Q,K,V) =
+\begin{cases}
+\begin{aligned}
+&amp;= Softmax(Q^T K) V \\
+&amp;= Softmax(\frac{Q K^T}{\sqrt{\smash[b]{d_k}}}) V \\
+&amp;= Softmax(\omega^T tanh(W[q;k])) V \\
+&amp;= Softmax(Q^T W K) V
+\end{aligned}
+\end{cases}\]
+
+<p>到这里，我们就得到了一个包含自注意力信息的  \(Z\)  了。</p>
+
+<h4 id="2多头注意力">2、多头注意力</h4>
+
+<p>——&gt; 未完待续</p>
+
+<h4 id="3退化现象残差网络与-short-cut">3、退化现象、残差网络与 Short-Cut</h4>
+
+<h5 id="31退化现象">3.1、退化现象</h5>
+
+<p>对于一个 56 层的神经网路，我们很自然地会觉得应该比 20 层的神经网络的效果要好，比如说从误差率（error）的量化角度看。但是华人学者何凯明等人的论文<a href="https://arxiv.org/pdf/1512.03385.pdf">《Deep Residual Learning for Image Recognition》</a>中给我们呈现了相反的结果，而这个问题的原因并不是因为层数多带来的梯度爆炸/梯度消失（毕竟已经用了归一化解决了这个问题），而是因为一种反常的现象，这种现象我们称之为「退化现象」。何凯明等人认为这是因为存在「难以优化好的网络层」。</p>
+
+<h5 id="32恒等映射">3.2、恒等映射</h5>
+
+<p>如果这 36 层还帮了倒忙，那还不如没有，是不是？所以这多出来的 36 个网络层，如果对于提升性能（例如误差率）毫无影响，甚至更进一步，这 36 层前的输入数据，和经过这 36 层后的输出数据，完全相同，那么如果将这 36 层抽象成一个函数  \(f\) ，这就是一个恒等映射的函数：</p>
+
+\[f(x) = x\]
+
+<p>回到实际应用中。如果我们对于一个神经网络中的连续 N 层是提升性能，还是降低性能，是未知的，那么则可以建立一个跳过这些层的连接，实现：</p>
+
+<blockquote>
+  <p>如果这 N 层可以提升性能，则采用这 N 层；否则就跳过。</p>
+</blockquote>
+
+<p>这就像给了这 N 层神经网络一个试错的空间，待我们确认它们的性能后再决定是否采用它们。同时也可以理解成，这些层可以去单独优化，如果性能提升，则不被跳过。</p>
+
+<h5 id="33残差网络residual-network与捷径short-cut">3.3、残差网络（Residual Network）与捷径（Short-Cut）</h5>
+
+<p>如果前面 20 层已经可以实现 99% 的准确率，那么引入了这 36 层能否再提升「残差剩余那 1%」的准确率从而达到 100% 呢？所以这 36 层的网络，就被称为「残差网络（Residual Network，常简称为 ResNet）」，这个叫法非常形象。</p>
+
+<p>而那个可以跳过 N 层残差网络的捷径，则常被称为 Short-Cut，也会被叫做跳跃链接（Skip Conntection），这就解决了上述深度学习中的「退化现象」。</p>
+
+<h4 id="4位置编码">4、位置编码</h4>
+
+<p>——&gt; 未完待续</p>
+
+<h4 id="5transformer-模型整体">5、Transformer 模型整体</h4>
+
+<p>——&gt; 未完待续</p>
+
+<p>最后我们再来整体看一下 Transformer：</p>
+
+<ul>
+  <li>首先输入数据生成词的 Embedding、位置编码</li>
+  <li>在 Encoder 里，先进入 N 层 Attention 的处理，最后进入一个全连接层，期间可能有 Short-Cut</li>
+  <li>然后经过 Normalization</li>
+</ul>
+
+<p>——&gt; 未完待续</p>
+
+<h4 id="6来看一段用-pytorch-实现的-transformer-示例">6、来看一段用 PyTorch 实现的 Transformer 示例</h4>
+
+<h3 id="参考">参考</h3>
+
+<ul>
+  <li>《自然语言处理：基于预训练模型的方法》车万翔 等</li>
+  <li>《自然语言处理实战：预训练模型应用及其产品化》安库·A·帕特尔 等</li>
+  <li>https://lilianweng.github.io/posts/2018-06-24-attention/</li>
+  <li>《基于深度学习的道路短期交通状态时空序列预测》</li>
+  <li>https://www.zhihu.com/question/325839123</li>
+  <li>https://zhuanlan.zhihu.com/p/410776234</li>
+  <li>http://jalammar.github.io/illustrated-transformer/</li>
+  <li>https://zhuanlan.zhihu.com/p/48508221</li>
+  <li>https://luweikxy.gitbook.io/machine-learning-notes/self-attention-and-transformer</li>
+</ul>
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer><span>@2022 - MikeCaptain.com</span></footer>
+
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>

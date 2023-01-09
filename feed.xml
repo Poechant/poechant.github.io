@@ -1,4 +1,611 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-01-06T19:18:51+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">麦克船长的 NLP 语言模型技术笔记 4：循环神经网络（RNN）</title><link href="https://www.mikecaptain.com/2023/01/01/language-model-4/" rel="alternate" type="text/html" title="麦克船长的 NLP 语言模型技术笔记 4：循环神经网络（RNN）" /><published>2023-01-01T21:01:31+00:00</published><updated>2023-01-01T21:01:31+00:00</updated><id>https://www.mikecaptain.com/2023/01/01/language-model-4</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/01/language-model-4/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-01-09T20:23:06+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">麦克船长的 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）</title><link href="https://www.mikecaptain.com/2023/01/04/language-model-5/" rel="alternate" type="text/html" title="麦克船长的 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）" /><published>2023-01-04T18:13:09+00:00</published><updated>2023-01-04T18:13:09+00:00</updated><id>https://www.mikecaptain.com/2023/01/04/language-model-5</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/04/language-model-5/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#一为什么说-rnn-模型没有体现注意力&quot; id=&quot;markdown-toc-一为什么说-rnn-模型没有体现注意力&quot;&gt;一、为什么说 RNN 模型没有体现「注意力」？&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#二基于-attention-机制的-encoder-decoder-模型&quot; id=&quot;markdown-toc-二基于-attention-机制的-encoder-decoder-模型&quot;&gt;二、基于 Attention 机制的 Encoder-Decoder 模型&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#三transformer-在-2017-年横空出世&quot; id=&quot;markdown-toc-三transformer-在-2017-年横空出世&quot;&gt;三、Transformer 在 2017 年横空出世&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1自注意力机制self-attention&quot; id=&quot;markdown-toc-1自注意力机制self-attention&quot;&gt;1、自注意力机制（Self-Attention）&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#11一段自然语言内容其自身就暗含很多内部关联信息&quot; id=&quot;markdown-toc-11一段自然语言内容其自身就暗含很多内部关联信息&quot;&gt;1.1、一段自然语言内容，其自身就「暗含」很多内部关联信息&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#12如何计算--q--k--v&quot; id=&quot;markdown-toc-12如何计算--q--k--v&quot;&gt;1.2、如何计算  \(Q\) 、 \(K\) 、 \(V\)&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#13注意力函数如何通过--q--k--v--得到--z&quot; id=&quot;markdown-toc-13注意力函数如何通过--q--k--v--得到--z&quot;&gt;1.3、注意力函数：如何通过  \(Q\) 、 \(K\) 、 \(V\)  得到  \(Z\)&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#14其他注意力函数&quot; id=&quot;markdown-toc-14其他注意力函数&quot;&gt;1.4、其他注意力函数&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#2多头注意力&quot; id=&quot;markdown-toc-2多头注意力&quot;&gt;2、多头注意力&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#3退化现象残差网络与-short-cut&quot; id=&quot;markdown-toc-3退化现象残差网络与-short-cut&quot;&gt;3、退化现象、残差网络与 Short-Cut&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#31退化现象&quot; id=&quot;markdown-toc-31退化现象&quot;&gt;3.1、退化现象&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#32恒等映射&quot; id=&quot;markdown-toc-32恒等映射&quot;&gt;3.2、恒等映射&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#33残差网络residual-network与捷径short-cut&quot; id=&quot;markdown-toc-33残差网络residual-network与捷径short-cut&quot;&gt;3.3、残差网络（Residual Network）与捷径（Short-Cut）&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#4位置编码&quot; id=&quot;markdown-toc-4位置编码&quot;&gt;4、位置编码&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#5transformer-模型整体&quot; id=&quot;markdown-toc-5transformer-模型整体&quot;&gt;5、Transformer 模型整体&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#6来看一段用-pytorch-实现的-transformer-示例&quot; id=&quot;markdown-toc-6来看一段用-pytorch-实现的-transformer-示例&quot;&gt;6、来看一段用 PyTorch 实现的 Transformer 示例&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#参考&quot; id=&quot;markdown-toc-参考&quot;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;一为什么说-rnn-模型没有体现注意力&quot;&gt;一、为什么说 RNN 模型没有体现「注意力」？&lt;/h3&gt;
+
+&lt;p&gt;Encoder-Decoder 的一个非常严重的问题，是依赖中间那个 context 向量，则无法处理特别长的输入序列 —— 记忆力不足，会忘事儿。而忘事儿的根本原因，是没有「注意力」。&lt;/p&gt;
+
+&lt;p&gt;对于一般的 RNN 模型，Encoder-Decoder 结构并没有体现「注意力」—— 这句话怎么理解？当输入序列经过 Encoder 生成的中间结果（上下文 C），被喂给 Decoder 时，这些中间结果对所生成序列里的哪个词，都没有区别（没有特别关照谁）。这相当于在说：输入序列里的每个词，对于生成任何一个输出的词的影响，是一样的，而不是输出某个词时是聚焦特定的一些输入词。这就是模型没有注意力机制。&lt;/p&gt;
+
+&lt;p&gt;人脑的注意力模型，其实是资源分配模型。NLP 领域的注意力模型，是在 2014 年被提出的，后来逐渐成为 NLP 领域的一个广泛应用的机制。可以应用的场景，比如对于一个电商平台中很常见的白底图，其边缘的白色区域都是无用的，那么就不应该被关注（关注权重为 0）。比如机器翻译中，翻译词都是对局部输入重点关注的。&lt;/p&gt;
+
+&lt;p&gt;所以 Attention 机制，就是在 Decoder 时，不是所有输出都依赖相同的「上下文  \(\bm{C}_t\) 」，而是时刻 t 的输出，使用  \(\bm{C}_t\) ，而这个  \(\bm{C}_t\)  来自对每个输入数据项根据「注意力」进行的加权。&lt;/p&gt;
+
+&lt;h3 id=&quot;二基于-attention-机制的-encoder-decoder-模型&quot;&gt;二、基于 Attention 机制的 Encoder-Decoder 模型&lt;/h3&gt;
+
+&lt;p&gt;下图中  \(e_i\)  表示编码器的隐藏层输出， \(d_i\)  表示解码器的隐藏层输出&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center;&quot;&gt;
+&lt;div class=&quot;graphviz-wrapper&quot;&gt;
+
+&lt;!-- Generated by graphviz version 2.43.0 (0)
+ --&gt;
+&lt;!-- Title: G Pages: 1 --&gt;
+&lt;svg role=&quot;img&quot; aria-label=&quot;graphviz-f66c634a9c7c02915e5610af76c3b1b7&quot; width=&quot;436pt&quot; height=&quot;336pt&quot; viewBox=&quot;0.00 0.00 436.00 336.00&quot;&gt;
+&lt;title&gt;graphviz-f66c634a9c7c02915e5610af76c3b1b7&lt;/title&gt;
+&lt;desc&gt;
+digraph G {
+	rankdir=BT
+	splines=ortho
+	{rank=same e1 e2 eddd en}
+	{rank=same d1 d2 dddd dt0 dt dddd2}
+
+	eddd[label=&amp;quot;...&amp;quot;]
+	dddd[label=&amp;quot;...&amp;quot;]
+	xddd[label=&amp;quot;...&amp;quot;]
+	yddd[label=&amp;quot;...&amp;quot;]
+	dt[label=&amp;quot;d_t&amp;quot;]
+	dt0[label=&amp;quot;d_t-1&amp;quot;]
+	yt[label=&amp;quot;y_t&amp;quot;]
+	yt0[label=&amp;quot;y_t-1&amp;quot;]
+	Ct[shape=plaintext]
+	x1[shape=plaintext]
+	x2[shape=plaintext]
+	xddd[shape=plaintext]
+	xn[shape=plaintext]
+	y1[shape=plaintext]
+	y2[shape=plaintext]
+	yddd[shape=plaintext]
+	dddd2[shape=plaintext, label=&amp;quot;&amp;quot;]
+	Ct[label=&amp;quot;C_t&amp;quot;, shape=&amp;quot;square&amp;quot;]
+
+	x1 -&amp;gt; e1
+	x2 -&amp;gt; e2
+	xddd -&amp;gt; eddd
+	xn -&amp;gt; en
+
+	e1 -&amp;gt; e2
+	e2 -&amp;gt; eddd
+	eddd -&amp;gt; en
+
+	Ct -&amp;gt; dt
+
+	d1 -&amp;gt; y1
+	d2 -&amp;gt; y2
+	dddd -&amp;gt; yddd
+	dt0 -&amp;gt; yt0
+	dt -&amp;gt; yt
+
+	d1 -&amp;gt; d2
+	d2 -&amp;gt; dddd
+	dddd -&amp;gt; dt0
+	dt0 -&amp;gt; dt
+
+	e1 -&amp;gt; Ct
+	e2 -&amp;gt; Ct
+	eddd -&amp;gt; Ct
+	en -&amp;gt; Ct
+
+	dt -&amp;gt; dddd2
+	dt0 -&amp;gt; Ct
+}
+&lt;/desc&gt;
+
+&lt;g id=&quot;graph0&quot; class=&quot;graph&quot; transform=&quot;scale(1 1) rotate(0) translate(4 332)&quot;&gt;
+&lt;title&gt;G&lt;/title&gt;
+&lt;polygon fill=&quot;white&quot; stroke=&quot;transparent&quot; points=&quot;-4,4 -4,-332 432,-332 432,4 -4,4&quot; /&gt;
+&lt;!-- e1 --&gt;
+&lt;g id=&quot;node1&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;e1&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;181&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;181&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;e1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- e2 --&gt;
+&lt;g id=&quot;node2&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;e2&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;253&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;253&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;e2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- e1&amp;#45;&amp;gt;e2 --&gt;
+&lt;g id=&quot;edge5&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;e1&amp;#45;&amp;gt;e2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M208.22,-90C208.22,-90 215.74,-90 215.74,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;215.74,-93.5 225.74,-90 215.74,-86.5 215.74,-93.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- Ct --&gt;
+&lt;g id=&quot;node15&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;Ct&lt;/title&gt;
+&lt;polygon fill=&quot;none&quot; stroke=&quot;black&quot; points=&quot;309,-184 269,-184 269,-144 309,-144 309,-184&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;289&quot; y=&quot;-160.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;C_t&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- e1&amp;#45;&amp;gt;Ct --&gt;
+&lt;g id=&quot;edge18&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;e1&amp;#45;&amp;gt;Ct&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M203,-100.6C203,-121.06 203,-164 203,-164 203,-164 258.62,-164 258.62,-164&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;258.62,-167.5 268.62,-164 258.62,-160.5 258.62,-167.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- eddd --&gt;
+&lt;g id=&quot;node3&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;eddd&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;325&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;325&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- e2&amp;#45;&amp;gt;eddd --&gt;
+&lt;g id=&quot;edge6&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;e2&amp;#45;&amp;gt;eddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M280.22,-90C280.22,-90 287.74,-90 287.74,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;287.74,-93.5 297.74,-90 287.74,-86.5 287.74,-93.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- e2&amp;#45;&amp;gt;Ct --&gt;
+&lt;g id=&quot;edge19&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;e2&amp;#45;&amp;gt;Ct&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M274.5,-100.92C274.5,-100.92 274.5,-133.82 274.5,-133.82&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;271,-133.82 274.5,-143.82 278,-133.82 271,-133.82&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- en --&gt;
+&lt;g id=&quot;node4&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;en&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;397&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;397&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;en&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- eddd&amp;#45;&amp;gt;en --&gt;
+&lt;g id=&quot;edge7&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;eddd&amp;#45;&amp;gt;en&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M352.22,-90C352.22,-90 359.74,-90 359.74,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;359.74,-93.5 369.74,-90 359.74,-86.5 359.74,-93.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- eddd&amp;#45;&amp;gt;Ct --&gt;
+&lt;g id=&quot;edge20&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;eddd&amp;#45;&amp;gt;Ct&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M303.5,-100.92C303.5,-100.92 303.5,-133.82 303.5,-133.82&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;300,-133.82 303.5,-143.82 307,-133.82 300,-133.82&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- en&amp;#45;&amp;gt;Ct --&gt;
+&lt;g id=&quot;edge21&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;en&amp;#45;&amp;gt;Ct&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M399,-108.29C399,-130.21 399,-164 399,-164 399,-164 319.18,-164 319.18,-164&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;319.18,-160.5 309.18,-164 319.18,-167.5 319.18,-160.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- d1 --&gt;
+&lt;g id=&quot;node5&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;d1&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;27&quot; cy=&quot;-238&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-234.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;d1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- d2 --&gt;
+&lt;g id=&quot;node6&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;d2&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;99&quot; cy=&quot;-238&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;99&quot; y=&quot;-234.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;d2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- d1&amp;#45;&amp;gt;d2 --&gt;
+&lt;g id=&quot;edge14&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;d1&amp;#45;&amp;gt;d2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M54.22,-238C54.22,-238 61.74,-238 61.74,-238&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;61.74,-241.5 71.74,-238 61.74,-234.5 61.74,-241.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- y1 --&gt;
+&lt;g id=&quot;node19&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;y1&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-306.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;y1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- d1&amp;#45;&amp;gt;y1 --&gt;
+&lt;g id=&quot;edge9&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;d1&amp;#45;&amp;gt;y1&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M27,-256.17C27,-256.17 27,-281.59 27,-281.59&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;23.5,-281.59 27,-291.59 30.5,-281.59 23.5,-281.59&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- dddd --&gt;
+&lt;g id=&quot;node7&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;dddd&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;171&quot; cy=&quot;-238&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;171&quot; y=&quot;-234.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- d2&amp;#45;&amp;gt;dddd --&gt;
+&lt;g id=&quot;edge15&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;d2&amp;#45;&amp;gt;dddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M126.22,-238C126.22,-238 133.74,-238 133.74,-238&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;133.74,-241.5 143.74,-238 133.74,-234.5 133.74,-241.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- y2 --&gt;
+&lt;g id=&quot;node20&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;y2&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;99&quot; y=&quot;-306.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;y2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- d2&amp;#45;&amp;gt;y2 --&gt;
+&lt;g id=&quot;edge10&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;d2&amp;#45;&amp;gt;y2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M99,-256.17C99,-256.17 99,-281.59 99,-281.59&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;95.5,-281.59 99,-291.59 102.5,-281.59 95.5,-281.59&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- dt0 --&gt;
+&lt;g id=&quot;node8&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;dt0&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;250&quot; cy=&quot;-238&quot; rx=&quot;33.6&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;250&quot; y=&quot;-234.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;d_t&amp;#45;1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- dddd&amp;#45;&amp;gt;dt0 --&gt;
+&lt;g id=&quot;edge16&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;dddd&amp;#45;&amp;gt;dt0&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M198.19,-238C198.19,-238 206.2,-238 206.2,-238&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;206.2,-241.5 216.2,-238 206.2,-234.5 206.2,-241.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- yddd --&gt;
+&lt;g id=&quot;node12&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;yddd&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;171&quot; y=&quot;-306.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- dddd&amp;#45;&amp;gt;yddd --&gt;
+&lt;g id=&quot;edge11&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;dddd&amp;#45;&amp;gt;yddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M171,-256.17C171,-256.17 171,-281.59 171,-281.59&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;167.5,-281.59 171,-291.59 174.5,-281.59 167.5,-281.59&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- dt --&gt;
+&lt;g id=&quot;node9&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;dt&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;329&quot; cy=&quot;-238&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;329&quot; y=&quot;-234.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;d_t&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- dt0&amp;#45;&amp;gt;dt --&gt;
+&lt;g id=&quot;edge17&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;dt0&amp;#45;&amp;gt;dt&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M283.96,-238C283.96,-238 291.98,-238 291.98,-238&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;291.98,-241.5 301.98,-238 291.98,-234.5 291.98,-241.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- yt0 --&gt;
+&lt;g id=&quot;node14&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;yt0&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;250&quot; cy=&quot;-310&quot; rx=&quot;33.29&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;250&quot; y=&quot;-306.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;y_t&amp;#45;1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- dt0&amp;#45;&amp;gt;yt0 --&gt;
+&lt;g id=&quot;edge12&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;dt0&amp;#45;&amp;gt;yt0&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M250,-256.17C250,-256.17 250,-281.59 250,-281.59&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;246.5,-281.59 250,-291.59 253.5,-281.59 246.5,-281.59&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- dt0&amp;#45;&amp;gt;Ct --&gt;
+&lt;g id=&quot;edge23&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;dt0&amp;#45;&amp;gt;Ct&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M276.4,-226.44C276.4,-226.44 276.4,-194.12 276.4,-194.12&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;279.9,-194.12 276.4,-184.12 272.9,-194.12 279.9,-194.12&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- dddd2 --&gt;
+&lt;g id=&quot;node10&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;dddd2&lt;/title&gt;
+&lt;/g&gt;
+&lt;!-- dt&amp;#45;&amp;gt;dddd2 --&gt;
+&lt;g id=&quot;edge22&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;dt&amp;#45;&amp;gt;dddd2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M356.22,-238C356.22,-238 363.74,-238 363.74,-238&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;363.74,-241.5 373.74,-238 363.74,-234.5 363.74,-241.5&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- yt --&gt;
+&lt;g id=&quot;node13&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;yt&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;329&quot; cy=&quot;-310&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;329&quot; y=&quot;-306.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;y_t&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- dt&amp;#45;&amp;gt;yt --&gt;
+&lt;g id=&quot;edge13&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;dt&amp;#45;&amp;gt;yt&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M329,-256.17C329,-256.17 329,-281.59 329,-281.59&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;325.5,-281.59 329,-291.59 332.5,-281.59 325.5,-281.59&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- xddd --&gt;
+&lt;g id=&quot;node11&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;xddd&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;325&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- xddd&amp;#45;&amp;gt;eddd --&gt;
+&lt;g id=&quot;edge3&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;xddd&amp;#45;&amp;gt;eddd&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M325,-36.17C325,-36.17 325,-61.59 325,-61.59&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;321.5,-61.59 325,-71.59 328.5,-61.59 321.5,-61.59&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- Ct&amp;#45;&amp;gt;dt --&gt;
+&lt;g id=&quot;edge8&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;Ct&amp;#45;&amp;gt;dt&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M305.5,-184.22C305.5,-184.22 305.5,-218.8 305.5,-218.8&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;302,-218.8 305.5,-228.8 309,-218.8 302,-218.8&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- x1 --&gt;
+&lt;g id=&quot;node16&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;x1&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;181&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;x1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- x1&amp;#45;&amp;gt;e1 --&gt;
+&lt;g id=&quot;edge1&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;x1&amp;#45;&amp;gt;e1&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M181,-36.17C181,-36.17 181,-61.59 181,-61.59&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;177.5,-61.59 181,-71.59 184.5,-61.59 177.5,-61.59&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- x2 --&gt;
+&lt;g id=&quot;node17&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;x2&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;253&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;x2&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- x2&amp;#45;&amp;gt;e2 --&gt;
+&lt;g id=&quot;edge2&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;x2&amp;#45;&amp;gt;e2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M253,-36.17C253,-36.17 253,-61.59 253,-61.59&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;249.5,-61.59 253,-71.59 256.5,-61.59 249.5,-61.59&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- xn --&gt;
+&lt;g id=&quot;node18&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;xn&lt;/title&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;397&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;xn&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- xn&amp;#45;&amp;gt;en --&gt;
+&lt;g id=&quot;edge4&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;xn&amp;#45;&amp;gt;en&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M397,-36.17C397,-36.17 397,-61.59 397,-61.59&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;393.5,-61.59 397,-71.59 400.5,-61.59 393.5,-61.59&quot; /&gt;
+&lt;/g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;更进一步细化关于  \(\bm{C}_t\)  部分，我们引用《基于深度学习的道路短期交通状态时空序列预测》一书中的图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-04-captain-nlp-5.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这个图里的  \(\widetilde{h}_i\)  与上一个图里的  \(d_i\)  对应， \(h_i\)  与上一个图里的  \(e_i\)  对应。&lt;/p&gt;
+
+&lt;p&gt;针对时刻  \(t\)  要产出的输出，隐藏层每一个隐藏细胞都与  \(\bm{C}_t\)  有一个权重关系  \(\alpha_{t,i}\)  其中  \(1\le i\le n\) ，这个权重值与「输入项经过编码器后隐藏层后的输出 \(e_i（1\le i\le n）\) 、解码器的前一时刻隐藏层输出  \(d_{t-1}\) 」两者有关：&lt;/p&gt;
+
+\[\begin{aligned}
+&amp;amp;s_{i,t} = score(\bm{e}_i,\bm{d}_{t-1}) \\
+&amp;amp;\alpha_{i,t} = \frac{exp(s_{i,t})}{\textstyle\sum_{j=1}^n exp(s_{j,t})}
+\end{aligned}\]
+
+&lt;p&gt;常用的  \(score\)  函数有：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;点积（Dot Product）模型： \(s_{i,t} = {\bm{d}_{t-1}}^T \cdot \bm{e}_i\)&lt;/li&gt;
+  &lt;li&gt;缩放点积（Scaled Dot-Product）模型： \(s_{i,t} = \frac{{\bm{d}_{t-1}}^T \cdot \bm{e}_i}{\sqrt{\smash[b]{dimensions\:of\:d_{t-1}\:or\:e_i}}}\) ，可避免因为向量维度过大导致点积结果太大&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;然后上下文向量就表示成：&lt;/p&gt;
+
+\[\begin{aligned}
+&amp;amp;\bm{C}_t = \displaystyle\sum_{i=1}^n \alpha_{i,t} \bm{e}_i
+\end{aligned}\]
+
+&lt;p&gt;还记得 RNN 那部分里我们讲到的 Encoder-Decoder 模型的公式表示吗？&lt;/p&gt;
+
+\[\begin{aligned}
+e_t &amp;amp;= Encoder_{LSTM/GRU}(x_t, e_{t-1}) \\
+\bm{C} &amp;amp;= f_1(e_n) \\
+d_t &amp;amp;= f_2(d_{t-1}, \bm{C}) \\
+y_t &amp;amp;= Decoder_{LSTM/GRU}(y_{t-1}, d_{t-1}, \bm{C})
+\end{aligned}\]
+
+&lt;p&gt;加入 Attention 机制的 Encoder-Decoder 模型如下：&lt;/p&gt;
+
+\[\begin{aligned}
+e_t &amp;amp;= Encoder_{LSTM/GRU}(x_t, e_{t-1}) \\
+\bm{C}_t &amp;amp;= f_1(e_1,e_2...e_n,d_{t-1}) \\
+d_t &amp;amp;= f_2(d_{t-1}, \bm{C}_t) \\
+y_t &amp;amp;= Decoder_{LSTM/GRU}(y_{t-1}, d_{t-1}, \bm{C}_t)
+\end{aligned}\]
+
+&lt;p&gt;可以看到最核心的区别是第二个公式  \(C_t\) 。加入 Attention 后，对所有数据给予不同的注意力分布。具体地，比如我们用如下的函数来定义这个模型：&lt;/p&gt;
+
+\[\begin{aligned}
+\bm{e} &amp;amp;= tanh(\bm{W}^{xe} \cdot \bm{x} + \bm{b}^{xe}) \\
+s_{i,t} &amp;amp;= score(\bm{e}_i,\bm{d}_{t-1}) \\
+\alpha_{i,t} &amp;amp;= \frac{e^{s_{i,t}}}{\textstyle\sum_{j=1}^n e^{s_{j,t}}} \\
+\bm{C}_t &amp;amp;= \displaystyle\sum_{i=1}^n \alpha_{i,t} \bm{e}_i \\
+\bm{d}_t &amp;amp;= tanh(\bm{W}^{dd} \cdot \bm{d}_{t-1} + \bm{b}^{dd} +
+				 \bm{W}^{yd} \cdot \bm{y}_{t-1} + \bm{b}^{yd} +
+				 \bm{W}^{cd} \cdot \bm{C}_t + \bm{b}^{cd}) \\
+\bm{y} &amp;amp;= Softmax(\bm{W}^{dy} \cdot \bm{d} + \bm{b}^{dy})
+\end{aligned}\]
+
+&lt;p&gt;到这里你能发现注意力机制的什么问题不？&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;这个注意力机制忽略了位置信息。比如 Tigers love rabbits 和 Rabbits love tigers 会产生一样的注意力分数。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;三transformer-在-2017-年横空出世&quot;&gt;三、Transformer 在 2017 年横空出世&lt;/h3&gt;
+
+&lt;p&gt;中文网络里找到的解释得比较好的 blogs、answers，几乎都指向了同一篇博客：Jay Alammar 的&lt;a href=&quot;http://jalammar.github.io/illustrated-transformer/&quot;&gt;《The Illustrated Transformer》&lt;/a&gt;，所以建议读者搭配该篇文章阅读。&lt;/p&gt;
+
+&lt;p&gt;Transformer 模型中用到了自注意力（Self-Attention）、多头注意力（Multiple-Head Attention）、残差网络（ResNet）与捷径（Short-Cut）。下面我们先通过第 1 到第 4 小节把几个基本概念讲清楚，然后在第 5 小节讲解整体 Transformer 模型就会好理解很多了。最后第 6 小节我们来一段动手实践。&lt;/p&gt;
+
+&lt;h4 id=&quot;1自注意力机制self-attention&quot;&gt;1、自注意力机制（Self-Attention）&lt;/h4&gt;
+
+&lt;p&gt;自注意力是理解 Transformer 的关键，原作者在论文中限于篇幅，没有给出过多的解释。以下是我自己的理解，能够比较通透、符合常识地去理解 Transformer 中的一些神来之笔的概念。&lt;/p&gt;
+
+&lt;h5 id=&quot;11一段自然语言内容其自身就暗含很多内部关联信息&quot;&gt;1.1、一段自然语言内容，其自身就「暗含」很多内部关联信息&lt;/h5&gt;
+
+&lt;p&gt;在加入了 Attention 的 Encoder-Decoder 模型中，对输出序列 Y 中的一个词的注意力来自于输入序列 X，那么如果 X 和 Y 相等呢？什么场景会有这个需求？因为我们认为一段文字里某些词就是由于另外某些词而决定的，可以粗暴地理解为「完形填空」的原理。那么这样一段文字，其实就存在其中每个词的自注意力，举个例子：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;老王是我的主管，我很喜欢他的平易近人。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;对这句话里的「他」，如果基于这句话计算自注意力的话，显然应该给予「老王」最多的注意力。受此启发，我们认为：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;一段自然语言中，其实暗含了：为了得到关于某方面信息 Q，可以通过关注某些信息 K，进而得到某些信息（V）作为结果。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Q 就是 query 检索/查询，K、V 分别是 key、value。所以类似于我们在图书检索系统里搜索「NLP书籍」（这是 Q），得到了一本叫《自然语言处理实战》的电子书，书名就是 key，这本电子书就是 value。只是对于自然语言的理解，我们认为任何一段内容里，都自身暗含了很多潜在 Q-K-V 的关联。这是整体受到信息检索领域里 query-key-value 的启发的。&lt;/p&gt;
+
+&lt;p&gt;基于这个启发，我们将自注意力的公式表示为：&lt;/p&gt;
+
+\[\begin{aligned}
+Z = SelfAttention(X) = Attention(Q,K,V)
+\end{aligned}\]
+
+&lt;p&gt;X 经过自注意力计算后，得到的「暗含」了大量原数据内部信息的 Z。然后我们拿着这个带有自注意力信息的 Z 进行后续的操作。这里要强调的是，Z 向量中的每个元素 z_i 都与 X 的所有元素有某种关联，而不是只与 x_i 有关联。&lt;/p&gt;
+
+&lt;h5 id=&quot;12如何计算--q--k--v&quot;&gt;1.2、如何计算  \(Q\) 、 \(K\) 、 \(V\)&lt;/h5&gt;
+
+&lt;p&gt;Q、K、V 全部来自输入 X 的线性变换：&lt;/p&gt;
+
+\[\begin{aligned}
+Q &amp;amp;= W^Q \cdot X \\
+K &amp;amp;= W^K \cdot K \\
+V &amp;amp;= W^V \cdot V \\
+\end{aligned}\]
+
+&lt;p&gt;对于 X 中的每一个词向量 x_i，经过这个变换后得到了：&lt;/p&gt;
+
+\[\begin{aligned}
+q_i &amp;amp;= W^Q \cdot x_i \\
+k_i &amp;amp;= W^K \cdot k_i \\
+v_i &amp;amp;= W^V \cdot v_i \\
+\end{aligned}\]
+
+&lt;h5 id=&quot;13注意力函数如何通过--q--k--v--得到--z&quot;&gt;1.3、注意力函数：如何通过  \(Q\) 、 \(K\) 、 \(V\)  得到  \(Z\)&lt;/h5&gt;
+
+&lt;p&gt;基于上面的启发，我们认为 X 经过自注意力的挖掘后，得到了：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;暗含信息 1：一组 query 与一组 key 之间的关联，记作 qk（想一下信息检索系统要用 query 先招到 key）&lt;/li&gt;
+  &lt;li&gt;暗含信息 2：一组 value&lt;/li&gt;
+  &lt;li&gt;暗含信息 3：qk 与 value 的某种关联&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这三组信息，分别如何表示呢？这里又需要一些启发了，因为计算机科学其实是在「模拟还原」现实世界，在 AI 的领域目前的研究方向就是模拟还原人脑的思考。所以这种「模拟还原」都是寻找某一种近似方法，因此不能按照数学、物理的逻辑推理来理解，而应该按照「工程」或者「计算科学」来理解，想想我们大学时学的「计算方法」这门课，因此常需要一些启发来找到某种「表示」。&lt;/p&gt;
+
+&lt;p&gt;这里 Transformer 的作者，认为  \(Q\)  和  \(K\)  两个向量之间的关联，是我们在用  \(Q\)  找其在  \(K\)  上的投影，如果  \(Q\) 、 \(K\)  是单位长度的向量，那么这个投影其实可以理解为找「 \(Q\)  和  \(K\)  向量之间的相似度」：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;如果  \(Q\)  和  \(K\)  垂直，那么两个向量正交，其点积（Dot Product）为 0；&lt;/li&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;如果  \(Q\)  和  \(K\)  平行，那么两个向量点积为两者模积  $$&lt;/td&gt;
+          &lt;td&gt;Q&lt;/td&gt;
+          &lt;td&gt; &lt;/td&gt;
+          &lt;td&gt;K&lt;/td&gt;
+          &lt;td&gt;$$ ；&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;如果  \(Q\)  和  \(K\)  呈某个夹角，则点积就是  \(Q\)  在  \(K\)  上的投影的模。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;因此「暗含信息 1」就可以用「 \(Q\cdot K\) 」再经过 Softmax 归一化来表示。这个表示，是一个所有元素都是 0~1 的矩阵，可以理解成对应注意力机制里的「注意力分数」，也就是一个「注意力分数矩阵（Attention Score Matrix）」。&lt;/p&gt;
+
+&lt;p&gt;而「暗含信息 2」则是输入  \(X\)  经过的线性变换后的特征，看做  \(X\)  的另一种表示。然后我们用这个「注意力分数矩阵」来加持一下  \(V\) ，这个点积过程就表示了「暗含信息 3」了。所以我们有了如下公式：&lt;/p&gt;
+
+\[\begin{aligned}
+Z = Attention(Q,K,V) = Softmax(Q \cdot K^T) \cdot V
+\end{aligned}\]
+
+&lt;p&gt;其实到这里，这个注意力函数已经可以用了。有时候，为了避免因为向量维度过大，导致  \(Q \cdot K^T\)  点积结果过大，我们再加一步处理：&lt;/p&gt;
+
+\[\begin{aligned}
+Z = Attention(Q,K,V) = Softmax(\frac{Q \cdot K^T}{\sqrt{\smash[b]{d_k}}}) \cdot V
+\end{aligned}\]
+
+&lt;p&gt;这里  \(d_k\)  是向量的维度。对于&lt;/p&gt;
+
+&lt;p&gt;这一步修正还有进一步的解释，即如果经过 Softmax 归一化后模型稳定性存在问题。怎么理解？如果假设 Q 和 K 中的每个向量的每一维数据都具有零均值、单位方差，这样输入数据是具有稳定性的，那么如何让「暗含信息 1」计算后仍然具有稳定性呢？即运算结果依然保持零均值、单位方差，就是除以「 \(d_k\) 」。&lt;/p&gt;
+
+&lt;h5 id=&quot;14其他注意力函数&quot;&gt;1.4、其他注意力函数&lt;/h5&gt;
+
+&lt;p&gt;为了提醒大家这种暗含信息的表示，都只是计算方法上的一种选择，好坏全靠结果评定，所以包括上面的在内，常见的注意力函数有（甚至你也可以自己定义）：&lt;/p&gt;
+
+\[Attention(Q,K,V) =
+\begin{cases}
+\begin{aligned}
+&amp;amp;= Softmax(Q^T K) V \\
+&amp;amp;= Softmax(\frac{Q K^T}{\sqrt{\smash[b]{d_k}}}) V \\
+&amp;amp;= Softmax(\omega^T tanh(W[q;k])) V \\
+&amp;amp;= Softmax(Q^T W K) V
+\end{aligned}
+\end{cases}\]
+
+&lt;p&gt;到这里，我们就得到了一个包含自注意力信息的  \(Z\)  了。&lt;/p&gt;
+
+&lt;h4 id=&quot;2多头注意力&quot;&gt;2、多头注意力&lt;/h4&gt;
+
+&lt;p&gt;——&amp;gt; 未完待续&lt;/p&gt;
+
+&lt;h4 id=&quot;3退化现象残差网络与-short-cut&quot;&gt;3、退化现象、残差网络与 Short-Cut&lt;/h4&gt;
+
+&lt;h5 id=&quot;31退化现象&quot;&gt;3.1、退化现象&lt;/h5&gt;
+
+&lt;p&gt;对于一个 56 层的神经网路，我们很自然地会觉得应该比 20 层的神经网络的效果要好，比如说从误差率（error）的量化角度看。但是华人学者何凯明等人的论文&lt;a href=&quot;https://arxiv.org/pdf/1512.03385.pdf&quot;&gt;《Deep Residual Learning for Image Recognition》&lt;/a&gt;中给我们呈现了相反的结果，而这个问题的原因并不是因为层数多带来的梯度爆炸/梯度消失（毕竟已经用了归一化解决了这个问题），而是因为一种反常的现象，这种现象我们称之为「退化现象」。何凯明等人认为这是因为存在「难以优化好的网络层」。&lt;/p&gt;
+
+&lt;h5 id=&quot;32恒等映射&quot;&gt;3.2、恒等映射&lt;/h5&gt;
+
+&lt;p&gt;如果这 36 层还帮了倒忙，那还不如没有，是不是？所以这多出来的 36 个网络层，如果对于提升性能（例如误差率）毫无影响，甚至更进一步，这 36 层前的输入数据，和经过这 36 层后的输出数据，完全相同，那么如果将这 36 层抽象成一个函数  \(f\) ，这就是一个恒等映射的函数：&lt;/p&gt;
+
+\[f(x) = x\]
+
+&lt;p&gt;回到实际应用中。如果我们对于一个神经网络中的连续 N 层是提升性能，还是降低性能，是未知的，那么则可以建立一个跳过这些层的连接，实现：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;如果这 N 层可以提升性能，则采用这 N 层；否则就跳过。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这就像给了这 N 层神经网络一个试错的空间，待我们确认它们的性能后再决定是否采用它们。同时也可以理解成，这些层可以去单独优化，如果性能提升，则不被跳过。&lt;/p&gt;
+
+&lt;h5 id=&quot;33残差网络residual-network与捷径short-cut&quot;&gt;3.3、残差网络（Residual Network）与捷径（Short-Cut）&lt;/h5&gt;
+
+&lt;p&gt;如果前面 20 层已经可以实现 99% 的准确率，那么引入了这 36 层能否再提升「残差剩余那 1%」的准确率从而达到 100% 呢？所以这 36 层的网络，就被称为「残差网络（Residual Network，常简称为 ResNet）」，这个叫法非常形象。&lt;/p&gt;
+
+&lt;p&gt;而那个可以跳过 N 层残差网络的捷径，则常被称为 Short-Cut，也会被叫做跳跃链接（Skip Conntection），这就解决了上述深度学习中的「退化现象」。&lt;/p&gt;
+
+&lt;h4 id=&quot;4位置编码&quot;&gt;4、位置编码&lt;/h4&gt;
+
+&lt;p&gt;——&amp;gt; 未完待续&lt;/p&gt;
+
+&lt;h4 id=&quot;5transformer-模型整体&quot;&gt;5、Transformer 模型整体&lt;/h4&gt;
+
+&lt;p&gt;——&amp;gt; 未完待续&lt;/p&gt;
+
+&lt;p&gt;最后我们再来整体看一下 Transformer：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;首先输入数据生成词的 Embedding、位置编码&lt;/li&gt;
+  &lt;li&gt;在 Encoder 里，先进入 N 层 Attention 的处理，最后进入一个全连接层，期间可能有 Short-Cut&lt;/li&gt;
+  &lt;li&gt;然后经过 Normalization&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;——&amp;gt; 未完待续&lt;/p&gt;
+
+&lt;h4 id=&quot;6来看一段用-pytorch-实现的-transformer-示例&quot;&gt;6、来看一段用 PyTorch 实现的 Transformer 示例&lt;/h4&gt;
+
+&lt;h3 id=&quot;参考&quot;&gt;参考&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;《自然语言处理：基于预训练模型的方法》车万翔 等&lt;/li&gt;
+  &lt;li&gt;《自然语言处理实战：预训练模型应用及其产品化》安库·A·帕特尔 等&lt;/li&gt;
+  &lt;li&gt;https://lilianweng.github.io/posts/2018-06-24-attention/&lt;/li&gt;
+  &lt;li&gt;《基于深度学习的道路短期交通状态时空序列预测》&lt;/li&gt;
+  &lt;li&gt;https://www.zhihu.com/question/325839123&lt;/li&gt;
+  &lt;li&gt;https://zhuanlan.zhihu.com/p/410776234&lt;/li&gt;
+  &lt;li&gt;http://jalammar.github.io/illustrated-transformer/&lt;/li&gt;
+  &lt;li&gt;https://zhuanlan.zhihu.com/p/48508221&lt;/li&gt;
+  &lt;li&gt;https://luweikxy.gitbook.io/machine-learning-notes/self-attention-and-transformer&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="Attention" /><category term="注意力" /><category term="AIGC" /><category term="Transformer" /><summary type="html">本文目录</summary></entry><entry><title type="html">麦克船长的 NLP 语言模型技术笔记 4：循环神经网络（RNN）</title><link href="https://www.mikecaptain.com/2023/01/01/language-model-4/" rel="alternate" type="text/html" title="麦克船长的 NLP 语言模型技术笔记 4：循环神经网络（RNN）" /><published>2023-01-01T21:01:31+00:00</published><updated>2023-01-01T21:01:31+00:00</updated><id>https://www.mikecaptain.com/2023/01/01/language-model-4</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/01/language-model-4/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#1经典结构的-rnn&quot; id=&quot;markdown-toc-1经典结构的-rnn&quot;&gt;1、经典结构的 RNN&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#2n-vs1-的-rnn&quot; id=&quot;markdown-toc-2n-vs1-的-rnn&quot;&gt;2、N vs.1 的 RNN&lt;/a&gt;&lt;/li&gt;
@@ -11,6 +618,7 @@
   &lt;li&gt;&lt;a href=&quot;#5双向循环神经网络双向-lstm&quot; id=&quot;markdown-toc-5双向循环神经网络双向-lstm&quot;&gt;5、双向循环神经网络、双向 LSTM&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#6堆叠循环神经网络堆叠-lstm&quot; id=&quot;markdown-toc-6堆叠循环神经网络堆叠-lstm&quot;&gt;6、堆叠循环神经网络、堆叠 LSTM&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#7n-vs-m-的-rnn&quot; id=&quot;markdown-toc-7n-vs-m-的-rnn&quot;&gt;7、N vs. M 的 RNN&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#reference&quot; id=&quot;markdown-toc-reference&quot;&gt;Reference&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;如果您喜欢机器学习，那么您一定会喜欢这篇文章。在这篇文章中，我们将深入探讨 RNN（循环神经网络），这是一种强大的神经网络模型，能够预测序列数据，例如文本、语音和时间序列。我们将通过生动的代码示例和实际案例来演示如何使用 RNN，并在日常生活中真实地体验它的功能。您将学习到如何使用 RNN 解决各种机器学习问题，并动手尝试运用 RNN 解决实际问题。这篇文章将为您提供一个完整的 RNN 入门指南，并使您对 RNN 有更深入的了解。&lt;/p&gt;
@@ -263,9 +871,9 @@ digraph G {
         &lt;span class=&quot;c1&quot;&gt;# 隐藏层有多少个节点/神经元，经常将 hidden_size 设置为与序列长度相同
 &lt;/span&gt;        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;
 
-        &lt;span class=&quot;c1&quot;&gt;# 输入层到隐藏层的 W^{ih} 权重、bias^{ih} 偏置项
-&lt;/span&gt;        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weight_ih&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.01&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_ih&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# 输入层到隐藏层的 W^{xh} 权重、bias^{xh} 偏置项
+&lt;/span&gt;        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weight_xh&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.01&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_xh&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
         &lt;span class=&quot;c1&quot;&gt;# 隐藏层到隐藏层的 W^{hh} 权重、bias^{hh} 偏置项
 &lt;/span&gt;        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weight_hh&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hidden_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.01&lt;/span&gt;
@@ -285,16 +893,18 @@ digraph G {
 
         	&lt;span class=&quot;c1&quot;&gt;# 获得当前时刻的输入特征，[N, input_size, 1]。unsqueeze(n)，在第 n 维上增加一维
 &lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unsqueeze&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  
-            &lt;span class=&quot;n&quot;&gt;w_ih_batch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weight_ih&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unsqueeze&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# [N, hidden_size, input_size]
+            &lt;span class=&quot;n&quot;&gt;w_xh_batch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weight_xh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unsqueeze&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# [N, hidden_size, input_size]
 &lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;w_hh_batch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;weight_hh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unsqueeze&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# [N, hidden_size, hidden_size]
 &lt;/span&gt;
             &lt;span class=&quot;c1&quot;&gt;# bmm 是矩阵乘法函数
-&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;w_times_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bmm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w_ih_batch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;squeeze&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# [N, hidden_size]。squeeze(n)，在第n维上减小一维
+&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;w_times_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bmm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w_xh_batch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;squeeze&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# [N, hidden_size]。squeeze(n)，在第n维上减小一维
 &lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;w_times_h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bmm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w_hh_batch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unsqueeze&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;squeeze&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# [N, hidden_size]
 &lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;h0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;torch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tanh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w_times_x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_ih&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w_times_h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bias_hh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
             &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h0&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unsqueeze&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;上述代码中 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;weight_xh&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bias_xh&lt;/code&gt;。&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;weighthh&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;2n-vs1-的-rnn&quot;&gt;2、N vs.1 的 RNN&lt;/h3&gt;
 
@@ -313,11 +923,11 @@ digraph G {
 &lt;!-- Generated by graphviz version 2.43.0 (0)
  --&gt;
 &lt;!-- Title: G Pages: 1 --&gt;
-&lt;svg role=&quot;img&quot; aria-label=&quot;graphviz-c7d284aff07f0372b0164457429412ff&quot; width=&quot;242pt&quot; height=&quot;206pt&quot; viewBox=&quot;0.00 0.00 242.00 206.00&quot;&gt;
-&lt;title&gt;graphviz-c7d284aff07f0372b0164457429412ff&lt;/title&gt;
+&lt;svg role=&quot;img&quot; aria-label=&quot;graphviz-99506286249ff03a109fde8e4294e12c&quot; width=&quot;278pt&quot; height=&quot;188pt&quot; viewBox=&quot;0.00 0.00 278.00 188.00&quot;&gt;
+&lt;title&gt;graphviz-99506286249ff03a109fde8e4294e12c&lt;/title&gt;
 &lt;desc&gt;
 digraph G {
-	rankdir=LR
+	rankdir=BT
 	{rank=same h1 h2 hddd hn}
 	hddd[label=&amp;quot;...&amp;quot;]
 	xddd[label=&amp;quot;...&amp;quot;]
@@ -341,105 +951,105 @@ digraph G {
 }
 &lt;/desc&gt;
 
-&lt;g id=&quot;graph0&quot; class=&quot;graph&quot; transform=&quot;scale(1 1) rotate(0) translate(4 202)&quot;&gt;
+&lt;g id=&quot;graph0&quot; class=&quot;graph&quot; transform=&quot;scale(1 1) rotate(0) translate(4 184)&quot;&gt;
 &lt;title&gt;G&lt;/title&gt;
-&lt;polygon fill=&quot;white&quot; stroke=&quot;transparent&quot; points=&quot;-4,4 -4,-202 238,-202 238,4 -4,4&quot; /&gt;
+&lt;polygon fill=&quot;white&quot; stroke=&quot;transparent&quot; points=&quot;-4,4 -4,-184 274,-184 274,4 -4,4&quot; /&gt;
 &lt;!-- h1 --&gt;
 &lt;g id=&quot;node1&quot; class=&quot;node&quot;&gt;
 &lt;title&gt;h1&lt;/title&gt;
-&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;117&quot; cy=&quot;-180&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
-&lt;text text-anchor=&quot;middle&quot; x=&quot;117&quot; y=&quot;-176.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h1&lt;/text&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;27&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h1&lt;/text&gt;
 &lt;/g&gt;
 &lt;!-- h2 --&gt;
 &lt;g id=&quot;node2&quot; class=&quot;node&quot;&gt;
 &lt;title&gt;h2&lt;/title&gt;
-&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;117&quot; cy=&quot;-126&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
-&lt;text text-anchor=&quot;middle&quot; x=&quot;117&quot; y=&quot;-122.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h2&lt;/text&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;99&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;99&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;h2&lt;/text&gt;
 &lt;/g&gt;
 &lt;!-- h1&amp;#45;&amp;gt;h2 --&gt;
 &lt;g id=&quot;edge1&quot; class=&quot;edge&quot;&gt;
 &lt;title&gt;h1&amp;#45;&amp;gt;h2&lt;/title&gt;
-&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M117,-161.79C117,-159.31 117,-156.83 117,-154.34&quot; /&gt;
-&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;120.5,-154.14 117,-144.14 113.5,-154.14 120.5,-154.14&quot; /&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M54,-90C56.61,-90 59.23,-90 61.84,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;61.93,-93.5 71.93,-90 61.93,-86.5 61.93,-93.5&quot; /&gt;
 &lt;/g&gt;
 &lt;!-- hddd --&gt;
 &lt;g id=&quot;node3&quot; class=&quot;node&quot;&gt;
 &lt;title&gt;hddd&lt;/title&gt;
-&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;117&quot; cy=&quot;-72&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
-&lt;text text-anchor=&quot;middle&quot; x=&quot;117&quot; y=&quot;-68.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;171&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;171&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
 &lt;/g&gt;
 &lt;!-- h2&amp;#45;&amp;gt;hddd --&gt;
 &lt;g id=&quot;edge2&quot; class=&quot;edge&quot;&gt;
 &lt;title&gt;h2&amp;#45;&amp;gt;hddd&lt;/title&gt;
-&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M117,-107.79C117,-105.31 117,-102.83 117,-100.34&quot; /&gt;
-&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;120.5,-100.14 117,-90.14 113.5,-100.14 120.5,-100.14&quot; /&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M126,-90C128.61,-90 131.23,-90 133.84,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;133.93,-93.5 143.93,-90 133.93,-86.5 133.93,-93.5&quot; /&gt;
 &lt;/g&gt;
 &lt;!-- hn --&gt;
 &lt;g id=&quot;node4&quot; class=&quot;node&quot;&gt;
 &lt;title&gt;hn&lt;/title&gt;
-&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;117&quot; cy=&quot;-18&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
-&lt;text text-anchor=&quot;middle&quot; x=&quot;117&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;hn&lt;/text&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;243&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;243&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;hn&lt;/text&gt;
 &lt;/g&gt;
 &lt;!-- hddd&amp;#45;&amp;gt;hn --&gt;
 &lt;g id=&quot;edge3&quot; class=&quot;edge&quot;&gt;
 &lt;title&gt;hddd&amp;#45;&amp;gt;hn&lt;/title&gt;
-&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M117,-53.79C117,-51.31 117,-48.83 117,-46.34&quot; /&gt;
-&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;120.5,-46.14 117,-36.14 113.5,-46.14 120.5,-46.14&quot; /&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M198,-90C200.61,-90 203.23,-90 205.84,-90&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;205.93,-93.5 215.93,-90 205.93,-86.5 205.93,-93.5&quot; /&gt;
 &lt;/g&gt;
 &lt;!-- y --&gt;
 &lt;g id=&quot;node6&quot; class=&quot;node&quot;&gt;
 &lt;title&gt;y&lt;/title&gt;
-&lt;text text-anchor=&quot;middle&quot; x=&quot;207&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;y&lt;/text&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;243&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;y&lt;/text&gt;
 &lt;/g&gt;
 &lt;!-- hn&amp;#45;&amp;gt;y --&gt;
 &lt;g id=&quot;edge8&quot; class=&quot;edge&quot;&gt;
 &lt;title&gt;hn&amp;#45;&amp;gt;y&lt;/title&gt;
-&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M144.4,-18C152.39,-18 161.31,-18 169.82,-18&quot; /&gt;
-&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;169.92,-21.5 179.92,-18 169.92,-14.5 169.92,-21.5&quot; /&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M243,-108.3C243,-116.02 243,-125.29 243,-133.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;239.5,-133.9 243,-143.9 246.5,-133.9 239.5,-133.9&quot; /&gt;
 &lt;/g&gt;
 &lt;!-- xddd --&gt;
 &lt;g id=&quot;node5&quot; class=&quot;node&quot;&gt;
 &lt;title&gt;xddd&lt;/title&gt;
-&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-68.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;171&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;...&lt;/text&gt;
 &lt;/g&gt;
 &lt;!-- xddd&amp;#45;&amp;gt;hddd --&gt;
 &lt;g id=&quot;edge7&quot; class=&quot;edge&quot;&gt;
 &lt;title&gt;xddd&amp;#45;&amp;gt;hddd&lt;/title&gt;
-&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M54.4,-72C62.39,-72 71.31,-72 79.82,-72&quot; /&gt;
-&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;79.92,-75.5 89.92,-72 79.92,-68.5 79.92,-75.5&quot; /&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M171,-36.3C171,-44.02 171,-53.29 171,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;167.5,-61.9 171,-71.9 174.5,-61.9 167.5,-61.9&quot; /&gt;
 &lt;/g&gt;
 &lt;!-- x1 --&gt;
 &lt;g id=&quot;node7&quot; class=&quot;node&quot;&gt;
 &lt;title&gt;x1&lt;/title&gt;
-&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-176.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;x1&lt;/text&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;x1&lt;/text&gt;
 &lt;/g&gt;
 &lt;!-- x1&amp;#45;&amp;gt;h1 --&gt;
 &lt;g id=&quot;edge4&quot; class=&quot;edge&quot;&gt;
 &lt;title&gt;x1&amp;#45;&amp;gt;h1&lt;/title&gt;
-&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M54.4,-180C62.39,-180 71.31,-180 79.82,-180&quot; /&gt;
-&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;79.92,-183.5 89.92,-180 79.92,-176.5 79.92,-183.5&quot; /&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M27,-36.3C27,-44.02 27,-53.29 27,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;23.5,-61.9 27,-71.9 30.5,-61.9 23.5,-61.9&quot; /&gt;
 &lt;/g&gt;
 &lt;!-- x2 --&gt;
 &lt;g id=&quot;node8&quot; class=&quot;node&quot;&gt;
 &lt;title&gt;x2&lt;/title&gt;
-&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-122.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;x2&lt;/text&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;99&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;x2&lt;/text&gt;
 &lt;/g&gt;
 &lt;!-- x2&amp;#45;&amp;gt;h2 --&gt;
 &lt;g id=&quot;edge5&quot; class=&quot;edge&quot;&gt;
 &lt;title&gt;x2&amp;#45;&amp;gt;h2&lt;/title&gt;
-&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M54.4,-126C62.39,-126 71.31,-126 79.82,-126&quot; /&gt;
-&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;79.92,-129.5 89.92,-126 79.92,-122.5 79.92,-129.5&quot; /&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M99,-36.3C99,-44.02 99,-53.29 99,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;95.5,-61.9 99,-71.9 102.5,-61.9 95.5,-61.9&quot; /&gt;
 &lt;/g&gt;
 &lt;!-- xn --&gt;
 &lt;g id=&quot;node9&quot; class=&quot;node&quot;&gt;
 &lt;title&gt;xn&lt;/title&gt;
-&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;xn&lt;/text&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;243&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;xn&lt;/text&gt;
 &lt;/g&gt;
 &lt;!-- xn&amp;#45;&amp;gt;hn --&gt;
 &lt;g id=&quot;edge6&quot; class=&quot;edge&quot;&gt;
 &lt;title&gt;xn&amp;#45;&amp;gt;hn&lt;/title&gt;
-&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M54.4,-18C62.39,-18 71.31,-18 79.82,-18&quot; /&gt;
-&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;79.92,-21.5 89.92,-18 79.92,-14.5 79.92,-21.5&quot; /&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M243,-36.3C243,-44.02 243,-53.29 243,-61.89&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;239.5,-61.9 243,-71.9 246.5,-61.9 239.5,-61.9&quot; /&gt;
 &lt;/g&gt;
 &lt;/g&gt;
 &lt;/svg&gt;
@@ -453,7 +1063,7 @@ digraph G {
 \[\begin{aligned}
 &amp;amp;\bm{h}_t = \begin{cases} tanh(\bm{W^{xh}} \cdot \bm{x} + \bm{b^{xh}} + 0 + \bm{b^{hh}}) &amp;amp; (t=1) \\
 tanh(0 + \bm{b^{xh}} + \bm{W^{hh}} \cdot \bm{h}_{t-1} + \bm{b^{hh}}) &amp;amp; (t&amp;gt;1) \end{cases} \\
-&amp;amp;\bm{y} = Softmax(\bm{W^{hy}} \cdot \bm{h}_n + \bm{b^{hy}})
+&amp;amp;\bm{y}_t = Softmax(\bm{W^{hy}} \cdot \bm{h}_t + \bm{b^{hy}})
 \end{aligned}\]
 
 &lt;p&gt;示意图如下：&lt;/p&gt;
@@ -638,7 +1248,7 @@ digraph G {
 
 &lt;p&gt;进而推导出：&lt;/p&gt;
 
-\[\bm{h}_t = \bm{h}_k + \bm{u}_{k+1} + \bm{h}_{k+2} + ... + \bm{u}_{t-1} + \bm{u}_t\]
+\[\bm{h}_t = \bm{h}_k + \bm{u}_{k+1} + \bm{u}_{k+2} + ... + \bm{u}_{t-1} + \bm{u}_t\]
 
 &lt;p&gt;从这里我们就可以看到，第 t 时刻的隐藏层输出，直接关联到第 k 时刻的输出，t 到 k 时刻的相关性则用  \(\bm{u}_{k+1}\)  到  \(\bm{u}_t\)  相加表示。也就是有 t-k 的短期（Short Term）记忆。&lt;/p&gt;
 
@@ -1182,10 +1792,6 @@ digraph G {
 
 &lt;p&gt;有了这个 C 之后，再用 Decoder 进行解码，也就是从把 C 作为输入状态开始，生成输出序列。&lt;/p&gt;
 
-&lt;p&gt;这种的应用就非常广了，因为大多数时候输入序列与输出序列的长度都是不同的，比如最常见的应用「翻译」，从一个语言翻译成另一个语言；再比如 AI 的一个领域「语音识别」，将语音序列输入后生成所识别的文本内容；还有比如 ChatGPT 这种问答应用等等。&lt;/p&gt;
-
-&lt;p&gt;但是 Seq2Seq 模型有一个很显著的问题，就是当输入序列很长时，Encoder 生成的 Context 可能就会出现所捕捉的信息不充分的情况，导致 Decoder 最终的输出是不尽如人意的。&lt;/p&gt;
-
 &lt;div style=&quot;text-align: center;&quot;&gt;
 &lt;div class=&quot;graphviz-wrapper&quot;&gt;
 
@@ -1433,9 +2039,36 @@ digraph G {
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Reference&lt;/p&gt;
+&lt;p&gt;具体地，可以如下表示：&lt;/p&gt;
+
+\[\begin{aligned}
+&amp;amp;\bm{C} = Encoder(\bm{X}) \\
+&amp;amp;\bm{Y} = Decoder(\bm{C}) \\
+\end{aligned}\]
+
+&lt;p&gt;进一步展开：&lt;/p&gt;
+
+\[\begin{aligned}
+e_t &amp;amp;= Encoder_{LSTM/GRU}(x_t, e_{t-1}) \\
+\bm{C} &amp;amp;= f_1(e_n) \\
+d_t &amp;amp;= f_2(d_{t-1}, \bm{C}) \\
+y_t &amp;amp;= Decoder_{LSTM/GRU}(y_{t-1}, d_{t-1}, \bm{C})
+\end{aligned}\]
+
+&lt;p&gt;这种的应用就非常广了，因为大多数时候输入序列与输出序列的长度都是不同的，比如最常见的应用「翻译」，从一个语言翻译成另一个语言；再比如 AI 的一个领域「语音识别」，将语音序列输入后生成所识别的文本内容；还有比如 ChatGPT 这种问答应用等等。&lt;/p&gt;
+
+&lt;p&gt;Seq2Seq 模型非常出色，一直到 2018 年之前 NLP 领域里该模型已成为主流。但是它有很显著的问题：&lt;/p&gt;
 
 &lt;ul&gt;
+  &lt;li&gt;当输入序列很长时，Encoder 生成的 Context 可能就会出现所捕捉的信息不充分的情况，导致 Decoder 最终的输出是不尽如人意的。具体地，毕竟还是 RNN 模型，还是会有梯度消失问题，根本原因在于用到了「递归」。当递归作用在同一个 weight matrix 上时，使得如果这个矩阵满足条件的话，其最大的特征值要是小于 1 的话，就一定出现梯度消失问题。后来的 LSTM 和 GRU 也仅仅能缓解问题，并不能根本解决。&lt;/li&gt;
+  &lt;li&gt;并行效果差：每个时刻的结果依赖前一时刻。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;《自然语言处理：基于预训练模型的方法》车万翔 等&lt;/li&gt;
+  &lt;li&gt;《自然语言处理实战：预训练模型应用及其产品化》安库·A·帕特尔 等&lt;/li&gt;
   &lt;li&gt;https://www.cnblogs.com/engpj/p/16906911.html&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="RNN" /><category term="循环神经网络" /><category term="LSTM" /><summary type="html">如果您喜欢机器学习，那么您一定会喜欢这篇文章。在这篇文章中，我们将深入探讨 RNN（循环神经网络），这是一种强大的神经网络模型，能够预测序列数据，例如文本、语音和时间序列。我们将通过生动的代码示例和实际案例来演示如何使用 RNN，并在日常生活中真实地体验它的功能。您将学习到如何使用 RNN 解决各种机器学习问题，并动手尝试运用 RNN 解决实际问题。这篇文章将为您提供一个完整的 RNN 入门指南，并使您对 RNN 有更深入的了解。</summary></entry><entry><title type="html">麦克船长的 NLP 语言模型技术笔记 2：多层感知器（MLP）</title><link href="https://www.mikecaptain.com/2022/12/30/language-model-2/" rel="alternate" type="text/html" title="麦克船长的 NLP 语言模型技术笔记 2：多层感知器（MLP）" /><published>2022-12-30T19:44:09+00:00</published><updated>2022-12-30T19:44:09+00:00</updated><id>https://www.mikecaptain.com/2022/12/30/language-model-2</id><content type="html" xml:base="https://www.mikecaptain.com/2022/12/30/language-model-2/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -1446,6 +2079,7 @@ digraph G {
   &lt;li&gt;&lt;a href=&quot;#5softmax-回归softmax-regression从解决二元任务的-sigmoid到解决多元分类任务的-softmax&quot; id=&quot;markdown-toc-5softmax-回归softmax-regression从解决二元任务的-sigmoid到解决多元分类任务的-softmax&quot;&gt;5、Softmax 回归（Softmax Regression）：从解决二元任务的 sigmoid，到解决多元分类任务的 Softmax&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#6多层感知器multi-layer-perceptron&quot; id=&quot;markdown-toc-6多层感知器multi-layer-perceptron&quot;&gt;6、多层感知器（Multi-Layer Perceptron）&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#7mlp-的一个显著问题帮我们引出-cnn-模型&quot; id=&quot;markdown-toc-7mlp-的一个显著问题帮我们引出-cnn-模型&quot;&gt;7、MLP 的一个显著问题，帮我们引出 CNN 模型&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#reference&quot; id=&quot;markdown-toc-reference&quot;&gt;Reference&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;本文关键词：感知器、线性回归、逻辑回归、激活函数、Sigmoid 函数/归一化/回归、Softmax 回归。&lt;/p&gt;
@@ -1583,7 +2217,7 @@ digraph G {
 
 &lt;h3 id=&quot;4sigmoid-回归sigmoid-regression归一化的逻辑回归一般用于二元分类任务&quot;&gt;4、Sigmoid 回归（Sigmoid Regression）：归一化的逻辑回归，一般用于二元分类任务&lt;/h3&gt;
 
-&lt;p&gt;当  \(L = 1, k = 1, z_0 = 0\) ，此时的激活函数就是 &lt;strong&gt;Sigmoid&lt;/strong&gt; 函数，如下：&lt;/p&gt;
+&lt;p&gt;当  \(L = 1, k = 1, z_0 = 0\) ，此时的激活函数就是 &lt;strong&gt;Sigmoid&lt;/strong&gt; 函数，也常表示为  \(\sigma\)  函数，如下：&lt;/p&gt;
 
 \[y = \frac{1}{1 + e^{-z}}\]
 
@@ -1914,7 +2548,14 @@ digraph G {
 
 &lt;p&gt;可以看到，输入的所有元素都被连接，即被分配权重 w 和偏差项 b，所以这被称为一个「全连接层（&lt;strong&gt;Fully Connected Layer&lt;/strong&gt;）」或者「&lt;strong&gt;稠密层（Dense Layer）&lt;/strong&gt;」。但是对于一些任务这样做是很蠢的，会付出大量无效的计算。&lt;/p&gt;
 
-&lt;p&gt;因此我们需要 focus 在更少量计算成本的模型，于是有了卷积神经网络（CNN）。关于 CNN 请看本系列博客的第「3」篇。&lt;/p&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="ai" /><category term="MLP" /><category term="感知器" /><summary type="html">1957 年感知机（Perceptron）模型被提出，1959 年多层感知机（MLP）模型被提出。MLP 有时候也被称为 ANN，即 Artificial Neural Network，接下来我们来深入浅出地了解一下，并有一些动手的练习。</summary></entry><entry><title type="html">自然语言处理 AIGC 近年的发展脉络、关键论文、技术里程碑和商业应用</title><link href="https://www.mikecaptain.com/2022/12/24/captain-nlp-1/" rel="alternate" type="text/html" title="自然语言处理 AIGC 近年的发展脉络、关键论文、技术里程碑和商业应用" /><published>2022-12-24T15:08:01+00:00</published><updated>2022-12-24T15:08:01+00:00</updated><id>https://www.mikecaptain.com/2022/12/24/captain-nlp-1</id><content type="html" xml:base="https://www.mikecaptain.com/2022/12/24/captain-nlp-1/">&lt;ul&gt;
+&lt;p&gt;因此我们需要 focus 在更少量计算成本的模型，于是有了卷积神经网络（CNN）。关于 CNN 请看本系列博客的第「3」篇。&lt;/p&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;《自然语言处理：基于预训练模型的方法》车万翔 等&lt;/li&gt;
+  &lt;li&gt;《自然语言处理实战：预训练模型应用及其产品化》安库·A·帕特尔 等&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="ai" /><category term="MLP" /><category term="感知器" /><summary type="html">1957 年感知机（Perceptron）模型被提出，1959 年多层感知机（MLP）模型被提出。MLP 有时候也被称为 ANN，即 Artificial Neural Network，接下来我们来深入浅出地了解一下，并有一些动手的练习。</summary></entry><entry><title type="html">自然语言处理 AIGC 近年的发展脉络、关键论文、技术里程碑和商业应用</title><link href="https://www.mikecaptain.com/2022/12/24/captain-nlp-1/" rel="alternate" type="text/html" title="自然语言处理 AIGC 近年的发展脉络、关键论文、技术里程碑和商业应用" /><published>2022-12-24T15:08:01+00:00</published><updated>2022-12-24T15:08:01+00:00</updated><id>https://www.mikecaptain.com/2022/12/24/captain-nlp-1</id><content type="html" xml:base="https://www.mikecaptain.com/2022/12/24/captain-nlp-1/">&lt;ul&gt;
   &lt;li&gt;作者：麦克船长（钟超）&lt;/li&gt;
   &lt;li&gt;微信：sinosuperman&lt;/li&gt;
 &lt;/ul&gt;
@@ -1933,6 +2574,7 @@ digraph G {
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#二学术里程碑几篇重量级论文&quot; id=&quot;markdown-toc-二学术里程碑几篇重量级论文&quot;&gt;二、学术里程碑：几篇重量级论文&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#0提出-attention-机制的neural-machine-translation-by-jointly-learning-to-align-and-translate2015&quot; id=&quot;markdown-toc-0提出-attention-机制的neural-machine-translation-by-jointly-learning-to-align-and-translate2015&quot;&gt;0、提出 Attention 机制的《Neural Machine Translation by Jointly Learning to Align and Translate》（2015）&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#1提出-transformer-的attention-is-all-you-need2017&quot; id=&quot;markdown-toc-1提出-transformer-的attention-is-all-you-need2017&quot;&gt;1、提出 Transformer 的《Attention is All You Need》（2017）&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#2elmo-deep-contextualized-word-representations&quot; id=&quot;markdown-toc-2elmo-deep-contextualized-word-representations&quot;&gt;2、ELMo: Deep contextualized word representations&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#3bert-pre-training-of-deep-bidirectional-transformers-for-language-understanding2018&quot; id=&quot;markdown-toc-3bert-pre-training-of-deep-bidirectional-transformers-for-language-understanding2018&quot;&gt;3、BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding（2018）&lt;/a&gt;&lt;/li&gt;
@@ -2011,7 +2653,13 @@ digraph G {
 
 &lt;p&gt;以下重量级的论文，每一篇都不短，B 站上有一些二手解读，虽然二手但是也值得高效地看下，这些论文我罗列如下。我的理解也不深，欢迎随时交流。&lt;/p&gt;
 
+&lt;h4 id=&quot;0提出-attention-机制的neural-machine-translation-by-jointly-learning-to-align-and-translate2015&quot;&gt;0、提出 Attention 机制的《Neural Machine Translation by Jointly Learning to Align and Translate》（2015）&lt;/h4&gt;
+
+&lt;p&gt;Bahdanau 等人在 2015 年提出了 Attention 机制，论文地址：&lt;a href=&quot;https://arxiv.org/pdf/1409.0473.pdf&quot;&gt;https://arxiv.org/pdf/1409.0473.pdf&lt;/a&gt;&lt;/p&gt;
+
 &lt;h4 id=&quot;1提出-transformer-的attention-is-all-you-need2017&quot;&gt;1、提出 Transformer 的《Attention is All You Need》（2017）&lt;/h4&gt;
+
+&lt;p&gt;论文地址：&lt;a href=&quot;https://arxiv.org/pdf/1706.03762.pdf&quot;&gt;https://arxiv.org/pdf/1706.03762.pdf&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Google 的 Lamda、BERT，OpenAI 的 GPT-3 都是基于 Transformer 的。&lt;/p&gt;
 
@@ -2158,6 +2806,11 @@ digraph G {
   &lt;p&gt;通用人工智能的建成会比大多数人想象得更快，并且它会改变大多数人想象中的一切。」&lt;/p&gt;
 &lt;/blockquote&gt;
 
+&lt;p&gt;另外还有一个喜欢写博客的 AI 从业者，其博客值得我们学习与了解，就是 OpenAI 应用人工智能研究负责人 Lilian Weng，主要从事机器学习、深度学习和网络科学研究。她本科毕业于香港大学，硕士就读于北京大学信息系统与计算机科学系，之后前往印度安纳大学布鲁顿分校攻读博士。&lt;/p&gt;
+
+&lt;p&gt;她的 Blog：&lt;a href=&quot;https://lilianweng.github.io/&quot;&gt;https://lilianweng.github.io/&lt;/a&gt;
+她的 Twitter：&lt;a href=&quot;https://twitter.com/lilianweng&quot;&gt;https://twitter.com/lilianweng&lt;/a&gt;&lt;/p&gt;
+
 &lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
 
 &lt;ol&gt;
@@ -2170,6 +2823,7 @@ digraph G {
   &lt;li&gt;http://tech.sina.com.cn/csj/2018-10-13/doc-ihmhafir3634167.shtml&lt;/li&gt;
   &lt;li&gt;https://colab.research.google.com/github/alembics/disco-diffusion/blob/main/Disco_Diffusion.ipynb#scrollTo=DefMidasFns&lt;/li&gt;
   &lt;li&gt;https://en.wikipedia.org/wiki/BERT_(language_model)&lt;/li&gt;
+  &lt;li&gt;https://www.mikecaptain.com/2022/12/17/ai-bert-1/&lt;/li&gt;
 &lt;/ol&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><summary type="html">火出圈的 ChatGPT，背后是自然语言处理领域近几年发展的成果。本文从近几年自然语言处理的关键发展脉络，过程中关键的几篇学术论文，这几年的所有重要行业里程碑，以及目前为止业内已经诞生的应用。</summary></entry><entry><title type="html">你可能已经听说 GPT-3，但是你也不能不知道 BERT —— 跟我一起用 BERT 跑个小用例</title><link href="https://www.mikecaptain.com/2022/12/17/ai-bert-1/" rel="alternate" type="text/html" title="你可能已经听说 GPT-3，但是你也不能不知道 BERT —— 跟我一起用 BERT 跑个小用例" /><published>2022-12-17T15:08:01+00:00</published><updated>2022-12-17T15:08:01+00:00</updated><id>https://www.mikecaptain.com/2022/12/17/ai-bert-1</id><content type="html" xml:base="https://www.mikecaptain.com/2022/12/17/ai-bert-1/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#一关于-bert-的一些背景&quot; id=&quot;markdown-toc-一关于-bert-的一些背景&quot;&gt;一、关于 BERT 的一些背景&lt;/a&gt;&lt;/li&gt;
@@ -2899,13 +3553,17 @@ cosine value :  0.8691698561422959
       &lt;li&gt;&lt;a href=&quot;#q3如何为每篇文章添加一个目录&quot; id=&quot;markdown-toc-q3如何为每篇文章添加一个目录&quot;&gt;Q3：如何为每篇文章添加一个目录&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#q4如何在-jekyll-中支持-katex&quot; id=&quot;markdown-toc-q4如何在-jekyll-中支持-katex&quot;&gt;Q4：如何在 Jekyll 中支持 KaTeX&lt;/a&gt;        &lt;ul&gt;
           &lt;li&gt;&lt;a href=&quot;#在-githubio-上&quot; id=&quot;markdown-toc-在-githubio-上&quot;&gt;在 GitHub.io 上&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#本问题参考&quot; id=&quot;markdown-toc-本问题参考&quot;&gt;本问题参考：&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#如果不在-githubio-上则还需要额外工作&quot; id=&quot;markdown-toc-如果不在-githubio-上则还需要额外工作&quot;&gt;如果不在 GitHub.io 上，则还需要额外工作&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#使用示例&quot; id=&quot;markdown-toc-使用示例&quot;&gt;使用示例&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#q5jekyll-中如何支持-graphviz-&quot; id=&quot;markdown-toc-q5jekyll-中如何支持-graphviz-&quot;&gt;Q5：Jekyll 中如何支持 Graphviz ？&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#本地-jekyll-先运行起来-graphviz&quot; id=&quot;markdown-toc-本地-jekyll-先运行起来-graphviz&quot;&gt;本地 Jekyll 先运行起来 Graphviz&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#github-pages-上正常显示-graphviz&quot; id=&quot;markdown-toc-github-pages-上正常显示-graphviz&quot;&gt;Github Pages 上正常显示 Graphviz&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#github-pages-上正常显示-graphviz&quot; id=&quot;markdown-toc-github-pages-上正常显示-graphviz&quot;&gt;Github Pages 上正常显示 Graphviz&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#本问题参考-1&quot; id=&quot;markdown-toc-本问题参考-1&quot;&gt;本问题参考：&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#q6如何显示--或者--&quot; id=&quot;markdown-toc-q6如何显示--或者--&quot;&gt;Q6：如何显示 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{%&lt;/code&gt; 或者 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{{&lt;/code&gt; ？&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
@@ -3314,6 +3972,12 @@ layout: default
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;h5 id=&quot;本问题参考&quot;&gt;本问题参考：&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/&quot;&gt;https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h5 id=&quot;如果不在-githubio-上则还需要额外工作&quot;&gt;如果不在 GitHub.io 上，则还需要额外工作&lt;/h5&gt;
 
 &lt;p&gt;以上方式只适合于 GitHub.io 的网站，如果是自己搭建的网站用 Jekyll 则要自己安装，如下：&lt;/p&gt;
@@ -3479,6 +4143,12 @@ digraph G {
 &lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;baseurl&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Change this to your relative path (ex: /blog/), or leave just a /&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;h5 id=&quot;本问题参考-1&quot;&gt;本问题参考：&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/DerekStride/jekyll-graphviz&quot;&gt;https://github.com/DerekStride/jekyll-graphviz&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h4 id=&quot;q6如何显示--或者--&quot;&gt;Q6：如何显示 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{%&lt;/code&gt; 或者 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{{&lt;/code&gt; ？&lt;/h4&gt;
 
 &lt;p&gt;其实也是一个字符转义的问题，我们直接面对一个在 StackOverflow 上会被问的终极 Jekyll 中 Markdown 转义问题（与 Liquid Template Tags 冲突的问题），如何实现显示 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{% raw %}&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{% endraw %}&lt;/code&gt; 呢？方法如下：&lt;/p&gt;
@@ -3501,45 +4171,4 @@ digraph G {
   &lt;li&gt;&lt;a href=&quot;https://github.com/dyutibarma/monochrome&quot;&gt;https://github.com/dyutibarma/monochrome&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain&quot;&gt;https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.seanbuscay.com/blog/jekyll-toc-markdown/&quot;&gt;http://www.seanbuscay.com/blog/jekyll-toc-markdown/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/&quot;&gt;https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/DerekStride/jekyll-graphviz&quot;&gt;https://github.com/DerekStride/jekyll-graphviz&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/DerekStride/jekyll-graphviz&quot;&gt;https://github.com/DerekStride/jekyll-graphviz&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="web" /><category term="Jekyll" /><category term="Github Pages" /><category term="前端" /><summary type="html">GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用 GitHub Pages 搭建博客，然后使用 Jekyll 生成的静态网站文件上传到该仓库。花 10 分钟时间，通过本文让你快速地实现了一个免费、简单、快速、安全、支持版本控制、支持自定义域名的独立域名博客 ……</summary></entry><entry><title type="html">欢迎成为「淘宝-天天特卖」团队的创业合伙人！</title><link href="https://www.mikecaptain.com/2021/11/11/captain-tttm/" rel="alternate" type="text/html" title="欢迎成为「淘宝-天天特卖」团队的创业合伙人！" /><published>2021-11-11T19:59:43+00:00</published><updated>2021-11-11T19:59:43+00:00</updated><id>https://www.mikecaptain.com/2021/11/11/captain-tttm</id><content type="html" xml:base="https://www.mikecaptain.com/2021/11/11/captain-tttm/">&lt;p&gt;&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-1.jpg&quot; alt=&quot;imagee&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;天天特卖团队理念&quot;&gt;天天特卖团队理念&lt;/h3&gt;
-
-&lt;h4 id=&quot;特卖合伙人&quot;&gt;特卖合伙人&lt;/h4&gt;
-
-&lt;p&gt;以「特卖合伙人」为基石的、以「使众人行」的战友感为人才基本要求、以「用人做事，而非做事用人」为人才建设核心，是天天特卖团队的组织管理理念。特卖核心管理团队每 Q 会进行一次班子建设通晒。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-9.jpg&quot; alt=&quot;imagee&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;如何理解协作&quot;&gt;如何理解协作？&lt;/h4&gt;
-
-&lt;p&gt;从长时间线来看，我们是为了不断积累信用，像一张信用卡一样，不断获得别人愿意支持我们的更大额度。不要事情结果还可以，而我们却没有积累到信用。互联网本质也是现代工业。而现代工业，一是社会分工，二是社会协作。想取得现代工业项目的结果，就要有更大的人才包容度、环境包容度。工作的结果就是在妥协与博弈中取得的，这是和光同尘的本质，也是现代工业复杂系统拿到结果的本质。只有这样我们才能让越来越多的人追随我们一起 do something，这种追随不一定只有上下级才是，而是愿意并且相信和我们能到达更远的地方。这背后的信用，要我们一步一个脚印地去积累，对他人给予的信任要保持敬畏、如履薄冰、懂得感恩。对每一段阶段性或长或短结束的合作，都要表达感谢。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-8.jpg&quot; alt=&quot;imagee&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;如何看待同学的优势及短板&quot;&gt;如何看待同学的优势及短板？&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;优势：讲优势有两个可能的目的，要么组织会在未来任务分配上重点考虑发挥该同学优势的事情，要告诉 TA，要激励 TA，是 TA 前行的自信来源之一。要么是对于同学也把握不准的特点，我们明确告诉 TA 这是你被我欣赏的优点。&lt;/li&gt;
-  &lt;li&gt;短板：什么是要讲的短板？未来一段时间，最期待你补足提升的。一旦这方面显著进步，就会向上迈进很大一步，甚至可以突破自己当下成长的瓶颈。要花多少篇幅讲？要比优势，有更大篇幅去讲。讲完就结束了么？对这个短板，一定要表达态度，也一定要对是否有方法、什么方法来补足短板要和同学沟通。&lt;/li&gt;
-  &lt;li&gt;无论是优势，还是短板，要说到点儿上，不要说片儿汤话。要让同学们能够引起思考、启发的。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-10.jpg&quot; alt=&quot;imagee&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;天天特卖期待你的加入&quot;&gt;天天特卖期待你的加入！&lt;/h3&gt;
-
-&lt;p&gt;新天天特卖缘起于「手淘下沉市场战役）」，于 2021 年初上线，以「极致性价比货源、裸价直降、全网比价、买贵必赔」打造手淘极致价格敏感人群的购物阵地。目前天天特卖团队有行业运营、用户运营、数据策略、整合营销、直播运营、内容运营等岗位，有兴趣的同学可以钉钉随时找我，期待你的加入！&lt;/p&gt;
-
-&lt;h4 id=&quot;欢迎添加我的微信sinosuperman-推荐自荐--&quot;&gt;欢迎添加我的微信：sinosuperman 推荐、自荐 ^ ^&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-11.jpg&quot; alt=&quot;imagee&quot; /&gt;
-&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-2.jpg&quot; alt=&quot;imagee&quot; /&gt;
-&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-3.jpg&quot; alt=&quot;imagee&quot; /&gt;
-&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-4.jpg&quot; alt=&quot;imagee&quot; /&gt;
-&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-5.jpg&quot; alt=&quot;imagee&quot; /&gt;
-&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-6.jpg&quot; alt=&quot;imagee&quot; /&gt;
-&lt;img src=&quot;/img/src/2021-11-11-captain-tttm-7.jpg&quot; alt=&quot;imagee&quot; /&gt;&lt;/p&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="thinking" /><category term="思考" /><summary type="html">阿里内部创业项目「天天特卖」招合伙人啦！以「特卖合伙人」为基石的、以「使众人行」的战友感为人才基本要求、以「用人做事，而非做事用人」为人才建设核心，是天天特卖团队的组织管理理念。天天特卖期待你的加入！</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="web" /><category term="Jekyll" /><category term="Github Pages" /><category term="前端" /><summary type="html">GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用 GitHub Pages 搭建博客，然后使用 Jekyll 生成的静态网站文件上传到该仓库。花 10 分钟时间，通过本文让你快速地实现了一个免费、简单、快速、安全、支持版本控制、支持自定义域名的独立域名博客 ……</summary></entry></feed>
