@@ -3,7 +3,7 @@ layout: post
 title:  麦克船长 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）
 date:   2023-01-05 02:13:09 +0800
 categories: ai
-tags: [AI, 人工智能, NLP, 自然语言处理, 神经网络, Attention, 注意力, AIGC, Transformer, 自注意力, Self-Attention, 多头注意力, Multiple Head Attention]
+tags: [AI, 人工智能, NLP, 自然语言处理, 神经网络, Attention, 注意力, AIGC, Transformer, 自注意力, Self-Attention, 多头注意力, Multiple Head Attention, 残差网络, Short-Cut, 位置编码, Bahdanau, Encoder-Decoder]
 description: 基于 RNN 的 Encoder-Decoder 模型存在无法处理过长文本、并行性差的两大痛点。2015 年 Bahdanau 等人在其论文中提出 Attention 机制，再到 2017 年 Transformer 模型的论文《Attention is All You Need》横空出世，其并行速度极快，而且每两个词之间的词间距都是 1。此后 NLP 领域 Transformer 彻底成为主流。如果你已经了解 Encoder-Decoder 模型，本文将基于此带你深入浅出的搞清楚 Attention、Transformer。
 excerpt: 基于 RNN 的 Encoder-Decoder 模型存在无法处理过长文本、并行性差的两大痛点。2015 年 Bahdanau 等人在其论文中提出 Attention 机制，再到 2017 年 Transformer 模型的论文《Attention is All You Need》横空出世，其并行速度极快，而且每两个词之间的词间距都是 1。此后 NLP 领域 Transformer 彻底成为主流。如果你已经了解 Encoder-Decoder 模型，本文将基于此带你深入浅出的搞清楚 Attention、Transformer。
 katex: True
@@ -211,20 +211,20 @@ Q、K、V 全部来自输入 X 的线性变换：
 $$
 \begin{aligned}
 Q &= W^Q \cdot X \\
-K &= W^K \cdot K \\
-V &= W^V \cdot V \\
+K &= W^K \cdot X \\
+V &= W^V \cdot X
 \end{aligned}
 $$
 {% endraw %}
 
-对于 X 中的每一个词向量 x_i，经过这个变换后得到了：
+{% raw %} $$ W^Q、W^K、W^V $$ {% endraw %} 以随机初始化开始，经过训练就会得到非常好的表现。对于 {% raw %} $$ X $$ {% endraw %} 中的每一个词向量 {% raw %} $$ x_i $$ {% endraw %}，经过这个变换后得到了：
 
 {% raw %}
 $$
 \begin{aligned}
 q_i &= W^Q \cdot x_i \\
-k_i &= W^K \cdot k_i \\
-v_i &= W^V \cdot v_i \\
+k_i &= W^K \cdot x_i \\
+v_i &= W^V \cdot x_i
 \end{aligned}
 $$
 {% endraw %}
@@ -267,9 +267,7 @@ Z = Attention(Q,K,V) = Softmax(\frac{Q \cdot K^T}{\sqrt{\smash[b]{d_k}}}) \cdot 
 $$
 {% endraw %}
 
-这里 {% raw %} $$ d_k $$ {% endraw %} 是向量的维度。对于
-
-这一步修正还有进一步的解释，即如果经过 Softmax 归一化后模型稳定性存在问题。怎么理解？如果假设 Q 和 K 中的每个向量的每一维数据都具有零均值、单位方差，这样输入数据是具有稳定性的，那么如何让「暗含信息 1」计算后仍然具有稳定性呢？即运算结果依然保持零均值、单位方差，就是除以「{% raw %} $$ d_k $$ {% endraw %}」。
+这里 {% raw %} $$ d_k $$ {% endraw %} 是 K 矩阵中向量 {% raw %} $$ k_i $$ {% endraw %} 的维度。这一步修正还有进一步的解释，即如果经过 Softmax 归一化后模型稳定性存在问题。怎么理解？如果假设 Q 和 K 中的每个向量的每一维数据都具有零均值、单位方差，这样输入数据是具有稳定性的，那么如何让「暗含信息 1」计算后仍然具有稳定性呢？即运算结果依然保持零均值、单位方差，就是除以「{% raw %} $$ \sqrt{\smash[b]{d_k}} $$ {% endraw %}」。
 
 ##### 1.4、其他注意力函数
 
@@ -277,23 +275,75 @@ $$
 
 {% raw %}
 $$
-Attention(Q,K,V) =
+Z = Attention(Q,K,V) =
 \begin{cases}
 \begin{aligned}
 &= Softmax(Q^T K) V \\
 &= Softmax(\frac{Q K^T}{\sqrt{\smash[b]{d_k}}}) V \\
 &= Softmax(\omega^T tanh(W[q;k])) V \\
-&= Softmax(Q^T W K) V
+&= Softmax(Q^T W K) V \\
+&= cosine[Q^T K] V
 \end{aligned}
 \end{cases}
 $$
 {% endraw %}
 
-到这里，我们就得到了一个包含自注意力信息的 {% raw %} $$ Z $$ {% endraw %} 了。
+到这里，我们就从原始的输入 {% raw %} $$ X $$ {% endraw %} 得到了一个包含自注意力信息的 {% raw %} $$ Z $$ {% endraw %} 了，后续就可以用 {% raw %} $$ Z $$ {% endraw %} 了。
 
 #### 2、多头注意力
 
-——> 未完待续
+到这里我们理解了「自注意力」，而 Transformer 这篇论文通过添加「多头」注意力的机制进一步提升了注意力层。我们先看下它是什么，然后看下它的优点。从本小节开始，本文大量插图引用自[《The Illustrated Transformer》](http://jalammar.github.io/illustrated-transformer/)，作者 Jay Alammar 写出一篇非常深入浅出的图解文章，被大量引用，非常出色，再次建议大家去阅读。
+
+Transformer 中用了 8 个头，也就是 8 组不同的 Q-K-V：
+
+{% raw %}
+$$
+\begin{aligned}
+Q_0 = W_0^Q \cdot X ;\enspace K_0 = &W_0^K \cdot X ;\enspace V_0 = W_0^V \cdot X \\
+Q_1 = W_1^Q \cdot X ;\enspace K_1 = &W_0^K \cdot X ;\enspace V_1 = W_1^V \cdot X \\
+&.... \\
+Q_7 = W_7^Q \cdot X ;\enspace K_7 = &W_0^K \cdot X ;\enspace V_7 = W_7^V \cdot X
+\end{aligned}
+$$
+{% endraw %}
+
+这样我们就能得到 8 个 Z：
+
+{% raw %}
+$$
+\begin{aligned}
+&Z_0 = Attention(Q_0,K_0,V_0) = Softmax(\frac{Q_0 \cdot K_0^T}{\sqrt{\smash[b]{d_k}}}) \cdot V_0 \\
+&Z_1 = Attention(Q_1,K_1,V_1) = Softmax(\frac{Q_1 \cdot K_1^T}{\sqrt{\smash[b]{d_k}}}) \cdot V_1 \\
+&... \\
+&Z_7 = Attention(Q_7,K_7,V_7) = Softmax(\frac{Q_7 \cdot K_7^T}{\sqrt{\smash[b]{d_k}}}) \cdot V_7 \\
+\end{aligned}
+$$
+{% endraw %}
+
+然后我们把 {% raw %} $$ Z_0 $$ {% endraw %} 到 {% raw %} $$ Z_7 $$ {% endraw %} 沿着行数不变的方向全部连接起来，如下图所示：
+
+![image](/img/src/2023-01-04-language-model-5-3.png){: width="464" }
+
+我们再训练一个权重矩阵 {% raw %} $$ W^O $$ {% endraw %}，然后用上面拼接的 {% raw %} $$ Z_{0~7} $$ {% endraw %} 乘以这个权重矩阵：
+
+![image](/img/src/2023-01-04-language-model-5-4.png){: width="135" }
+
+于是我们会得到一个 Z 矩阵：
+
+![image](/img/src/2023-01-04-language-model-5-5.png){: width="100" }
+
+到这里就是多头注意力机制的全部内容，与单头注意力相比，都是为了得到一个 Z 矩阵，但是多头用了多组 Q-K-V，然后经过拼接、乘以权重矩阵得到最后的 Z。我们总览一下整个过程：
+
+![image](/img/src/2023-01-04-language-model-5-6.png){: width="935" }
+
+通过多头注意力，每个头都会关注到不同的信息，可以如下类似表示：
+
+![image](/img/src/2023-01-04-language-model-5-7.png){: width="400"}
+
+这通过两种方式提高了注意力层的性能：
+
+* 多头注意力机制，扩展了模型关注不同位置的能力。{% raw %} $$ Z $$ {% endraw %} 矩阵中的每个向量 {% raw %} $$ z_i $$ {% endraw %} 包含了与 {% raw %} $$ X $$ {% endraw %} 中所有向量 {% raw %} $$ x_i $$ {% endraw %} 有关的一点编码信息。反过来说，不要认为 {% raw %} $$ z_i $$ {% endraw %} 只与 {% raw %} $$ x_i $$ {% endraw %} 有关。
+* 多头注意力机制，为注意力层提供了多个「表示子空间 Q-K-V」，以及 Z。这样一个输入矩阵 {% raw %} $$ X $$ {% endraw %}，就会被表示成 8 种不同的矩阵 Z，都包含了原始数据信息的某种解读暗含其中。
 
 #### 3、退化现象、残差网络与 Short-Cut
 
@@ -303,9 +353,9 @@ $$
 
 ##### 3.2、恒等映射
 
-如果这 36 层还帮了倒忙，那还不如没有，是不是？所以这多出来的 36 个网络层，如果对于提升性能（例如误差率）毫无影响，甚至更进一步，这 36 层前的输入数据，和经过这 36 层后的输出数据，完全相同，那么如果将这 36 层抽象成一个函数 {% raw %} $$ f $$ {% endraw %}，这就是一个恒等映射的函数：
+如果这 36 层还帮了倒忙，那还不如没有，是不是？所以这多出来的 36 个网络层，如果对于提升性能（例如误差率）毫无影响，甚至更进一步，这 36 层前的输入数据，和经过这 36 层后的输出数据，完全相同，那么如果将这 36 层抽象成一个函数 {% raw %} $$ f_{36} $$ {% endraw %}，这就是一个恒等映射的函数：
 
-{% raw %} $$ f(x) = x $$ {% endraw %}
+{% raw %} $$ f_{36}(x) = x $$ {% endraw %}
 
 回到实际应用中。如果我们对于一个神经网络中的连续 N 层是提升性能，还是降低性能，是未知的，那么则可以建立一个跳过这些层的连接，实现：
 
@@ -319,9 +369,64 @@ $$
 
 而那个可以跳过 N 层残差网络的捷径，则常被称为 Short-Cut，也会被叫做跳跃链接（Skip Conntection），这就解决了上述深度学习中的「退化现象」。
 
-#### 4、位置编码
+#### 4、位置编码（Positional Embedding）
 
-——> 未完待续
+还记得我在第二部分最后提到的吗：
+
+> 这个注意力机制忽略了位置信息。比如 Tigers love rabbits 和 Rabbits love tigers 会产生一样的注意力分数。
+
+##### 4.1、Transformer 论文中的三角式位置编码（Sinusoidal Positional Encoding）
+
+现在我们来解决这个问题，为每一个输入向量 {% raw %} $$ x_i $$ {% endraw %} 生成一个位置编码向量 {% raw %} $$ t_i $$ {% endraw %}，这个位置编码向量的维度，与输入向量（词的嵌入式向量表示）的维度是相同的：
+
+![image](/img/src/2023-01-04-language-model-5-8.png){: width="500"}
+
+Transformer 论文中给出了如下的公式，来计算位置编码向量的每一位的值：
+
+{% raw %}
+$$
+\begin{aligned}
+P_{pos,2i} &= sin(\frac{pos}{10000^{\frac{2i}{d_{model}}}}) \\
+P_{pos,2i+1} &= cos(\frac{pos}{10000^{\frac{2i}{d_{model}}}})
+\end{aligned}
+$$
+{% endraw %}
+
+这样对于一个 embedding，如果它在输入内容中的位置是 pos，那么其编码向量就表示为：
+
+{% raw %}
+$$
+\begin{aligned}
+[P_{pos,0}, P_{pos,1}, ... , P_{pos,d_x-1}]
+\end{aligned}
+$$
+{% endraw %}
+
+延展开的话，位置编码其实还分为绝对位置编码（Absolute Positional Encoding）、相对位置编码（Relative Positional Encoding）。前者是专门生成位置编码，并想办法融入到输入中，我们上面看到的就是一种。后者是微调 Attention 结构，使得它可以分辨不同位置的数据。另外其实还有一些无法分类到这两种的位置编码方法。
+
+##### 4.2、绝对位置编码
+
+绝对位置编码，如上面提到的，就是定义一个位置编码向量 {% raw %} $$ t_i $$ {% endraw %}，通过 {% raw %} $$ x_i + t_i $$ {% endraw %} 就得到了一个含有位置信息的向量。
+
+* 习得式位置编码（Learned Positional Encoding）：将位置编码当做训练参数，生成一个「最大长度 x 编码维度」的位置编码矩阵，随着训练进行更新。目前 Google BERT、OpenAI GPT 模型都是用的这种位置编码。缺点是「外推性」差，如果文本长度超过之前训练时用的「最大长度」则无法处理。目前有一些给出优化方案的论文，比如「[层次分解位置编码](https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&mid=2247515573&idx=1&sn=2d719108244ada7db3a535a435631210&chksm=96ea6235a19deb23babde5eaac484d69e4c2f53bab72d2e350f75bed18323eea3cf9be30615b#rd)」。
+* 三角式位置编码（Sinusoidal Positional Encodign）：上面提过了。
+* 循环式位置编码（Recurrent Positional Encoding）：通过一个 RNN 再接一个 Transformer，那么 RNN 暗含的「顺序」就导致不再需要额外编码了。但这样牺牲了并行性，毕竟 RNN 的两大缺点之一就有这个。
+* 相乘式位置编码（Product Positional Encoding）：用「{% raw %} $$ x_i \odot t_i $$ {% endraw %}」代替「{% raw %} $$ x_i + t_i $$ {% endraw %}」。
+
+##### 4.3、相对位置编码
+
+最早来自于 Google 的论文[《Self-Attention with Relative Position Representations》](https://arxiv.org/abs/1803.02155)相对位置编码，考虑的是当前 position 与被 attention 的 position 之前的相对位置。
+
+* 经典式
+* XLNET 式
+* T5 式
+* DeBERTa 式
+
+##### 4.4、其他位置编码
+
+* CNN 式
+* 复数式
+* 融合式
 
 #### 5、Transformer 模型整体
 
@@ -339,12 +444,13 @@ $$
 
 ### 参考
 
+* http://jalammar.github.io/illustrated-transformer/
 * 《自然语言处理：基于预训练模型的方法》车万翔 等
 * 《自然语言处理实战：预训练模型应用及其产品化》安库·A·帕特尔 等
 * https://lilianweng.github.io/posts/2018-06-24-attention/
 * 《基于深度学习的道路短期交通状态时空序列预测》
 * https://www.zhihu.com/question/325839123
 * https://zhuanlan.zhihu.com/p/410776234
-* http://jalammar.github.io/illustrated-transformer/
 * https://zhuanlan.zhihu.com/p/48508221
 * https://luweikxy.gitbook.io/machine-learning-notes/self-attention-and-transformer
+* https://zhuanlan.zhihu.com/p/352898810

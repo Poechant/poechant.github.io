@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  麦克船长的 NLP 语言模型技术笔记 2：多层感知器（MLP）
+title:  麦克船长 NLP 语言模型技术笔记 2：多层感知器（MLP）
 date:   2022-12-31 03:44:09 +0800
 categories: ai
-tags: [MLP, 感知器]
+tags: [NLP, 感知器, AI, 人工智能, 自然语言处理, 神经网络, 语言模型, 多层感知器, ANN, Perceptron, 激活后函数, 逻辑回归, 线性回归, Softmax, Sigmoid, ReLU, PyTorch]
 description: 1957 年感知机（Perceptron）模型被提出，1959 年多层感知机（MLP）模型被提出。MLP 有时候也被称为 ANN，即 Artificial Neural Network，接下来我们来深入浅出地了解一下，并有一些动手的练习。
 excerpt: 1957 年感知机（Perceptron）模型被提出，1959 年多层感知机（MLP）模型被提出。MLP 有时候也被称为 ANN，即 Artificial Neural Network，接下来我们来深入浅出地了解一下，并有一些动手的练习。
 katex: True
-location: 杭州
+location: 上海
 ---
 
 **本文目录**
