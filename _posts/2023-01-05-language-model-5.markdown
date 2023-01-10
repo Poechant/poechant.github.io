@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  麦克船长的 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）
+title:  麦克船长 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）
 date:   2023-01-05 02:13:09 +0800
 categories: ai
 tags: [AI, 人工智能, NLP, 自然语言处理, 神经网络, Attention, 注意力, AIGC, Transformer, 自注意力, Self-Attention, 多头注意力, Multiple Head Attention]
-description: 基于 RNN 的 Encoder-Decoder 模型存在无法处理长文本、并行性差的两大痛点。2015 年 Bahdanau 等人在其论文中提出 Attention 机制，再到 2017 年 Transformer 模型的论文《Attention is All You Need》横空出世，此后 NLP 领域 Transformer 彻底成为主流。如果你已经了解 Encoder-Decoder 模型，本文将基于此带你深入浅出的搞清楚 Attention、Transformer。
-excerpt: 基于 RNN 的 Encoder-Decoder 模型存在无法处理长文本、并行性差的两大痛点。2015 年 Bahdanau 等人在其论文中提出 Attention 机制，再到 2017 年 Transformer 模型的论文《Attention is All You Need》横空出世，此后 NLP 领域 Transformer 彻底成为主流。如果你已经了解 Encoder-Decoder 模型，本文将基于此带你深入浅出的搞清楚 Attention、Transformer。
+description: 基于 RNN 的 Encoder-Decoder 模型存在无法处理过长文本、并行性差的两大痛点。2015 年 Bahdanau 等人在其论文中提出 Attention 机制，再到 2017 年 Transformer 模型的论文《Attention is All You Need》横空出世，其并行速度极快，而且每两个词之间的词间距都是 1。此后 NLP 领域 Transformer 彻底成为主流。如果你已经了解 Encoder-Decoder 模型，本文将基于此带你深入浅出的搞清楚 Attention、Transformer。
+excerpt: 基于 RNN 的 Encoder-Decoder 模型存在无法处理过长文本、并行性差的两大痛点。2015 年 Bahdanau 等人在其论文中提出 Attention 机制，再到 2017 年 Transformer 模型的论文《Attention is All You Need》横空出世，其并行速度极快，而且每两个词之间的词间距都是 1。此后 NLP 领域 Transformer 彻底成为主流。如果你已经了解 Encoder-Decoder 模型，本文将基于此带你深入浅出的搞清楚 Attention、Transformer。
 katex: True
 location: 杭州
 ---
@@ -203,7 +203,7 @@ $$
 
 X 经过自注意力计算后，得到的「暗含」了大量原数据内部信息的 Z。然后我们拿着这个带有自注意力信息的 Z 进行后续的操作。这里要强调的是，Z 向量中的每个元素 z_i 都与 X 的所有元素有某种关联，而不是只与 x_i 有关联。
 
-##### 1.2、如何计算 {% raw %} $$ Q $$ {% endraw %}、{% raw %} $$ K $$ {% endraw %}、{% raw %} $$ V $$ {% endraw %}
+##### 1.2、如何计算 Q、K、V
 
 Q、K、V 全部来自输入 X 的线性变换：
 
@@ -229,7 +229,7 @@ v_i &= W^V \cdot v_i \\
 $$
 {% endraw %}
 
-##### 1.3、注意力函数：如何通过 {% raw %} $$ Q $$ {% endraw %}、{% raw %} $$ K $$ {% endraw %}、{% raw %} $$ V $$ {% endraw %} 得到 {% raw %} $$ Z $$ {% endraw %}
+##### 1.3、注意力函数：如何通过 Q、V 得到 Z
 
 基于上面的启发，我们认为 X 经过自注意力的挖掘后，得到了：
 

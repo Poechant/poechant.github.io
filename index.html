@@ -16,8 +16,14 @@ paginator: {{ paginator | jsonify | escape }}
 	{% for post in paginator.posts %}
 
 	  <li class="post">
-	  	<h2><a href="{% if site.baseurl == "/" %}{{ post.url }}{% else %}{{ post.url | prepend: site.baseurl }}{% endif %}">{%if post.header %}{{ post.header }}{% else %}{{ post.title }}{% endif %}</a></h2>
-      <time datetime="{{ post.date | date_to_xmlschema }}" class="by-line"> <i>{{ post.date | date_to_string }}</i> </time>
+	  	<h2>
+	  		<a href="{% if site.baseurl == "/" %}{{ post.url }}{% else %}{{ post.url | prepend: site.baseurl }}{% endif %}">
+	  			{%if post.header %}{{ post.header }}{% else %}{{ post.title }}{% endif %}
+	  		</a>
+	  	</h2>
+	  	<time datetime="{{ post.date | date_to_xmlschema }}" class="by-line">
+	  		{{ post.date | date_to_string | append: ", " | append: post.location | append: " | 作者 麦克船长 | 总计 " }}{{ post.content | strip_html | strip_newlines | split: "" | size | append: " 字"}}
+	  	</time>
 	  	<p>{{ post.excerpt | strip_html | truncatewords:50 }}</p>
 	  </li>
 
