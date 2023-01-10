@@ -7,8 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	<meta name="generator" content="Jekyll">
 
-	<title>麦克船长的 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）</title>
-  	<meta name="description" content="基于 RNN 的 Encoder-Decoder 模型存在无法处理长文本、并行性差的两大痛点。2015 年 Bahdanau 等人在其论文中提出 Attention 机制，再到 2017 年 Transformer 模型的论文《Attention is All You Need》横空出世，此后 NLP 领域 Transformer 彻底成为主流。如果你已经了解 Encoder-Decoder 模型，本文将基于此带你深入浅出的搞清楚 Attention、Transformer。">
+	<title>麦克船长 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）</title>
+  	<meta name="description" content="基于 RNN 的 Encoder-Decoder 模型存在无法处理过长文本、并行性差的两大痛点。2015 年 Bahdanau 等人在其论文中提出 Attention 机制，再到 2017 年 Transformer 模型的论文《Attention is All You Need》横空出世，其并行速度极快，而且每两个词之间的词间距都是 1。此后 NLP 领域 Transformer 彻底成为主流。如果你已经了解 Encoder-Decoder 模型，本文将基于此带你深入浅出的搞清楚 Attention、Transformer。">
 
 	<!-- CSS & fonts -->
 	<link rel="stylesheet" href="/css/main.css">
@@ -368,8 +368,8 @@
 		<main>
 
 			<article id="post-page">
-	<h2>麦克船长的 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）</h2>		
-	<time datetime="2023-01-04T18:13:09+00:00" class="by-line">04 Jan 2023, 杭州 | 作者 麦克船长 | 总计 9387 字</time>
+	<h2>麦克船长 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）</h2>		
+	<time datetime="2023-01-04T18:13:09+00:00" class="by-line">04 Jan 2023, 杭州 | 作者 麦克船长 | 总计 9303 字</time>
 	<div class="content">
 		<p><strong>本文目录</strong></p>
 <ul id="markdown-toc">
@@ -378,8 +378,8 @@
   <li><a href="#三transformer-在-2017-年横空出世" id="markdown-toc-三transformer-在-2017-年横空出世">三、Transformer 在 2017 年横空出世</a>    <ul>
       <li><a href="#1自注意力机制self-attention" id="markdown-toc-1自注意力机制self-attention">1、自注意力机制（Self-Attention）</a>        <ul>
           <li><a href="#11一段自然语言内容其自身就暗含很多内部关联信息" id="markdown-toc-11一段自然语言内容其自身就暗含很多内部关联信息">1.1、一段自然语言内容，其自身就「暗含」很多内部关联信息</a></li>
-          <li><a href="#12如何计算--q--k--v" id="markdown-toc-12如何计算--q--k--v">1.2、如何计算  \(Q\) 、 \(K\) 、 \(V\)</a></li>
-          <li><a href="#13注意力函数如何通过--q--k--v--得到--z" id="markdown-toc-13注意力函数如何通过--q--k--v--得到--z">1.3、注意力函数：如何通过  \(Q\) 、 \(K\) 、 \(V\)  得到  \(Z\)</a></li>
+          <li><a href="#12如何计算-qkv" id="markdown-toc-12如何计算-qkv">1.2、如何计算 Q、K、V</a></li>
+          <li><a href="#13注意力函数如何通过-qv-得到-z" id="markdown-toc-13注意力函数如何通过-qv-得到-z">1.3、注意力函数：如何通过 Q、V 得到 Z</a></li>
           <li><a href="#14其他注意力函数" id="markdown-toc-14其他注意力函数">1.4、其他注意力函数</a></li>
         </ul>
       </li>
@@ -834,7 +834,7 @@ Z = SelfAttention(X) = Attention(Q,K,V)
 
 <p>X 经过自注意力计算后，得到的「暗含」了大量原数据内部信息的 Z。然后我们拿着这个带有自注意力信息的 Z 进行后续的操作。这里要强调的是，Z 向量中的每个元素 z_i 都与 X 的所有元素有某种关联，而不是只与 x_i 有关联。</p>
 
-<h5 id="12如何计算--q--k--v">1.2、如何计算  \(Q\) 、 \(K\) 、 \(V\)</h5>
+<h5 id="12如何计算-qkv">1.2、如何计算 Q、K、V</h5>
 
 <p>Q、K、V 全部来自输入 X 的线性变换：</p>
 
@@ -852,7 +852,7 @@ k_i &amp;= W^K \cdot k_i \\
 v_i &amp;= W^V \cdot v_i \\
 \end{aligned}\]
 
-<h5 id="13注意力函数如何通过--q--k--v--得到--z">1.3、注意力函数：如何通过  \(Q\) 、 \(K\) 、 \(V\)  得到  \(Z\)</h5>
+<h5 id="13注意力函数如何通过-qv-得到-z">1.3、注意力函数：如何通过 Q、V 得到 Z</h5>
 
 <p>基于上面的启发，我们认为 X 经过自注意力的挖掘后，得到了：</p>
 

@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-01-09T20:43:36+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">麦克船长的 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）</title><link href="https://www.mikecaptain.com/2023/01/04/language-model-5/" rel="alternate" type="text/html" title="麦克船长的 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）" /><published>2023-01-04T18:13:09+00:00</published><updated>2023-01-04T18:13:09+00:00</updated><id>https://www.mikecaptain.com/2023/01/04/language-model-5</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/04/language-model-5/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-01-10T17:44:59+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">麦克船长 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）</title><link href="https://www.mikecaptain.com/2023/01/04/language-model-5/" rel="alternate" type="text/html" title="麦克船长 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）" /><published>2023-01-04T18:13:09+00:00</published><updated>2023-01-04T18:13:09+00:00</updated><id>https://www.mikecaptain.com/2023/01/04/language-model-5</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/04/language-model-5/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#一为什么说-rnn-模型没有体现注意力&quot; id=&quot;markdown-toc-一为什么说-rnn-模型没有体现注意力&quot;&gt;一、为什么说 RNN 模型没有体现「注意力」？&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#二基于-attention-机制的-encoder-decoder-模型&quot; id=&quot;markdown-toc-二基于-attention-机制的-encoder-decoder-模型&quot;&gt;二、基于 Attention 机制的 Encoder-Decoder 模型&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#三transformer-在-2017-年横空出世&quot; id=&quot;markdown-toc-三transformer-在-2017-年横空出世&quot;&gt;三、Transformer 在 2017 年横空出世&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#1自注意力机制self-attention&quot; id=&quot;markdown-toc-1自注意力机制self-attention&quot;&gt;1、自注意力机制（Self-Attention）&lt;/a&gt;        &lt;ul&gt;
           &lt;li&gt;&lt;a href=&quot;#11一段自然语言内容其自身就暗含很多内部关联信息&quot; id=&quot;markdown-toc-11一段自然语言内容其自身就暗含很多内部关联信息&quot;&gt;1.1、一段自然语言内容，其自身就「暗含」很多内部关联信息&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#12如何计算--q--k--v&quot; id=&quot;markdown-toc-12如何计算--q--k--v&quot;&gt;1.2、如何计算  \(Q\) 、 \(K\) 、 \(V\)&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#13注意力函数如何通过--q--k--v--得到--z&quot; id=&quot;markdown-toc-13注意力函数如何通过--q--k--v--得到--z&quot;&gt;1.3、注意力函数：如何通过  \(Q\) 、 \(K\) 、 \(V\)  得到  \(Z\)&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#12如何计算-qkv&quot; id=&quot;markdown-toc-12如何计算-qkv&quot;&gt;1.2、如何计算 Q、K、V&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#13注意力函数如何通过-qv-得到-z&quot; id=&quot;markdown-toc-13注意力函数如何通过-qv-得到-z&quot;&gt;1.3、注意力函数：如何通过 Q、V 得到 Z&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#14其他注意力函数&quot; id=&quot;markdown-toc-14其他注意力函数&quot;&gt;1.4、其他注意力函数&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
@@ -461,7 +461,7 @@ Z = SelfAttention(X) = Attention(Q,K,V)
 
 &lt;p&gt;X 经过自注意力计算后，得到的「暗含」了大量原数据内部信息的 Z。然后我们拿着这个带有自注意力信息的 Z 进行后续的操作。这里要强调的是，Z 向量中的每个元素 z_i 都与 X 的所有元素有某种关联，而不是只与 x_i 有关联。&lt;/p&gt;
 
-&lt;h5 id=&quot;12如何计算--q--k--v&quot;&gt;1.2、如何计算  \(Q\) 、 \(K\) 、 \(V\)&lt;/h5&gt;
+&lt;h5 id=&quot;12如何计算-qkv&quot;&gt;1.2、如何计算 Q、K、V&lt;/h5&gt;
 
 &lt;p&gt;Q、K、V 全部来自输入 X 的线性变换：&lt;/p&gt;
 
@@ -479,7 +479,7 @@ k_i &amp;amp;= W^K \cdot k_i \\
 v_i &amp;amp;= W^V \cdot v_i \\
 \end{aligned}\]
 
-&lt;h5 id=&quot;13注意力函数如何通过--q--k--v--得到--z&quot;&gt;1.3、注意力函数：如何通过  \(Q\) 、 \(K\) 、 \(V\)  得到  \(Z\)&lt;/h5&gt;
+&lt;h5 id=&quot;13注意力函数如何通过-qv-得到-z&quot;&gt;1.3、注意力函数：如何通过 Q、V 得到 Z&lt;/h5&gt;
 
 &lt;p&gt;基于上面的启发，我们认为 X 经过自注意力的挖掘后，得到了：&lt;/p&gt;
 
@@ -595,7 +595,7 @@ Z = Attention(Q,K,V) = Softmax(\frac{Q \cdot K^T}{\sqrt{\smash[b]{d_k}}}) \cdot 
   &lt;li&gt;http://jalammar.github.io/illustrated-transformer/&lt;/li&gt;
   &lt;li&gt;https://zhuanlan.zhihu.com/p/48508221&lt;/li&gt;
   &lt;li&gt;https://luweikxy.gitbook.io/machine-learning-notes/self-attention-and-transformer&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="Attention" /><category term="注意力" /><category term="AIGC" /><category term="Transformer" /><category term="自注意力" /><category term="Self-Attention" /><category term="多头注意力" /><category term="Multiple Head Attention" /><summary type="html">基于 RNN 的 Encoder-Decoder 模型存在无法处理长文本、并行性差的两大痛点。2015 年 Bahdanau 等人在其论文中提出 Attention 机制，再到 2017 年 Transformer 模型的论文《Attention is All You Need》横空出世，此后 NLP 领域 Transformer 彻底成为主流。如果你已经了解 Encoder-Decoder 模型，本文将基于此带你深入浅出的搞清楚 Attention、Transformer。</summary></entry><entry><title type="html">麦克船长的 NLP 语言模型技术笔记 4：循环神经网络（RNN）</title><link href="https://www.mikecaptain.com/2023/01/01/language-model-4/" rel="alternate" type="text/html" title="麦克船长的 NLP 语言模型技术笔记 4：循环神经网络（RNN）" /><published>2023-01-01T21:01:31+00:00</published><updated>2023-01-01T21:01:31+00:00</updated><id>https://www.mikecaptain.com/2023/01/01/language-model-4</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/01/language-model-4/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="Attention" /><category term="注意力" /><category term="AIGC" /><category term="Transformer" /><category term="自注意力" /><category term="Self-Attention" /><category term="多头注意力" /><category term="Multiple Head Attention" /><summary type="html">基于 RNN 的 Encoder-Decoder 模型存在无法处理过长文本、并行性差的两大痛点。2015 年 Bahdanau 等人在其论文中提出 Attention 机制，再到 2017 年 Transformer 模型的论文《Attention is All You Need》横空出世，其并行速度极快，而且每两个词之间的词间距都是 1。此后 NLP 领域 Transformer 彻底成为主流。如果你已经了解 Encoder-Decoder 模型，本文将基于此带你深入浅出的搞清楚 Attention、Transformer。</summary></entry><entry><title type="html">麦克船长的 NLP 语言模型技术笔记 4：循环神经网络（RNN）</title><link href="https://www.mikecaptain.com/2023/01/01/language-model-4/" rel="alternate" type="text/html" title="麦克船长的 NLP 语言模型技术笔记 4：循环神经网络（RNN）" /><published>2023-01-01T21:01:31+00:00</published><updated>2023-01-01T21:01:31+00:00</updated><id>https://www.mikecaptain.com/2023/01/01/language-model-4</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/01/language-model-4/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#1经典结构的-rnn&quot; id=&quot;markdown-toc-1经典结构的-rnn&quot;&gt;1、经典结构的 RNN&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#2n-vs1-的-rnn&quot; id=&quot;markdown-toc-2n-vs1-的-rnn&quot;&gt;2、N vs.1 的 RNN&lt;/a&gt;&lt;/li&gt;
@@ -2050,7 +2050,7 @@ y_t &amp;amp;= Decoder_{LSTM/GRU}(y_{t-1}, d_{t-1}, \bm{C})
 &lt;p&gt;Seq2Seq 模型非常出色，一直到 2018 年之前 NLP 领域里该模型已成为主流。但是它有很显著的问题：&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;当输入序列很长时，Encoder 生成的 Context 可能就会出现所捕捉的信息不充分的情况，导致 Decoder 最终的输出是不尽如人意的。具体地，毕竟还是 RNN 模型，还是会有梯度消失问题，根本原因在于用到了「递归」。当递归作用在同一个 weight matrix 上时，使得如果这个矩阵满足条件的话，其最大的特征值要是小于 1 的话，就一定出现梯度消失问题。后来的 LSTM 和 GRU 也仅仅能缓解问题，并不能根本解决。&lt;/li&gt;
+  &lt;li&gt;当输入序列很长时，Encoder 生成的 Context 可能就会出现所捕捉的信息不充分的情况，导致 Decoder 最终的输出是不尽如人意的。具体地，毕竟还是 RNN 模型，其词间距过长时还是会有梯度消失问题，根本原因在于用到了「递归」。当递归作用在同一个 weight matrix 上时，使得如果这个矩阵满足条件的话，其最大的特征值要是小于 1 的话，就一定出现梯度消失问题。后来的 LSTM 和 GRU 也仅仅能缓解问题，并不能根本解决。&lt;/li&gt;
   &lt;li&gt;并行效果差：每个时刻的结果依赖前一时刻。&lt;/li&gt;
 &lt;/ul&gt;
 
