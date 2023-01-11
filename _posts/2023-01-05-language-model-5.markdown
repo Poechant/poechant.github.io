@@ -171,6 +171,10 @@ $$
 
 ### 三、Transformer 在 2017 年横空出世
 
+我们先通过一个动画来看下 Transformer 是举例示意，该图来自 Google 的博客文章 [《Transformer: A Novel Neural Network Architecture for Language Understanding》](https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html)：
+
+![image](/img/src/2023-01-04-language-model-5-11.gif)
+
 中文网络里找到的解释得比较好的 blogs、answers，几乎都指向了同一篇博客：Jay Alammar 的[《The Illustrated Transformer》](http://jalammar.github.io/illustrated-transformer/)，所以建议读者搭配该篇文章阅读。
 
 Transformer 模型中用到了自注意力（Self-Attention）、多头注意力（Multiple-Head Attention）、残差网络（ResNet）与捷径（Short-Cut）。下面我们先通过第 1 到第 4 小节把几个基本概念讲清楚，然后在第 5 小节讲解整体 Transformer 模型就会好理解很多了。最后第 6 小节我们来一段动手实践。
@@ -268,6 +272,10 @@ $$
 {% endraw %}
 
 这里 {% raw %} $$ d_k $$ {% endraw %} 是 K 矩阵中向量 {% raw %} $$ k_i $$ {% endraw %} 的维度。这一步修正还有进一步的解释，即如果经过 Softmax 归一化后模型稳定性存在问题。怎么理解？如果假设 Q 和 K 中的每个向量的每一维数据都具有零均值、单位方差，这样输入数据是具有稳定性的，那么如何让「暗含信息 1」计算后仍然具有稳定性呢？即运算结果依然保持零均值、单位方差，就是除以「{% raw %} $$ \sqrt{\smash[b]{d_k}} $$ {% endraw %}」。
+
+到这里我们注意到：
+
+* K、V 里的每一个向量，都是
 
 ##### 1.4、其他注意力函数
 
@@ -413,34 +421,85 @@ $$
 * 循环式位置编码（Recurrent Positional Encoding）：通过一个 RNN 再接一个 Transformer，那么 RNN 暗含的「顺序」就导致不再需要额外编码了。但这样牺牲了并行性，毕竟 RNN 的两大缺点之一就有这个。
 * 相乘式位置编码（Product Positional Encoding）：用「{% raw %} $$ x_i \odot t_i $$ {% endraw %}」代替「{% raw %} $$ x_i + t_i $$ {% endraw %}」。
 
-##### 4.3、相对位置编码
+##### 4.3、相对位置编码和其他位置编码
 
 最早来自于 Google 的论文[《Self-Attention with Relative Position Representations》](https://arxiv.org/abs/1803.02155)相对位置编码，考虑的是当前 position 与被 attention 的 position 之前的相对位置。
 
-* 经典式
-* XLNET 式
-* T5 式
-* DeBERTa 式
+* 常见相对位置编码：经典式、XLNET 式、T5 式、DeBERTa 式等。
+* 其他位置编码：CNN 式、复数式、融合式等。
 
-##### 4.4、其他位置编码
+到此我们都是在讲 Encoder，目前我们知道一个 Encoder 可以用如下的示意图表示：
 
-* CNN 式
-* 复数式
-* 融合式
+![image](/img/src/2023-01-04-language-model-5-12.png){: width="680"}
 
-#### 5、Transformer 模型整体
+#### 5、编码器 Encoder 和解码器 Decoder
 
-——> 未完待续
+##### 5.1、Encoder 和 Decoder 的图示结构
+
+![image](/img/src/2023-01-04-language-model-5-15.png){: width="165"}
+
+* 第一层是多头注意力层（Multi-Head Attention Layer）。
+* 第二层是经过一个前馈神经网络（Feed Forward Neural Network，简称 FFNN）。
+* 这两层，每一层都有「Add & Normalization」和 ResNet。
+
+![image](/img/src/2023-01-04-language-model-5-14.png){: width="179"}
+
+* 解码器有两个多头注意力层。第一个多头注意力层是 Masked Multi-Head Attention 层，即在自注意力计算的过程中只有前面位置上的内容。第二个多头注意力层买有被 Masked，是个正常多头注意力层。
+* 可以看出来，第一个注意力层是一个自注意力层（Self Attention Layer），第二个是 Encoder-Decoder Attention 层（它的 K、V 来自 Encoder，Q 来自自注意力层），有些文章里会用这个角度来指代。
+* FNN、Add & Norm、ResNet 都与 Encoder 类似。
+
+##### 5.2、Decoder 的第一个输出结果
+
+产出第一个最终输出结果的过程：
+
+* 不需要经过 Masked Multi-Head Attention Layer（自注意力层）。
+* 只经过 Encoder-Decoder Attention Layer。
+
+![image](/img/src/2023-01-04-language-model-5-13.png){: width="695"}
+
+这样我们就像前面的 Encoder-Decoder Attention 模型一样，得到第一个输出。但是最终的输出结果，还会经过一层「Linear + Softmax」。
+
+##### 5.3、Decoder 后续的所有输出
+
+从产出第二个输出结果开始：
+
+* Decoder 的自注意力层，会用到前面的输出结果。
+* 可以看到，这是一个串行过程。
+
+##### 5.4、Decoder 之后的 Linear 和 Softmax
+
+经过所有 Decoder 之后，我们得到了一大堆浮点数的结果。最后的 Linear & Softmax 就是来解决「怎么把它变成文本」的问题的。
+
+* Linear 是一个全连接神经网络，把 Decoders 输出的结果投影到一个超大的向量上，我们称之为 logits 向量。
+* 如果我们的输出词汇表有 1 万个词，那么 logits 向量的每一个维度就有 1 万个单元，每个单元都对应输出词汇表的一个词的概率。
+* Softmax 将 logits 向量中的每一个维度都做归一化，这样每个维度都能从 1 万个单元对应的词概率中选出最大的，对应的词汇表里的词，就是输出词。最终得到一个输出字符串。
+
+#### 6、Transformer 模型整体
+
+![image](/img/src/2023-01-04-language-model-5-16.png){: width="660"}
 
 最后我们再来整体看一下 Transformer：
 
-* 首先输入数据生成词的 Embedding、位置编码
-* 在 Encoder 里，先进入 N 层 Attention 的处理，最后进入一个全连接层，期间可能有 Short-Cut
-* 然后经过 Normalization
+* 首先输入数据生成词的嵌入式向量表示（Embedding），生成位置编码（Positional Encoding，简称 PE）。
+* 进入 Encoders 部分。先进入多头注意力层（Multi-Head Attention），是自注意力处理，然后进入全连接层（又叫前馈神经网络层），每层都有 ResNet、Add & Norm。
+* 每一个 Encoder 的输入，都来自前一个 Encoder 的输出，但是第一个 Encoder 的输入就是 Embedding + PE。
+* 进入 Decoders 部分。先进入第一个多头注意力层（是 Masked 自注意力层），再进入第二个多头注意力层（是 Encoder-Decoder 注意力层），每层都有 ResNet、Add & Norm。
+* 每一个 Decoder 都有两部分输入。
+* Decoder 的第一层（Maksed 多头自注意力层）的输入，都来自前一个 Decoder 的输出，但是第一个 Decoder 是不经过第一层的（因为经过算出来也是 0）。
+* Decoder 的第二层（Encoder-Decoder 注意力层）的输入，Q 都来自该 Decoder 的第一层，且每个 Decoder 的这一层的 K、V 都是一样的，均来自最后一个 Encoder。
+* 最后经过 Linear、Softmax 归一化。
 
-——> 未完待续
+#### 6、Transformer 的性能
 
-#### 6、来看一段用 PyTorch 实现的 Transformer 示例
+Google 在其博客于 2017.08.31 发布如下测试数据：
+
+|![image](/img/src/2023-01-04-language-model-5-9.png)|![image](/img/src/2023-01-04-language-model-5-10.png)|
+|-|-|
+| | |
+
+#### 7、来看一段用 PyTorch 实现的 Transformer 示例
+
+—— 未完待续
 
 ### 参考
 
