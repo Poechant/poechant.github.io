@@ -369,7 +369,7 @@
 
 			<article id="post-page">
 	<h2>麦克船长 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）</h2>		
-	<time datetime="2023-01-04T18:13:09+00:00" class="by-line">04 Jan 2023, 杭州 | 作者 麦克船长 | 总计 12487 字</time>
+	<time datetime="2023-01-04T18:13:09+00:00" class="by-line">04 Jan 2023, 杭州 | 作者 麦克船长 | 总计 14548 字</time>
 	<div class="content">
 		<p><strong>本文目录</strong></p>
 <ul id="markdown-toc">
@@ -393,12 +393,19 @@
       <li><a href="#4位置编码positional-embedding" id="markdown-toc-4位置编码positional-embedding">4、位置编码（Positional Embedding）</a>        <ul>
           <li><a href="#41transformer-论文中的三角式位置编码sinusoidal-positional-encoding" id="markdown-toc-41transformer-论文中的三角式位置编码sinusoidal-positional-encoding">4.1、Transformer 论文中的三角式位置编码（Sinusoidal Positional Encoding）</a></li>
           <li><a href="#42绝对位置编码" id="markdown-toc-42绝对位置编码">4.2、绝对位置编码</a></li>
-          <li><a href="#43相对位置编码" id="markdown-toc-43相对位置编码">4.3、相对位置编码</a></li>
-          <li><a href="#44其他位置编码" id="markdown-toc-44其他位置编码">4.4、其他位置编码</a></li>
+          <li><a href="#43相对位置编码和其他位置编码" id="markdown-toc-43相对位置编码和其他位置编码">4.3、相对位置编码和其他位置编码</a></li>
         </ul>
       </li>
-      <li><a href="#5transformer-模型整体" id="markdown-toc-5transformer-模型整体">5、Transformer 模型整体</a></li>
-      <li><a href="#6来看一段用-pytorch-实现的-transformer-示例" id="markdown-toc-6来看一段用-pytorch-实现的-transformer-示例">6、来看一段用 PyTorch 实现的 Transformer 示例</a></li>
+      <li><a href="#5编码器-encoder-和解码器-decoder" id="markdown-toc-5编码器-encoder-和解码器-decoder">5、编码器 Encoder 和解码器 Decoder</a>        <ul>
+          <li><a href="#51encoder-和-decoder-的图示结构" id="markdown-toc-51encoder-和-decoder-的图示结构">5.1、Encoder 和 Decoder 的图示结构</a></li>
+          <li><a href="#52decoder-的第一个输出结果" id="markdown-toc-52decoder-的第一个输出结果">5.2、Decoder 的第一个输出结果</a></li>
+          <li><a href="#53decoder-后续的所有输出" id="markdown-toc-53decoder-后续的所有输出">5.3、Decoder 后续的所有输出</a></li>
+          <li><a href="#54decoder-之后的-linear-和-softmax" id="markdown-toc-54decoder-之后的-linear-和-softmax">5.4、Decoder 之后的 Linear 和 Softmax</a></li>
+        </ul>
+      </li>
+      <li><a href="#6transformer-模型整体" id="markdown-toc-6transformer-模型整体">6、Transformer 模型整体</a></li>
+      <li><a href="#6transformer-的性能" id="markdown-toc-6transformer-的性能">6、Transformer 的性能</a></li>
+      <li><a href="#7来看一段用-pytorch-实现的-transformer-示例" id="markdown-toc-7来看一段用-pytorch-实现的-transformer-示例">7、来看一段用 PyTorch 实现的 Transformer 示例</a></li>
     </ul>
   </li>
   <li><a href="#参考" id="markdown-toc-参考">参考</a></li>
@@ -808,6 +815,10 @@ s_{i,t} &amp;= score(\bm{e}_i,\bm{d}_{t-1}) \\
 
 <h3 id="三transformer-在-2017-年横空出世">三、Transformer 在 2017 年横空出世</h3>
 
+<p>我们先通过一个动画来看下 Transformer 是举例示意，该图来自 Google 的博客文章 <a href="https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html">《Transformer: A Novel Neural Network Architecture for Language Understanding》</a>：</p>
+
+<p><img src="/img/src/2023-01-04-language-model-5-11.gif" alt="image" /></p>
+
 <p>中文网络里找到的解释得比较好的 blogs、answers，几乎都指向了同一篇博客：Jay Alammar 的<a href="http://jalammar.github.io/illustrated-transformer/">《The Illustrated Transformer》</a>，所以建议读者搭配该篇文章阅读。</p>
 
 <p>Transformer 模型中用到了自注意力（Self-Attention）、多头注意力（Multiple-Head Attention）、残差网络（ResNet）与捷径（Short-Cut）。下面我们先通过第 1 到第 4 小节把几个基本概念讲清楚，然后在第 5 小节讲解整体 Transformer 模型就会好理解很多了。最后第 6 小节我们来一段动手实践。</p>
@@ -893,6 +904,12 @@ Z = Attention(Q,K,V) = Softmax(\frac{Q \cdot K^T}{\sqrt{\smash[b]{d_k}}}) \cdot 
 \end{aligned}\]
 
 <p>这里  \(d_k\)  是 K 矩阵中向量  \(k_i\)  的维度。这一步修正还有进一步的解释，即如果经过 Softmax 归一化后模型稳定性存在问题。怎么理解？如果假设 Q 和 K 中的每个向量的每一维数据都具有零均值、单位方差，这样输入数据是具有稳定性的，那么如何让「暗含信息 1」计算后仍然具有稳定性呢？即运算结果依然保持零均值、单位方差，就是除以「 \(\sqrt{\smash[b]{d_k}}\) 」。</p>
+
+<p>到这里我们注意到：</p>
+
+<ul>
+  <li>K、V 里的每一个向量，都是</li>
+</ul>
 
 <h5 id="14其他注意力函数">1.4、其他注意力函数</h5>
 
@@ -1026,40 +1043,110 @@ P_{pos,2i+1} &amp;= cos(\frac{pos}{10000^{\frac{2i}{d_{model}}}})
   <li>相乘式位置编码（Product Positional Encoding）：用「 \(x_i \odot t_i\) 」代替「 \(x_i + t_i\) 」。</li>
 </ul>
 
-<h5 id="43相对位置编码">4.3、相对位置编码</h5>
+<h5 id="43相对位置编码和其他位置编码">4.3、相对位置编码和其他位置编码</h5>
 
 <p>最早来自于 Google 的论文<a href="https://arxiv.org/abs/1803.02155">《Self-Attention with Relative Position Representations》</a>相对位置编码，考虑的是当前 position 与被 attention 的 position 之前的相对位置。</p>
 
 <ul>
-  <li>经典式</li>
-  <li>XLNET 式</li>
-  <li>T5 式</li>
-  <li>DeBERTa 式</li>
+  <li>常见相对位置编码：经典式、XLNET 式、T5 式、DeBERTa 式等。</li>
+  <li>其他位置编码：CNN 式、复数式、融合式等。</li>
 </ul>
 
-<h5 id="44其他位置编码">4.4、其他位置编码</h5>
+<p>到此我们都是在讲 Encoder，目前我们知道一个 Encoder 可以用如下的示意图表示：</p>
+
+<p><img src="/img/src/2023-01-04-language-model-5-12.png" alt="image" width="680" /></p>
+
+<h4 id="5编码器-encoder-和解码器-decoder">5、编码器 Encoder 和解码器 Decoder</h4>
+
+<h5 id="51encoder-和-decoder-的图示结构">5.1、Encoder 和 Decoder 的图示结构</h5>
+
+<p><img src="/img/src/2023-01-04-language-model-5-15.png" alt="image" width="165" /></p>
 
 <ul>
-  <li>CNN 式</li>
-  <li>复数式</li>
-  <li>融合式</li>
+  <li>第一层是多头注意力层（Multi-Head Attention Layer）。</li>
+  <li>第二层是经过一个前馈神经网络（Feed Forward Neural Network，简称 FFNN）。</li>
+  <li>这两层，每一层都有「Add &amp; Normalization」和 ResNet。</li>
 </ul>
 
-<h4 id="5transformer-模型整体">5、Transformer 模型整体</h4>
+<p><img src="/img/src/2023-01-04-language-model-5-14.png" alt="image" width="179" /></p>
 
-<p>——&gt; 未完待续</p>
+<ul>
+  <li>解码器有两个多头注意力层。第一个多头注意力层是 Masked Multi-Head Attention 层，即在自注意力计算的过程中只有前面位置上的内容。第二个多头注意力层买有被 Masked，是个正常多头注意力层。</li>
+  <li>可以看出来，第一个注意力层是一个自注意力层（Self Attention Layer），第二个是 Encoder-Decoder Attention 层（它的 K、V 来自 Encoder，Q 来自自注意力层），有些文章里会用这个角度来指代。</li>
+  <li>FNN、Add &amp; Norm、ResNet 都与 Encoder 类似。</li>
+</ul>
+
+<h5 id="52decoder-的第一个输出结果">5.2、Decoder 的第一个输出结果</h5>
+
+<p>产出第一个最终输出结果的过程：</p>
+
+<ul>
+  <li>不需要经过 Masked Multi-Head Attention Layer（自注意力层）。</li>
+  <li>只经过 Encoder-Decoder Attention Layer。</li>
+</ul>
+
+<p><img src="/img/src/2023-01-04-language-model-5-13.png" alt="image" width="695" /></p>
+
+<p>这样我们就像前面的 Encoder-Decoder Attention 模型一样，得到第一个输出。但是最终的输出结果，还会经过一层「Linear + Softmax」。</p>
+
+<h5 id="53decoder-后续的所有输出">5.3、Decoder 后续的所有输出</h5>
+
+<p>从产出第二个输出结果开始：</p>
+
+<ul>
+  <li>Decoder 的自注意力层，会用到前面的输出结果。</li>
+  <li>可以看到，这是一个串行过程。</li>
+</ul>
+
+<h5 id="54decoder-之后的-linear-和-softmax">5.4、Decoder 之后的 Linear 和 Softmax</h5>
+
+<p>经过所有 Decoder 之后，我们得到了一大堆浮点数的结果。最后的 Linear &amp; Softmax 就是来解决「怎么把它变成文本」的问题的。</p>
+
+<ul>
+  <li>Linear 是一个全连接神经网络，把 Decoders 输出的结果投影到一个超大的向量上，我们称之为 logits 向量。</li>
+  <li>如果我们的输出词汇表有 1 万个词，那么 logits 向量的每一个维度就有 1 万个单元，每个单元都对应输出词汇表的一个词的概率。</li>
+  <li>Softmax 将 logits 向量中的每一个维度都做归一化，这样每个维度都能从 1 万个单元对应的词概率中选出最大的，对应的词汇表里的词，就是输出词。最终得到一个输出字符串。</li>
+</ul>
+
+<h4 id="6transformer-模型整体">6、Transformer 模型整体</h4>
+
+<p><img src="/img/src/2023-01-04-language-model-5-16.png" alt="image" width="660" /></p>
 
 <p>最后我们再来整体看一下 Transformer：</p>
 
 <ul>
-  <li>首先输入数据生成词的 Embedding、位置编码</li>
-  <li>在 Encoder 里，先进入 N 层 Attention 的处理，最后进入一个全连接层，期间可能有 Short-Cut</li>
-  <li>然后经过 Normalization</li>
+  <li>首先输入数据生成词的嵌入式向量表示（Embedding），生成位置编码（Positional Encoding，简称 PE）。</li>
+  <li>进入 Encoders 部分。先进入多头注意力层（Multi-Head Attention），是自注意力处理，然后进入全连接层（又叫前馈神经网络层），每层都有 ResNet、Add &amp; Norm。</li>
+  <li>每一个 Encoder 的输入，都来自前一个 Encoder 的输出，但是第一个 Encoder 的输入就是 Embedding + PE。</li>
+  <li>进入 Decoders 部分。先进入第一个多头注意力层（是 Masked 自注意力层），再进入第二个多头注意力层（是 Encoder-Decoder 注意力层），每层都有 ResNet、Add &amp; Norm。</li>
+  <li>每一个 Decoder 都有两部分输入。</li>
+  <li>Decoder 的第一层（Maksed 多头自注意力层）的输入，都来自前一个 Decoder 的输出，但是第一个 Decoder 是不经过第一层的（因为经过算出来也是 0）。</li>
+  <li>Decoder 的第二层（Encoder-Decoder 注意力层）的输入，Q 都来自该 Decoder 的第一层，且每个 Decoder 的这一层的 K、V 都是一样的，均来自最后一个 Encoder。</li>
+  <li>最后经过 Linear、Softmax 归一化。</li>
 </ul>
 
-<p>——&gt; 未完待续</p>
+<h4 id="6transformer-的性能">6、Transformer 的性能</h4>
 
-<h4 id="6来看一段用-pytorch-实现的-transformer-示例">6、来看一段用 PyTorch 实现的 Transformer 示例</h4>
+<p>Google 在其博客于 2017.08.31 发布如下测试数据：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><img src="/img/src/2023-01-04-language-model-5-9.png" alt="image" /></th>
+      <th><img src="/img/src/2023-01-04-language-model-5-10.png" alt="image" /></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="7来看一段用-pytorch-实现的-transformer-示例">7、来看一段用 PyTorch 实现的 Transformer 示例</h4>
+
+<p>—— 未完待续</p>
 
 <h3 id="参考">参考</h3>
 
