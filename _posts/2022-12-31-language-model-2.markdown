@@ -8,6 +8,7 @@ description: 1957 年感知机（Perceptron）模型被提出，1959 年多层�
 excerpt: 1957 年感知机（Perceptron）模型被提出，1959 年多层感知机（MLP）模型被提出。MLP 有时候也被称为 ANN，即 Artificial Neural Network，接下来我们来深入浅出地了解一下，并有一些动手的练习。
 katex: True
 location: 上海
+author: 麦克船长
 ---
 
 **本文目录**

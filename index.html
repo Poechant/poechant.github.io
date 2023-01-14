@@ -22,7 +22,7 @@ paginator: {{ paginator | jsonify | escape }}
 	  		</a>
 	  	</h2>
 	  	<time datetime="{{ post.date | date_to_xmlschema }}" class="by-line">
-	  		{{ post.date | date_to_string | append: ", " | append: post.location | append: " | 作者 麦克船长 | 总计 " }}{{ post.content | strip_html | strip_newlines | split: "" | size | append: " 字"}}
+	  		{{ post.date | date_to_string | append: ", " | append: post.location | append: " | " | append: post.author | append: " | 总计 " }}{{ post.content | strip_html | strip_newlines | split: "" | size | append: " 字"}}
 	  	</time>
 	  	<p>{{ post.excerpt | strip_html | truncatewords:50 }}</p>
 	  </li>

@@ -7,6 +7,7 @@ tags: [直播技术]
 description: 本文是麦克船长《OpenRTMFP/Cumulus 原理、源码及实践》系列文章的其中一篇，相关内容最初首发于 CSDN 的 Poechant 技术博客，后整理于本博客。本文对 RTMFPServer 线程、RTMFPManager 对 RTMFPServer 的影响进行源码解读。
 excerpt: 本文是麦克船长《OpenRTMFP/Cumulus 原理、源码及实践》系列文章的其中一篇，相关内容最初首发于 CSDN 的 Poechant 技术博客，后整理于本博客。本文对 RTMFPServer 线程、RTMFPManager 对 RTMFPServer 的影响进行源码解读。
 location: 广州
+author: 麦克船长
 ---
 
 **本文目录**

@@ -8,13 +8,14 @@ description: 基于 RNN 的 Encoder-Decoder 模型存在无法处理过长文本
 excerpt: 基于 RNN 的 Encoder-Decoder 模型存在无法处理过长文本、并行性差的两大痛点。2015 年 Bahdanau 等人在其论文中提出 Attention 机制，再到 2017 年 Transformer 模型的论文《Attention is All You Need》横空出世，其并行速度极快，而且每两个词之间的词间距都是 1。此后 NLP 领域 Transformer 彻底成为主流。如果你已经了解 Encoder-Decoder 模型，本文将基于此带你深入浅出的搞清楚 Attention、Transformer。
 katex: True
 location: 杭州
+author: 麦克船长
 ---
 
 **本文目录**
 * TOC
 {:toc}
 
-### 一、为什么说 RNN 模型没有体现「注意力」？
+## 一、为什么说 RNN 模型没有体现「注意力」？
  
 Encoder-Decoder 的一个非常严重的问题，是依赖中间那个 context 向量，则无法处理特别长的输入序列 —— 记忆力不足，会忘事儿。而忘事儿的根本原因，是没有「注意力」。
 
@@ -24,9 +25,9 @@ Encoder-Decoder 的一个非常严重的问题，是依赖中间那个 context �
 
 所以 Attention 机制，就是在 Decoder 时，不是所有输出都依赖相同的「上下文 {% raw %} $$ \bm{C}_t $$ {% endraw %}」，而是时刻 t 的输出，使用 {% raw %} $$ \bm{C}_t $$ {% endraw %}，而这个 {% raw %} $$ \bm{C}_t $$ {% endraw %} 来自对每个输入数据项根据「注意力」进行的加权。
 
-### 二、基于 Attention 机制的 Encoder-Decoder 模型
+## 二、基于 Attention 机制的 Encoder-Decoder 模型
 
-2015 年 Dzmitry Bahdanau 等人在论文[《Neural Machine Translation by Jointly Learning to Align and Translate》](https://arxiv.org/abs/1409.0473) 中提出了「Attention」机制，下面请跟着麦克船长，我会深入浅出地为你解释清楚。
+2015 年 Dzmitry Bahdanau 等人在论文[《Neural Machine Translation by Jointly Learning to Align and Translate》](https://arxiv.org/abs/1409.0473) 中提出了「Attention」机制，下面请跟着麦克船长，船长会深入浅出地为你解释清楚。
 
 下图中 {% raw %} $$ e_i $$ {% endraw %} 表示编码器的隐藏层输出，{% raw %} $$ d_i $$ {% endraw %} 表示解码器的隐藏层输出
 
@@ -90,7 +91,7 @@ digraph G {
 {% endgraphviz %}
 </div>
 
-更进一步细化关于 {% raw %} $$ \bm{C}_t $$ {% endraw %} 部分，我们引用《基于深度学习的道路短期交通状态时空序列预测》一书中的图：
+更进一步细化关于 {% raw %} $$ \bm{C}_t $$ {% endraw %} 部分，船长在此引用《基于深度学习的道路短期交通状态时空序列预测》一书中的图：
 
 ![image](/img/src/2023-01-04-captain-nlp-5.png)
 
@@ -122,7 +123,7 @@ $$
 $$
 {% endraw %}
 
-还记得 RNN 那部分里我们讲到的 Encoder-Decoder 模型的公式表示吗？
+还记得 RNN 那部分里船长讲到的 Encoder-Decoder 模型的公式表示吗？
 
 {% raw %}
 $$
@@ -135,7 +136,7 @@ y_t &= Decoder_{LSTM/GRU}(y_{t-1}, d_{t-1}, \bm{C})
 $$
 {% endraw %}
 
-加入 Attention 机制的 Encoder-Decoder 模型如下：
+加入 Attention 机制的 Encoder-Decoder 模型如下。
 
 {% raw %}
 $$
@@ -148,7 +149,7 @@ y_t &= Decoder_{LSTM/GRU}(y_{t-1}, d_{t-1}, \bm{C}_t)
 $$
 {% endraw %}
 
-可以看到最核心的区别是第二个公式 {% raw %} $$ C_t $$ {% endraw %}。加入 Attention 后，对所有数据给予不同的注意力分布。具体地，比如我们用如下的函数来定义这个模型：
+这种同时考虑 Encoder、Decoder 的 Attention，就叫做「Encoder-Decoder Attention」，也常被叫做「Vanilla Attention」。可以看到上面最核心的区别是第二个公式 {% raw %} $$ C_t $$ {% endraw %}。加入 Attention 后，对所有数据给予不同的注意力分布。具体地，比如我们用如下的函数来定义这个模型：
 
 {% raw %}
 $$
@@ -169,9 +170,9 @@ $$
 
 * 这个注意力机制忽略了位置信息。比如 Tigers love rabbits 和 Rabbits love tigers 会产生一样的注意力分数。
 
-### 三、Transformer 在 2017 年横空出世
+## 三、Transformer 在 2017 年横空出世
 
-我们先通过一个动画来看下 Transformer 是举例示意，该图来自 Google 的博客文章 [《Transformer: A Novel Neural Network Architecture for Language Understanding》](https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html)：
+船长先通过一个动画来看下 Transformer 是举例示意，该图来自 Google 的博客文章 [《Transformer: A Novel Neural Network Architecture for Language Understanding》](https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html)：
 
 ![image](/img/src/2023-01-04-language-model-5-11.gif)
 
@@ -179,11 +180,11 @@ $$
 
 Transformer 模型中用到了自注意力（Self-Attention）、多头注意力（Multiple-Head Attention）、残差网络（ResNet）与捷径（Short-Cut）。下面我们先通过第 1 到第 4 小节把几个基本概念讲清楚，然后在第 5 小节讲解整体 Transformer 模型就会好理解很多了。最后第 6 小节我们来一段动手实践。
 
-#### 1、自注意力机制（Self-Attention）
+### 1、自注意力机制（Self-Attention）
 
 自注意力是理解 Transformer 的关键，原作者在论文中限于篇幅，没有给出过多的解释。以下是我自己的理解，能够比较通透、符合常识地去理解 Transformer 中的一些神来之笔的概念。
 
-##### 1.1、一段自然语言内容，其自身就「暗含」很多内部关联信息
+#### 1.1、一段自然语言内容，其自身就「暗含」很多内部关联信息
 
 在加入了 Attention 的 Encoder-Decoder 模型中，对输出序列 Y 中的一个词的注意力来自于输入序列 X，那么如果 X 和 Y 相等呢？什么场景会有这个需求？因为我们认为一段文字里某些词就是由于另外某些词而决定的，可以粗暴地理解为「完形填空」的原理。那么这样一段文字，其实就存在其中每个词的自注意力，举个例子：
 
@@ -207,7 +208,7 @@ $$
 
 X 经过自注意力计算后，得到的「暗含」了大量原数据内部信息的 Z。然后我们拿着这个带有自注意力信息的 Z 进行后续的操作。这里要强调的是，Z 向量中的每个元素 z_i 都与 X 的所有元素有某种关联，而不是只与 x_i 有关联。
 
-##### 1.2、如何计算 Q、K、V
+#### 1.2、如何计算 Q、K、V
 
 Q、K、V 全部来自输入 X 的线性变换：
 
@@ -233,7 +234,7 @@ v_i &= W^V \cdot x_i
 $$
 {% endraw %}
 
-##### 1.3、注意力函数：如何通过 Q、V 得到 Z
+#### 1.3、注意力函数：如何通过 Q、V 得到 Z
 
 基于上面的启发，我们认为 X 经过自注意力的挖掘后，得到了：
 
@@ -277,7 +278,7 @@ $$
 
 * K、V 里的每一个向量，都是
 
-##### 1.4、其他注意力函数
+#### 1.4、其他注意力函数
 
 为了提醒大家这种暗含信息的表示，都只是计算方法上的一种选择，好坏全靠结果评定，所以包括上面的在内，常见的注意力函数有（甚至你也可以自己定义）：
 
@@ -298,7 +299,7 @@ $$
 
 到这里，我们就从原始的输入 {% raw %} $$ X $$ {% endraw %} 得到了一个包含自注意力信息的 {% raw %} $$ Z $$ {% endraw %} 了，后续就可以用 {% raw %} $$ Z $$ {% endraw %} 了。
 
-#### 2、多头注意力
+### 2、多头注意力
 
 到这里我们理解了「自注意力」，而 Transformer 这篇论文通过添加「多头」注意力的机制进一步提升了注意力层。我们先看下它是什么，然后看下它的优点。从本小节开始，本文大量插图引用自[《The Illustrated Transformer》](http://jalammar.github.io/illustrated-transformer/)，作者 Jay Alammar 写出一篇非常深入浅出的图解文章，被大量引用，非常出色，再次建议大家去阅读。
 
@@ -353,13 +354,13 @@ $$
 * 多头注意力机制，扩展了模型关注不同位置的能力。{% raw %} $$ Z $$ {% endraw %} 矩阵中的每个向量 {% raw %} $$ z_i $$ {% endraw %} 包含了与 {% raw %} $$ X $$ {% endraw %} 中所有向量 {% raw %} $$ x_i $$ {% endraw %} 有关的一点编码信息。反过来说，不要认为 {% raw %} $$ z_i $$ {% endraw %} 只与 {% raw %} $$ x_i $$ {% endraw %} 有关。
 * 多头注意力机制，为注意力层提供了多个「表示子空间 Q-K-V」，以及 Z。这样一个输入矩阵 {% raw %} $$ X $$ {% endraw %}，就会被表示成 8 种不同的矩阵 Z，都包含了原始数据信息的某种解读暗含其中。
 
-#### 3、退化现象、残差网络与 Short-Cut
+### 3、退化现象、残差网络与 Short-Cut
 
-##### 3.1、退化现象
+#### 3.1、退化现象
 
 对于一个 56 层的神经网路，我们很自然地会觉得应该比 20 层的神经网络的效果要好，比如说从误差率（error）的量化角度看。但是华人学者何凯明等人的论文[《Deep Residual Learning for Image Recognition》](https://arxiv.org/pdf/1512.03385.pdf)中给我们呈现了相反的结果，而这个问题的原因并不是因为层数多带来的梯度爆炸/梯度消失（毕竟已经用了归一化解决了这个问题），而是因为一种反常的现象，这种现象我们称之为「退化现象」。何凯明等人认为这是因为存在「难以优化好的网络层」。
 
-##### 3.2、恒等映射
+#### 3.2、恒等映射
 
 如果这 36 层还帮了倒忙，那还不如没有，是不是？所以这多出来的 36 个网络层，如果对于提升性能（例如误差率）毫无影响，甚至更进一步，这 36 层前的输入数据，和经过这 36 层后的输出数据，完全相同，那么如果将这 36 层抽象成一个函数 {% raw %} $$ f_{36} $$ {% endraw %}，这就是一个恒等映射的函数：
 
@@ -371,19 +372,19 @@ $$
 
 这就像给了这 N 层神经网络一个试错的空间，待我们确认它们的性能后再决定是否采用它们。同时也可以理解成，这些层可以去单独优化，如果性能提升，则不被跳过。
 
-##### 3.3、残差网络（Residual Network）与捷径（Short-Cut）
+#### 3.3、残差网络（Residual Network）与捷径（Short-Cut）
 
 如果前面 20 层已经可以实现 99% 的准确率，那么引入了这 36 层能否再提升「残差剩余那 1%」的准确率从而达到 100% 呢？所以这 36 层的网络，就被称为「残差网络（Residual Network，常简称为 ResNet）」，这个叫法非常形象。
 
 而那个可以跳过 N 层残差网络的捷径，则常被称为 Short-Cut，也会被叫做跳跃链接（Skip Conntection），这就解决了上述深度学习中的「退化现象」。
 
-#### 4、位置编码（Positional Embedding）
+### 4、位置编码（Positional Embedding）
 
 还记得我在第二部分最后提到的吗：
 
 > 这个注意力机制忽略了位置信息。比如 Tigers love rabbits 和 Rabbits love tigers 会产生一样的注意力分数。
 
-##### 4.1、Transformer 论文中的三角式位置编码（Sinusoidal Positional Encoding）
+#### 4.1、Transformer 论文中的三角式位置编码（Sinusoidal Positional Encoding）
 
 现在我们来解决这个问题，为每一个输入向量 {% raw %} $$ x_i $$ {% endraw %} 生成一个位置编码向量 {% raw %} $$ t_i $$ {% endraw %}，这个位置编码向量的维度，与输入向量（词的嵌入式向量表示）的维度是相同的：
 
@@ -412,7 +413,7 @@ $$
 
 延展开的话，位置编码其实还分为绝对位置编码（Absolute Positional Encoding）、相对位置编码（Relative Positional Encoding）。前者是专门生成位置编码，并想办法融入到输入中，我们上面看到的就是一种。后者是微调 Attention 结构，使得它可以分辨不同位置的数据。另外其实还有一些无法分类到这两种的位置编码方法。
 
-##### 4.2、绝对位置编码
+#### 4.2、绝对位置编码
 
 绝对位置编码，如上面提到的，就是定义一个位置编码向量 {% raw %} $$ t_i $$ {% endraw %}，通过 {% raw %} $$ x_i + t_i $$ {% endraw %} 就得到了一个含有位置信息的向量。
 
@@ -421,7 +422,7 @@ $$
 * 循环式位置编码（Recurrent Positional Encoding）：通过一个 RNN 再接一个 Transformer，那么 RNN 暗含的「顺序」就导致不再需要额外编码了。但这样牺牲了并行性，毕竟 RNN 的两大缺点之一就有这个。
 * 相乘式位置编码（Product Positional Encoding）：用「{% raw %} $$ x_i \odot t_i $$ {% endraw %}」代替「{% raw %} $$ x_i + t_i $$ {% endraw %}」。
 
-##### 4.3、相对位置编码和其他位置编码
+#### 4.3、相对位置编码和其他位置编码
 
 最早来自于 Google 的论文[《Self-Attention with Relative Position Representations》](https://arxiv.org/abs/1803.02155)相对位置编码，考虑的是当前 position 与被 attention 的 position 之前的相对位置。
 
@@ -432,9 +433,9 @@ $$
 
 ![image](/img/src/2023-01-04-language-model-5-12.png){: width="680"}
 
-#### 5、编码器 Encoder 和解码器 Decoder
+### 5、编码器 Encoder 和解码器 Decoder
 
-##### 5.1、Encoder 和 Decoder 的图示结构
+#### 5.1、Encoder 和 Decoder 的图示结构
 
 ![image](/img/src/2023-01-04-language-model-5-15.png){: width="165"}
 
@@ -448,7 +449,7 @@ $$
 * 可以看出来，第一个注意力层是一个自注意力层（Self Attention Layer），第二个是 Encoder-Decoder Attention 层（它的 K、V 来自 Encoder，Q 来自自注意力层），有些文章里会用这个角度来指代。
 * FNN、Add & Norm、ResNet 都与 Encoder 类似。
 
-##### 5.2、Decoder 的第一个输出结果
+#### 5.2、Decoder 的第一个输出结果
 
 产出第一个最终输出结果的过程：
 
@@ -459,14 +460,14 @@ $$
 
 这样我们就像前面的 Encoder-Decoder Attention 模型一样，得到第一个输出。但是最终的输出结果，还会经过一层「Linear + Softmax」。
 
-##### 5.3、Decoder 后续的所有输出
+#### 5.3、Decoder 后续的所有输出
 
 从产出第二个输出结果开始：
 
 * Decoder 的自注意力层，会用到前面的输出结果。
 * 可以看到，这是一个串行过程。
 
-##### 5.4、Decoder 之后的 Linear 和 Softmax
+#### 5.4、Decoder 之后的 Linear 和 Softmax
 
 经过所有 Decoder 之后，我们得到了一大堆浮点数的结果。最后的 Linear & Softmax 就是来解决「怎么把它变成文本」的问题的。
 
@@ -474,7 +475,7 @@ $$
 * 如果我们的输出词汇表有 1 万个词，那么 logits 向量的每一个维度就有 1 万个单元，每个单元都对应输出词汇表的一个词的概率。
 * Softmax 将 logits 向量中的每一个维度都做归一化，这样每个维度都能从 1 万个单元对应的词概率中选出最大的，对应的词汇表里的词，就是输出词。最终得到一个输出字符串。
 
-#### 6、Transformer 模型整体
+### 6、Transformer 模型整体
 
 ![image](/img/src/2023-01-04-language-model-5-16.png){: width="660"}
 
@@ -489,7 +490,7 @@ $$
 * Decoder 的第二层（Encoder-Decoder 注意力层）的输入，Q 都来自该 Decoder 的第一层，且每个 Decoder 的这一层的 K、V 都是一样的，均来自最后一个 Encoder。
 * 最后经过 Linear、Softmax 归一化。
 
-#### 6、Transformer 的性能
+### 7、Transformer 的性能
 
 Google 在其博客于 2017.08.31 发布如下测试数据：
 
@@ -497,11 +498,801 @@ Google 在其博客于 2017.08.31 发布如下测试数据：
 |-|-|
 | | |
 
-#### 7、来看一段用 PyTorch 实现的 Transformer 示例
+## 四、一个基于 TensorFlow 架构的 Transformer 实现
 
-—— 未完待续
+我们来看看 Kyubyong 实现的 transformer 模型：https://github.com/Kyubyong/transformer/tree/master/tf1.2_legacy
 
-### 参考
+### 1、先训练和测试一下 Kyubyong Transformer
+
+下载一个「德语-英语翻译」的数据集：https://drive.google.com/uc?id=1l5y6Giag9aRPwGtuZHswh3w5v3qEz8D8
+
+把 `de-en` 下面的 `tgz` 解压后放在 `corpora/` 目录下。如果需要先修改超参数，需要修改 `hyperparams.py`。然后运行如下命令，生成词汇文件（vocabulary files），默认到 `preprocessed` 目录下：
+
+```shell
+python prepro.py
+```
+
+然后开始训练：
+
+```shell
+python train.py
+```
+
+也可以跳过训练，直接[下载预训练过的文件](https://www.dropbox.com/s/fo5wqgnbmvalwwq/logdir.zip?dl=0)，是一个 `logdir/` 目录，把它放到项目根目录下。然后可以对训练出来的结果，运行评价程序啦：
+
+```shell
+python eval.py
+```
+
+会生成「德语-英语」测试结果文件在 `results/` 目录下，内容如下：
+
+```
+- source: Sie war eine jährige Frau namens Alex
+- expected: She was a yearold woman named Alex
+- got: She was a <UNK> of vote called <UNK>
+
+- source: Und als ich das hörte war ich erleichtert
+- expected: Now when I heard this I was so relieved
+- got: And when I was I <UNK> 's
+
+- source: Meine Kommilitonin bekam nämlich einen Brandstifter als ersten Patienten
+- expected: My classmate got an arsonist for her first client
+- got: Because my first eye was a first show
+
+- source: Das kriege ich hin dachte ich mir
+- expected: This I thought I could handle
+- got: I would give it to me a day
+
+- source: Aber ich habe es nicht hingekriegt
+- expected: But I didn't handle it
+- got: But I didn't <UNK> <UNK>
+
+- source: Ich hielt dagegen
+- expected: I pushed back
+- got: I <UNK>
+
+- source: Das ist es was Psychologen einen AhaMoment nennen
+- expected: That's what psychologists call an Aha moment
+- got: This is what they <UNK>
+
+- source: Meldet euch wenn ihr in euren ern seid
+- expected: Raise your hand if you're in your s
+- got: Now think about the <UNK> in <UNK> thing
+
+- source: Ich möchte ein paar von euch sehen
+- expected: I really want to see some twentysomethings here
+- got: I want to see some <UNK>
+
+- source: Oh yeah Ihr seid alle unglaublich
+- expected: Oh yay Y'all's awesome
+- got: war They all get <UNK> <UNK> all the disease
+
+- source: Dies ist nicht meine Meinung Das sind Fakten
+- expected: This is not my opinion These are the facts
+- got: This is not my II That's child
+
+- source: Werdet nicht panisch wenn ihr über  seid
+- expected: People who are over  don't panic
+- got: Don't get <UNK> for a <UNK> <UNK>
+
+- source: Dieser Gruppe wird es gut gehen glaube ich
+- expected: This crowd is going to be fine I think
+- got: This group that's a good one I think
+
+- source: Die Presse redet über die Zeitverschiebung des Erwachsenwerdens
+- expected: Newspapers talk about the changing timetable of adulthood
+- got: It <UNK> released the <UNK> <UNK>
+
+- source: Wissenschaftler nennen die er eine verlängerte Pubertät
+- expected: Researchers call the s an extended adolescence
+- got: Our <UNK> a <UNK>
+
+- source: Das stimmt
+- expected: It's true
+- got: This is a <UNK> one good <UNK>
+
+- source: Stimmt das nicht
+- expected: Isn't that true
+- got: Don't go to mind <UNK>
+
+- source: Gar nichts
+- expected: Nothing happens
+- got: There is hope good <UNK>
+
+- source: Wo sind die Leute in den ern hier
+- expected: Where are the twentysomethings here
+- got: In fact people are doing the simply
+
+- source: Macht das nicht
+- expected: Do not do that
+- got: There is no <UNK> <UNK>
+
+- source: Es ist die Geschichte von Emma
+- expected: It's a story about a woman named Emma
+- got: This is the story of <UNK>
+
+- source: Das ist Prokastination
+- expected: That's procrastination
+- got: This is <UNK>
+
+...
+```
+
+### 2、Kyubyong Transformer 源码分析
+
+* `hparams.py`：超参数都在这里，仅 30 行。将在下面 `2.1` 部分解读。
+* `data_load.py`：装载、批处理数据的相关函数，代码仅 92 行。主要在下面 `2.2` 部分解读。
+* `prepro.py`：为 source 和 target 创建词汇文件（vocabulary file），代码仅 39 行。下面 `2.3` 部分会为大家解读。
+* `train.py`：代码仅 184 行。在下面 `2.4` 部分解读。
+* `modules.py`：Encoding / Decoding 网络的构建模块，代码仅 329 行。与 `modules.py` 一起会在 `2.4` 部分解读。
+* `eval.py`：评估效果，代码仅 82 行。将在 `2.5` 部分解读
+
+总计 700 多行代码。
+
+#### 2.1、超参数
+
+`hyperparams.py` 文件中定义了 `Hyperparams` 超参数类，其中包含的参数我们逐一来解释一下：
+
+* `source_train`：训练数据集的源输入文件，默认是 `'corpora/train.tags.de-en.de'`
+* `target_train`：训练数据集的目标输出文件，默认是 `'corpora/train.tags.de-en.en'`
+* `source_test`：测试数据集的源输入文件，默认是 `'corpora/IWSLT16.TED.tst2014.de-en.de.xml'`
+* `target_test`：测试数据集的目标输出文件，默认是 `'corpora/IWSLT16.TED.tst2014.de-en.en.xml'`
+* `batch_size`：设置每批数据的大小。
+* `lr`：设置学习率 learning rate。
+* `logdir`：设置日志文件保存的目录。
+* `maxlen`
+* `min_cnt`
+* `hidden_units`：设置编码器和解码器中隐藏层单元的数量。
+* `num_blocks`：编码器（encoder block）、解码器（decoder block）的数量
+* `num_epochs`：训练过程中迭代的次数。
+* `num_heads`：还记得上面文章里我们提到的 Transformer 中用到了多头注意力吧，这里就是多头注意力的头数。
+* `droupout_rate`：设置 dropout 层的 dropout rate，具体 dropout 请看 2.4.1 部分。
+* `sinusoid`：设置为 `True` 时表示使用正弦函数计算位置编码，否则为 `False` 时表示直接用 `position` 做位置编码。
+
+#### 2.2、训练/测试数据集的加载处理
+
+我们先看下 `train.py`、`data_load.py`、`eval.py` 三个文件：
+
+* `train.py`：该文件包含了 `Graph` 类的定义，并在其构造函数中调用 `load_data.py` 文件中的 `get_batch_data` 函数加载训练数据。
+* `data_load.py`：定义了加载训练数据、加载测试数据的函数。
+* `eval.py`：测试结果的评价函数定义在这个文件里。
+
+下面是函数调用的流程：
+
+<div style="text-align: center;">
+{% graphviz %}
+digraph G {
+	rankdir=LR
+	splines=ortho
+	node [shape="box"]
+
+	训练 -> Graph构造函数 -> get_batch_data -> load_train_data
+	测试 -> eval -> load_test_data
+
+	load_train_data -> create_data
+	load_test_data -> create_data
+
+	create_data -> load_de_vocab
+	create_data -> load_en_vocab
+}
+{% endgraphviz %}
+</div>
+
+#### 2.3、预处理
+
+文件 `prepro.py` 实现了预处理的过程，就是创建德语、英语的词汇表。
+
+```python
+def make_vocab(fpath, fname):
+
+    # 使用 codecs.open 函数读取指定文件路径(fpath)的文本内容，并将其存储在 text 变量中
+    text = codecs.open(fpath, 'r', 'utf-8').read()
+
+    # 将 text 中的非字母和空格的字符去掉
+    text = regex.sub("[^\s\p{Latin}']", "", text)
+
+    # 将 text 中的文本按照空格分割，并将每个单词存储在 words 变量中
+    words = text.split()
+
+    # words 中每个单词的出现次数
+    word2cnt = Counter(words)
+
+    # 检查是否存在 preprocessed 文件夹，如果不存在就创建
+    if not os.path.exists('preprocessed'): os.mkdir('preprocessed')
+    with codecs.open('preprocessed/{}'.format(fname), 'w', 'utf-8') as fout:
+        fout.write("{}\t1000000000\n{}\t1000000000\n{}\t1000000000\n{}\t1000000000\n".format("<PAD>", "<UNK>", "<S>", "</S>"))
+        for word, cnt in word2cnt.most_common(len(word2cnt)):
+            fout.write(u"{}\t{}\n".format(word, cnt))
+
+if __name__ == '__main__':
+    make_vocab(hp.source_train, "de.vocab.tsv")
+    make_vocab(hp.target_train, "en.vocab.tsv")
+    print("Done")
+```
+
+* 在主函数中调用 make_vocab 函数，根据 `de.vocab.tsv` 和 `en.vocab.tsv` 两个词汇表文件生成词汇表。
+* 在函数 `make_vocab` 中，先使用 `codecs.open` 函数读取指定文件路径 `fpath` 的文本内容，并将其存储在 `text` 变量中，再使用正则表达式 `regex` 将 `text` 中的非字母和空格的字符去掉，接着将 `text` 中的文本按照空格分割，并将每个单词存储在 `words` 变量中。
+* 接下来，使用 `Counter` 函数统计 `words` 中每个单词的出现次数，并将统计结果存储在 `word2cnt` 变量中。
+
+#### 2.4、构建模型并训练
+
+Graph 的构造函数流程，就是模型的构建流程，下面船长来分析这部分代码。
+
+<div style="text-align: center;">
+{% graphviz %}
+digraph G {
+	rankdir=LR
+	splines=ortho
+	node [shape="box"]
+
+	Graph构造函数 -> 编码器 -> 解码器 -> Linear -> Softmax
+}
+{% endgraphviz %}
+</div>
+
+整体这个流程，主要涉及 `train.py` 文件和 `modules.py` 文件。所有模型所需的主要函数定义，都是在 `modules.py` 中实现的。我们先看下编码器（Encoder）的流程：
+
+<div style="text-align: center;">
+{% graphviz %}
+digraph G {
+	rankdir=BT
+	splines=ortho
+	node [shape="box"]
+
+	embedding -> positional_encoding -> dropout -> multihead_attention -> feedforward
+}
+{% endgraphviz %}
+</div>
+
+
+下面是 `train.py` 中实现的 Transformer 流程，其中的每一段代码，船长都会做详细解释，先不用急。这个流程里，首先定义了编码器，先使用了 Embedding 层将输入数据转换为词向量，使用 Positional Encoding 层对词向量进行位置编码，使用 Dropout 层进行 dropout 操作，然后进行多层 Multihead Attention 和 Feed Forward 操作。
+
+在构建模型前，先执行 `train.py` 的主程序段，首先 `if __name__ == '__main__'` 这句代码是在 Python 中常用的一种编写方式，它的意思是当一个文件被直接运行时，`if` 语句下面的代码会被执行。
+
+```python
+if __name__ == '__main__':                
+    
+    # 加载词汇表   
+    de2idx, idx2de = load_de_vocab()
+    en2idx, idx2en = load_en_vocab()
+    
+    # 构建模型并训练
+    g = Graph("train"); print("Graph loaded")
+    
+    # 创建了一个 Supervisor 对象来管理训练过程
+    sv = tf.train.Supervisor(graph=g.graph, 
+                             logdir=hp.logdir,
+                             save_model_secs=0)
+
+    # 使用 with 语句打开一个会话
+    with sv.managed_session() as sess:
+
+    	# 训练迭代 hp.num_epochs 次
+        for epoch in range(1, hp.num_epochs+1): 
+            if sv.should_stop(): break
+
+            # tqdm 是一个 Python 库，用来在循环执行训练操作时在命令行中显示进度条
+            for step in tqdm(range(g.num_batch), total=g.num_batch, ncols=70, leave=False, unit='b'):
+
+            	# 每次迭代都会运行训练操作 g.train_op
+                sess.run(g.train_op)
+
+            # 获取训练的步数，通过 sess.run() 函数获取 global_step 的当前值并赋值给 gs。这样可在后面使用 gs 保存模型时用这个值命名模型
+            gs = sess.run(g.global_step)
+
+            # 每个 epoch 结束时，它使用 saver.save() 函数保存当前模型的状态
+            sv.saver.save(sess, hp.logdir + '/model_epoch_%02d_gs_%d' % (epoch, gs))
+    
+    print("Done")
+```
+
+* `num_epochs` 是训练过程中迭代的次数，它表示训练模型需要在训练数据上跑多少遍。每一次迭代都会在训练数据集上进行训练，通常来说，训练数据集会被重复多次迭代，直到达到 `num_epochs` 次。这样可以确保模型能够充分地学习数据的特征。设置 `num_epochs` 的值过大或过小都会导致模型性能下降。
+
+##### 2.4.1、编码过程
+
+```python
+# 编码流程
+
+## Embedding
+self.enc = embedding(self.x, 
+                      vocab_size=len(de2idx), 
+                      num_units=hp.hidden_units, 
+                      scale=True,
+                      scope="enc_embed")
+
+key_masks = tf.expand_dims(tf.sign(tf.reduce_sum(tf.abs(self.enc), axis=-1)), -1)
+
+## 位置编码
+if hp.sinusoid:
+    self.enc += positional_encoding(self.x,
+                      num_units=hp.hidden_units, 
+                      zero_pad=False, 
+                      scale=False,
+                      scope="enc_pe")
+else:
+    self.enc += embedding(tf.tile(tf.expand_dims(tf.range(tf.shape(self.x)[1]), 0),
+    							 [tf.shape(self.x)[0], 1]),
+                      vocab_size=hp.maxlen, 
+                      num_units=hp.hidden_units, 
+                      zero_pad=False, 
+                      scale=False,
+                      scope="enc_pe")
+
+self.enc *= key_masks
+
+```
+
+drop out 是一种在深度学习中常用的正则化技巧。它通过在训练过程中随机地「关闭」一些神经元来减少 **过拟合**。这样做是为了防止模型过于依赖于某些特定的特征，而导致在新数据上的表现不佳。
+
+在这个函数中，`dropout` 层通过在训练过程中随机地将一些神经元的输出值设置为 0，来减少模型的过拟合。这个函数中使用了一个参数 `rate`，表示每个神经元被「关闭」的概率。这样做是为了防止模型过于依赖于某些特定的特征，而导致在新数据上的表现不佳。
+
+```python
+## Dropout
+self.enc = tf.layers.dropout(self.enc, 
+                            rate=hp.dropout_rate, 
+                            training=tf.convert_to_tensor(is_training))
+```
+
+超参数 hp.num_blocks 表示 Encoder Blocks 的层数，每一层都有一个 Multi-Head Attention 和一个 Feed Forward。
+
+* 这个 Encoder 中的 Multi-Head Attention 是基于自注意力的（注意与后面的 Decoder 部分有区别）
+
+```python
+## Blocks
+for i in range(hp.num_blocks):
+    with tf.variable_scope("num_blocks_{}".format(i)):
+        ### Multihead Attention
+        self.enc = multihead_attention(queries=self.enc, 
+                                        keys=self.enc, 
+                                        num_units=hp.hidden_units, 
+                                        num_heads=hp.num_heads, 
+                                        dropout_rate=hp.dropout_rate,
+                                        is_training=is_training,
+                                        causality=False)
+        
+        ### Feed Forward
+        self.enc = feedforward(self.enc, num_units=[4*hp.hidden_units, hp.hidden_units])
+```
+
+解码器（Decoder）的实现函数调用的流程，也是与船长上面的模型原理介绍一致的，在定义时同样使用了 Embedding 层、Positional Encoding 层、Dropout 层、Multihead Attention 和 Feed Forward 操作，其中 Multihead Attention 有自注意力层和 Encoder-Decoder 层。
+
+<div style="text-align: center;">
+{% graphviz %}
+digraph G {
+	rankdir=BT
+	splines=ortho
+	node [shape="box"]
+	decoder_attn1 [label="multihead_attention (self-attention)"]
+	decoder_attn2 [label="multihead_attention (encoder-decoder attention)"]
+
+	embedding -> positional_encoding -> dropout -> decoder_attn1 -> decoder_attn2 -> feedforward
+}
+{% endgraphviz %}
+</div>
+
+##### 2.4.2、解码过程
+
+```python
+# 解码流程
+
+self.dec = embedding(self.decoder_inputs, 
+                      vocab_size=len(en2idx), 
+                      num_units=hp.hidden_units,
+                      scale=True, 
+                      scope="dec_embed")
+
+key_masks = tf.expand_dims(tf.sign(tf.reduce_sum(tf.abs(self.dec), axis=-1)), -1)
+
+## 位置编码
+if hp.sinusoid:
+    self.dec += positional_encoding(self.decoder_inputs,
+                      vocab_size=hp.maxlen, 
+                      num_units=hp.hidden_units, 
+                      zero_pad=False, 
+                      scale=False,
+                      scope="dec_pe")
+else:
+    self.dec += embedding(tf.tile(tf.expand_dims(tf.range(tf.shape(self.decoder_inputs)[1]), 0),
+    							 [tf.shape(self.decoder_inputs)[0], 1]),
+                      vocab_size=hp.maxlen, 
+                      num_units=hp.hidden_units, 
+                      zero_pad=False, 
+                      scale=False,
+                      scope="dec_pe")
+self.dec *= key_masks
+
+## Dropout
+self.dec = tf.layers.dropout(self.dec, 
+                            rate=hp.dropout_rate, 
+                            training=tf.convert_to_tensor(is_training))
+
+## 解码器模块
+for i in range(hp.num_blocks):
+    with tf.variable_scope("num_blocks_{}".format(i)):
+        ## 多头注意力（自注意力）
+        self.dec = multihead_attention(queries=self.dec, 
+                                        keys=self.dec, 
+                                        num_units=hp.hidden_units, 
+                                        num_heads=hp.num_heads, 
+                                        dropout_rate=hp.dropout_rate,
+                                        is_training=is_training,
+                                        causality=True, 
+                                        scope="self_attention")
+        
+        ## 多头注意力（Encoder-Decoder 注意力）
+        self.dec = multihead_attention(queries=self.dec, 
+                                        keys=self.enc, 
+                                        num_units=hp.hidden_units, 
+                                        num_heads=hp.num_heads,
+                                        dropout_rate=hp.dropout_rate,
+                                        is_training=is_training, 
+                                        causality=False,
+                                        scope="vanilla_attention")
+        
+        ## 前馈神经网络
+        self.dec = feedforward(self.dec, num_units=[4*hp.hidden_units, hp.hidden_units])
+```
+
+##### 2.4.3、Embedding、Positional Encoding、Multi-Head Attention、Feed Forward
+
+```python
+def embedding(inputs, 
+              vocab_size, 
+              num_units, 
+              zero_pad=True, 
+              scale=True,
+              scope="embedding", 
+              reuse=None):
+    with tf.variable_scope(scope, reuse=reuse):
+        lookup_table = tf.get_variable('lookup_table',
+                                       dtype=tf.float32,
+                                       shape=[vocab_size, num_units],
+                                       initializer=tf.contrib.layers.xavier_initializer())
+        if zero_pad:
+            lookup_table = tf.concat((tf.zeros(shape=[1, num_units]),
+                                      lookup_table[1:, :]), 0)
+        outputs = tf.nn.embedding_lookup(lookup_table, inputs)
+        
+        if scale:
+            outputs = outputs * (num_units ** 0.5) 
+            
+    return outputs
+```
+
+```python
+def positional_encoding(inputs,
+                        num_units,
+                        zero_pad=True,
+                        scale=True,
+                        scope="positional_encoding",
+                        reuse=None):
+
+    N, T = inputs.get_shape().as_list()
+    with tf.variable_scope(scope, reuse=reuse):
+        position_ind = tf.tile(tf.expand_dims(tf.range(T), 0), [N, 1])
+
+        # First part of the PE function: sin and cos argument
+        position_enc = np.array([
+            [pos / np.power(10000, 2.*i/num_units) for i in range(num_units)]
+            for pos in range(T)])
+
+        # Second part, apply the cosine to even columns and sin to odds.
+        position_enc[:, 0::2] = np.sin(position_enc[:, 0::2])  # dim 2i
+        position_enc[:, 1::2] = np.cos(position_enc[:, 1::2])  # dim 2i+1
+
+        # Convert to a tensor
+        lookup_table = tf.convert_to_tensor(position_enc)
+
+        if zero_pad:
+            lookup_table = tf.concat((tf.zeros(shape=[1, num_units]),
+                                      lookup_table[1:, :]), 0)
+        outputs = tf.nn.embedding_lookup(lookup_table, position_ind)
+
+        if scale:
+            outputs = outputs * num_units**0.5
+
+        return outputs
+```
+
+```python
+def multihead_attention(queries, 
+                        keys, 
+                        num_units=None, 
+                        num_heads=8, 
+                        dropout_rate=0,
+                        is_training=True,
+                        causality=False,
+                        scope="multihead_attention", 
+                        reuse=None):
+    with tf.variable_scope(scope, reuse=reuse):
+        # Set the fall back option for num_units
+        if num_units is None:
+            num_units = queries.get_shape().as_list()[-1]
+        
+        # Linear projections
+        Q = tf.layers.dense(queries, num_units, activation=tf.nn.relu) # (N, T_q, C)
+        K = tf.layers.dense(keys, num_units, activation=tf.nn.relu) # (N, T_k, C)
+        V = tf.layers.dense(keys, num_units, activation=tf.nn.relu) # (N, T_k, C)
+        
+        # Split and concat
+        Q_ = tf.concat(tf.split(Q, num_heads, axis=2), axis=0) # (h*N, T_q, C/h) 
+        K_ = tf.concat(tf.split(K, num_heads, axis=2), axis=0) # (h*N, T_k, C/h) 
+        V_ = tf.concat(tf.split(V, num_heads, axis=2), axis=0) # (h*N, T_k, C/h) 
+
+        # Multiplication
+        outputs = tf.matmul(Q_, tf.transpose(K_, [0, 2, 1])) # (h*N, T_q, T_k)
+        
+        # Scale
+        outputs = outputs / (K_.get_shape().as_list()[-1] ** 0.5)
+        
+        # Key Masking
+        key_masks = tf.sign(tf.reduce_sum(tf.abs(keys), axis=-1)) # (N, T_k)
+        key_masks = tf.tile(key_masks, [num_heads, 1]) # (h*N, T_k)
+        key_masks = tf.tile(tf.expand_dims(key_masks, 1), [1, tf.shape(queries)[1], 1]) # (h*N, T_q, T_k)
+        
+        paddings = tf.ones_like(outputs)*(-2**32+1)
+        outputs = tf.where(tf.equal(key_masks, 0), paddings, outputs) # (h*N, T_q, T_k)
+  
+        # Causality = Future blinding
+        if causality:
+            diag_vals = tf.ones_like(outputs[0, :, :]) # (T_q, T_k)
+            tril = tf.linalg.LinearOperatorLowerTriangular(diag_vals).to_dense() # (T_q, T_k)
+            masks = tf.tile(tf.expand_dims(tril, 0), [tf.shape(outputs)[0], 1, 1]) # (h*N, T_q, T_k)
+   
+            paddings = tf.ones_like(masks)*(-2**32+1)
+            outputs = tf.where(tf.equal(masks, 0), paddings, outputs) # (h*N, T_q, T_k)
+  
+        # Activation
+        outputs = tf.nn.softmax(outputs) # (h*N, T_q, T_k)
+         
+        # Query Masking
+        query_masks = tf.sign(tf.reduce_sum(tf.abs(queries), axis=-1)) # (N, T_q)
+        query_masks = tf.tile(query_masks, [num_heads, 1]) # (h*N, T_q)
+        query_masks = tf.tile(tf.expand_dims(query_masks, -1), [1, 1, tf.shape(keys)[1]]) # (h*N, T_q, T_k)
+        outputs *= query_masks # broadcasting. (N, T_q, C)
+          
+        # Dropouts
+        outputs = tf.layers.dropout(outputs, rate=dropout_rate, training=tf.convert_to_tensor(is_training))
+               
+        # Weighted sum
+        outputs = tf.matmul(outputs, V_) # ( h*N, T_q, C/h)
+        
+        # Restore shape
+        outputs = tf.concat(tf.split(outputs, num_heads, axis=0), axis=2 ) # (N, T_q, C)
+              
+        # Residual connection
+        outputs += queries
+              
+        # Normalize
+        outputs = normalize(outputs) # (N, T_q, C)
+ 
+    return outputs
+```
+
+下面是 **前馈神经网络层** 的定义，这是一个非线性变换。
+
+* 先是使用了一个卷积层（conv1d）作为 inner layer、一个卷积层作为 readout layer，卷积核大小都为 1。
+* `num_units[0]` 表示 inner layer 的神经元数，`num_units[1]` 表示 readout layer 的神经元数，默认分别为 2048、512，调用时传入的是超参数的 `[4 * hidden_units, hidden_units]`。
+* 其中 inner layer 用 `ReLU` 作为激活函数，然后连接一个残差网络 RedNet，把 readout layer 的输出加上原始的输入。
+* 最后使用 `normalize` 归一化处理输出，再返回。
+
+```python
+def feedforward(inputs, 
+                num_units=[2048, 512],
+                scope="multihead_attention", 
+                reuse=None):
+    with tf.variable_scope(scope, reuse=reuse):
+        # Inner layer
+        params = {"inputs": inputs, "filters": num_units[0], "kernel_size": 1,
+                  "activation": tf.nn.relu, "use_bias": True}
+        outputs = tf.layers.conv1d(**params)
+        
+        # Readout layer
+        params = {"inputs": outputs, "filters": num_units[1], "kernel_size": 1,
+                  "activation": None, "use_bias": True}
+        outputs = tf.layers.conv1d(**params)
+        
+        # Residual connection
+        outputs += inputs
+        
+        # Normalize
+        outputs = normalize(outputs)
+    
+    return outputs
+```
+
+##### 2.4.4、编码和解码完成后的操作
+
+解码器后的 `Linear & Softmax`：
+
+```python
+# Final linear projection
+self.logits = tf.layers.dense(self.dec, len(en2idx))
+self.preds = tf.to_int32(tf.arg_max(self.logits, dimension=-1))
+self.istarget = tf.to_float(tf.not_equal(self.y, 0))
+self.acc = tf.reduce_sum(tf.to_float(tf.equal(self.preds, self.y))*self.istarget)/ (tf.reduce_sum(self.istarget))
+tf.summary.scalar('acc', self.acc)
+```
+
+训练集数据处理时，经过 `Linear & Softmax` 之后的最后处理如下。这里用到了 `tf.nn.softmax_cross_entropy_with_logits` 交叉熵损失，来计算模型的错误率 `mean_loss`，并使用 Adam 优化器 `AdamOptimizer` 来优化模型参数。
+
+```python
+self.y_smoothed = label_smoothing(tf.one_hot(self.y, depth=len(en2idx)))
+self.loss = tf.nn.softmax_cross_entropy_with_logits(logits=self.logits, labels=self.y_smoothed)
+self.mean_loss = tf.reduce_sum(self.loss * self.istarget) / (tf.reduce_sum(self.istarget))
+
+# Training Scheme
+self.global_step = tf.Variable(0, name='global_step', trainable=False)
+self.optimizer = tf.train.AdamOptimizer(learning_rate=hp.lr, beta1=0.9, beta2=0.98, epsilon=1e-8)
+self.train_op = self.optimizer.minimize(self.mean_loss, global_step=self.global_step)
+   
+# Summary 
+tf.summary.scalar('mean_loss', self.mean_loss)
+self.merged = tf.summary.merge_all()
+```
+
+
+```python
+def label_smoothing(inputs, epsilon=0.1):
+    K = inputs.get_shape().as_list()[-1] # number of channels
+    return ((1-epsilon) * inputs) + (epsilon / K)
+```
+
+```python
+def normalize(inputs, 
+              epsilon = 1e-8,
+              scope="ln",
+              reuse=None):
+    with tf.variable_scope(scope, reuse=reuse):
+        inputs_shape = inputs.get_shape()
+        params_shape = inputs_shape[-1:]
+    
+        mean, variance = tf.nn.moments(inputs, [-1], keep_dims=True)
+        beta= tf.Variable(tf.zeros(params_shape))
+        gamma = tf.Variable(tf.ones(params_shape))
+        normalized = (inputs - mean) / ( (variance + epsilon) ** (.5) )
+        outputs = gamma * normalized + beta
+        
+    return outputs
+```
+
+#### 2.5、效果评价
+
+```python
+def eval(): 
+    # 创建一个处理测试数据集的 Graph 实例
+    g = Graph(is_training=False)
+    print("Graph loaded")
+    
+    # 加载测试数据
+    X, Sources, Targets = load_test_data()
+    de2idx, idx2de = load_de_vocab()
+    en2idx, idx2en = load_en_vocab()
+     
+    # Start session         
+    with g.graph.as_default():    
+        sv = tf.train.Supervisor()
+        with sv.managed_session(config=tf.ConfigProto(allow_soft_placement=True)) as sess:
+            ## Restore parameters
+            sv.saver.restore(sess, tf.train.latest_checkpoint(hp.logdir))
+            print("Restored!")
+              
+            ## Get model name
+            mname = open(hp.logdir + '/checkpoint', 'r').read().split('"')[1] # model name
+             
+            ## Inference
+            if not os.path.exists('results'): os.mkdir('results')
+            with codecs.open("results/" + mname, "w", "utf-8") as fout:
+                list_of_refs, hypotheses = [], []
+                for i in range(len(X) // hp.batch_size):
+                     
+                    ### Get mini-batches
+                    x = X[i*hp.batch_size: (i+1)*hp.batch_size]
+                    sources = Sources[i*hp.batch_size: (i+1)*hp.batch_size]
+                    targets = Targets[i*hp.batch_size: (i+1)*hp.batch_size]
+                     
+                    ### Autoregressive inference
+                    preds = np.zeros((hp.batch_size, hp.maxlen), np.int32)
+                    for j in range(hp.maxlen):
+                        _preds = sess.run(g.preds, {g.x: x, g.y: preds})
+                        preds[:, j] = _preds[:, j]
+                     
+                    ### Write to file
+                    for source, target, pred in zip(sources, targets, preds): # sentence-wise
+                        got = " ".join(idx2en[idx] for idx in pred).split("</S>")[0].strip()
+                        fout.write("- source: " + source +"\n")
+                        fout.write("- expected: " + target + "\n")
+                        fout.write("- got: " + got + "\n\n")
+                        fout.flush()
+                          
+                        # bleu score
+                        ref = target.split()
+                        hypothesis = got.split()
+                        if len(ref) > 3 and len(hypothesis) > 3:
+                            list_of_refs.append([ref])
+                            hypotheses.append(hypothesis)
+              
+                ## Calculate bleu score
+                score = corpus_bleu(list_of_refs, hypotheses)
+                fout.write("Bleu Score = " + str(100*score))
+                                          
+if __name__ == '__main__':
+    eval()
+    print("Done")
+```
+
+#### 2.6、eval
+
+```python
+def eval(): 
+    # Load graph
+    g = Graph(is_training=False)
+    print("Graph loaded")
+    
+    # Load data
+    X, Sources, Targets = load_test_data()
+    de2idx, idx2de = load_de_vocab()
+    en2idx, idx2en = load_en_vocab()
+     
+#     X, Sources, Targets = X[:33], Sources[:33], Targets[:33]
+     
+    # Start session         
+    with g.graph.as_default():    
+        sv = tf.train.Supervisor()
+        with sv.managed_session(config=tf.ConfigProto(allow_soft_placement=True)) as sess:
+            ## Restore parameters
+            sv.saver.restore(sess, tf.train.latest_checkpoint(hp.logdir))
+            print("Restored!")
+              
+            ## Get model name
+            mname = open(hp.logdir + '/checkpoint', 'r').read().split('"')[1] # model name
+             
+            ## Inference
+            if not os.path.exists('results'): os.mkdir('results')
+            with codecs.open("results/" + mname, "w", "utf-8") as fout:
+                list_of_refs, hypotheses = [], []
+                for i in range(len(X) // hp.batch_size):
+                     
+                    ### Get mini-batches
+                    x = X[i*hp.batch_size: (i+1)*hp.batch_size]
+                    sources = Sources[i*hp.batch_size: (i+1)*hp.batch_size]
+                    targets = Targets[i*hp.batch_size: (i+1)*hp.batch_size]
+                     
+                    ### Autoregressive inference
+                    preds = np.zeros((hp.batch_size, hp.maxlen), np.int32)
+                    for j in range(hp.maxlen):
+                        _preds = sess.run(g.preds, {g.x: x, g.y: preds})
+                        preds[:, j] = _preds[:, j]
+                     
+                    ### Write to file
+                    for source, target, pred in zip(sources, targets, preds): # sentence-wise
+                        got = " ".join(idx2en[idx] for idx in pred).split("</S>")[0].strip()
+                        fout.write("- source: " + source +"\n")
+                        fout.write("- expected: " + target + "\n")
+                        fout.write("- got: " + got + "\n\n")
+                        fout.flush()
+                          
+                        # bleu score
+                        ref = target.split()
+                        hypothesis = got.split()
+                        if len(ref) > 3 and len(hypothesis) > 3:
+                            list_of_refs.append([ref])
+                            hypotheses.append(hypothesis)
+              
+                ## Calculate bleu score
+                score = corpus_bleu(list_of_refs, hypotheses)
+                fout.write("Bleu Score = " + str(100*score))
+                                          
+if __name__ == '__main__':
+    eval()
+    print("Done")
+```
+
+### 3、Kyubyong Transformer 的性能表现
+
+### 4、Kyubyong Transformer 的一些问题
+
+## 参考
 
 * http://jalammar.github.io/illustrated-transformer/
 * 《自然语言处理：基于预训练模型的方法》车万翔 等
