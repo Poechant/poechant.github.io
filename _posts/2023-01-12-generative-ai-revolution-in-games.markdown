@@ -11,6 +11,12 @@ location: 杭州
 author: James Gwertzman and Jack Soslow | [译] AI & 麦克船长
 ---
 
+![image](/img/src/2023-01-12-generative-ai-revolution-in-games-0.png)
+
+* 作者 James Gwertzman and Jack Soslow
+* [译] AI & 麦克船长
+* 本文授权首发媒体「锐察力」，微信公众号 ID @ruichali
+
 **本文目录**
 * TOC
 {:toc}

@@ -11,13 +11,13 @@ location: 杭州
 author: Jürgen Schmidhuber | [译] AI & 麦克船长
 ---
 
-**本文目录**
-* TOC
-{:toc}
+![image](/img/src/2023-01-17-juergen-deep-learning-history-1.png){: width=100%}
 
 本文译自 LSTM 作者 Jürgen Schmidhuber, KAUST AII, Swiss AI Lab IDSIA, USI，中文译文由 AI 及麦克船长完成翻译。
 
-![image](/img/src/2023-01-17-juergen-deep-learning-history-1.png){: width=100%}
+**本文目录**
+* TOC
+{:toc}
 
 ## 现代人工智能和深度学习的注释历史
 
