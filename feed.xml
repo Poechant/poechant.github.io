@@ -1,4 +1,1080 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-01-14T21:52:42+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">麦克船长 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）</title><link href="https://www.mikecaptain.com/2023/01/04/language-model-5/" rel="alternate" type="text/html" title="麦克船长 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）" /><published>2023-01-04T18:13:09+00:00</published><updated>2023-01-04T18:13:09+00:00</updated><id>https://www.mikecaptain.com/2023/01/04/language-model-5</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/04/language-model-5/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-01-15T01:52:05+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">三万字长文！LSTM 之父 Jürgen 带我们回顾深度学习发展史</title><link href="https://www.mikecaptain.com/2023/01/14/juergen-deep-learning-history/" rel="alternate" type="text/html" title="三万字长文！LSTM 之父 Jürgen 带我们回顾深度学习发展史" /><published>2023-01-14T20:21:55+00:00</published><updated>2023-01-14T20:21:55+00:00</updated><id>https://www.mikecaptain.com/2023/01/14/juergen-deep-learning-history</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/14/juergen-deep-learning-history/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#现代人工智能和深度学习的注释历史&quot; id=&quot;markdown-toc-现代人工智能和深度学习的注释历史&quot;&gt;现代人工智能和深度学习的注释历史&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#介绍&quot; id=&quot;markdown-toc-介绍&quot;&gt;介绍&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1676向后信用分配的链式规则&quot; id=&quot;markdown-toc-1676向后信用分配的链式规则&quot;&gt;1676：向后信用分配的链式规则&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1800第一个神经网络线性回归浅层学习&quot; id=&quot;markdown-toc-1800第一个神经网络线性回归浅层学习&quot;&gt;~1800：第一个神经网络/线性回归/浅层学习&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1920-1925第一个循环网络架构&quot; id=&quot;markdown-toc-1920-1925第一个循环网络架构&quot;&gt;1920-1925：第一个循环网络架构&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1972首次发布学习人工-rnn&quot; id=&quot;markdown-toc-1972首次发布学习人工-rnn&quot;&gt;~1972：首次发布学习人工 RNN&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1958-年多层前馈神经网络没有深度学习&quot; id=&quot;markdown-toc-1958-年多层前馈神经网络没有深度学习&quot;&gt;1958 年：多层前馈神经网络（没有深度学习）&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1965-年第一次深度学习&quot; id=&quot;markdown-toc-1965-年第一次深度学习&quot;&gt;1965 年：第一次深度学习&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1967-68通过随机梯度下降进行深度学习&quot; id=&quot;markdown-toc-1967-68通过随机梯度下降进行深度学习&quot;&gt;1967-68：通过随机梯度下降进行深度学习&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1970-年反向传播-1982-年对于神经网络-1960-年先驱&quot; id=&quot;markdown-toc-1970-年反向传播-1982-年对于神经网络-1960-年先驱&quot;&gt;1970 年：反向传播。 1982 年：对于神经网络。 1960 年：先驱。&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1979-年第一个深度卷积神经网络1969-年relu&quot; id=&quot;markdown-toc-1979-年第一个深度卷积神经网络1969-年relu&quot;&gt;1979 年：第一个深度卷积神经网络（1969 年：ReLU）&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1980-年代至-90-年代图形神经网络随机增量规则dropout&quot; id=&quot;markdown-toc-1980-年代至-90-年代图形神经网络随机增量规则dropout&quot;&gt;1980 年代至 90 年代：图形神经网络/随机增量规则（Dropout）/…&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1990-年-2-月生成对抗网络好奇心&quot; id=&quot;markdown-toc-1990-年-2-月生成对抗网络好奇心&quot;&gt;1990 年 2 月：生成对抗网络/好奇心&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1990-年-2-月生成对抗网络好奇心-1&quot; id=&quot;markdown-toc-1990-年-2-月生成对抗网络好奇心-1&quot;&gt;1990 年 2 月：生成对抗网络/好奇心&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1991-年-3-月具有线性化自注意力的变形金刚&quot; id=&quot;markdown-toc-1991-年-3-月具有线性化自注意力的变形金刚&quot;&gt;1991 年 3 月：具有线性化自注意力的变形金刚&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1991-年-4-月通过自监督预训练进行深度学习&quot; id=&quot;markdown-toc-1991-年-4-月通过自监督预训练进行深度学习&quot;&gt;1991 年 4 月：通过自监督预训练进行深度学习&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1991-年-6-月基本问题梯度消失&quot; id=&quot;markdown-toc-1991-年-6-月基本问题梯度消失&quot;&gt;1991 年 6 月：基本问题：梯度消失&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1991-年-6-月lstm--highway-nets--resnets-的根源&quot; id=&quot;markdown-toc-1991-年-6-月lstm--highway-nets--resnets-的根源&quot;&gt;1991 年 6 月：LSTM / Highway Nets / ResNets 的根源&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1995神经概率语言模型&quot; id=&quot;markdown-toc-1995神经概率语言模型&quot;&gt;1995：神经概率语言模型&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#lstm--highway-net-原理是现代深度学习的核心&quot; id=&quot;markdown-toc-lstm--highway-net-原理是现代深度学习的核心&quot;&gt;LSTM / Highway Net 原理是现代深度学习的核心&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#是硬件笨蛋&quot; id=&quot;markdown-toc-是硬件笨蛋&quot;&gt;是硬件，笨蛋！&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#不要忽视-1931-年以来的人工智能理论&quot; id=&quot;markdown-toc-不要忽视-1931-年以来的人工智能理论&quot;&gt;不要忽视 1931 年以来的人工智能理论&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#从大爆炸到遥远的未来的更广泛的历史背景&quot; id=&quot;markdown-toc-从大爆炸到遥远的未来的更广泛的历史背景&quot;&gt;从大爆炸到遥远的未来的更广泛的历史背景&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#致谢&quot; id=&quot;markdown-toc-致谢&quot;&gt;致谢&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#555-参考文献调查-dl1-中还有更多参考文献&quot; id=&quot;markdown-toc-555-参考文献调查-dl1-中还有更多参考文献&quot;&gt;555+ 参考文献（调查 [DL1] 中还有更多参考文献）&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;本文译自 LSTM 作者 Jürgen Schmidhuber, KAUST AII, Swiss AI Lab IDSIA, USI，中文译文由 AI 及麦克船长完成翻译。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;现代人工智能和深度学习的注释历史&quot;&gt;现代人工智能和深度学习的注释历史&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;抽象的&lt;/strong&gt;。 机器学习 (ML) 是信用分配的科学：在观察中寻找预测行为后果并有助于提高未来绩效的模式。 人类理解世界如何运作也需要学分分配，这不仅适用于驾驭日常生活的个人，也适用于历史学家等根据过去事件解释现在的学术专业人士。 在这里，我重点介绍以人工神经网络 (NN) 和深度学习为主的现代人工智能 (AI) 的历史，[DL1-4] 在概念上都更接近控制论的旧领域，而不是自 1956 年以来被称为 AI 的领域（ 例如，专家系统和逻辑编程）。 AI 现代史将强调传统 AI 教科书重点之外的突破，特别是当今神经网络的数学基础，例如链式法则 (1676)、第一个神经网络（线性回归，大约 1800 年）和第一个有效的神经网络 深度学习者（1965-）。 从 2022 年的角度来看，我提供了一个事后回顾的时间表，其中列出了神经网络、深度学习、人工智能、计算机科学和一般数学史上最重要的相关事件，以表彰那些为该领域奠定基础的人。 文中包含许多指向我的 AI 博客中相关概览站点的超链接。 它还揭穿了某些流行但具有误导性的深度学习历史记录，并补充了我之前的深度学习调查 [DL1]，该调查提供了数百个额外的参考。 最后，为了圆满结束，我将把事情放在更广泛的历史背景下，跨越从大爆炸到宇宙比现在古老许多倍的时间。 目前的文章也是我即将出版的 AI 书的一章草稿。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;免责声明&lt;/strong&gt;。 有人说深度学习的历史不应该由帮助塑造它的人来写——“你是历史的一部分，而不是历史学家。”[CONN21] 我不同意这种观点。 由于我似乎比其他人更了解深度学习的历史，[S20][DL3,DL3a][T22][DL1-2] 我认为记录和推广这些知识是我的责任，即使这似乎暗示着与 兴趣，因为这意味着突出提及我自己团队的工作，因为（截至 2022 年）引用最多的神经网络都是基于它的。[MOST] 未来的人工智能历史学家可能会纠正任何时代特定的潜在偏见。&lt;/p&gt;
+
+&lt;h2 id=&quot;介绍&quot;&gt;介绍&lt;/h2&gt;
+
+&lt;p&gt;随着时间的推移，某些历史事件在某些旁观者眼中变得更加重要。 例如，138 亿年前的大爆炸现在被广泛认为是万物历史上的重要时刻。 然而，直到几十年前，地球人还完全不知道它，长期以来，地球人对宇宙的起源抱有相当错误的看法（有关世界历史的更多信息，请参见最后一节）。 目前接受的许多更有限主题的历史是类似激进修订的结果。 在这里，我将重点关注人工智能 (AI) 的历史，它也与过去不同。&lt;/p&gt;
+
+&lt;p&gt;1980 年代写的 AI 历史会强调定理证明、[GOD][GOD34][ZU48][NS56] 逻辑编程、专家系统和启发式搜索等主题。[FEI63,83][LEN83] 这将是 与 1956 年达特茅斯会议的主题一致，约翰麦卡锡在会上创造了“人工智能”一词，用来描述一个旧的研究领域重新引起人们的兴趣。 实用 AI 至少可以追溯到 1914 年，当时 Leonardo Torres y Quevedo（见下文）构建了第一个工作的国际象棋终端游戏玩家 [BRU1-4]（当时国际象棋被认为是一种仅限于智能生物领域的活动）。 AI 理论至少可以追溯到 1931-34 年，当时 Kurt Gödel（见下文）确定了任何类型的基于计算的 AI 的基本限制。[GOD][BIB3][GOD21,a,b]&lt;/p&gt;
+
+&lt;p&gt;2000 年代初期编写的 AI 历史会更加强调支持向量机和内核方法等主题，[SVM1-4] 贝叶斯（实际上是拉普拉斯或可能是桑德森[STI83-85]）推理[BAY1-8][ FI22]和其他概率论和统计概念，[MM1-5][NIL98][RUS95]决策树，例如[MIT97]集成方法，[ENS1-4]群体智能，[SW1]和进化计算。&lt;a href=&quot;[TUR1],未发表&quot;&gt;EVO1 -7&lt;/a&gt;为什么？ 因为在当时，此类技术推动了许多成功的 AI 应用。&lt;/p&gt;
+
+&lt;p&gt;写于 2020 年代的 AI 历史必须强调诸如更古老的链式法则 [LEI07] 和通过梯度下降训练的深度非线性人工神经网络 (NN) [GD’] 等概念，特别是基于反馈的循环网络，它们是 其程序是权重矩阵的通用计算机。[AC90] 为什么？ 因为最近许多最著名和最商业化的 AI 应用程序都依赖于它们。[DL4]&lt;/p&gt;
+
+&lt;p&gt;这样的 NN 概念实际上在概念上接近 MACY 会议 (1946-1953)[MACY51] 和 1951 年关于计算机器和人类思想的巴黎会议的主题，现在通常被视为关于 AI 的第一次会议。[AI51][BRO21][ BRU4] 然而，在 1956 年之前，现在称为 AI 的大部分内容仍被称为控制论，重点与基于神经网络“深度学习”的现代 AI 非常一致。[DL1-2][DEC]&lt;/p&gt;
+
+&lt;p&gt;过去的一些神经网络研究受到人脑的启发，人脑有大约 1000 亿个神经元，每个神经元平均连接到 10,000 个其他神经元。 有些是输入神经元，为其余神经元提供数据（声音、视觉、触觉、疼痛、饥饿）。 其他的是控制肌肉的输出神经元。 大多数神经元隐藏在两者之间，思考发生的地方。 你的大脑显然通过改变连接的强度或权重来学习，这决定了神经元相互影响的强度，并且似乎编码了你一生的所有经历。 与我们的人工 NN 类似，它比以前的方法学习得更好，可以识别语音或手写或视频、最小化痛苦、最大化快乐、驾驶汽车等。[MIR]（第 0 节）[DL1-4]&lt;/p&gt;
+
+&lt;p&gt;NN 如何学习所有这些？ 在下文中，我将强调使这一切成为可能的重要历史贡献。 由于现代 AI 的几乎所有基本概念都源于前几千年，因此下面的章节标题只强调到 2000 年的发展。然而，许多章节都提到了这项工作在新千年的后期影响，这带来了许多 硬件和软件的改进，有点像 20 世纪对 19 世纪发明的汽车进行了大量改进。&lt;/p&gt;
+
+&lt;p&gt;本文还揭穿了一个经常重复的、误导性的“深度学习的历史”[S20][DL3,3a]，它忽略了下面提到的大部分开创性工作。[T22]见脚注 6。本文的标题图片是一个 对一条错误的常识的反应，该常识说 [T19] 使用神经网络“作为帮助计算机识别模式和模拟人类智能的工具是在 1980 年代引入的”，尽管这种神经网络早在 1980 年代就出现了。 [T22 ] 确保在所有科学中正确分配学分对我来说非常重要——就像对所有科学家一样——我鼓励有兴趣的读者也看看我在《科学》和《自然》杂志上就此发表的一些信件，例如， 关于航空史，[NASC1-2] 电话，[NASC3] 计算机，[NASC4-7] 弹性机器人，[NASC8] 和 19 世纪的科学家。[NASC9]&lt;/p&gt;
+
+&lt;p&gt;最后，为了圆满结束，我将把事情放在更广泛的历史背景下，跨越从大爆炸到宇宙比现在古老许多倍的时间。&lt;/p&gt;
+
+&lt;h2 id=&quot;1676向后信用分配的链式规则&quot;&gt;1676：向后信用分配的链式规则&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-2.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;莱布尼茨，大约 1670 年的计算机科学之父，于 1676 年发表了链式法则&lt;/p&gt;
+
+&lt;p&gt;1676年，戈特弗里德·威廉·莱布尼茨在回忆录中发表了微积分的链式法则（尽管万物皆有符号错误！）； Guillaume de l’Hopital 在他 1696 年关于莱布尼茨微积分的教科书中对此进行了描述。[LEI07-10][L84] 今天，这条规则是深度神经网络 (NN) 中信用分配的核心。 为什么？ 最流行的 NN 具有计算来自其他神经元的输入的可微函数的节点或神经元，这些节点或神经元又计算来自其他神经元的输入的可微函数，等等。 问题是：如果我们稍微修改早期函数的参数或权重，最终函数的输出将如何变化？ 链式法则是计算答案的基本工具。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-3.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Cauchy 这个答案被梯度下降 (GD) 技术使用，显然是由 Augustin-Louis Cauchy 于 1847 年首次提出 [GD’]（后来由 Jacques Hadamard [GD’’] 提出；称为 SGD 的随机版本归功于 Herbert 罗宾斯和萨顿门罗 (1951)[STO51-52])。 为了教会神经网络将来自训练集的输入模式转换为所需的输出模式，所有神经网络权重都朝着最大局部改进的方向迭代改变一点，以创建稍微更好的神经网络，依此类推，直到获得令人满意的解决方案 成立。&lt;/p&gt;
+
+&lt;p&gt;脚注 1. 1684 年，莱布尼茨也是第一个发表“现代”微积分的人；[L84][SON18][MAD05][LEI21,a,b] 后来艾萨克·牛顿也因其未发表的工作而受到赞誉。[SON18] 他们的优先事项 然而，争议 [SON18] 并不包含链式法则。[LEI07-10] 当然，两者都建立在早期工作的基础上：在公元前 2 世纪，阿基米德（也许是有史以来最伟大的科学家 [ARC06]）为 无穷小并发表了微积分的特例，例如球体和抛物线段，建立在古希腊更早的工作之上。 14 世纪，Sangamagrama 的 Madhava 和印度喀拉拉邦学派的同事也进行了微积分的基础工作。[MAD86-05]&lt;/p&gt;
+
+&lt;p&gt;脚注 2. 值得注意的是，莱布尼茨（1646-1714 年，又名“世界上第一位计算机科学家”[LA14]）也奠定了现代计算机科学的基础。 他设计了第一台可以执行所有四种算术运算的机器（1673），以及第一台带有内部存储器的机器。[BL16] 他描述了二进制计算机的原理（1679）[L79][L03][LA14][HO66][ LEI21,a,b] 几乎被所有现代机器所采用。 他的正式思想代数 (1686)[L86][WI48] 与后来的布尔代数 (1847) 演绎等价[LE18]。[BOO] 他的 Characteristica Universalis &amp;amp; Calculus Ratiocinator 旨在通过计算回答所有可能的问题；[WI48 】 他的《微积分！ 是启蒙时代的标志性名言之一。 值得注意的是，他还负责链式法则，这是“现代”深度学习的基础，是现代计算机科学的一个重要子领域。&lt;/p&gt;
+
+&lt;p&gt;脚注 3. 有人声称反向传播算法（进一步讨论；现在广泛用于训练深度神经网络）只是 Leibniz (1676) &amp;amp; L’Hopital (1696) 的链式法则。[CONN21] 不，这是有效的方法 将链式法则应用于具有可微分节点的大型网络（也有许多低效的方法）。[T22] 直到 1970 年才发布，如下所述。[BP1,4,5]&lt;/p&gt;
+
+&lt;h2 id=&quot;1800第一个神经网络线性回归浅层学习&quot;&gt;~1800：第一个神经网络/线性回归/浅层学习&lt;/h2&gt;
+
+&lt;p&gt;1805 年，Adrien-Marie Legendre 发表了现在通常称为线性神经网络 (NN) 的内容。 约翰·卡尔·弗里德里希·高斯 (Johann Carl Friedrich Gauss) 也因在大约 1795 年完成的早期未发表的工作而受到赞誉&lt;/p&gt;
+
+&lt;p&gt;1805 年，Adrien-Marie Legendre 发表了现在通常称为线性神经网络 (NN) 的内容。 后来，约翰·卡尔·弗里德里希·高斯 (Johann Carl Friedrich Gauss) 也因在大约 1795 年完成的这项未发表的工作而受到赞誉。[STI81]&lt;/p&gt;
+
+&lt;p&gt;这个来自 2 个多世纪前的神经网络有两层：一个具有多个输入单元的输入层和一个输出层。 为简单起见，我们假设后者由单个输出单元组成。 每个输入单元都可以保存一个实数值，并通过具有实数值权重的连接连接到输出。 NN 的输出是输入与其权重的乘积之和。 给定输入向量的训练集和每个向量的期望目标值，调整 NN 权重，使 NN 输出与相应目标之间的平方误差之和最小化。&lt;/p&gt;
+
+&lt;p&gt;1795 年，高斯使用了现在称为线性神经网络的东西，但勒让德于 1805 年首次发表了它。高斯通常被称为自古以来最伟大的数学家，当然，那时候还不叫神经网络。 它被称为最小二乘法，也被广泛称为线性回归。 但它在数学上与今天的线性神经网络相同：相同的基本算法、相同的误差函数、相同的自适应参数/权重。 这种简单的神经网络执行“浅层学习”（与具有许多非线性层的“深度学习”相反）。 事实上，许多神经网络课程都是从介绍这种方法开始的，然后转向更复杂、更深入的神经网络。&lt;/p&gt;
+
+&lt;p&gt;也许第一个通过浅层学习进行模式识别的著名例子可以追溯到 200 多年前：1801 年通过高斯重新发现矮行星谷神星，他从以前的天文观测中获得了数据点，然后使用各种技巧来调整模型的参数 预测器，它基本上学会了从训练数据中进行归纳以正确预测谷神星的新位置。&lt;/p&gt;
+
+&lt;p&gt;脚注 4. 今天，所有技术学科的学生都必须上数学课，尤其是分析、线性代数和统计学。 在所有这些领域中，重要的结果和方法（至少部分）归功于高斯：代数基本定理、高斯消去法、统计的高斯分布等。这位号称“自古以来最伟大的数学家”的人也开创了微分 几何、数论（他最喜欢的科目）和非欧几何。 此外，他对天文学和物理学做出了重大贡献。 如果没有他的成果，包括 AI 在内的现代工程将不可想象。&lt;/p&gt;
+
+&lt;p&gt;脚注 5. 神经网络的“浅层学习”在 1950 年代后期经历了新一波的流行。 Rosenblatt 的感知器 (1958)[R58] 将上述线性 NN 与输出阈值函数相结合以获得模式分类器（比较他在下面讨论的多层网络上更先进的工作）。 Joseph[R61] 提到了 Farley &amp;amp; Clark 更早的类似感知器的设备。 Widrow &amp;amp; Hoff 的类似 Adaline 在 1962 年学到。[WID62]&lt;/p&gt;
+
+&lt;h2 id=&quot;1920-1925第一个循环网络架构&quot;&gt;1920-1925：第一个循环网络架构&lt;/h2&gt;
+
+&lt;p&gt;1924 年，Ernst Ising 发表了第一个循环网络架构：Ising 模型或 Lenz-Ising 模型。 与人脑相似，但与更有限的前馈神经网络 (FNN) 不同，循环神经网络 (RNN) 具有反馈连接，因此可以遵循从某些内部节点到其他节点的定向连接，并最终在起点处结束。 这对于在序列处理期间实现对过去事件的记忆是必不可少的。&lt;/p&gt;
+
+&lt;p&gt;第一个非学习 RNN 架构（Ising 模型或 Lenz-Ising 模型）是由物理学家 Ernst Ising 和 Wilhelm Lenz 在 1920 年代引入和分析的[L20][I24,I25][K41][W45][T22] 它 响应输入条件进入平衡状态，并且是第一个学习 RNN 的基础（见下文）。&lt;/p&gt;
+
+&lt;p&gt;非学习 RNN 也在 1943 年由神经科学家 Warren McCulloch 和 Walter Pitts [MC43] 进行了讨论，并在 1956 年由 Stephen Cole Kleene 进行了正式分析。 [K56]&lt;/p&gt;
+
+&lt;p&gt;1972 年，Shun-Ichi Amari 使 Ising 递归网络自适应。 这是第一个发表的学习人工递归神经网络&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;1972首次发布学习人工-rnn&quot;&gt;~1972：首次发布学习人工 RNN&lt;/h3&gt;
+
+&lt;p&gt;1972 年，Shun-Ichi Amari 使 Lenz-Ising 循环架构具有自适应性，这样它就可以通过改变连接权重来学习将输入模式与输出模式相关联。[AMH1] 另见 Stephen Grossberg 关于生物网络的工作，[GRO69] David Marr 的 [MAR71]和Teuvo Kohonen的[KOH72]工作，以及Kaoru Nakano的学习RNN。[NAK72]&lt;/p&gt;
+
+&lt;p&gt;艾伦·图灵
+10 年后，Amari 网络被重新发布（并分析了它的存储容量）。[AMH2] 有人称它为 Hopfield 网络（！）或 Amari-Hopfield 网络。[AMH3] 它不处理序列，但在响应中达到平衡 到静态输入模式。 然而，Amari (1972) 也对其进行了序列处理推广[AMH1]&lt;/p&gt;
+
+&lt;p&gt;值得注意的是，早在 1948 年，艾伦图灵就提出了与人工进化和学习 RNN 相关的想法。 然而，这在几十年后首次发表，[TUR1] 这解释了他在这里思想的晦涩。[TUR21]（边注：有人指出，著名的“图灵测试”实际上应该称为“笛卡尔测试” .[TUR3,a,b][TUR21])&lt;/p&gt;
+
+&lt;p&gt;今天最流行的RNN就是下面提到的长短期记忆（LSTM），它已经成为20世纪被引用最多的NN[MOST]&lt;/p&gt;
+
+&lt;h2 id=&quot;1958-年多层前馈神经网络没有深度学习&quot;&gt;1958 年：多层前馈神经网络（没有深度学习）&lt;/h2&gt;
+
+&lt;p&gt;1958 年，弗兰克·罗森布拉特 (Frank Rosenblatt) 拥有多层感知器，其最后一层学习&lt;/p&gt;
+
+&lt;p&gt;1958 年，Frank Rosenblatt 不仅结合了线性 NN 和阈值函数（参见 1800 年以来的浅层学习部分），他还有更有趣、更深层的多层感知器 (MLP)。[R58] 他的 MLP 有一个非学习的第一层 随机权重和自适应输出层。 虽然这还不是深度学习，因为只有最后一层学习了，[DL1] Rosenblatt 基本上拥有了后来被重新命名为极限学习机 (ELM) 的东西，但没有适当的归因。[ELM1-2][CONN21][T22]&lt;/p&gt;
+
+&lt;p&gt;1961 年，Karl Steinbuch [ST61-95] 和 Roger David Joseph [R61] (1961) 也讨论了 MLP。 另见 Oliver Selfridge 的多层 Pandemonium [SE59] (1959)。&lt;/p&gt;
+
+&lt;p&gt;Rosenblatt (1962) 甚至写了关于带有隐藏层的 MLP 中的“反向传播错误”[R62]，尽管他还没有针对深度 MLP 的通用深度学习算法。 现在称为反向传播的东西完全不同，它于 1970 年首次发布，如下所述。[BP1-BP5][BPA-C]&lt;/p&gt;
+
+&lt;p&gt;今天，最流行的 FNN 是基于 LSTM 的 Highway Net（下文提到）的一个版本，称为 ResNet，[HW1-3]，它已成为 21 世纪被引用最多的 NN。[MOST]&lt;/p&gt;
+
+&lt;h2 id=&quot;1965-年第一次深度学习&quot;&gt;1965 年：第一次深度学习&lt;/h2&gt;
+
+&lt;p&gt;1965 年，Alexey Ivakhnenko 和 Valentin Lapa 推出了第一个适用于具有任意多个隐藏层的深度 MLP 的深度学习算法
+深度前馈网络架构的成功学习始于 1965 年的乌克兰（当时的苏联），当时 Alexey Ivakhnenko 和 Valentin Lapa 为具有任意多个隐藏层（已经包含现在流行的乘法门）的深度 MLP 引入了第一个通用的工作学习算法 .[DEEP1-2][DL1-2][FDL] 1971年的一篇论文[DEEP2]已经描述了一个8层的深度学习网络，用他们被高度引用的方法训练，这种方法在新千年仍然很流行，[DL2]尤其是 在东欧，那里诞生了很多机器学习。[MIR]（第 1 节）[R8]&lt;/p&gt;
+
+&lt;p&gt;给定一组具有相应目标输出向量的输入向量训练集，层逐渐增长并通过回归分析进行训练，然后借助单独的验证集进行修剪，其中正则化用于清除多余的单元。 层数和每层单元以问题相关的方式学习。&lt;/p&gt;
+
+&lt;p&gt;与后来的深度神经网络一样，Ivakhnenko 的网络学会了为传入数据创建分层的、分布式的、内部表示。&lt;/p&gt;
+
+&lt;p&gt;他没有称它们为深度学习神经网络，但它们就是这样。 事实上，“深度学习”这个古老的术语最早是由 Dechter (1986) 引入机器学习的，Aizenberg 等人 (2000) 引入神经网络的。[DL2]（边注：我们 2005 年关于深度学习的论文 [DL6 ,6a] 是第一本机器学习出版物，标题中包含“深入学习”这个词组合。[T22])&lt;/p&gt;
+
+&lt;h2 id=&quot;1967-68通过随机梯度下降进行深度学习&quot;&gt;1967-68：通过随机梯度下降进行深度学习&lt;/h2&gt;
+
+&lt;p&gt;1967-68 年，Shun-Ichi Amari 通过随机梯度下降训练深度 MLP
+Ivakhnenko 和 Lapa（1965 年，见上文）逐层训练他们的深层网络。 然而，在 1967 年，Shun-Ichi Amari 建议通过随机梯度下降 (SGD)[GD1] 从头开始以非增量端到端方式训练多层 MLP，这是 Robbins 和 Monro 于 1951 年提出的一种方法。 STO51-52]&lt;/p&gt;
+
+&lt;p&gt;Amari 的实现 [GD2,GD2a]（与他的学生 Saito）在具有两个可修改层的五层 MLP 中学习了内部表示，该层被训练为对非线性可分离模式类进行分类。 那时候的计算成本是今天的数十亿倍。&lt;/p&gt;
+
+&lt;p&gt;另见 Iakov Zalmanovich Tsypkin 更早的关于非线性系统的基于梯度下降的在线学习的工作。[GDa-b]&lt;/p&gt;
+
+&lt;p&gt;值得注意的是，如上所述，Amari 还在 1972 年发表了学习 RNN。[AMH1]&lt;/p&gt;
+
+&lt;h2 id=&quot;1970-年反向传播-1982-年对于神经网络-1960-年先驱&quot;&gt;1970 年：反向传播。 1982 年：对于神经网络。 1960 年：先驱。&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-12.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;谁发明了反向传播？&lt;/p&gt;
+
+&lt;p&gt;1970 年，Seppo Linnainmaa 是第一个发布现在称为反向传播的算法，这是一种著名的可微节点网络信用分配算法，[BP1,4,5] 也称为“自动微分的反向模式”。 它现在是广泛使用的神经网络软件包的基础，例如 PyTorch 和谷歌的 Tensorflow。&lt;/p&gt;
+
+&lt;p&gt;1960年，Henry J. Kelley在控制理论领域有了反向传播的先驱
+1982 年，Paul Werbos 在他 1974 年的论文中提出了使用该方法训练神经网络，[BP2] 扩展了思想。&lt;/p&gt;
+
+&lt;p&gt;1960 年，Henry J. Kelley 在控制理论领域已经有了反向传播的先驱；[BPA] 另请参阅 Stuart Dreyfus 和 Arthur E. Bryson 在 1960 年代早期的后期工作。[BPB][BPC][R7] 不同于 Linnainmaa 的一般方法，[BP1] 1960 年代的系统[BPA-C] 通过标准雅可比矩阵计算从一个“阶段”到前一个“阶段”反向传播导数信息，既没有解决跨多个阶段的直接链接，也没有解决由于网络导致的潜在额外效率增益 稀疏性。&lt;/p&gt;
+
+&lt;p&gt;反向传播本质上是为深度网络实施莱布尼茨链式法则 [LEI07-10] (1676)（见上文）的有效方式。 Cauchy 的梯度下降 [GD’] 使用它在许多试验过程中逐渐削弱某些 NN 连接并加强其他连接，这样 NN 的行为越来越像某个老师，可能是一个人，也可能是另一个 NN，[UN- UN2] 或其他东西。&lt;/p&gt;
+
+&lt;p&gt;到 1985 年，计算成本已比 1970 年便宜约 1,000 倍，而第一台台式计算机刚刚在富裕的学术实验室中普及。 David E. Rumelhart 等人对已知方法[BP1-2] 的实验分析。 然后证明反向传播可以在 NN 的隐藏层中产生有用的内部表示。[RUM] 至少对于监督学习，反向传播通常比 Amari 的上述深度学习更有效，通过更一般的 SGD 方法（1967），它学习了有用的内部 大约 2 年前 NN 中的表示。[GD1-2a]&lt;/p&gt;
+
+&lt;p&gt;直到 1970 年 [BP1-2] 的反向传播方法被广泛接受作为深度神经网络的训练方法，花了 4 年时间。 在 2010 年之前，许多人认为训练多层神经网络需要无监督预训练，这是我自己在 1991 年提出的方法[UN][UN0-3]（见下文），后来得到其他人的支持（2006 年）。[UN4 ] 事实上，据称 [VID1] “没有任何头脑正常的人会建议”将简单的反向传播应用于深度神经网络。 然而，在 2010 年，我们的团队与我出色的罗马尼亚博士后 Dan Ciresan [MLP1-2] 表明，深度 FNN 可以通过简单的反向传播进行训练，并且根本不需要对重要应用进行无监督预训练。 [MLP2]&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-14.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;我们的系统在当时著名且广泛使用的图像识别基准 MNIST 上创造了新的性能记录 [MLP1]。 这是通过在称为 GPU 的高度并行图形处理单元上极大地加速深度 FNN 来实现的（正如 Jung 和 Oh 在 2004 年 [GPUNN] 首次对层数较少的浅层 NN 所做的那样）。 一位评论家称这是“机器学习社区的警钟”。 今天，该领域的每个人都在追求这种方法。&lt;/p&gt;
+
+&lt;p&gt;脚注 6. 不幸的是，在 1980 年代重新发表反向传播的几位作者没有引用现有技术——甚至在后来的调查中也没有。[T22] 事实上，正如引言中提到的，有一个更广泛的、经常重复的、误导性的“ 深度学习的历史[S20]忽略了前面章节中提到的大部分开创性工作。[T22][DLC]这个“替代历史”基本上是这样的：“1969 年，Minsky &amp;amp; Papert[M69] 表明浅 没有隐藏层的神经网络非常有限，该领域被放弃，直到新一代神经网络研究人员在 1980 年代重新审视这个问题。[S20] 然而，1969 年的书 [M69] 解决了高斯的“问题” &amp;amp; Legendre 的浅层学习（大约 1800 年）[DL1-2] 已经在 4 年前被 Ivakhnenko &amp;amp; Lapa 流行的深度学习方法 [DEEP1-2][DL2] 解决了，然后 Amari 的 SGD 也解决了 MLPs。[GD1- 2] Minsky 既没有引用这项工作，也没有在后来更正他的书。&lt;a href=&quot;Sec. I&quot;&gt;HIN&lt;/a&gt;[T22] 甚至 r 最近的论文宣扬了这种对深度学习的修正主义叙述，显然是为了美化其作者后来的贡献（例如玻尔兹曼机[BM][HIN][SK75][G63][T22]），而没有将它们与原始作品联系起来，[DLC ][S20][T22]虽然真实历史众所周知。 深度学习研究在 1960 年代至 70 年代非常活跃，尤其是在英语圈之外。[DEEP1-2][GD1-3][CNN1][DL1-2][T22] 明显的错误归因和无意的[PLAG1][CONN21] 或故意 [FAKE2] 剽窃仍在污染整个深度学习领域。[T22] 科学期刊“需要对自我纠正做出更明确、更坚定的承诺”，[SV20] 这已经是其他科学领域的标准。&lt;/p&gt;
+
+&lt;h2 id=&quot;1979-年第一个深度卷积神经网络1969-年relu&quot;&gt;1979 年：第一个深度卷积神经网络（1969 年：ReLU）&lt;/h2&gt;
+
+&lt;p&gt;1979 年，Kunihiko Fukushima 引入了卷积神经网络 (CNN) 架构。计算机视觉在 2010 年代被称为卷积神经网络 (CNN) 的特殊前馈神经网络彻底改变了。[CNN1-4] 具有交替卷积层和下采样层的基本 CNN 架构 这要归功于福岛邦彦 (1979)。 他称之为 Neocognitron。[CNN1]&lt;/p&gt;
+
+&lt;p&gt;值得注意的是，早在 10 年前，Fukushima 还为神经网络引入了整流线性单元 (ReLU) (1969)。[RELU1] 它们现在广泛用于 CNN 和其他神经网络。&lt;/p&gt;
+
+&lt;p&gt;1987 年，Alex Waibel 将带卷积的神经网络与权重共享和反向传播相结合（见上文），[BP1-2] 并将其应用于语音。[CNN1a] Waibel 没有称此为 CNN，而是 TDNN。&lt;/p&gt;
+
+&lt;p&gt;Yamaguchi 等人介绍了一种流行的下采样变体，称为最大池化。 1990 年的 TDNN [CNN3a] 和 Juan Weng 等人。 1993 年用于高维 CNN。[CNN3]&lt;/p&gt;
+
+&lt;p&gt;自 1989 年以来，Yann LeCun 的团队为 CNN 的改进做出了贡献，尤其是在图像方面。[CNN2,4][T22] Baldi 和 Chauvin (1993) 首次将具有反向传播功能的 CNN 应用于生物医学/生物特征图像。[BA93]&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-16.gif&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2011 年晚些时候，CNN 在 ML 社区变得更加流行，当时我自己的团队大大加快了深度 CNN 的训练（Dan Ciresan 等人，2011）。[GPUCNN1,3,5] 我们基于 GPU 的快速 [GPUNN][ GPUCNN5] 2011 年的 CNN [GPUCNN1] 被称为 DanNet[DAN,DAN1][R6] 是一个实际的突破，比 2006 年早期的 GPU 加速 CNN 更深更快。[GPUCNN] 2011 年，DanNet 成为第一个纯深度 CNN 赢得计算机视觉竞赛。[GPUCNN2-3,5]&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Competition[GPUCNN5]&lt;/th&gt;
+      &lt;th&gt;Date/Deadline&lt;/th&gt;
+      &lt;th&gt;Image size&lt;/th&gt;
+      &lt;th&gt;Improvement&lt;/th&gt;
+      &lt;th&gt;Winner&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;IJCNN 2011 traffic signs&lt;/td&gt;
+      &lt;td&gt;Aug 06, 2011&lt;/td&gt;
+      &lt;td&gt;variable&lt;/td&gt;
+      &lt;td&gt;68.0% (superhuman)&lt;/td&gt;
+      &lt;td&gt;DanNet[DAN,DAN1]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ISBI 2012 image segmentation&lt;/td&gt;
+      &lt;td&gt;Mar 01, 2012&lt;/td&gt;
+      &lt;td&gt;512x512&lt;/td&gt;
+      &lt;td&gt;26.1%&lt;/td&gt;
+      &lt;td&gt;DanNet[GPUCNN3a]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ICPR 2012 medical imaging&lt;/td&gt;
+      &lt;td&gt;Sep 10, 2012&lt;/td&gt;
+      &lt;td&gt;2048x2048x3&lt;/td&gt;
+      &lt;td&gt;8.9%&lt;/td&gt;
+      &lt;td&gt;DanNet[GPUCNN3a]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ImageNet 2012&lt;/td&gt;
+      &lt;td&gt;Sep 30, 2012&lt;/td&gt;
+      &lt;td&gt;256x256x3&lt;/td&gt;
+      &lt;td&gt;41.4%&lt;/td&gt;
+      &lt;td&gt;AlexNet[GPUCNN4]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MICCAI 2013 Grand Challenge&lt;/td&gt;
+      &lt;td&gt;Sep 08, 2013&lt;/td&gt;
+      &lt;td&gt;2048x2048x3&lt;/td&gt;
+      &lt;td&gt;26.5%&lt;/td&gt;
+      &lt;td&gt;DanNet[GPUCNN8]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ImageNet 2014&lt;/td&gt;
+      &lt;td&gt;Aug 18, 2014&lt;/td&gt;
+      &lt;td&gt;256x256x3&lt;/td&gt;
+      &lt;td&gt;15.8%&lt;/td&gt;
+      &lt;td&gt;VGG Net[GPUCNN9]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ImageNet 2015&lt;/td&gt;
+      &lt;td&gt;Sep 30, 2015&lt;/td&gt;
+      &lt;td&gt;256x256x&lt;/td&gt;
+      &lt;td&gt;315.8%&lt;/td&gt;
+      &lt;td&gt;ResNet,[HW2] a Highway Net[HW1] with open gates&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;有一段时间，DanNet 享有垄断地位。 从 2011 年到 2012 年，它赢得了它参加的所有比赛，并连续赢得了四场比赛（2011 年 5 月 15 日、2011 年 8 月 6 日、2012 年 3 月 1 日、2012 年 9 月 10 日）。[GPUCNN5] 特别是在硅谷的 IJCNN 2011 上，DanNet 吹响了比赛，并在国际比赛中取得了第一个超人视觉模式识别[DAN1]。 DanNet 也是第一个获胜的深度 CNN：中国手写比赛（ICDAR 2011）、图像分割比赛（ISBI，2012 年 5 月）、大图像物体检测比赛（ICPR，2012 年 9 月 10 日），以及——在 同一时间——关于癌症检测的医学成像竞赛。[GPUCNN8] 2010 年，我们将 DanNet 介绍给世界上最大的钢铁生产商 Arcelor Mittal，并且能够大大提高钢铁缺陷检测。[ST] 据我所知， 这是重工业的第一个深度学习突破。 2012 年 7 月，我们关于 DanNet[GPUCNN3] 的 CVPR 论文引起了计算机视觉社区的注意。 5 个月后，类似的 GPU 加速 AlexNet 赢得了 ImageNet[IM09] 2012 竞赛。[GPUCNN4-5][R6] 我们的 CNN 图像扫描仪比以前的方法快 1000 倍。[SCAN] 这引起了医疗保健行业的极大兴趣 . 今天，IBM、西门子、谷歌和许多初创公司都在采用这种方法。 VGG 网络（ImageNet 2014 获胜者）[GPUCNN9] 和其他高引用的 CNNs[RCNN1-3] 进一步扩展了 2011 年的 DanNet。[MIR]（第 19 节）[MOST]&lt;/p&gt;
+
+&lt;p&gt;ResNet，ImageNet 2015 的赢家[HW2]（2015 年 12 月）和目前被引用最多的神经网络，[MOST] 是我们早期 Highway Net（2015 年 5 月）的一个版本（开门）[HW1-3][R5] Highway Net（见下文）实际上是我们的 vanilla LSTM（见下文）的前馈网络版本。[LSTM2] 它是第一个有效的、真正具有数百层的深度前馈神经网络（以前的神经网络最多只有几十层） .&lt;/p&gt;
+
+&lt;h2 id=&quot;1980-年代至-90-年代图形神经网络随机增量规则dropout&quot;&gt;1980 年代至 90 年代：图形神经网络/随机增量规则（Dropout）/…&lt;/h2&gt;
+
+&lt;p&gt;v.d. 引入了具有快速变化的“快速权重”的神经网络。 Malsburg (1981) 等人。[FAST,a,b] 1987 年由 Pollack [PO87-90] 提出并由 Sperduti、Goller 和 Küchler 扩展/改进的可以操纵图形等结构化数据的深度学习架构 [T22] 在 1990 年代初期。[SP93-97][GOL][KU][T22] 另见我们的图 NN-like, Transformer-like Fast Weight Programmers of 1991[FWP0-1][FWP6][FWP] 学习不断 重写从输入到输出的映射（见下文），以及 Baldi 及其同事的工作。[BA96-03] 如今，图 NN 用于许多应用程序。&lt;/p&gt;
+
+&lt;p&gt;Werbos,[BP2][BPTT1] Williams,[BPTT2][CUB0-2]等人[ROB87][BPTT3][DL1]分析了梯度下降的实现方式[GD’][STO51-52][GDa-b][ GD1-2a] 在 RNN 中。 Kohonen 的自组织映射开始流行。[KOH82-89]&lt;/p&gt;
+
+&lt;p&gt;80 年代和 90 年代还看到了各种生物学上更合理的深度学习算法的提议，与反向传播不同，这些算法在空间和时间上是局部的。[BB2][NAN1-4][NHE][HEL] 参见概述[MIR]（第 15 节） ，第 17 节）以及最近对此类方法重新产生的兴趣。[NAN5][FWPMETA6][HIN22]&lt;/p&gt;
+
+&lt;p&gt;1990 年，Hanson 引入了随机增量法则，这是一种通过反向传播训练神经网络的随机方法。 几十年后，这个版本在绰号“dropout”下流行起来。[Drop1-4][GPUCNN4]&lt;/p&gt;
+
+&lt;p&gt;1980 年代和 90 年代发表了许多关于 NN（包括 RNN）的其他论文——请参阅 2015 年调查中的大量参考文献。[DL1] 然而，在这里，我们主要将自己限制在——事后看来——最重要的论文，鉴于目前 （短暂的？）2022 年的前景。&lt;/p&gt;
+
+&lt;h2 id=&quot;1990-年-2-月生成对抗网络好奇心&quot;&gt;1990 年 2 月：生成对抗网络/好奇心&lt;/h2&gt;
+
+&lt;p&gt;生成对抗网络 (GAN) 已经变得非常流行。[MOST] 它们于 1990 年首次在慕尼黑以人工好奇心的名义发表。[AC90-20][GAN1] 两个决斗的神经网络（一个概率生成器和一个预测器）正试图 在 minimax 游戏中最大化彼此的损失。[AC]（第 1 节）生成器（称为控制器）生成概率输出（使用随机单位 [AC90]，就像在后来的 StyleGANs[GAN2] 中一样）。 预测器（称为世界模型）看到控制器的输出并预测环境对它们的反应。 使用梯度下降，预测器 NN 最小化它的错误，而生成器 NN 试图使输出最大化这个错误：一个网络的损失是另一个网络的收益。[AC90]（世界模型也可以用于连续在线行动规划。 [AC90][计划 2-3][计划])&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-17.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在 2014 年一篇关于 GAN 的论文之前 4 年，[GAN1] 我著名的 2010 年调查 [AC10] 将 1990 年的生成对抗性神经网络总结如下：“神经网络作为预测世界模型用于最大化控制器的内在奖励，这 与模型的预测误差成正比”（已最小化）。&lt;/p&gt;
+
+&lt;p&gt;2014 年的 GAN 就是这样的一个例子，其中试验非常短（就像老虎机问题）并且环境简单地返回 1 或 0，这取决于控制器（或生成器）的输出是否在给定的集合中。[AC20][AC] [T22]（第十七节）&lt;/p&gt;
+
+&lt;p&gt;其他早期的对抗性机器学习设置 [S59][H90] 非常不同——它们既不涉及无监督神经网络，也不涉及建模数据，也不使用梯度下降。[AC20]&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-18.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可预测性最小化：无监督极小极大博弈，其中一个神经网络最小化另一个最大化的目标函数&lt;/p&gt;
+
+&lt;p&gt;1990 年的原则已被广泛用于强化学习 [SIN5][OUD13][PAT17][BUR18] 和逼真图像合成 [GAN1,2] 的探索，尽管后者最近被 Rombach 等人接管。 s Latent Diffusion，另一种在慕尼黑发表的方法，[DIF1] 建立在 Jarzynski 上个千年的早期物理学工作 [DIF2] 和最近的论文的基础上。 [DIF3-5]&lt;/p&gt;
+
+&lt;p&gt;1991 年，我发布了另一种基于两个称为可预测性最小化的对抗性神经网络的 ML 方法，用于创建部分冗余数据的分离表示，并于 1996 年应用于图像。[PM0-2][AC20][R2][MIR]（第 7 节） )&lt;/p&gt;
+
+&lt;h2 id=&quot;1990-年-2-月生成对抗网络好奇心-1&quot;&gt;1990 年 2 月：生成对抗网络/好奇心&lt;/h2&gt;
+
+&lt;p&gt;生成对抗网络 (GAN) 已经变得非常流行。[MOST] 它们于 1990 年首次在慕尼黑以人工好奇心的名义发表。[AC90-20][GAN1] 两个决斗的神经网络（一个概率生成器和一个预测器）正试图 在 minimax 游戏中最大化彼此的损失。[AC]（第 1 节）生成器（称为控制器）生成概率输出（使用随机单位 [AC90]，就像在后来的 StyleGANs[GAN2] 中一样）。 预测器（称为世界模型）看到控制器的输出并预测环境对它们的反应。 使用梯度下降，预测器 NN 最小化它的错误，而生成器 NN 试图使输出最大化这个错误：一个网络的损失是另一个网络的收益。[AC90]（世界模型也可以用于连续在线行动规划。 [AC90][计划 2-3][计划])&lt;/p&gt;
+
+&lt;p&gt;1990-91 年以来的人工好奇心和创造力&lt;/p&gt;
+
+&lt;p&gt;在 2014 年一篇关于 GAN 的论文之前 4 年，[GAN1] 我著名的 2010 年调查 [AC10] 将 1990 年的生成对抗性神经网络总结如下：“神经网络作为预测世界模型用于最大化控制器的内在奖励，这 与模型的预测误差成正比”（已最小化）。&lt;/p&gt;
+
+&lt;p&gt;2014 年的 GAN 就是这样的一个例子，其中试验非常短（就像老虎机问题）并且环境简单地返回 1 或 0，这取决于控制器（或生成器）的输出是否在给定的集合中。[AC20][AC] [T22]（第十七节）&lt;/p&gt;
+
+&lt;p&gt;其他早期的对抗性机器学习设置 [S59][H90] 非常不同——它们既不涉及无监督神经网络，也不涉及建模数据，也不使用梯度下降。[AC20]&lt;/p&gt;
+
+&lt;p&gt;可预测性最小化：无监督极小极大博弈，其中一个神经网络最小化另一个最大化的目标函数&lt;/p&gt;
+
+&lt;p&gt;1990 年的原则已被广泛用于强化学习 [SIN5][OUD13][PAT17][BUR18] 和逼真图像合成 [GAN1,2] 的探索，尽管后者最近被 Rombach 等人接管。 s Latent Diffusion，另一种在慕尼黑发表的方法，[DIF1] 建立在 Jarzynski 上个千年的早期物理学工作 [DIF2] 和最近的论文的基础上。 [DIF3-5]&lt;/p&gt;
+
+&lt;p&gt;1991 年，我发布了另一种基于两个称为可预测性最小化的对抗性神经网络的 ML 方法，用于创建部分冗余数据的分离表示，并于 1996 年应用于图像。[PM0-2][AC20][R2][MIR]（第 7 节） )&lt;/p&gt;
+
+&lt;h3 id=&quot;1991-年-3-月具有线性化自注意力的变形金刚&quot;&gt;1991 年 3 月：具有线性化自注意力的变形金刚&lt;/h3&gt;
+
+&lt;p&gt;最近，Transformers[TR1] 风靡一时，例如生成听起来像人类的文本。[GPT3] Transformers with “linearized self-attention”[TR5-6] 发表于 1991 年 3 月[FWP0-1][FWP6] [FWP]（除了正常化——见 2022 年 30 周年推文）。 这些所谓的“Fast Weight Programmers”或“Fast Weight Controllers”[FWP0-1] 像传统计算机一样将存储和控制分开，但是以端到端可微分的、自适应的、完全神经的方式（而不是 混合时尚[PDA1-2][DNC])。 标准变形金刚 [TR1-4] 中的“自注意力”将其与投影和 softmax 相结合（使用像我在 1993 年 [ATT][FWP2][R4] 中介绍的那样的注意力术语）。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-19.png&quot; alt=&quot;image&quot; /&gt;
+1991 年 3 月 26 日：神经网络学习使用快速权重对神经网络进行编程——就像今天的 Transformer 变体一样。 2021 年：新东西！&lt;/p&gt;
+
+&lt;p&gt;今天的变形金刚大量使用无监督预训练[UN0-3]（见下一节），这是另一种深度学习方法，首次发表于我们 1990-1991 年的奇迹年[MIR][MOST]&lt;/p&gt;
+
+&lt;p&gt;1991 年的快速权重程序员还导致了元学习自参照神经网络，它们可以在自己身上运行自己的权重变化算法或学习算法，并对其进行改进，并改进它们改进它的方式，等等。 这项工作自 1992 年以来[FWPMETA1-9][HO1] 扩展了我 1987 年的毕业论文，[META1] 介绍了不仅用于学习而且用于元学习或学习学习的算法，[META] 通过经验学习更好的学习算法。 这在 2010 年代[DEC] 变得非常流行，当时计算机的速度快了一百万倍。&lt;/p&gt;
+
+&lt;h2 id=&quot;1991-年-4-月通过自监督预训练进行深度学习&quot;&gt;1991 年 4 月：通过自监督预训练进行深度学习&lt;/h2&gt;
+
+&lt;p&gt;今天最强大的 NN 往往非常深，也就是说，它们有很多层神经元或许多后续计算阶段。[MIR] 然而，在 1990 年代之前，基于梯度的训练对深度 NN 效果不佳，仅适用于浅层 NN [DL1-2]（但请参阅 1989 年的一篇论文 [MOZ]）。 这个深度学习问题对于循环神经网络最为明显。 与人脑相似，但与更有限的前馈神经网络 (FNN) 不同，RNN 具有反馈连接。 这使得 RNN 成为功能强大的通用并行顺序计算机，可以处理任意长度的输入序列（想想语音数据或视频）。 RNN 原则上可以实现任何可以在您的笔记本电脑或任何其他现有计算机上运行的程序。 如果我们想要构建通用人工智能 (AGI)，那么它的底层计算基础必须更像 RNN 而不是 FNN，因为 FNN 从根本上是不够的； RNN 和类似系统之于 FNN 就像通用计算机之于袖珍计算器一样。 特别是，与 FNN 不同，RNN 原则上可以处理任意深度的问题。[DL1] 然而，在 1990 年代之前，RNN 在实践中未能学习深度问题。[MIR]（第 0 节）&lt;/p&gt;
+
+&lt;p&gt;为了通过基于 RNN 的“一般深度学习”克服这个缺点，我构建了一个自我监督的 RNN 层次结构，它在多个抽象层次和多个自组织时间尺度上学习表示：[LEC] 神经序列分块器 [UN0] 或神经网络 History Compressor.[UN1] 每个 RNN 都试图解决预测其下一个输入的借口任务，仅将意外输入（因此也是目标）发送到上面的下一个 RNN。 由此产生的压缩序列表示极大地促进了下游监督深度学习，例如序列分类。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-20.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;尽管当时的计算机每一美元的计算速度比今天慢了大约一百万倍，但到 1993 年，上面的神经历史压缩器已经能够解决以前无法解决的深度 &amp;gt; 1000[UN2]（需要超过 1,000 个后续计算阶段）的“非常深度学习”任务 ——这样的阶段越多，学习越深入）。 1993 年，我们还发布了神经历史压缩器的连续版本。[UN3]（另请参阅最近关于无监督的基于神经网络的抽象的工作。[OBJ1-5]）&lt;/p&gt;
+
+&lt;p&gt;这项工作十多年后，[UN1] 发布了一种类似的用于更有限的前馈神经网络 (FNN) 的无监督方法，通过对称为深度信念网络 (DBN) 的 FNN 堆栈进行无监督预训练来促进监督学习。[UN4] 2006 年的理由基本上是我在 1990 年代初期为我的 RNN 堆栈使用的理由：每个更高级别都试图减少下面级别中数据表示的描述长度（或负对数概率）。[HIN][T22][MIR]&lt;/p&gt;
+
+&lt;p&gt;1991 年 4 月：将一个 NN 提炼成另一个 NN
+使用我 1991 年的 NN 蒸馏程序，可以将上述神经历史压缩器的分层内部表示折叠成单个循环神经网络 (RNN)。[UN0-1][MIR] 在这里，教师神经网络的知识被“蒸馏”成 一个学生 NN，通过训练学生 NN 模仿老师 NN 的行为（同时还对学生 NN 重新训练以前学过的技能，这样它就不会忘记它们）。 NN 蒸馏也在多年后重新发表，[DIST2][MIR][HIN][T22] 并在今天被广泛使用。&lt;/p&gt;
+
+&lt;p&gt;如今，无监督预训练被 Transformers[TR1-6] 大量用于自然语言处理和其他领域。 值得注意的是，具有线性化自注意力的 Transformers 也首次在我们的 Annus Mirabilis of 1990-1991 中发表[FWP0-6]，[MIR][MOST] 以及用于深度学习的无监督/自监督预训练。[UN0-3 ] 见上一节。&lt;/p&gt;
+
+&lt;h2 id=&quot;1991-年-6-月基本问题梯度消失&quot;&gt;1991 年 6 月：基本问题：梯度消失&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-21.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sepp Hochreiter 对基本深度学习问题的分析 (1991) 深度学习之所以困难，是因为我的第一个学生 Sepp Hochreiter 在他的毕业论文中于 1991 年确定并分析了基本深度学习问题，我很高兴能够监督。[VAN1] 首先 他实现了上面的神经历史压缩器，但后来做了更多：他表明深度神经网络存在现在著名的梯度消失或爆炸问题：在典型的深度或循环网络中，反向传播的误差信号要么迅速缩小，要么从中消失 界限。 在这两种情况下，学习都会失败（比较[VAN2]）。 这种分析导致了现在称为 LSTM 的基本原理（见下文）。&lt;/p&gt;
+
+&lt;h2 id=&quot;1991-年-6-月lstm--highway-nets--resnets-的根源&quot;&gt;1991 年 6 月：LSTM / Highway Nets / ResNets 的根源&lt;/h2&gt;
+
+&lt;p&gt;长短期记忆 (LSTM) 循环神经网络 [LSTM1-6] 克服了 Sepp 在其上述 1991 年毕业论文 [VAN1] 中确定的基本深度学习问题，我认为这是历史上最重要的文献之一 机器学习。 它还通过我们在 1995 年的一份技术报告中称为 LSTM 的基本原理（例如恒定错误流）提供了解决问题的重要见解。[LSTM0] 在 1997 年主要同行评审出版物之后 [LSTM1][25y97] （现在是 20 世纪被引用次数最多的 NN 文章 [MOST]），LSTM 及其训练程序在我在 IDSIA 的瑞士 LSTM 资助下通过我后来的学生 Felix Gers、Alex Graves 和其他人的工作得到了进一步改进。 一个里程碑是带有遗忘门 [LSTM2] 的“香草 LSTM 架构”——今天每个人都在使用的 1999-2000 的 LSTM 变体，例如在谷歌的 Tensorflow 中。 Alex 是我们首次将 LSTM 成功应用于语音（2004 年）的主要作者。[LSTM10] 2005 年首次发布了具有全时间反向传播的 LSTM 和双向 LSTM[LSTM3]（现已广泛使用）。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-22.gif&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2006 年的另一个里程碑是用于同时比对和识别序列的训练方法“Connectionist Temporal Classification”或 CTC[CTC]。 我们的团队在 2007 年成功地将 CTC 训练的 LSTM 应用于语音 [LSTM4]（也使用分层 LSTM 堆栈 [LSTM14]）。 这导致了第一个卓越的端到端神经语音识别。 它与 20 世纪 80 年代末以来将神经网络与传统方法（如隐马尔可夫模型 (HMM)）相结合的混合方法有很大不同。[BW][BRI][BOU][HYB12][T22] 在 2009 年，通过 Alex 的努力， CTC训练的LSTM成为第一个赢得国际比赛的RNN，即三项ICDAR 2009 Connected Handwriting Competitions（法语，波斯语，阿拉伯语）。 这引起了业界的极大兴趣。 LSTM 很快被用于涉及序列数据的所有事物，例如语音 [LSTM10-11][LSTM4][DL1] 和视频。 2015 年，CTC-LSTM 组合显着改善了谷歌在 Android 智能手机上的语音识别。[GSR15] 许多其他公司采用了这一点。[DL4] 谷歌 2019 年新的设备语音识别（现在在你的手机上，而不是在服务器上） 仍然是基于LSTM。&lt;/p&gt;
+
+&lt;h3 id=&quot;1995神经概率语言模型&quot;&gt;1995：神经概率语言模型&lt;/h3&gt;
+
+&lt;p&gt;第一个出色的端到端神经机器翻译也是基于 LSTM。 1995 年，我们已经有了一个优秀的神经概率文本模型 [SNT]，其基本概念在 2003 年 [NPM][T22] 中得到了重用——另请参阅 Pollack 早期关于词嵌入和其他结构的工作 [PO87][PO90] 以及 Nakamura 和 Shikano 1989 年的词类别预测模型。[NPMa] 2001 年，我们表明 LSTM 可以学习 HMM 等传统模型无法学习的语言，[LSTM13] 即神经“亚符号”模型突然擅长学习“符号”任务。 计算仍然必须便宜 1000 倍，但到 2016 年，谷歌翻译 [GT16]——其白皮书 [WU] 提到 LSTM 超过 50 次——基于两个连接的 LSTM，[S2S] 一个用于传入文本，一个用于传出翻译 - 比以前好得多。[DL4] 到 2017 年，LSTM 还支持 Facebook 的机器翻译（每周超过 300 亿次翻译——最受欢迎的 YouTube 视频需要数年时间才能实现仅 100 亿次点击），[FB17][DL4] 苹果的 大约 10 亿部 iPhone 上的 Quicktype，[DL4] 亚马逊 Alexa 的声音，[DL4] 谷歌的图像标题生成 [DL4] 和自动电子邮件回复 [DL4] 等。《商业周刊》称 LSTM “可以说是最商业化的 AI 成就”。[AV1 ] 到 2016 年，谷歌数据中心超过四分之一的强大推理计算能力用于 LSTM（5% 用于另一种流行的深度学习技术，称为 CNN——见上文）。[JOU17] 当然，我们的 LSTM 也是 大量用于医疗保健和医疗诊断——一个简单的谷歌 e Scholar search 出现了无数标题中带有“LSTM”的医学文章。[DEC]&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-23.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;通过我的学生 Rupesh Kumar Srivastava 和 Klaus Greff 的工作，LSTM 原理也促成了我们 2015 年 5 月的 Highway Network[HW1]，这是第一个具有数百层的非常深的 FNN（以前的 NN 最多只有几十层） ). Microsoft 的 ResNet[HW2]（赢得了 ImageNet 2015 竞赛）是其一个版本（ResNet 是大门始终敞开的 Highway Net）。 早期的 Highway Nets 在 ImageNet 上的表现与它们的 ResNet 版本大致相同。[HW3] highway gates 的变体也用于某些算法任务，其中纯残差层不能很好地工作。[NDR]&lt;/p&gt;
+
+&lt;h3 id=&quot;lstm--highway-net-原理是现代深度学习的核心&quot;&gt;LSTM / Highway Net 原理是现代深度学习的核心&lt;/h3&gt;
+
+&lt;p&gt;深度学习完全是关于神经网络深度的。[DL1] 在 1990 年代，LSTM 为受监督的循环神经网络带来了本质上无限的深度； 在 2000 年代，受 LSTM 启发的 Highway Nets 将其引入前馈神经网络。 LSTM 已成为 20 世纪引用最多的神经网络； 名为 ResNet 的 Highway Net 版本是 21 世纪引用最多的神经网络。[MOST]（然而，引用是衡量真实影响的一个非常值得怀疑的衡量标准。[NAT1]）&lt;/p&gt;
+
+&lt;p&gt;1980s-：在没有老师的情况下学习行动的神经网络
+前面的部分主要关注用于被动模式识别/分类的深度学习。 然而，NN 也与强化学习 (RL)、[KAE96][BER96][TD3][UNI][GM3][LSTMPG] 最通用的学习类型相关。 一般的 RL 智能体必须在没有教师帮助的情况下发现如何与动态的、最初未知的、部分可观察的环境进行交互，以最大化其预期的累积奖励信号。[DL1] 动作之间可能存在任意的、先验未知的延迟 和可察觉的后果。 RL 问题与计算机科学的任何问题一样困难，因为任何具有可计算描述的任务都可以在通用 RL 框架中制定。[UNI]&lt;/p&gt;
+
+&lt;p&gt;某些强化学习问题可以通过 80 年代之前发明的非神经技术来解决：蒙特卡洛（树）搜索（MC，1949 年）、[MOC1-5] 动态规划（DP，1953 年）、[BEL53] 人工进化（1954 年） ,&lt;a href=&quot;[TUR1],未发表&quot;&gt;EVO1-7&lt;/a&gt; alpha-beta-pruning (1959),[S59] 控制理论与系统辨识 (1950s),[KAL59][GLA85] 随机梯度下降 (SGD, 1951),[ STO51-52]和通用搜索技术（1973）。[AIT7]&lt;/p&gt;
+
+&lt;p&gt;然而，深度 FNN 和 RNN 是改进某些类型的 RL 的有用工具。 在 1980 年代，函数逼近和 NN 的概念与系统识别相结合，[WER87-89][MUN87][NGU89] DP 及其在线变体 Temporal Differences (TD)，[TD1-3] 人工进化，[EVONN1- 3] 和策略梯度。[GD1][PG1-3] 可以在第 1 节中找到有关此的许多其他参考资料。 2015 年调查的 6 [DL1]&lt;/p&gt;
+
+&lt;p&gt;当环境存在马尔可夫接口 [PLAN3]，使得 RL 机器的当前输入传达了确定下一个最佳动作所需的所有信息时，基于 DP/TD/MC 的 FNN 的 RL 可以非常成功，如图所示 1994 年 [TD2]（大师级西洋双陆棋玩家）和 2010 年代 [DM1-2a]（围棋、国际象棋和其他游戏的超人玩家）。&lt;/p&gt;
+
+&lt;p&gt;对于没有马尔可夫接口的更复杂的情况，学习机不仅要考虑当前输入，还要考虑以前输入的历史，我们的 RL 算法和 LSTM[LSTM-RL][RPG] 的组合已经成为标准，特别是， 我们的 LSTM 通过策略梯度训练 (2007).[RPG07][RPG][LSTMPG]&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-24.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;例如，2018 年，PG 训练的 LSTM 是 OpenAI 著名的 Dactyl 的核心，它学会了在没有老师的情况下控制灵巧的机器人手。[OAI1][OAI1a] 视频游戏类似：2019 年，DeepMind（由 我实验室的一名学生）在星际争霸游戏中击败了一名职业玩家，这在理论上比国际象棋或围棋 [DM2] 在许多方面都更难，使用的是 Alphastar，其大脑具有由 PG 训练的深层 LSTM 核心。[DM3] 强化学习 LSTM（占模型总参数数的 84%）也是著名的 OpenAI Five 的核心，它学会了在 Dota 2 视频游戏（2018 年）中击败人类专家。[OAI2] 比尔·盖茨称这是“进步的巨大里程碑” 人工智能”。[OAI2a][MIR]（第 4 节）[LSTMPG]&lt;/p&gt;
+
+&lt;p&gt;RL 的未来将是关于使用复杂输入流的紧凑时空抽象进行学习/组合/规划——关于常识推理[MAR15] 和学习思考。[PLAN4-5] 分层方式，在多个抽象级别和多个时间尺度？[LEC] 我们在 1990-91 年发表了这些问题的答案：自我监督的神经历史压缩器 [UN][UN0-3] learn to represent percepts at multiple levels 抽象和多个时间尺度（见上文），而端到端可区分的基于神经网络的子目标生成器[HRL3] [MIR]（第 10 节）通过梯度下降学习分层行动计划（见上文）。 更复杂的学习抽象思考的方法发表于 1997[AC97][AC99][AC02] 和 2015-18.[PLAN4-5]&lt;/p&gt;
+
+&lt;h2 id=&quot;是硬件笨蛋&quot;&gt;是硬件，笨蛋！&lt;/h2&gt;
+
+&lt;p&gt;如果没有不断改进和加速计算机硬件，深度学习算法在过去千年中的最新突破（见前几节）是不可能的。 如果不提及这种已经运行了至少两千年的进化，任何人工智能和深度学习的历史都是不完整的。&lt;/p&gt;
+
+&lt;p&gt;第一个已知的基于齿轮的计算设备是 2000 多年前古希腊的 Antikythera 机制（一种天文钟）。&lt;/p&gt;
+
+&lt;p&gt;也许世界上第一台实用的可编程机器是 1 世纪 [SHA7a][RAU1] 由亚历山大的赫伦制造的自动剧院（显然他还拥有第一台已知的工作蒸汽机 - Aeolipile）。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-25.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Banu Musa 兄弟在 9 世纪在巴格达制造的音乐自动机可能是第一台具有存储程序的机器。[BAN][KOE1] 它使用旋转圆柱体上的销来存储控制蒸汽驱动长笛的程序——比较 Al-Jazari 的可编程 1206.[SHA7b] 的鼓机&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-26.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;1600 年代带来了更灵活的机器，可以根据输入数据计算答案。 第一个用于简单算术的基于数据处理齿轮的专用计算器是由 Wilhelm Schickard 于 1623 年建造的，Wilhelm Schickard 是“自动计算之父”称号的候选人之一，其次是 Blaise Pascal 的高级 Pascaline（1642 年）。 1673 年，已经提到的戈特弗里德·威廉·莱布尼茨（被称为“有史以来最聪明的人”[SMO13]）设计了第一台可以执行所有四种算术运算的机器（计步器），并且是第一台带有记忆的机器。[BL16] 他还描述了由穿孔卡 (1679)、[L79][L03][LA14][HO66] 控制的二进制计算机的原理，并发表了链式法则[LEI07-10]（见上文），深度学习和现代的基本要素 人工智能。&lt;/p&gt;
+
+&lt;p&gt;大约 1800 年，约瑟夫-玛丽·雅卡尔 (Joseph-Marie Jacquard) 和其他人在法国制造了第一台商业程序控制机器（基于打孔卡的织机）——他们可能是编写世界上第一个工业软件的第一批“现代”程序员。 他们启发了 Ada Lovelace 和她的导师 Charles Babbage（英国，大约 1840 年）。 他计划但无法构建一台可编程的通用计算机（只有他的非通用专用计算器导致了 20 世纪的工作复制品）。&lt;/p&gt;
+
+&lt;p&gt;Leonardo Torres y Quevedo，20 世纪第一个实用 AI 的先驱 1914 年，西班牙人 Leonardo Torres y Quevedo（在介绍中提到）成为 20 世纪第一个 AI 先驱，他创造了第一个工作的国际象棋终端玩家（当时国际象棋被认为 作为一种仅限于智能生物领域的活动）。 几十年后，当另一位 AI 先驱 Norbert Wiener [WI48] 在 1951 年巴黎 AI 会议上与它对战时，这台机器仍然被认为令人印象深刻。 [AI51][BRO21][BRU4]&lt;/p&gt;
+
+&lt;p&gt;1935 年至 1941 年间，Konrad Zuse 创造了世界上第一台可运行的可编程通用计算机：Z3。 1936 年的相应专利 [ZU36-38][RO98][ZUS21] 描述了可编程物理硬件所需的数字电路，早于克劳德香农 1937 年关于数字电路设计的论文。[SHA37] 与巴贝奇不同，Zuse 使用了莱布尼茨的二进制计算原理 (1679)[L79][LA14][HO66][L03] 代替传统的十进制计算。 这极大地简化了硬件。[LEI21,a,b] 忽略任何物理计算机不可避免的存储限制，Z3 的物理硬件在哥德尔 [GOD][GOD34, GOD34, 21,21a] (1931-34)、Church[CHU] (1935)、Turing[TUR] (1936) 和 Post[POS] (1936)。 简单的算术技巧可以弥补 Z3 缺少明确的条件跳转指令。[RO98] 今天，大多数计算机都像 Z3 一样是二进制的。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-28.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Z3 使用带有明显移动开关的电磁继电器。 第一个电子专用计算器（其运动部件是电子，太小以至于看不见）是约翰·阿塔纳索夫（“管基计算之父”[NASC6a]）的二进制 ABC（美国，1942 年）。 与 1600 年代基于齿轮的机器不同，ABC 使用真空管——今天的机器使用 Julius Edgar Lilienfeld 于 1925 年获得专利的晶体管原理。[LIL1-2] 但与 Zuse 的 Z3 不同，ABC 不能自由编程。 Tommy Flowers（英国，1943-45 年）的电子巨像机器也没有用来破解纳粹密码。[NASC6]&lt;/p&gt;
+
+&lt;p&gt;由 Zuse (1941)[RO98] 以外的人建造的第一台通用工作可编程机器是 Howard Aiken 的十进制 MARK I（美国，1944 年）。 由 Eckert 和 Mauchly (1945/46) 开发的速度快得多的十进制 ENIAC 是通过重新布线来编程的。 数据和程序都被“曼彻斯特宝贝”（Williams, Kilburn &amp;amp; Tootill, UK, 1948）和 1948 年升级的 ENIAC 存储在电子存储器中，通过将数字指令代码输入只读存储器来重新编程。 [HAI14b]&lt;/p&gt;
+
+&lt;p&gt;从那时起，计算机通过集成电路 (IC) 变得更快。 1949 年，西门子的 Werner Jacobi 为在公共基板上具有多个晶体管的 IC 半导体申请了专利（于 1952 年授予）。[IC49-14] 1958 年，Jack Kilby 展示了带有外部导线的 IC。 1959 年，罗伯特·诺伊斯 (Robert Noyce) 提出了单片 IC。[IC14] 自 1970 年代以来，图形处理单元 (GPU) 已被用于通过并行处理来加速计算。 今天（2022 年）的 IC/GPU 包含数十亿个晶体管（几乎所有晶体管都是 Lilienfeld 的 1925 FET 类型[LIL1-2]）。&lt;/p&gt;
+
+&lt;p&gt;1941 年，Zuse 的 Z3 每秒可以执行大约一个基本运算（例如加法）。 从那时起，每 5 年，计算成本就会降低 10 倍（请注意，他的定律比摩尔定律要古老得多，摩尔定律指出每个芯片的晶体管 [LIL1-2] 数量每 18 个月翻一番）。 截至 2021 年，即 Z3 之后的 80 年，现代计算机每秒可以以相同（经通货膨胀调整后）的价格执行约 1000 万亿条指令。 对这种指数趋势的天真推断预测，21 世纪将出现廉价计算机，其原始计算能力是所有人类大脑总和的一千倍。[RAW]&lt;/p&gt;
+
+&lt;p&gt;物理极限在哪里？ 根据 Bremermann (1982)，[BRE] 一台质量为 1 千克和体积为 1 升的计算机最多可以在最多 1032 位上每秒执行最多 1051 次操作。 上述趋势将在 Z3 之后大约 25 年，即 2200 年左右达到布雷默曼极限。但是，由于太阳系中只有 2 x 1030 千克的质量，因此趋势势必会在几个世纪内打破，因为光速 将极大地限制额外质量的获取，例如，以其他太阳系的形式，通过及时的函数多项式，如先前在 2004 年指出的那样。[OOPS2][ZUS21]&lt;/p&gt;
+
+&lt;p&gt;物理学似乎要求未来高效的计算硬件必须像大脑一样，在 3 维空间中有许多紧凑放置的处理器，由许多短线和少量长线稀疏地连接，以最小化总连接成本（即使“线” 实际上是光束）。[DL2] 基本架构本质上是一种深度的、稀疏连接的 3 维 RNN，这种 RNN 的深度学习方法有望变得比今天更加重要。[DL2 ]&lt;/p&gt;
+
+&lt;h2 id=&quot;不要忽视-1931-年以来的人工智能理论&quot;&gt;不要忽视 1931 年以来的人工智能理论&lt;/h2&gt;
+
+&lt;p&gt;现代人工智能和深度学习的核心主要基于近几个世纪的简单数学：微积分/线性代数/统计学。 然而，要在上一节中提到的现代硬件上有效地实现这个核心，并为数十亿人推出它，需要大量的软件工程，基于上个世纪发明的大量智能算法。 这里没有余地一一提及。 然而，至少我会列出人工智能和计算机科学理论的一些最重要的亮点。&lt;/p&gt;
+
+&lt;p&gt;1930 年代初期，哥德尔创立了现代理论计算机科学。[GOD][GOD34][LEI21,21a] 他介绍了一种通用编码语言 (1931-34)。[GOD][GOD34-21a] 它基于整数， 并允许以公理形式形式化任何数字计算机的操作。 哥德尔用它来表示数据（例如公理和定理）和程序 [VAR13]（例如数据操作的证明生成序列）。 他著名地构造了关于其他形式陈述的计算的形式陈述——特别是暗示它们不可判定的自引用陈述，给定一个计算定理证明器，系统地从一组可枚举的公理中列举所有可能的定理。 因此，他确定了算法定理证明、计算和任何类型的基于计算的 AI 的基本限制。[GOD][BIB3][MIR]（第 18 节）[GOD21,21a]&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-29.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;像大多数伟大的科学家一样，哥德尔建立在早期工作的基础上。 他将 Georg Cantor 的对角化技巧 [CAN]（在 1891 年表明存在不同类型的无穷大）与 Gottlob Frege [FRE]（他在 1879 年引入了第一种形式语言）、Thoralf Skolem [SKO23]（他 在 1923 年引入了原始递归函数）和 Jacques Herbrand [GOD86]（他发现了 Skolem 方法的局限性）。 这些作者又建立在 Gottfried Wilhelm Leibniz[L86][WI48]（见上文）的正式思想代数（1686 年）的基础上，它与后来的 1847 年布尔代数演绎等价[LE18]。[BOO]&lt;/p&gt;
+
+&lt;p&gt;1935 年，Alonzo Church 通过证明 Hilbert &amp;amp; Ackermann 的 Entscheidungsproblem（决策问题）没有一般解决方案，得出了哥德尔结果的推论/扩展。[CHU] 为此，他使用了他的替代通用编码语言，称为 Untyped Lambda Calculus， 它构成了极具影响力的编程语言 LISP 的基础。 1936年，Alan M. Turing引入了另一个通用模型：图灵机。[TUR]他重新推导了上述结果。[CHU][TUR][HIN][GOD21,21a][TUR21][LEI21,21a] 在 1936 年的同一年，Emil Post 发表了另一个独立的通用计算模型。[POS] 今天我们知道很多这样的模型。&lt;/p&gt;
+
+&lt;p&gt;Konrad Zuse 不仅创造了世界上第一台可工作的可编程通用计算机，[ZU36-38][RO98][ZUS21]，他还设计了第一种高级编程语言 Plankalkül。[BAU][KNU]，他将其应用于国际象棋 在 1945 年 [KNU] 和 1948 年的定理证明。[ZU48] 比较 Newell 和 Simon 在定理证明方面的后期工作（1956）。[NS56] 1940 年代至 70 年代的许多早期人工智能实际上是关于哥德尔风格的定理证明和演绎 [GOD][GOD34,21,21a] 通过专家系统和逻辑编程。&lt;/p&gt;
+
+&lt;p&gt;1964 年，Ray Solomonoff 将贝叶斯（实际上是拉普拉斯[STI83-85]）概率推理与理论计算机科学[GOD][CHU][TUR][POS] 相结合，推导出一种数学上最优（但计算上不可行）的学习预测未来的方式 [AIT1][AIT10] 与 Andrej Kolmogorov 一起创立了 Kolmogorov 复杂性理论或算法信息论 (AIT)，[AIT1-22] 通过形式化概念超越了传统信息论 [SHA48][KUL] 奥卡姆剃刀原理，通过计算数据的最短程序的概念，支持对给定数据进行最简单的解释。 这个概念有许多可计算的、有时间限制的版本，[AIT7][AIT5][AIT12-13][AIT16-17] 以及神经网络的应用。[KO2][CO1-3]&lt;/p&gt;
+
+&lt;p&gt;在 2000 年代初期，Marcus Hutter（在我的瑞士国家科学基金会资助 [UNI] 下工作时）通过最佳动作选择器（通用 AI）增强了 Solomonoff 的通用预测器 [AIT1][AIT10]，用于强化学习代理，这些代理最初未知（ 但至少是可计算的）环境。[AIT20,22] 他还推导出了所有明确定义的计算问题的渐近最快算法，[AIT21] 解决任何问题的速度与此类问题的未知最快求解器一样快，除了加法常数 不依赖于问题的大小。&lt;/p&gt;
+
+&lt;p&gt;自参考 2003 哥德尔机 [GM3-9] 的更一般的最优性不限于渐近最优性。&lt;/p&gt;
+
+&lt;p&gt;然而，由于各种原因，这种数学上最优的 AI 在实践中尚不可行。 相反，实用的现代 AI 是基于次优的、有限的，但还不是很容易理解的技术，例如神经网络和深度学习，这是本文的重点。 但谁知道 20 年后会出现什么样的 AI 历史呢？&lt;/p&gt;
+
+&lt;h2 id=&quot;从大爆炸到遥远的未来的更广泛的历史背景&quot;&gt;从大爆炸到遥远的未来的更广泛的历史背景&lt;/h2&gt;
+
+&lt;p&gt;信用分配是关于在历史数据中寻找模式，并弄清楚以前的事件是如何促成某些事件的。 历史学家这样做。 物理学家这样做。 AI 也会这样做。 让我们退后一步，在最广泛的历史背景下审视人工智能：自大爆炸以来的所有时间。 2014 年，我在其中发现了一个美丽的指数加速模式，[OMG] 从那以后我在许多演讲中都提出了它，它也被写进了 Sibylle Berg 的获奖书籍“GRM：Brainfuck”。[OMG2] 以前出版 这种模式跨越的时间间隔要短得多：只有几十年或几个世纪或最多几千年。[OMG1]&lt;/p&gt;
+
+&lt;p&gt;事实证明，从人类的角度来看，自宇宙诞生以来最重要的事件都整齐地排列在指数加速的时间轴上（误差线大多低于 10%）。 事实上，历史似乎在 2040 年左右汇聚在一个欧米茄点。 我喜欢叫它Omega，因为一个世纪前，Teilhard de Chardin称Omega是人类将达到下一个层次的点。[OMG0]另外，Omega听起来比“Singularity”[SING1-2]好听多了——听起来有点 就像“哦，我的上帝。”[OMG]&lt;/p&gt;
+
+&lt;p&gt;让我们从138亿年前的大爆炸说起。 我们将这个时间除以 4 得到大约 35 亿年。 欧米茄是2040年左右。 在欧米茄负 35 亿年时，发生了一件非常重要的事情：生命出现在这个星球上。&lt;/p&gt;
+
+&lt;p&gt;我们再次花费四分之一的时间。 我们在 9 亿年前出现，当时发生了一件非常重要的事情：类似动物的移动生命出现了。&lt;/p&gt;
+
+&lt;p&gt;我们再除以 4。我们在 2.2 亿年前，当哺乳动物被发明时，我们就出来了，我们的祖先。&lt;/p&gt;
+
+&lt;p&gt;我们再次除以 4。5500 万年前，第一批灵长类动物出现了，我们的祖先。&lt;/p&gt;
+
+&lt;p&gt;自宇宙诞生以来最重要的事件似乎整齐地排列在 2040 年左右收敛于 Omega 点的指数加速时间线上（J Schmidhuber，2014 年）&lt;/p&gt;
+
+&lt;p&gt;我们再次除以 4。1300 万年前，第一批原始人出现了，我们的祖先。 我不知道为什么所有这些除以 4 的除法总是在历史上出现这些决定性的时刻。 但他们确实如此。 我也试过三度、五度和谐波比例，但似乎只有四分之一奏效。&lt;/p&gt;
+
+&lt;p&gt;我们再次除以 4。350 万年前发生了一件非常重要的事情：技术的黎明，正如大自然所说：第一批石器。&lt;/p&gt;
+
+&lt;p&gt;我们除以 4。80 万年前，下一个伟大的技术突破发生了：可控火力。&lt;/p&gt;
+
+&lt;p&gt;我们除以 4。 20 万年前，解剖学上的现代人变得突出，我们的祖先。&lt;/p&gt;
+
+&lt;p&gt;我们除以 4. 5 万年前，出现了行为上现代的人，我们的祖先，并开始在世界上殖民。&lt;/p&gt;
+
+&lt;p&gt;我们再次除以 4。我们在 13000 年前出现，当时发生了一件非常重要的事情：动物的驯化、农业、第一批定居点——文明的开始。 现在我们看到，所有的文明只是世界历史上的一瞬间，只是大爆炸以来时间的百万分之一。 农业和航天器几乎是同时发明的。&lt;/p&gt;
+
+&lt;p&gt;我们除以 4。 3300 年前，铁器时代出现了第一次人口爆炸。&lt;/p&gt;
+
+&lt;p&gt;我们除以 4。请记住，收敛点 Omega 是 2040 年左右。 欧米茄负 800 年——那是在 13 世纪，在中国，铁和火以枪炮、大炮和火箭的形式结合在一起。 从那时起，这就定义了世界，西方仍然远远落后于欠中国的许可费。&lt;/p&gt;
+
+&lt;p&gt;我们再次除以 4。 欧米茄减去 200 年——我们来到了 19 世纪中叶，当时铁和火以越来越复杂的形式结合在一起，通过改进的蒸汽机为工业革命提供动力，基于博蒙特、帕潘、纽科门的工作 、瓦特和其他人（1600 年代至 1700 年代，超越了 1 世纪亚历山大港的 Heron [RAU1] 的第一台简单蒸汽机）。 电话（例如 Meucci 1857、Reis 1860、Bell 1876）[NASC3] 开始彻底改变通信方式。 疾病的细菌理论（巴斯德和科赫，1800 年代后期）彻底改变了医疗保健并使人们的平均寿命更长。 大约在 1850 年，以化肥为基础的农业革命（Sprengel &amp;amp; von Liebig，1800 年代初期）帮助引发了第二次人口爆炸，并在 20 世纪达到顶峰，当时世界人口翻了两番，让 20 世纪在所有世纪中脱颖而出 人类的历史，由制造人造肥料的 Haber-Bosch 工艺驱动，如果没有人造肥料，世界最多只能养活 40 亿人。[HAB1-2]&lt;/p&gt;
+
+&lt;p&gt;我们再除以 4。 欧米茄减去 50 年——差不多是 1990 年，20 世纪 3 场大战的结束：第一次世界大战、第二次世界大战和冷战。 最有价值的 7 家上市公司都是日本公司（如今大多数都在美国）； 然而，中国和美国西海岸都开始迅速崛起，为 21 世纪奠定了基础。 通过手机和无线革命（基于 1800 年代发现的无线电波）以及面向所有人的廉价个人电脑，数字神经系统开始席卷全球。 WWW 是由 Tim Berners-Lee 在瑞士的欧洲粒子对撞机上创建的。 现代人工智能也大约在这个时候开始：第一辆真正的自动驾驶汽车于 1980 年代由 Ernst Dickmanns 团队在慕尼黑制造（到 1994 年，他们的机器人汽车以最高 180 公里/小时的速度在高速公路上行驶）。 [AUT] 那时候，我在写我 1987 年的毕业论文 [META1]，它介绍了不仅用于学习而且用于元学习或学习学习的算法，[META] 通过经验学习更好的学习算法（现在很流行 主题 [DEC])。 然后是我们在 TU Munich 的奇迹年 1990-91[MIR]，这是当今被引用最多的神经网络 [MOST] 和通过自我监督/无监督学习（见上文）进行现代深度学习的根源，[UN][UN0-3 ] LSTM/Highway Net/ResNet 原理（现在放在你智能手机的口袋里——见上文），[DL4][DEC][MOST] 人工好奇心和针对发明自己问题的代理的生成对抗性神经网络（见上文），[ AC90-AC20][PP-PP2][SA17] 具有线性化自注意力的变压器（见上文），[FWP0-6][TR5-6] 将教师 NN 提取为学生 NN（见上文），[UN][UN0- 3] 在多个抽象层次和多个时间尺度上学习行动计划（见上文），[HRL0-2][LEC] 和其他令人兴奋的东西。 其中大部分已经变得非常流行，并改善了数十亿人的生活。[DL4][DEC][MOST]&lt;/p&gt;
+
+&lt;p&gt;我们再次除以 4。Omega 减去 13 年——这是不久的将来的一个时间点，大约在 2030 年，届时许多人预测廉价的 AI 将具有人类的脑力。 然后是最后 13 年左右，直到 Omega，那时不可思议的事情将会发生（尽管对这一切持保留态度 [OMG1]）。&lt;/p&gt;
+
+&lt;p&gt;但当然，时间不会因欧米茄而停止。 也许只有人类主导的历史才会结束。 在 Omega 之后，许多好奇的元学习 AI 发明了自己的目标（这些目标已经在我的实验室中存在了几十年[AC][AC90,AC90b]）将迅速改进自己，仅受限于可计算性和物理学的基本限制。&lt;/p&gt;
+
+&lt;p&gt;超级智能人工智能会做什么？ 太空对人类充满敌意，但对设计合理的机器人友好，它提供的资源比我们的生物圈薄膜要多得多，后者吸收的太阳能量不到太阳能的十亿分之一。 虽然一些好奇的 AI 会继续对生命着迷，至少只要他们还没有完全理解生命，[ACM16][FA15][SP16][SA17] 大多数人会对机器人和软件生命的令人难以置信的新机会更感兴趣 在太空中。 通过小行星带及更远地区无数的自我复制机器人工厂，它们将改造太阳系，然后在几十万年内改造整个银河系，并在数百亿年内改造可及宇宙的其余部分。 尽管存在光速限制，但不断扩大的 AI 领域将有足够的时间来殖民和塑造整个可见宇宙。&lt;/p&gt;
+
+&lt;p&gt;让我稍微扩展一下你的想法。 宇宙还很年轻，只有 138 亿岁。 还记得我们一直除以 4 吗？ 现在让我们乘以 4！ 让我们展望未来，宇宙的年龄将是现在的 4 倍：大约 550 亿年。 届时，可见的宇宙将充满智慧。 因为在 Omega 之后，大多数 AI 将不得不去大多数物理资源所在的地方，以制造更多更大的 AI。 那些没有的不会有影响。[ACM16][FA15][SP16]&lt;/p&gt;
+
+&lt;p&gt;计算所有可能的超宇宙或可计算宇宙的最简单和最快的方法。 于尔根·施密德胡贝尔，1997 年&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-31.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;致谢&quot;&gt;致谢&lt;/h2&gt;
+
+&lt;p&gt;Creative Commons License 以上部分材料取自以前的 AI 博客文章。[MIR] [DEC] [GOD21] [ZUS21] [LEI21] [AUT] [HAB2] [ARC06] [AC] [ATT] [DAN] [DAN1 ] [DL4] [GPUCNN5,8] [DLC] [FDL] [FWP] [LEC] [META] [MLP2] [MOST] [PLAN] [UN] [LSTMPG] [BP4] [DL6a] [HIN] [T22 ] 感谢许多专家审稿人（包括几位著名的神经网络先驱）提出的有益意见。 由于科学是关于自我纠正的，如果您能发现任何剩余的错误，请通过 juergen@idsia.ch 告诉我。 在我的出版物页面和我的 arXiv 页面中可以找到许多其他相关出版物。 本作品根据 Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License 获得许可。&lt;/p&gt;
+
+&lt;h2 id=&quot;555-参考文献调查-dl1-中还有更多参考文献&quot;&gt;555+ 参考文献（调查 [DL1] 中还有更多参考文献）&lt;/h2&gt;</content><author><name>Jürgen Schmidhuber | [译] AI &amp; 麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="深度学习" /><category term="Deep Learning" /><category term="神经网络" /><category term="Artificial Neural Network" /><category term="机器学习" /><category term="Machine Learning" /><category term="ML" /><category term="ANN" /><category term="Transformer" /><category term="CNN" /><category term="RNN" /><category term="循环神经网络" /><category term="神经网络" /><category term="人工神经网络" /><category term="Artificial Intelligence" /><category term="LSTM" /><category term="长短时记忆" /><summary type="html">本文译自 LSTM 作者 Jürgen Schmidhuber，全文主要由 AI 翻译生成，麦克船长进行部分校对，这篇超长文章为了串联起了深度学习领域的大事件，以及那些引领我们的优秀科学家们。</summary></entry><entry><title type="html">当下生成式 AI（AIGC）领域的应用图景</title><link href="https://www.mikecaptain.com/2023/01/13/antler-generative-ai/" rel="alternate" type="text/html" title="当下生成式 AI（AIGC）领域的应用图景" /><published>2023-01-13T18:09:43+00:00</published><updated>2023-01-13T18:09:43+00:00</updated><id>https://www.mikecaptain.com/2023/01/13/antler-generative-ai</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/13/antler-generative-ai/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#什么是-gen-ai&quot; id=&quot;markdown-toc-什么是-gen-ai&quot;&gt;什么是 Gen-AI？&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#人工智能与生成人工智能&quot; id=&quot;markdown-toc-人工智能与生成人工智能&quot;&gt;人工智能与生成人工智能&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#广阔的机遇正在展开&quot; id=&quot;markdown-toc-广阔的机遇正在展开&quot;&gt;广阔的机遇正在展开&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#gen-ai的影响&quot; id=&quot;markdown-toc-gen-ai的影响&quot;&gt;Gen-AI的影响&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#培训模型在实践中如何运作&quot; id=&quot;markdown-toc-培训模型在实践中如何运作&quot;&gt;培训模型在实践中如何运作？&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#语言模型是如何创建的&quot; id=&quot;markdown-toc-语言模型是如何创建的&quot;&gt;语言模型是如何创建的？&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#为什么-gen-ai-存在&quot; id=&quot;markdown-toc-为什么-gen-ai-存在&quot;&gt;为什么 Gen-AI 存在？&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#展望未来gen-ai收入模式&quot; id=&quot;markdown-toc-展望未来gen-ai收入模式&quot;&gt;展望未来——Gen-AI收入模式&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#为什么现在&quot; id=&quot;markdown-toc-为什么现在&quot;&gt;为什么现在？&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#gen-ai筹款格局&quot; id=&quot;markdown-toc-gen-ai筹款格局&quot;&gt;Gen-AI筹款格局&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#gen-ai独角兽格局&quot; id=&quot;markdown-toc-gen-ai独角兽格局&quot;&gt;Gen-AI独角兽格局&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#趋势&quot; id=&quot;markdown-toc-趋势&quot;&gt;趋势：&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#gen-ai-如何用于艺术和音乐&quot; id=&quot;markdown-toc-gen-ai-如何用于艺术和音乐&quot;&gt;Gen-AI 如何用于艺术和音乐？&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#gen-ai-如何用于游戏&quot; id=&quot;markdown-toc-gen-ai-如何用于游戏&quot;&gt;Gen-AI 如何用于游戏？&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#生成式-ai-将会如何影响创作者经济&quot; id=&quot;markdown-toc-生成式-ai-将会如何影响创作者经济&quot;&gt;生成式 AI 将会如何影响创作者经济？&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#这个空间的未来是什么它可能面临什么挑战&quot; id=&quot;markdown-toc-这个空间的未来是什么它可能面临什么挑战&quot;&gt;这个空间的未来是什么，它可能面临什么挑战？&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#gen-ai-将影响元宇宙具体如何影响还有待观察&quot; id=&quot;markdown-toc-gen-ai-将影响元宇宙具体如何影响还有待观察&quot;&gt;Gen-AI 将影响元宇宙——具体如何影响还有待观察。&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#让我们一起塑造未来&quot; id=&quot;markdown-toc-让我们一起塑造未来&quot;&gt;让我们一起塑造未来&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#参考链接&quot; id=&quot;markdown-toc-参考链接&quot;&gt;参考链接&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;本文译自 Antler Blog，原作者 Ollie Forsyth，中文译文由 AI 及麦克船长完成翻译。&lt;/p&gt;
+
+&lt;p&gt;随着 ChatGPT 和 DALL-E 的发布，2022 年社交媒体平台上最热门的话题之一在最近几周爆发，引发了关于其对全球人员、职业和行业影响的激烈辩论。 争议的核心是什么？ 生成式 AI (Gen-AI)——可以快速创建新内容的系统，例如大学论文、歌曲和数字艺术作品。 这些能力令人印象深刻，但它们也引发了关于工作的未来以及人类在 AI 主导的世界中的作用的重要问题。 随着生成式人工智能的不断发展，考虑伦理意义和对社会的潜在影响将变得至关重要。 如果创造性工作在很大程度上被人工智能机器取代，会发生什么？&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-15-antler-generative-ai-1.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这份报告深入探讨了 Gen-AI 的世界，并且是第一份面向所有人的综合市场地图。 我们概述了该领域的 160 多个平台及其投资者，以及领先思想领袖对这项技术潜力的见解。 这为读者提供了一个独特的机会，可以全面了解生成人工智能市场以及新玩家挑战谷歌等老牌玩家的潜力。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“生成式 AI 是一项基础技术，并且与这些新平台一样，它带来的机会很多——我们已经过了‘如果’的阶段，我们正处于‘何时’和‘如何’的阶段。” 随着 LLM 开源，我们看到基础设施层日趋成熟和民主化，这加速了应用层。”——Irina Elena Haivas，Atomico 的投资者和合伙人&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;请注意：本文提供的信息基于 Antler 的零投资日方法和我们为全球创始人提供的支持。 我们行业地图中的特色平台来自 Crunchbase。 值得注意的是，其中一些平台可能与 AI 和 Gen-AI 相交。 如果您认为您的平台应该包含在我们未来的映射中，请通过 Ollie.Forsyth@antler.co 与我们联系。&lt;/p&gt;
+
+&lt;h2 id=&quot;什么是-gen-ai&quot;&gt;什么是 Gen-AI？&lt;/h2&gt;
+
+&lt;p&gt;想象这样一个世界，您可以使用生成式辅助工具在几分钟内完成您的项目，而不是花几天时间写一篇博客文章、一周时间创建演示文稿或几个月时间写一篇学术论文。 这些工具不仅帮助我们完成项目，还支持我们做出更好的决策。&lt;/p&gt;
+
+&lt;p&gt;以下是 Gen-AI 平台可能变得多么强大的一个例子：对于那些熟悉我们关于创作者经济的报告的人来说，想象一个世界，在这个世界里，创作者可以将他们的内容上传到任何语言，并用他们自己的声音作为画外音，而不是依赖 在机器人或本地翻译器上。 这是一个美丽的新世界，在这里我们可以获得强大的工具，可以节省我们无数的时间并提高我们的工作效率。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“我们正处于生成人工智能的转折点，原因有二：计算机可以比以往任何时候都更好地创造，而且人们与它们的互动从未如此简单。”——Molly Welch，Radical Ventures 的投资者。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-15-antler-generative-ai-2.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“在 Media Monks，我们相信生成式 AI 将对我们的行业产生重大影响，尽管很难想象这项惊人技术的真正范围。 我们研究生成式人工智能已有大约五年时间，创新速度呈指数级增长。 技术的进步发生在我们的生产时间表内，范围从 1 到 6 个月不等。 这意味着我们在项目开始时使用的工具在我们上线时已经过时了。” — Media Monks 的创意 AI 设计师兼工程师 Samuel Snider Held。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;人工智能与生成人工智能&quot;&gt;人工智能与生成人工智能&lt;/h2&gt;
+
+&lt;p&gt;人工智能 (AI) 是一个广义术语，指的是任何能够实现智能行为的技术。 这可能包括范围广泛的技术，从可以对数据进行排序的简单算法，到可以模仿类人思维过程的更先进的系统。&lt;/p&gt;
+
+&lt;p&gt;另一方面，生成式人工智能 (Gen-AI) 是一种特定类型的人工智能，专注于生成新内容，例如文本、图像或音乐。 这些系统在大型数据集上进行训练，并使用机器学习算法生成与训练数据相似的新内容。 这在各种应用程序中都很有用，例如创作艺术、音乐，甚至为聊天机器人生成文本。&lt;/p&gt;
+
+&lt;p&gt;从本质上讲，人工智能是一个广义的术语，涵盖了许多不同的技术，而生成人工智能是一种专注于创造新内容的特定类型的人工智能。&lt;/p&gt;
+
+&lt;h2 id=&quot;广阔的机遇正在展开&quot;&gt;广阔的机遇正在展开&lt;/h2&gt;
+
+&lt;p&gt;未来，Gen-AI 很可能会对创意产业产生重大影响。 虽然一些创意可能会被 Gen-AI 系统取代，但其他创意可能会找到新的机会来使用这些系统或创建由 Gen-AI 支持的内容。 在许多情况下，它实际上可以增强创意人员的工作，使他们能够创建更加个性化或独特的内容，或者产生新的想法和概念，如果不使用 AI，这些想法和概念可能是不可能的。&lt;/p&gt;
+
+&lt;p&gt;Gen-AI 对创意人员的一个潜在好处是，它可以使他们能够更快、更高效地创建内容。 例如，作家可以使用 Gen-AI 系统生成文章或故事的草稿，然后他们可以对其进行编辑和完善。 这可以节省时间并让创意人员专注于工作中最重要的方面。&lt;/p&gt;
+
+&lt;p&gt;“生成式 AI 是一股巨大的浪潮，它将在几乎所有行业中产生不可避免的涟漪，对于其中的绝大多数，我们认为这将带来难以置信的增值。我们看到了最大的机会，因为平台是建立在基础之上的 模型，其中用户体验、可访问性和嵌入性将成为这场比赛的关键差异化因素。所有这些都需要由杀手级的上市战略提供动力，最重要的是，速度！下半年将是关键。” ——Stephanie Chan，Samaipata Ventures 投资人。&lt;/p&gt;
+
+&lt;h2 id=&quot;gen-ai的影响&quot;&gt;Gen-AI的影响&lt;/h2&gt;
+
+&lt;p&gt;根据使用方式的不同，这项技术可能会产生许多不同的影响。 例如，Gen-AI 可用于创建新的内容，如音乐或图像，这些内容可用于多种用途，例如为创意者提供更多的灵活性和想象力。 它还可用于通过生成新的训练数据来改进机器学习算法。 总的来说，Gen-AI 的影响肯定是巨大的，因为它有潜力创造新的有用内容并提高机器学习系统的性能。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“我们正在走向人工智能广泛应用的时代。 但广泛可用和实际可用于实现业务成果是两件截然不同的事情。” —Dave Rogenmoser，Jasper 的首席执行官兼联合创始人。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;培训模型在实践中如何运作&quot;&gt;培训模型在实践中如何运作？&lt;/h2&gt;
+
+&lt;p&gt;Gen-AI 训练模型通过从大量示例数据集中学习并使用该知识生成与训练数据集中示例相似的新数据来工作。 这通常是使用一种称为生成模型的机器学习算法来完成的。有许多不同类型的生成模型，每种模型都使用不同的方法来生成新数据。 一些常见类型的生成模型包括生成对抗网络 (GAN)、变分自动编码器 (VAE) 和自回归模型。&lt;/p&gt;
+
+&lt;p&gt;例如，在人脸图像数据集上训练的生成模型可能会学习人脸的一般结构和外观，然后使用这些知识生成新的、以前未见过的看起来真实可信的人脸。&lt;/p&gt;
+
+&lt;p&gt;生成模型用于各种应用程序，包括图像生成、自然语言处理和音乐生成。 它们对于手动生成新数据困难或昂贵的任务特别有用，例如在为产品创建新设计或生成逼真的语音的情况下。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“这些新的基础模型以及建立在其上的应用程序加快了许多行业的步伐：为游戏和社交媒体公司生成创意内容，自动化企业内部的手动流程，帮助扩大以前无法想象的业务，如电影、音乐和漫画制作—— 可能性是无限的。”——Manjot Pahwa，Lightspeed Venture Partners 的投资者&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;语言模型是如何创建的&quot;&gt;语言模型是如何创建的？&lt;/h2&gt;
+
+&lt;p&gt;创建语言模型的方法有多种，但最常见的方法是使用机器学习算法在现有文本的大型数据集上训练模型。 此过程通常包括以下步骤：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;收集现有文本的大型数据集。 此数据集应代表您希望模型能够生成的语言或文本样式。&lt;/li&gt;
+  &lt;li&gt;预处理文本数据以清理并准备训练。 这通常涉及将文本标记为单个单词或短语，并将所有单词转换为小写。&lt;/li&gt;
+  &lt;li&gt;在预处理的文本数据上训练机器学习算法。 这可以使用多种算法来完成，包括递归神经网络 (RNN) 和长短期记忆 (LSTM) 网络。&lt;/li&gt;
+  &lt;li&gt;通过调整模型的参数和超参数以及在必要时使用额外的训练数据来微调训练模型。&lt;/li&gt;
+  &lt;li&gt;通过使用经过训练的模型生成示例文本并评估结果来测试模型。 这可以通过将生成的文本与原始训练数据进行比较，或使用其他指标（例如困惑度或 BLEU 分数）来完成。&lt;/li&gt;
+  &lt;li&gt;通过重复步骤 4 和 5 来优化模型，直到生成的文本具有高质量并匹配所需的语言或样式。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;“重要的是要注意，创建语言模型需要大量的计算资源和机器学习方面的专业知识——尽管这个空间还很早，但平台正在花费数百万美元来微调他们的产品和服务。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;生成式 AI 类别的创始人当前面临的挑战不仅是要构建产品，还要构建具有持久能力的可防御商业模型。 任何有能力的开发人员都可以围绕这些底层生成引擎包装应用程序皮肤。 解决方案是通过嵌入网络效应、提高转换成本、根深蒂固的产品合作伙伴关系等策略，整合可持续的竞争差异化。”——David Beisel，NextView Ventures 合伙人。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;为什么-gen-ai-存在&quot;&gt;为什么 Gen-AI 存在？&lt;/h2&gt;
+
+&lt;p&gt;Gen-AI 的存在是因为它有可能解决许多重要问题，并为广泛领域的无数新机遇打开大门。 Gen-AI 成为一个不断发展的研发领域的一些关键原因包括：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Gen-AI 可以创造新的内容。 Gen-AI 的主要优势之一是它能够生成新内容，例如文本、图像或音乐。 这可用于创造新的艺术、音乐和其他形式的创造性表达，并生成用于训练机器学习模型的数据。&lt;/li&gt;
+  &lt;li&gt;Gen-AI 可以提高效率和生产力。 通过自动生成内容，Gen-AI 可以帮助节省时间并减少人工劳动。 这可以提高各个领域的效率和生产力，从新闻和内容创建到数据注释和分析。&lt;/li&gt;
+  &lt;li&gt;Gen-AI 可以提高生成内容的质量。 随着机器学习和自然语言处理的进步，Gen-AI 变得越来越复杂，能够生成人类难以与真实内容区分开来的高质量内容。&lt;/li&gt;
+  &lt;li&gt;Gen-AI 可以启用新的应用程序和用途。 Gen-AI 创造新内容的能力为新的应用和用途开辟了许多可能性。 例如，它可用于创建个性化体验，例如个性化新闻文章或个性化音乐推荐。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“这并不广为人知。 我的观点是，生成式 AI 模型现在很神奇，因为它们已经能够通过语言接收人们的输入。因为它们能够代表如此多的不同概念——并将它们结合起来——它们可以产生美丽、狂野和创造性的结果。 这令人兴奋、激动，也许还有点可怕。 对于创意人员来说，这意味着通过灵感来寻找灵感，更快地创建原型，并结合模型 (Photoshop++) 的技能来完善作品。’’——Sharon Zhou。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;展望未来gen-ai收入模式&quot;&gt;展望未来——Gen-AI收入模式&lt;/h2&gt;
+
+&lt;p&gt;使用 Gen-AI 技术的公司有几种潜在的收入模式。 一些可能的收入来源包括：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;将技术许可给可以使用它来改进其产品或服务的其他公司或组织。&lt;/li&gt;
+  &lt;li&gt;将 AI 系统的输出（例如生成的图像、视频或文本）出售给可以将它们用于各种目的的客户。&lt;/li&gt;
+  &lt;li&gt;提供对人工智能系统的访问作为订阅服务，客户可以使用它来生成自己的输出&lt;/li&gt;
+  &lt;li&gt;使用 AI 系统提高公司现有产品或服务的效率或有效性，然后向客户收取这些增强产品的费用。&lt;/li&gt;
+  &lt;li&gt;创建利用 AI 系统功能的新产品或服务，并将其直接销售给客户。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;为什么现在&quot;&gt;为什么现在？&lt;/h2&gt;
+
+&lt;p&gt;现在是 Gen-AI 时代的几个原因。 首先，机器学习和自然语言处理的进步使人工智能系统能够生成高质量的、类似人类的内容。 其次，艺术、营销和娱乐等领域对个性化和独特内容的需求不断增长，增加了对 Gen-AI 平台的需求。 第三，大量数据和强大计算资源的可用性使得大规模训练和部署这些类型的模型成为可能。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“人们曾承诺人工智能将改变世界，自 2012 年以来我们一直在等待。在过去的两三年里，终于发生了一些变化。 虽然最近围绕生成 AI 的兴奋一直是文本到图像，但我相信 AI 驱动的文本生成将被证明更具变革性。 现在，随着越来越多地使用尖端语言模型，我们看到这项技术扩散到日常产品中——彻底改变了公司开展业务的方式，并重新构想了人类体验技术的方式。”——Aidan Gomez，Cohere 联合创始人兼首席执行官。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-15-antler-generative-ai-3.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;阅读我们的 Gen-AI 初创公司完整列表（定期更新）&lt;/p&gt;
+
+&lt;p&gt;Gen-AI 类别说明：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;文本：总结或自动化内容。&lt;/li&gt;
+  &lt;li&gt;图像：生成图像。&lt;/li&gt;
+  &lt;li&gt;音频：总结、生成或转换音频中的文本。&lt;/li&gt;
+  &lt;li&gt;视频：生成或编辑视频。&lt;/li&gt;
+  &lt;li&gt;代码：生成代码。&lt;/li&gt;
+  &lt;li&gt;聊天机器人：自动化客户服务等。&lt;/li&gt;
+  &lt;li&gt;机器学习平台：应用程序/机器学习平台。&lt;/li&gt;
+  &lt;li&gt;搜索：人工智能驱动的洞察力。&lt;/li&gt;
+  &lt;li&gt;游戏：Gen-AI 游戏工作室或应用程序。&lt;/li&gt;
+  &lt;li&gt;数据：设计、收集或总结数据。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;gen-ai筹款格局&quot;&gt;Gen-AI筹款格局&lt;/h2&gt;
+
+&lt;p&gt;由于许多投资者专注于 Gen-AI 领域，我们列出了最活跃的投资者：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-15-antler-generative-ai-4.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;少数投资于 Gen-AI 领域的投资者。 这些投资者也可能投资于后期或早期阶段的公司。&lt;/p&gt;
+
+&lt;h2 id=&quot;gen-ai独角兽格局&quot;&gt;Gen-AI独角兽格局&lt;/h2&gt;
+
+&lt;p&gt;尽管该行业仍在兴起，但一些独角兽已经出现。 到目前为止，2019 年生产了两只独角兽，2020 年生产了一只，2022 年生产了四只。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-15-antler-generative-ai-5.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;趋势&quot;&gt;趋势：&lt;/h2&gt;
+
+&lt;h3 id=&quot;gen-ai-如何用于艺术和音乐&quot;&gt;Gen-AI 如何用于艺术和音乐？&lt;/h3&gt;
+
+&lt;p&gt;Gen-AI 正以几种不同的方式用于艺术和音乐。 一个常见的应用是使用生成模型来创造新的艺术和音乐，方法是从头开始生成全新的作品，或者以现有作品为起点并向其中添加新元素。 例如，生成模型可能会在大型绘画数据集上进行训练，然后用于生成与数据集中的作品相似但又独特且原创的新绘画。&lt;/p&gt;
+
+&lt;h3 id=&quot;gen-ai-如何用于游戏&quot;&gt;Gen-AI 如何用于游戏？&lt;/h3&gt;
+
+&lt;p&gt;Gen-AI 正以多种方式用于游戏，包括创建新的关卡或地图、生成新的对话或故事情节，以及创建新的虚拟环境。 例如，游戏可能会使用 Gen-AI 模型来创建一个新的、独特的关卡，供玩家在每次玩游戏时探索，或者根据玩家的动作为非玩家角色生成新的对话选项。 此外，Gen-AI 可用于创建新的、逼真的虚拟环境供玩家探索，例如城市、森林或行星。 总的来说，它可以用来为游戏体验增加一定程度的活力和多样性，使它们对玩家来说更具吸引力和身临其境。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;‘“一般而言，短期的创新领域会非常积极。 众所周知，游戏和在线 3D 体验难以构建——生成式 AI 将彻底颠覆这一现状，让游戏资产的创建变得更加容易。 在游戏中应用生成式 AI 的潜在缺点，或者更确切地说是后果，更为现实。 虽然像 AI 生成的文案或图像创建这样的单维应用程序只是我们执行的现有任务的放大器，但仍然允许我们控制输出的应用程序（即，我们可以决定接受/拒绝一份副本并决定在哪里 使用副本），我们在游戏中与 AI 的交互将更加多维。 随着时间的推移，AI（无论是环境、行为还是 NPC 角色）将进化并适应人类的注意，同样，人类将习惯于在这些 AI 生成的领域中进行社交和定期互动。”——Roblox 的 Annie Zhang。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;生成式-ai-将会如何影响创作者经济&quot;&gt;生成式 AI 将会如何影响创作者经济？&lt;/h3&gt;
+
+&lt;p&gt;创作者经济已经是一个价值 1000 亿美元的行业，正准备持续颠覆，Gen-AI 可能会对创意产生重大影响，尤其是那些创作音乐、艺术或写作的人。 然而，它确实为创作者提供了从第一天起就走向全球的机会，允许他们的内容使用创作者的声音转化为任何语言，或者将他们的创造力转化为更具吸引力的内容。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“生成式 AI 会将创作者变成超级英雄，并扩大他们不那么强大的领域。更多地将其视为创作者的副驾驶，而不是创作者的替代者。” ——Jim Louderback，Inside The Creator Economy 的作者。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;为了让创作者经济取得成功，平台需要适应创作者的个性，以便在内容可能主要由 AI 平台支持时，创作者与他们的粉丝建立某种形式的联系。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“我认为人的因素对于艺术具有价值是必不可少的。 当 AI 生成的艺术是由算法和机器创造的，而不是由具有自己的经验、情感和观点的个人创造时，它可以被视为缺乏通常被视为伟大艺术必不可少的真实性和人性。 这可能会使一些观众难以在情感层面上与 AI 生成的艺术产生联系，从而降低其影响力和重要性。”——创作者 Ivona Tau。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;然而，当我们问创作者 Gen-AI 将对他们产生什么影响时，一位创作者说：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“不多。 也就是说，我正怀着极大的兴趣关注正在发生的事情。 其他人在生成模型的帮助下获得的结果让我深受启发。 你经常听到艺术家将 AI 图像模型称为“工具”，但 AI 不仅仅是一种工具。 它是创意伙伴、合成精灵或鼓舞人心的盟友。”——艺术家詹姆斯·格尼 (James Gurney)。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;这个空间的未来是什么它可能面临什么挑战&quot;&gt;这个空间的未来是什么，它可能面临什么挑战？&lt;/h2&gt;
+
+&lt;p&gt;Gen-AI 面临许多挑战，包括提高这些模型产生的输出的质量和多样性，提高它们生成输出的速度，并使它们更加健壮和可靠。 另一个主要挑战是开发生成式 Gen-AI 模型，这些模型能够更好地理解和整合他们正在处理的数据的底层结构和上下文，以便产生更准确和连贯的输出。 此外，对于生成式人工智能的伦理和社会影响，以及如何确保以负责任和有益的方式使用这些技术，也存在持续的担忧。&lt;/p&gt;
+
+&lt;p&gt;让我们仔细看看其中的一些问题：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;版权&lt;/strong&gt;。 截至今天，要了解这些平台如何识别真实的原始来源或艺术作品的来源是一项挑战——这些模型是由数亿个数据点训练的。 创作者担心这些平台将如何减轻对创作者作品的版权侵权。 正如我们在 Lauryn Ipsum 发布的最近一个案例中看到的那样，Lensa 应用程序中使用的图像具有原始艺术家签名的背景。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“目前生成人工智能中最紧迫的问题之一是系统可信度。 像 OpenAI 的 ChatGPT 这样的大型语言模型很容易分享不正确或错误的响应。 在图像生成中，系统已经接受了大量图像的训练，系统输出存在版权和知识产权问题，使企业用户不确定将它们集成到产品或工作流程中。”——Molly Welch，Radical Ventures 的投资者。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;学生写论文&lt;/strong&gt;。 随着这些平台变得更加智能，精明的年轻学生将在日常生活中采用它们。 这将如何影响他们的学术工作，他们的教授将如何确定这是否真的是他们的工作？ Gen-AI 将对教育领域产生巨大影响，这还有待观察。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“假设 ChatGPT 模型不断改进，学生使用 chatGPT 来补充学习的机会是无穷无尽的。 学生可以使用它来生成测验和抽认卡的内容，以帮助他们学习、优化现有代码，甚至为学习指南编写摘要。 这里的关键词是补充。 除了他们自己已经投入的原创作品之外，学生还应该使用 ChatGPT。当学生使用 ChatGPT 内容代替他们的作品，甚至提交 ChatGPT 内容作为他们自己的原创想法时，ChatGPT 可能会出现问题。 大学行政部门和学生需要共同努力制定政策，明确说明这个新世界可以接受的内容。 上周我参加了一次开卷考试，明确禁止使用 ChatGPT 或任何其他人工智能支持。” —Cherie Lou，斯坦福大学的创作者和学生。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;虚假信息与错误信息&lt;/strong&gt;。尽管这些系统非常聪明，但有时它们不可避免地会提供错误信息。 例如，最近在英国第 4 频道的一次采访中，主持人向 Open AI 询问他的职业道路，聊天机器人助手给出了不准确的信息。 随着训练模型变得更具适应性并更多地了解我们，最终算法中的错误将会减少。&lt;/p&gt;
+
+&lt;p&gt;Gen-AI 的缺点包括：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;如果训练数据不够多样化或不够具有代表性，则生成的数据存在偏差风险。&lt;/li&gt;
+  &lt;li&gt;对生成人工智能在某些行业取代人类劳动的潜力的担忧，导致失业。&lt;/li&gt;
+  &lt;li&gt;Gen-AI 被用于恶意目的的可能性，例如制造假新闻或冒充个人。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Gen-AI 有可能取代从设计师到制作人再到艺术家的数百万个工作岗位； 但是，创意总是会在某些方面存在。&lt;/p&gt;
+
+&lt;h2 id=&quot;gen-ai-将影响元宇宙具体如何影响还有待观察&quot;&gt;Gen-AI 将影响元宇宙——具体如何影响还有待观察。&lt;/h2&gt;
+
+&lt;p&gt;很难准确预测生成式 AI 将如何影响元宇宙，因为后者在很大程度上仍是一个理论概念，并且对于它的外观或功能尚无共识。 然而，Gen-AI 将在其创造和发展中发挥重要作用，因为它将允许在虚拟世界中自动生成内容和体验。 这可能会导致更加身临其境和动态的元宇宙，几乎可以无限地提供新的和独特的体验供用户享受。 Gen-AI 也有可能用于在元宇宙中自动执行各种任务，例如管理虚拟经济并确保虚拟世界保持稳定和正常运行。 总体而言，Gen-AI 对元宇宙的影响可能是重大而广泛的。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“人工智能堆栈的不同层级将存在商机，我们已经看到一些商业模式正在出现。 显然，生产像 GPT-3 这样的基础模型非常昂贵和复杂，少数能够做到这一点的公司将获得丰厚的报酬。 但是，有无数机会开发更专业的模型并将通用功能捆绑到特定目标市场需要的东西中。 这相当于垂直SaaS，应用于AI。 我们可能会看到许多支持 AI 的 SaaS 游戏，它们为特定市场提供具有出色 UX 的整体解决方案。在堆栈的更下方，提供正确类型的训练数据，使 ML 工程师能够快速构建专业模型并 确保模型的稳健性都是非常可行的业务。”—Andreas Goeldi，BTOV Ventures 的合伙人。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;让我们一起塑造未来&quot;&gt;让我们一起塑造未来&lt;/h2&gt;
+
+&lt;p&gt;准备好迎接将彻底改变未来工作方式的技术转变！ 我们正处在一个新时代的边缘，成千上万的工作岗位将被改变，新的工作岗位将被创造出来。 这些尖端的 Gen-AI 平台无疑将支持和改善我们的日常生活，但我们需要时间才能完全适应它们。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“这种前所未有的人机协作水平正在如火如荼地进行，无论你身处哪个行业，无论你身处哪个行业，无论谁率先全面整合生成式 AI 方法，游戏现在都向他们开放。”——Gabrielle Chou，副教授 上海纽约大学。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;参考链接&quot;&gt;参考链接&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;https://www.antler.co/blog/generative-ai&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Ollie Forsyth | [译] AI &amp; 麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="生成式AI" /><category term="Generative AI" /><category term="游戏" /><category term="game" /><category term="Gen-AI" /><category term="AIGC" /><summary type="html">随着 ChatGPT 和 DALL-E 的发布，2022 年社交媒体平台上最热门的话题之一在最近几周爆发，引发了关于其对全球人员、职业和行业影响的激烈辩论。 争议的核心是什么？ 生成式 AI (Gen-AI)——可以快速创建新内容的系统，例如大学论文、歌曲和数字艺术作品。 这些能力令人印象深刻，但它们也引发了关于工作的未来以及人类在 AI 主导的世界中的作用的重要问题。 随着生成式人工智能的不断发展，考虑伦理意义和对社会的潜在影响将变得至关重要。 如果创造性工作在很大程度上被人工智能机器取代，会发生什么？</summary></entry><entry><title type="html">游戏生产力革命：生成式 AI（AIGC）正在深度变革游戏领域</title><link href="https://www.mikecaptain.com/2023/01/11/generative-ai-revolution-in-games/" rel="alternate" type="text/html" title="游戏生产力革命：生成式 AI（AIGC）正在深度变革游戏领域" /><published>2023-01-11T18:33:49+00:00</published><updated>2023-01-11T18:33:49+00:00</updated><id>https://www.mikecaptain.com/2023/01/11/generative-ai-revolution-in-games</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/11/generative-ai-revolution-in-games/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#什么是生成式人工智能&quot; id=&quot;markdown-toc-什么是生成式人工智能&quot;&gt;什么是生成式人工智能&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#part-1观察和预测&quot; id=&quot;markdown-toc-part-1观察和预测&quot;&gt;Part 1、观察和预测&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#一假设&quot; id=&quot;markdown-toc-一假设&quot;&gt;一、假设&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#1通用人工智能的研究量将继续增长创造出更有效的技术&quot; id=&quot;markdown-toc-1通用人工智能的研究量将继续增长创造出更有效的技术&quot;&gt;1、通用人工智能的研究量将继续增长，创造出更有效的技术&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#2在所有娱乐中游戏将受生成人工智能的影响最大&quot; id=&quot;markdown-toc-2在所有娱乐中游戏将受生成人工智能的影响最大&quot;&gt;2、在所有娱乐中，游戏将受生成人工智能的影响最大&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#3游戏制作中涉及的每一项资产都会有一个生成式ai模型&quot; id=&quot;markdown-toc-3游戏制作中涉及的每一项资产都会有一个生成式ai模型&quot;&gt;3、游戏制作中涉及的每一项资产都会有一个生成式AI模型&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#4内容价格将大幅下降在某些情况下实际上会降为零&quot; id=&quot;markdown-toc-4内容价格将大幅下降在某些情况下实际上会降为零&quot;&gt;4、内容价格将大幅下降，在某些情况下实际上会降为零。&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#5我们还处于这场革命的初级阶段很多实践还需要完善&quot; id=&quot;markdown-toc-5我们还处于这场革命的初级阶段很多实践还需要完善&quot;&gt;5、我们还处于这场革命的初级阶段，很多实践还需要完善&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#二预测&quot; id=&quot;markdown-toc-二预测&quot;&gt;二、预测&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#1学习如何有效地使用生成式人工智能将成为一种有市场价值的技能&quot; id=&quot;markdown-toc-1学习如何有效地使用生成式人工智能将成为一种有市场价值的技能&quot;&gt;1、学习如何有效地使用生成式人工智能将成为一种有市场价值的技能&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#2降低壁垒将带来更多的冒险精神和创造性探索&quot; id=&quot;markdown-toc-2降低壁垒将带来更多的冒险精神和创造性探索&quot;&gt;2、降低壁垒将带来更多的冒险精神和创造性探索&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#3人工智能辅助的微游戏工作室兴起&quot; id=&quot;markdown-toc-3人工智能辅助的微游戏工作室兴起&quot;&gt;3、人工智能辅助的「微游戏工作室」兴起&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#4每年发行的游戏数量增加&quot; id=&quot;markdown-toc-4每年发行的游戏数量增加&quot;&gt;4、每年发行的游戏数量增加&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#5生成式-ai-之前不可能创建的新游戏类型&quot; id=&quot;markdown-toc-5生成式-ai-之前不可能创建的新游戏类型&quot;&gt;5、生成式 AI 之前不可能创建的新游戏类型&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#6价值将归于行业特定的人工智能工具而不仅仅是基础模型&quot; id=&quot;markdown-toc-6价值将归于行业特定的人工智能工具而不仅仅是基础模型&quot;&gt;6、价值将归于行业特定的人工智能工具，而不仅仅是基础模型&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#7法律挑战来了&quot; id=&quot;markdown-toc-7法律挑战来了&quot;&gt;7、法律挑战来了&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#8节目不会像艺术内容那样受到严重破坏至少现在还没有&quot; id=&quot;markdown-toc-8节目不会像艺术内容那样受到严重破坏至少现在还没有&quot;&gt;8、节目不会像艺术内容那样受到严重破坏——至少现在还没有&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#三建议&quot; id=&quot;markdown-toc-三建议&quot;&gt;三、建议&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#1现在开始探索生成式-ai&quot; id=&quot;markdown-toc-1现在开始探索生成式-ai&quot;&gt;1、现在开始探索生成式 AI&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#2寻找市场地图机会&quot; id=&quot;markdown-toc-2寻找市场地图机会&quot;&gt;2、寻找市场地图机会&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#part-2市场地图&quot; id=&quot;markdown-toc-part-2市场地图&quot;&gt;Part 2、市场地图&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#一市场现状&quot; id=&quot;markdown-toc-一市场现状&quot;&gt;一、市场现状&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#二2d-图像&quot; id=&quot;markdown-toc-二2d-图像&quot;&gt;二、2D 图像&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#1概念艺术&quot; id=&quot;markdown-toc-1概念艺术&quot;&gt;1、概念艺术&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#2二维制作艺术&quot; id=&quot;markdown-toc-2二维制作艺术&quot;&gt;2、二维制作艺术&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#三3d-图稿&quot; id=&quot;markdown-toc-三3d-图稿&quot;&gt;三、3D 图稿&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#13d资产&quot; id=&quot;markdown-toc-13d资产&quot;&gt;1、3D资产&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#23d-纹理&quot; id=&quot;markdown-toc-23d-纹理&quot;&gt;2、3D 纹理&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#3动画&quot; id=&quot;markdown-toc-3动画&quot;&gt;3、动画&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#4关卡设计和世界建设&quot; id=&quot;markdown-toc-4关卡设计和世界建设&quot;&gt;4、关卡设计和世界建设&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#四声音&quot; id=&quot;markdown-toc-四声音&quot;&gt;四、声音&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#1声音特效&quot; id=&quot;markdown-toc-1声音特效&quot;&gt;1、声音特效&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#2音乐&quot; id=&quot;markdown-toc-2音乐&quot;&gt;2、音乐&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#3语音和对话&quot; id=&quot;markdown-toc-3语音和对话&quot;&gt;3、语音和对话&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#五npc-或玩家角色&quot; id=&quot;markdown-toc-五npc-或玩家角色&quot;&gt;五、NPC 或玩家角色&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#六多合一平台&quot; id=&quot;markdown-toc-六多合一平台&quot;&gt;六、多合一平台&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#七结论&quot; id=&quot;markdown-toc-七结论&quot;&gt;七、结论&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;要了解生成式 AI 将如何彻底改变游戏，只需看看 &lt;a href=&quot;https://twitter.com/emmanuel_2m&quot;&gt;@emmanuel_2m&lt;/a&gt; 最近发布的这篇 &lt;a href=&quot;https://twitter.com/emmanuel_2m/status/1589995198289182720&quot;&gt;Twitter 帖子&lt;/a&gt;。 在这篇文章中，他探讨了使用 Stable Diffusion + Dreambooth（流行的 2D 生成 AI 模型）为假设的游戏生成药水图像。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-12-generative-ai-revolution-in-games-1.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这项工作的变革性不仅在于它节省了时间和金钱，同时还提供了质量——从而打破了经典的“成本、质量或速度只能有两个”的三角关系。艺术家们现在可以在几个小时内创作出高质量的图像，否则手工生成这些图像需要数周时间。 真正具有变革性的是：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;现在，任何可以学习一些简单工具的人都可以获得这种创造力。&lt;/li&gt;
+  &lt;li&gt;这些工具可以以高度迭代的方式创建无数的变体。&lt;/li&gt;
+  &lt;li&gt;一旦经过训练，这个过程就是实时的——结果几乎是即时可用的。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;自实时 3D 以来，还没有出现过对游戏具有如此革命性意义的技术。 花任何时间与游戏创作者交谈，兴奋和惊奇的感觉是显而易见的。 那么这项技术将走向何方？ 它将如何改变游戏？ 不过，首先，让我们回顾一下什么是生成式人工智能？&lt;/p&gt;
+
+&lt;h4 id=&quot;什么是生成式人工智能&quot;&gt;什么是生成式人工智能&lt;/h4&gt;
+
+&lt;p&gt;生成式 AI 是机器学习的一种，计算机可以根据用户的提示生成原创的新内容。 今天，文本和图像是这项技术最成熟的应用，但几乎每个创意领域都在开展工作，从动画到音效，再到音乐，甚至创建具有完全充实个性的虚拟角色。&lt;/p&gt;
+
+&lt;p&gt;当然，人工智能在游戏中并不是什么新鲜事。 即使是早期的游戏，如 Atari 的 Pong，也有计算机控制的对手来挑战玩家。 然而，这些虚拟敌人并没有像我们今天所知道的那样运行人工智能。 它们只是游戏设计师编写的脚本程序。 他们模拟了一个人工智能对手，但他们无法学习，他们只能和建造他们的程序员一样好。&lt;/p&gt;
+
+&lt;p&gt;由于更快的微处理器和云，现在的不同之处在于可用的计算能力。 有了这种能力，就可以构建大型神经网络来识别高度复杂领域中的模式和表征。&lt;/p&gt;
+
+&lt;p&gt;这篇博文分为两部分：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;第一部分包含我们对游戏生成 AI 领域的观察和预测。&lt;/li&gt;
+  &lt;li&gt;第二部分是我们的空间市场地图，概述了各个细分市场并确定了每个细分市场中的关键公司。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;part-1观察和预测&quot;&gt;Part 1、观察和预测&lt;/h3&gt;
+
+&lt;h4 id=&quot;一假设&quot;&gt;一、假设&lt;/h4&gt;
+
+&lt;p&gt;首先，让我们探讨一下这篇博文其余部分的一些假设：&lt;/p&gt;
+
+&lt;h5 id=&quot;1通用人工智能的研究量将继续增长创造出更有效的技术&quot;&gt;1、通用人工智能的研究量将继续增长，创造出更有效的技术&lt;/h5&gt;
+
+&lt;p&gt;考虑一下 arXiv 档案中每月发表的关于机器学习或人工智能的学术论文数量图表：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-12-generative-ai-revolution-in-games-2.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如您所见，论文数量呈指数级增长，丝毫没有放缓的迹象。 这仅包括已发表的论文——许多研究甚至从未发表过，直接用于开源模型或产品研发。 结果是兴趣和创新的爆炸式增长。&lt;/p&gt;
+
+&lt;h5 id=&quot;2在所有娱乐中游戏将受生成人工智能的影响最大&quot;&gt;2、在所有娱乐中，游戏将受生成人工智能的影响最大&lt;/h5&gt;
+
+&lt;p&gt;就涉及的资产类型（2D 艺术、3D 艺术、音效、音乐、对话等）的数量而言，游戏是最复杂的娱乐形式。 游戏也是最具互动性的，非常强调实时体验。 这为新游戏开发者创造了一个陡峭的进入壁垒，同时也为制作一款现代的、排行榜首的游戏付出了高昂的成本。 它还为生成式 AI 的颠覆创造了巨大的机会。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-12-generative-ai-revolution-in-games-3.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;想想像 Red Dead Redemption 2 这样的游戏，它是有史以来最昂贵的游戏之一，制作成本接近 5 亿美元。 原因很容易理解——它拥有市场上所有游戏中最美丽、最真实的虚拟世界之一。 它还花费了将近 8 年的时间打造，拥有超过 1,000 个不可玩的角色（每个角色都有自己的个性、艺术作品和配音演员），一个近 30 平方英里的世界，超过 100 个任务分为 6 个章节，以及 由 100 多位音乐家创作的近 60 小时的音乐。 这个游戏的一切都很大。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-12-generative-ai-revolution-in-games-4.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;现在将 Red Dead Redemption 2 与 Microsoft Flight Simulator 进行比较，后者不仅大，而且非常庞大。 Microsoft Flight Simulator 使玩家能够在整个地球上飞行，包括 1.97 亿平方英里的地球。 微软是如何打造如此庞大的游戏的？ 通过让人工智能来做。 微软与 blackshark.ai 合作，训练人工智能从 2D 卫星图像生成逼真的 3D 世界。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-12-generative-ai-revolution-in-games-5.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这是一个游戏的例子，如果不使用 AI，实际上是不可能构建的，而且，从这些模型可以随着时间的推移不断改进这一事实中获益。 例如，他们可以增强“高速公路三叶草立交桥”模型，重新运行整个构建过程，并突然之间，整个星球上的所有高速公路立交桥都得到了改善。&lt;/p&gt;
+
+&lt;h5 id=&quot;3游戏制作中涉及的每一项资产都会有一个生成式ai模型&quot;&gt;3、游戏制作中涉及的每一项资产都会有一个生成式AI模型&lt;/h5&gt;
+
+&lt;p&gt;到目前为止，像 Stable Diffusion 或 MidJourney 这样的 2D 图像生成器已经获得了生成式 AI 的大部分流行兴奋，因为它们可以生成图像的引人注目的特性。 但是，已经存在适用于游戏中几乎所有资产的生成式 AI 模型，从 3D 模型到角色动画，再到对话和音乐。 这篇博文的后半部分包括一张市场地图，突出显示了一些专注于每种类型内容的公司。&lt;/p&gt;
+
+&lt;h5 id=&quot;4内容价格将大幅下降在某些情况下实际上会降为零&quot;&gt;4、内容价格将大幅下降，在某些情况下实际上会降为零。&lt;/h5&gt;
+
+&lt;p&gt;在与正在尝试将生成式 AI 集成到他们的生产流程中的游戏开发人员交谈时，最令人兴奋的是时间和成本的大幅减少。 一位开发人员告诉我们，他们为单个图像生成概念艺术的时间从开始到完成已从 3 周减少到一个小时：减少了 120 比 1。 我们相信在整个生产流程中也可能实现类似的节省。&lt;/p&gt;
+
+&lt;p&gt;需要明确的是，艺术家没有被取代的危险。 这确实意味着艺术家不再需要自己完成所有工作：他们现在可以设定最初的创意方向，然后将大部分耗时和技术执行交给人工智能。 在这方面，他们就像手绘动画早期的赛璐珞画家，技艺高超的“墨水工”画出动画的轮廓，然后成本较低的“画家”大军会完成耗时的绘画工作。 动画 cels，填充线条。 它是游戏创建的“自动完成”。&lt;/p&gt;
+
+&lt;h5 id=&quot;5我们还处于这场革命的初级阶段很多实践还需要完善&quot;&gt;5、我们还处于这场革命的初级阶段，很多实践还需要完善&lt;/h5&gt;
+
+&lt;p&gt;尽管最近很兴奋，但我们仍处于起跑线上。 在我们弄清楚如何将这项新技术用于游戏的过程中，还有大量的工作要做，并且将为迅速进入这一新领域的公司创造巨大的机会。&lt;/p&gt;
+
+&lt;h4 id=&quot;二预测&quot;&gt;二、预测&lt;/h4&gt;
+
+&lt;p&gt;鉴于这些假设，以下是对游戏行业如何转变的一些预测：&lt;/p&gt;
+
+&lt;h5 id=&quot;1学习如何有效地使用生成式人工智能将成为一种有市场价值的技能&quot;&gt;1、学习如何有效地使用生成式人工智能将成为一种有市场价值的技能&lt;/h5&gt;
+
+&lt;p&gt;我们已经看到一些实验者比其他人更有效地使用生成式人工智能。 要充分利用这项新技术，需要使用各种工具和技术，并了解如何在它们之间灵活运用。 我们预测这将成为一种适销对路的技能，将艺术家的创意视野与程序员的技术技能相结合。&lt;/p&gt;
+
+&lt;p&gt;克里斯·安德森 (Chris Anderson) 有句名言：“每一次富足都会造成新的稀缺。” 随着内容变得丰富，我们相信最短缺的是知道如何使用 AI 工具最有效地协作和工作的艺术家。&lt;/p&gt;
+
+&lt;p&gt;例如，将生成式 AI 用于制作艺术品面临着特殊的挑战，包括：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;连贯性。 对于任何生产资产，您都需要能够在以后对资产进行更改或编辑。 使用 AI 工具，这意味着需要能够使用相同的提示重现资产，这样您就可以进行更改。这可能很棘手，因为相同的提示可能会产生截然不同的结果。&lt;/li&gt;
+  &lt;li&gt;风格。 给定游戏中的所有艺术都具有一致的风格很重要——这意味着您的工具需要根据您给定的风格进行培训或以其他方式绑定。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;2降低壁垒将带来更多的冒险精神和创造性探索&quot;&gt;2、降低壁垒将带来更多的冒险精神和创造性探索&lt;/h5&gt;
+
+&lt;p&gt;我们可能很快就会进入游戏开发的新“黄金时代”，在这个时代，较低的进入门槛会导致更多创新和创意游戏的爆发。 不仅因为较低的制作成本导致较低的风险，还因为这些工具释放了为更广泛的受众创建高质量内容的能力。 这导致下一个预测……&lt;/p&gt;
+
+&lt;h5 id=&quot;3人工智能辅助的微游戏工作室兴起&quot;&gt;3、人工智能辅助的「微游戏工作室」兴起&lt;/h5&gt;
+
+&lt;p&gt;借助生成式 AI 工具和服务，我们将开始看到由只有 1 或 2 名员工的微型“微型工作室”制作出更多可行的商业游戏。 成立小型独立游戏工作室的想法并不新鲜——热门游戏 Among Us 是由只有 5 名员工的 Innersloth 工作室开发的——但这些小型工作室可以开发的游戏的规模和规模将会增长。 这将导致……&lt;/p&gt;
+
+&lt;h5 id=&quot;4每年发行的游戏数量增加&quot;&gt;4、每年发行的游戏数量增加&lt;/h5&gt;
+
+&lt;p&gt;Unity 和 Roblox 的成功表明，提供强大的创意工具可以打造更多游戏。 生成式 AI 将进一步降低门槛，创造更多的游戏。 该行业已经面临发现挑战——仅去年一年就有超过 10,000 款游戏被添加到 Steam——这将给发现带来更大的压力。 然而，我们也会看到……&lt;/p&gt;
+
+&lt;h5 id=&quot;5生成式-ai-之前不可能创建的新游戏类型&quot;&gt;5、生成式 AI 之前不可能创建的新游戏类型&lt;/h5&gt;
+
+&lt;p&gt;我们将看到新的游戏类型的发明，如果没有生成式 AI，这些游戏类型根本不可能实现。 我们已经谈过麦克风rosoft 的飞行模拟器，但将会有依赖于实时生成新内容的全新类型的发明。&lt;/p&gt;
+
+&lt;p&gt;考虑一下 Spellbrush 的 Arrowmancer。 这是一款角色扮演游戏，以 AI 创建的角色为特色，提供几乎无限的新游戏玩法。&lt;/p&gt;
+
+&lt;p&gt;我们还知道另一家游戏开发商正在使用 AI 让玩家创建自己的游戏内头像。 以前他们有一组手绘的头像图像，玩家可以混合搭配这些图像来创建他们的头像——现在他们完全抛弃了这一点，只是简单地根据玩家的描述生成头像图像。 让玩家通过 AI 生成内容比让玩家从头开始上传自己的内容更安全，因为可以训练 AI 避免创建令人反感的内容，同时仍然给玩家更大的主人翁感。&lt;/p&gt;
+
+&lt;h5 id=&quot;6价值将归于行业特定的人工智能工具而不仅仅是基础模型&quot;&gt;6、价值将归于行业特定的人工智能工具，而不仅仅是基础模型&lt;/h5&gt;
+
+&lt;p&gt;围绕 Stable Diffusion 和 Midjourney 等基础模型的兴奋和热议正在产生令人瞠目结舌的估值，但新研究的持续涌入确保了随着新技术的改进，新模型将会出现和消失。 考虑 3 种流行的生成式 AI 模型的网站搜索流量：Dall-E、Midjourney 和 Stable Diffusion。 每个新模型都会成为人们关注的焦点。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-12-generative-ai-revolution-in-games-6.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;另一种方法可能是构建行业一致的工具套件，专注于特定行业的生成 AI 需求，深入了解特定受众，并充分集成到现有的生产管道（例如 Unity 或 Unreal 游戏）。&lt;/p&gt;
+
+&lt;p&gt;一个很好的例子是 Runway，它通过视频编辑、绿屏移除、修复和运动跟踪等人工智能辅助工具来满足视频创作者的需求。 像这样的工具可以建立特定的受众并从中获利，随着时间的推移添加新的模型。 我们还没有看到像 Runway 这样的游戏套件出现，但我们知道这是一个积极发展的空间。&lt;/p&gt;
+
+&lt;h5 id=&quot;7法律挑战来了&quot;&gt;7、法律挑战来了&lt;/h5&gt;
+
+&lt;p&gt;所有这些生成式 AI 模型的共同点是它们是使用海量内容数据集进行训练的，这些数据集通常是通过抓取互联网本身创建的。 例如，Stable Diffusion 接受了超过 50 亿个图像/标题对的训练，这些图像/标题对是从网络上抓取的。&lt;/p&gt;
+
+&lt;p&gt;目前这些模型声称在“合理使用”版权原则下运作，但这一论点尚未在法庭上得到明确检验。 很明显，法律挑战即将到来，这可能会改变生成人工智能的格局。&lt;/p&gt;
+
+&lt;p&gt;大型工作室可能会通过建立基于他们拥有明确权利和所有权的内部内容的专有模型来寻求竞争优势。 例如，微软在这方面的地位尤其有利，目前拥有 23 个第一方工作室，在收购 Activision 后还有 7 个。&lt;/p&gt;
+
+&lt;h5 id=&quot;8节目不会像艺术内容那样受到严重破坏至少现在还没有&quot;&gt;8、节目不会像艺术内容那样受到严重破坏——至少现在还没有&lt;/h5&gt;
+
+&lt;p&gt;软件工程是游戏开发的另一项主要成本，但正如我们 a16z Enterprise 团队的同事在他们最近的博客文章中分享的那样，艺术并没有死，它只是机器生成的，使用 AI 模型生成代码需要更多测试和 验证，因此与生成创意资产相比，生产力的提高较小。 像 Copilot 这样的编码工具可能会为工程师提供适度的性能改进，但不会产生同样的影响……至少在短期内不会。&lt;/p&gt;
+
+&lt;h4 id=&quot;三建议&quot;&gt;三、建议&lt;/h4&gt;
+
+&lt;p&gt;基于这些预测，我们提出以下建议：&lt;/p&gt;
+
+&lt;h5 id=&quot;1现在开始探索生成式-ai&quot;&gt;1、现在开始探索生成式 AI&lt;/h5&gt;
+
+&lt;p&gt;需要一段时间才能弄清楚如何充分利用即将到来的生成式 AI 革命的力量。 现在开始的公司以后会有优势。 我们知道有几家工作室正在进行内部实验项目，以探索这些技术如何影响制作。&lt;/p&gt;
+
+&lt;h5 id=&quot;2寻找市场地图机会&quot;&gt;2、寻找市场地图机会&lt;/h5&gt;
+
+&lt;p&gt;我们市场地图的某些部分已经非常拥挤，例如动画或语音与对话，但其他领域则非常开放。 我们鼓励对这一领域感兴趣的企业家将精力集中在尚未探索的领域，例如“游戏跑道”。&lt;/p&gt;
+
+&lt;h3 id=&quot;part-2市场地图&quot;&gt;Part 2、市场地图&lt;/h3&gt;
+
+&lt;h4 id=&quot;一市场现状&quot;&gt;一、市场现状&lt;/h4&gt;
+
+&lt;p&gt;我们已经创建了一个市场地图来捕获我们在每个类别中发现的公司列表，我们在这些类别中看到生成 AI 影响游戏。 这篇博文逐一介绍了这些类别，对其进行了更详细的解释，并重点介绍了每个类别中最令人兴奋的公司。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-12-generative-ai-revolution-in-games-7.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;二2d-图像&quot;&gt;二、2D 图像&lt;/h4&gt;
+
+&lt;p&gt;根据文本提示生成二维图像已经是生成式人工智能应用最广泛的领域之一。 Midjourney、Stable Diffusion 和 Dall-E 2 等工具可以从文本生成高质量的 2D 图像，并且已经在游戏生命周期的多个阶段进入游戏制作。&lt;/p&gt;
+
+&lt;h5 id=&quot;1概念艺术&quot;&gt;1、概念艺术&lt;/h5&gt;
+
+&lt;p&gt;生成式 AI 工具非常擅长“构思”或帮助非艺术家（如游戏设计师）快速探索概念和想法以生成概念图，这是一个关键部分的生产过程。 例如，一个工作室（保持匿名）正在使用其中的几个工具来从根本上加快他们的概念艺术过程，只需要一天就可以创建一个图像，而以前需要长达 3 周的时间。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;首先，他们的游戏设计师使用 Midjourney 探索不同的想法并生成他们觉得鼓舞人心的图像。&lt;/li&gt;
+  &lt;li&gt;这些被移交给专业的概念艺术家，他们将它们组装在一起并在结果上绘画以创建一个单一的连贯图像 - 然后将其输入到 Stable Diffusion 中以创建一系列变化。&lt;/li&gt;
+  &lt;li&gt;他们讨论这些变化，选择一个，手动绘制一些编辑——然后重复这个过程，直到他们对结果满意为止。&lt;/li&gt;
+  &lt;li&gt;在那个阶段，最后一次将此图像传回 Stable Diffusion 以“升级”它以创建最终的艺术作品。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;2二维制作艺术&quot;&gt;2、二维制作艺术&lt;/h5&gt;
+
+&lt;p&gt;一些工作室已经在尝试使用相同的工具来制作游戏中的艺术品。 例如，这里有一篇来自 Albert Bozesan 的精彩教程，介绍如何使用 Stable Diffusion 创建游戏中的 2D 资产。&lt;/p&gt;
+
+&lt;h4 id=&quot;三3d-图稿&quot;&gt;三、3D 图稿&lt;/h4&gt;
+
+&lt;p&gt;3D 资产是所有现代游戏以及即将到来的元宇宙的基石。 虚拟世界或游戏关卡本质上只是 3D 资产的集合，经过放置和修改以填充环境。 然而，创建 3D 资产比创建 2D 图像更复杂，并且涉及多个步骤，包括创建 3D 模型和添加纹理和效果。 对于动画角色，它还涉及创建内部“骨架”，然后在该骨架之上创建动画。&lt;/p&gt;
+
+&lt;p&gt;我们看到几家不同的初创公司在这个 3D 资产创建过程的每个阶段都在努力，包括模型创建、角色动画和关卡构建。 然而，这还不是一个已解决的问题——还没有任何解决方案准备好完全集成到生产中。&lt;/p&gt;
+
+&lt;h5 id=&quot;13d资产&quot;&gt;1、3D资产&lt;/h5&gt;
+
+&lt;p&gt;试图解决 3D 模型创建问题的初创公司包括 Kaedim、Mirage 和 Hypothetic。 更大的公司也在关注这个问题，包括 Nvidia 的 Get3D 和 Autodesk 的 ClipForge。 Kaedim 和 Get3d 专注于图像到 3D； ClipForge 和 Mirage 专注于文本到 3D，而 Hypothetic 对文本到 3D 搜索以及图像到 3D 都感兴趣。&lt;/p&gt;
+
+&lt;h5 id=&quot;23d-纹理&quot;&gt;2、3D 纹理&lt;/h5&gt;
+
+&lt;p&gt;3D 模型的逼真度取决于应用于网格的纹理或材料。 决定将哪种长满苔藓、风化的石头纹理应用于中世纪城堡模型可以完全改变场景的外观和感觉。 纹理包含关于光如何对材料做出反应的元数据（即粗糙度、光泽度等）。 允许艺术家根据文本或图像提示轻松生成纹理对于提高创作过程中的迭代速度非常有价值。 几个团队正在寻求这个机会，包括 BariumAI、Ponzu 和 ArmorLab。&lt;/p&gt;
+
+&lt;h5 id=&quot;3动画&quot;&gt;3、动画&lt;/h5&gt;
+
+&lt;p&gt;创建出色的动画是游戏创建过程中最耗时、最昂贵且最需要技巧的部分之一。 一种降低成本并创建更逼真的动画的方法是使用动作捕捉，您可以让演员或舞者穿上动作捕捉服，并记录他们在配备特殊仪器的动作捕捉舞台上的移动。&lt;/p&gt;
+
+&lt;p&gt;我们现在看到了可以直接从视频中捕捉动画的生成式 AI 模型。 这样效率更高，因为它不再需要昂贵的动作捕捉装置，还因为这意味着您可以从现有视频中捕捉动画。 这些模型的另一个令人兴奋的方面是，它们还可以用于对现有动画应用过滤器，例如让它们看起来喝醉了、老了或开心了。 进入这一领域的公司包括 Kinetix、DeepMotion、RADiCAL、Move Ai 和 Plask。&lt;/p&gt;
+
+&lt;h5 id=&quot;4关卡设计和世界建设&quot;&gt;4、关卡设计和世界建设&lt;/h5&gt;
+
+&lt;p&gt;游戏创作中最耗时的一个方面是构建游戏世界，生成式 AI 应该非常适合这项任务。 Minecraft、No Man’s Sky 和 Diablo 等游戏已经以使用程序技术生成关卡而闻名，其中关卡是随机创建的，每次都不同，但遵循关卡设计师制定的规则。 新的 Unreal 5 游戏引擎的一大卖点是其用于开放世界设计的程序工具集，例如植被放置。&lt;/p&gt;
+
+&lt;p&gt;我们已经看到该领域的一些举措，例如 Promethean、MLXAR 或 Meta 的 Builder Bot，并且认为生成技术在很大程度上取代程序技术只是时间问题。 该领域的学术研究已经有一段时间了，包括 Minecraft 的生成技术或 Doom 的关卡设计。&lt;/p&gt;
+
+&lt;p&gt;期待用于关卡设计的生成式 AI 工具的另一个令人信服的理由是能够创建不同风格的关卡和世界。 你可以想象在 1920 年的纽约拍板时代要求工具生成一个世界，对比反乌托邦的银翼杀手式未来，对比托尔金式的幻想世界。&lt;/p&gt;
+
+&lt;p&gt;以下概念是由 Midjourney 使用提示“a game level in the st是的……”&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-12-generative-ai-revolution-in-games-8.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;四声音&quot;&gt;四、声音&lt;/h4&gt;
+
+&lt;p&gt;声音和音乐是游戏体验的重要组成部分。 我们开始看到公司使用 Generative AI 来生成音频，以补充图形方面已经发生的工作。&lt;/p&gt;
+
+&lt;h5 id=&quot;1声音特效&quot;&gt;1、声音特效&lt;/h5&gt;
+
+&lt;p&gt;音效是 AI 有吸引力的开放领域。 已有学术论文探索使用 AI 在电影中生成「foley」（例如脚步声）的想法，但游戏中的商业产品还很少。&lt;/p&gt;
+
+&lt;p&gt;我们认为这只是时间问题，因为游戏的交互性使其成为生成式 AI 的明显应用，既可以在制作过程中创建静态音效（「激光枪声，星球大战风格」），又 在运行时创建实时交互式音效。&lt;/p&gt;
+
+&lt;p&gt;考虑为玩家角色生成脚步声这样简单的事情。 大多数游戏通过包含少量预先录制的脚步声来解决这个问题：在草地上行走、在砾石上行走、在草地上奔跑、在砾石上奔跑等。生成和管理这些声音很乏味，并且在运行时听起来重复且不真实。&lt;/p&gt;
+
+&lt;p&gt;更好的方法是实时生成拟音效果的 AI 模型，它可以动态生成适当的音效，每次都略有不同，对游戏中的参数（如地面、角色重量、 步态、鞋类等&lt;/p&gt;
+
+&lt;h5 id=&quot;2音乐&quot;&gt;2、音乐&lt;/h5&gt;
+
+&lt;p&gt;音乐一直是游戏的挑战。 这很重要，因为它可以帮助设定情绪基调，就像在电影或电视中一样，但由于游戏可以持续数百甚至数千小时，它很快就会变得重复或烦人。 此外，由于游戏的互动性，音乐可能很难在任何给定时间精确匹配屏幕上发生的事情。&lt;/p&gt;
+
+&lt;p&gt;二十多年来，自适应音乐一直是游戏音频领域的一个话题，一直追溯到微软用于创建互动音乐的「DirectMusic」系统。 DirectMusic 从未被广泛采用，主要是因为以这种格式进行创作很困难。 只有少数游戏，如 Monolith 的 No One Lives Forever，创造了真正的互动配乐。&lt;/p&gt;
+
+&lt;p&gt;现在我们看到许多公司正在尝试创建 AI 生成的音乐，例如 Soundful、Musico、Harmonai、Infinite Album 和 Aiva。 虽然今天的一些工具，如 Open AI 的 Jukebox，计算密集度很高，不能实时运行，但大多数工具都可以在初始模型构建后实时运行。&lt;/p&gt;
+
+&lt;h5 id=&quot;3语音和对话&quot;&gt;3、语音和对话&lt;/h5&gt;
+
+&lt;p&gt;有大量公司试图为游戏中的角色创造逼真的声音。 考虑到尝试通过语音合成为计算机提供声音的悠久历史，这并不奇怪。 公司包括 Sonantic、Coqui、Replica Studios、Resemble.ai、Readspeaker.ai 等等。&lt;/p&gt;
+
+&lt;p&gt;使用生成式 AI 进行语音有多种优势，这在一定程度上解释了为什么这个领域如此拥挤。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;即时生成对话。 通常游戏中的语音是由配音演员预先录制的，但这些仅限于预先录制的录音语音。 通过生成式 AI 对话，角色可以说任何话——这意味着他们可以对玩家的行为做出充分的反应。 结合用于 NPC 的更智能的 AI 模型（不在本博客的范围内，但现在是一个同样令人兴奋的创新领域），对玩家完全反应的游戏的承诺即将到来。&lt;/li&gt;
+  &lt;li&gt;角色扮演。 许多玩家想扮演与他们在现实世界中的身份几乎没有相似之处的奇幻角色。 然而，一旦玩家用自己的声音说话，这种幻想就会破灭。 使用与玩家头像相匹配的生成声音可以保持这种错觉。&lt;/li&gt;
+  &lt;li&gt;控制。 生成语音时，您可以控制声音的细微差别，如音色、音调变化、情感共鸣、音素长度、重音等。&lt;/li&gt;
+  &lt;li&gt;本土化。 允许将对话翻译成任何语言并以相同的声音说出来。 像 Deepdub 这样的公司专门专注于这个利基市场。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;五npc-或玩家角色&quot;&gt;五、NPC 或玩家角色&lt;/h4&gt;
+
+&lt;p&gt;许多初创公司正在考虑使用生成式 AI 来创建可以与之互动的可信角色，部分原因是这是一个在游戏之外具有如此广泛适用性的市场，例如虚拟助理或接待员。&lt;/p&gt;
+
+&lt;p&gt;创造可信角色的努力可以追溯到 AI 研究的开端。 事实上，经典的人工智能“图灵测试”的定义是，人类应该无法区分与人工智能和人类的聊天对话。&lt;/p&gt;
+
+&lt;p&gt;目前，有数百家公司在构建通用聊天机器人，其中许多由类似 GPT-3 的语言模型提供支持。 少数人专门尝试构建以娱乐为目的的聊天机器人，例如试图构建虚拟朋友的 Replika 和 Anima。 正如电影《她》中探讨的那样，与虚拟女友约会的概念可能比您想象的更接近。&lt;/p&gt;
+
+&lt;p&gt;我们现在看到了这些聊天机器人平台的下一次迭代，例如 Charisma.ai、Convai.com 或 Inworld.ai，旨在为完全撕裂提供动力创建具有情感和代理的 3D 角色，以及允许创作者为这些角色设定目标的工具。 如果他们要融入游戏或在推动情节发展方面有一个叙事位置，而不是纯粹的门面装饰，这一点就很重要。&lt;/p&gt;
+
+&lt;h4 id=&quot;六多合一平台&quot;&gt;六、多合一平台&lt;/h4&gt;
+
+&lt;p&gt;Runwayml.com 是最成功的生成式 AI 工具之一，因为它在一个软件包中汇集了广泛的创作者工具套件。 目前还没有这样的视频游戏平台，我们认为这是一个被忽视的机会。 我们很乐意投资具有以下特点的解决方案：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;涵盖整个生产过程的全套人工智能生成工具。 （代码、资产生成、纹理、音频、描述等）&lt;/li&gt;
+  &lt;li&gt;与 Unreal 和 Unity 等流行游戏引擎紧密集成。&lt;/li&gt;
+  &lt;li&gt;旨在适应典型的游戏制作流程。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;七结论&quot;&gt;七、结论&lt;/h4&gt;
+
+&lt;p&gt;对于游戏创作者来说，这是一个不可思议的时刻！ 部分归功于这篇博文中描述的工具，生成构建游戏所需的内容从未如此简单——即使您的游戏与整个地球一样大！&lt;/p&gt;
+
+&lt;p&gt;甚至有一天可以想象一款完全个性化的游戏，完全根据玩家的需求为玩家打造。 这在科幻小说中已经存在很长时间了——比如《安德的游戏》中的「AI 智力游戏」，或者《星际迷航》中的全息甲板。 但是随着这篇博文中描述的工具发展得如此之快，不难想象这一现实指日可待。&lt;/p&gt;</content><author><name>James Gwertzman and Jack Soslow | [译] AI &amp; 麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="生成式AI" /><category term="Generative AI" /><category term="游戏" /><category term="game" /><category term="Gen-AI" /><category term="AIGC" /><summary type="html">2022 年是生成式 AI（Gen-AI）的元年，而游戏领域也正在被生成式 AI 进行着生产力革命。当下游戏 2D 素材、3D 建模、音频内容、实时生成智能语音交互 …… 等等一系列技术在游戏世界里率先应用，正在推动一个让玩家更可以全方位实时交互的游戏世界的诞生，而不再像以前一样只能依赖以往设定好的游戏交互内容，这令人感到无比兴奋。而这些技术在虚拟世界成熟后，将会逐渐渗透回现实世界中的各项应用，尤其是创作者生态的生产力变革，更进一步地影响普通人日常的内容获取与 AI 交互。</summary></entry><entry><title type="html">麦克船长 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）</title><link href="https://www.mikecaptain.com/2023/01/04/language-model-5/" rel="alternate" type="text/html" title="麦克船长 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）" /><published>2023-01-04T18:13:09+00:00</published><updated>2023-01-04T18:13:09+00:00</updated><id>https://www.mikecaptain.com/2023/01/04/language-model-5</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/04/language-model-5/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#一为什么说-rnn-模型没有体现注意力&quot; id=&quot;markdown-toc-一为什么说-rnn-模型没有体现注意力&quot;&gt;一、为什么说 RNN 模型没有体现「注意力」？&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#二基于-attention-机制的-encoder-decoder-模型&quot; id=&quot;markdown-toc-二基于-attention-机制的-encoder-decoder-模型&quot;&gt;二、基于 Attention 机制的 Encoder-Decoder 模型&lt;/a&gt;&lt;/li&gt;
@@ -4548,958 +5624,4 @@ cosine value :  0.8691698561422959
 
 &lt;p&gt;未来很快，我们将看到一些更精准满足图像生成需求的应用出现，比如生成游戏素材（其实现在已经有了，比如 Scenario.gg）、AI 替身生成等等。&lt;/p&gt;
 
-&lt;p&gt;相应的，对抗性的防御技术也会很快发展。&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="diffusion" /><category term="MidJourney" /><category term="Text2Image" /><category term="文生图" /><category term="AIGC" /><summary type="html">因为 Diffusion 模型在计算机视觉领域的发展，可以说今年人工智能在计算机视觉领域大放异彩，各种 Text2Image 项目层出不穷，花了三分钟时间做了一组机甲图，确实非常惊艳 ……</summary></entry><entry><title type="html">不要船开远了，就忘了为什么启航</title><link href="https://www.mikecaptain.com/2022/08/11/captain-alibaba/" rel="alternate" type="text/html" title="不要船开远了，就忘了为什么启航" /><published>2022-08-11T15:53:57+00:00</published><updated>2022-08-11T15:53:57+00:00</updated><id>https://www.mikecaptain.com/2022/08/11/captain-alibaba</id><content type="html" xml:base="https://www.mikecaptain.com/2022/08/11/captain-alibaba/">&lt;h3 id=&quot;写在前面&quot;&gt;写在前面&lt;/h3&gt;
-&lt;p&gt;偶然翻到 2020.06.11 刚来到阿里时写的一篇内容（我是 2020 年的 6 月 4 日我入职阿里巴巴集团），是有关于来阿里的期待、对这家公司的一些粗浅初步的理解。此时再翻来看看，最大的感触就是，提醒自己勿忘初心。&lt;/p&gt;
-
-&lt;p&gt;在不涉及到公司数据安全及商业机密问题的前提下，稍做了一些删改，发布在这里作为一个回顾。本次穿插了一些图片，当时写的时候还没有这些照片。本文内容包括：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;很多人是带着梦想来阿里的，那么我的梦想是什么呢？&lt;/li&gt;
-  &lt;li&gt;最喜欢新六脉的哪句话？为什么？&lt;/li&gt;
-  &lt;li&gt;关于阿里企业价值观：为什么要接受这套价值观？&lt;/li&gt;
-  &lt;li&gt;价值观的本质意义（极度务实视角）是什么？&lt;/li&gt;
-  &lt;li&gt;Landing 的 SOP&lt;/li&gt;
-  &lt;li&gt;问问自己，来到阿里，如果初期我可能需要做一点改变，那会是什么？&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2020-06-11-captain-alibaba-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;注：2020 年平安夜 · 百年湖畔 87 期合影&lt;/p&gt;
-
-&lt;h3 id=&quot;很多人是带着梦想来阿里的那么我的梦想是什么呢&quot;&gt;很多人是带着梦想来阿里的，那么我的梦想是什么呢？&lt;/h3&gt;
-
-&lt;p&gt;Christensen 在《创新者的窘境》中提到：每一次技术更迭，都需要破坏性创新，而破坏性创新在前一次技术更迭的胜出者内部是很难生长出来的。阿里诞生以来，不断地创造第二增长曲线：阿里巴巴、淘宝、支付宝、天猫、阿里云、钉钉 …… 这让我非常好奇。其中很多产品穿越多个时间周期，期间不断创造内生二次曲线。&lt;/p&gt;
-
-&lt;p&gt;但是阿里也一样错失了很多，微信、美团、拼多多、抖/快…… 等等很多产品诞生在了其他公司，还有某些产品在不断的科技更迭中自身生长出了第二曲线。&lt;/p&gt;
-
-&lt;p&gt;因此我来阿里的梦想也非常明确：&lt;strong&gt;参与或创造一次（甚至多次）第二曲线，可以是新产品，也可以是原有产品内生的。在这个过程中获得个人成长、个人价值。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;一直以来，我有三个最想实现或得到的东西：LOVE、CREATION、FREEDOM。随着生活与工作的前行，对这三者的理解，在不断加深。在这个问题里，我想应该是讨论”CREATION”。&lt;/p&gt;
-
-&lt;p&gt;CREATION 上，我的梦想的范式，大概是从自己中学时代就确立了，在某一次人类社会变革浪潮中，扮演有一定权重的角色。这里面有几个变量：&lt;strong&gt;什么领域（F）的变革；什么规模（S）的变革；多大的权重（W）；什么角色（R）。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;F 这个变量，我在中学及大学时代逐渐明确，是以相对普适的产品形式输出结果并对社会变革产生积极作用。后来越来越明确为科技与商业结合的领域。&lt;/p&gt;
-
-&lt;p&gt;S、W 这两个变量，自然是越大越好。因此我会希望能够构建尽可能大的机会，或者参与到尽可能大的机会中。R 希望是有强烈 Ownership 的身份。&lt;/p&gt;
-
-&lt;p&gt;因此过去几年我选择了创业。创业就像冲浪，你抓住一次浪并完成漂亮的动作，就是一次不算失败的创业。但是如果一个浪没抓住，你去追它是没意义的，而应该等待下一个浪。我认为在未来 5~10 年内难以出现规模能大到令我足够兴奋的科技浪潮。大浪潮中属于创业者的大机会很多，而中小浪潮的大机会基本只属于大平台，那么为了在壮年期做获得我的 CREATION，我选择了加入阿里这样的大平台。&lt;/p&gt;
-
-&lt;p&gt;在最后做决定以及初来阿里的那个人生转折点，作为老阿里人的曲洋老师对我说的一句话，深深地鼓励了我，他说：”带着创业气质，把这里当你的舞台折腾！”&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2020-06-11-captain-alibaba-2.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;注：2020 年双十一 · 淘宝 KO&lt;/p&gt;
-
-&lt;h3 id=&quot;最喜欢新六脉的哪句话为什么&quot;&gt;最喜欢新六脉的哪句话？为什么？&lt;/h3&gt;
-
-&lt;p&gt;最喜欢的是“因为信任所以简单”。&lt;/p&gt;
-
-&lt;p&gt;我一直认为人最重要的两个元特质是”真实”和“谦逊”，由”真实”可以塑造自我（对内）、构建信任（对外），后者可以带来清晰的边界，继而实现人与人之间高效的互动（这种互动包括各种人际关系在内，如婚姻、合伙、共事、合作等等）。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;事物（虚实皆可）呈现在人的认知中，会得到三方面的投影：facts、opinion、feeling。如果我们足够真实，当我们需要把这三方面呈现给他人时，双方就能顺畅建立信任。信任的结果，就对应到这三方面：彼此之间建立共识（facts）、求同存异（opinion）、尊重感受（feeling），这就是”简单”。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;另外一句是鼓励自己勇于绽放的一条：「此次此刻，非我莫属」。&lt;/p&gt;
-
-&lt;p&gt;激情、自信、积极…… 通常行为统一表现为“勇于绽放自己”，绽放有表达（语言）与投身（行为）两种表现形式。更进一步推进就是”此次此刻，非我莫属”的阿里价值观。&lt;/p&gt;
-
-&lt;p&gt;低调、稳重、谦逊，其实与“此次此刻，非我莫属“，并不矛盾。这点是我来到阿里后，发现自己在过去这些年的创业中已经不知不觉改变了，从 Introvert 逐渐变成了 Extrovert 的人，而且从曾经 social 中消耗能量，逐渐变为我现在可以感知到获得能量。这种变化，是我最近来阿里才确认发生的，此前因为自己创业者的身份没有察觉这种变化的发生。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2020-06-11-captain-alibaba-3.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;注：2021 年秋 · 径山之行&lt;/p&gt;
-
-&lt;h3 id=&quot;关于阿里企业价值观为什么要接受这套价值观&quot;&gt;关于阿里企业价值观：为什么要接受这套价值观？&lt;/h3&gt;
-
-&lt;p&gt;马老师和老逍都提到这个：我们是寻找同路人，而不是教育别人。这其实非常明晰地解释了为什么阿里要构建一个毛细血管网络一样的政委体系。基于这种用人理念，政委体系不敢说是最优解，但一定是优解（而且是否有更优解的论证没有意义）。&lt;/p&gt;
-
-&lt;p&gt;对于个人，我的理解是要做两件事：&lt;strong&gt;1）构建自己的价值观体系（初始化）；2）寻找价值观契合的公司（做匹配）。这两点里，没有任何地方提到”你要改变价值观为了契合你所在的公司”。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;而企业价值观呢，其实可以分两部分看待：普世价值观、独特价值观。前者因为是普世的，所以到了哪个公司这种价值观都对，这点老逍也提了，比如“客户第一”。后者是个性化的，但不存在孰高孰低，就像一个人内向还是外向，你不能说哪个是错的。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2020-06-11-captain-alibaba-4.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;注：2021 年双十一 · 天天特卖团队&lt;/p&gt;
-
-&lt;h3 id=&quot;价值观的本质意义极度务实视角是什么&quot;&gt;价值观的本质意义（极度务实视角）是什么？&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;在充分考虑价值观适配使命、愿景基础上，价值观本身的意义，在和风细雨时（即企业价值观与其他价值判断相 match 时），是看不到的。但在暴风骤雨时（即企业价值观与其他价值判断相冲突时），就能显示其实实在在的作用了。&lt;/strong&gt;我认为包括三类，前两个是阿里整体视角，第三个是阿里内部：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;经济体内，阿里与其他生态位的冲突或损益关系，如曾经的美蘑口一役。&lt;/li&gt;
-  &lt;li&gt;经济体内，其他的生态位之间的冲突或损益关系，如曾经的十月围城。&lt;/li&gt;
-  &lt;li&gt;阿里人的行为价值判断，如最近的钉钉代考事件、过往的各类廉政事件。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2020-06-11-captain-alibaba-5.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;注：2021 年冬 · 淘宝天猫合并前合影&lt;/p&gt;
-
-&lt;h3 id=&quot;landing的sop&quot;&gt;Landing 的 SOP&lt;/h3&gt;
-
-&lt;p&gt;大家都说 landing 充满挑战，马老师其实给出了 landing 的 SOP 三部曲：&lt;strong&gt;一起打过仗、一起创过新、一起度过难。三个经历都 close 才算 smooth landing。&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;集团人才策略层面、HR 实操层面、Leader 层面、，对于新人 landing 能做到什么程度的保障，其实每个新人感受到的不尽相同：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;集团层面，始终是在构建更好的新人 landing 环境的，这符合自身价值，这能打下很好的底子。&lt;/li&gt;
-  &lt;li&gt;实操层面，包括面试阶段对候选人的价值观判断、预期管理，面试及入职后公司文化及人才体系的事实呈现、内化吸收和长期解惑。&lt;/li&gt;
-  &lt;li&gt;Leader 层面，这是新人体感最强烈的部分，也是最重要的部分。尽管拥抱变化，但首先 Leader 需要给出尽可能最全面的考虑，其次是对候选人的预期管理。好的 Leader 会给候选人提供合理的着陆点、多个降落伞、缓冲垫，完成 smooth landing。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2020-06-11-captain-alibaba-6.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;注：2021 年夏 · 出差厦漳泉&lt;/p&gt;
-
-&lt;h3 id=&quot;问问自己来到阿里如果初期我可能需要做一点改变那会是什么&quot;&gt;问问自己，来到阿里，如果初期我可能需要做一点改变，那会是什么？&lt;/h3&gt;
-
-&lt;p&gt;曾经个人的激情与动力，常来自于“增长”。常说&lt;strong&gt;高增长掩盖一切&lt;/strong&gt;，所以未来在阿里如果不能如创业般快速获得反馈得到积极结果，并且大平台中必然要接受大量关联方共同参与项目而导致的效率降低，因此我要逐渐改变自己，重新适应这种环境下的激情与动力获得方式。&lt;/p&gt;
-
-&lt;p&gt;另一方面，作为创业公司的负责人，工作中鲜有因为内部原因而无法推进的事情，但是扮演肩部或腰部角色时，需要接受头部决策的一定程度不可控，这是我需要作出的适应与改变。关于这一点，我在几个月前就已经在做预期管理和心态调整，我认为以创业者的强适应性，这可能并不会是问题，但是我习惯于保持谨慎的乐观来面对自己。&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="thinking" /><category term="思考" /><summary type="html">2020 年的 6 月 4 日我入职阿里巴巴集团，7 天后的 6 月 11 日我写下了这篇文章。偶然翻到了当时这篇文章，遂转录于此，提醒自己勿忘初心。在不涉及到公司数据安全及商业机密问题的前提下，稍做了一些删改，发布在这里作为一个回顾。本次穿插了一些图片，当时写的时候还没有这些照片。本文内容包括：很多人是带着梦想来阿里的，那么我的梦想是什么呢？最喜欢新六脉的哪句话？为什么？关于阿里企业价值观：为什么要接受这套价值观？价值观的本质意义（极度务实视角）是什么？Landing 的 SOP；问问自己，来到阿里，如果初期我可能需要做一点改变，那会是什么？</summary></entry><entry><title type="html">麦克船长的 Jekyll 快速教程</title><link href="https://www.mikecaptain.com/2021/12/23/captains-jeckyll-learning/" rel="alternate" type="text/html" title="麦克船长的 Jekyll 快速教程" /><published>2021-12-23T19:43:02+00:00</published><updated>2021-12-23T19:43:02+00:00</updated><id>https://www.mikecaptain.com/2021/12/23/captains-jeckyll-learning</id><content type="html" xml:base="https://www.mikecaptain.com/2021/12/23/captains-jeckyll-learning/">&lt;ul&gt;
-  &lt;li&gt;作者：麦克船长（钟超）&lt;/li&gt;
-  &lt;li&gt;微信：sinosuperman&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;写在前面&quot;&gt;写在前面&lt;/h3&gt;
-
-&lt;p&gt;Jekyll 是一个用 Ruby 实现的、使用 Liquid 模板引擎的静态网站生成器，它可以通过 Markdown 或者 HTML 等文件生成完整的静态网站。它特别适用于博客或者文章类的网站，因为可以自动生成博客的首页、分类页、标签页等等。因为使用 Liquid 引擎所以能在页面中使用变量、循环、条件语句等等，非常方便。虽然基于 Ruby 实现但使用起来并不需要掌握 Ruby，只需要了解一些基本的语法即可。&lt;/p&gt;
-
-&lt;h3 id=&quot;part-1基本特点&quot;&gt;Part 1、基本特点&lt;/h3&gt;
-
-&lt;h4 id=&quot;一基本语法&quot;&gt;一、基本语法&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;变量：用双大括号表示变量 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;麦克船长的技术、产品与商业博客&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;过滤器：可以使用过滤器对变量进行操作，例如 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;麦克船长的技术、产品与商业博客&lt;/code&gt; 表示把网站的标题转换为大写。&lt;/li&gt;
-  &lt;li&gt;支持循环与分支结构：比如 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for-endfor&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if-elsif-else-endif&lt;/code&gt; ：可以使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fo-endfor&lt;/code&gt; 循环遍历列表或集合，例如 `````` 表示遍历网站的所有页面。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;二典型-jekyll-项目结构及重要文件介绍&quot;&gt;二、典型 Jekyll 项目结构及重要文件介绍&lt;/h4&gt;
-
-&lt;h5 id=&quot;1配置文件-_configyml&quot;&gt;1、配置文件 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;&lt;/h5&gt;
-
-&lt;p&gt;首先看到下作为一个网站的基础设置，这里要特别注意不要遗漏 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;encoding: utf-8&lt;/code&gt; 这一条。&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Site settings&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;utf-8&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;麦克船长的技术、产品与商业博客&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管&quot;&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;https://www.mikecaptain.com&quot;&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Your&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Name&quot;&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;https://www.mikecaptian.com&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;然后是 Markdown 引擎的设置，及其高亮语法 Rouge 部分。&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Markdown and highlighter&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;markdown&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kramdown&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;highlighter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rouge&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;kramdown&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;GFM&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;syntax_highlighter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rouge&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;一些要用到的插件也要设置进来，本博客只用到了基础插件两个。&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Plugins&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jekyll-paginate&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jekyll-sitemap&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;另外构建项目的一些关键设置，比如文章放在哪里、如何进行分页（每页多少条文章）等等作为一个静态博客网站的 build 类设置都在此。&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Build settings&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;baseurl&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Change this to your relative path (ex: /blog/), or leave just a /&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;.&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;destination&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;./_site&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;permalink&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/:title&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;paginate&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;20&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;paginate_path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/page:num/&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;collections&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;posts&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;permalink&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/:year/:month/:day/:title/&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;directory&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;_posts&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;2布局文件_layouts-目录下的文件规则&quot;&gt;2、布局文件：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_layouts&lt;/code&gt; 目录下的文件规则&lt;/h5&gt;
-
-&lt;p&gt;Jekyll 的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_layouts&lt;/code&gt; 目录包含了你的 Jekyll 站点中所使用的页面布局。每个页面布局是一个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HTML&lt;/code&gt;模板，定义了你的站点中页面的框架和外观。你可以通过在你的文章或页面的头部添加一个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;layout&lt;/code&gt; 字段来指定使用哪个布局来渲染该页面。&lt;/p&gt;
-
-&lt;p&gt;布局文件通常包含用于渲染页面的常见元素，例如头部、尾部和侧边栏。你可以在布局文件中使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;include&lt;/code&gt; 语句来插入你的站点的其他文件，例如 header.html 和 footer.html 文件。这样，你就可以在一个地方维护站点的头部和尾部，而不必在每个页面中都进行更新。&lt;/p&gt;
-
-&lt;h5 id=&quot;3页面文件及其头部&quot;&gt;3、页面文件及其头部&lt;/h5&gt;
-
-&lt;p&gt;在一个页面的开头，用如下语法表示页面头部：&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;page&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;permalink&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/categories/&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Categories&lt;/span&gt;
-&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;每个页面文件的头部都会有layout，并与 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_layouts&lt;/code&gt; 目录下的某个文件对应。&lt;/p&gt;
-
-&lt;h3 id=&quot;part-2jekyll-中的全局变量&quot;&gt;Part 2、Jekyll 中的全局变量&lt;/h3&gt;
-
-&lt;p&gt;Jekyll 中有许多全局变量可供使用，它们可以在模板中调用。这些变量提供了有关网站，页面，文章和其他内容的信息，可用于在模板中进行条件判断或显示信息。以下是 Jekyll 中常用的一些全局变量：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site&lt;/code&gt;：包含有关网站的信息，如网站标题，描述，域名等。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;page&lt;/code&gt;：包含有关当前页面的信息，如标题，内容，布局等。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;post&lt;/code&gt;：包含有关当前文章的信息，如标题，作者，日期等。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;content&lt;/code&gt;：包含当前页面或文章的内容。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;paginator&lt;/code&gt;：包含有关分页的信息，如当前页码，总页数等。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tags&lt;/code&gt;：包含有关网站的所有标签的信息。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;related_posts&lt;/code&gt;：包含与当前文章有关的文章的信息。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;这些变量可以在模板中使用，比如：&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;{{ page.title }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;{{ site.description }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
-  {{ for category in site.categories %}
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;{{ category }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-  {{ endfor %}
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;    
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Jekyll 还支持自定义全局变量，可以在配置文件 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; 中添加任意的键值对，然后就可以在模板文件中使用这些变量了。例如，你可以在配置文件中添加如下内容：&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;my_custom_variable&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Hello&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;World&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;然后就可以在模板文件中使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site.my_custom_variable&lt;/code&gt; 访问这个自定义变量了。&lt;/p&gt;
-
-&lt;h4 id=&quot;一site变量&quot;&gt;一、site变量&lt;/h4&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site&lt;/code&gt; 的数据结构里包含了所构建的网站的各种基本信息和结构。&lt;/p&gt;
-
-&lt;h5 id=&quot;1sitecategories&quot;&gt;1、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site.categories&lt;/code&gt;&lt;/h5&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site.categories&lt;/code&gt; 是一个 array，每个元素取出它的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;first&lt;/code&gt; 就是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;category&lt;/code&gt; 的名字，如下使用：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;2sitepages&quot;&gt;2、site.pages&lt;/h5&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site.pages&lt;/code&gt; 是一个包含所有页面的数组，不仅包括根目录下的页面，还包括所有子目录下的页面。因此，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site.pages&lt;/code&gt; 中包含的是整个网站中所有的页面。&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{{ for page in site.pages %}
-	{{ page.title }}
-{{ endfor %}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;3其他常用属性&quot;&gt;3、其他常用属性&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site.title&lt;/code&gt;：是网站的标题。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site.related_posts&lt;/code&gt;：相关文章的列表。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site.data&lt;/code&gt;：从 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_data&lt;/code&gt; 目录加载的数据。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site.static_files&lt;/code&gt;：静态文件的列表。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site.collections&lt;/code&gt;：自定义集合的列表。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;二page-变量&quot;&gt;二、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;page&lt;/code&gt; 变量&lt;/h4&gt;
-
-&lt;p&gt;在 Jekyll 中，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;page&lt;/code&gt; 变量表示单独页面的数据。它是一个包含多个属性的对象，可以用来存储页面的信息并在模板中使用。一些常见的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;page&lt;/code&gt; 变量属性包括：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;layout&lt;/code&gt;：表示页面使用的布局模板的名称。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;title&lt;/code&gt;：表示页面的标题。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;date&lt;/code&gt;：表示页面的发布日期。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;categories&lt;/code&gt;：表示页面所属的分类列表。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tags&lt;/code&gt;：表示页面所属的标签列表。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;content&lt;/code&gt;：表示页面的内容（用 Markdown 格式书写）。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;在模板中，可以使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{{ page.属性名 }}&lt;/code&gt; 的方式来访问 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;page&lt;/code&gt; 变量的属性。例如，如果想在模板中输出页面的标题，可以使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{{ page.title }}&lt;/code&gt;。此外，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;page&lt;/code&gt; 变量还有其他属性，如 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;permalink&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;excerpt&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;url&lt;/code&gt; 等，可以根据需要调用。&lt;/p&gt;
-
-&lt;h3 id=&quot;part-3控制结构&quot;&gt;Part 3、控制结构&lt;/h3&gt;
-
-&lt;h4 id=&quot;1if-else-分支结构&quot;&gt;1、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if-else&lt;/code&gt; 分支结构&lt;/h4&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{{ if tmp_var == &quot;type1&quot; %}
-{{ elsif tmp_var == &quot;type2&quot; %}
-{{ elsif tmp_var == &quot;type3&quot; %}
-{{ elsif tmp_var == &quot;type4&quot; %}
-{{ else tmp_var == &quot;type5&quot; %}
-{{ endif %}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;2for-endfor-循环结构&quot;&gt;2、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for-endfor&lt;/code&gt; 循环结构&lt;/h4&gt;
-
-&lt;p&gt;不带条件判断的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt; 循环如下：&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{{ for post in paginator.posts %}
-	&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Your other sentences --&amp;gt;&lt;/span&gt;
-{{ endfor %}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;带条件循环的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt; 用 Jekyll 里的「过滤器」来实现：&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{{ for page in site.pages | where: &quot;dir&quot;, &quot;categories&quot; %}
-	{{ page.title }}
-{{ endfor %}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;3jekyll-支持的其他结构包括&quot;&gt;3、Jekyll 支持的其他结构包括：&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;case&lt;/code&gt; 用于在多个可能的条件中执行代码的结构。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;capture&lt;/code&gt; 用于捕获输出的结构。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cycle&lt;/code&gt; 用于循环一组字符串的结构。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;include&lt;/code&gt; 用于包含其他文件的结构。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;unless&lt;/code&gt; 用于在不满足指定条件时执行代码的结构。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;while&lt;/code&gt; 用于在满足指定条件时执行代码的结构。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;参考&quot;&gt;参考：&lt;/h3&gt;
-
-&lt;p&gt;1、&lt;a href=&quot;https://learn.cloudcannon.com/jekyll/list-posts-by-category/&quot;&gt;https://learn.cloudcannon.com/jekyll/list-posts-by-category/&lt;/a&gt;
-2、&lt;a href=&quot;https://jekyllrb.com/docs/&quot;&gt;https://jekyllrb.com/docs/&lt;/a&gt;&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="web" /><category term="Jekyll" /><category term="Web" /><category term="前端" /><summary type="html">Jekyll 是一个用 Ruby 实现的、使用 Liquid 模板引擎的静态网站生成器，它可以通过 Markdown 或者 HTML 等文件生成完整的静态网站。它特别适用于博客或者文章类的网站，因为可以自动生成博客的首页、分类页、标签页等等。因为使用 Liquid 引擎所以能在页面中使用变量、循环、条件语句等等，非常方便。虽然基于 Ruby 实现但使用起来并不需要掌握 Ruby，只需要了解一些基本的语法即可 ……</summary></entry><entry><title type="html">如何使用 Jekyll 基于 Github Pages 搭建个人博客</title><link href="https://www.mikecaptain.com/2021/12/21/build-github-pages-with-jekyll/" rel="alternate" type="text/html" title="如何使用 Jekyll 基于 Github Pages 搭建个人博客" /><published>2021-12-21T15:53:57+00:00</published><updated>2021-12-21T15:53:57+00:00</updated><id>https://www.mikecaptain.com/2021/12/21/build-github-pages-with-jekyll</id><content type="html" xml:base="https://www.mikecaptain.com/2021/12/21/build-github-pages-with-jekyll/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#写在前面&quot; id=&quot;markdown-toc-写在前面&quot;&gt;写在前面&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#1github上的准备&quot; id=&quot;markdown-toc-1github上的准备&quot;&gt;1、GitHub 上的准备&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#2了解ruby和jekyll&quot; id=&quot;markdown-toc-2了解ruby和jekyll&quot;&gt;2、了解 Ruby 和 Jekyll&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#3了解gem&quot; id=&quot;markdown-toc-3了解gem&quot;&gt;3、了解 Gem&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#4安装homebrew&quot; id=&quot;markdown-toc-4安装homebrew&quot;&gt;4、安装 Homebrew&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#5用homebrew安装ruby&quot; id=&quot;markdown-toc-5用homebrew安装ruby&quot;&gt;5、用 Homebrew 安装 Ruby&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#6安装jekyll和bundler&quot; id=&quot;markdown-toc-6安装jekyll和bundler&quot;&gt;6、安装 Jekyll 和 Bundler&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#7使用bundle管理包依赖关系&quot; id=&quot;markdown-toc-7使用bundle管理包依赖关系&quot;&gt;7、使用 bundle 管理包依赖关系&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#8本地启动一下看看&quot; id=&quot;markdown-toc-8本地启动一下看看&quot;&gt;8、本地启动一下看看&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#9用jekyll创建一个项目&quot; id=&quot;markdown-toc-9用jekyll创建一个项目&quot;&gt;9、用 Jekyll 创建一个项目&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#10修改gemfile文件&quot; id=&quot;markdown-toc-10修改gemfile文件&quot;&gt;10、修改 Gemfile 文件&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#11配置githubpages&quot; id=&quot;markdown-toc-11配置githubpages&quot;&gt;11、配置 Github Pages&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#12配置一个jekylltheme&quot; id=&quot;markdown-toc-12配置一个jekylltheme&quot;&gt;12、配置一个 Jekyll Theme&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#13设置自定义域名&quot; id=&quot;markdown-toc-13设置自定义域名&quot;&gt;13、设置自定义域名&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#14用-rouge-实现代码高亮&quot; id=&quot;markdown-toc-14用-rouge-实现代码高亮&quot;&gt;14、用 rouge 实现代码高亮&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#15一些扩展问题&quot; id=&quot;markdown-toc-15一些扩展问题&quot;&gt;15、一些扩展问题&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#q1我想在网站的首页的每一篇文章标题下显示一个指定的摘要而不是自动从文章内容开头截取的应该如何实现呢&quot; id=&quot;markdown-toc-q1我想在网站的首页的每一篇文章标题下显示一个指定的摘要而不是自动从文章内容开头截取的应该如何实现呢&quot;&gt;Q1：我想在网站的首页的每一篇文章标题下，显示一个指定的摘要，而不是自动从文章内容开头截取的，应该如何实现呢？&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#q2如何支持对每一个分类都可以显示一个该分类下的所有文章的页面&quot; id=&quot;markdown-toc-q2如何支持对每一个分类都可以显示一个该分类下的所有文章的页面&quot;&gt;Q2：如何支持对每一个分类都可以显示一个该分类下的所有文章的页面？&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#q3如何为每篇文章添加一个目录&quot; id=&quot;markdown-toc-q3如何为每篇文章添加一个目录&quot;&gt;Q3：如何为每篇文章添加一个目录&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#q4如何在-jekyll-中支持-katex&quot; id=&quot;markdown-toc-q4如何在-jekyll-中支持-katex&quot;&gt;Q4：如何在 Jekyll 中支持 KaTeX&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#在-githubio-上&quot; id=&quot;markdown-toc-在-githubio-上&quot;&gt;在 GitHub.io 上&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#本问题参考&quot; id=&quot;markdown-toc-本问题参考&quot;&gt;本问题参考：&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#如果不在-githubio-上则还需要额外工作&quot; id=&quot;markdown-toc-如果不在-githubio-上则还需要额外工作&quot;&gt;如果不在 GitHub.io 上，则还需要额外工作&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#使用示例&quot; id=&quot;markdown-toc-使用示例&quot;&gt;使用示例&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#q5jekyll-中如何支持-graphviz-&quot; id=&quot;markdown-toc-q5jekyll-中如何支持-graphviz-&quot;&gt;Q5：Jekyll 中如何支持 Graphviz ？&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#本地-jekyll-先运行起来-graphviz&quot; id=&quot;markdown-toc-本地-jekyll-先运行起来-graphviz&quot;&gt;本地 Jekyll 先运行起来 Graphviz&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#github-pages-上正常显示-graphviz&quot; id=&quot;markdown-toc-github-pages-上正常显示-graphviz&quot;&gt;Github Pages 上正常显示 Graphviz&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#本问题参考-1&quot; id=&quot;markdown-toc-本问题参考-1&quot;&gt;本问题参考：&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#q6如何显示--或者--&quot; id=&quot;markdown-toc-q6如何显示--或者--&quot;&gt;Q6：如何显示 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{%&lt;/code&gt; 或者 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{{&lt;/code&gt; ？&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#参考&quot; id=&quot;markdown-toc-参考&quot;&gt;参考&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;写在前面&quot;&gt;写在前面&lt;/h3&gt;
-
-&lt;p&gt;GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用 GitHub Pages 搭建博客，然后使用 Jekyll 生成的静态网站文件上传到该仓库。花 10 分钟时间，通过本文让你快速地实现了一个免费、简单、快速、安全、支持版本控制、支持自定义域名的独立域名博客。这样实现的优势：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;免费&lt;/strong&gt;：GitHub Pages 允许用户免费使用其托管静态网站。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;简单&lt;/strong&gt;：Jekyll 是一个轻量级的静态网站生成器，它使用简单的 Markdown 格式写文章，不需要数据库或者后端语言的支持。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;快速&lt;/strong&gt;：由于 Jekyll 生成的网站是静态的，所以可以通过 CDN 加速访问速度。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;安全&lt;/strong&gt;：由于 Jekyll 生成的网站是静态的，所以不存在脚本攻击、SQL 注入等安全问题。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;版本控制&lt;/strong&gt;：GitHub 提供了强大的版本控制功能，你可以使用 Git 记录每一次修改，方便查看和回滚。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;自定义域名&lt;/strong&gt;：你可以在仓库的设置页面中自定义域名，让你的博客更专业和个性化。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;使用 Jekyll 和 GitHub Pages 搭建博客，你可以快速、简单、免费地拥有一个个人博客，并且可以享受到较高的安全性、版本控制和自定义域名的优势。&lt;/p&gt;
-
-&lt;p&gt;本文涉及到 macOS 命令行的一点点基础，以及 git 版本控制软件、Web 前端的一点点基础，但是船长会尽量浅显地写在本文，避免太多其他依赖。&lt;/p&gt;
-
-&lt;h3 id=&quot;1github上的准备&quot;&gt;1、GitHub 上的准备&lt;/h3&gt;
-
-&lt;p&gt;在 Github 上创建一个新的仓库，命名为「账户名.github.io」。然后将仓库拉取到本地：&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git clone https://github.com/username/username.github.io
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;创建一些 web 文件后再推到 Github 上就可以了：&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git add &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Initial commit&quot;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; origin main
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;2了解ruby和jekyll&quot;&gt;2、了解 Ruby 和 Jekyll&lt;/h3&gt;
-
-&lt;p&gt;Ruby 目前业界的主要应用都在 Web 开发领域，有不少框架，比如 Ruby on Rails、Sinatra、Padrino. 我们这里要用到的 Jekyll 是用 Ruby 实现的一个构建静态网站的工具，用 HTML 和 Markdown 作为源码，再通过布局和模板生成网页文件。&lt;/p&gt;
-
-&lt;p&gt;Jekyll 特别适合构建博客，支持标签、分类、搜索，并支持自定义模板和布局。&lt;/p&gt;
-
-&lt;h3 id=&quot;3了解gem&quot;&gt;3、了解 Gem&lt;/h3&gt;
-
-&lt;p&gt;Gem 是 Ruby 常用的一个管理库的工具，类似于 Pip 是 Python 常用的一个管理库的工具。&lt;/p&gt;
-
-&lt;p&gt;为 Gem 配置国内的源，这样访问速度更快：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem sources --add https://mirrors.tuna.tsinghua.edu.cn/rubygems/ --remove https://rubygems.org/
-gem sources -l
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;4安装homebrew&quot;&gt;4、安装 Homebrew&lt;/h3&gt;
-
-&lt;p&gt;Homebrew 是一个专门为 macOS 设计的开源软件包管理工具，熟悉 Linux 的朋友可以把 Homebrew 理解成 macOS 的 apt-get。先安装 Homebrew：&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;/bin/bash &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-fsSL&lt;/span&gt; https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;为了让 Homebrew 在国内安装快一些，可以替换下镜像源：&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.bash_profile
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;以上用的是阿里云的源，也可以用网易的源：&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;export HOMEBREW_BOTTLE_DOMAIN=http://mirrors.163.com/homebrew/bottles&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.bash_profile
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Homebrew 安装、卸载软件的命令都很简单，brew install wget和brew uninstall wget。&lt;/p&gt;
-
-&lt;h3 id=&quot;5用homebrew安装ruby&quot;&gt;5、用 Homebrew 安装 Ruby&lt;/h3&gt;
-
-&lt;p&gt;用 Homebrew 安装 chruby 和 ruby-install&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;chruby ruby-install xz
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;安装 Ruby 的最新版本：&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ruby-install ruby
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这时候提示如下问题：&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; Updating ruby versions ...
-&lt;span class=&quot;o&quot;&gt;!!!&lt;/span&gt; Failed to download https://raw.githubusercontent.com/postmodern/ruby-versions/master/ruby/versions.txt &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-to /Users/captain/.cache/ruby-install/ruby/versions.txt!
-&lt;span class=&quot;o&quot;&gt;!!!&lt;/span&gt; Failed to download ruby versions!
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;因为 raw.githubusercontent.com 在国内是被 blocked，所以用https://www.ipaddress.com查一下 IP 地址，然后修改下/etc/hosts：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ echo &quot;185.199.111.133 raw.githubusercontent.com&quot; &amp;gt;&amp;gt; /etc/hosts
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;然后再运行ruby-install ruby就可以正常安装了，这个过程会非常的慢，安装完成后，配置 zsh 脚本的 .zshrc 文件以便后续可以使用 chruby：&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;source &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;brew &lt;span class=&quot;nt&quot;&gt;--prefix&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/opt/chruby/share/chruby/chruby.sh&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.zshrc
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;source &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;brew &lt;span class=&quot;nt&quot;&gt;--prefix&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/opt/chruby/share/chruby/auto.sh&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.zshrc
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;chruby ruby-3.1.2&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; ~/.zshrc &lt;span class=&quot;c&quot;&gt;# run &apos;chruby&apos; to see actual version&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;再看下 Ruby 版本对不对：&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ruby &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Jekyll 官网要求 Ruby 版本大于 3.1.2p20.&lt;/p&gt;
-
-&lt;h3 id=&quot;6安装jekyll和bundler&quot;&gt;6、安装 Jekyll 和 Bundler&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;jekyll bundler
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;上面顺便安装了 Bundler，Bundler 是 Ruby 常用的管理项目依赖关系的工具，类似于 virtualenv 之于 Python，可以简化项目的包依赖管理，帮你维护一份 Gemfile 文件，里面包含了所有依赖关系。这个工具的名字叫 Bundler，使用的时候都是用这个词的动词 bundle 命令。&lt;/p&gt;
-
-&lt;h3 id=&quot;7使用bundle管理包依赖关系&quot;&gt;7、使用 bundle 管理包依赖关系&lt;/h3&gt;
-
-&lt;p&gt;创建 Gemfile 文件，Gemfile 是 Ruby 项目的依赖包管理文件：&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;https://rubygems.org&apos;&lt;/span&gt;
-gem &lt;span class=&quot;s1&quot;&gt;&apos;nokogiri&apos;&lt;/span&gt;
-gem &lt;span class=&quot;s1&quot;&gt;&apos;rack&apos;&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&apos;~&amp;gt; 2.2.4&apos;&lt;/span&gt;
-gem &lt;span class=&quot;s1&quot;&gt;&apos;rspec&apos;&lt;/span&gt;
-gem &lt;span class=&quot;s1&quot;&gt;&apos;jekyll&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;然后安装依赖包，这里默认会根据运行命令时所在的目录的 Gemfile 来安装：&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Gemfile.lock 是 Gemfile 的锁定版本，记录了当前项目所使用的所有依赖包的版本信息。下面把这两个文件都加入到 Git 版本控制中。&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git add Gemfile Gemfile.lock
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;8本地启动一下看看&quot;&gt;8、本地启动一下看看&lt;/h3&gt;
-
-&lt;p&gt;先用 bundle 如下命令来启动：&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;启动日志如下：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Configuration file: none
-            Source: /Users/captain/Workspace/poechant.github.io
-       Destination: /Users/captain/Workspace/poechant.github.io/_site
- Incremental build: disabled. Enable with --incremental
-      Generating... 
-                    done in 0.014 seconds.
- Auto-regeneration: enabled for &apos;/Users/captain/Workspace/poechant.github.io&apos;
-    Server address: http://127.0.0.1:4000
-  Server running... press ctrl-c to stop.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;然后打开浏览器输入http://localhost:4000看看效果：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2022-12-21-build-github-pages-with-jekyll-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;这就说明 Jekyll 本地配置已经成功了。然后把当前的版本同步到 Git 上：&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git pull &lt;span class=&quot;nt&quot;&gt;--no-rebase&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; origin main
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;9用jekyll创建一个项目&quot;&gt;9、用 Jekyll 创建一个项目&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;jekyll new CaptainMikeBlog
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;CaptainMikeBlog
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;jekyll server
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;启动日志如下：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Configuration file: /Users/captain/Workspace/poechant.github.io/CaptainMikeBlog/_config.yml
-            Source: /Users/captain/Workspace/poechant.github.io/CaptainMikeBlog
-       Destination: /Users/captain/Workspace/poechant.github.io/CaptainMikeBlog/_site
- Incremental build: disabled. Enable with --incremental
-      Generating... 
-       Jekyll Feed: Generating feed for posts
-                    done in 0.365 seconds.
- Auto-regeneration: enabled for &apos;/Users/captain/Workspace/poechant.github.io/CaptainMikeBlog&apos;
-    Server address: http://127.0.0.1:4000/
-  Server running... press ctrl-c to stop.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;再打开浏览器输入http://localhost:4000看看效果：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2022-12-21-build-github-pages-with-jekyll-2.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;10修改gemfile文件&quot;&gt;10、修改 Gemfile 文件&lt;/h3&gt;
-
-&lt;p&gt;注释掉gem ”jekyll”开头的这一行，修改# gem ”github-pages”开头的这一行为：&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gem &lt;span class=&quot;s2&quot;&gt;&quot;github-pages&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;~&amp;gt; GITHUB-PAGES-VERSION&quot;&lt;/span&gt;, group: :jekyll_plugins
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;其中的GITHUB-PAGES-VERSION改为具体的版本号，版本号参考https://pages.github.com/versions/，我写本文的时候github-pages最新版本号是227。关闭 Gemfile 文件然后命令行运行如下命令：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ bundle install
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;再本地启动服务器测试：&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;jekyll server
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;得到如下提示：&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;You have already activated i18n 1.12.0, but your Gemfile requires i18n 0.9.5.
-Prepending &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; to your &lt;span class=&quot;nb&quot;&gt;command &lt;/span&gt;may solve this. &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Gem::LoadError&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;参考https://github.com/Homebrew/brew.sh/issues/845这个 issue 后如下解决：&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bundle add webrick
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这里注意jekyll server和bundle exec jekyll serve两个的区别是前者基本本地 Jekyll 版本启动服务，后者基于目录下的 Gemfile 文件启动服务，所以我们要用后者。&lt;/p&gt;
-
-&lt;h3 id=&quot;11配置githubpages&quot;&gt;11、配置 Github Pages&lt;/h3&gt;
-
-&lt;p&gt;在 Github 的仓库页面进入「Settings - Code and Automation - Pages - Build and Deploy」，选择「Deploy from a branch」，然后选择你设定的分支。再选发布源的文件夹，这里我设置为根目录。然后「保存」。再修改 _config.yml 文件：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;baseurl: &quot;&quot;
-url: &quot;http://your-username.github.io&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;将本地代码push到 Github 仓库中，在浏览器访问your-username.github.io即可，有时候可能要等几分钟。&lt;/p&gt;
-
-&lt;h3 id=&quot;12配置一个jekylltheme&quot;&gt;12、配置一个 Jekyll Theme&lt;/h3&gt;
-
-&lt;p&gt;可以在http://jekyllthemes.org/这个网站上找一下喜欢的 theme，下载后将如下文件都 copy 到你项目目录下：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;_includes
-_layouts
-_sass
-css
-js
-img
-404.markdown
-index.html
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;不同主题会有所不同，这里只列个大概。&lt;/p&gt;
-
-&lt;h3 id=&quot;13设置自定义域名&quot;&gt;13、设置自定义域名&lt;/h3&gt;
-
-&lt;p&gt;添加四条 A 记录，记录值如下：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;185.199.108.153
-185.199.109.153
-185.199.110.153
-185.199.111.153
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;添加 CNAME，主机记录为www，记录值为your-username.github.io。然后在「Github 你的仓库里 - Settings - Pages - Custom Domain」填写你刚使用的域名，并把Enforce HTTPS打上勾。&lt;/p&gt;
-
-&lt;p&gt;一旦解析成功，Github 上会自动多一个 CNAME 文件。把你最新的代码都 push 到 Github 仓库上，稍等片刻就可以从你自己的域名访问 Github Pages 搭建的博客啦。&lt;/p&gt;
-
-&lt;h3 id=&quot;14用-rouge-实现代码高亮&quot;&gt;14、用 rouge 实现代码高亮&lt;/h3&gt;
-
-&lt;p&gt;我们用支持 Markdown 内代码语法高亮的 Rouge 来实现，首先安装 Rouge：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install kramdom rouge
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;然后配置 _config.yml 文件：&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;markdown&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kramdown&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;highlighter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rouge&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;kramdown&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;GFM&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;syntax_highlighter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;rouge&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;然后用 rouge 创建 syntax.css 文件：&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rougify style github &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; css/syntax.css
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_include/head.html&lt;/code&gt; 文件中添加：&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/css/syntax.css&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;15一些扩展问题&quot;&gt;15、一些扩展问题&lt;/h3&gt;
-
-&lt;h4 id=&quot;q1我想在网站的首页的每一篇文章标题下显示一个指定的摘要而不是自动从文章内容开头截取的应该如何实现呢&quot;&gt;Q1：我想在网站的首页的每一篇文章标题下，显示一个指定的摘要，而不是自动从文章内容开头截取的，应该如何实现呢？&lt;/h4&gt;
-
-&lt;p&gt;在 Jekyll 中，你可以在每篇文章的 front matter 中设置摘要字段。例如，你可以在文章的 front matter 中添加一个 excerpt 字段，然后在该字段中填入你想要在首页显示的摘要内容。&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;这是一篇文章&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;excerpt&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;这是文章的摘要&lt;/span&gt;
-&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
-
-这是文章的正文内容
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;然后，在你的首页模板中，你可以使用``输出文章的摘要。例如：&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
-  {% for post in paginator.posts %}
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{{ post.url }}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{{ post.title }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;{{ post.excerpt }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-  {% endfor %}
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这样，在首页显示文章列表时，每篇文章就会带上它的摘要内容。&lt;/p&gt;
-
-&lt;p&gt;注意，如果文章的 excerpt 字段没有设置，那么在首页显示时就不会有摘要内容。因此，建议在发布新文章时务必检查 excerpt 字段是否已经设置。&lt;/p&gt;
-
-&lt;h4 id=&quot;q2如何支持对每一个分类都可以显示一个该分类下的所有文章的页面&quot;&gt;Q2：如何支持对每一个分类都可以显示一个该分类下的所有文章的页面？&lt;/h4&gt;
-
-&lt;p&gt;有很多种办法，但是这里我讲一个比较简单且容易维护的方法，不过也有其弊端。首先在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_layouts&lt;/code&gt;目录下创建一个&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;category.html&lt;/code&gt;文件：&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
-layout: default
----
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;br&amp;gt;&lt;/span&gt;
-    {% if site.categories[page.category] %}
-      {% for post in site.categories[page.category] %}
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;{% if site.baseurl == &quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;/&quot;&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;%}{{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;post.url&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}}{%&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;%}{{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;post.url&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;prepend:&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;site.baseurl&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;}}{%&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;endif&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;%}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-            {%if post.header %}{{ post.header }}{% else %}{{ post.title }}{% endif %}
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-      {% endfor %}
-    {% else %}
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;br&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;No posts for this category. If you have something in mind, check &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/write&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Write For Us&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;page.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-    {% endif %}
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这样就有了一个可以显示某个 category 下的所有 posts 的布局文件了。然后修改&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;文件：&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;_categories&apos;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;在根目录创建一个&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;categories&lt;/code&gt;目录，并在里面对每个 category 分别创建一个 html 文件，文件名即 category 的名字。但这个文件特别的简单，就是只需要写一个头部，例如我的「AI」分类的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ai.html&lt;/code&gt;如下：&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;category&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;人工智能&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;This is the description.&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;permalink&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/category/ai&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ai&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;category_type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;tech&lt;/span&gt;
-&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;那么之后每次创建文件时，在头部写&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;category&lt;/code&gt;一定要与这些&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;categories&lt;/code&gt;中的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;html&lt;/code&gt;文件对应起来。&lt;/p&gt;
-
-&lt;h4 id=&quot;q3如何为每篇文章添加一个目录&quot;&gt;Q3：如何为每篇文章添加一个目录&lt;/h4&gt;
-
-&lt;p&gt;这个是 Markdown 可以解决的，并不涉及 Jekyll，对于 Jekyll 的 Markdown 引擎可以用如下极其简单的方式实现：&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; TOC
-{:toc}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;q4如何在-jekyll-中支持-katex&quot;&gt;Q4：如何在 Jekyll 中支持 KaTeX&lt;/h4&gt;
-
-&lt;p&gt;Katex 是一个开源的 JavaScript 库，能够在浏览器端快速渲染 LaTeX 格式的数学公式。&lt;/p&gt;
-
-&lt;h5 id=&quot;在-githubio-上&quot;&gt;在 GitHub.io 上&lt;/h5&gt;
-
-&lt;p&gt;先修改 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;：&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;kramdown&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;math_engine&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;katex&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;然后修改 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_includes/head.html&lt;/code&gt; 文件，在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt; 与 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;/head&amp;gt;&lt;/code&gt; 中间：&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--KaTeX--&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css&quot;&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;integrity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X&quot;&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;crossorigin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;anonymous&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;defer&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js&quot;&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;integrity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4&quot;&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;crossorigin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;anonymous&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;defer&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js&quot;&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;integrity=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa&quot;&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;crossorigin=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;anonymous&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;DOMContentLoaded&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-          &lt;span class=&quot;nx&quot;&gt;renderMathInElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-              &lt;span class=&quot;c1&quot;&gt;// ...options...&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;本问题参考&quot;&gt;本问题参考：&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/&quot;&gt;https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;如果不在-githubio-上则还需要额外工作&quot;&gt;如果不在 GitHub.io 上，则还需要额外工作&lt;/h5&gt;
-
-&lt;p&gt;以上方式只适合于 GitHub.io 的网站，如果是自己搭建的网站用 Jekyll 则要自己安装，如下：&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;kramdom-math-katex
-
-gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;katex
-gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;execjs
-
-gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;therubyracer
-gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;therubyrhino
-gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;duktape
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;使用示例&quot;&gt;使用示例&lt;/h5&gt;
-
-&lt;p&gt;以如下方式输入输入如下内容：&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% raw %}
-$$ \sum_{i=1}^{n} a_i $$
-{% endraw %}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;就会得到一个数学公式：&lt;/p&gt;
-
-\[\sum_{i=1}^{n} a_i\]
-
-&lt;h4 id=&quot;q5jekyll-中如何支持-graphviz-&quot;&gt;Q5：Jekyll 中如何支持 Graphviz ？&lt;/h4&gt;
-
-&lt;h4 id=&quot;本地-jekyll-先运行起来-graphviz&quot;&gt;本地 Jekyll 先运行起来 Graphviz&lt;/h4&gt;
-
-&lt;p&gt;这要依赖 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll-graphviz&lt;/code&gt;，修改 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; 增加一句：&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;group :jekyll_plugins &lt;span class=&quot;k&quot;&gt;do
-  &lt;/span&gt;gem &lt;span class=&quot;s2&quot;&gt;&quot;jekyll-graphviz&quot;&lt;/span&gt;
-end
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;再修改 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; 配置文件：&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jekyll-graphviz&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;再在本地安装 graphviz，可以通过 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conda install graphviz&lt;/code&gt; 或者 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;brew install graphviz&lt;/code&gt;。然后 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; 再 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt; 在本地下一段看看效果：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-graphviz&quot;&gt;{% graph some graph title %}
-digraph G {
-    a -&amp;gt; b
-    b -&amp;gt; c
-    c -&amp;gt; a
-}
-{% endgraph %}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;如果看到如下效果，就说明你都配置成功了：&lt;/p&gt;
-
-&lt;div class=&quot;graphviz-wrapper&quot;&gt;
-
-&lt;!-- Generated by graphviz version 2.43.0 (0)
- --&gt;
-&lt;!-- Title: G Pages: 1 --&gt;
-&lt;svg role=&quot;img&quot; aria-label=&quot;some graph title&quot; width=&quot;89pt&quot; height=&quot;188pt&quot; viewBox=&quot;0.00 0.00 89.00 188.00&quot;&gt;
-&lt;title&gt;some graph title&lt;/title&gt;
-&lt;desc&gt;
-digraph G {
-    a -&amp;gt; b
-    b -&amp;gt; c
-    c -&amp;gt; a
-}
-&lt;/desc&gt;
-
-&lt;g id=&quot;graph0&quot; class=&quot;graph&quot; transform=&quot;scale(1 1) rotate(0) translate(4 184)&quot;&gt;
-&lt;title&gt;G&lt;/title&gt;
-&lt;polygon fill=&quot;white&quot; stroke=&quot;transparent&quot; points=&quot;-4,4 -4,-184 85,-184 85,4 -4,4&quot; /&gt;
-&lt;!-- a --&gt;
-&lt;g id=&quot;node1&quot; class=&quot;node&quot;&gt;
-&lt;title&gt;a&lt;/title&gt;
-&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;54&quot; cy=&quot;-162&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
-&lt;text text-anchor=&quot;middle&quot; x=&quot;54&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;a&lt;/text&gt;
-&lt;/g&gt;
-&lt;!-- b --&gt;
-&lt;g id=&quot;node2&quot; class=&quot;node&quot;&gt;
-&lt;title&gt;b&lt;/title&gt;
-&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;27&quot; cy=&quot;-90&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
-&lt;text text-anchor=&quot;middle&quot; x=&quot;27&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;b&lt;/text&gt;
-&lt;/g&gt;
-&lt;!-- a&amp;#45;&amp;gt;b --&gt;
-&lt;g id=&quot;edge1&quot; class=&quot;edge&quot;&gt;
-&lt;title&gt;a&amp;#45;&amp;gt;b&lt;/title&gt;
-&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M47.6,-144.41C44.49,-136.34 40.67,-126.43 37.17,-117.35&quot; /&gt;
-&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;40.4,-116.03 33.54,-107.96 33.87,-118.55 40.4,-116.03&quot; /&gt;
-&lt;/g&gt;
-&lt;!-- c --&gt;
-&lt;g id=&quot;node3&quot; class=&quot;node&quot;&gt;
-&lt;title&gt;c&lt;/title&gt;
-&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;54&quot; cy=&quot;-18&quot; rx=&quot;27&quot; ry=&quot;18&quot; /&gt;
-&lt;text text-anchor=&quot;middle&quot; x=&quot;54&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;c&lt;/text&gt;
-&lt;/g&gt;
-&lt;!-- b&amp;#45;&amp;gt;c --&gt;
-&lt;g id=&quot;edge2&quot; class=&quot;edge&quot;&gt;
-&lt;title&gt;b&amp;#45;&amp;gt;c&lt;/title&gt;
-&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M33.4,-72.41C36.51,-64.34 40.33,-54.43 43.83,-45.35&quot; /&gt;
-&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;47.13,-46.55 47.46,-35.96 40.6,-44.03 47.13,-46.55&quot; /&gt;
-&lt;/g&gt;
-&lt;!-- c&amp;#45;&amp;gt;a --&gt;
-&lt;g id=&quot;edge3&quot; class=&quot;edge&quot;&gt;
-&lt;title&gt;c&amp;#45;&amp;gt;a&lt;/title&gt;
-&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M57.65,-36.09C59.68,-46.43 61.98,-59.91 63,-72 64.34,-87.94 64.34,-92.06 63,-108 62.28,-116.5 60.93,-125.69 59.49,-133.99&quot; /&gt;
-&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;56.03,-133.44 57.65,-143.91 62.91,-134.71 56.03,-133.44&quot; /&gt;
-&lt;/g&gt;
-&lt;/g&gt;
-&lt;/svg&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;github-pages-上正常显示-graphviz&quot;&gt;Github Pages 上正常显示 Graphviz&lt;/h4&gt;
-
-&lt;p&gt;因为 GitHub Pages 默认并不支持 Graphviz 插件，所以还需要如下处理：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;在 Github 上创建一个分支，可以叫做 gh-pages&lt;/li&gt;
-  &lt;li&gt;配置 Github Pages 的生成来自分支 gh-pages 并且选择目录为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/&lt;/code&gt; 根目录&lt;/li&gt;
-  &lt;li&gt;在本地项目中创建一个文件 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.github/workflows/gh-pages.yml&lt;/code&gt;，内容如下：&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Build and deploy Jekyll site to GitHub Pages&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;master&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;jekyll&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ubuntu-latest&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;📂 setup&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;actions/checkout@v2&lt;/span&gt;
-      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Setup Graphviz&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ts-graphviz/setup-graphviz@v1&lt;/span&gt;
-      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;💎 setup ruby&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ruby/setup-ruby@v1&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;ruby-version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;3.0.2&lt;/span&gt;
-      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;🔨 install dependencies &amp;amp; build site&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;limjh16/jekyll-action-ts@v2&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;NODE_ENV&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;production&quot;&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;enable_cache&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
-      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;🚀 deploy&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;peaceiris/actions-gh-pages@v3&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;github_token&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;$&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;base_url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;publish_dir&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;./_site&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;publish_branch&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;gh-pages&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;cname&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;www.mikecaptain.com&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;enable_jekyll&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;如果你遇到了生成的网站中所有 URL 都带着 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pages/username&lt;/code&gt;，那么这个问题修改 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; 即可：&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;baseurl&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Change this to your relative path (ex: /blog/), or leave just a /&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;本问题参考-1&quot;&gt;本问题参考：&lt;/h5&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/DerekStride/jekyll-graphviz&quot;&gt;https://github.com/DerekStride/jekyll-graphviz&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;q6如何显示--或者--&quot;&gt;Q6：如何显示 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{%&lt;/code&gt; 或者 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{{&lt;/code&gt; ？&lt;/h4&gt;
-
-&lt;p&gt;其实也是一个字符转义的问题，我们直接面对一个在 StackOverflow 上会被问的终极 Jekyll 中 Markdown 转义问题（与 Liquid Template Tags 冲突的问题），如何实现显示 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{% raw %}&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{% endraw %}&lt;/code&gt; 呢？方法如下：&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% raw %}{%{% endraw %} raw %}
-{% raw %}{%{% endraw %} endraw %}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;如上，就是用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{% raw %}&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{% endraw %}&lt;/code&gt; 把 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{%&lt;/code&gt; 包起来，但是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%}&lt;/code&gt; 不用包。应该讲的很清楚了吧。&lt;/p&gt;
-
-&lt;h3 id=&quot;参考&quot;&gt;参考&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://bundler.io&quot;&gt;https://bundler.io&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://jekyllrb.com/docs/&quot;&gt;https://jekyllrb.com/docs/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/87225594&quot;&gt;https://zhuanlan.zhihu.com/p/87225594&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://chat.openai.com/chat&quot;&gt;https://chat.openai.com/chat&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll&quot;&gt;https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.github.com/zh/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site&quot;&gt;https://docs.github.com/zh/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/dyutibarma/monochrome&quot;&gt;https://github.com/dyutibarma/monochrome&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain&quot;&gt;https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.seanbuscay.com/blog/jekyll-toc-markdown/&quot;&gt;http://www.seanbuscay.com/blog/jekyll-toc-markdown/&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>麦克船长</name></author><category term="web" /><category term="Jekyll" /><category term="Github Pages" /><category term="前端" /><summary type="html">GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用 GitHub Pages 搭建博客，然后使用 Jekyll 生成的静态网站文件上传到该仓库。花 10 分钟时间，通过本文让你快速地实现了一个免费、简单、快速、安全、支持版本控制、支持自定义域名的独立域名博客 ……</summary></entry></feed>
+&lt;p&gt;相应的，对抗性的防御技术也会很快发展。&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="diffusion" /><category term="MidJourney" /><category term="Text2Image" /><category term="文生图" /><category term="AIGC" /><summary type="html">因为 Diffusion 模型在计算机视觉领域的发展，可以说今年人工智能在计算机视觉领域大放异彩，各种 Text2Image 项目层出不穷，花了三分钟时间做了一组机甲图，确实非常惊艳 ……</summary></entry></feed>
