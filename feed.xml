@@ -1,4 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-01-15T01:52:05+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">三万字长文！LSTM 之父 Jürgen 带我们回顾深度学习发展史</title><link href="https://www.mikecaptain.com/2023/01/14/juergen-deep-learning-history/" rel="alternate" type="text/html" title="三万字长文！LSTM 之父 Jürgen 带我们回顾深度学习发展史" /><published>2023-01-14T20:21:55+00:00</published><updated>2023-01-14T20:21:55+00:00</updated><id>https://www.mikecaptain.com/2023/01/14/juergen-deep-learning-history</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/14/juergen-deep-learning-history/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-01-15T01:58:26+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">三万字长文！LSTM 之父 Jürgen 带我们回顾深度学习发展史</title><link href="https://www.mikecaptain.com/2023/01/14/juergen-deep-learning-history/" rel="alternate" type="text/html" title="三万字长文！LSTM 之父 Jürgen 带我们回顾深度学习发展史" /><published>2023-01-14T20:21:55+00:00</published><updated>2023-01-14T20:21:55+00:00</updated><id>https://www.mikecaptain.com/2023/01/14/juergen-deep-learning-history</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/14/juergen-deep-learning-history/">&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;本文译自 LSTM 作者 Jürgen Schmidhuber, KAUST AII, Swiss AI Lab IDSIA, USI，中文译文由 AI 及麦克船长完成翻译。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#现代人工智能和深度学习的注释历史&quot; id=&quot;markdown-toc-现代人工智能和深度学习的注释历史&quot;&gt;现代人工智能和深度学习的注释历史&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#介绍&quot; id=&quot;markdown-toc-介绍&quot;&gt;介绍&lt;/a&gt;&lt;/li&gt;
@@ -32,10 +36,6 @@
   &lt;li&gt;&lt;a href=&quot;#致谢&quot; id=&quot;markdown-toc-致谢&quot;&gt;致谢&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#555-参考文献调查-dl1-中还有更多参考文献&quot; id=&quot;markdown-toc-555-参考文献调查-dl1-中还有更多参考文献&quot;&gt;555+ 参考文献（调查 [DL1] 中还有更多参考文献）&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;本文译自 LSTM 作者 Jürgen Schmidhuber, KAUST AII, Swiss AI Lab IDSIA, USI，中文译文由 AI 及麦克船长完成翻译。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;现代人工智能和深度学习的注释历史&quot;&gt;现代人工智能和深度学习的注释历史&lt;/h2&gt;
 
@@ -493,7 +493,13 @@ Ivakhnenko 和 Lapa（1965 年，见上文）逐层训练他们的深层网络�
 
 &lt;p&gt;Creative Commons License 以上部分材料取自以前的 AI 博客文章。[MIR] [DEC] [GOD21] [ZUS21] [LEI21] [AUT] [HAB2] [ARC06] [AC] [ATT] [DAN] [DAN1 ] [DL4] [GPUCNN5,8] [DLC] [FDL] [FWP] [LEC] [META] [MLP2] [MOST] [PLAN] [UN] [LSTMPG] [BP4] [DL6a] [HIN] [T22 ] 感谢许多专家审稿人（包括几位著名的神经网络先驱）提出的有益意见。 由于科学是关于自我纠正的，如果您能发现任何剩余的错误，请通过 juergen@idsia.ch 告诉我。 在我的出版物页面和我的 arXiv 页面中可以找到许多其他相关出版物。 本作品根据 Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License 获得许可。&lt;/p&gt;
 
-&lt;h2 id=&quot;555-参考文献调查-dl1-中还有更多参考文献&quot;&gt;555+ 参考文献（调查 [DL1] 中还有更多参考文献）&lt;/h2&gt;</content><author><name>Jürgen Schmidhuber | [译] AI &amp; 麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="深度学习" /><category term="Deep Learning" /><category term="神经网络" /><category term="Artificial Neural Network" /><category term="机器学习" /><category term="Machine Learning" /><category term="ML" /><category term="ANN" /><category term="Transformer" /><category term="CNN" /><category term="RNN" /><category term="循环神经网络" /><category term="神经网络" /><category term="人工神经网络" /><category term="Artificial Intelligence" /><category term="LSTM" /><category term="长短时记忆" /><summary type="html">本文译自 LSTM 作者 Jürgen Schmidhuber，全文主要由 AI 翻译生成，麦克船长进行部分校对，这篇超长文章为了串联起了深度学习领域的大事件，以及那些引领我们的优秀科学家们。</summary></entry><entry><title type="html">当下生成式 AI（AIGC）领域的应用图景</title><link href="https://www.mikecaptain.com/2023/01/13/antler-generative-ai/" rel="alternate" type="text/html" title="当下生成式 AI（AIGC）领域的应用图景" /><published>2023-01-13T18:09:43+00:00</published><updated>2023-01-13T18:09:43+00:00</updated><id>https://www.mikecaptain.com/2023/01/13/antler-generative-ai</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/13/antler-generative-ai/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;555-参考文献调查-dl1-中还有更多参考文献&quot;&gt;555+ 参考文献（调查 [DL1] 中还有更多参考文献）&lt;/h2&gt;</content><author><name>Jürgen Schmidhuber | [译] AI &amp; 麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="深度学习" /><category term="Deep Learning" /><category term="神经网络" /><category term="Artificial Neural Network" /><category term="机器学习" /><category term="Machine Learning" /><category term="ML" /><category term="ANN" /><category term="Transformer" /><category term="CNN" /><category term="RNN" /><category term="循环神经网络" /><category term="神经网络" /><category term="人工神经网络" /><category term="Artificial Intelligence" /><category term="LSTM" /><category term="长短时记忆" /><summary type="html">本文译自 LSTM 作者 Jürgen Schmidhuber，全文主要由 AI 翻译生成，麦克船长进行部分校对，这篇超长文章为了串联起了深度学习领域的大事件，以及那些引领我们的优秀科学家们。</summary></entry><entry><title type="html">当下生成式 AI（AIGC）领域的应用图景</title><link href="https://www.mikecaptain.com/2023/01/13/antler-generative-ai/" rel="alternate" type="text/html" title="当下生成式 AI（AIGC）领域的应用图景" /><published>2023-01-13T18:09:43+00:00</published><updated>2023-01-13T18:09:43+00:00</updated><id>https://www.mikecaptain.com/2023/01/13/antler-generative-ai</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/13/antler-generative-ai/">&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-15-antler-generative-ai-1.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;本文译自 Antler Blog，原作者 Ollie Forsyth，中文译文由 AI 及麦克船长完成翻译。&lt;/p&gt;
+
+&lt;p&gt;随着 ChatGPT 和 DALL-E 的发布，2022 年社交媒体平台上最热门的话题之一在最近几周爆发，引发了关于其对全球人员、职业和行业影响的激烈辩论。 争议的核心是什么？ 生成式 AI (Gen-AI)——可以快速创建新内容的系统，例如大学论文、歌曲和数字艺术作品。 这些能力令人印象深刻，但它们也引发了关于工作的未来以及人类在 AI 主导的世界中的作用的重要问题。 随着生成式人工智能的不断发展，考虑伦理意义和对社会的潜在影响将变得至关重要。 如果创造性工作在很大程度上被人工智能机器取代，会发生什么？&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#什么是-gen-ai&quot; id=&quot;markdown-toc-什么是-gen-ai&quot;&gt;什么是 Gen-AI？&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#人工智能与生成人工智能&quot; id=&quot;markdown-toc-人工智能与生成人工智能&quot;&gt;人工智能与生成人工智能&lt;/a&gt;&lt;/li&gt;
@@ -517,12 +523,6 @@ Ivakhnenko 和 Lapa（1965 年，见上文）逐层训练他们的深层网络�
   &lt;li&gt;&lt;a href=&quot;#让我们一起塑造未来&quot; id=&quot;markdown-toc-让我们一起塑造未来&quot;&gt;让我们一起塑造未来&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#参考链接&quot; id=&quot;markdown-toc-参考链接&quot;&gt;参考链接&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;本文译自 Antler Blog，原作者 Ollie Forsyth，中文译文由 AI 及麦克船长完成翻译。&lt;/p&gt;
-
-&lt;p&gt;随着 ChatGPT 和 DALL-E 的发布，2022 年社交媒体平台上最热门的话题之一在最近几周爆发，引发了关于其对全球人员、职业和行业影响的激烈辩论。 争议的核心是什么？ 生成式 AI (Gen-AI)——可以快速创建新内容的系统，例如大学论文、歌曲和数字艺术作品。 这些能力令人印象深刻，但它们也引发了关于工作的未来以及人类在 AI 主导的世界中的作用的重要问题。 随着生成式人工智能的不断发展，考虑伦理意义和对社会的潜在影响将变得至关重要。 如果创造性工作在很大程度上被人工智能机器取代，会发生什么？&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-15-antler-generative-ai-1.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;这份报告深入探讨了 Gen-AI 的世界，并且是第一份面向所有人的综合市场地图。 我们概述了该领域的 160 多个平台及其投资者，以及领先思想领袖对这项技术潜力的见解。 这为读者提供了一个独特的机会，可以全面了解生成人工智能市场以及新玩家挑战谷歌等老牌玩家的潜力。&lt;/p&gt;
 
@@ -755,7 +755,15 @@ Ivakhnenko 和 Lapa（1965 年，见上文）逐层训练他们的深层网络�
 
 &lt;ul&gt;
   &lt;li&gt;https://www.antler.co/blog/generative-ai&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Ollie Forsyth | [译] AI &amp; 麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="生成式AI" /><category term="Generative AI" /><category term="游戏" /><category term="game" /><category term="Gen-AI" /><category term="AIGC" /><summary type="html">随着 ChatGPT 和 DALL-E 的发布，2022 年社交媒体平台上最热门的话题之一在最近几周爆发，引发了关于其对全球人员、职业和行业影响的激烈辩论。 争议的核心是什么？ 生成式 AI (Gen-AI)——可以快速创建新内容的系统，例如大学论文、歌曲和数字艺术作品。 这些能力令人印象深刻，但它们也引发了关于工作的未来以及人类在 AI 主导的世界中的作用的重要问题。 随着生成式人工智能的不断发展，考虑伦理意义和对社会的潜在影响将变得至关重要。 如果创造性工作在很大程度上被人工智能机器取代，会发生什么？</summary></entry><entry><title type="html">游戏生产力革命：生成式 AI（AIGC）正在深度变革游戏领域</title><link href="https://www.mikecaptain.com/2023/01/11/generative-ai-revolution-in-games/" rel="alternate" type="text/html" title="游戏生产力革命：生成式 AI（AIGC）正在深度变革游戏领域" /><published>2023-01-11T18:33:49+00:00</published><updated>2023-01-11T18:33:49+00:00</updated><id>https://www.mikecaptain.com/2023/01/11/generative-ai-revolution-in-games</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/11/generative-ai-revolution-in-games/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Ollie Forsyth | [译] AI &amp; 麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="生成式AI" /><category term="Generative AI" /><category term="游戏" /><category term="game" /><category term="Gen-AI" /><category term="AIGC" /><summary type="html">随着 ChatGPT 和 DALL-E 的发布，2022 年社交媒体平台上最热门的话题之一在最近几周爆发，引发了关于其对全球人员、职业和行业影响的激烈辩论。 争议的核心是什么？ 生成式 AI (Gen-AI)——可以快速创建新内容的系统，例如大学论文、歌曲和数字艺术作品。 这些能力令人印象深刻，但它们也引发了关于工作的未来以及人类在 AI 主导的世界中的作用的重要问题。 随着生成式人工智能的不断发展，考虑伦理意义和对社会的潜在影响将变得至关重要。 如果创造性工作在很大程度上被人工智能机器取代，会发生什么？</summary></entry><entry><title type="html">游戏生产力革命：生成式 AI（AIGC）正在深度变革游戏领域</title><link href="https://www.mikecaptain.com/2023/01/11/generative-ai-revolution-in-games/" rel="alternate" type="text/html" title="游戏生产力革命：生成式 AI（AIGC）正在深度变革游戏领域" /><published>2023-01-11T18:33:49+00:00</published><updated>2023-01-11T18:33:49+00:00</updated><id>https://www.mikecaptain.com/2023/01/11/generative-ai-revolution-in-games</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/11/generative-ai-revolution-in-games/">&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-12-generative-ai-revolution-in-games-0.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;作者 James Gwertzman and Jack Soslow&lt;/li&gt;
+  &lt;li&gt;[译] AI &amp;amp; 麦克船长&lt;/li&gt;
+  &lt;li&gt;本文授权首发媒体「锐察力」，微信公众号 ID @ruichali&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#什么是生成式人工智能&quot; id=&quot;markdown-toc-什么是生成式人工智能&quot;&gt;什么是生成式人工智能&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#part-1观察和预测&quot; id=&quot;markdown-toc-part-1观察和预测&quot;&gt;Part 1、观察和预测&lt;/a&gt;    &lt;ul&gt;
