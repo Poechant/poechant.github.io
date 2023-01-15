@@ -8,7 +8,7 @@ description: 2022 年是生成式 AI（Gen-AI）的元年，而游戏领域也�
 excerpt: 2022 年是生成式 AI（Gen-AI）的元年，而游戏领域也正在被生成式 AI 进行着生产力革命。当下游戏 2D 素材、3D 建模、音频内容、实时生成智能语音交互 …… 等等一系列技术在游戏世界里率先应用，正在推动一个让玩家更可以全方位实时交互的游戏世界的诞生，而不再像以前一样只能依赖以往设定好的游戏交互内容，这令人感到无比兴奋。而这些技术在虚拟世界成熟后，将会逐渐渗透回现实世界中的各项应用，尤其是创作者生态的生产力变革，更进一步地影响普通人日常的内容获取与 AI 交互。
 katex: True
 location: 杭州
-author: James Gwertzman and Jack Soslow
+author: James Gwertzman and Jack Soslow | [译] AI & 麦克船长
 ---
 
 **本文目录**
