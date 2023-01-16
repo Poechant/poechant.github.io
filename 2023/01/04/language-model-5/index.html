@@ -369,7 +369,7 @@
 
 			<article id="post-page">
 	<h2>麦克船长 NLP 语言模型技术笔记 5：注意力机制（Attention Mechanism）</h2>		
-	<time datetime="2023-01-04T18:13:09+00:00" class="by-line">04 Jan 2023, 杭州 | 麦克船长 | 总计 43188 字</time>
+	<time datetime="2023-01-04T18:13:09+00:00" class="by-line">04 Jan 2023, 杭州 | 麦克船长 | 总计 48078 字</time>
 	<div class="content">
 		<p><strong>本文目录</strong></p>
 <ul id="markdown-toc">
@@ -411,21 +411,39 @@
       <li><a href="#1先训练和测试一下-kyubyong-transformer" id="markdown-toc-1先训练和测试一下-kyubyong-transformer">1、先训练和测试一下 Kyubyong Transformer</a></li>
       <li><a href="#2kyubyong-transformer-源码分析" id="markdown-toc-2kyubyong-transformer-源码分析">2、Kyubyong Transformer 源码分析</a>        <ul>
           <li><a href="#21超参数" id="markdown-toc-21超参数">2.1、超参数</a></li>
-          <li><a href="#22训练测试数据集的加载处理" id="markdown-toc-22训练测试数据集的加载处理">2.2、训练/测试数据集的加载处理</a></li>
-          <li><a href="#23预处理" id="markdown-toc-23预处理">2.3、预处理</a></li>
+          <li><a href="#22预处理" id="markdown-toc-22预处理">2.2、预处理</a></li>
+          <li><a href="#23训练测试数据集的加载" id="markdown-toc-23训练测试数据集的加载">2.3、训练/测试数据集的加载</a></li>
           <li><a href="#24构建模型并训练" id="markdown-toc-24构建模型并训练">2.4、构建模型并训练</a>            <ul>
-              <li><a href="#241编码过程" id="markdown-toc-241编码过程">2.4.1、编码过程</a></li>
-              <li><a href="#242解码过程" id="markdown-toc-242解码过程">2.4.2、解码过程</a></li>
-              <li><a href="#243embeddingpositional-encodingmulti-head-attentionfeed-forward" id="markdown-toc-243embeddingpositional-encodingmulti-head-attentionfeed-forward">2.4.3、Embedding、Positional Encoding、Multi-Head Attention、Feed Forward</a></li>
+              <li><a href="#241编码过程" id="markdown-toc-241编码过程">2.4.1、编码过程</a>                <ul>
+                  <li><a href="#embedding" id="markdown-toc-embedding">Embedding</a></li>
+                  <li><a href="#key-masks" id="markdown-toc-key-masks">Key Masks</a></li>
+                  <li><a href="#positional-encoding" id="markdown-toc-positional-encoding">Positional Encoding</a></li>
+                  <li><a href="#drop-out" id="markdown-toc-drop-out">Drop out</a></li>
+                  <li><a href="#encoder-blocks-multi-head-attention--feed-forward" id="markdown-toc-encoder-blocks-multi-head-attention--feed-forward">Encoder Blocks: Multi-Head Attention &amp; Feed Forward</a></li>
+                </ul>
+              </li>
+              <li><a href="#242解码过程" id="markdown-toc-242解码过程">2.4.2、解码过程</a>                <ul>
+                  <li><a href="#embedding-1" id="markdown-toc-embedding-1">Embedding</a></li>
+                  <li><a href="#key-masks-1" id="markdown-toc-key-masks-1">Key Masks</a></li>
+                  <li><a href="#positional-encoding--drop-out" id="markdown-toc-positional-encoding--drop-out">Positional Encoding &amp; Drop out</a></li>
+                  <li><a href="#decoder-blocks-multi-head-attention--feed-forward" id="markdown-toc-decoder-blocks-multi-head-attention--feed-forward">Decoder Blocks: Multi-Head Attention &amp; Feed Forward</a></li>
+                </ul>
+              </li>
+              <li><a href="#243embeddingpositional-encodingmulti-head-attentionfeed-forward" id="markdown-toc-243embeddingpositional-encodingmulti-head-attentionfeed-forward">2.4.3、Embedding、Positional Encoding、Multi-Head Attention、Feed Forward</a>                <ul>
+                  <li><a href="#embedding-函数实现" id="markdown-toc-embedding-函数实现">Embedding 函数实现</a></li>
+                  <li><a href="#positional-encoding-函数实现" id="markdown-toc-positional-encoding-函数实现">Positional Encoding 函数实现</a></li>
+                  <li><a href="#multi-head-attention-函数实现" id="markdown-toc-multi-head-attention-函数实现">Multi-Head Attention 函数实现</a></li>
+                  <li><a href="#feed-forward-函数实现" id="markdown-toc-feed-forward-函数实现">Feed Forward 函数实现</a></li>
+                </ul>
+              </li>
               <li><a href="#244编码和解码完成后的操作" id="markdown-toc-244编码和解码完成后的操作">2.4.4、编码和解码完成后的操作</a></li>
             </ul>
           </li>
           <li><a href="#25效果评价" id="markdown-toc-25效果评价">2.5、效果评价</a></li>
-          <li><a href="#26eval" id="markdown-toc-26eval">2.6、eval</a></li>
         </ul>
       </li>
       <li><a href="#3kyubyong-transformer-的性能表现" id="markdown-toc-3kyubyong-transformer-的性能表现">3、Kyubyong Transformer 的性能表现</a></li>
-      <li><a href="#4kyubyong-transformer-的一些问题" id="markdown-toc-4kyubyong-transformer-的一些问题">4、Kyubyong Transformer 的一些问题</a></li>
+      <li><a href="#4kyubyong-transformer-模型的一些问题" id="markdown-toc-4kyubyong-transformer-模型的一些问题">4、Kyubyong Transformer 模型的一些问题</a></li>
     </ul>
   </li>
   <li><a href="#参考" id="markdown-toc-参考">参考</a></li>
@@ -974,7 +992,7 @@ Q_7 = W_7^Q \cdot X ;\enspace K_7 = &amp;W_0^K \cdot X ;\enspace V_7 = W_7^V \cd
 
 <p><img src="/img/src/2023-01-04-language-model-5-3.png" alt="image" width="464" /></p>
 
-<p>我们再训练一个权重矩阵  \(W^O\) ，然后用上面拼接的  \(Z_{0~7}\)  乘以这个权重矩阵：</p>
+<p>我们再训练一个权重矩阵  \(W^O\) ，然后用上面拼接的  \(Z_{0-7}\)  乘以这个权重矩阵：</p>
 
 <p><img src="/img/src/2023-01-04-language-model-5-4.png" alt="image" width="135" /></p>
 
@@ -1166,7 +1184,7 @@ P_{pos,2i+1} &amp;= cos(\frac{pos}{10000^{\frac{2i}{d_{model}}}})
 
 <h2 id="四一个基于-tensorflow-架构的-transformer-实现">四、一个基于 TensorFlow 架构的 Transformer 实现</h2>
 
-<p>我们来看看 Kyubyong 实现的 transformer 模型：https://github.com/Kyubyong/transformer/tree/master/tf1.2_legacy</p>
+<p>我们来看看一个简单的 Transformer 模型，就是比较早出现的 Kyubyong 实现的 Transformer 模型：https://github.com/Kyubyong/transformer/tree/master/tf1.2_legacy</p>
 
 <h3 id="1先训练和测试一下-kyubyong-transformer">1、先训练和测试一下 Kyubyong Transformer</h3>
 
@@ -1213,72 +1231,17 @@ P_{pos,2i+1} &amp;= cos(\frac{pos}{10000^{\frac{2i}{d_{model}}}})
 - expected: I pushed back
 - got: I &lt;UNK&gt;
 
-- source: Das ist es was Psychologen einen AhaMoment nennen
-- expected: That's what psychologists call an Aha moment
-- got: This is what they &lt;UNK&gt;
-
-- source: Meldet euch wenn ihr in euren ern seid
-- expected: Raise your hand if you're in your s
-- got: Now think about the &lt;UNK&gt; in &lt;UNK&gt; thing
-
-- source: Ich möchte ein paar von euch sehen
-- expected: I really want to see some twentysomethings here
-- got: I want to see some &lt;UNK&gt;
-
-- source: Oh yeah Ihr seid alle unglaublich
-- expected: Oh yay Y'all's awesome
-- got: war They all get &lt;UNK&gt; &lt;UNK&gt; all the disease
-
-- source: Dies ist nicht meine Meinung Das sind Fakten
-- expected: This is not my opinion These are the facts
-- got: This is not my II That's child
-
-- source: Werdet nicht panisch wenn ihr über  seid
-- expected: People who are over  don't panic
-- got: Don't get &lt;UNK&gt; for a &lt;UNK&gt; &lt;UNK&gt;
-
-- source: Dieser Gruppe wird es gut gehen glaube ich
-- expected: This crowd is going to be fine I think
-- got: This group that's a good one I think
-
-- source: Die Presse redet über die Zeitverschiebung des Erwachsenwerdens
-- expected: Newspapers talk about the changing timetable of adulthood
-- got: It &lt;UNK&gt; released the &lt;UNK&gt; &lt;UNK&gt;
-
-- source: Wissenschaftler nennen die er eine verlängerte Pubertät
-- expected: Researchers call the s an extended adolescence
-- got: Our &lt;UNK&gt; a &lt;UNK&gt;
-
-- source: Das stimmt
-- expected: It's true
-- got: This is a &lt;UNK&gt; one good &lt;UNK&gt;
-
-- source: Stimmt das nicht
-- expected: Isn't that true
-- got: Don't go to mind &lt;UNK&gt;
-
-- source: Gar nichts
-- expected: Nothing happens
-- got: There is hope good &lt;UNK&gt;
-
-- source: Wo sind die Leute in den ern hier
-- expected: Where are the twentysomethings here
-- got: In fact people are doing the simply
-
-- source: Macht das nicht
-- expected: Do not do that
-- got: There is no &lt;UNK&gt; &lt;UNK&gt;
-
-- source: Es ist die Geschichte von Emma
-- expected: It's a story about a woman named Emma
-- got: This is the story of &lt;UNK&gt;
-
-- source: Das ist Prokastination
-- expected: That's procrastination
-- got: This is &lt;UNK&gt;
-
 ...
+
+Bleu Score = 6.598452846670836
 </code></pre></div></div>
+
+<p>评估结果文件的最后一行是 Bleu Score：</p>
+
+<ul>
+  <li>这是用来评估机器翻译质量的一种度量方式。它是由几个不同的 BLEU 分数组成的，每个 BLEU 分数都表示翻译结果中与参考翻译的重叠程度。</li>
+  <li>一个常用的 BLEU 分数是 BLEU-4，它计算翻译结果中与参考翻译的 N 元文法语言模型 n-gram（n 为 4）的重叠程度。分数越高表示翻译结果越接近参考翻译。</li>
+</ul>
 
 <h3 id="2kyubyong-transformer-源码分析">2、Kyubyong Transformer 源码分析</h3>
 
@@ -1315,7 +1278,48 @@ P_{pos,2i+1} &amp;= cos(\frac{pos}{10000^{\frac{2i}{d_{model}}}})
   <li><code class="language-plaintext highlighter-rouge">sinusoid</code>：设置为 <code class="language-plaintext highlighter-rouge">True</code> 时表示使用正弦函数计算位置编码，否则为 <code class="language-plaintext highlighter-rouge">False</code> 时表示直接用 <code class="language-plaintext highlighter-rouge">position</code> 做位置编码。</li>
 </ul>
 
-<h4 id="22训练测试数据集的加载处理">2.2、训练/测试数据集的加载处理</h4>
+<h4 id="22预处理">2.2、预处理</h4>
+
+<p>文件 <code class="language-plaintext highlighter-rouge">prepro.py</code> 实现了预处理的过程，根据 <code class="language-plaintext highlighter-rouge">hp.source_train</code> 和 <code class="language-plaintext highlighter-rouge">hp.target_train</code> 分别创建 <code class="language-plaintext highlighter-rouge">"de.vocab.tsv"</code> 和 <code class="language-plaintext highlighter-rouge">"en.vocab.tsv"</code> 两个词汇表。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">make_vocab</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="n">fname</span><span class="p">):</span>
+
+    <span class="c1"># 使用 codecs.open 函数读取指定文件路径(fpath)的文本内容，并将其存储在 text 变量中
+</span>    <span class="n">text</span> <span class="o">=</span> <span class="n">codecs</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s">'r'</span><span class="p">,</span> <span class="s">'utf-8'</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="c1"># 将 text 中的非字母和空格的字符去掉
+</span>    <span class="n">text</span> <span class="o">=</span> <span class="n">regex</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="s">"[^\s\p{Latin}']"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+    <span class="c1"># 将 text 中的文本按照空格分割，并将每个单词存储在 words 变量中
+</span>    <span class="n">words</span> <span class="o">=</span> <span class="n">text</span><span class="p">.</span><span class="n">split</span><span class="p">()</span>
+
+    <span class="c1"># words 中每个单词的词频
+</span>    <span class="n">word2cnt</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+
+    <span class="c1"># 检查是否存在 preprocessed 文件夹，如果不存在就创建
+</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">exists</span><span class="p">(</span><span class="s">'preprocessed'</span><span class="p">):</span> <span class="n">os</span><span class="p">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s">'preprocessed'</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">codecs</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">'preprocessed/{}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">fname</span><span class="p">),</span> <span class="s">'w'</span><span class="p">,</span> <span class="s">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fout</span><span class="p">:</span>
+
+    	<span class="c1"># 按出现次数从多到少的顺序写入每个单词和它的出现次数
+</span>    	<span class="c1"># 在文件最前面写入四个特殊字符 &lt;PAD&gt;, &lt;UNK&gt;, &lt;S&gt;, &lt;/S&gt; 分别用于填充，未知单词，句子开始和句子结束
+</span>        <span class="n">fout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"{}</span><span class="se">\t</span><span class="s">1000000000</span><span class="se">\n</span><span class="s">{}</span><span class="se">\t</span><span class="s">1000000000</span><span class="se">\n</span><span class="s">{}</span><span class="se">\t</span><span class="s">1000000000</span><span class="se">\n</span><span class="s">{}</span><span class="se">\t</span><span class="s">1000000000</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"&lt;PAD&gt;"</span><span class="p">,</span> <span class="s">"&lt;UNK&gt;"</span><span class="p">,</span> <span class="s">"&lt;S&gt;"</span><span class="p">,</span> <span class="s">"&lt;/S&gt;"</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">cnt</span> <span class="ow">in</span> <span class="n">word2cnt</span><span class="p">.</span><span class="n">most_common</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word2cnt</span><span class="p">)):</span>
+            <span class="n">fout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="sa">u</span><span class="s">"{}</span><span class="se">\t</span><span class="s">{}</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">cnt</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">make_vocab</span><span class="p">(</span><span class="n">hp</span><span class="p">.</span><span class="n">source_train</span><span class="p">,</span> <span class="s">"de.vocab.tsv"</span><span class="p">)</span>
+    <span class="n">make_vocab</span><span class="p">(</span><span class="n">hp</span><span class="p">.</span><span class="n">target_train</span><span class="p">,</span> <span class="s">"en.vocab.tsv"</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Done"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>在主函数中调用 make_vocab 函数，在目录 <code class="language-plaintext highlighter-rouge">preprocessed</code> 生成 <code class="language-plaintext highlighter-rouge">de.vocab.tsv</code> 和 <code class="language-plaintext highlighter-rouge">en.vocab.tsv</code> 两个词汇表文件。</li>
+  <li>在函数 <code class="language-plaintext highlighter-rouge">make_vocab</code> 中，先使用 <code class="language-plaintext highlighter-rouge">codecs.open</code> 函数读取指定文件路径 <code class="language-plaintext highlighter-rouge">fpath</code> 的文本内容，并将其存储在 <code class="language-plaintext highlighter-rouge">text</code> 变量中，再使用正则表达式 <code class="language-plaintext highlighter-rouge">regex</code> 将 <code class="language-plaintext highlighter-rouge">text</code> 中的非字母和空格的字符去掉，接着将 <code class="language-plaintext highlighter-rouge">text</code> 中的文本按照空格分割，并将每个单词存储在 <code class="language-plaintext highlighter-rouge">words</code> 变量中。</li>
+  <li>接下来，使用 <code class="language-plaintext highlighter-rouge">Counter</code> 函数统计 <code class="language-plaintext highlighter-rouge">words</code> 中每个单词的出现次数，并将统计结果存储在 <code class="language-plaintext highlighter-rouge">word2cnt</code> 变量中。</li>
+  <li>最后所有词与词频，存储在 <code class="language-plaintext highlighter-rouge">de.vocab.tsv</code> 和 <code class="language-plaintext highlighter-rouge">en.vocab.tsv</code> 两个文件中。</li>
+</ul>
+
+<h4 id="23训练测试数据集的加载">2.3、训练/测试数据集的加载</h4>
 
 <p>我们先看下 <code class="language-plaintext highlighter-rouge">train.py</code>、<code class="language-plaintext highlighter-rouge">data_load.py</code>、<code class="language-plaintext highlighter-rouge">eval.py</code> 三个文件：</p>
 
@@ -1474,42 +1478,98 @@ digraph G {
 </div>
 </div>
 
-<h4 id="23预处理">2.3、预处理</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">load_de_vocab</span><span class="p">():</span>
+    <span class="n">vocab</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="p">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">codecs</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">'preprocessed/de.vocab.tsv'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">,</span> <span class="s">'utf-8'</span><span class="p">).</span><span class="n">read</span><span class="p">().</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span><span class="o">&gt;=</span><span class="n">hp</span><span class="p">.</span><span class="n">min_cnt</span><span class="p">]</span>
+    <span class="n">word2idx</span> <span class="o">=</span> <span class="p">{</span><span class="n">word</span><span class="p">:</span> <span class="n">idx</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">vocab</span><span class="p">)}</span>
+    <span class="n">idx2word</span> <span class="o">=</span> <span class="p">{</span><span class="n">idx</span><span class="p">:</span> <span class="n">word</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">vocab</span><span class="p">)}</span>
+    <span class="k">return</span> <span class="n">word2idx</span><span class="p">,</span> <span class="n">idx2word</span>
 
-<p>文件 <code class="language-plaintext highlighter-rouge">prepro.py</code> 实现了预处理的过程，就是创建德语、英语的词汇表。</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">make_vocab</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="n">fname</span><span class="p">):</span>
-
-    <span class="c1"># 使用 codecs.open 函数读取指定文件路径(fpath)的文本内容，并将其存储在 text 变量中
-</span>    <span class="n">text</span> <span class="o">=</span> <span class="n">codecs</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="s">'r'</span><span class="p">,</span> <span class="s">'utf-8'</span><span class="p">).</span><span class="n">read</span><span class="p">()</span>
-
-    <span class="c1"># 将 text 中的非字母和空格的字符去掉
-</span>    <span class="n">text</span> <span class="o">=</span> <span class="n">regex</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="s">"[^\s\p{Latin}']"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
-
-    <span class="c1"># 将 text 中的文本按照空格分割，并将每个单词存储在 words 变量中
-</span>    <span class="n">words</span> <span class="o">=</span> <span class="n">text</span><span class="p">.</span><span class="n">split</span><span class="p">()</span>
-
-    <span class="c1"># words 中每个单词的出现次数
-</span>    <span class="n">word2cnt</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
-
-    <span class="c1"># 检查是否存在 preprocessed 文件夹，如果不存在就创建
-</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">exists</span><span class="p">(</span><span class="s">'preprocessed'</span><span class="p">):</span> <span class="n">os</span><span class="p">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s">'preprocessed'</span><span class="p">)</span>
-    <span class="k">with</span> <span class="n">codecs</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">'preprocessed/{}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">fname</span><span class="p">),</span> <span class="s">'w'</span><span class="p">,</span> <span class="s">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fout</span><span class="p">:</span>
-        <span class="n">fout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"{}</span><span class="se">\t</span><span class="s">1000000000</span><span class="se">\n</span><span class="s">{}</span><span class="se">\t</span><span class="s">1000000000</span><span class="se">\n</span><span class="s">{}</span><span class="se">\t</span><span class="s">1000000000</span><span class="se">\n</span><span class="s">{}</span><span class="se">\t</span><span class="s">1000000000</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">"&lt;PAD&gt;"</span><span class="p">,</span> <span class="s">"&lt;UNK&gt;"</span><span class="p">,</span> <span class="s">"&lt;S&gt;"</span><span class="p">,</span> <span class="s">"&lt;/S&gt;"</span><span class="p">))</span>
-        <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">cnt</span> <span class="ow">in</span> <span class="n">word2cnt</span><span class="p">.</span><span class="n">most_common</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word2cnt</span><span class="p">)):</span>
-            <span class="n">fout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="sa">u</span><span class="s">"{}</span><span class="se">\t</span><span class="s">{}</span><span class="se">\n</span><span class="s">"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">cnt</span><span class="p">))</span>
-
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
-    <span class="n">make_vocab</span><span class="p">(</span><span class="n">hp</span><span class="p">.</span><span class="n">source_train</span><span class="p">,</span> <span class="s">"de.vocab.tsv"</span><span class="p">)</span>
-    <span class="n">make_vocab</span><span class="p">(</span><span class="n">hp</span><span class="p">.</span><span class="n">target_train</span><span class="p">,</span> <span class="s">"en.vocab.tsv"</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Done"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">load_en_vocab</span><span class="p">():</span>
+    <span class="n">vocab</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span><span class="p">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">codecs</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">'preprocessed/en.vocab.tsv'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">,</span> <span class="s">'utf-8'</span><span class="p">).</span><span class="n">read</span><span class="p">().</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span><span class="o">&gt;=</span><span class="n">hp</span><span class="p">.</span><span class="n">min_cnt</span><span class="p">]</span>
+    <span class="n">word2idx</span> <span class="o">=</span> <span class="p">{</span><span class="n">word</span><span class="p">:</span> <span class="n">idx</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">vocab</span><span class="p">)}</span>
+    <span class="n">idx2word</span> <span class="o">=</span> <span class="p">{</span><span class="n">idx</span><span class="p">:</span> <span class="n">word</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">vocab</span><span class="p">)}</span>
+    <span class="k">return</span> <span class="n">word2idx</span><span class="p">,</span> <span class="n">idx2word</span>
 </code></pre></div></div>
 
-<ul>
-  <li>在主函数中调用 make_vocab 函数，根据 <code class="language-plaintext highlighter-rouge">de.vocab.tsv</code> 和 <code class="language-plaintext highlighter-rouge">en.vocab.tsv</code> 两个词汇表文件生成词汇表。</li>
-  <li>在函数 <code class="language-plaintext highlighter-rouge">make_vocab</code> 中，先使用 <code class="language-plaintext highlighter-rouge">codecs.open</code> 函数读取指定文件路径 <code class="language-plaintext highlighter-rouge">fpath</code> 的文本内容，并将其存储在 <code class="language-plaintext highlighter-rouge">text</code> 变量中，再使用正则表达式 <code class="language-plaintext highlighter-rouge">regex</code> 将 <code class="language-plaintext highlighter-rouge">text</code> 中的非字母和空格的字符去掉，接着将 <code class="language-plaintext highlighter-rouge">text</code> 中的文本按照空格分割，并将每个单词存储在 <code class="language-plaintext highlighter-rouge">words</code> 变量中。</li>
-  <li>接下来，使用 <code class="language-plaintext highlighter-rouge">Counter</code> 函数统计 <code class="language-plaintext highlighter-rouge">words</code> 中每个单词的出现次数，并将统计结果存储在 <code class="language-plaintext highlighter-rouge">word2cnt</code> 变量中。</li>
-</ul>
+<p>将 <code class="language-plaintext highlighter-rouge">preprocessed/de.vocab.tsv</code> 和 <code class="language-plaintext highlighter-rouge">preprocessed/en.vocab.tsv</code> 中储存的德语、英语的词汇、词频，载入成 <code class="language-plaintext highlighter-rouge">word2idx</code> 和 <code class="language-plaintext highlighter-rouge">idx2word</code>。前者是通过词查询词向量，后者通过词向量查询词。</p>
+
+<p><code class="language-plaintext highlighter-rouge">load_de_vocab</code> 和 <code class="language-plaintext highlighter-rouge">load_en_vocab</code> 函数被 <code class="language-plaintext highlighter-rouge">create_data</code> 函数引用，该函数将输入的源语言和目标语言句子转换为索引表示，并对过长的句子进行截断或填充。详细的解释看下面代码里的注释。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 输入参数是翻译模型的源语言语句、目标语言语句
+</span><span class="k">def</span> <span class="nf">create_data</span><span class="p">(</span><span class="n">source_sents</span><span class="p">,</span> <span class="n">target_sents</span><span class="p">):</span>
+
+    <span class="n">de2idx</span><span class="p">,</span> <span class="n">idx2de</span> <span class="o">=</span> <span class="n">load_de_vocab</span><span class="p">()</span>
+    <span class="n">en2idx</span><span class="p">,</span> <span class="n">idx2en</span> <span class="o">=</span> <span class="n">load_en_vocab</span><span class="p">()</span>
+    
+    <span class="c1"># 用 zip 函数将源语言和目标语言句子对应起来，并对句子进行截断或填充
+</span>    <span class="n">x_list</span><span class="p">,</span> <span class="n">y_list</span><span class="p">,</span> <span class="n">Sources</span><span class="p">,</span> <span class="n">Targets</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">source_sent</span><span class="p">,</span> <span class="n">target_sent</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">source_sents</span><span class="p">,</span> <span class="n">target_sents</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">de2idx</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">(</span><span class="n">source_sent</span> <span class="o">+</span> <span class="sa">u</span><span class="s">" &lt;/S&gt;"</span><span class="p">).</span><span class="n">split</span><span class="p">()]</span> <span class="c1"># 1: OOV, &lt;/S&gt;: End of Text
+</span>        <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">en2idx</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">(</span><span class="n">target_sent</span> <span class="o">+</span> <span class="sa">u</span><span class="s">" &lt;/S&gt;"</span><span class="p">).</span><span class="n">split</span><span class="p">()]</span> 
+
+        <span class="c1"># 将句子的词的编号，原句以及编号后的句子存储下来，以供之后使用
+</span>        <span class="k">if</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="o">&lt;=</span><span class="n">hp</span><span class="p">.</span><span class="n">maxlen</span><span class="p">:</span>
+
+        	<span class="c1"># 将 x 和 y 转换成 numpy 数组并加入 x_list 和 y_list 中
+</span>            <span class="n">x_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+            <span class="n">y_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
+            <span class="c1"># 将原始的 source_sent 和 target_sent 加入 Sources 和 Targets 列表中
+</span>            <span class="n">Sources</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">source_sent</span><span class="p">)</span>
+            <span class="n">Targets</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">target_sent</span><span class="p">)</span>
+    
+    <span class="c1"># 对于每个 (x, y) 对，使用 np.lib.pad 函数将 x 和 y 分别用 0 进行填充，直到长度为 hp.maxlen
+</span>    <span class="c1"># 这样做的目的是使得每个句子长度都相等，方便后续的训练
+</span>    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">x_list</span><span class="p">),</span> <span class="n">hp</span><span class="p">.</span><span class="n">maxlen</span><span class="p">],</span> <span class="n">np</span><span class="p">.</span><span class="n">int32</span><span class="p">)</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">y_list</span><span class="p">),</span> <span class="n">hp</span><span class="p">.</span><span class="n">maxlen</span><span class="p">],</span> <span class="n">np</span><span class="p">.</span><span class="n">int32</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">x_list</span><span class="p">,</span> <span class="n">y_list</span><span class="p">)):</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">lib</span><span class="p">.</span><span class="n">pad</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">hp</span><span class="p">.</span><span class="n">maxlen</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)],</span> <span class="s">'constant'</span><span class="p">,</span> <span class="n">constant_values</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">lib</span><span class="p">.</span><span class="n">pad</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">hp</span><span class="p">.</span><span class="n">maxlen</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)],</span> <span class="s">'constant'</span><span class="p">,</span> <span class="n">constant_values</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+    <span class="c1"># 返回转换后的索引表示，以及未经处理的源语言和目标语言句子
+</span>    <span class="c1"># X 是原始句子中德语的索引
+</span>    <span class="c1"># Y 是原始句子中英语的索引
+</span>    <span class="c1"># Sources 是源原始句子列表，并与 X 一一对应
+</span>    <span class="c1"># Targets 是目标原始句子列表，并与 Y 一一对应
+</span>    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Sources</span><span class="p">,</span> <span class="n">Targets</span>
+
+<span class="c1"># 返回原始句子中德语、英语的索引
+</span><span class="k">def</span> <span class="nf">load_train_data</span><span class="p">():</span>
+    <span class="n">de_sents</span> <span class="o">=</span> <span class="p">[</span><span class="n">regex</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="s">"[^\s\p{Latin}']"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">codecs</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="n">hp</span><span class="p">.</span><span class="n">source_train</span><span class="p">,</span> <span class="s">'r'</span><span class="p">,</span> <span class="s">'utf-8'</span><span class="p">).</span><span class="n">read</span><span class="p">().</span><span class="n">split</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span> <span class="k">if</span> <span class="n">line</span> <span class="ow">and</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s">"&lt;"</span><span class="p">]</span>
+    <span class="n">en_sents</span> <span class="o">=</span> <span class="p">[</span><span class="n">regex</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="s">"[^\s\p{Latin}']"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">codecs</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="n">hp</span><span class="p">.</span><span class="n">target_train</span><span class="p">,</span> <span class="s">'r'</span><span class="p">,</span> <span class="s">'utf-8'</span><span class="p">).</span><span class="n">read</span><span class="p">().</span><span class="n">split</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span> <span class="k">if</span> <span class="n">line</span> <span class="ow">and</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s">"&lt;"</span><span class="p">]</span>
+    
+    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Sources</span><span class="p">,</span> <span class="n">Targets</span> <span class="o">=</span> <span class="n">create_data</span><span class="p">(</span><span class="n">de_sents</span><span class="p">,</span> <span class="n">en_sents</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span>
+</code></pre></div></div>
+
+<p>下面的 <code class="language-plaintext highlighter-rouge">get_batch_data</code> 则从文本数据中读取并生成 batch：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_batch_data</span><span class="p">():</span>
+    
+    <span class="c1"># 加载数据
+</span>    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">load_train_data</span><span class="p">()</span>
+    
+    <span class="c1"># calc total batch count
+</span>    <span class="n">num_batch</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">//</span> <span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span>
+    
+    <span class="c1"># 将 X 和 Y 转换成张量
+</span>    <span class="n">X</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">tf</span><span class="p">.</span><span class="n">int32</span><span class="p">)</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">tf</span><span class="p">.</span><span class="n">int32</span><span class="p">)</span>
+    
+    <span class="c1"># 创建输入队列
+</span>    <span class="n">input_queues</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">slice_input_producer</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">])</span>
+            
+    <span class="c1"># 创建 batch 队列，利用 shuffle_batch 将一组 tensor 随机打乱，并将它们分为多个 batch
+</span>    <span class="c1"># 使用 shuffle_batch 是为了防止模型过拟合
+</span>    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">shuffle_batch</span><span class="p">(</span><span class="n">input_queues</span><span class="p">,</span>
+                                <span class="n">num_threads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+                                <span class="n">batch_size</span><span class="o">=</span><span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span><span class="p">,</span> 
+                                <span class="n">capacity</span><span class="o">=</span><span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span><span class="o">*</span><span class="mi">64</span><span class="p">,</span>   
+                                <span class="n">min_after_dequeue</span><span class="o">=</span><span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span><span class="o">*</span><span class="mi">32</span><span class="p">,</span> 
+                                <span class="n">allow_smaller_final_batch</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">num_batch</span> <span class="c1"># (N, T), (N, T), ()
+</span></code></pre></div></div>
 
 <h4 id="24构建模型并训练">2.4、构建模型并训练</h4>
 
@@ -1679,7 +1739,7 @@ digraph G {
 
 <p>下面是 <code class="language-plaintext highlighter-rouge">train.py</code> 中实现的 Transformer 流程，其中的每一段代码，船长都会做详细解释，先不用急。这个流程里，首先定义了编码器，先使用了 Embedding 层将输入数据转换为词向量，使用 Positional Encoding 层对词向量进行位置编码，使用 Dropout 层进行 dropout 操作，然后进行多层 Multihead Attention 和 Feed Forward 操作。</p>
 
-<p>在构建模型前，先执行 <code class="language-plaintext highlighter-rouge">train.py</code> 的主程序段，首先 <code class="language-plaintext highlighter-rouge">if __name__ == '__main__'</code> 这句代码是在 Python 中常用的一种编写方式，它的意思是当一个文件被直接运行时，<code class="language-plaintext highlighter-rouge">if</code> 语句下面的代码会被执行。</p>
+<p>在构建模型前，先执行 <code class="language-plaintext highlighter-rouge">train.py</code> 的主程序段，首先 <code class="language-plaintext highlighter-rouge">if __name__ == '__main__'</code> 这句代码是在 Python 中常用的一种编写方式，它的意思是当一个文件被直接运行时，<code class="language-plaintext highlighter-rouge">if</code> 语句下面的代码会被执行。请看下面代码的注释。</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>                
     
@@ -1723,18 +1783,44 @@ digraph G {
 
 <h5 id="241编码过程">2.4.1、编码过程</h5>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 编码流程
-</span>
-<span class="c1">## Embedding
+<h6 id="embedding">Embedding</h6>
+
+<p><code class="language-plaintext highlighter-rouge">embedding</code> 用来把输入生成词嵌入向量：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 词语转换为对应的词向量表示
 </span><span class="bp">self</span><span class="p">.</span><span class="n">enc</span> <span class="o">=</span> <span class="n">embedding</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> 
                       <span class="n">vocab_size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">de2idx</span><span class="p">),</span> 
                       <span class="n">num_units</span><span class="o">=</span><span class="n">hp</span><span class="p">.</span><span class="n">hidden_units</span><span class="p">,</span> 
                       <span class="n">scale</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
                       <span class="n">scope</span><span class="o">=</span><span class="s">"enc_embed"</span><span class="p">)</span>
+</code></pre></div></div>
 
-<span class="n">key_masks</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">sign</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">enc</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">vocab_size</code> 是词汇表的大小。</li>
+  <li><code class="language-plaintext highlighter-rouge">num_units</code> 是词向量的维度。</li>
+  <li><code class="language-plaintext highlighter-rouge">scale</code> 是一个布尔值，用来确定是否对词向量进行标准化。</li>
+  <li><code class="language-plaintext highlighter-rouge">scope</code> 是变量作用域的名称。</li>
+</ul>
 
-<span class="c1">## 位置编码
+<h6 id="key-masks">Key Masks</h6>
+
+<p>接着生成一个 <code class="language-plaintext highlighter-rouge">key_masks</code> 用于在之后的计算中屏蔽掉某些位置的信息，以便模型只关注有效的信息。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">key_masks</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">sign</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">enc</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>先对 <code class="language-plaintext highlighter-rouge">self.enc</code> 张量进行对每个元素求绝对值的操作</li>
+  <li>沿着最后一阶作为轴，进行 <code class="language-plaintext highlighter-rouge">reduce_sum</code> 操作，得到一个 (batch, sequence_length) 形状的张量。</li>
+  <li>再进行 <code class="language-plaintext highlighter-rouge">tf.sign</code> 操作，对刚得到的每个元素进行符号函数的变换。</li>
+  <li>最后再扩展阶数，变成形状 (batch, sequence_length, 1) 的张量。</li>
+</ul>
+
+<h6 id="positional-encoding">Positional Encoding</h6>
+
+<p>下面生成 Transformer 的位置编码：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 位置编码
 </span><span class="k">if</span> <span class="n">hp</span><span class="p">.</span><span class="n">sinusoid</span><span class="p">:</span>
     <span class="bp">self</span><span class="p">.</span><span class="n">enc</span> <span class="o">+=</span> <span class="n">positional_encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">x</span><span class="p">,</span>
                       <span class="n">num_units</span><span class="o">=</span><span class="n">hp</span><span class="p">.</span><span class="n">hidden_units</span><span class="p">,</span> 
@@ -1749,31 +1835,38 @@ digraph G {
                       <span class="n">zero_pad</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
                       <span class="n">scale</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
                       <span class="n">scope</span><span class="o">=</span><span class="s">"enc_pe"</span><span class="p">)</span>
+</code></pre></div></div>
 
-<span class="bp">self</span><span class="p">.</span><span class="n">enc</span> <span class="o">*=</span> <span class="n">key_masks</span>
+<p>如果超参数 <code class="language-plaintext highlighter-rouge">hp.sinusoid=True</code>，使用 <code class="language-plaintext highlighter-rouge">positional_encoding</code> 函数，通过使用正弦和余弦函数来生成位置编码，可以为输入序列添加位置信息。如果 <code class="language-plaintext highlighter-rouge">hp.sinusoid=False</code>，使用 <code class="language-plaintext highlighter-rouge">embedding</code> 函数，通过学习的词嵌入来生成位置编码。</p>
 
+<p>位置编码生成后，用 <code class="language-plaintext highlighter-rouge">key_masks</code> 处理一下。注意 <code class="language-plaintext highlighter-rouge">key_masks</code> 的生成一定要用最初的 <code class="language-plaintext highlighter-rouge">self.enc</code>，所以在前面执行而不是这里：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="bp">self</span><span class="p">.</span><span class="n">enc</span> <span class="o">*=</span> <span class="n">key_masks</span>
+</code></pre></div></div>
+
+<p>这个不是矩阵乘法，而是对应元素相乘。这里乘上 <code class="language-plaintext highlighter-rouge">key_masks</code> 的目的是将 <code class="language-plaintext highlighter-rouge">key_masks</code> 中值为 0 的位置对应的 <code class="language-plaintext highlighter-rouge">self.enc</code> 中的元素置为 0，这样就可以排除这些位置对计算的影响。</p>
+
+<h6 id="drop-out">Drop out</h6>
+
+<p>下面调用了 TensorFlow 的 drop out 操作：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="bp">self</span><span class="p">.</span><span class="n">enc</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">dropout</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">enc</span><span class="p">,</span> 
+                            <span class="n">rate</span><span class="o">=</span><span class="n">hp</span><span class="p">.</span><span class="n">dropout_rate</span><span class="p">,</span> 
+                            <span class="n">training</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">is_training</span><span class="p">))</span>
 </code></pre></div></div>
 
 <p>drop out 是一种在深度学习中常用的正则化技巧。它通过在训练过程中随机地「关闭」一些神经元来减少 <strong>过拟合</strong>。这样做是为了防止模型过于依赖于某些特定的特征，而导致在新数据上的表现不佳。</p>
 
 <p>在这个函数中，<code class="language-plaintext highlighter-rouge">dropout</code> 层通过在训练过程中随机地将一些神经元的输出值设置为 0，来减少模型的过拟合。这个函数中使用了一个参数 <code class="language-plaintext highlighter-rouge">rate</code>，表示每个神经元被「关闭」的概率。这样做是为了防止模型过于依赖于某些特定的特征，而导致在新数据上的表现不佳。</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## Dropout
-</span><span class="bp">self</span><span class="p">.</span><span class="n">enc</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">dropout</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">enc</span><span class="p">,</span> 
-                            <span class="n">rate</span><span class="o">=</span><span class="n">hp</span><span class="p">.</span><span class="n">dropout_rate</span><span class="p">,</span> 
-                            <span class="n">training</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">is_training</span><span class="p">))</span>
-</code></pre></div></div>
+<h6 id="encoder-blocks-multi-head-attention--feed-forward">Encoder Blocks: Multi-Head Attention &amp; Feed Forward</h6>
 
-<p>超参数 hp.num_blocks 表示 Encoder Blocks 的层数，每一层都有一个 Multi-Head Attention 和一个 Feed Forward。</p>
-
-<ul>
-  <li>这个 Encoder 中的 Multi-Head Attention 是基于自注意力的（注意与后面的 Decoder 部分有区别）</li>
-</ul>
+<p>然后看下 encoder blocks 代码：</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## Blocks
 </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">hp</span><span class="p">.</span><span class="n">num_blocks</span><span class="p">):</span>
     <span class="k">with</span> <span class="n">tf</span><span class="p">.</span><span class="n">variable_scope</span><span class="p">(</span><span class="s">"num_blocks_{}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="p">)):</span>
-        <span class="c1">### Multihead Attention
+        <span class="c1"># 多头注意力
 </span>        <span class="bp">self</span><span class="p">.</span><span class="n">enc</span> <span class="o">=</span> <span class="n">multihead_attention</span><span class="p">(</span><span class="n">queries</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">enc</span><span class="p">,</span> 
                                         <span class="n">keys</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">enc</span><span class="p">,</span> 
                                         <span class="n">num_units</span><span class="o">=</span><span class="n">hp</span><span class="p">.</span><span class="n">hidden_units</span><span class="p">,</span> 
@@ -1782,11 +1875,21 @@ digraph G {
                                         <span class="n">is_training</span><span class="o">=</span><span class="n">is_training</span><span class="p">,</span>
                                         <span class="n">causality</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
         
-        <span class="c1">### Feed Forward
+        <span class="c1"># 前馈神经网络
 </span>        <span class="bp">self</span><span class="p">.</span><span class="n">enc</span> <span class="o">=</span> <span class="n">feedforward</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">enc</span><span class="p">,</span> <span class="n">num_units</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="o">*</span><span class="n">hp</span><span class="p">.</span><span class="n">hidden_units</span><span class="p">,</span> <span class="n">hp</span><span class="p">.</span><span class="n">hidden_units</span><span class="p">])</span>
 </code></pre></div></div>
 
-<p>解码器（Decoder）的实现函数调用的流程，也是与船长上面的模型原理介绍一致的，在定义时同样使用了 Embedding 层、Positional Encoding 层、Dropout 层、Multihead Attention 和 Feed Forward 操作，其中 Multihead Attention 有自注意力层和 Encoder-Decoder 层。</p>
+<p>上述代码是编码器（Encoder）的实现函数调用的流程，也是与船长上面的模型原理介绍一致的，在定义时同样使用了 Embedding 层、Positional Encoding 层、Dropout 层、Multihead Attention 和 Feed Forward 操作。其中 Multihead Attention 在编码、解码中是不一样的，待会儿我们会在 Decoder 部分再提到，有自注意力层和 Encoder-Decoder 层。</p>
+
+<ul>
+  <li>超参数 hp.num_blocks 表示 Encoder Blocks 的层数，每一层都有一个 Multi-Head Attention 和一个 Feed Forward。</li>
+  <li>这个 Encoder 中的 Multi-Head Attention 是基于自注意力的（注意与后面的 Decoder 部分有区别）</li>
+  <li><code class="language-plaintext highlighter-rouge">causality</code> 参数的意思是否使用 Causal Attention，它是 Self-Attention 的一种，但是只使用过去的信息，防止模型获取未来信息的干扰。一般对于预测序列中的某个时间步来说，只关注之前的信息，而不是整个序列的信息。这段代码中 <code class="language-plaintext highlighter-rouge">causality</code> 设置为了 <code class="language-plaintext highlighter-rouge">False</code>，即会关注整个序列的信息。</li>
+</ul>
+
+<h5 id="242解码过程">2.4.2、解码过程</h5>
+
+<p>再看一下解码的流程：</p>
 
 <div style="text-align: center;">
 <div class="graphviz-wrapper">
@@ -1882,19 +1985,34 @@ digraph G {
 </div>
 </div>
 
-<h5 id="242解码过程">2.4.2、解码过程</h5>
+<h6 id="embedding-1">Embedding</h6>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 解码流程
-</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">dec</span> <span class="o">=</span> <span class="n">embedding</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">decoder_inputs</span><span class="p">,</span> 
+<p>下面我们逐一看每段代码，主要关注与编码阶段的区别即可：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="bp">self</span><span class="p">.</span><span class="n">dec</span> <span class="o">=</span> <span class="n">embedding</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">decoder_inputs</span><span class="p">,</span> 
                       <span class="n">vocab_size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">en2idx</span><span class="p">),</span> 
                       <span class="n">num_units</span><span class="o">=</span><span class="n">hp</span><span class="p">.</span><span class="n">hidden_units</span><span class="p">,</span>
                       <span class="n">scale</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
                       <span class="n">scope</span><span class="o">=</span><span class="s">"dec_embed"</span><span class="p">)</span>
+</code></pre></div></div>
 
-<span class="n">key_masks</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">sign</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">dec</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">embedding</code> 输入用的是 <code class="language-plaintext highlighter-rouge">self.decoder_inputs</code></li>
+  <li>词汇表尺寸用翻译后的输出语言英语词汇表长度 <code class="language-plaintext highlighter-rouge">len(en2idx)</code></li>
+</ul>
 
-<span class="c1">## 位置编码
+<h6 id="key-masks-1">Key Masks</h6>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">key_masks</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">sign</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">dec</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">key_masks</code> 输入变量用 <code class="language-plaintext highlighter-rouge">self.dec</code>。</li>
+</ul>
+
+<h6 id="positional-encoding--drop-out">Positional Encoding &amp; Drop out</h6>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 位置编码
 </span><span class="k">if</span> <span class="n">hp</span><span class="p">.</span><span class="n">sinusoid</span><span class="p">:</span>
     <span class="bp">self</span><span class="p">.</span><span class="n">dec</span> <span class="o">+=</span> <span class="n">positional_encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">decoder_inputs</span><span class="p">,</span>
                       <span class="n">vocab_size</span><span class="o">=</span><span class="n">hp</span><span class="p">.</span><span class="n">maxlen</span><span class="p">,</span> 
@@ -1910,17 +2028,25 @@ digraph G {
                       <span class="n">zero_pad</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
                       <span class="n">scale</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
                       <span class="n">scope</span><span class="o">=</span><span class="s">"dec_pe"</span><span class="p">)</span>
+
 <span class="bp">self</span><span class="p">.</span><span class="n">dec</span> <span class="o">*=</span> <span class="n">key_masks</span>
 
-<span class="c1">## Dropout
-</span><span class="bp">self</span><span class="p">.</span><span class="n">dec</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">dropout</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">dec</span><span class="p">,</span> 
+<span class="bp">self</span><span class="p">.</span><span class="n">dec</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">dropout</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">dec</span><span class="p">,</span> 
                             <span class="n">rate</span><span class="o">=</span><span class="n">hp</span><span class="p">.</span><span class="n">dropout_rate</span><span class="p">,</span> 
                             <span class="n">training</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">is_training</span><span class="p">))</span>
+</code></pre></div></div>
 
-<span class="c1">## 解码器模块
+<ul>
+  <li>输入 <code class="language-plaintext highlighter-rouge">self.decoder_inputs</code></li>
+  <li>指定 <code class="language-plaintext highlighter-rouge">vocab_size</code> 参数 <code class="language-plaintext highlighter-rouge">hp.maxlen</code></li>
+</ul>
+
+<h6 id="decoder-blocks-multi-head-attention--feed-forward">Decoder Blocks: Multi-Head Attention &amp; Feed Forward</h6>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## 解码器模块
 </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">hp</span><span class="p">.</span><span class="n">num_blocks</span><span class="p">):</span>
     <span class="k">with</span> <span class="n">tf</span><span class="p">.</span><span class="n">variable_scope</span><span class="p">(</span><span class="s">"num_blocks_{}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="p">)):</span>
-        <span class="c1">## 多头注意力（自注意力）
+        <span class="c1"># 多头注意力（自注意力）
 </span>        <span class="bp">self</span><span class="p">.</span><span class="n">dec</span> <span class="o">=</span> <span class="n">multihead_attention</span><span class="p">(</span><span class="n">queries</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">dec</span><span class="p">,</span> 
                                         <span class="n">keys</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">dec</span><span class="p">,</span> 
                                         <span class="n">num_units</span><span class="o">=</span><span class="n">hp</span><span class="p">.</span><span class="n">hidden_units</span><span class="p">,</span> 
@@ -1930,7 +2056,7 @@ digraph G {
                                         <span class="n">causality</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> 
                                         <span class="n">scope</span><span class="o">=</span><span class="s">"self_attention"</span><span class="p">)</span>
         
-        <span class="c1">## 多头注意力（Encoder-Decoder 注意力）
+        <span class="c1"># 多头注意力（Encoder-Decoder 注意力）
 </span>        <span class="bp">self</span><span class="p">.</span><span class="n">dec</span> <span class="o">=</span> <span class="n">multihead_attention</span><span class="p">(</span><span class="n">queries</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">dec</span><span class="p">,</span> 
                                         <span class="n">keys</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">enc</span><span class="p">,</span> 
                                         <span class="n">num_units</span><span class="o">=</span><span class="n">hp</span><span class="p">.</span><span class="n">hidden_units</span><span class="p">,</span> 
@@ -1939,12 +2065,18 @@ digraph G {
                                         <span class="n">is_training</span><span class="o">=</span><span class="n">is_training</span><span class="p">,</span> 
                                         <span class="n">causality</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
                                         <span class="n">scope</span><span class="o">=</span><span class="s">"vanilla_attention"</span><span class="p">)</span>
-        
-        <span class="c1">## 前馈神经网络
+
+        <span class="c1"># 前馈神经网络
 </span>        <span class="bp">self</span><span class="p">.</span><span class="n">dec</span> <span class="o">=</span> <span class="n">feedforward</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">dec</span><span class="p">,</span> <span class="n">num_units</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="o">*</span><span class="n">hp</span><span class="p">.</span><span class="n">hidden_units</span><span class="p">,</span> <span class="n">hp</span><span class="p">.</span><span class="n">hidden_units</span><span class="p">])</span>
 </code></pre></div></div>
 
+<ul>
+  <li>在用 <code class="language-plaintext highlighter-rouge">multihead_attention</code> 函数解码器模块时，注意传入的参数 <code class="language-plaintext highlighter-rouge">scope</code> 区别，先是自注意力层，用参数 <code class="language-plaintext highlighter-rouge">self_attention</code>，对应的 <code class="language-plaintext highlighter-rouge">queries</code> 是 <code class="language-plaintext highlighter-rouge">self.dec</code>，<code class="language-plaintext highlighter-rouge">keys</code> 也是 <code class="language-plaintext highlighter-rouge">self.dec</code>。再是「Encoder-Decder Attention」用的是参数 <code class="language-plaintext highlighter-rouge">vanilla_attention</code>，对应的 <code class="language-plaintext highlighter-rouge">queries</code> 来自解码器是 <code class="language-plaintext highlighter-rouge">self.dec</code>，但 <code class="language-plaintext highlighter-rouge">keys</code> 来自编码器是是 <code class="language-plaintext highlighter-rouge">self.enc</code>。</li>
+</ul>
+
 <h5 id="243embeddingpositional-encodingmulti-head-attentionfeed-forward">2.4.3、Embedding、Positional Encoding、Multi-Head Attention、Feed Forward</h5>
+
+<h6 id="embedding-函数实现">Embedding 函数实现</h6>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">embedding</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> 
               <span class="n">vocab_size</span><span class="p">,</span> 
@@ -1954,20 +2086,29 @@ digraph G {
               <span class="n">scope</span><span class="o">=</span><span class="s">"embedding"</span><span class="p">,</span> 
               <span class="n">reuse</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="k">with</span> <span class="n">tf</span><span class="p">.</span><span class="n">variable_scope</span><span class="p">(</span><span class="n">scope</span><span class="p">,</span> <span class="n">reuse</span><span class="o">=</span><span class="n">reuse</span><span class="p">):</span>
-        <span class="n">lookup_table</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">get_variable</span><span class="p">(</span><span class="s">'lookup_table'</span><span class="p">,</span>
+
+    	<span class="c1"># 创建一个名为 `lookup_table`、形状为 (vocab_size, num_units) 的矩阵
+</span>        <span class="n">lookup_table</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">get_variable</span><span class="p">(</span><span class="s">'lookup_table'</span><span class="p">,</span>
                                        <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">float32</span><span class="p">,</span>
                                        <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">num_units</span><span class="p">],</span>
                                        <span class="n">initializer</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">contrib</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">xavier_initializer</span><span class="p">())</span>
-        <span class="k">if</span> <span class="n">zero_pad</span><span class="p">:</span>
+
+        <span class="c1"># lookup_table 的第一行插入一个全零行，作为 PAD 的词向量
+</span>        <span class="k">if</span> <span class="n">zero_pad</span><span class="p">:</span>
             <span class="n">lookup_table</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">concat</span><span class="p">((</span><span class="n">tf</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_units</span><span class="p">]),</span>
                                       <span class="n">lookup_table</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">:]),</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">outputs</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">embedding_lookup</span><span class="p">(</span><span class="n">lookup_table</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+
+        <span class="c1"># 在词向量矩阵 lookup_table 中查找 inputs
+</span>        <span class="n">outputs</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">embedding_lookup</span><span class="p">(</span><span class="n">lookup_table</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
         
-        <span class="k">if</span> <span class="n">scale</span><span class="p">:</span>
+        <span class="c1"># 对输出的词向量进行除以根号 num_units 的操作，可以控制词向量的统计稳定性。
+</span>        <span class="k">if</span> <span class="n">scale</span><span class="p">:</span>
             <span class="n">outputs</span> <span class="o">=</span> <span class="n">outputs</span> <span class="o">*</span> <span class="p">(</span><span class="n">num_units</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span> 
             
     <span class="k">return</span> <span class="n">outputs</span>
 </code></pre></div></div>
+
+<h6 id="positional-encoding-函数实现">Positional Encoding 函数实现</h6>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">positional_encoding</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span>
                         <span class="n">num_units</span><span class="p">,</span>
@@ -1978,30 +2119,38 @@ digraph G {
 
     <span class="n">N</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">.</span><span class="n">get_shape</span><span class="p">().</span><span class="n">as_list</span><span class="p">()</span>
     <span class="k">with</span> <span class="n">tf</span><span class="p">.</span><span class="n">variable_scope</span><span class="p">(</span><span class="n">scope</span><span class="p">,</span> <span class="n">reuse</span><span class="o">=</span><span class="n">reuse</span><span class="p">):</span>
-        <span class="n">position_ind</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">tile</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+    	<span class="c1"># tf.range(T) 生成一个 0~T-1 的数组
+</span>    	<span class="c1"># tf.tile() 将其扩展成 N*T 的矩阵，表示每个词的位置
+</span>        <span class="n">position_ind</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">tile</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 
         <span class="c1"># First part of the PE function: sin and cos argument
 </span>        <span class="n">position_enc</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span>
             <span class="p">[</span><span class="n">pos</span> <span class="o">/</span> <span class="n">np</span><span class="p">.</span><span class="n">power</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mf">2.</span><span class="o">*</span><span class="n">i</span><span class="o">/</span><span class="n">num_units</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_units</span><span class="p">)]</span>
             <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">)])</span>
 
-        <span class="c1"># Second part, apply the cosine to even columns and sin to odds.
+        <span class="c1"># 用 numpy 的 sin 和 cos 函数对每个位置进行编码
 </span>        <span class="n">position_enc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="n">position_enc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># dim 2i
 </span>        <span class="n">position_enc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">cos</span><span class="p">(</span><span class="n">position_enc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># dim 2i+1
 </span>
-        <span class="c1"># Convert to a tensor
+        <span class="c1"># 将编码结果转为张量
 </span>        <span class="n">lookup_table</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">position_enc</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">zero_pad</span><span class="p">:</span>
-            <span class="n">lookup_table</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">concat</span><span class="p">((</span><span class="n">tf</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_units</span><span class="p">]),</span>
+        <span class="c1"># 将编码的结果与位置索引相关联，得到最终的位置编码
+</span>        <span class="k">if</span> <span class="n">zero_pad</span><span class="p">:</span>
+        	<span class="c1"># 如果 zero_pad 参数为 True，则在编码结果的开头添加一个全 0 的向量
+</span>            <span class="n">lookup_table</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">concat</span><span class="p">((</span><span class="n">tf</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_units</span><span class="p">]),</span>
                                       <span class="n">lookup_table</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">:]),</span> <span class="mi">0</span><span class="p">)</span>
         <span class="n">outputs</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">embedding_lookup</span><span class="p">(</span><span class="n">lookup_table</span><span class="p">,</span> <span class="n">position_ind</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">scale</span><span class="p">:</span>
+        <span class="c1"># scale 参数为 True，则将编码结果乘上 num_units 的平方根
+</span>        <span class="k">if</span> <span class="n">scale</span><span class="p">:</span>
             <span class="n">outputs</span> <span class="o">=</span> <span class="n">outputs</span> <span class="o">*</span> <span class="n">num_units</span><span class="o">**</span><span class="mf">0.5</span>
 
         <span class="k">return</span> <span class="n">outputs</span>
 </code></pre></div></div>
+
+<h6 id="multi-head-attention-函数实现">Multi-Head Attention 函数实现</h6>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">multihead_attention</span><span class="p">(</span><span class="n">queries</span><span class="p">,</span> 
                         <span class="n">keys</span><span class="p">,</span> 
@@ -2017,23 +2166,31 @@ digraph G {
 </span>        <span class="k">if</span> <span class="n">num_units</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">num_units</span> <span class="o">=</span> <span class="n">queries</span><span class="p">.</span><span class="n">get_shape</span><span class="p">().</span><span class="n">as_list</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         
-        <span class="c1"># Linear projections
+        <span class="c1"># Linear Projections
+</span>        <span class="c1"># 使用三个全连接层对输入的 queries、keys 分别进行线性变换，将其转换为三个维度相同的张量 Q/K/V
 </span>        <span class="n">Q</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">dense</span><span class="p">(</span><span class="n">queries</span><span class="p">,</span> <span class="n">num_units</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">relu</span><span class="p">)</span> <span class="c1"># (N, T_q, C)
 </span>        <span class="n">K</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">dense</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">num_units</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">relu</span><span class="p">)</span> <span class="c1"># (N, T_k, C)
 </span>        <span class="n">V</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">dense</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">num_units</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">relu</span><span class="p">)</span> <span class="c1"># (N, T_k, C)
 </span>        
         <span class="c1"># Split and concat
+</span>        <span class="c1"># 按头数 split Q/K/V，再各自连接起来
 </span>        <span class="n">Q_</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">concat</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># (h*N, T_q, C/h) 
 </span>        <span class="n">K_</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">concat</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># (h*N, T_k, C/h) 
 </span>        <span class="n">V_</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">concat</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># (h*N, T_k, C/h) 
 </span>
         <span class="c1"># Multiplication
+</span>        <span class="c1"># 计算 Q_, K_, V_ 的点积来获得注意力权重
+</span>        <span class="c1"># 其中 Q_ 的维度为 (hN, T_q, C/h)
+</span>        <span class="c1"># K_ 的维度为 (hN, T_k, C/h)
+</span>        <span class="c1"># 计算出来的结果 outputs 的维度为 (h*N, T_q, T_k)
 </span>        <span class="n">outputs</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">Q_</span><span class="p">,</span> <span class="n">tf</span><span class="p">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">K_</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span> <span class="c1"># (h*N, T_q, T_k)
-</span>        
+</span>
         <span class="c1"># Scale
+</span>        <span class="c1"># 对权重进行 scale，这里除以了 K_ 的第三维的平方根，用于缩放权重
 </span>        <span class="n">outputs</span> <span class="o">=</span> <span class="n">outputs</span> <span class="o">/</span> <span class="p">(</span><span class="n">K_</span><span class="p">.</span><span class="n">get_shape</span><span class="p">().</span><span class="n">as_list</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span>
         
         <span class="c1"># Key Masking
+</span>        <span class="c1"># 这里需要将 keys 的有效部分标记出来，将无效部分设置为极小值，以便在之后的 softmax 中被忽略
 </span>        <span class="n">key_masks</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">sign</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">keys</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># (N, T_k)
 </span>        <span class="n">key_masks</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">tile</span><span class="p">(</span><span class="n">key_masks</span><span class="p">,</span> <span class="p">[</span><span class="n">num_heads</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="c1"># (h*N, T_k)
 </span>        <span class="n">key_masks</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">tile</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">key_masks</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">tf</span><span class="p">.</span><span class="n">shape</span><span class="p">(</span><span class="n">queries</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">])</span> <span class="c1"># (h*N, T_q, T_k)
@@ -2043,29 +2200,37 @@ digraph G {
 </span>  
         <span class="c1"># Causality = Future blinding
 </span>        <span class="k">if</span> <span class="n">causality</span><span class="p">:</span>
-            <span class="n">diag_vals</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:])</span> <span class="c1"># (T_q, T_k)
+
+        	<span class="c1"># 创建一个与 outputs[0, :, :] 相同形状的全 1 矩阵
+</span>            <span class="n">diag_vals</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:])</span> <span class="c1"># (T_q, T_k)
+</span>
+            <span class="c1"># 对 diag_vals 进行处理，返回一个下三角线矩阵
 </span>            <span class="n">tril</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">LinearOperatorLowerTriangular</span><span class="p">(</span><span class="n">diag_vals</span><span class="p">).</span><span class="n">to_dense</span><span class="p">()</span> <span class="c1"># (T_q, T_k)
 </span>            <span class="n">masks</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">tile</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">tril</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">[</span><span class="n">tf</span><span class="p">.</span><span class="n">shape</span><span class="p">(</span><span class="n">outputs</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="c1"># (h*N, T_q, T_k)
 </span>   
-            <span class="n">paddings</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">masks</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">**</span><span class="mi">32</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+   			<span class="c1"># 将 masks 为 0 的位置的 outputs 值设置为一个非常小的数
+</span>   			<span class="c1"># 这样会导致这些位置在之后的计算中对结果产生非常小的影响，从而实现了遮盖未来信息的功能
+</span>            <span class="n">paddings</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">masks</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">**</span><span class="mi">32</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
             <span class="n">outputs</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">equal</span><span class="p">(</span><span class="n">masks</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">paddings</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span> <span class="c1"># (h*N, T_q, T_k)
 </span>  
-        <span class="c1"># Activation
+        <span class="c1"># 对于每个头的输出，应用 softmax 激活函数，这样可以得到一个概率分布
 </span>        <span class="n">outputs</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span> <span class="c1"># (h*N, T_q, T_k)
 </span>         
         <span class="c1"># Query Masking
+</span>        <span class="c1"># 对于查询（queries）进行 masking，这样可以避免输入序列后面的词对之前词的影响
 </span>        <span class="n">query_masks</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">sign</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">queries</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># (N, T_q)
 </span>        <span class="n">query_masks</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">tile</span><span class="p">(</span><span class="n">query_masks</span><span class="p">,</span> <span class="p">[</span><span class="n">num_heads</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="c1"># (h*N, T_q)
 </span>        <span class="n">query_masks</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">tile</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">query_masks</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tf</span><span class="p">.</span><span class="n">shape</span><span class="p">(</span><span class="n">keys</span><span class="p">)[</span><span class="mi">1</span><span class="p">]])</span> <span class="c1"># (h*N, T_q, T_k)
 </span>        <span class="n">outputs</span> <span class="o">*=</span> <span class="n">query_masks</span> <span class="c1"># broadcasting. (N, T_q, C)
 </span>          
-        <span class="c1"># Dropouts
+        <span class="c1"># Dropouts &amp; Weighted Sum
+</span>        <span class="c1"># 对于每个头的输出，应用 dropout 以及进行残差连接
 </span>        <span class="n">outputs</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="n">dropout_rate</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">is_training</span><span class="p">))</span>
-               
-        <span class="c1"># Weighted sum
-</span>        <span class="n">outputs</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">V_</span><span class="p">)</span> <span class="c1"># ( h*N, T_q, C/h)
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">V_</span><span class="p">)</span> <span class="c1"># ( h*N, T_q, C/h)
 </span>        
         <span class="c1"># Restore shape
+</span>        <span class="c1"># 将每个头的输出拼接起来，使用 tf.concat 函数，将不同头的结果按照第二维拼接起来
+</span>        <span class="c1"># 得到最终的输出结果，即经过多头注意力计算后的结果
 </span>        <span class="n">outputs</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">concat</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span> <span class="p">)</span> <span class="c1"># (N, T_q, C)
 </span>              
         <span class="c1"># Residual connection
@@ -2077,14 +2242,9 @@ digraph G {
     <span class="k">return</span> <span class="n">outputs</span>
 </code></pre></div></div>
 
-<p>下面是 <strong>前馈神经网络层</strong> 的定义，这是一个非线性变换。</p>
+<h6 id="feed-forward-函数实现">Feed Forward 函数实现</h6>
 
-<ul>
-  <li>先是使用了一个卷积层（conv1d）作为 inner layer、一个卷积层作为 readout layer，卷积核大小都为 1。</li>
-  <li><code class="language-plaintext highlighter-rouge">num_units[0]</code> 表示 inner layer 的神经元数，<code class="language-plaintext highlighter-rouge">num_units[1]</code> 表示 readout layer 的神经元数，默认分别为 2048、512，调用时传入的是超参数的 <code class="language-plaintext highlighter-rouge">[4 * hidden_units, hidden_units]</code>。</li>
-  <li>其中 inner layer 用 <code class="language-plaintext highlighter-rouge">ReLU</code> 作为激活函数，然后连接一个残差网络 RedNet，把 readout layer 的输出加上原始的输入。</li>
-  <li>最后使用 <code class="language-plaintext highlighter-rouge">normalize</code> 归一化处理输出，再返回。</li>
-</ul>
+<p>下面是 <strong>前馈神经网络层</strong> 的定义，这是一个非线性变换，这里用到了一些卷积神经网络（CNN）的知识，我们来看下代码再解释：</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">feedforward</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> 
                 <span class="n">num_units</span><span class="o">=</span><span class="p">[</span><span class="mi">2048</span><span class="p">,</span> <span class="mi">512</span><span class="p">],</span>
@@ -2101,63 +2261,110 @@ digraph G {
                   <span class="s">"activation"</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s">"use_bias"</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
         <span class="n">outputs</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">conv1d</span><span class="p">(</span><span class="o">**</span><span class="n">params</span><span class="p">)</span>
         
-        <span class="c1"># Residual connection
+        <span class="c1"># 连接一个残差网络 ResNet
 </span>        <span class="n">outputs</span> <span class="o">+=</span> <span class="n">inputs</span>
         
-        <span class="c1"># Normalize
+        <span class="c1"># 归一化后输出
 </span>        <span class="n">outputs</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span>
     
     <span class="k">return</span> <span class="n">outputs</span>
 </code></pre></div></div>
 
-<h5 id="244编码和解码完成后的操作">2.4.4、编码和解码完成后的操作</h5>
-
-<p>解码器后的 <code class="language-plaintext highlighter-rouge">Linear &amp; Softmax</code>：</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Final linear projection
-</span><span class="bp">self</span><span class="p">.</span><span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">dense</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">dec</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">en2idx</span><span class="p">))</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">preds</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">to_int32</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">arg_max</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">logits</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">istarget</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">to_float</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">not_equal</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">acc</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">to_float</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">equal</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">preds</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">y</span><span class="p">))</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">istarget</span><span class="p">)</span><span class="o">/</span> <span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">istarget</span><span class="p">))</span>
-<span class="n">tf</span><span class="p">.</span><span class="n">summary</span><span class="p">.</span><span class="n">scalar</span><span class="p">(</span><span class="s">'acc'</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">acc</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>训练集数据处理时，经过 <code class="language-plaintext highlighter-rouge">Linear &amp; Softmax</code> 之后的最后处理如下。这里用到了 <code class="language-plaintext highlighter-rouge">tf.nn.softmax_cross_entropy_with_logits</code> 交叉熵损失，来计算模型的错误率 <code class="language-plaintext highlighter-rouge">mean_loss</code>，并使用 Adam 优化器 <code class="language-plaintext highlighter-rouge">AdamOptimizer</code> 来优化模型参数。</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="bp">self</span><span class="p">.</span><span class="n">y_smoothed</span> <span class="o">=</span> <span class="n">label_smoothing</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">one_hot</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">en2idx</span><span class="p">)))</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">softmax_cross_entropy_with_logits</span><span class="p">(</span><span class="n">logits</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">logits</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">y_smoothed</span><span class="p">)</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">mean_loss</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">loss</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">istarget</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">istarget</span><span class="p">))</span>
-
-<span class="c1"># Training Scheme
-</span><span class="bp">self</span><span class="p">.</span><span class="n">global_step</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">Variable</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'global_step'</span><span class="p">,</span> <span class="n">trainable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">AdamOptimizer</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="n">hp</span><span class="p">.</span><span class="n">lr</span><span class="p">,</span> <span class="n">beta1</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">beta2</span><span class="o">=</span><span class="mf">0.98</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">)</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">train_op</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">optimizer</span><span class="p">.</span><span class="n">minimize</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">mean_loss</span><span class="p">,</span> <span class="n">global_step</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">global_step</span><span class="p">)</span>
-   
-<span class="c1"># Summary 
-</span><span class="n">tf</span><span class="p">.</span><span class="n">summary</span><span class="p">.</span><span class="n">scalar</span><span class="p">(</span><span class="s">'mean_loss'</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">mean_loss</span><span class="p">)</span>
-<span class="bp">self</span><span class="p">.</span><span class="n">merged</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">summary</span><span class="p">.</span><span class="n">merge_all</span><span class="p">()</span>
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">label_smoothing</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
-    <span class="n">K</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">.</span><span class="n">get_shape</span><span class="p">().</span><span class="n">as_list</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># number of channels
-</span>    <span class="k">return</span> <span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="p">)</span> <span class="o">*</span> <span class="n">inputs</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">epsilon</span> <span class="o">/</span> <span class="n">K</span><span class="p">)</span>
-</code></pre></div></div>
+<ul>
+  <li>先是使用了一个卷积层（conv1d）作为 inner layer、一个卷积层作为 readout layer，卷积核大小都为 1。</li>
+  <li><code class="language-plaintext highlighter-rouge">filters</code> 参数用来控制卷积层中输出通道数量，inner layer 的输出通道数设置为 <code class="language-plaintext highlighter-rouge">num_units[0]</code> ，readout layer 的设置为 <code class="language-plaintext highlighter-rouge">num_units[1]</code>。有时也会把这个解释为神经元数量。这两个的默认分别为 2048、512，调用时传入的是超参数的 <code class="language-plaintext highlighter-rouge">[4 * hidden_units, hidden_units]</code>。</li>
+  <li>其中 inner layer 用 <code class="language-plaintext highlighter-rouge">ReLU</code> 作为激活函数，然后连接一个残差网络 RedNet，把 readout layer 的输出加上原始的输入。</li>
+  <li>最后使用 <code class="language-plaintext highlighter-rouge">normalize</code> 归一化处理输出，再返回。下面来看下 <code class="language-plaintext highlighter-rouge">normalize</code> 函数。</li>
+</ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> 
               <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-8</span><span class="p">,</span>
               <span class="n">scope</span><span class="o">=</span><span class="s">"ln"</span><span class="p">,</span>
               <span class="n">reuse</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="k">with</span> <span class="n">tf</span><span class="p">.</span><span class="n">variable_scope</span><span class="p">(</span><span class="n">scope</span><span class="p">,</span> <span class="n">reuse</span><span class="o">=</span><span class="n">reuse</span><span class="p">):</span>
-        <span class="n">inputs_shape</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">.</span><span class="n">get_shape</span><span class="p">()</span>
+
+    	<span class="c1"># 输入数据的形状
+</span>        <span class="n">inputs_shape</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">.</span><span class="n">get_shape</span><span class="p">()</span>
         <span class="n">params_shape</span> <span class="o">=</span> <span class="n">inputs_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span>
     
-        <span class="n">mean</span><span class="p">,</span> <span class="n">variance</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">moments</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">keep_dims</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-        <span class="n">beta</span><span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">params_shape</span><span class="p">))</span>
-        <span class="n">gamma</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">ones</span><span class="p">(</span><span class="n">params_shape</span><span class="p">))</span>
-        <span class="n">normalized</span> <span class="o">=</span> <span class="p">(</span><span class="n">inputs</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span> <span class="p">(</span><span class="n">variance</span> <span class="o">+</span> <span class="n">epsilon</span><span class="p">)</span> <span class="o">**</span> <span class="p">(.</span><span class="mi">5</span><span class="p">)</span> <span class="p">)</span>
+    	<span class="c1"># 平均数、方差
+</span>        <span class="n">mean</span><span class="p">,</span> <span class="n">variance</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">moments</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">keep_dims</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+        <span class="c1"># 拉伸因子 beta
+</span>        <span class="n">beta</span><span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">params_shape</span><span class="p">))</span>
+
+        <span class="c1"># 缩放因子 gamma
+</span>        <span class="n">gamma</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">ones</span><span class="p">(</span><span class="n">params_shape</span><span class="p">))</span>
+
+        <span class="c1"># 归一化：加上一个非常小的 epsilon，是为了防止除以 0
+</span>        <span class="n">normalized</span> <span class="o">=</span> <span class="p">(</span><span class="n">inputs</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span> <span class="p">(</span><span class="n">variance</span> <span class="o">+</span> <span class="n">epsilon</span><span class="p">)</span> <span class="o">**</span> <span class="p">(.</span><span class="mi">5</span><span class="p">)</span> <span class="p">)</span>
+
         <span class="n">outputs</span> <span class="o">=</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">normalized</span> <span class="o">+</span> <span class="n">beta</span>
         
     <span class="k">return</span> <span class="n">outputs</span>
+</code></pre></div></div>
+
+<ul>
+  <li>该函数实现了 Layer Normalization，用于在深度神经网络中解决数据的不稳定性问题。</li>
+</ul>
+
+<h5 id="244编码和解码完成后的操作">2.4.4、编码和解码完成后的操作</h5>
+
+<p>解码器后的 <code class="language-plaintext highlighter-rouge">Linear &amp; Softmax</code>：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 全连接层得到的未经过归一化的概率值
+</span><span class="bp">self</span><span class="p">.</span><span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">dense</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">dec</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">en2idx</span><span class="p">))</span>
+
+<span class="c1"># 预测的英文单词 idx
+</span><span class="bp">self</span><span class="p">.</span><span class="n">preds</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">to_int32</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">arg_max</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">logits</span><span class="p">,</span> <span class="n">dimension</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+<span class="bp">self</span><span class="p">.</span><span class="n">istarget</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">to_float</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">not_equal</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="c1"># 正确预测数量，除以所有样本数，得到准确率
+</span><span class="bp">self</span><span class="p">.</span><span class="n">acc</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">to_float</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">equal</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">preds</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">y</span><span class="p">))</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">istarget</span><span class="p">)</span><span class="o">/</span> <span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">istarget</span><span class="p">))</span>
+
+<span class="c1">#  记录了模型的准确率的值，用于 tensorboard 可视化
+</span><span class="n">tf</span><span class="p">.</span><span class="n">summary</span><span class="p">.</span><span class="n">scalar</span><span class="p">(</span><span class="s">'acc'</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">acc</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>训练集数据处理时，经过 <code class="language-plaintext highlighter-rouge">Linear &amp; Softmax</code> 之后的最后处理如下。这里用到了 <code class="language-plaintext highlighter-rouge">tf.nn.softmax_cross_entropy_with_logits</code> 交叉熵损失，来计算模型的错误率 <code class="language-plaintext highlighter-rouge">mean_loss</code>，并使用 Adam 优化器 <code class="language-plaintext highlighter-rouge">AdamOptimizer</code> 来优化模型参数。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 使用 label_smoothing 函数对真实标签进行标签平滑，得到 self.y_smoothed
+</span><span class="bp">self</span><span class="p">.</span><span class="n">y_smoothed</span> <span class="o">=</span> <span class="n">label_smoothing</span><span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">one_hot</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">en2idx</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<p>下面这段代码实现了一种叫做「label Smoothing」的技巧。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">label_smoothing</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+
+	<span class="c1"># 获取输入的类别数，并将其赋值给变量 K
+</span>    <span class="n">K</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">.</span><span class="n">get_shape</span><span class="p">().</span><span class="n">as_list</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># number of channels
+</span>    <span class="k">return</span> <span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="p">)</span> <span class="o">*</span> <span class="n">inputs</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">epsilon</span> <span class="o">/</span> <span class="n">K</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>在训练过程中，样本的标签被表示为一个二维矩阵，其中第一维表示样本的编号，第二维表示样本的标签。这个矩阵的形状就是 (样本数, 类别数)，所以类别数对应的就是最后一维。具体到这个模型用例里，第一个维度是德语样本句子数，最后一维就是英语词汇量的大小。</p>
+
+<p>用于解决在训练模型时出现的过拟合问题。在标签平滑中，我们给每个样本的标签加上一些噪声，使得模型不能完全依赖于样本的标签来进行训练，从而减少过拟合的可能性。具体来说，这段代码将输入的标签 <code class="language-plaintext highlighter-rouge">inputs</code> 乘上 <code class="language-plaintext highlighter-rouge">1-epsilon</code>，再加上 <code class="language-plaintext highlighter-rouge">epsilon / K</code>，其中 <code class="language-plaintext highlighter-rouge">epsilon</code> 是平滑因子，<code class="language-plaintext highlighter-rouge">K</code> 是标签类别数（英语词汇量大小）。这样就可以在训练过程中让模型对标签的预测更加平稳，并且降低过拟合的风险。</p>
+
+<p>然后我们看后续的操作。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 对于分类问题来说，常用的损失函数是交叉熵损失
+</span><span class="bp">self</span><span class="p">.</span><span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">softmax_cross_entropy_with_logits</span><span class="p">(</span><span class="n">logits</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">logits</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">y_smoothed</span><span class="p">)</span>
+<span class="bp">self</span><span class="p">.</span><span class="n">mean_loss</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">loss</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">istarget</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">tf</span><span class="p">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">istarget</span><span class="p">))</span>
+
+<span class="c1"># Training Scheme
+</span><span class="bp">self</span><span class="p">.</span><span class="n">global_step</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">Variable</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'global_step'</span><span class="p">,</span> <span class="n">trainable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="c1"># Adam 优化器 self.optimizer，用于优化损失函数
+</span><span class="bp">self</span><span class="p">.</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">AdamOptimizer</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="n">hp</span><span class="p">.</span><span class="n">lr</span><span class="p">,</span> <span class="n">beta1</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">beta2</span><span class="o">=</span><span class="mf">0.98</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">)</span>
+
+<span class="c1"># 使用优化器的 minimize() 函数创建一个训练操作 self.train_op，用于更新模型参数。这个函数会自动计算梯度并应用更新
+</span><span class="bp">self</span><span class="p">.</span><span class="n">train_op</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">optimizer</span><span class="p">.</span><span class="n">minimize</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">mean_loss</span><span class="p">,</span> <span class="n">global_step</span><span class="o">=</span><span class="bp">self</span><span class="p">.</span><span class="n">global_step</span><span class="p">)</span>
+   
+<span class="c1"># 将平均损失写入 TensorFlow 的 Summary 中，用于 tensorboard 可视化
+</span><span class="n">tf</span><span class="p">.</span><span class="n">summary</span><span class="p">.</span><span class="n">scalar</span><span class="p">(</span><span class="s">'mean_loss'</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">mean_loss</span><span class="p">)</span>
+
+<span class="c1"># 将所有的 summary 合并到一起，方便在训练过程中写入事件文件
+</span><span class="bp">self</span><span class="p">.</span><span class="n">merged</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">summary</span><span class="p">.</span><span class="n">merge_all</span><span class="p">()</span>
 </code></pre></div></div>
 
 <h4 id="25效果评价">2.5、效果评价</h4>
@@ -2173,34 +2380,44 @@ digraph G {
     <span class="n">en2idx</span><span class="p">,</span> <span class="n">idx2en</span> <span class="o">=</span> <span class="n">load_en_vocab</span><span class="p">()</span>
      
     <span class="c1"># Start session         
-</span>    <span class="k">with</span> <span class="n">g</span><span class="p">.</span><span class="n">graph</span><span class="p">.</span><span class="n">as_default</span><span class="p">():</span>    
-        <span class="n">sv</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">Supervisor</span><span class="p">()</span>
-        <span class="k">with</span> <span class="n">sv</span><span class="p">.</span><span class="n">managed_session</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">ConfigProto</span><span class="p">(</span><span class="n">allow_soft_placement</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
-            <span class="c1">## Restore parameters
+</span>    <span class="k">with</span> <span class="n">g</span><span class="p">.</span><span class="n">graph</span><span class="p">.</span><span class="n">as_default</span><span class="p">():</span>
+
+    	<span class="c1"># TensorFlow 中用于管理训练的一个类
+</span>    	<span class="c1"># 它可以帮助你轻松地管理训练过程中的各种资源，如模型参数、检查点和日志
+</span>        <span class="n">sv</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">Supervisor</span><span class="p">()</span>
+
+        <span class="c1"># 创建一个会话
+</span>        <span class="k">with</span> <span class="n">sv</span><span class="p">.</span><span class="n">managed_session</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">ConfigProto</span><span class="p">(</span><span class="n">allow_soft_placement</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
+
+            <span class="c1"># 恢复模型参数
 </span>            <span class="n">sv</span><span class="p">.</span><span class="n">saver</span><span class="p">.</span><span class="n">restore</span><span class="p">(</span><span class="n">sess</span><span class="p">,</span> <span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">latest_checkpoint</span><span class="p">(</span><span class="n">hp</span><span class="p">.</span><span class="n">logdir</span><span class="p">))</span>
             <span class="k">print</span><span class="p">(</span><span class="s">"Restored!"</span><span class="p">)</span>
               
-            <span class="c1">## Get model name
+            <span class="c1"># 获取模型名称
 </span>            <span class="n">mname</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">hp</span><span class="p">.</span><span class="n">logdir</span> <span class="o">+</span> <span class="s">'/checkpoint'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">).</span><span class="n">read</span><span class="p">().</span><span class="n">split</span><span class="p">(</span><span class="s">'"'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># model name
 </span>             
             <span class="c1">## Inference
 </span>            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">exists</span><span class="p">(</span><span class="s">'results'</span><span class="p">):</span> <span class="n">os</span><span class="p">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s">'results'</span><span class="p">)</span>
-            <span class="k">with</span> <span class="n">codecs</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"results/"</span> <span class="o">+</span> <span class="n">mname</span><span class="p">,</span> <span class="s">"w"</span><span class="p">,</span> <span class="s">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">fout</span><span class="p">:</span>
+
+            <span class="c1"># 初始化结果文件
+</span>            <span class="k">with</span> <span class="n">codecs</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"results/"</span> <span class="o">+</span> <span class="n">mname</span><span class="p">,</span> <span class="s">"w"</span><span class="p">,</span> <span class="s">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">fout</span><span class="p">:</span>
                 <span class="n">list_of_refs</span><span class="p">,</span> <span class="n">hypotheses</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
-                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">//</span> <span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span><span class="p">):</span>
+
+                <span class="c1"># 循环处理数据
+</span>                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">//</span> <span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span><span class="p">):</span>
                      
-                    <span class="c1">### Get mini-batches
+                    <span class="c1"># 获取小批量数据
 </span>                    <span class="n">x</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span><span class="p">:</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span><span class="p">]</span>
                     <span class="n">sources</span> <span class="o">=</span> <span class="n">Sources</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span><span class="p">:</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span><span class="p">]</span>
                     <span class="n">targets</span> <span class="o">=</span> <span class="n">Targets</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span><span class="p">:</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span><span class="p">]</span>
                      
-                    <span class="c1">### Autoregressive inference
+                    <span class="c1"># 使用自回归推理（Autoregressive inference）得到预测结果
 </span>                    <span class="n">preds</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">hp</span><span class="p">.</span><span class="n">maxlen</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="n">int32</span><span class="p">)</span>
                     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">hp</span><span class="p">.</span><span class="n">maxlen</span><span class="p">):</span>
                         <span class="n">_preds</span> <span class="o">=</span> <span class="n">sess</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">preds</span><span class="p">,</span> <span class="p">{</span><span class="n">g</span><span class="p">.</span><span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="n">g</span><span class="p">.</span><span class="n">y</span><span class="p">:</span> <span class="n">preds</span><span class="p">})</span>
                         <span class="n">preds</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">_preds</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span>
                      
-                    <span class="c1">### Write to file
+                    <span class="c1"># 将预测结果写入文件
 </span>                    <span class="k">for</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">pred</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">preds</span><span class="p">):</span> <span class="c1"># sentence-wise
 </span>                        <span class="n">got</span> <span class="o">=</span> <span class="s">" "</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">idx2en</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">pred</span><span class="p">).</span><span class="n">split</span><span class="p">(</span><span class="s">"&lt;/S&gt;"</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="n">strip</span><span class="p">()</span>
                         <span class="n">fout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"- source: "</span> <span class="o">+</span> <span class="n">source</span> <span class="o">+</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
@@ -2215,73 +2432,7 @@ digraph G {
                             <span class="n">list_of_refs</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">ref</span><span class="p">])</span>
                             <span class="n">hypotheses</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">hypothesis</span><span class="p">)</span>
               
-                <span class="c1">## Calculate bleu score
-</span>                <span class="n">score</span> <span class="o">=</span> <span class="n">corpus_bleu</span><span class="p">(</span><span class="n">list_of_refs</span><span class="p">,</span> <span class="n">hypotheses</span><span class="p">)</span>
-                <span class="n">fout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"Bleu Score = "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">score</span><span class="p">))</span>
-                                          
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
-    <span class="nb">eval</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Done"</span><span class="p">)</span>
-</code></pre></div></div>
-
-<h4 id="26eval">2.6、eval</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">eval</span><span class="p">():</span> 
-    <span class="c1"># Load graph
-</span>    <span class="n">g</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">(</span><span class="n">is_training</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"Graph loaded"</span><span class="p">)</span>
-    
-    <span class="c1"># Load data
-</span>    <span class="n">X</span><span class="p">,</span> <span class="n">Sources</span><span class="p">,</span> <span class="n">Targets</span> <span class="o">=</span> <span class="n">load_test_data</span><span class="p">()</span>
-    <span class="n">de2idx</span><span class="p">,</span> <span class="n">idx2de</span> <span class="o">=</span> <span class="n">load_de_vocab</span><span class="p">()</span>
-    <span class="n">en2idx</span><span class="p">,</span> <span class="n">idx2en</span> <span class="o">=</span> <span class="n">load_en_vocab</span><span class="p">()</span>
-     
-<span class="c1">#     X, Sources, Targets = X[:33], Sources[:33], Targets[:33]
-</span>     
-    <span class="c1"># Start session         
-</span>    <span class="k">with</span> <span class="n">g</span><span class="p">.</span><span class="n">graph</span><span class="p">.</span><span class="n">as_default</span><span class="p">():</span>    
-        <span class="n">sv</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">Supervisor</span><span class="p">()</span>
-        <span class="k">with</span> <span class="n">sv</span><span class="p">.</span><span class="n">managed_session</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">tf</span><span class="p">.</span><span class="n">ConfigProto</span><span class="p">(</span><span class="n">allow_soft_placement</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span> <span class="k">as</span> <span class="n">sess</span><span class="p">:</span>
-            <span class="c1">## Restore parameters
-</span>            <span class="n">sv</span><span class="p">.</span><span class="n">saver</span><span class="p">.</span><span class="n">restore</span><span class="p">(</span><span class="n">sess</span><span class="p">,</span> <span class="n">tf</span><span class="p">.</span><span class="n">train</span><span class="p">.</span><span class="n">latest_checkpoint</span><span class="p">(</span><span class="n">hp</span><span class="p">.</span><span class="n">logdir</span><span class="p">))</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"Restored!"</span><span class="p">)</span>
-              
-            <span class="c1">## Get model name
-</span>            <span class="n">mname</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">hp</span><span class="p">.</span><span class="n">logdir</span> <span class="o">+</span> <span class="s">'/checkpoint'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">).</span><span class="n">read</span><span class="p">().</span><span class="n">split</span><span class="p">(</span><span class="s">'"'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># model name
-</span>             
-            <span class="c1">## Inference
-</span>            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">exists</span><span class="p">(</span><span class="s">'results'</span><span class="p">):</span> <span class="n">os</span><span class="p">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s">'results'</span><span class="p">)</span>
-            <span class="k">with</span> <span class="n">codecs</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"results/"</span> <span class="o">+</span> <span class="n">mname</span><span class="p">,</span> <span class="s">"w"</span><span class="p">,</span> <span class="s">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">fout</span><span class="p">:</span>
-                <span class="n">list_of_refs</span><span class="p">,</span> <span class="n">hypotheses</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
-                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">//</span> <span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span><span class="p">):</span>
-                     
-                    <span class="c1">### Get mini-batches
-</span>                    <span class="n">x</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span><span class="p">:</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span><span class="p">]</span>
-                    <span class="n">sources</span> <span class="o">=</span> <span class="n">Sources</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span><span class="p">:</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span><span class="p">]</span>
-                    <span class="n">targets</span> <span class="o">=</span> <span class="n">Targets</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span><span class="p">:</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span><span class="p">]</span>
-                     
-                    <span class="c1">### Autoregressive inference
-</span>                    <span class="n">preds</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">hp</span><span class="p">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">hp</span><span class="p">.</span><span class="n">maxlen</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="n">int32</span><span class="p">)</span>
-                    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">hp</span><span class="p">.</span><span class="n">maxlen</span><span class="p">):</span>
-                        <span class="n">_preds</span> <span class="o">=</span> <span class="n">sess</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">g</span><span class="p">.</span><span class="n">preds</span><span class="p">,</span> <span class="p">{</span><span class="n">g</span><span class="p">.</span><span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="n">g</span><span class="p">.</span><span class="n">y</span><span class="p">:</span> <span class="n">preds</span><span class="p">})</span>
-                        <span class="n">preds</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">_preds</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span>
-                     
-                    <span class="c1">### Write to file
-</span>                    <span class="k">for</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">pred</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">preds</span><span class="p">):</span> <span class="c1"># sentence-wise
-</span>                        <span class="n">got</span> <span class="o">=</span> <span class="s">" "</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">idx2en</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">pred</span><span class="p">).</span><span class="n">split</span><span class="p">(</span><span class="s">"&lt;/S&gt;"</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="n">strip</span><span class="p">()</span>
-                        <span class="n">fout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"- source: "</span> <span class="o">+</span> <span class="n">source</span> <span class="o">+</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
-                        <span class="n">fout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"- expected: "</span> <span class="o">+</span> <span class="n">target</span> <span class="o">+</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
-                        <span class="n">fout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"- got: "</span> <span class="o">+</span> <span class="n">got</span> <span class="o">+</span> <span class="s">"</span><span class="se">\n\n</span><span class="s">"</span><span class="p">)</span>
-                        <span class="n">fout</span><span class="p">.</span><span class="n">flush</span><span class="p">()</span>
-                          
-                        <span class="c1"># bleu score
-</span>                        <span class="n">ref</span> <span class="o">=</span> <span class="n">target</span><span class="p">.</span><span class="n">split</span><span class="p">()</span>
-                        <span class="n">hypothesis</span> <span class="o">=</span> <span class="n">got</span><span class="p">.</span><span class="n">split</span><span class="p">()</span>
-                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">hypothesis</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
-                            <span class="n">list_of_refs</span><span class="p">.</span><span class="n">append</span><span class="p">([</span><span class="n">ref</span><span class="p">])</span>
-                            <span class="n">hypotheses</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">hypothesis</span><span class="p">)</span>
-              
-                <span class="c1">## Calculate bleu score
+                <span class="c1"># 计算 BLEU 分数，并将其写入文件
 </span>                <span class="n">score</span> <span class="o">=</span> <span class="n">corpus_bleu</span><span class="p">(</span><span class="n">list_of_refs</span><span class="p">,</span> <span class="n">hypotheses</span><span class="p">)</span>
                 <span class="n">fout</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"Bleu Score = "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">score</span><span class="p">))</span>
                                           
@@ -2292,21 +2443,47 @@ digraph G {
 
 <h3 id="3kyubyong-transformer-的性能表现">3、Kyubyong Transformer 的性能表现</h3>
 
-<h3 id="4kyubyong-transformer-的一些问题">4、Kyubyong Transformer 的一些问题</h3>
+<p>评估结果文件的最后一行有 Bleu Score = 6.598452846670836 表示这个翻译模型的翻译结果与参考翻译重叠程度比较高，翻译质量较好。不过需要注意的是，BLEU 分数不能完全反映翻译质量，因为它不能评估语法，语义，语调等方面的问题。</p>
+
+<p>另外前面我们在代码中已经将过程数据保存在 logdir 下了，就是为了后续方便可视化，我们可以用 TensorBoard 来可视化，具体使用方法如下：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@local <span class="nv">$ </span>tensorboard <span class="nt">--logdir</span> logdir
+</code></pre></div></div>
+
+<p>然后在浏览器里查看 <code class="language-plaintext highlighter-rouge">http://localhost:6006</code>，示例如下：</p>
+
+<p><img src="/img/src/2023-01-04-language-model-5-17.gif" alt="image" /></p>
+
+<h3 id="4kyubyong-transformer-模型的一些问题">4、Kyubyong Transformer 模型的一些问题</h3>
+
+<p>我们可以看到这个 Transformer 能够较好地捕捉长距离依赖关系，提高翻译质量。然而，Kyubyong Transformer 的实现存在一些问题。该 Transformer 模型在训练过程中还需要调整许多超参数，如学习率（learning rate）、batch size 等，不同的任务可能需要不同的超参数调整。</p>
 
 <h2 id="参考">参考</h2>
 
 <ul>
+  <li>https://arxiv.org/abs/1706.03762</li>
+  <li>https://arxiv.org/abs/1512.03385</li>
+  <li>https://github.com/Kyubyong/transformer/</li>
   <li>http://jalammar.github.io/illustrated-transformer/</li>
-  <li>《自然语言处理：基于预训练模型的方法》车万翔 等</li>
-  <li>《自然语言处理实战：预训练模型应用及其产品化》安库·A·帕特尔 等</li>
+  <li>https://towardsdatascience.com/this-is-how-to-train-better-transformer-models-d54191299978</li>
+  <li>《自然语言处理：基于预训练模型的方法》车万翔 等著</li>
+  <li>《自然语言处理实战：预训练模型应用及其产品化》安库·A·帕特尔 等著</li>
   <li>https://lilianweng.github.io/posts/2018-06-24-attention/</li>
-  <li>《基于深度学习的道路短期交通状态时空序列预测》</li>
+  <li>https://github.com/lilianweng/transformer-tensorflow/</li>
+  <li>《基于深度学习的道路短期交通状态时空序列预测》崔建勋 著</li>
   <li>https://www.zhihu.com/question/325839123</li>
-  <li>https://zhuanlan.zhihu.com/p/410776234</li>
-  <li>https://zhuanlan.zhihu.com/p/48508221</li>
   <li>https://luweikxy.gitbook.io/machine-learning-notes/self-attention-and-transformer</li>
+  <li>《Python 深度学习（第 2 版）》弗朗索瓦·肖莱 著</li>
+  <li>https://en.wikipedia.org/wiki/Attention_(machine_learning)</li>
+  <li>https://zhuanlan.zhihu.com/p/410776234</li>
+  <li>https://www.tensorflow.org/tensorboard/get_started</li>
+  <li>https://paperswithcode.com/method/multi-head-attention</li>
+  <li>https://zhuanlan.zhihu.com/p/48508221</li>
+  <li>https://www.joshbelanich.com/self-attention-layer/</li>
+  <li>https://learning.rasa.com/transformers/kvq/</li>
   <li>https://zhuanlan.zhihu.com/p/352898810</li>
+  <li>https://towardsdatascience.com/beautifully-illustrated-nlp-models-from-rnn-to-transformer-80d69faf2109</li>
+  <li>https://medium.com/analytics-vidhya/understanding-q-k-v-in-transformer-self-attention-9a5eddaa5960</li>
 </ul>
 
 	</div>

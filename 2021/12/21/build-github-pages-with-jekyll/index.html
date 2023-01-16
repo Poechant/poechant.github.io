@@ -366,7 +366,7 @@
 
 			<article id="post-page">
 	<h2>如何使用 Jekyll 基于 Github Pages 搭建个人博客</h2>		
-	<time datetime="2021-12-21T15:53:57+00:00" class="by-line">21 Dec 2021, 杭州 | 麦克船长 | 总计 12841 字</time>
+	<time datetime="2021-12-21T15:53:57+00:00" class="by-line">21 Dec 2021, 杭州 | 麦克船长 | 总计 12796 字</time>
 	<div class="content">
 		<p><strong>本文目录</strong></p>
 <ul id="markdown-toc">
@@ -396,19 +396,22 @@
           <li><a href="#使用示例" id="markdown-toc-使用示例">使用示例</a></li>
         </ul>
       </li>
-      <li><a href="#q5jekyll-中如何支持-graphviz-" id="markdown-toc-q5jekyll-中如何支持-graphviz-">Q5：Jekyll 中如何支持 Graphviz ？</a></li>
-      <li><a href="#本地-jekyll-先运行起来-graphviz" id="markdown-toc-本地-jekyll-先运行起来-graphviz">本地 Jekyll 先运行起来 Graphviz</a></li>
-      <li><a href="#github-pages-上正常显示-graphviz" id="markdown-toc-github-pages-上正常显示-graphviz">Github Pages 上正常显示 Graphviz</a>        <ul>
+      <li><a href="#q5jekyll-中如何支持-graphviz-" id="markdown-toc-q5jekyll-中如何支持-graphviz-">Q5：Jekyll 中如何支持 Graphviz ？</a>        <ul>
+          <li><a href="#本地-jekyll-先运行起来-graphviz" id="markdown-toc-本地-jekyll-先运行起来-graphviz">本地 Jekyll 先运行起来 Graphviz</a></li>
+          <li><a href="#github-pages-上正常显示-graphviz" id="markdown-toc-github-pages-上正常显示-graphviz">Github Pages 上正常显示 Graphviz</a></li>
           <li><a href="#本问题参考-1" id="markdown-toc-本问题参考-1">本问题参考：</a></li>
         </ul>
       </li>
       <li><a href="#q6如何显示--或者--" id="markdown-toc-q6如何显示--或者--">Q6：如何显示 <code class="language-plaintext highlighter-rouge">{%</code> 或者 <code class="language-plaintext highlighter-rouge">{{</code> ？</a></li>
+      <li><a href="#q7jekyll-编译速度太慢怎么办" id="markdown-toc-q7jekyll-编译速度太慢怎么办">Q7、Jekyll 编译速度太慢怎么办？</a></li>
     </ul>
   </li>
   <li><a href="#参考" id="markdown-toc-参考">参考</a></li>
 </ul>
 
 <h3 id="写在前面">写在前面</h3>
+
+<p>常见的静态网站生成器有 Jekyll、Hexo、Hugo。本文介绍如何用 Jekyll 生成静态的个人博客并关联 Github Pages，它也是 GitHub Pages 官方推荐的工具。</p>
 
 <p>GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用 GitHub Pages 搭建博客，然后使用 Jekyll 生成的静态网站文件上传到该仓库。花 10 分钟时间，通过本文让你快速地实现了一个免费、简单、快速、安全、支持版本控制、支持自定义域名的独立域名博客。这样实现的优势：</p>
 
@@ -598,15 +601,14 @@ gem <span class="s1">'jekyll'</span>
 
 <h3 id="10修改gemfile文件">10、修改 Gemfile 文件</h3>
 
-<p>注释掉gem ”jekyll”开头的这一行，修改# gem ”github-pages”开头的这一行为：</p>
+<p>注释掉 <code class="language-plaintext highlighter-rouge">gem "jekyll"</code> 开头的这一行，修改 <code class="language-plaintext highlighter-rouge"># gem "github-pages"</code> 开头的这一行：</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gem <span class="s2">"github-pages"</span>, <span class="s2">"~&gt; GITHUB-PAGES-VERSION"</span>, group: :jekyll_plugins
 </code></pre></div></div>
 
-<p>其中的GITHUB-PAGES-VERSION改为具体的版本号，版本号参考https://pages.github.com/versions/，我写本文的时候github-pages最新版本号是227。关闭 Gemfile 文件然后命令行运行如下命令：</p>
+<p>其中的 <code class="language-plaintext highlighter-rouge">GITHUB-PAGES-VERSION</code> 改为具体的版本号，版本号参考https://pages.github.com/versions/ ，我写本文的时候 github-pages 最新版本号是 227。关闭 <code class="language-plaintext highlighter-rouge">Gemfile</code> 文件然后命令行运行如下命令：</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bundle install
-</code></pre></div></div>
+<p>$ bundle install</p>
 
 <p>再本地启动服务器测试：</p>
 
@@ -625,7 +627,7 @@ Prepending <span class="sb">`</span>bundle <span class="nb">exec</span><span cla
 <span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll serve
 </code></pre></div></div>
 
-<p>这里注意jekyll server和bundle exec jekyll serve两个的区别是前者基本本地 Jekyll 版本启动服务，后者基于目录下的 Gemfile 文件启动服务，所以我们要用后者。</p>
+<p>这里注意 <code class="language-plaintext highlighter-rouge">jekyll server</code> 和 <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> 两个的区别是前者基本本地 Jekyll 版本启动服务，后者基于目录下的 <code class="language-plaintext highlighter-rouge">Gemfile</code> 文件启动服务，所以我们要用后者。</p>
 
 <h3 id="11配置githubpages">11、配置 Github Pages</h3>
 
@@ -845,7 +847,7 @@ $$ \sum_{i=1}^{n} a_i $$
 
 <h4 id="q5jekyll-中如何支持-graphviz-">Q5：Jekyll 中如何支持 Graphviz ？</h4>
 
-<h4 id="本地-jekyll-先运行起来-graphviz">本地 Jekyll 先运行起来 Graphviz</h4>
+<h5 id="本地-jekyll-先运行起来-graphviz">本地 Jekyll 先运行起来 Graphviz</h5>
 
 <p>这要依赖 <code class="language-plaintext highlighter-rouge">jekyll-graphviz</code>，修改 <code class="language-plaintext highlighter-rouge">Gemfile</code> 增加一句：</p>
 
@@ -931,7 +933,7 @@ digraph G {
 </svg>
 </div>
 
-<h4 id="github-pages-上正常显示-graphviz">Github Pages 上正常显示 Graphviz</h4>
+<h5 id="github-pages-上正常显示-graphviz">Github Pages 上正常显示 Graphviz</h5>
 
 <p>因为 GitHub Pages 默认并不支持 Graphviz 插件，所以还需要如下处理：</p>
 
@@ -997,18 +999,22 @@ digraph G {
 
 <p>如上，就是用 <code class="language-plaintext highlighter-rouge">{% raw %}</code> 和 <code class="language-plaintext highlighter-rouge">{% endraw %}</code> 把 <code class="language-plaintext highlighter-rouge">{%</code> 包起来，但是 <code class="language-plaintext highlighter-rouge">%}</code> 不用包。应该讲的很清楚了吧。</p>
 
+<h4 id="q7jekyll-编译速度太慢怎么办">Q7、Jekyll 编译速度太慢怎么办？</h4>
+
+<p>可以使用 <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve --incremental</code> 仅针对有修改的增量部分进行编译，减少重复编译已经没有变更的文件。</p>
+
 <h3 id="参考">参考</h3>
 
 <ol>
-  <li><a href="https://bundler.io">https://bundler.io</a></li>
+  <li><a href="https://chat.openai.com/chat">OpenAI ChatGPT</a></li>
   <li><a href="https://jekyllrb.com/docs/">https://jekyllrb.com/docs/</a></li>
   <li><a href="https://zhuanlan.zhihu.com/p/87225594">https://zhuanlan.zhihu.com/p/87225594</a></li>
-  <li><a href="https://chat.openai.com/chat">https://chat.openai.com/chat</a></li>
-  <li><a href="https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll">https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll</a></li>
-  <li><a href="https://docs.github.com/zh/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">https://docs.github.com/zh/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site</a></li>
+  <li><a href="https://bundler.io">Bundler IO</a></li>
+  <li><a href="https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll">Creating a GitHub Pages Site with Jekyll</a></li>
+  <li><a href="https://docs.github.com/zh/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">Configuring a Publishing Source for Your GitHub Pages Site</a></li>
   <li><a href="https://github.com/dyutibarma/monochrome">https://github.com/dyutibarma/monochrome</a></li>
-  <li><a href="https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain">https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain</a></li>
-  <li><a href="http://www.seanbuscay.com/blog/jekyll-toc-markdown/">http://www.seanbuscay.com/blog/jekyll-toc-markdown/</a></li>
+  <li><a href="https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain">Managing a Custom Domain for Your Github Pages Site - Configuring a Subdomain</a></li>
+  <li><a href="http://www.seanbuscay.com/blog/jekyll-toc-markdown/">Jekyll TOC Markdown</a></li>
 </ol>
 
 	</div>
