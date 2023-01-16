@@ -25,6 +25,7 @@ destination: ./_site
 permalink: /:title
 paginate: 20
 paginate_path: /page:num/
+incremental: true # Incremental compiling
 collections:
   posts:
     output: true

@@ -16,6 +16,8 @@ author: 麦克船长
 
 ### 写在前面
 
+常见的静态网站生成器有 Jekyll、Hexo、Hugo。本文介绍如何用 Jekyll 生成静态的个人博客并关联 Github Pages，它也是 GitHub Pages 官方推荐的工具。
+
 GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用 GitHub Pages 搭建博客，然后使用 Jekyll 生成的静态网站文件上传到该仓库。花 10 分钟时间，通过本文让你快速地实现了一个免费、简单、快速、安全、支持版本控制、支持自定义域名的独立域名博客。这样实现的优势：
 
 *   **免费**：GitHub Pages 允许用户免费使用其托管静态网站。
@@ -215,15 +217,15 @@ $ jekyll server
 
 ### 10、修改 Gemfile 文件
 
-注释掉gem "jekyll"开头的这一行，修改# gem "github-pages"开头的这一行为：
+注释掉 `gem "jekyll"` 开头的这一行，修改 `# gem "github-pages"` 开头的这一行：
 
 ```bash
 $ gem "github-pages", "~> GITHUB-PAGES-VERSION", group: :jekyll_plugins
 ```
 
-其中的GITHUB-PAGES-VERSION改为具体的版本号，版本号参考https://pages.github.com/versions/，我写本文的时候github-pages最新版本号是227。关闭 Gemfile 文件然后命令行运行如下命令：
+其中的 `GITHUB-PAGES-VERSION` 改为具体的版本号，版本号参考https://pages.github.com/versions/ ，我写本文的时候 github-pages 最新版本号是 227。关闭 `Gemfile` 文件然后命令行运行如下命令：
 
-    $ bundle install
+$ bundle install
 
 再本地启动服务器测试：
 
@@ -245,7 +247,7 @@ $ bundle add webrick
 $ bundle exec jekyll serve
 ```
 
-这里注意jekyll server和bundle exec jekyll serve两个的区别是前者基本本地 Jekyll 版本启动服务，后者基于目录下的 Gemfile 文件启动服务，所以我们要用后者。
+这里注意 `jekyll server` 和 `bundle exec jekyll serve` 两个的区别是前者基本本地 Jekyll 版本启动服务，后者基于目录下的 `Gemfile` 文件启动服务，所以我们要用后者。
 
 ### 11、配置 Github Pages
 
@@ -477,7 +479,7 @@ $$ \sum_{i=1}^{n} a_i $$
 
 #### Q5：Jekyll 中如何支持 Graphviz ？
 
-#### 本地 Jekyll 先运行起来 Graphviz
+##### 本地 Jekyll 先运行起来 Graphviz
 
 这要依赖 `jekyll-graphviz`，修改 `Gemfile` 增加一句：
 
@@ -516,7 +518,7 @@ digraph G {
 }
 {% endgraphviz %}
 
-#### Github Pages 上正常显示 Graphviz
+##### Github Pages 上正常显示 Graphviz
 
 因为 GitHub Pages 默认并不支持 Graphviz 插件，所以还需要如下处理：
 
@@ -581,14 +583,18 @@ baseurl: "" # Change this to your relative path (ex: /blog/), or leave just a /
 
 如上，就是用 `{% raw %}{%{% endraw %} raw %}` 和 `{% raw %}{%{% endraw %} endraw %}` 把 `{% raw %}{%{% endraw %}` 包起来，但是 `%}` 不用包。应该讲的很清楚了吧。
 
+#### Q7、Jekyll 编译速度太慢怎么办？
+
+可以使用 `bundle exec jekyll serve --incremental` 仅针对有修改的增量部分进行编译，减少重复编译已经没有变更的文件。
+
 ### 参考
 
-1. [https://bundler.io](https://bundler.io)
+1. [OpenAI ChatGPT](https://chat.openai.com/chat)
 2. [https://jekyllrb.com/docs/](https://jekyllrb.com/docs/)
 3. [https://zhuanlan.zhihu.com/p/87225594](https://zhuanlan.zhihu.com/p/87225594)
-4. [https://chat.openai.com/chat](https://chat.openai.com/chat)
-5. [https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll)
-6. [https://docs.github.com/zh/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site](https://docs.github.com/zh/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+4. [Bundler IO](https://bundler.io)
+5. [Creating a GitHub Pages Site with Jekyll](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll)
+6. [Configuring a Publishing Source for Your GitHub Pages Site](https://docs.github.com/zh/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 7. [https://github.com/dyutibarma/monochrome](https://github.com/dyutibarma/monochrome)
-8. [https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain](https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain)
-9. [http://www.seanbuscay.com/blog/jekyll-toc-markdown/](http://www.seanbuscay.com/blog/jekyll-toc-markdown/)
+8. [Managing a Custom Domain for Your Github Pages Site - Configuring a Subdomain](https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain)
+9. [Jekyll TOC Markdown](http://www.seanbuscay.com/blog/jekyll-toc-markdown/)
