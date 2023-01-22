@@ -101,7 +101,9 @@ ELMo 是 Embeddings from Language Models 的缩写，刚好是《芝麻街》中
 
 ELMo 是一种预训练模型，基于深度双向递归神经网络（biLSTM），可以用来生成词嵌入（word embeddings）。ELMo 使用了大量未标记的文本数据训练，并使用了多层双向递归神经网络来学习。
 
-#### 3、BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding（2018）
+#### 3、GPT-1：Improving Language Understanding by Generative Pre-Training
+
+#### 4、BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding（2018）
 
 BERT 模型是在一篇于 2018 年发表的叫做《BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding》的论文中被提出来的，BERT 是 Bidirectional Encoder Representations from Transformers 的缩写。我觉得这个名字有点硬凑出来的意思，BERT 也是《芝麻街》里一个角色的名字，我想就是为了跟 ELMo 凑一块儿怕它孤单吧。这篇论文带来的最大突破性变化有：
 
@@ -110,9 +112,13 @@ BERT 模型是在一篇于 2018 年发表的叫做《BERT: Pre-training of Deep 
 
 关于 BERT，我这里写了一篇背景介绍、用例试跑、优劣势分析：[《你可能已经听说 GPT-3，但是你也不能不知道 BERT —— 跟我一起用 BERT 跑个小用例》](https://www.mikecaptain.com/2022/12/17/ai-bert-1/)
 
-#### 4、GPT-3: Language Models are Few-Shot Learners（2020）
+#### 5、GPT-2：
+
+#### 6、GPT-3: Language Models are Few-Shot Learners（2020）
 
 这篇来自 OpenAI 的论文，提出了「小样本学习（Few-Shot Learning，FSL）」的新训练方法，可以在小样本的情况下取得优秀的表现。
+
+#### 7、InstructGPT
 
 #### 其他的重量级论文
 
