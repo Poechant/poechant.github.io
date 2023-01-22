@@ -57,7 +57,7 @@
 	    
 	  
 	    
-	      <a href="/booklist/" title="我的书单">我的书单</a>
+	      <a href="/booklist/" title="读书行路">读书行路</a>
 	    
 	  
 	    
@@ -170,7 +170,7 @@
         
       
         
-          <a href="/booklist/" title="我的书单">我的书单</a>
+          <a href="/booklist/" title="读书行路">读书行路</a>
         
       
         
@@ -320,7 +320,7 @@
         
       
         
-          <a href="/booklist/" title="我的书单">我的书单</a>
+          <a href="/booklist/" title="读书行路">读书行路</a>
         
       
         
@@ -366,7 +366,7 @@
 
 			<article id="post-page">
 	<h2>自然语言处理 AIGC 近年的发展脉络、关键论文、技术里程碑和商业应用</h2>		
-	<time datetime="2022-12-24T15:08:01+00:00" class="by-line">24 Dec 2022, 杭州 | 麦克船长 | 总计 9519 字</time>
+	<time datetime="2022-12-24T15:08:01+00:00" class="by-line">24 Dec 2022, 杭州 | 麦克船长 | 总计 9713 字</time>
 	<div class="content">
 		<ul>
   <li>作者：麦克船长（钟超）</li>
@@ -390,8 +390,11 @@
       <li><a href="#0提出-attention-机制的neural-machine-translation-by-jointly-learning-to-align-and-translate2015" id="markdown-toc-0提出-attention-机制的neural-machine-translation-by-jointly-learning-to-align-and-translate2015">0、提出 Attention 机制的《Neural Machine Translation by Jointly Learning to Align and Translate》（2015）</a></li>
       <li><a href="#1提出-transformer-的attention-is-all-you-need2017" id="markdown-toc-1提出-transformer-的attention-is-all-you-need2017">1、提出 Transformer 的《Attention is All You Need》（2017）</a></li>
       <li><a href="#2elmo-deep-contextualized-word-representations" id="markdown-toc-2elmo-deep-contextualized-word-representations">2、ELMo: Deep contextualized word representations</a></li>
-      <li><a href="#3bert-pre-training-of-deep-bidirectional-transformers-for-language-understanding2018" id="markdown-toc-3bert-pre-training-of-deep-bidirectional-transformers-for-language-understanding2018">3、BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding（2018）</a></li>
-      <li><a href="#4gpt-3-language-models-are-few-shot-learners2020" id="markdown-toc-4gpt-3-language-models-are-few-shot-learners2020">4、GPT-3: Language Models are Few-Shot Learners（2020）</a></li>
+      <li><a href="#3gpt-1improving-language-understanding-by-generative-pre-training" id="markdown-toc-3gpt-1improving-language-understanding-by-generative-pre-training">3、GPT-1：Improving Language Understanding by Generative Pre-Training</a></li>
+      <li><a href="#4bert-pre-training-of-deep-bidirectional-transformers-for-language-understanding2018" id="markdown-toc-4bert-pre-training-of-deep-bidirectional-transformers-for-language-understanding2018">4、BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding（2018）</a></li>
+      <li><a href="#5gpt-2" id="markdown-toc-5gpt-2">5、GPT-2：</a></li>
+      <li><a href="#6gpt-3-language-models-are-few-shot-learners2020" id="markdown-toc-6gpt-3-language-models-are-few-shot-learners2020">6、GPT-3: Language Models are Few-Shot Learners（2020）</a></li>
+      <li><a href="#7instructgpt" id="markdown-toc-7instructgpt">7、InstructGPT</a></li>
       <li><a href="#其他的重量级论文" id="markdown-toc-其他的重量级论文">其他的重量级论文</a></li>
     </ul>
   </li>
@@ -486,7 +489,9 @@
 
 <p>ELMo 是一种预训练模型，基于深度双向递归神经网络（biLSTM），可以用来生成词嵌入（word embeddings）。ELMo 使用了大量未标记的文本数据训练，并使用了多层双向递归神经网络来学习。</p>
 
-<h4 id="3bert-pre-training-of-deep-bidirectional-transformers-for-language-understanding2018">3、BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding（2018）</h4>
+<h4 id="3gpt-1improving-language-understanding-by-generative-pre-training">3、GPT-1：Improving Language Understanding by Generative Pre-Training</h4>
+
+<h4 id="4bert-pre-training-of-deep-bidirectional-transformers-for-language-understanding2018">4、BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding（2018）</h4>
 
 <p>BERT 模型是在一篇于 2018 年发表的叫做《BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding》的论文中被提出来的，BERT 是 Bidirectional Encoder Representations from Transformers 的缩写。我觉得这个名字有点硬凑出来的意思，BERT 也是《芝麻街》里一个角色的名字，我想就是为了跟 ELMo 凑一块儿怕它孤单吧。这篇论文带来的最大突破性变化有：</p>
 
@@ -497,9 +502,13 @@
 
 <p>关于 BERT，我这里写了一篇背景介绍、用例试跑、优劣势分析：<a href="https://www.mikecaptain.com/2022/12/17/ai-bert-1/">《你可能已经听说 GPT-3，但是你也不能不知道 BERT —— 跟我一起用 BERT 跑个小用例》</a></p>
 
-<h4 id="4gpt-3-language-models-are-few-shot-learners2020">4、GPT-3: Language Models are Few-Shot Learners（2020）</h4>
+<h4 id="5gpt-2">5、GPT-2：</h4>
+
+<h4 id="6gpt-3-language-models-are-few-shot-learners2020">6、GPT-3: Language Models are Few-Shot Learners（2020）</h4>
 
 <p>这篇来自 OpenAI 的论文，提出了「小样本学习（Few-Shot Learning，FSL）」的新训练方法，可以在小样本的情况下取得优秀的表现。</p>
+
+<h4 id="7instructgpt">7、InstructGPT</h4>
 
 <h4 id="其他的重量级论文">其他的重量级论文</h4>
 
