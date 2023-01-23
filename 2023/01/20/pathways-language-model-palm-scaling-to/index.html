@@ -369,17 +369,28 @@
 
 			<article id="post-page">
 	<h2>Pathways 语言模型 (PaLM)：扩展到 5400 亿个参数以获得突破性性能</h2>		
-	<time datetime="2023-01-20T09:13:09+00:00" class="by-line">20 Jan 2023, 杭州 | Google Research | [译] AI & 麦克船长 | 总计 5319 字</time>
+	<time datetime="2023-01-20T09:13:09+00:00" class="by-line">20 Jan 2023, 杭州 | Google Research | [译] AI & 麦克船长 | 总计 5433 字</time>
 	<div class="content">
 		<p><strong>本文目录</strong></p>
-<ul>
-  <li>TOC</li>
+<ul id="markdown-toc">
+  <li><a href="#使用-pathways-训练一个-5400-亿参数的语言模型" id="markdown-toc-使用-pathways-训练一个-5400-亿参数的语言模型">使用 Pathways 训练一个 5400 亿参数的语言模型</a></li>
+  <li><a href="#语言推理和代码任务的突破性能力" id="markdown-toc-语言推理和代码任务的突破性能力">语言、推理和代码任务的突破性能力</a>    <ul>
+      <li><a href="#语言理解与生成" id="markdown-toc-语言理解与生成">语言理解与生成</a></li>
+      <li><a href="#推理" id="markdown-toc-推理">推理</a></li>
+      <li><a href="#代码生成" id="markdown-toc-代码生成">代码生成</a></li>
+    </ul>
+  </li>
+  <li><a href="#道德考量" id="markdown-toc-道德考量">道德考量</a></li>
+  <li><a href="#结论和未来的工作" id="markdown-toc-结论和未来的工作">结论和未来的工作</a></li>
+  <li><a href="#致谢" id="markdown-toc-致谢">致谢</a></li>
 </ul>
 
-<p>原文标题：Pathways Language Model (PaLM): Scaling to 540 Billion Parameters for Breakthrough Performance
-原文链接：https://ai.googleblog.com/2022/04/pathways-language-model-palm-scaling-to.html
-原文作者：Google Search 软件工程师 Sharan Narang 和 Aakanksha Chowdhery
-原文日期：2022 年 4 月 4 日</p>
+<ul>
+  <li>原文标题：Pathways Language Model (PaLM): Scaling to 540 Billion Parameters for Breakthrough Performance</li>
+  <li>原文链接：https://ai.googleblog.com/2022/04/pathways-language-model-palm-scaling-to.html</li>
+  <li>原文作者：Google Search 软件工程师 Sharan Narang 和 Aakanksha Chowdhery</li>
+  <li>原文日期：2022 年 4 月 4 日</li>
+</ul>
 
 <p>近年来，为语言理解和生成而训练的大型神经网络在广泛的任务中取得了令人瞩目的成果。 GPT-3 首先展示了大型语言模型 (LLM) 可用于少样本学习，无需大规模任务特定数据收集或模型参数更新即可取得令人印象深刻的结果。 最近的 LLM，例如 GLaM、LaMDA、Gopher 和 Megatron-Turing NLG，通过缩放模型大小、使用稀疏激活模块以及在来自更多数据集的更大数据集上进行训练，在许多任务上取得了最先进的小样本结果。 来源多样。 然而，在我们推动模型规模的极限时，要理解小样本学习所出现的能力，还有很多工作要做。</p>
 
