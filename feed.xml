@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-01-23T08:06:45+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">AIGC 革命前夜：横扫自然语言处理的 Transformer 模型</title><link href="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/" rel="alternate" type="text/html" title="AIGC 革命前夜：横扫自然语言处理的 Transformer 模型" /><published>2023-01-22T09:13:09+00:00</published><updated>2023-01-22T09:13:09+00:00</updated><id>https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-01-23T08:43:03+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">AIGC 革命前夜：横扫自然语言处理的 Transformer 模型</title><link href="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/" rel="alternate" type="text/html" title="AIGC 革命前夜：横扫自然语言处理的 Transformer 模型" /><published>2023-01-22T09:13:09+00:00</published><updated>2023-01-22T09:13:09+00:00</updated><id>https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#前言&quot; id=&quot;markdown-toc-前言&quot;&gt;前言&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#1我来阿里之后第一个新增爱好是变形金刚模型第二个新增爱好是变形金刚模型&quot; id=&quot;markdown-toc-1我来阿里之后第一个新增爱好是变形金刚模型第二个新增爱好是变形金刚模型&quot;&gt;1、我来阿里之后第一个新增爱好是「变形金刚模型」，第二个新增爱好是「变形金刚模型」&lt;/a&gt;&lt;/li&gt;
@@ -4296,7 +4296,111 @@ digraph G {
   &lt;li&gt;https://zhuanlan.zhihu.com/p/352898810&lt;/li&gt;
   &lt;li&gt;https://towardsdatascience.com/beautifully-illustrated-nlp-models-from-rnn-to-transformer-80d69faf2109&lt;/li&gt;
   &lt;li&gt;https://medium.com/analytics-vidhya/understanding-q-k-v-in-transformer-self-attention-9a5eddaa5960&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="Attention" /><category term="注意力" /><category term="AIGC" /><category term="Transformer" /><category term="自注意力" /><category term="Self-Attention" /><category term="多头注意力" /><category term="Multiple Head Attention" /><category term="残差网络" /><category term="Short-Cut" /><category term="位置编码" /><category term="Bahdanau" /><category term="Encoder-Decoder" /><summary type="html">基于 RNN 的 Encoder-Decoder 模型存在无法处理过长文本、并行性差的两大痛点。2015 年 Bahdanau 等人在其论文中提出 Attention 机制，再到 2017 年 Transformer 模型的论文《Attention is All You Need》横空出世，其并行速度极快，而且每两个词之间的词间距都是 1。此后 NLP 领域 Transformer 彻底成为主流。如果你已经了解 Encoder-Decoder 模型，本文将基于此带你深入浅出的搞清楚 Attention、Transformer。</summary></entry><entry><title type="html">三万字长文！LSTM 之父 Jürgen 带我们回顾深度学习发展史</title><link href="https://www.mikecaptain.com/2023/01/14/juergen-deep-learning-history/" rel="alternate" type="text/html" title="三万字长文！LSTM 之父 Jürgen 带我们回顾深度学习发展史" /><published>2023-01-14T20:21:55+00:00</published><updated>2023-01-14T20:21:55+00:00</updated><id>https://www.mikecaptain.com/2023/01/14/juergen-deep-learning-history</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/14/juergen-deep-learning-history/">&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="Attention" /><category term="注意力" /><category term="AIGC" /><category term="Transformer" /><category term="自注意力" /><category term="Self-Attention" /><category term="多头注意力" /><category term="Multiple Head Attention" /><category term="残差网络" /><category term="Short-Cut" /><category term="位置编码" /><category term="Bahdanau" /><category term="Encoder-Decoder" /><summary type="html">基于 RNN 的 Encoder-Decoder 模型存在无法处理过长文本、并行性差的两大痛点。2015 年 Bahdanau 等人在其论文中提出 Attention 机制，再到 2017 年 Transformer 模型的论文《Attention is All You Need》横空出世，其并行速度极快，而且每两个词之间的词间距都是 1。此后 NLP 领域 Transformer 彻底成为主流。如果你已经了解 Encoder-Decoder 模型，本文将基于此带你深入浅出的搞清楚 Attention、Transformer。</summary></entry><entry><title type="html">Pathways 语言模型 (PaLM)：扩展到 5400 亿个参数以获得突破性性能</title><link href="https://www.mikecaptain.com/2023/01/20/pathways-language-model-palm-scaling-to/" rel="alternate" type="text/html" title="Pathways 语言模型 (PaLM)：扩展到 5400 亿个参数以获得突破性性能" /><published>2023-01-20T09:13:09+00:00</published><updated>2023-01-20T09:13:09+00:00</updated><id>https://www.mikecaptain.com/2023/01/20/pathways-language-model-palm-scaling-to</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/20/pathways-language-model-palm-scaling-to/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;TOC&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;原文标题：Pathways Language Model (PaLM): Scaling to 540 Billion Parameters for Breakthrough Performance
+原文链接：https://ai.googleblog.com/2022/04/pathways-language-model-palm-scaling-to.html
+原文作者：Google Search 软件工程师 Sharan Narang 和 Aakanksha Chowdhery
+原文日期：2022 年 4 月 4 日&lt;/p&gt;
+
+&lt;p&gt;近年来，为语言理解和生成而训练的大型神经网络在广泛的任务中取得了令人瞩目的成果。 GPT-3 首先展示了大型语言模型 (LLM) 可用于少样本学习，无需大规模任务特定数据收集或模型参数更新即可取得令人印象深刻的结果。 最近的 LLM，例如 GLaM、LaMDA、Gopher 和 Megatron-Turing NLG，通过缩放模型大小、使用稀疏激活模块以及在来自更多数据集的更大数据集上进行训练，在许多任务上取得了最先进的小样本结果。 来源多样。 然而，在我们推动模型规模的极限时，要理解小样本学习所出现的能力，还有很多工作要做。&lt;/p&gt;
+
+&lt;p&gt;去年，Google Research 宣布了我们对 Pathways 的愿景，这是一种单一模型，可以在高效的同时跨领域和任务进行泛化。 实现这一愿景的一个重要里程碑是开发新的 Pathways 系统来为加速器编排分布式计算。 在“PaLM: Scaling Language Modeling with Pathways”中，我们介绍了 Pathways Language Model (PaLM)，这是一个 5400 亿参数、密集解码器的 Transformer 模型，使用 Pathways 系统训练，使我们能够有效地跨多个模型训练单个模型 TPU v4 Pod。 我们在数百个语言理解和生成任务上评估了 PaLM，发现它在大多数任务中都实现了最先进的小样本性能，在许多情况下都有很大的优势。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2022-04-05-pathways-language-model-palm-scaling-to-1.gif&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;随着模型规模的增加，跨任务的性能会提高，同时还会解锁新功能。&lt;/p&gt;
+
+&lt;h2 id=&quot;使用-pathways-训练一个-5400-亿参数的语言模型&quot;&gt;使用 Pathways 训练一个 5400 亿参数的语言模型&lt;/h2&gt;
+
+&lt;p&gt;PaLM 首次大规模使用 Pathways 系统将训练扩展到 6144 个芯片，这是迄今为止用于训练的最大的基于 TPU 的系统配置。 训练在两个 Cloud TPU v4 Pod 之间使用 Pod 级别的数据并行性进行扩展，同时在每个 Pod 内使用标准数据和模型并行性。 与大多数以前的 LLM 相比，这是规模的显着增加，这些 LLM 在单个 TPU v3 Pod（例如 GLaM、LaMDA）上进行训练，使用流水线并行性跨 GPU 集群（Megatron-Turing NLG）扩展到 2240 个 A100 GPU，或者 使用了多个 TPU v3 Pod（Gopher），最大规模为 4096 个 TPU v3 芯片。&lt;/p&gt;
+
+&lt;p&gt;PaLM 实现了 57.8% 的硬件 FLOPs 利用率的训练效率，这是 LLM 在此规模上达到的最高水平。 这是由于结合了并行策略和 Transformer 块的重新制定，允许并行计算注意力和前馈层，从而实现 TPU 编译器优化的加速。&lt;/p&gt;
+
+&lt;p&gt;PaLM 使用英语和多语言数据集的组合进行训练，这些数据集包括高质量的网络文档、书籍、维基百科、对话和 GitHub 代码。 我们还创建了一个“无损”词汇表，保留所有空格（对代码尤其重要），将词汇外的 Unicode 字符拆分为字节，并将数字拆分为单独的标记，每个标记一个。&lt;/p&gt;
+
+&lt;h2 id=&quot;语言推理和代码任务的突破性能力&quot;&gt;语言、推理和代码任务的突破性能力&lt;/h2&gt;
+
+&lt;p&gt;PaLM 在许多非常困难的任务上显示出突破性的能力。 我们在下面重点介绍了语言理解和生成、推理以及与代码相关的任务的几个示例。&lt;/p&gt;
+
+&lt;h3 id=&quot;语言理解与生成&quot;&gt;语言理解与生成&lt;/h3&gt;
+
+&lt;p&gt;我们在 29 个广泛使用的英语自然语言处理 (NLP) 任务上评估了 PaLM。 PaLM 540B 在 29 个跨越问答任务（开放域封闭- book variant）、完形填空和句子完成任务、Winograd 风格任务、上下文阅读理解任务、常识推理任务、SuperGLUE 任务和自然语言推理任务。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2022-04-05-pathways-language-model-palm-scaling-to-2.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;↑ 在 29 个基于英语的 NLP 任务上，PaLM 540B 的性能比之前最先进 (SOTA) 的结果有所提高。&lt;/p&gt;
+
+&lt;p&gt;除了英语 NLP 任务外，PaLM 在多语言 NLP 基准测试中也表现出色，包括翻译，尽管只有 22% 的训练语料库是非英语的。&lt;/p&gt;
+
+&lt;p&gt;我们还在 Beyond the Imitation Game Benchmark (BIG-bench) 上探索了 PaLM 的新兴和未来功能，这是最近发布的包含 150 多个新语言建模任务的套件，并发现 PaLM 实现了突破性的性能。 我们比较了 PaLM 与 Gopher 和 Chinchilla 的性能，在这些任务的 58 个公共子集中取平均值。 有趣的是，我们注意到 PaLM 作为规模函数的性能遵循与先前模型相似的对数线性行为，这表明规模带来的性能改进尚未达到稳定水平。 PaLM 540B 5-shot 的表现也优于人们要求解决相同任务的平均表现。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2022-04-05-pathways-language-model-palm-scaling-to-3.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;↑ PaLM 在 58 个 BIG-bench 任务的子集上的缩放行为。&lt;/p&gt;
+
+&lt;p&gt;PaLM 在几个 BIG-bench 任务上展示了令人印象深刻的自然语言理解和生成能力。 为了考试例如，该模型可以区分因果关系，理解适当上下文中的概念组合，甚至可以根据表情符号猜测电影。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2022-04-05-pathways-language-model-palm-scaling-to-4.gif&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;↑ 展示 PaLM 540B 在 BIG-bench 任务上的 1-shot 性能的示例：标记因果关系、概念理解、根据表情符号猜测电影，以及寻找同义词和反事实。&lt;/p&gt;
+
+&lt;h3 id=&quot;推理&quot;&gt;推理&lt;/h3&gt;
+
+&lt;p&gt;通过将模型规模与思维链提示相结合，PaLM 在需要多步算术或常识推理的推理任务上显示出突破性的能力。 之前的 LLM，如 Gopher，认为模型规模在提高性能方面的好处较少。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2022-04-05-pathways-language-model-palm-scaling-to-5.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;↑ 标准提示与思维链提示的示例小学数学问题。 思维链提示将多步推理问题的提示分解为中间步骤（以黄色突出显示），类似于人处理它的方式。&lt;/p&gt;
+
+&lt;p&gt;我们在三个算术数据集和两个常识推理数据集上观察到 PaLM 540B 结合思维链提示的强大性能。 例如，通过 8 次提示，PaLM 解决了 GSM8K 中 58% 的问题，GSM8K 是数千个具有挑战性的小学水平数学问题的基准，优于之前通过微调 GPT-3 175B 模型获得的 55% 的最高分 具有 7500 个问题的训练集，并将其与外部计算器和验证器相结合。&lt;/p&gt;
+
+&lt;p&gt;这个新分数特别有趣，因为它接近 9-12 岁儿童解决问题的平均 60%，他们是问题集的目标受众。 我们怀疑 PaLM 词汇表中的数字单独编码有助于实现这些性能改进。&lt;/p&gt;
+
+&lt;p&gt;值得注意的是，PaLM 甚至可以为需要多步逻辑推理、世界知识和深度语言理解的复杂组合的场景生成明确的解释。 例如，它可以为网络上找不到的小说笑话提供高质量的解释。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2022-04-05-pathways-language-model-palm-scaling-to-6.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;↑ PaLM 用两次提示解释了一个原创笑话。&lt;/p&gt;
+
+&lt;h3 id=&quot;代码生成&quot;&gt;代码生成&lt;/h3&gt;
+
+&lt;p&gt;LLM 也被证明 [1, 2, 3, 4] 可以很好地泛化到编码任务，例如编写给定自然语言描述的代码（文本到代码），将代码从一种语言翻译成另一种语言，以及修复编译错误 （代码到代码）。&lt;/p&gt;
+
+&lt;p&gt;PaLM 540B 在单个模型中跨编码任务和自然语言任务显示出强大的性能，即使它在预训练数据集中只有 5% 的代码。 它的 few-shot 性能尤其出色，因为它与经过微调的 Codex 12B 相当，同时使用的 Python 代码少了 50 倍进行训练。 这一结果强化了之前的发现，即较大的模型可以比较小的模型更有效地采样，因为它们更有效地从其他编程语言和自然语言数据中迁移学习。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2022-04-05-pathways-language-model-palm-scaling-to-7.gif&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;↑ 在文本到代码任务（例如 GSM8K-Python 和 HumanEval）和代码到代码任务（例如 Transcoder）上经过微调的 PaLM 540B 模型示例。&lt;/p&gt;
+
+&lt;p&gt;通过在纯 Python 代码数据集上微调 PaLM，我们还看到了性能的进一步提高，我们称之为 PaLM-Coder。 对于名为 DeepFix 的示例代码修复任务，其目标是修改最初损坏的 C 程序，直到它们成功编译，PaLM-Coder 540B 展示了令人印象深刻的性能，实现了 82.1% 的编译率，优于之前的 71.7% 的现有技术水平 . 这为修复软件开发过程中出现的更复杂的错误提供了机会。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2022-04-05-pathways-language-model-palm-scaling-to-8.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;来自 DeepFix 代码修复任务的示例。 经过微调的 PaLM-Coder 540B 将编译错误（左，红色）修复为可编译的代码版本（右）。&lt;/p&gt;
+
+&lt;h2 id=&quot;道德考量&quot;&gt;道德考量&lt;/h2&gt;
+
+&lt;p&gt;最近的研究强调了与接受网络文本培训的法学硕士相关的各种潜在风险。&lt;/p&gt;
+
+&lt;p&gt;通过模型卡和数据表等透明工件分析和记录此类潜在的不良风险至关重要，其中还包括有关预期用途和测试的信息。 为此，我们的论文提供了数据表、模型卡和 Responsible AI 基准测试结果，并报告了对数据集和模型输出的偏差和风险的全面分析。 虽然分析有助于概述模型的一些潜在风险，但针对特定领域和任务的分析对于真正校准、情境化和减轻可能的危害至关重要。 进一步了解这些模型的风险和好处是正在进行的研究的主题，同时开发可扩展的解决方案可以防止恶意使用语言模型。&lt;/p&gt;
+
+&lt;h2 id=&quot;结论和未来的工作&quot;&gt;结论和未来的工作&lt;/h2&gt;
+
+&lt;p&gt;PaLM 展示了 Pathways 系统在两个 TPU v4 Pod 上扩展到数千个加速器芯片的扩展能力，方法是使用经过充分研究、完善的密集解码器 Transformer 模型有效地训练一个 5400 亿个参数模型。 突破模型规模的极限，使 PaLM 在各种自然语言处理、推理和代码任务中实现突破性的小样本性能。&lt;/p&gt;
+
+&lt;p&gt;PaLM 通过以下方式为功能更强大的模型铺平了道路将扩展能力与新颖的架构选择和培训方案相结合，使我们更接近 Pathways 的愿景：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“使单个 AI 系统能够概括数千或数百万个任务，理解不同类型的数据，并以惊人的效率完成这些任务。”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;致谢&quot;&gt;致谢&lt;/h2&gt;
+
+&lt;p&gt;PaLM 是 Google Research 和整个 Alphabet 的许多团队共同努力的结果。 我们要感谢整个 PaLM 团队的贡献：Jacob Devlin、Maarten Bosma、Gaurav Mishra、Adam Roberts、Paul Barham、Hyung Won Chung、Charles Sutton、Sebastian Gehrmann、Parker Schuh、Kensen Shi、Sasha Tsvyashchenko、Joshua Maynez , Abhishek Rao, Parker Barnes, Yi Tay, Noam Shazeer, Vinodkumar Prabhakaran, Emily Reif, Nan Du, Ben Hutchinson, Reiner Pope, James Bradbury, Jacob Austin, Michael Isard, Guy Gur-Ari, Pengcheng Yin, Toju Duke, Anselm Levskaya , Sanjay Ghemawat, Sunipa Dev, Henryk Michalewski, Xavier Garcia, Vedant Misra, Kevin Robinson, Liam Fedus, Denny Zhou, Daphne Ippolito, David Luan, Hyeontaek Lim, Barret Zoph, Alexander Spiridonov, Ryan Sepassi, David Dohan, Shivani Agrawal, Mark Omernick、Andrew Dai、Thanumalayan Sankaranarayana Pillai、Marie Pellat、Aitor Lewkowycz、Erica Moreira、Rewon Child、Oleksandr Polozov、Katherine Lee、Zongwei Zhou、Xuezhi Wang、Brennan Saeta、Mark Diaz、Orhan Firat、Michele Catasta 和 Jason Wei。 PaLM 建立在谷歌许多团队的工作之上，我们特别要感谢 T5X 团队、Pathways 基础设施团队、JAX 团队、Flaxformer 团队、XLA 团队、Plaque 团队、Borg 团队，以及 数据中心网络基础架构团队。 我们要感谢这篇博文的共同作者 Alexander Spiridonov 和 Maysam Moussalem，以及 Josh Newlan 和 Tom Small 在这篇博文中提供的图像和动画。 最后，我们要感谢我们的项目顾问：Noah Fiedel、Slav Petrov、Jeff Dean、Douglas Eck 和 Kathy Meier-Hellstern。&lt;/p&gt;</content><author><name>Google Research | [译] AI &amp; 麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="Attention" /><category term="注意力" /><category term="AIGC" /><category term="Transformer" /><category term="自注意力" /><category term="Self-Attention" /><category term="多头注意力" /><category term="Multiple Head Attention" /><category term="残差网络" /><category term="Short-Cut" /><category term="位置编码" /><category term="Bahdanau" /><category term="Encoder-Decoder" /><summary type="html">本文目录 TOC</summary></entry><entry><title type="html">三万字长文！LSTM 之父 Jürgen 带我们回顾深度学习发展史</title><link href="https://www.mikecaptain.com/2023/01/14/juergen-deep-learning-history/" rel="alternate" type="text/html" title="三万字长文！LSTM 之父 Jürgen 带我们回顾深度学习发展史" /><published>2023-01-14T20:21:55+00:00</published><updated>2023-01-14T20:21:55+00:00</updated><id>https://www.mikecaptain.com/2023/01/14/juergen-deep-learning-history</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/14/juergen-deep-learning-history/">&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;本文译自 LSTM 作者 &lt;a href=&quot;https://people.idsia.ch/~juergen/deep-learning-history.html#gan&quot;&gt;Jürgen Schmidhuber, KAUST AII, Swiss AI Lab IDSIA, USI&lt;/a&gt;，中文译文由 AI 及麦克船长完成翻译。&lt;/p&gt;
 
@@ -6159,4 +6263,4 @@ cosine value :  0.8691698561422959
 
 &lt;p&gt;曾经个人的激情与动力，常来自于“增长”。常说&lt;strong&gt;高增长掩盖一切&lt;/strong&gt;，所以未来在阿里如果不能如创业般快速获得反馈得到积极结果，并且大平台中必然要接受大量关联方共同参与项目而导致的效率降低，因此我要逐渐改变自己，重新适应这种环境下的激情与动力获得方式。&lt;/p&gt;
 
-&lt;p&gt;另一方面，作为创业公司的负责人，工作中鲜有因为内部原因而无法推进的事情，但是扮演肩部或腰部角色时，需要接受头部决策的一定程度不可控，这是我需要作出的适应与改变。关于这一点，我在几个月前就已经在做预期管理和心态调整，我认为以创业者的强适应性，这可能并不会是问题，但是我习惯于保持谨慎的乐观来面对自己。&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="thinking" /><category term="思考" /><summary type="html">2020 年的 6 月 4 日我入职阿里巴巴集团，7 天后的 6 月 11 日我写下了这篇文章。偶然翻到了当时这篇文章，遂转录于此，提醒自己勿忘初心。在不涉及到公司数据安全及商业机密问题的前提下，稍做了一些删改，发布在这里作为一个回顾。本次穿插了一些图片，当时写的时候还没有这些照片。本文内容包括：很多人是带着梦想来阿里的，那么我的梦想是什么呢？最喜欢新六脉的哪句话？为什么？关于阿里企业价值观：为什么要接受这套价值观？价值观的本质意义（极度务实视角）是什么？Landing 的 SOP；问问自己，来到阿里，如果初期我可能需要做一点改变，那会是什么？</summary></entry><entry><title type="html">又是一年 Birthday！</title><link href="https://www.mikecaptain.com/2022/07/29/captain-birthday/" rel="alternate" type="text/html" title="又是一年 Birthday！" /><published>2022-07-29T15:53:57+00:00</published><updated>2022-07-29T15:53:57+00:00</updated><id>https://www.mikecaptain.com/2022/07/29/captain-birthday</id><content type="html" xml:base="https://www.mikecaptain.com/2022/07/29/captain-birthday/">&lt;p&gt;&lt;img src=&quot;/img/src/2022-07-27-captain-birthday-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="thinking" /><category term="思考" /><summary type="html"></summary></entry></feed>
+&lt;p&gt;另一方面，作为创业公司的负责人，工作中鲜有因为内部原因而无法推进的事情，但是扮演肩部或腰部角色时，需要接受头部决策的一定程度不可控，这是我需要作出的适应与改变。关于这一点，我在几个月前就已经在做预期管理和心态调整，我认为以创业者的强适应性，这可能并不会是问题，但是我习惯于保持谨慎的乐观来面对自己。&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="thinking" /><category term="思考" /><summary type="html">2020 年的 6 月 4 日我入职阿里巴巴集团，7 天后的 6 月 11 日我写下了这篇文章。偶然翻到了当时这篇文章，遂转录于此，提醒自己勿忘初心。在不涉及到公司数据安全及商业机密问题的前提下，稍做了一些删改，发布在这里作为一个回顾。本次穿插了一些图片，当时写的时候还没有这些照片。本文内容包括：很多人是带着梦想来阿里的，那么我的梦想是什么呢？最喜欢新六脉的哪句话？为什么？关于阿里企业价值观：为什么要接受这套价值观？价值观的本质意义（极度务实视角）是什么？Landing 的 SOP；问问自己，来到阿里，如果初期我可能需要做一点改变，那会是什么？</summary></entry></feed>
