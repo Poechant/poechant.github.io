@@ -10,10 +10,6 @@ katex: True
 location: 香港
 author: 麦克船长
 ---
- 
-**本文目录**
-* TOC
-{:toc}
 
 ## 前言
 
