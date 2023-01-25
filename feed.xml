@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-01-24T21:17:32+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">AIGC 革命前夜：横扫自然语言处理的 Transformer 模型</title><link href="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/" rel="alternate" type="text/html" title="AIGC 革命前夜：横扫自然语言处理的 Transformer 模型" /><published>2023-01-22T09:13:09+00:00</published><updated>2023-01-22T09:13:09+00:00</updated><id>https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-01-25T10:41:44+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">AIGC 革命前夜：横扫自然语言处理的 Transformer 模型</title><link href="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/" rel="alternate" type="text/html" title="AIGC 革命前夜：横扫自然语言处理的 Transformer 模型" /><published>2023-01-22T09:13:09+00:00</published><updated>2023-01-22T09:13:09+00:00</updated><id>https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
 
 &lt;p&gt;本文试图从技术角度搞清楚一个问题：&lt;strong&gt;过去一年 AIGC 爆火、过去五年 NLP（自然语言处理）领域突飞猛进的缘起是什么？&lt;/strong&gt;&lt;/p&gt;
 
@@ -5565,7 +5565,7 @@ Ivakhnenko 和 Lapa（1965 年，见上文）逐层训练他们的深层网络�
 
 &lt;p&gt;语言类知识指的是词法、词性、句法、语义等有助于人类或机器理解自然语言的知识。关于 LLM 能否捕获语言知识有较长研究历史，自从 Bert 出现以来就不断有相关研究，很早就有结论，各种实验充分证明 LLM 可以学习各种层次类型的语言学知识，这也是为何使用预训练模型后，各种语言理解类自然语言任务获得大幅效果提升的最重要原因之一。另外，各种研究也证明了浅层语言知识比如词法、词性、句法等知识存储在 Transformer 的低层和中层，而抽象的语言知识比如语义类知识，广泛分布在 Transformer 的中层和高层结构中。&lt;/p&gt;
 
-&lt;p&gt;世界知识指的是在这个世界上发生的一些真实事件（事实型知识，Factual Knowledge），以及一些常识性知识（Common Sense Knowledge）。比如「拜登是现任美国总统」、「拜登是美国人」、「乌克兰总统泽连斯基与美国总统拜登举行会晤」，这些都是和拜登相关的事实类知识；而「人有两只眼睛」、「太阳从东方升起」这些属于常识性知识。关于 LLM 模型能否学习世界知识的研究也有很多，结论也比较一致：LLM 确实从训练数据中吸收了大量世界知识，而这类知识主要分布在 Transformer 的中层和高层，尤其聚集在中层。而且，随着 Transformer 模型层深增加，能够学习到的知识数量逐渐以指数级增加（可参考：BERTnesia: Investigating the capture and forgetting of knowledge in BERT）。其实，你把 LLM 看作是一种以模型参数体现的隐式知识图谱，如果这么理解，我认为是一点问题也没有的。&lt;/p&gt;
+&lt;p&gt;世界知识指的是在这个世界上发生的一些真实事件（事实型知识，Factual Knowledge），以及一些常识性知识（Common Sense Knowledge）。比如「拜登是现任美国总统」、「拜登是美国人」、「乌克兰总统泽连斯基与美国总统拜登举行会晤」，这些都是和拜登相关的事实类知识；而「人有两只眼睛」、「太阳从东方升起」这些属于常识性知识。关于 LLM 模型能否学习世界知识的研究也有很多，结论也比较一致：LLM 确实从训练数据中吸收了大量世界知识，而这类知识主要分布在 Transformer 的中层和高层，尤其聚集在中层。而且，随着 Transformer 模型层深增加，能够学习到的知识数量逐渐以指数级增加（可参考&lt;a href=&quot;https://arxiv.org/pdf/2106.02902.pdf&quot;&gt;《BERTnesia: Investigating the capture and forgetting of knowledge in BERT》&lt;/a&gt;）。其实，你把 LLM 看作是一种以模型参数体现的隐式知识图谱，如果这么理解，我认为是一点问题也没有的。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://arxiv.org/pdf/2011.04946&quot;&gt;《When Do You Need Billions of Words of Pre-training Data?》&lt;/a&gt;这篇文章研究了预训练模型学习到的知识量与训练数据量的关系，它的结论是：对于 Bert 类型的语言模型来说，只用 1000 万到 1 亿单词的语料，就能学好句法语义等语言学知识，但是要学习事实类知识，则要更多的训练数据。这个结论其实也是在意料中的，毕竟语言学知识相对有限且静态，而事实类知识则数量巨大，且处于不断变化过程中。而目前研究证明了随着增加训练数据量，预训练模型在各种下游任务中效果越好，这说明了从增量的训练数据中学到的更主要是世界知识。&lt;/p&gt;
 
@@ -5573,15 +5573,23 @@ Ivakhnenko 和 Lapa（1965 年，见上文）逐层训练他们的深层网络�
 
 &lt;p&gt;由上可知，LLM 确实从数据中学到了很多语言类及世界知识。那么，对于某条具体的知识，LLM 把它存储到了哪里？又是如何提取出来的？这也是一个有意思的问题。&lt;/p&gt;
 
-&lt;p&gt;显然，知识一定存储在 Transformer 的模型参数里。从 Transformer 的结构看，模型参数由两部分构成：多头注意力（MHA）部分占了大约参数总体的三分之一，三分之二的参数集中在 FFN 结构中。MHA 主要用于计算单词或知识间的相关强度，并对全局信息进行集成，更可能是在建立知识之间的联系，大概率不会存储具体知识点，那么很容易推论出 LLM 模型的知识主体是存储在 Transformer 的 FFN 结构里。&lt;/p&gt;
+&lt;p&gt;显然，知识一定存储在 Transformer 的模型参数里。从 Transformer 的结构看，模型参数由两部分构成：&lt;strong&gt;多头注意力（MHA）部分占了大约参数总体的三分之一，三分之二的参数集中在 FFN 结构中&lt;/strong&gt;。MHA 主要用于计算单词或知识间的相关强度，并对全局信息进行集成，更可能是在建立知识之间的联系，大概率不会存储具体知识点，那么很容易推论出 LLM 模型的知识主体是存储在 Transformer 的 FFN 结构里。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/backup/2023-01-09-agi-llm-tech-5.jpeg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;但这样的定位，粒度还是太粗，无法很好回答具体某条知识是如何存储与提取的，比如「中国的首都是北京」这条知识，以三元组表达就是&amp;lt;北京，is-capital-of，中国&amp;gt;，其中「is-capital-of」代表实体间关系。这条知识它存储在LLM的哪里呢？&lt;/p&gt;
+&lt;p&gt;但这样的定位，粒度还是太粗，无法很好回答具体某条知识是如何存储与提取的，比如「中国的首都是北京」这条知识，以三元组表达就是&amp;lt;北京，is-capital-of，中国&amp;gt;，其中「is-capital-of」代表实体间关系。&lt;strong&gt;这条知识它存储在 LLM 的哪里呢？&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;2023 年初对于 LLM 的疑问&lt;/strong&gt;：这些知识存哪了？我们现在有以下几点认知：&lt;br /&gt;
+1、多头注意力（MHA）部分占了大约参数总体的三分之一，三分之二的参数集中在 FFN 结构中。&lt;br /&gt;
+2、MHA 主要用于计算单词或知识间的相关强度，并对全局信息进行集成，更可能是在建立知识之间的联系，大概率不会存储具体知识点。&lt;br /&gt;
+3、那么很容易推论出 LLM 模型的知识主体是存储在 Transformer 的 FFN 结构里。&lt;br /&gt;
+4、一些研究达成共识：Transformer 低层对句子的表层模式作出反应，高层对语义模式作出反应，比如《Transformer Feed-Forward Layers Are Key-Value Memories》&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://arxiv.org/pdf/2012.14913.pdf&quot;&gt;《Transformer Feed-Forward Layers Are Key-Value Memories》&lt;/a&gt;给出了一个比较新颖的观察视角，它把 Transformer 的 FFN 看成存储大量具体知识的 Key-Value 存储器。如上图所示（图左是原始论文图，其实不太好理解，可以看做了注释的图右，更好理解些），FFN 的第一层是个 MLP 宽隐层，这是 Key 层；第二层是 MLP 窄隐层，是 Value 层。FFN 的输入层其实是某个单词对应的 MHA 的输出结果Embedding，也就是通过 Self Attention，将整个句子有关的输入上下文集成到一起的 Embedding，代表了整个输入句子的整体信息。&lt;/p&gt;
 
-&lt;p&gt;Key 层的每个神经元节点，记载了一对信息。比如对于上图中 FFN 第一个隐层的第 i 个节点 ki，也许就是它记载了 &amp;lt;北京，is-capital-of，中国&amp;gt; 这条知识。ki 节点对应的key向量，其实指的是节点 ki 和输入层每个节点的权重向量；而对应的 Value 向量，指的是节点 ki 和 FFN 第二层的 Value 层每个节点形成连接的权重向量。每个神经元的 Key 向量，用于识别输入中的某种语言或者知识模式，是一种模式探测器。如果输入中包含它要检测的某种模式，那么输入向量和 ki 节点的 key 权重进行向量内积计算，加上 Relu，形成 ki 的大数值响应，意味着 ki 检测到了这个模式，于是再把这个响应值，通过 ki 节点的 Value 权重向量向 FFN 第二层传播。这等价于将 Value 向量的值，用响应值加权，然后传递并体现到第二层 Value 层每个节点的输出上。如此这般，FFN 的正向传播计算过程，看起来就像是通过 Key 检测到某种知识模式，然后取出对应的 Value，并把 Value 体现在FFN的第二层输出上。当然，FFN 第二层每个节点，会收集 FFN 的 Key 层所有节点信息，所以是一种混合响应，而 Value 层所有节点的混合响应，可以解读为代表输出单词的概率分布信息。&lt;/p&gt;
+&lt;p&gt;Key 层的每个神经元节点，记载了一对信息。比如对于上图中 FFN 第一个隐层的第 i 个节点 ki，也许就是它记载了 &amp;lt;北京，is-capital-of，中国&amp;gt; 这条知识。ki 节点对应的 key 向量，其实指的是节点 ki 和输入层每个节点的权重向量；而对应的 Value 向量，指的是节点 ki 和 FFN 第二层的 Value 层每个节点形成连接的权重向量。每个神经元的 Key 向量，用于识别输入中的某种语言或者知识模式，是一种模式探测器。如果输入中包含它要检测的某种模式，那么输入向量和 ki 节点的 key 权重进行向量内积计算，加上 Relu，形成 ki 的大数值响应，意味着 ki 检测到了这个模式，于是再把这个响应值，通过 ki 节点的 Value 权重向量向 FFN 第二层传播。这等价于将 Value 向量的值，用响应值加权，然后传递并体现到第二层 Value 层每个节点的输出上。如此这般，FFN 的正向传播计算过程，看起来就像是通过 Key 检测到某种知识模式，然后取出对应的 Value，并把 Value 体现在FFN的第二层输出上。当然，FFN 第二层每个节点，会收集 FFN 的 Key 层所有节点信息，所以是一种混合响应，而 Value 层所有节点的混合响应，可以解读为代表输出单词的概率分布信息。&lt;/p&gt;
 
 &lt;p&gt;听着可能还是比较复杂，我们用个极端的例子来说明。我们假设上图的节点 ki就是记载 &amp;lt;北京，is-capital-of，中国&amp;gt;这条知识的 Key-Value 存储器，它的 Key 向量，用于检测「中国的首都是…」这个知识模式，它的 Value 向量，基本存储了与单词「北京」的 Embedding 比较接近的向量。当 Transformer 的输入是「中国的首都是[Mask]」的时候，ki 节点从输入层探测到这个知识模式，所以产生较大的响应输出。我们假设 Key 层其它神经元对这个输入都没有任何响应，那么对应的Value层的节点，其实只会接收到「北京」这个 Value 对应的单词 embedding，并通过 ki的大响应值，进行了进一步的数值放大。于是，Mask 位置对应的输出，就自然会输出「北京」这个单词。基本就是这么个过程，看着很复杂，其实很简单。&lt;/p&gt;
 
@@ -5591,9 +5599,9 @@ Ivakhnenko 和 Lapa（1965 年，见上文）逐层训练他们的深层网络�
 
 &lt;h3 id=&quot;3知识涂改液如何修正-llm-里存储的知识&quot;&gt;3、知识涂改液：如何修正 LLM 里存储的知识&lt;/h3&gt;
 
-&lt;p&gt;既然我们已知具体的某条世界知识存储在某个或者某些 FFN 节点的参数里，自然会引发另外一个问题：我们能否修正 LLM 模型里存储的错误或者过时的知识呢？比如对于问题：“英国的现任首相是谁？”鉴于近年来英国首相频繁更迭，你猜 LLM 更倾向输出「鲍里斯」还是更青睐「苏纳克」？很明显训练数据中包含“鲍里斯”的数据会更多，这种情况很大可能 LLM 会给出错误回答，于是我们就有修正 LLM 里存储的过时知识的必要性。&lt;/p&gt;
+&lt;p&gt;既然我们已知具体的某条世界知识存储在某个或者某些 FFN 节点的参数里，自然会引发另外一个问题：我们能否修正 LLM 模型里存储的错误或者过时的知识呢？比如对于问题「英国的现任首相是谁？」鉴于近年来英国首相频繁更迭，你猜 LLM 更倾向输出「鲍里斯」还是更青睐「苏纳克」？很明显训练数据中包含“鲍里斯”的数据会更多，这种情况很大可能 LLM 会给出错误回答，于是我们就有修正 LLM 里存储的过时知识的必要性。&lt;/p&gt;
 
-&lt;p&gt;如果归纳下，目前有三类不同方法来修正LLM里蕴含的知识：&lt;/p&gt;
+&lt;p&gt;如果归纳下，目前有三类不同方法来修正 LLM 里蕴含的知识：&lt;/p&gt;
 
 &lt;p&gt;第一类方法从训练数据的源头来修正知识。&lt;a href=&quot;https://arxiv.org/pdf/2205.11482.pdf&quot;&gt;《Towards Tracing Factual Knowledge in Language Models Back to the Training Data》&lt;/a&gt;这篇文章的研究目标是：对于指定的某条知识，我们是否可以定位到是哪些训练数据导致 LLM 学会了这条知识？答案是肯定的，这意味着我们可以逆向追踪到某条知识对应的训练数据源头。如果利用这项技术，假设我们想要删除某条知识，则可首先定位到其对应的数据源头，删除数据源，然后重新预训练整个 LLM 模型，这样即可达成删除 LLM 中相关知识的目的。但是这里有个问题，如果修正一小部分知识，我们就需要重新做一次模型预训练，这样做明显成本太高。所以这种方法不会太有发展前景，可能比较适合那种对于某个特定类别数据的一次性大规模删除场合，不适合少量多次的常规知识修正场景，比如可能比较适合用来做去除偏见等去 toxic 内容的处理。&lt;/p&gt;
 
@@ -5601,9 +5609,14 @@ Ivakhnenko 和 Lapa（1965 年，见上文）逐层训练他们的深层网络�
 
 &lt;p&gt;另外一类方法直接修改 LLM 里某些知识对应的模型参数来修正知识。假设我们想要把旧知识 &amp;lt;英国，现任首相，鲍里斯&amp;gt;，修正到 &amp;lt;英国，现任首相，苏纳克&amp;gt;。首先我们想办法在 LLM 模型参数中，定位到存储旧知识的 FFN 节点，然后可以强行调整更改 FFN 中对应的模型参数，将旧知识替换成新的知识。可以看出，这种方法涉及到两项关键技术：首先是如何在 LLM 参数空间中定位某条知识的具体存储位置；其次是如何修正模型参数，来实现旧知识到新知识的修正。关于这类技术的细节，可以参考&lt;a href=&quot;https://arxiv.org/pdf/2202.05262&quot;&gt;《Locating and Editing Factual Associations in GPT》&lt;/a&gt;和&lt;a href=&quot;https://arxiv.org/pdf/2210.07229&quot;&gt;《Mass-Editing Memory in a Transformer》&lt;/a&gt;。理解这个修正 LLM 知识的过程，其实对于更深入理解 LLM 的内部运作机制是很有帮助的。&lt;/p&gt;
 
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;2023 年初对于 LLM 的疑问&lt;/strong&gt;：如何修改已存储的知识？&lt;br /&gt;
+首先是如何定位存哪了；其次是如何修正模型参数，来实现旧知识到新知识的修正。关于这类技术的细节，可以参考&lt;a href=&quot;https://arxiv.org/pdf/2202.05262&quot;&gt;《Locating and Editing Factual Associations in GPT》&lt;/a&gt;和&lt;a href=&quot;https://arxiv.org/pdf/2210.07229&quot;&gt;《Mass-Editing Memory in a Transformer》&lt;/a&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+
 &lt;h2 id=&quot;三规模效应当-llm-越来越大时会发生什么&quot;&gt;三、规模效应：当 LLM 越来越大时会发生什么&lt;/h2&gt;
 
-&lt;p&gt;我们知道，近年来，LLM 模型规模在快速增长，目前效果最好的LLM模型，其参数规模大都超过了千亿（100B）参数规模。比如，OpenAI 的 GPT 3 的规模为 175B，Google 的 LaMDA 规模为 137B，PaLM 的规模为 540B，DeepMind 的 Gogher 规模为 280B 等，不一而足。国内也有中文巨型模型，比如智源 GLM 规模 130B，华为「盘古」规模 200B，百度「文心」规模 260B，浪潮「源1.0」规模 245B。那么，一个很自然的问题就是：随着 LLM 模型规模不断增长，会发生些什么呢？&lt;/p&gt;
+&lt;p&gt;我们知道，近年来，LLM 模型规模在快速增长，目前效果最好的 LLM 模型，其参数规模大都超过了千亿（100B）参数规模。比如，OpenAI 的 GPT 3 的规模为 175B，Google 的 LaMDA 规模为 137B，PaLM 的规模为 540B，DeepMind 的 Gogher 规模为 280B 等，不一而足。国内也有中文巨型模型，比如智源 GLM 规模 130B，华为「盘古」规模 200B，百度「文心」规模 260B，浪潮「源1.0」规模 245B。那么，一个很自然的问题就是：随着 LLM 模型规模不断增长，会发生些什么呢？&lt;/p&gt;
 
 &lt;p&gt;预训练模型的应用往往是两阶段的：预训练阶段，及具体场景应用阶段。在预训练阶段，其优化目标是交叉熵，对 GPT 这种自回归语言模型来说，也就是看 LLM 是否正确预测到了下一个单词；而场景应用阶段，一般要看具体场景的评价指标。一般我们的直觉是：如果 LLM 模型在预训练阶段的指标越好，自然它解决下游任务的能力就越强。然而，事实并非完全如此。现有研究已证明，预训练阶段的优化指标确实和下游任务表现出正相关关系，但是并非完全正相关。也就是说，只看预训练阶段的指标，来判断一个 LLM 模型是否够好，这是不够的。基于此，我们分头来看在这两个不同阶段，随着 LLM 模型增大，有什么影响。&lt;/p&gt;
 
@@ -5617,9 +5630,9 @@ Ivakhnenko 和 Lapa（1965 年，见上文）逐层训练他们的深层网络�
 
 &lt;p&gt;这意味着：增加训练数据量的重要性，比我们之前所认为的，还要重要。基于这个认知，DeepMind 在设计 Chinchilla 模型时，在算力分配上选择了另外一种配置：对标数据量 300B、模型参数量 280B 的 Gopher 模型，Chinchilla 选择增加 4 倍的训练数据，但是将模型参数降低为 Gopher 的四分之一，大约为70B。但是无论预训练指标，还是很多下游任务指标，Chinchilla 效果都要优于规模更大的 Gopher。&lt;/p&gt;
 
-&lt;p&gt;这带给我们如下启示：我们可以选择放大训练数据，并同比例地减少LLM模型参数，以达到在不降低模型效果的前提下，极大缩小模型规模的目的。缩小模型规模有很多好处，比如在应用的时候，推理速度会快很多等，无疑这是一个很有前途的LLM发展路线。&lt;/p&gt;
+&lt;p&gt;这带给我们如下启示：我们可以选择放大训练数据，并同比例地减少 LLM 模型参数，以达到在不降低模型效果的前提下，极大缩小模型规模的目的。缩小模型规模有很多好处，比如在应用的时候，推理速度会快很多等，无疑这是一个很有前途的 LLM 发展路线。&lt;/p&gt;
 
-&lt;p&gt;以上是从预训练阶段来看模型规模的影响，如果从LLM解决下游具体任务效果的角度来看，随着模型规模增大，不同类型的任务有不同的表现，具体而言，有以下三类情况。&lt;/p&gt;
+&lt;p&gt;以上是从预训练阶段来看模型规模的影响，如果从 LLM 解决下游具体任务效果的角度来看，随着模型规模增大，不同类型的任务有不同的表现，具体而言，有以下三类情况。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/backup/2023-01-09-agi-llm-tech-7.jpeg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
@@ -5631,7 +5644,7 @@ Ivakhnenko 和 Lapa（1965 年，见上文）逐层训练他们的深层网络�
 
 &lt;p&gt;问题是，为何 LLM 会出现这种「涌现能力」现象呢？上述文章以及&lt;a href=&quot;https://arxiv.org/pdf/2206.07682&quot;&gt;《Emergent Abilities of Large Language Models》&lt;/a&gt;给出了几个可能的解释：&lt;/p&gt;
 
-&lt;p&gt;一种可能解释是&lt;strong&gt;有些任务的评价指标不够平滑&lt;/strong&gt;。比如说有些生成任务的判断标准，它要求模型输出的字符串，要和标准答案完全匹配才算对，否则就是0分。所以，即使随着模型增大，其效果在逐步变好，体现为输出了更多的正确字符片段，但是因为没有完全对，只要有任何小错误都给0分，只有当模型足够大，输出片段全部正确才能得分。也就是说，因为指标不够平滑，所以不能体现 LLM 其实正在逐步改善任务效果这一现实，看起来就是「涌现能力」这种外在表现。&lt;/p&gt;
+&lt;p&gt;一种可能解释是&lt;strong&gt;有些任务的评价指标不够平滑&lt;/strong&gt;。比如说有些生成任务的判断标准，它要求模型输出的字符串，要和标准答案完全匹配才算对，否则就是 0 分。所以，即使随着模型增大，其效果在逐步变好，体现为输出了更多的正确字符片段，但是因为没有完全对，只要有任何小错误都给 0 分，只有当模型足够大，输出片段全部正确才能得分。也就是说，因为指标不够平滑，所以不能体现 LLM 其实正在逐步改善任务效果这一现实，看起来就是「涌现能力」这种外在表现。&lt;/p&gt;
 
 &lt;p&gt;另外一种可能的解释是：有些任务由若干中间步骤构成，随着模型规模增大，解决每个步骤的能力也在逐步增强，但是只要有一个中间步骤是错的，最终答案就是错的，于是也会导致这种表面的「涌现能力」现象。&lt;/p&gt;
 
@@ -5642,6 +5655,20 @@ Ivakhnenko 和 Lapa（1965 年，见上文）逐层训练他们的深层网络�
 &lt;p&gt;还有少部分任务，随着模型规模增长，任务的效果曲线展现出 U 形特性：随着模型规模逐渐变大，任务效果逐渐变差，但是当模型规模进一步增长，则效果开始越来越好，呈现出 U 形增长趋势，如上图所示的粉红色 PaLM 模型在两个任务上的指标走势。为何这些任务表现得如此特殊呢？&lt;a href=&quot;https://arxiv.org/pdf/2211.02011&quot;&gt;《Inverse scaling can become U-shaped》&lt;/a&gt;这篇文章给出了一种解释：这些任务，内部其实隐含了两种不同类型的子任务，一种是真正的任务，另外一种是「干扰任务（distractor task）」。当模型规模小的时候，无法识别任意一种子任务，所以模型的表现跟随机选择答案差不多，当模型增长到中等规模的时候，主要执行的是干扰任务，所以对真正的任务效果有负面影响，体现为真正任务效果的下降，而当进一步增加模型规模，则 LLM 可以忽略干扰任务，执行真正的任务，体现为效果开始增长。&lt;/p&gt;
 
 &lt;p&gt;对于那些随着模型规模增大，效果一直下降的任务，如果采用思维链（CoT）Prompting，则部分任务的表现转换为遵循 Scaling law，即模型规模越大效果越好，而其它任务则转换为U性增长曲线。这其实侧面说明了：此类任务应属于推理类型的任务，所以加入 CoT 后任务表现会发生质的变化。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;2023 年初对于 LLM 的疑问&lt;/strong&gt;：训练数据规模、模型参数规模和训练时长（步数），与最终 LLM 性能（loss 衡量）之间什么关系？&lt;br /&gt;
+1、当我们独立增加训练数据量、模型参数规模或者延长模型训练时间（比如从 1 个 Epoch 到 2 个 Epoch），预训练模型在测试集上的 Loss 都会单调降低，也就是说模型效果越来越好。&lt;br /&gt;
+2、训练数据量和模型参数是同等重要的。&lt;br /&gt;
+3、我们可以选择放大训练数据，并同比例地减少 LLM 模型参数，以达到在不降低模型效果的前提下，极大缩小模型规模的目的。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;2023 年初对于 LLM 的疑问&lt;/strong&gt;：为什么有些模型不遵循 scaling law？三类任务：&lt;br /&gt;
+第一类完美遵循 scaling low。&lt;br /&gt;
+第二类过了阈值后涌现。《Beyond the Imitation Game: Quantifying and extrapolating the capabilities of language models》和《Emergent Abilities of Large Language Models》认为是指标不平滑 or 中间步骤是错的。
+第三类 U 型，《Inverse scaling can become U-shaped》猜测可能两种不同类型的子任务，一种是真正的任务，另外一种是「干扰任务（distractor task）」。&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h2 id=&quot;四人机接口从-in-context-learning-到-instruct-理解&quot;&gt;四、人机接口：从 In Context Learning 到 Instruct 理解&lt;/h2&gt;
 
@@ -5673,6 +5700,17 @@ Ivakhnenko 和 Lapa（1965 年，见上文）逐层训练他们的深层网络�
 
 &lt;p&gt;总而言之，目前这还是一个未解之谜。&lt;/p&gt;
 
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;LLM 技术增量重点&lt;/strong&gt;：In Context Learning&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;2023 年初对于 LLM 的疑问&lt;/strong&gt;：为什么 In Context Learning 有效？&lt;br /&gt;
+1、《Rethinking the Role of Demonstrations: What Makes In-Context Learning Work?》认为 ICL 没有从例子里学习 x 到 y 的映射关系，而只是学习了分布与分布的对应。&lt;br /&gt;
+2、《What learning algorithm is in-context learning? Investigations with linear models》认为 ICL 隐式地学习了 x 到 y 的映射关系。&lt;br /&gt;
+3、《Why Can GPT Learn In-Context? Language Models Secretly Perform Gradient Descent as Meta-Optimizers》认为 ICL 是隐式的 fine-tuning。&lt;/p&gt;
+&lt;/blockquote&gt;
+
 &lt;h3 id=&quot;2神奇的-instruct-理解&quot;&gt;2、神奇的 Instruct 理解&lt;/h3&gt;
 
 &lt;p&gt;我们可以把 Instruct 当作一种方便人类理解的任务表述，在这个前提下，目前关于 Instruct 的研究可以分成两种：偏学术研究的 Instruct，以及关于人类真实需求描述的 Instruct。&lt;/p&gt;
@@ -5686,6 +5724,10 @@ Ivakhnenko 和 Lapa（1965 年，见上文）逐层训练他们的深层网络�
 &lt;p&gt;第二种是人类真实需求下的 Instruct，这类研究以 InstructGPT 和 ChatGPT 为代表。这类工作也是基于多任务的，但是和偏向学术研究类工作最大的不同，在于它是面向人类用户真实需求的。为什么这么说呢？因为它们用于 LLM 多任务训练的任务描述 Prompt，是从大量用户提交的真实请求中抽样而来的，而不是固定好研究任务的范围，然后让研究人员来写任务描述 prompt。这里所谓的「真实需求」，体现在两个方面：首先，因为是从用户提交的任务描述里随机抽取的，所以涵盖的任务类型更多样化，也更符合用户的真实需求；其次，某个任务的 prompt 描述，是用户提交的，体现了一般用户在表达任务需求时会怎么说，而不是你认为用户会怎么说。很明显，这类工作改出来的 LLM 模型，用户体验会更好。&lt;/p&gt;
 
 &lt;p&gt;InstructGPT 论文里，也拿这种方法和 FLAN 那种 Instruct based 方法做了比较。首先在 GPT3 上用FLAN提到的任务、数据以及 Prompt 模版进行微调，来在 GPT 3 上复现 FLAN 方法，然后和 InstructGPT 进行比较，因为 InstructGPT 的基础模型也是 GPT3，所以只有数据和方法的差别，两者可比，结果发现 FLAN 方法的效果，距离 InstructGPT 有很大的差距。那么背后的原因是什么呢？论文分析数据后认为，FLAN 方法涉及到的任务领域相对少，是 InstructGPT 涉及领域的子集，所以效果不好。也就是说，FLAN 论文里涉及到的任务和用户真实需求是不符的，而这导致在真实场景下效果不够好。而这对我们的启示是：从用户数据中收集真实需求，这事情是很重要的。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;LLM 技术增量重点&lt;/strong&gt;：Instruct&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h3 id=&quot;3in-context-learning-和-instruct-的联系&quot;&gt;3、In Context Learning 和 Instruct 的联系&lt;/h3&gt;
 
