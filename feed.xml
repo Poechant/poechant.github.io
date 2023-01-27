@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-01-25T22:40:48+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">AIGC 革命前夜：横扫自然语言处理的 Transformer 模型</title><link href="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/" rel="alternate" type="text/html" title="AIGC 革命前夜：横扫自然语言处理的 Transformer 模型" /><published>2023-01-22T09:13:09+00:00</published><updated>2023-01-22T09:13:09+00:00</updated><id>https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-01-27T13:56:18+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型</title><link href="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/" rel="alternate" type="text/html" title="人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型" /><published>2023-01-22T09:13:09+00:00</published><updated>2023-01-22T09:13:09+00:00</updated><id>https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
 
 &lt;p&gt;本文试图从技术角度搞清楚一个问题：&lt;strong&gt;过去一年 AIGC 爆火、过去五年 NLP（自然语言处理）领域突飞猛进的缘起是什么？&lt;/strong&gt;&lt;/p&gt;
 
@@ -4132,9 +4132,7 @@ digraph G {
 
 &lt;p&gt;因此基于 Transformer 原理的模型，在众多 NLP 任务中都取得了卓越的表现。&lt;/p&gt;
 
-&lt;p&gt;说到底机器学习（Machine Learning）领域还是一个实验科学，并且是离工业界极近的实验科学。机器学习看待实验结果的角度，不是为了拿实验结果总结抽象后推动理论科学发展。机器学习的实验结果是要被评价的，其效果有客观量化评估标准。所以机器学习，一切以结果说话。&lt;/p&gt;
-
-&lt;p&gt;Transformer 在 2017 年开创性地引入 Q、K、V 抽取特征，基于其架构的 Decoder 部分诞生了 OpenAI 的 GPT 大模型，基于其架构的 Encoder 部分诞生了 Google 的 BERT 大模型，他们两个都诞生于 2018 年。这几年基于 Transformer 的各种优化思想不断出现，其集大成者便是 2022 年年底基于 GPT-3.5 或者说基于 InstructGPT 的 ChatGPT。&lt;/p&gt;
+&lt;p&gt;说到底机器学习（Machine Learning）领域还是一个实验科学，并且是离工业界极近的实验科学。机器学习看待实验结果的角度，不是为了拿实验结果总结抽象后推动理论科学发展。机器学习的实验结果是要被评价的，其效果有客观量化评估标准。所以机器学习，一切以结果说话。基于 Transformer 架构 Decoder 部分诞生了 OpenAI 的 GPT 大模型，基于其架构的 Encoder 部分诞生了 Google 的 BERT 大模型，他们两个都诞生于 2018 年。这几年基于 Transformer 的各种优化思想不断出现，其集大成者便是 2022 年年底基于 GPT-3.5 或者说基于 InstructGPT 的 ChatGPT。&lt;/p&gt;
 
 &lt;p&gt;感谢你有耐心看完本篇近 10 万字长文，因为是船涨的技术笔记，所以对于关键点梳理得细致了些。后续，我讲和大家一起聊聊 AIGC 的当下，如果说本篇内容更像一个教程（对缘起技术的深入），那么后续我们的探讨则可能更像一篇报告了（对眼前学界与业界发展现状的综述），我们将更关注文章「前言」部分的两个议题：1）如果认为通过图灵测试代表着 AGI（Artificial General Intelligence，通用人工智能）的话，当下 NLP，乃至 AGI 发展到什么程度了？2）未来一些年内，AGI 的发展路线可能会是怎样的？&lt;/p&gt;
 
@@ -5371,7 +5369,7 @@ Ivakhnenko 和 Lapa（1965 年，见上文）逐层训练他们的深层网络�
 
 &lt;p&gt;对于游戏创作者来说，这是一个不可思议的时刻！ 部分归功于这篇博文中描述的工具，生成构建游戏所需的内容从未如此简单——即使您的游戏与整个地球一样大！&lt;/p&gt;
 
-&lt;p&gt;甚至有一天可以想象一款完全个性化的游戏，完全根据玩家的需求为玩家打造。 这在科幻小说中已经存在很长时间了——比如《安德的游戏》中的「AI 智力游戏」，或者《星际迷航》中的全息甲板。 但是随着这篇博文中描述的工具发展得如此之快，不难想象这一现实指日可待。&lt;/p&gt;</content><author><name>James Gwertzman and Jack Soslow | [译] AI &amp; 麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="生成式AI" /><category term="Generative AI" /><category term="游戏" /><category term="game" /><category term="Gen-AI" /><category term="AIGC" /><summary type="html">2022 年是生成式 AI（Gen-AI）的元年，而游戏领域也正在被生成式 AI 进行着生产力革命。当下游戏 2D 素材、3D 建模、音频内容、实时生成智能语音交互 …… 等等一系列技术在游戏世界里率先应用，正在推动一个让玩家更可以全方位实时交互的游戏世界的诞生，而不再像以前一样只能依赖以往设定好的游戏交互内容，这令人感到无比兴奋。而这些技术在虚拟世界成熟后，将会逐渐渗透回现实世界中的各项应用，尤其是创作者生态的生产力变革，更进一步地影响普通人日常的内容获取与 AI 交互。</summary></entry><entry><title type="html">通向 AGI 之路：大型语言模型（LLM）技术精要</title><link href="https://www.mikecaptain.com/2023/01/08/agi-llm-tech/" rel="alternate" type="text/html" title="通向 AGI 之路：大型语言模型（LLM）技术精要" /><published>2023-01-08T18:13:09+00:00</published><updated>2023-01-08T18:13:09+00:00</updated><id>https://www.mikecaptain.com/2023/01/08/agi-llm-tech</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/08/agi-llm-tech/">&lt;p&gt;&lt;img src=&quot;/img/backup/2023-01-09-agi-llm-tech-1.jpeg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;甚至有一天可以想象一款完全个性化的游戏，完全根据玩家的需求为玩家打造。 这在科幻小说中已经存在很长时间了——比如《安德的游戏》中的「AI 智力游戏」，或者《星际迷航》中的全息甲板。 但是随着这篇博文中描述的工具发展得如此之快，不难想象这一现实指日可待。&lt;/p&gt;</content><author><name>James Gwertzman and Jack Soslow | [译] AI &amp; 麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="生成式AI" /><category term="Generative AI" /><category term="游戏" /><category term="game" /><category term="Gen-AI" /><category term="AIGC" /><summary type="html">2022 年是生成式 AI（Gen-AI）的元年，而游戏领域也正在被生成式 AI 进行着生产力革命。当下游戏 2D 素材、3D 建模、音频内容、实时生成智能语音交互 …… 等等一系列技术在游戏世界里率先应用，正在推动一个让玩家更可以全方位实时交互的游戏世界的诞生，而不再像以前一样只能依赖以往设定好的游戏交互内容，这令人感到无比兴奋。而这些技术在虚拟世界成熟后，将会逐渐渗透回现实世界中的各项应用，尤其是创作者生态的生产力变革，更进一步地影响普通人日常的内容获取与 AI 交互。</summary></entry><entry><title type="html">【摘录】通向 AGI 之路：大型语言模型（LLM）技术精要</title><link href="https://www.mikecaptain.com/2023/01/08/agi-llm-tech/" rel="alternate" type="text/html" title="【摘录】通向 AGI 之路：大型语言模型（LLM）技术精要" /><published>2023-01-08T18:13:09+00:00</published><updated>2023-01-08T18:13:09+00:00</updated><id>https://www.mikecaptain.com/2023/01/08/agi-llm-tech</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/08/agi-llm-tech/">&lt;p&gt;&lt;img src=&quot;/img/backup/2023-01-09-agi-llm-tech-1.jpeg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;原文链接：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/597586623&quot;&gt;https://zhuanlan.zhihu.com/p/597586623&lt;/a&gt;&lt;/p&gt;
 
@@ -5773,13 +5771,13 @@ Ivakhnenko 和 Lapa（1965 年，见上文）逐层训练他们的深层网络�
 
 &lt;p&gt;这两个问题目前的答案似乎应该是：当模型规模足够大的时候，LLM 本身是具备推理能力的，在简单推理问题上，LLM 已经达到了很好的能力，但是复杂推理问题上，还需要更多深入的研究。&lt;/p&gt;
 
-&lt;p&gt;如果梳理现有 LLM 推理相关工作的话，我把它们归到两大类，体现出挖掘或促进 LLM 推理能力不同的技术思路：第一类研究比较多，可以统称为&lt;strong&gt;基于 Prompt 的方法&lt;/strong&gt;，核心思想是通过合适的提示语或提示样本，更好地激发出 LLM 本身就具备的推理能力，Google 在这个方向做了大量很有成效的工作。第二类做法是在&lt;strong&gt;预训练过程中引入程序代码&lt;/strong&gt;，和文本一起参与预训练，以此进一步增强 LLM 的推理能力，这应该是 OpenAI 实践出的思路。比如 ChatGPT 肯定具备很强的推理能力，但它并不要求用户必须提供一些推理示例，所以 ChatGPT 强大的推理能力，大概率来源于使用代码参与 GPT 3.5 的预训练。&lt;/p&gt;
+&lt;p&gt;如果梳理现有 LLM 推理相关工作的话，我把它们归到两大类，体现出挖掘或促进 LLM 推理能力不同的技术思路：第一类研究比较多，可以统称为&lt;strong&gt;基于 Prompt 的方法&lt;/strong&gt;，核心思想是通过合适的提示语或提示样本，更好地激发出 LLM 本身就具备的推理能力，Google 在这个方向做了大量很有成效的工作。第二类做法是在&lt;strong&gt;预训练过程中引入程序代码&lt;/strong&gt;，和文本一起参与预训练，以此进一步增强 LLM 的推理能力，这应该是 OpenAI 实践出的思路。比如 ChatGPT 肯定具备很强的推理能力，但它并不要求用户必须提供一些推理示例，所以 &lt;strong&gt;ChatGPT 强大的推理能力，大概率来源于使用代码参与 GPT 3.5 的预训练&lt;/strong&gt;。&lt;/p&gt;
 
 &lt;p&gt;这两种思路其实大方向是迥异的：利用代码增强 LLM 推理能力，这体现出一种通过增加多样性的训练数据，来直接增强 LLM 推理能力的思路；而基于 Prompt 的方法，它并不会促进 LLM 本身的推理能力，只是让 LLM 在解决问题过程中更好地展示出这种能力的技术方法。可以看出，前者（代码方法）治本，后者治标。当然，两者其实也是互补的，但从长远看，治本的方法更重要。&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;&lt;strong&gt;【麦克船长注释】挖掘或促进 LLM 推理能力的两个技术思路&lt;/strong&gt;：&lt;br /&gt;
-1、Google 有大量研究成果的基于 Prompt 的方法：对应 ICL，挖掘 LLM 的推理能力 —— 基于神器的 ICL &lt;br /&gt;
+1、Google 有大量研究成果的基于 Prompt 的方法：对应 ICL，挖掘 LLM 的推理能力 —— 基于神奇的 ICL &lt;br /&gt;
 2、OpenAI 实践出真知的策略 —— Pre-training 时引入程序代码&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -5878,7 +5876,7 @@ CoT 其实就是给一些思维链 step by step 的 prompting&lt;/p&gt;
 
 &lt;p&gt;正如之前对 LLM 推理能力的叙述，尽管 LLM 在最近一年推理能力得到了很大的提升，但是很多研究（参考&lt;a href=&quot;https://arxiv.org/pdf/2208.05051&quot;&gt;《Limitations of Language Models in Arithmetic and Symbolic Induction》&lt;/a&gt;／&lt;a href=&quot;https://arxiv.org/pdf/2206.10498&quot;&gt;《Large Language Models Still Can’t Plan》&lt;/a&gt;）表明，目前 LLM 能够解决得比较好的推理问题，往往都相对简单，LLM 的复杂推理能力仍然薄弱，比如即使是简单的字符拷贝推理或者加减乘除运算，当字符串或者数字非常长的时候，LLM 推理能力会极速下降，再比如行为规划能力等复杂推理能力很弱。总而言之，加强 LLM 的复杂推理能力，应该是 LLM 未来研究中最重要的环节之一。&lt;/p&gt;
 
-&lt;p&gt;前文有述，加入代码加入预训练，这是一种直接增强 LLM 推理能力的方向。这个方向目前研究尚显不足，更像是实践经验的总结，探索背后的原理，并进而引入更多类型除代码外的新型数据来增强 LLM 的推理能力，这可能是更本质提升推理能力的方向。&lt;/p&gt;
+&lt;p&gt;前文有述，&lt;strong&gt;加入代码加入预训练，这是一种直接增强 LLM 推理能力的方向。这个方向目前研究尚显不足，更像是实践经验的总结&lt;/strong&gt;，探索背后的原理，并进而引入更多类型除代码外的新型数据来增强 LLM 的推理能力，这可能是更本质提升推理能力的方向。&lt;/p&gt;
 
 &lt;h4 id=&quot;llm-纳入-nlp-之外更多其它研究领域&quot;&gt;LLM 纳入 NLP 之外更多其它研究领域&lt;/h4&gt;
 

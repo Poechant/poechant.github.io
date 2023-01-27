@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 	<meta name="generator" content="Jekyll">
 
-	<title>AIGC 革命前夜：横扫自然语言处理的 Transformer 模型</title>
+	<title>人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型</title>
   	<meta name="description" content="基于 RNN 的 Encoder-Decoder 模型存在无法处理过长文本、并行性差的两大痛点。2015 年 Bahdanau 等人在其论文中提出 Attention 机制，再到 2017 年 Transformer 模型的论文《Attention is All You Need》横空出世，其并行速度极快，而且每两个词之间的词间距都是 1。此后 NLP 领域 Transformer 彻底成为主流。如果你已经了解 Encoder-Decoder 模型，本文将基于此带你深入浅出的搞清楚 Attention、Transformer。">
 
 	<!-- CSS & fonts -->
@@ -368,8 +368,8 @@
 		<main>
 
 			<article id="post-page">
-	<h2>AIGC 革命前夜：横扫自然语言处理的 Transformer 模型</h2>		
-	<time datetime="2023-01-22T09:13:09+00:00" class="by-line">22 Jan 2023, 香港 | 麦克船长 | 总计 78132 字</time>
+	<h2>人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型</h2>		
+	<time datetime="2023-01-22T09:13:09+00:00" class="by-line">22 Jan 2023, 香港 | 麦克船长 | 总计 78105 字</time>
 	<div class="content">
 		<h2 id="前言">前言</h2>
 
@@ -4505,9 +4505,7 @@ digraph G {
 
 <p>因此基于 Transformer 原理的模型，在众多 NLP 任务中都取得了卓越的表现。</p>
 
-<p>说到底机器学习（Machine Learning）领域还是一个实验科学，并且是离工业界极近的实验科学。机器学习看待实验结果的角度，不是为了拿实验结果总结抽象后推动理论科学发展。机器学习的实验结果是要被评价的，其效果有客观量化评估标准。所以机器学习，一切以结果说话。</p>
-
-<p>Transformer 在 2017 年开创性地引入 Q、K、V 抽取特征，基于其架构的 Decoder 部分诞生了 OpenAI 的 GPT 大模型，基于其架构的 Encoder 部分诞生了 Google 的 BERT 大模型，他们两个都诞生于 2018 年。这几年基于 Transformer 的各种优化思想不断出现，其集大成者便是 2022 年年底基于 GPT-3.5 或者说基于 InstructGPT 的 ChatGPT。</p>
+<p>说到底机器学习（Machine Learning）领域还是一个实验科学，并且是离工业界极近的实验科学。机器学习看待实验结果的角度，不是为了拿实验结果总结抽象后推动理论科学发展。机器学习的实验结果是要被评价的，其效果有客观量化评估标准。所以机器学习，一切以结果说话。基于 Transformer 架构 Decoder 部分诞生了 OpenAI 的 GPT 大模型，基于其架构的 Encoder 部分诞生了 Google 的 BERT 大模型，他们两个都诞生于 2018 年。这几年基于 Transformer 的各种优化思想不断出现，其集大成者便是 2022 年年底基于 GPT-3.5 或者说基于 InstructGPT 的 ChatGPT。</p>
 
 <p>感谢你有耐心看完本篇近 10 万字长文，因为是船涨的技术笔记，所以对于关键点梳理得细致了些。后续，我讲和大家一起聊聊 AIGC 的当下，如果说本篇内容更像一个教程（对缘起技术的深入），那么后续我们的探讨则可能更像一篇报告了（对眼前学界与业界发展现状的综述），我们将更关注文章「前言」部分的两个议题：1）如果认为通过图灵测试代表着 AGI（Artificial General Intelligence，通用人工智能）的话，当下 NLP，乃至 AGI 发展到什么程度了？2）未来一些年内，AGI 的发展路线可能会是怎样的？</p>
 
