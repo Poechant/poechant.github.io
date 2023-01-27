@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AIGC 革命前夜：横扫自然语言处理的 Transformer 模型
+title: 人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型
 date:   2023-01-22 17:13:09 +0800
 categories: ai
 tags: [AI, 人工智能, NLP, 自然语言处理, 神经网络, Attention, 注意力, AIGC, Transformer, 自注意力, Self-Attention, 多头注意力, Multiple Head Attention, 残差网络, Short-Cut, 位置编码, Bahdanau, Encoder-Decoder]
@@ -2538,9 +2538,7 @@ Transformer 的优势显而易见：
 
 因此基于 Transformer 原理的模型，在众多 NLP 任务中都取得了卓越的表现。
 
-说到底机器学习（Machine Learning）领域还是一个实验科学，并且是离工业界极近的实验科学。机器学习看待实验结果的角度，不是为了拿实验结果总结抽象后推动理论科学发展。机器学习的实验结果是要被评价的，其效果有客观量化评估标准。所以机器学习，一切以结果说话。
-
-Transformer 在 2017 年开创性地引入 Q、K、V 抽取特征，基于其架构的 Decoder 部分诞生了 OpenAI 的 GPT 大模型，基于其架构的 Encoder 部分诞生了 Google 的 BERT 大模型，他们两个都诞生于 2018 年。这几年基于 Transformer 的各种优化思想不断出现，其集大成者便是 2022 年年底基于 GPT-3.5 或者说基于 InstructGPT 的 ChatGPT。
+说到底机器学习（Machine Learning）领域还是一个实验科学，并且是离工业界极近的实验科学。机器学习看待实验结果的角度，不是为了拿实验结果总结抽象后推动理论科学发展。机器学习的实验结果是要被评价的，其效果有客观量化评估标准。所以机器学习，一切以结果说话。基于 Transformer 架构 Decoder 部分诞生了 OpenAI 的 GPT 大模型，基于其架构的 Encoder 部分诞生了 Google 的 BERT 大模型，他们两个都诞生于 2018 年。这几年基于 Transformer 的各种优化思想不断出现，其集大成者便是 2022 年年底基于 GPT-3.5 或者说基于 InstructGPT 的 ChatGPT。
 
 感谢你有耐心看完本篇近 10 万字长文，因为是船涨的技术笔记，所以对于关键点梳理得细致了些。后续，我讲和大家一起聊聊 AIGC 的当下，如果说本篇内容更像一个教程（对缘起技术的深入），那么后续我们的探讨则可能更像一篇报告了（对眼前学界与业界发展现状的综述），我们将更关注文章「前言」部分的两个议题：1）如果认为通过图灵测试代表着 AGI（Artificial General Intelligence，通用人工智能）的话，当下 NLP，乃至 AGI 发展到什么程度了？2）未来一些年内，AGI 的发展路线可能会是怎样的？
 
