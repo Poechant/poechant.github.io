@@ -697,7 +697,7 @@ class MikeCaptainRNN(nn.Module):
         return output, h0.unsqueeze(0)
 ```
 
-上述代码中 `weight_xh`、`bias_xh`。`weighthh`
+源码解读都在注释中。
 
 #### 4.2、N vs.1 的 RNN
 
