@@ -4,8 +4,8 @@ title: Pathways 语言模型 (PaLM)：扩展到 5400 亿个参数以获得突破
 date:   2022-04-06 17:13:09 +0800
 categories: ai
 tags: [AI, 人工智能, NLP, 自然语言处理, 神经网络, Attention, 注意力, AIGC, Transformer, 自注意力, Self-Attention, 多头注意力, Multiple Head Attention, 残差网络, Short-Cut, 位置编码, Bahdanau, Encoder-Decoder]
-description: 
-excerpt: 
+description: 近年来，为语言理解和生成而训练的大型神经网络在广泛的任务中取得了令人瞩目的成果。 GPT-3 首先展示了大型语言模型 (LLM) 可用于少样本学习，无需大规模任务特定数据收集或模型参数更新即可取得令人印象深刻的结果。 最近的 LLM，例如 GLaM、LaMDA、Gopher 和 Megatron-Turing NLG，通过缩放模型大小、使用稀疏激活模块以及在来自更多数据集的更大数据集上进行训练，在许多任务上取得了最先进的小样本结果。 来源多样。 然而，在我们推动模型规模的极限时，要理解小样本学习所出现的能力，还有很多工作要做 ……
+excerpt: 近年来，为语言理解和生成而训练的大型神经网络在广泛的任务中取得了令人瞩目的成果。 GPT-3 首先展示了大型语言模型 (LLM) 可用于少样本学习，无需大规模任务特定数据收集或模型参数更新即可取得令人印象深刻的结果。 最近的 LLM，例如 GLaM、LaMDA、Gopher 和 Megatron-Turing NLG，通过缩放模型大小、使用稀疏激活模块以及在来自更多数据集的更大数据集上进行训练，在许多任务上取得了最先进的小样本结果。 来源多样。 然而，在我们推动模型规模的极限时，要理解小样本学习所出现的能力，还有很多工作要做 ……
 katex: True
 location: 杭州
 author: Google Research | [译] AI & 麦克船长
