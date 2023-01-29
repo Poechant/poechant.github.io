@@ -6,7 +6,7 @@ categories: design
 tags: [设计, Design, 消费品, 食品, LISMIS, 礼狮, 礼时蜜]
 description: 
 excerpt: 
-location: 杭州
+location: 北京
 author: 麦克船长
 ---
 
