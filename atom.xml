@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>麦克船长的技术、产品与商业博客</title>
+ <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
+ <id>https://www.mikecaptain.com</id>
+ <updated>2023-01-29T15:23:04+00:00</updated>
+ <author>
+   <name>Poechant</name>
+   <uri>https://www.mikecaptian.com</uri>
+   <email>zhongchao.ustc@gmail.com</email>
+ </author>
+
+ 
+
+ <entry>
+   <title>人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型</title>
+   <link href="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/"/>
+   <id>https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer</id>
+   <updated>2023-01-22T09:13:09+00:00</updated>
+   <content type="html">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt; &lt;p&gt;本文试图从技术角度搞清楚一个问题：&lt;strong&gt;过去一年 AIGC 爆火、过去五年 NLP（自然语言处理）领域突飞猛进的缘起是什么？&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;这个问题被解答后，将还有两个问题，但暂时本文没有作答：1）如果认为通过图灵测试代表着 AGI（Artificial General Intelligence，通用人工智能）的话，当下 NLP，乃至 AGI 发展到什么程度了？2）未来一些年内，AGI 的发展路线可能会是怎样的？&lt;/p&gt; &lt;p&gt;利用春节时间，写了这么一篇数万字的长文笔记，希望共同爱好的朋友能读完多多指正。我是船涨，网名一直用「麦克船长」，中科大计算机本科毕业后先是做的 RTC 技术、分布式系统等等，干过 Full Stack，后来创业在产品、运营、营销、供应链上折腾了些年后来到阿里，在淘系做过产品、运营。&lt;/p&gt; &lt;h4 id=&quot;1我来阿里之后第一个新增爱好是变形金刚模型第二个新增爱好是变形金刚模型&quot;&gt;1、我来阿里之后第一个新增爱好是「变形金刚模型」，第二个新增爱好是「变形金刚模型」&lt;/h4&gt; &lt;p&gt;写了个这么冷的梗，其实想说的是，前者指的是著名 IP「变形金刚」相关的手办玩具模型，后者指的是这个引领革命的人工智能语言模型 Transformer。这两个爱好，都与目前从事的电商工作本职没有表面上的直接联系，权当爱好了。&lt;/p&gt; &lt;p&gt;2022 年「生成式 AI」应用取得了突飞猛进的发展，作为一个「古典互联网」从业者，深切地感到这一次 AI 技术可能会带来的颠覆式变革，这让我兴奋又焦虑。2022 年上半年，我从天天特卖业务负责人到大聚划算运营中心负责人，在去年相当长一段时间里在关注直播带货在营销平台的模式命题，一直在思考一个问题：直播电商的高效（更适合的商品演绎方式 + 私域权益 + 冲动购买等」vs. 直播电商的低效（直播分发无人货匹配 + 直播间内千人一面 + 货品状态未知 + 主播不可控等），能否推动一个保留直播的高效，同时解决直播的低效的模式呢？&lt;/p&gt; &lt;p&gt;这里面有大量的内容值得探讨，不过这不是船涨该系列文章的初衷，但这是我为什么开始非常关注 AI 的引子。直播电商的数字人技术基础，有动作捕捉、面部表情模拟、视觉渲染、直播话术生成、语音合成等等。依据第一性原理抽丝剥茧后，我发现尽管动作捕捉、视觉渲染等等很多技术仍有很大挑战，但是从商业视角看真正最影响用户心智的，是直播话术生成和演绎，除了头部主播，绝大多数直播带货在这方面都做的很糟糕，那么这里面就有巨大的「机器学习」生成内容超越非头部的大多数从业者的市场空间，而这完全依赖自然语言处理（NLP）。&lt;/p&gt; &lt;p&gt;这个问题就属于「生成式 AI」的范畴了，国外科技圈叫它「Gen-AI」，即 Generative AI，中国科技圈都叫它「AIGC」，即 AI Generated...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>三万字长文！LSTM 之父 Jürgen 带我们回顾深度学习发展史</title>
+   <link href="https://www.mikecaptain.com/2023/01/14/juergen-deep-learning-history/"/>
+   <id>https://www.mikecaptain.com/2023/01/14/juergen-deep-learning-history</id>
+   <updated>2023-01-14T20:21:55+00:00</updated>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-17-juergen-deep-learning-history-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt; &lt;p&gt;本文译自 LSTM 作者 &lt;a href=&quot;https://people.idsia.ch/~juergen/deep-learning-history.html#gan&quot;&gt;Jürgen Schmidhuber, KAUST AII, Swiss AI Lab IDSIA, USI&lt;/a&gt;，中文译文由 AI 及麦克船长完成翻译。&lt;/p&gt; &lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#现代人工智能和深度学习的注释历史&quot; id=&quot;markdown-toc-现代人工智能和深度学习的注释历史&quot;&gt;现代人工智能和深度学习的注释历史&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#介绍&quot; id=&quot;markdown-toc-介绍&quot;&gt;介绍&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#1676向后信用分配的链式规则&quot; id=&quot;markdown-toc-1676向后信用分配的链式规则&quot;&gt;1676：向后信用分配的链式规则&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#1800第一个神经网络线性回归浅层学习&quot; id=&quot;markdown-toc-1800第一个神经网络线性回归浅层学习&quot;&gt;~1800：第一个神经网络/线性回归/浅层学习&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#1920-1925第一个循环网络架构&quot; id=&quot;markdown-toc-1920-1925第一个循环网络架构&quot;&gt;1920-1925：第一个循环网络架构&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#1972首次发布学习人工-rnn&quot; id=&quot;markdown-toc-1972首次发布学习人工-rnn&quot;&gt;~1972：首次发布学习人工 RNN&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#1958-年多层前馈神经网络没有深度学习&quot; id=&quot;markdown-toc-1958-年多层前馈神经网络没有深度学习&quot;&gt;1958 年：多层前馈神经网络（没有深度学习）&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#1965-年第一次深度学习&quot;...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>当下生成式 AI（AIGC）领域的应用图景</title>
+   <link href="https://www.mikecaptain.com/2023/01/13/antler-generative-ai/"/>
+   <id>https://www.mikecaptain.com/2023/01/13/antler-generative-ai</id>
+   <updated>2023-01-13T18:09:43+00:00</updated>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-15-antler-generative-ai-1.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt; &lt;p&gt;本文译自 Antler Blog，原作者 Ollie Forsyth，中文译文由 AI 及麦克船长完成翻译。&lt;/p&gt; &lt;p&gt;随着 ChatGPT 和 DALL-E 的发布，2022 年社交媒体平台上最热门的话题之一在最近几周爆发，引发了关于其对全球人员、职业和行业影响的激烈辩论。 争议的核心是什么？ 生成式 AI (Gen-AI)——可以快速创建新内容的系统，例如大学论文、歌曲和数字艺术作品。 这些能力令人印象深刻，但它们也引发了关于工作的未来以及人类在 AI 主导的世界中的作用的重要问题。 随着生成式人工智能的不断发展，考虑伦理意义和对社会的潜在影响将变得至关重要。 如果创造性工作在很大程度上被人工智能机器取代，会发生什么？&lt;/p&gt; &lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#什么是-gen-ai&quot; id=&quot;markdown-toc-什么是-gen-ai&quot;&gt;什么是 Gen-AI？&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#人工智能与生成人工智能&quot; id=&quot;markdown-toc-人工智能与生成人工智能&quot;&gt;人工智能与生成人工智能&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#广阔的机遇正在展开&quot; id=&quot;markdown-toc-广阔的机遇正在展开&quot;&gt;广阔的机遇正在展开&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#gen-ai的影响&quot; id=&quot;markdown-toc-gen-ai的影响&quot;&gt;Gen-AI的影响&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#培训模型在实践中如何运作&quot; id=&quot;markdown-toc-培训模型在实践中如何运作&quot;&gt;培训模型在实践中如何运作？&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#语言模型是如何创建的&quot; id=&quot;markdown-toc-语言模型是如何创建的&quot;&gt;语言模型是如何创建的？&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#为什么-gen-ai-存在&quot;...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>游戏生产力革命：生成式 AI（AIGC）正在深度变革游戏领域</title>
+   <link href="https://www.mikecaptain.com/2023/01/11/generative-ai-revolution-in-games/"/>
+   <id>https://www.mikecaptain.com/2023/01/11/generative-ai-revolution-in-games</id>
+   <updated>2023-01-11T18:33:49+00:00</updated>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-12-generative-ai-revolution-in-games-0.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;作者 James Gwertzman and Jack Soslow&lt;/li&gt; &lt;li&gt;[译] AI &amp;amp; 麦克船长&lt;/li&gt; &lt;li&gt;本文授权首发媒体「锐察力」，微信公众号 ID @ruichali&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#什么是生成式人工智能&quot; id=&quot;markdown-toc-什么是生成式人工智能&quot;&gt;什么是生成式人工智能&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#part-1观察和预测&quot; id=&quot;markdown-toc-part-1观察和预测&quot;&gt;Part 1、观察和预测&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#一假设&quot; id=&quot;markdown-toc-一假设&quot;&gt;一、假设&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#1通用人工智能的研究量将继续增长创造出更有效的技术&quot; id=&quot;markdown-toc-1通用人工智能的研究量将继续增长创造出更有效的技术&quot;&gt;1、通用人工智能的研究量将继续增长，创造出更有效的技术&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#2在所有娱乐中游戏将受生成人工智能的影响最大&quot; id=&quot;markdown-toc-2在所有娱乐中游戏将受生成人工智能的影响最大&quot;&gt;2、在所有娱乐中，游戏将受生成人工智能的影响最大&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#3游戏制作中涉及的每一项资产都会有一个生成式ai模型&quot; id=&quot;markdown-toc-3游戏制作中涉及的每一项资产都会有一个生成式ai模型&quot;&gt;3、游戏制作中涉及的每一项资产都会有一个生成式AI模型&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#4内容价格将大幅下降在某些情况下实际上会降为零&quot; id=&quot;markdown-toc-4内容价格将大幅下降在某些情况下实际上会降为零&quot;&gt;4、内容价格将大幅下降，在某些情况下实际上会降为零。&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#5我们还处于这场革命的初级阶段很多实践还需要完善&quot; id=&quot;markdown-toc-5我们还处于这场革命的初级阶段很多实践还需要完善&quot;&gt;5、我们还处于这场革命的初级阶段，很多实践还需要完善&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt;...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>【摘录】通向 AGI 之路：大型语言模型（LLM）技术精要</title>
+   <link href="https://www.mikecaptain.com/2023/01/08/agi-llm-tech/"/>
+   <id>https://www.mikecaptain.com/2023/01/08/agi-llm-tech</id>
+   <updated>2023-01-08T18:13:09+00:00</updated>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/backup/2023-01-09-agi-llm-tech-1.jpeg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt; &lt;p&gt;原文链接：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/597586623&quot;&gt;https://zhuanlan.zhihu.com/p/597586623&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#一潮流之巅nlp-研究范式的转换&quot; id=&quot;markdown-toc-一潮流之巅nlp-研究范式的转换&quot;&gt;一、潮流之巅：NLP 研究范式的转换&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#1范式转换-10从深度学习到两阶段预训练模型&quot; id=&quot;markdown-toc-1范式转换-10从深度学习到两阶段预训练模型&quot;&gt;1、范式转换 1.0：从深度学习到两阶段预训练模型&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#11影响一中间任务的消亡&quot; id=&quot;markdown-toc-11影响一中间任务的消亡&quot;&gt;1.1、影响一：中间任务的消亡&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#12影响二不同研究方向技术路线的统一&quot; id=&quot;markdown-toc-12影响二不同研究方向技术路线的统一&quot;&gt;1.2、影响二：不同研究方向技术路线的统一&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#2范式转换-20-从预训练模型走向通用人工智能-agiartificial-general-intelligence&quot; id=&quot;markdown-toc-2范式转换-20-从预训练模型走向通用人工智能-agiartificial-general-intelligence&quot;&gt;2、范式转换 2.0: 从预训练模型走向通用人工智能 （AGI，Artificial General Intelligence）&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#21过渡期以-gpt-30-为代表的自回归语言模型--prompting模式占据统治地位&quot; id=&quot;markdown-toc-21过渡期以-gpt-30-为代表的自回归语言模型--prompting模式占据统治地位&quot;&gt;2.1、过渡期：以 GPT 3.0 为代表的「自回归语言模型 + Prompting」模式占据统治地位&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#影响一让-llm-适配人的新型交互接口&quot; id=&quot;markdown-toc-影响一让-llm-适配人的新型交互接口&quot;&gt;影响一：让 LLM...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>自然语言处理 AIGC 近年的发展脉络、关键论文、技术里程碑和商业应用</title>
+   <link href="https://www.mikecaptain.com/2022/12/24/captain-nlp-1/"/>
+   <id>https://www.mikecaptain.com/2022/12/24/captain-nlp-1</id>
+   <updated>2022-12-24T15:08:01+00:00</updated>
+   <content type="html">&lt;ul&gt; &lt;li&gt;作者：麦克船长（钟超）&lt;/li&gt; &lt;li&gt;微信：sinosuperman&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#一自然语言处理领域近年的发展关键节点&quot; id=&quot;markdown-toc-一自然语言处理领域近年的发展关键节点&quot;&gt;一、自然语言处理领域近年的发展关键节点&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#1从理性主义到经验主义&quot; id=&quot;markdown-toc-1从理性主义到经验主义&quot;&gt;1、从理性主义到经验主义&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#2经验主义的早期还不是深度学习&quot; id=&quot;markdown-toc-2经验主义的早期还不是深度学习&quot;&gt;2、经验主义的早期，还不是深度学习&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#3撇开特征让机器囫囵吞枣地学吧&quot; id=&quot;markdown-toc-3撇开特征让机器囫囵吞枣地学吧&quot;&gt;3、撇开特征，让机器「囫囵吞枣」地学吧&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#4囫囵个儿地学习省去特征工程的人工但也少不了标注的人工&quot; id=&quot;markdown-toc-4囫囵个儿地学习省去特征工程的人工但也少不了标注的人工&quot;&gt;4、囫囵个儿地学习，省去特征工程的人工，但也少不了标注的人工&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#5自监督学习法让我们省去人工标注&quot; id=&quot;markdown-toc-5自监督学习法让我们省去人工标注&quot;&gt;5、自监督学习法，让我们省去人工标注&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#6用原始的任务训练出来的模型能迁移去解决新任务吗&quot; id=&quot;markdown-toc-6用原始的任务训练出来的模型能迁移去解决新任务吗&quot;&gt;6、用原始的任务训练出来的模型，能迁移去解决新任务吗？&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#7从理解到生成nlp-是最直面-aigc-最硬核难题的领域&quot; id=&quot;markdown-toc-7从理解到生成nlp-是最直面-aigc-最硬核难题的领域&quot;&gt;7、从理解到生成，NLP 是最直面 AIGC 最硬核难题的领域&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#8数据和算力有了还不够&quot; id=&quot;markdown-toc-8数据和算力有了还不够&quot;&gt;8、数据和算力有了，还不够&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#二学术里程碑几篇重量级论文&quot; id=&quot;markdown-toc-二学术里程碑几篇重量级论文&quot;&gt;二、学术里程碑：几篇重量级论文&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#0提出-attention-机制的neural-machine-translation-by-jointly-learning-to-align-and-translate2015&quot; id=&quot;markdown-toc-0提出-attention-机制的neural-machine-translation-by-jointly-learning-to-align-and-translate2015&quot;&gt;0、提出 Attention 机制的《Neural Machine...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>你可能已经听说 GPT-3，但是你也不能不知道 BERT —— 跟我一起用 BERT 跑个小用例</title>
+   <link href="https://www.mikecaptain.com/2022/12/17/ai-bert-1/"/>
+   <id>https://www.mikecaptain.com/2022/12/17/ai-bert-1</id>
+   <updated>2022-12-17T15:08:01+00:00</updated>
+   <content type="html">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#一关于-bert-的一些背景&quot; id=&quot;markdown-toc-一关于-bert-的一些背景&quot;&gt;一、关于 BERT 的一些背景&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#二开始一个-bert-的动手小试验&quot; id=&quot;markdown-toc-二开始一个-bert-的动手小试验&quot;&gt;二、开始一个 BERT 的动手小试验&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#1安装-anaconda-来为部署-bert-做环境准备&quot; id=&quot;markdown-toc-1安装-anaconda-来为部署-bert-做环境准备&quot;&gt;1、安装 Anaconda 来为部署 BERT 做环境准备&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#2安装-bert-所需要的各种依赖&quot; id=&quot;markdown-toc-2安装-bert-所需要的各种依赖&quot;&gt;2、安装 BERT 所需要的各种依赖&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#3下载一个预训练pre-train过的-bert-模型&quot; id=&quot;markdown-toc-3下载一个预训练pre-train过的-bert-模型&quot;&gt;3、下载一个预训练（Pre-Train）过的 BERT 模型&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#5启动-bert-服务端&quot; id=&quot;markdown-toc-5启动-bert-服务端&quot;&gt;5、启动 BERT 服务端&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#6在-pycharm-中使用-conda-的环境&quot; id=&quot;markdown-toc-6在-pycharm-中使用-conda-的环境&quot;&gt;6、在 PyCharm 中使用 Conda 的环境&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#7编写程序实现-bert-客户端&quot; id=&quot;markdown-toc-7编写程序实现-bert-客户端&quot;&gt;7、编写程序实现 BERT 客户端&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt;...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>动动手，让你和你的朋友们，在微信上跟 ChatGPT 聊聊天</title>
+   <link href="https://www.mikecaptain.com/2022/12/11/wechat-chatgpt/"/>
+   <id>https://www.mikecaptain.com/2022/12/11/wechat-chatgpt</id>
+   <updated>2022-12-11T15:59:57+00:00</updated>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2022-12-11-wechat-chatgpt-3.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt; &lt;h3 id=&quot;写在前面&quot;&gt;写在前面&lt;/h3&gt; &lt;p&gt;最近 OpenAI 的 ChatGPT 非常地出圈，ChatGPT 是一个由 OpenAI 训练的大型语言模型，被设计用来回答用户的问题并提供信息。官方的 Slogan 是 &lt;strong&gt;「Optimizing Language Models for Dialogue」&lt;/strong&gt;，所以非常适合做到 IM 里聊天。那么我在想如果用一个微信号，背后是 ChatGPT，是不是很有趣？正当我准备利用 WeChaty 开发一个服务端程序来连接 ChatGPT 时，发现目前 Github 上已经有人做了，刚好可以省去很多工程的工作。&lt;/p&gt; &lt;h3 id=&quot;stepbystep&quot;&gt;Step by step&lt;/h3&gt; &lt;p&gt;本实践依赖：CLI、Docker、npm、Github、fuergaosi233/wechat-chatgpt、git、YAML、Chrome 的使用。以下将简洁地 Step by step 列出步骤。&lt;/p&gt; &lt;p&gt;第一步，你要现有一个 OpenAI 的账号，注意注册时手机号不能是中国大陆或香港的，IP 地址和 GPS 也不能暴露你是中国大陆或者香港的。&lt;/p&gt; &lt;p&gt;第二步，准备一台服务器（否则个人电脑要一直处于开机运行状态），由于后面将用到 Session Token 来登录，因此 IP 地址是香港也没关系，于是我是在我的香港服务器上部署 wechat-chatgpt&lt;/p&gt; &lt;p&gt;第三步，在服务器上安装 Docker，不赘述。&lt;/p&gt; &lt;p&gt;第四步，从 Github 上拉取项目项目到服务器上。&lt;/p&gt; &lt;p&gt;第五步，任何设备上登录 ChatGPT，用 Chrome 的 Inspect 来查看并复制 session token 到剪贴板。&lt;/p&gt; &lt;p&gt;第六步，编辑 wechat-chatgpt 的 config.yaml，填写 session token；设置 private trigger keywords（可选）。&lt;/p&gt; &lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;chatGPTAccountPool&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;lt;your email&amp;gt;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;lt;your password&amp;gt;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# if you hope only some keywords can trigger chatgpt on...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>确实惊艳！用 MidJourney 三分钟生成了两张 CG 级高清机甲特写</title>
+   <link href="https://www.mikecaptain.com/2022/11/30/midjourney-first-test/"/>
+   <id>https://www.mikecaptain.com/2022/11/30/midjourney-first-test</id>
+   <updated>2022-11-30T15:12:03+00:00</updated>
+   <content type="html">&lt;p&gt;因为 Diffusion 模型在计算机视觉领域的发展，最近文生图（Text2Image）很火，花了三分钟时间用 MidJourney 做了一组机甲图，确实非常惊艳，直接看图：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;img src=&quot;/img/src/2022-12-16-midjourney-first-test-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;img src=&quot;/img/src/2022-12-16-midjourney-first-test-2.png&quot; alt=&quot;image&quot; /&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;今年人工智能在 CV 领域的发展非常的精彩，目前市面上看到的主要应用，都是这种松散式的、对结果容错率很高图像生成，基于一段 prompt 生成一张或一组图片，甚至已经有了 avatarai.me 这种帮你打造全套的 photorealistic 层次质感的全套图片和视频商业化产品。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2022-12-16-midjourney-first-test-3.png&quot; alt=&quot;image&quot; /&gt;
+（&lt;em&gt;注：MidJourney 官网&lt;/em&gt;）&lt;/p&gt;
+
+&lt;p&gt;未来很快，我们将看到一些更精准满足图像生成需求的应用出现，比如生成游戏素材（其实现在已经有了，比如 Scenario.gg）、AI 替身生成等等。&lt;/p&gt;
+
+&lt;p&gt;相应的，对抗性的防御技术也会很快发展。&lt;/p&gt;
+</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>不要船开远了，就忘了为什么启航</title>
+   <link href="https://www.mikecaptain.com/2022/08/11/captain-alibaba/"/>
+   <id>https://www.mikecaptain.com/2022/08/11/captain-alibaba</id>
+   <updated>2022-08-11T15:53:57+00:00</updated>
+   <content type="html">&lt;h3 id=&quot;写在前面&quot;&gt;写在前面&lt;/h3&gt; &lt;p&gt;偶然翻到 2020.06.11 刚来到阿里时写的一篇内容（我是 2020 年的 6 月 4 日我入职阿里巴巴集团），是有关于来阿里的期待、对这家公司的一些粗浅初步的理解。此时再翻来看看，最大的感触就是，提醒自己勿忘初心。&lt;/p&gt; &lt;p&gt;在不涉及到公司数据安全及商业机密问题的前提下，稍做了一些删改，发布在这里作为一个回顾。本次穿插了一些图片，当时写的时候还没有这些照片。本文内容包括：&lt;/p&gt; &lt;ul&gt; &lt;li&gt;很多人是带着梦想来阿里的，那么我的梦想是什么呢？&lt;/li&gt; &lt;li&gt;最喜欢新六脉的哪句话？为什么？&lt;/li&gt; &lt;li&gt;关于阿里企业价值观：为什么要接受这套价值观？&lt;/li&gt; &lt;li&gt;价值观的本质意义（极度务实视角）是什么？&lt;/li&gt; &lt;li&gt;Landing 的 SOP&lt;/li&gt; &lt;li&gt;问问自己，来到阿里，如果初期我可能需要做一点改变，那会是什么？&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;img src=&quot;/img/src/2020-06-11-captain-alibaba-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt; &lt;p&gt;注：2020 年平安夜 · 百年湖畔 87 期合影&lt;/p&gt; &lt;h3 id=&quot;很多人是带着梦想来阿里的那么我的梦想是什么呢&quot;&gt;很多人是带着梦想来阿里的，那么我的梦想是什么呢？&lt;/h3&gt; &lt;p&gt;Christensen 在《创新者的窘境》中提到：每一次技术更迭，都需要破坏性创新，而破坏性创新在前一次技术更迭的胜出者内部是很难生长出来的。阿里诞生以来，不断地创造第二增长曲线：阿里巴巴、淘宝、支付宝、天猫、阿里云、钉钉 …… 这让我非常好奇。其中很多产品穿越多个时间周期，期间不断创造内生二次曲线。&lt;/p&gt; &lt;p&gt;但是阿里也一样错失了很多，微信、美团、拼多多、抖/快…… 等等很多产品诞生在了其他公司，还有某些产品在不断的科技更迭中自身生长出了第二曲线。&lt;/p&gt; &lt;p&gt;因此我来阿里的梦想也非常明确：&lt;strong&gt;参与或创造一次（甚至多次）第二曲线，可以是新产品，也可以是原有产品内生的。在这个过程中获得个人成长、个人价值。&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;一直以来，我有三个最想实现或得到的东西：LOVE、CREATION、FREEDOM。随着生活与工作的前行，对这三者的理解，在不断加深。在这个问题里，我想应该是讨论”CREATION”。&lt;/p&gt; &lt;p&gt;CREATION 上，我的梦想的范式，大概是从自己中学时代就确立了，在某一次人类社会变革浪潮中，扮演有一定权重的角色。这里面有几个变量：&lt;strong&gt;什么领域（F）的变革；什么规模（S）的变革；多大的权重（W）；什么角色（R）。&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;F 这个变量，我在中学及大学时代逐渐明确，是以相对普适的产品形式输出结果并对社会变革产生积极作用。后来越来越明确为科技与商业结合的领域。&lt;/p&gt; &lt;p&gt;S、W 这两个变量，自然是越大越好。因此我会希望能够构建尽可能大的机会，或者参与到尽可能大的机会中。R 希望是有强烈 Ownership 的身份。&lt;/p&gt; &lt;p&gt;因此过去几年我选择了创业。创业就像冲浪，你抓住一次浪并完成漂亮的动作，就是一次不算失败的创业。但是如果一个浪没抓住，你去追它是没意义的，而应该等待下一个浪。我认为在未来 5~10 年内难以出现规模能大到令我足够兴奋的科技浪潮。大浪潮中属于创业者的大机会很多，而中小浪潮的大机会基本只属于大平台，那么为了在壮年期做获得我的 CREATION，我选择了加入阿里这样的大平台。&lt;/p&gt; &lt;p&gt;在最后做决定以及初来阿里的那个人生转折点，作为老阿里人的曲洋老师对我说的一句话，深深地鼓励了我，他说：”带着创业气质，把这里当你的舞台折腾！”&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/img/src/2020-06-11-captain-alibaba-2.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt; &lt;p&gt;注：2020 年双十一 · 淘宝 KO&lt;/p&gt; &lt;h3 id=&quot;最喜欢新六脉的哪句话为什么&quot;&gt;最喜欢新六脉的哪句话？为什么？&lt;/h3&gt; &lt;p&gt;最喜欢的是“因为信任所以简单”。&lt;/p&gt; &lt;p&gt;我一直认为人最重要的两个元特质是”真实”和“谦逊”，由”真实”可以塑造自我（对内）、构建信任（对外），后者可以带来清晰的边界，继而实现人与人之间高效的互动（这种互动包括各种人际关系在内，如婚姻、合伙、共事、合作等等）。&lt;/p&gt; &lt;p&gt;&lt;strong&gt;事物（虚实皆可）呈现在人的认知中，会得到三方面的投影：facts、opinion、feeling。如果我们足够真实，当我们需要把这三方面呈现给他人时，双方就能顺畅建立信任。信任的结果，就对应到这三方面：彼此之间建立共识（facts）、求同存异（opinion）、尊重感受（feeling），这就是”简单”。&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;另外一句是鼓励自己勇于绽放的一条：「此次此刻，非我莫属」。&lt;/p&gt; &lt;p&gt;激情、自信、积极…… 通常行为统一表现为“勇于绽放自己”，绽放有表达（语言）与投身（行为）两种表现形式。更进一步推进就是”此次此刻，非我莫属”的阿里价值观。&lt;/p&gt; &lt;p&gt;低调、稳重、谦逊，其实与“此次此刻，非我莫属“，并不矛盾。这点是我来到阿里后，发现自己在过去这些年的创业中已经不知不觉改变了，从 Introvert 逐渐变成了 Extrovert 的人，而且从曾经 social 中消耗能量，逐渐变为我现在可以感知到获得能量。这种变化，是我最近来阿里才确认发生的，此前因为自己创业者的身份没有察觉这种变化的发生。&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/img/src/2020-06-11-captain-alibaba-3.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt; &lt;p&gt;注：2021 年秋 · 径山之行&lt;/p&gt; &lt;h3 id=&quot;关于阿里企业价值观为什么要接受这套价值观&quot;&gt;关于阿里企业价值观：为什么要接受这套价值观？&lt;/h3&gt; &lt;p&gt;马老师和老逍都提到这个：我们是寻找同路人，而不是教育别人。这其实非常明晰地解释了为什么阿里要构建一个毛细血管网络一样的政委体系。基于这种用人理念，政委体系不敢说是最优解，但一定是优解（而且是否有更优解的论证没有意义）。&lt;/p&gt; &lt;p&gt;对于个人，我的理解是要做两件事：&lt;strong&gt;1）构建自己的价值观体系（初始化）；2）寻找价值观契合的公司（做匹配）。这两点里，没有任何地方提到”你要改变价值观为了契合你所在的公司”。&lt;/strong&gt;&lt;/p&gt;...</content>
+ </entry>
+
+ 
+
+</feed>
