@@ -414,12 +414,4 @@ Konrad Zuse 不仅创造了世界上第一台可工作的可编程通用计算�
 
 让我稍微扩展一下你的想法。 宇宙还很年轻，只有 138 亿岁。 还记得我们一直除以 4 吗？ 现在让我们乘以 4！ 让我们展望未来，宇宙的年龄将是现在的 4 倍：大约 550 亿年。 届时，可见的宇宙将充满智慧。 因为在 Omega 之后，大多数 AI 将不得不去大多数物理资源所在的地方，以制造更多更大的 AI。 那些没有的不会有影响。[ACM16][FA15][SP16]
 
-计算所有可能的超宇宙或可计算宇宙的最简单和最快的方法。 于尔根·施密德胡贝尔，1997 年
-
 ![image](/img/src/2023-01-17-juergen-deep-learning-history-31.jpg)
-
-## 致谢
-
-Creative Commons License 以上部分材料取自以前的 AI 博客文章。[MIR] [DEC] [GOD21] [ZUS21] [LEI21] [AUT] [HAB2] [ARC06] [AC] [ATT] [DAN] [DAN1 ] [DL4] [GPUCNN5,8] [DLC] [FDL] [FWP] [LEC] [META] [MLP2] [MOST] [PLAN] [UN] [LSTMPG] [BP4] [DL6a] [HIN] [T22 ] 感谢许多专家审稿人（包括几位著名的神经网络先驱）提出的有益意见。 由于科学是关于自我纠正的，如果您能发现任何剩余的错误，请通过 juergen@idsia.ch 告诉我。 在我的出版物页面和我的 arXiv 页面中可以找到许多其他相关出版物。 本作品根据 Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License 获得许可。
-
-## 555+ 参考文献（调查 [DL1] 中还有更多参考文献）
