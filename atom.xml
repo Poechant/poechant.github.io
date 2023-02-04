@@ -4,12 +4,22 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-02-03T22:42:45+00:00</updated>
+ <updated>2023-02-04T16:47:29+00:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
    <email>zhongchao.ustc@gmail.com</email>
  </author>
+
+ 
+
+ <entry>
+   <title>OpenAI 模型 API 官方文档入门解读</title>
+   <link href="https://www.mikecaptain.com/2023/01/23/openai-official-doc/"/>
+   <id>https://www.mikecaptain.com/2023/01/23/openai-official-doc</id>
+   <updated>2023-01-23T22:24:58+00:00</updated>
+   <content type="html">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#一先大概看看-openai-目前最拿得出手的三个商业化产品用起来啥样&quot; id=&quot;markdown-toc-一先大概看看-openai-目前最拿得出手的三个商业化产品用起来啥样&quot;&gt;一、先大概看看 OpenAI 目前最拿得出手的三个商业化产品用起来啥样&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#1执行各种自然语言任务的-gpt-3&quot; id=&quot;markdown-toc-1执行各种自然语言任务的-gpt-3&quot;&gt;1、执行各种自然语言任务的 GPT-3&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#示例-1copywriting&quot; id=&quot;markdown-toc-示例-1copywriting&quot;&gt;示例 1：Copywriting&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#示例-2summarization&quot; id=&quot;markdown-toc-示例-2summarization&quot;&gt;示例 2：Summarization&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#示例-3parsing-unstructured-text&quot; id=&quot;markdown-toc-示例-3parsing-unstructured-text&quot;&gt;示例 3：Parsing Unstructured Text&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#示例-4classification&quot; id=&quot;markdown-toc-示例-4classification&quot;&gt;示例 4：Classification&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#示例-5translation&quot; id=&quot;markdown-toc-示例-5translation&quot;&gt;示例 5：Translation&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#2将自然语言翻译成代码的-codex&quot; id=&quot;markdown-toc-2将自然语言翻译成代码的-codex&quot;&gt;2、将自然语言翻译成代码的 Codex&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#示例-6用自然语言写-sql&quot; id=&quot;markdown-toc-示例-6用自然语言写-sql&quot;&gt;示例 6：用自然语言写 SQL&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#示例-7用自然语言调用一个-api&quot;...</content>
+ </entry>
 
  
 
@@ -124,16 +134,6 @@
 
 &lt;p&gt;相应的，对抗性的防御技术也会很快发展。&lt;/p&gt;
 </content>
- </entry>
-
- 
-
- <entry>
-   <title>不要船开远了，就忘了为什么启航</title>
-   <link href="https://www.mikecaptain.com/2022/08/11/captain-alibaba/"/>
-   <id>https://www.mikecaptain.com/2022/08/11/captain-alibaba</id>
-   <updated>2022-08-11T15:53:57+00:00</updated>
-   <content type="html">&lt;h3 id=&quot;写在前面&quot;&gt;写在前面&lt;/h3&gt; &lt;p&gt;偶然翻到 2020.06.11 刚来到阿里时写的一篇内容（我是 2020 年的 6 月 4 日我入职阿里巴巴集团），是有关于来阿里的期待、对这家公司的一些粗浅初步的理解。此时再翻来看看，最大的感触就是，提醒自己勿忘初心。&lt;/p&gt; &lt;p&gt;在不涉及到公司数据安全及商业机密问题的前提下，稍做了一些删改，发布在这里作为一个回顾。本次穿插了一些图片，当时写的时候还没有这些照片。本文内容包括：&lt;/p&gt; &lt;ul&gt; &lt;li&gt;很多人是带着梦想来阿里的，那么我的梦想是什么呢？&lt;/li&gt; &lt;li&gt;最喜欢新六脉的哪句话？为什么？&lt;/li&gt; &lt;li&gt;关于阿里企业价值观：为什么要接受这套价值观？&lt;/li&gt; &lt;li&gt;价值观的本质意义（极度务实视角）是什么？&lt;/li&gt; &lt;li&gt;Landing 的 SOP&lt;/li&gt; &lt;li&gt;问问自己，来到阿里，如果初期我可能需要做一点改变，那会是什么？&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;img src=&quot;/img/src/2020-06-11-captain-alibaba-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt; &lt;p&gt;注：2020 年平安夜 · 百年湖畔 87 期合影&lt;/p&gt; &lt;h3 id=&quot;很多人是带着梦想来阿里的那么我的梦想是什么呢&quot;&gt;很多人是带着梦想来阿里的，那么我的梦想是什么呢？&lt;/h3&gt; &lt;p&gt;Christensen 在《创新者的窘境》中提到：每一次技术更迭，都需要破坏性创新，而破坏性创新在前一次技术更迭的胜出者内部是很难生长出来的。阿里诞生以来，不断地创造第二增长曲线：阿里巴巴、淘宝、支付宝、天猫、阿里云、钉钉 …… 这让我非常好奇。其中很多产品穿越多个时间周期，期间不断创造内生二次曲线。&lt;/p&gt; &lt;p&gt;但是阿里也一样错失了很多，微信、美团、拼多多、抖/快…… 等等很多产品诞生在了其他公司，还有某些产品在不断的科技更迭中自身生长出了第二曲线。&lt;/p&gt; &lt;p&gt;因此我来阿里的梦想也非常明确：&lt;strong&gt;参与或创造一次（甚至多次）第二曲线，可以是新产品，也可以是原有产品内生的。在这个过程中获得个人成长、个人价值。&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;一直以来，我有三个最想实现或得到的东西：LOVE、CREATION、FREEDOM。随着生活与工作的前行，对这三者的理解，在不断加深。在这个问题里，我想应该是讨论”CREATION”。&lt;/p&gt; &lt;p&gt;CREATION 上，我的梦想的范式，大概是从自己中学时代就确立了，在某一次人类社会变革浪潮中，扮演有一定权重的角色。这里面有几个变量：&lt;strong&gt;什么领域（F）的变革；什么规模（S）的变革；多大的权重（W）；什么角色（R）。&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;F 这个变量，我在中学及大学时代逐渐明确，是以相对普适的产品形式输出结果并对社会变革产生积极作用。后来越来越明确为科技与商业结合的领域。&lt;/p&gt; &lt;p&gt;S、W 这两个变量，自然是越大越好。因此我会希望能够构建尽可能大的机会，或者参与到尽可能大的机会中。R 希望是有强烈 Ownership 的身份。&lt;/p&gt; &lt;p&gt;因此过去几年我选择了创业。创业就像冲浪，你抓住一次浪并完成漂亮的动作，就是一次不算失败的创业。但是如果一个浪没抓住，你去追它是没意义的，而应该等待下一个浪。我认为在未来 5~10 年内难以出现规模能大到令我足够兴奋的科技浪潮。大浪潮中属于创业者的大机会很多，而中小浪潮的大机会基本只属于大平台，那么为了在壮年期做获得我的 CREATION，我选择了加入阿里这样的大平台。&lt;/p&gt; &lt;p&gt;在最后做决定以及初来阿里的那个人生转折点，作为老阿里人的曲洋老师对我说的一句话，深深地鼓励了我，他说：”带着创业气质，把这里当你的舞台折腾！”&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/img/src/2020-06-11-captain-alibaba-2.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt; &lt;p&gt;注：2020 年双十一 · 淘宝 KO&lt;/p&gt; &lt;h3 id=&quot;最喜欢新六脉的哪句话为什么&quot;&gt;最喜欢新六脉的哪句话？为什么？&lt;/h3&gt; &lt;p&gt;最喜欢的是“因为信任所以简单”。&lt;/p&gt; &lt;p&gt;我一直认为人最重要的两个元特质是”真实”和“谦逊”，由”真实”可以塑造自我（对内）、构建信任（对外），后者可以带来清晰的边界，继而实现人与人之间高效的互动（这种互动包括各种人际关系在内，如婚姻、合伙、共事、合作等等）。&lt;/p&gt; &lt;p&gt;&lt;strong&gt;事物（虚实皆可）呈现在人的认知中，会得到三方面的投影：facts、opinion、feeling。如果我们足够真实，当我们需要把这三方面呈现给他人时，双方就能顺畅建立信任。信任的结果，就对应到这三方面：彼此之间建立共识（facts）、求同存异（opinion）、尊重感受（feeling），这就是”简单”。&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;另外一句是鼓励自己勇于绽放的一条：「此次此刻，非我莫属」。&lt;/p&gt; &lt;p&gt;激情、自信、积极…… 通常行为统一表现为“勇于绽放自己”，绽放有表达（语言）与投身（行为）两种表现形式。更进一步推进就是”此次此刻，非我莫属”的阿里价值观。&lt;/p&gt; &lt;p&gt;低调、稳重、谦逊，其实与“此次此刻，非我莫属“，并不矛盾。这点是我来到阿里后，发现自己在过去这些年的创业中已经不知不觉改变了，从 Introvert 逐渐变成了 Extrovert 的人，而且从曾经 social 中消耗能量，逐渐变为我现在可以感知到获得能量。这种变化，是我最近来阿里才确认发生的，此前因为自己创业者的身份没有察觉这种变化的发生。&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/img/src/2020-06-11-captain-alibaba-3.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt; &lt;p&gt;注：2021 年秋 · 径山之行&lt;/p&gt; &lt;h3 id=&quot;关于阿里企业价值观为什么要接受这套价值观&quot;&gt;关于阿里企业价值观：为什么要接受这套价值观？&lt;/h3&gt; &lt;p&gt;马老师和老逍都提到这个：我们是寻找同路人，而不是教育别人。这其实非常明晰地解释了为什么阿里要构建一个毛细血管网络一样的政委体系。基于这种用人理念，政委体系不敢说是最优解，但一定是优解（而且是否有更优解的论证没有意义）。&lt;/p&gt; &lt;p&gt;对于个人，我的理解是要做两件事：&lt;strong&gt;1）构建自己的价值观体系（初始化）；2）寻找价值观契合的公司（做匹配）。这两点里，没有任何地方提到”你要改变价值观为了契合你所在的公司”。&lt;/strong&gt;&lt;/p&gt;...</content>
  </entry>
 
  
