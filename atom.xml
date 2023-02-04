@@ -4,7 +4,7 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-02-04T16:58:43+00:00</updated>
+ <updated>2023-02-04T17:06:30+00:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
@@ -14,7 +14,7 @@
  
 
  <entry>
-   <title>OpenAI 模型 API 官方文档入门解读</title>
+   <title>麦克船长的 OpenAI 模型 API 官方文档入门解读</title>
    <link href="https://www.mikecaptain.com/2023/01/23/openai-official-doc/"/>
    <id>https://www.mikecaptain.com/2023/01/23/openai-official-doc</id>
    <updated>2023-01-23T22:24:58+00:00</updated>
