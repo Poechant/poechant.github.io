@@ -1,6 +1,6 @@
 ---
 layout: post
-title: OpenAI 模型 API 官方文档入门解读
+title: 麦克船长的 OpenAI 模型 API 官方文档入门解读
 date:   2023-01-24 06:24:58 +0800
 categories: ai
 tags: [AI, 人工智能, NLP, 自然语言处理, 神经网络, LLM, 大型语言模型, 语言模型, 大模型, GPT-3, OpenAI, davinci, curie, ada, babbage, fine-tune, fine-tuning, 精调, ChatGPT, completion, prompting, 训练, 数据集]
