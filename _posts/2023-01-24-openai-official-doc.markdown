@@ -3,9 +3,9 @@ layout: post
 title: OpenAI 模型 API 官方文档入门解读
 date:   2023-01-24 06:24:58 +0800
 categories: ai
-tags: [AI, 人工智能, NLP, 自然语言处理, 神经网络, LLM, 大型语言模型, 语言模型, 大模型, AGI, 通用人工智能]
-description: 
-excerpt: 
+tags: [AI, 人工智能, NLP, 自然语言处理, 神经网络, LLM, 大型语言模型, 语言模型, 大模型, GPT-3, OpenAI, davinci, curie, ada, babbage, fine-tune, fine-tuning, 精调, ChatGPT, completion, prompting, 训练, 数据集]
+description: 在 OpenAI 的 API 官方首页的大标题写着的是「用 OpenAI 的强力模型构建下一代应用（Build next-gen apps with OpenAI’s powerful models）」，并直接点出了自己最拿得出手的三个商业化产品 GPT-3、Codex、DALL·E。本文麦克船长重点为你解读基于 GPT-3 的几款模型的入门使用。
+excerpt: 在 OpenAI 的 API 官方首页的大标题写着的是「用 OpenAI 的强力模型构建下一代应用（Build next-gen apps with OpenAI’s powerful models）」，并直接点出了自己最拿得出手的三个商业化产品 GPT-3、Codex、DALL·E。本文麦克船长重点为你解读基于 GPT-3 的几款模型的入门使用。
 katex: True
 location: 香港
 author: 麦克船长
