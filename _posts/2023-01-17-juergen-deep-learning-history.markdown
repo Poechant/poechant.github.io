@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  三万字长文！LSTM 之父 Jürgen 带我们回顾深度学习发展史
+title:  【编译】三万字长文！LSTM 之父 Jürgen 带我们回顾深度学习发展史
 date:   2023-01-15 04:21:55 +0800
 categories: ai
 tags: [AI, 人工智能, 深度学习, Deep Learning, 神经网络, Artificial Neural Network, 机器学习, Machine Learning, ML, ANN, Transformer, CNN, RNN, 循环神经网络, 神经网络, 人工神经网络, Artificial Intelligence, LSTM, 长短时记忆]

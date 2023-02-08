@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  当下生成式 AI（AIGC）领域的应用图景
+title:  【编译】当下生成式 AI（AIGC）领域的应用图景
 date:   2023-01-14 02:09:43 +0800
 categories: ai
 tags: [AI, 人工智能, 生成式AI, Generative AI, 游戏, game, Gen-AI, AIGC]

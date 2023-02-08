@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  游戏生产力革命：生成式 AI（AIGC）正在深度变革游戏领域
+title:  【编译】游戏生产力革命：生成式 AI（AIGC）正在深度变革游戏领域
 date:   2023-01-12 02:33:49 +0800
 categories: ai
 tags: [AI, 人工智能, 生成式AI, Generative AI, 游戏, game, Gen-AI, AIGC]
