@@ -1,4 +1,172 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-02-08T13:02:09+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">麦克船长的 OpenAI 模型 API 官方文档入门解读</title><link href="https://www.mikecaptain.com/2023/01/23/openai-official-doc/" rel="alternate" type="text/html" title="麦克船长的 OpenAI 模型 API 官方文档入门解读" /><published>2023-01-23T22:24:58+00:00</published><updated>2023-01-23T22:24:58+00:00</updated><id>https://www.mikecaptain.com/2023/01/23/openai-official-doc</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/23/openai-official-doc/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-02-08T17:25:04+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">国家网信办《互联网信息服务深度合成管理规定》解读</title><link href="https://www.mikecaptain.com/2023/02/06/cac-generative-information/" rel="alternate" type="text/html" title="国家网信办《互联网信息服务深度合成管理规定》解读" /><published>2023-02-06T15:24:58+00:00</published><updated>2023-02-06T15:24:58+00:00</updated><id>https://www.mikecaptain.com/2023/02/06/cac-generative-information</id><content type="html" xml:base="https://www.mikecaptain.com/2023/02/06/cac-generative-information/">&lt;h2 id=&quot;国家互联网信息办公室中华人民共和国工业和信息化部中华人民共和国公安部-令-第12号&quot;&gt;国家互联网信息办公室、中华人民共和国工业和信息化部、中华人民共和国公安部 令 第12号&lt;/h2&gt;
+
+&lt;p&gt;《互联网信息服务深度合成管理规定》已经2022年11月3日国家互联网信息办公室2022年第21次室务会议审议通过，并经工业和信息化部、公安部同意，现予公布，自2023年1月10日起施行。&lt;/p&gt;
+
+&lt;p&gt;国家互联网信息办公室主任 庄荣文&lt;/p&gt;
+
+&lt;p&gt;工业和信息化部部长 金壮龙&lt;/p&gt;
+
+&lt;p&gt;公安部部长 王小洪&lt;/p&gt;
+
+&lt;p&gt;2022年11月25日&lt;/p&gt;
+
+&lt;h2 id=&quot;互联网信息服务深度合成管理规定&quot;&gt;互联网信息服务深度合成管理规定&lt;/h2&gt;
+
+&lt;h3 id=&quot;第一章-总则&quot;&gt;第一章 总则&lt;/h3&gt;
+
+&lt;p&gt;第一条 为了加强互联网信息服务深度合成管理，弘扬社会主义核心价值观，维护国家安全和社会公共利益，保护公民、法人和其他组织的合法权益，根据《中华人民共和国网络安全法》、《中华人民共和国数据安全法》、《中华人民共和国个人信息保护法》、《互联网信息服务管理办法》等法律、行政法规，制定本规定。&lt;/p&gt;
+
+&lt;p&gt;第二条 在中华人民共和国境内应用深度合成技术提供互联网信息服务（以下简称深度合成服务），适用本规定。法律、行政法规另有规定的，依照其规定。&lt;/p&gt;
+
+&lt;p&gt;第三条 国家网信部门负责统筹协调全国深度合成服务的治理和相关监督管理工作。国务院电信主管部门、公安部门依据各自职责负责深度合成服务的监督管理工作。&lt;/p&gt;
+
+&lt;p&gt;地方网信部门负责统筹协调本行政区域内的深度合成服务的治理和相关监督管理工作。地方电信主管部门、公安部门依据各自职责负责本行政区域内的深度合成服务的监督管理工作。&lt;/p&gt;
+
+&lt;p&gt;第四条 提供深度合成服务，应当遵守法律法规，尊重社会公德和伦理道德，坚持正确政治方向、舆论导向、价值取向，促进深度合成服务向上向善。&lt;/p&gt;
+
+&lt;p&gt;第五条 鼓励相关行业组织加强行业自律，建立健全行业标准、行业准则和自律管理制度，督促指导深度合成服务提供者和技术支持者制定完善业务规范、依法开展业务和接受社会监督。&lt;/p&gt;
+
+&lt;h3 id=&quot;第二章-一般规定&quot;&gt;第二章 一般规定&lt;/h3&gt;
+
+&lt;p&gt;第六条 任何组织和个人不得利用深度合成服务制作、复制、发布、传播法律、行政法规禁止的信息，不得利用深度合成服务从事危害国家安全和利益、损害国家形象、侵害社会公共利益、扰乱经济和社会秩序、侵犯他人合法权益等法律、行政法规禁止的活动。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;u&gt;深度合成服务提供者和使用者不得利用深度合成服务制作、复制、发布、传播虚假新闻信息。转载基于深度合成服务制作发布的新闻信息的，应当依法转载互联网新闻信息稿源单位发布的新闻信息&lt;/u&gt;&amp;gt;&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;第七条 深度合成服务提供者应当落实信息安全主体责任，建立健全用户注册、&lt;strong&gt;&lt;u&gt;算法机制机理审核、科技伦理审查&lt;/u&gt;&lt;/strong&gt;、信息发布审核、数据安全、个人信息保护、反电信网络诈骗、应急处置等管理制度，具有安全可控的技术保障措施。&lt;/p&gt;
+
+&lt;p&gt;第八条 深度合成服务提供者应当制定和公开管理规则、平台公约，完善服务协议，依法依约履行管理责任，以显著方式提示深度合成服务技术支持者和使用者承担信息安全义务。&lt;/p&gt;
+
+&lt;p&gt;第九条 深度合成服务提供者应当基于移动电话号码、身份证件号码、统一社会信用代码或者国家网络身份认证公共服务等方式，依法对深度合成服务使用者进行真实身份信息认证，&lt;strong&gt;&lt;u&gt;不得向未进行真实身份信息认证的深度合成服务使用者提供信息发布服务&lt;/u&gt;&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;第十条 深度合成服务提供者应当加强深度合成内容管理，采取&lt;strong&gt;&lt;u&gt;技术&lt;/u&gt;&lt;/strong&gt;或者人工方式对深度合成服务使用者的输入数据和合成结果进行审核。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;u&gt;深度合成服务提供者应当建立健全用于识别违法和不良信息的特征库，完善入库标准、规则和程序，记录并留存相关网络日志&lt;/u&gt;&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;深度合成服务提供者发现违法和不良信息的，应当依法采取处置措施，保存有关记录，及时向网信部门和有关主管部门报告；对相关深度合成服务使用者依法依约采取警示、限制功能、暂停服务、关闭账号等处置措施。&lt;/p&gt;
+
+&lt;p&gt;第十一条 &lt;strong&gt;&lt;u&gt;深度合成服务提供者应当建立健全辟谣机制&lt;/u&gt;&lt;/strong&gt;，发现利用深度合成服务制作、复制、发布、传播虚假信息的，应当及时采取辟谣措施，保存有关记录，并向网信部门和有关主管部门报告。&lt;/p&gt;
+
+&lt;p&gt;第十二条 深度合成服务提供者应当设置便捷的用户申诉和公众投诉、举报入口，公布处理流程和反馈时限，及时受理、处理和反馈处理结果。&lt;/p&gt;
+
+&lt;p&gt;第十三条 互联网应用商店等应用程序分发平台应当落实上架审核、日常管理、应急处置等安全管理责任，核验深度合成类应用程序的安全评估、备案等情况；对违反国家有关规定的，应当及时采取不予上架、警示、暂停服务或者下架等处置措施。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;麦克船长解读：第二章整体就是告诉我们一句话，所有开发、分发深度合成产品的组织或个人，包括生成式 AI 的 SaaS 服务商（比如百度文心大模型）、to C 型应用平台/商店（比如华为应用商店/小米应用商店/微信小程序等）等，必须实现 Moderation 能力。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;第三章-数据和技术管理规范&quot;&gt;第三章 数据和技术管理规范&lt;/h3&gt;
+
+&lt;p&gt;第十四条 深度合成服务提供者和技术支持者应当加强训练数据管理，采取必要措施保障训练数据安全；训练数据包含个人信息的，应当遵守个人信息保护的有关规定。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;u&gt;深度合成服务提供者和技术支持者提供人脸、人声等生物识别信息编辑功能的，应当提示深度合成服务使用者依法告知被编辑的个人，并取得其单独同意&lt;/u&gt;&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;第十五条 深度合成服务提供者和技术支持者应当加强技术管理，&lt;strong&gt;&lt;u&gt;定期审核、评估、验证生成合成类算法机制机理&lt;/u&gt;&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;深度合成服务提供者和技术支持者提供具有以下功能的模型、模板等工具的，&lt;strong&gt;&lt;u&gt;应当依法自行或者委托专业机构开展安全评估&lt;/u&gt;&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;（一）生成或者编辑人脸、人声等生物识别信息的；&lt;/p&gt;
+
+&lt;p&gt;（二）生成或者编辑可能涉及国家安全、国家形象、国家利益和社会公共利益的特殊物体、场景等非生物识别信息的。&lt;/p&gt;
+
+&lt;p&gt;第十六条 深度合成服务提供者对使用其服务生成或者编辑的信息内容，应当采取技术措施添加不影响用户使用的标识，并依照法律、行政法规和国家有关规定保存日志信息。&lt;/p&gt;
+
+&lt;p&gt;第十七条 深度合成服务提供者提供以下深度合成服务，可能导致公众混淆或者误认的，应当&lt;strong&gt;&lt;u&gt;在生成或者编辑的信息内容的合理位置、区域进行显著标识，向公众提示深度合成情况&lt;/u&gt;&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;p&gt;（一）智能对话、智能写作等模拟自然人进行文本的生成或者编辑服务；&lt;/p&gt;
+
+&lt;p&gt;（二）合成人声、仿声等语音生成或者显著改变个人身份特征的编辑服务；&lt;/p&gt;
+
+&lt;p&gt;（三）人脸生成、人脸替换、人脸操控、姿态操控等人物图像、视频生成或者显著改变个人身份特征的编辑服务；&lt;/p&gt;
+
+&lt;p&gt;（四）沉浸式拟真场景等生成或者编辑服务；&lt;/p&gt;
+
+&lt;p&gt;（五）其他具有生成或者显著改变信息内容功能的服务。&lt;/p&gt;
+
+&lt;p&gt;深度合成服务提供者提供前款规定之外的深度合成服务的，&lt;strong&gt;&lt;u&gt;应当提供显著标识功能，并提示深度合成服务使用者可以进行显著标识&lt;/u&gt;&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;第十八条 任何组织和个人&lt;strong&gt;&lt;u&gt;不得采用技术手段删除、篡改、隐匿本规定第十六条和第十七条规定的深度合成标识&lt;/u&gt;&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;麦克船长解读：1）必须有评估、验证合成算法机制；2）必须要有明确标识告诉使用者；3）生成类服务的范围，在第十七条的第五款里，用「其他」变成了一个什么都能装的筐。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;第四章-监督检查与法律责任&quot;&gt;第四章 监督检查与法律责任&lt;/h3&gt;
+
+&lt;p&gt;第十九条 &lt;strong&gt;&lt;u&gt;具有舆论属性或者社会动员能力的深度合成服务提供者，应当按照《互联网信息服务算法推荐管理规定》履行备案和变更、注销备案手续&lt;/u&gt;&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;深度合成服务技术支持者应当参照前款规定履行备案和变更、注销备案手续。&lt;/p&gt;
+
+&lt;p&gt;完成备案的深度合成服务提供者和技术支持者应当在其对外提供服务的网站、应用程序等的&lt;strong&gt;&lt;u&gt;显著位置标明其备案编号并提供公示信息链接&lt;/u&gt;&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;麦克船长解读：有媒体舆论属性的产品（比如社交社区、直播短视频、新闻媒体类等），一定要按照《互联网信息服务算法推荐管理规定》备案，并在 APP、网站上公示备案编号并提供链接（类似之前的域名备案）。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;第二十条 深度合成服务提供者开发上线具有舆论属性或者社会动员能力的新产品、新应用、新功能的，应当按照国家有关规定开展安全评估。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;麦克船长解读：上述提到的产品迭代新能力时，也要再次安全评估。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;第二十一条 网信部门和电信主管部门、公安部门依据职责对深度合成服务开展监督检查。深度合成服务提供者和技术支持者应当依法予以配合，并提供必要的技术、数据等支持和协助。&lt;/p&gt;
+
+&lt;p&gt;网信部门和有关主管部门发现深度合成服务存在较大信息安全风险的，可以按照职责依法要求深度合成服务提供者和技术支持者采取暂停信息更新、用户账号注册或者其他相关服务等措施。深度合成服务提供者和技术支持者应当按照要求采取措施，进行整改，消除隐患。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;麦克船长解读：网信部门、电信部门、公安部门都可以监管，都要配合。监管的整改可能会配合停止信息更新、停止账号注册等。这就跟食品生产企业的整改监管非常类似了，生产内容一样要被这样监管，有了合成能力本质上就是出现了内容工厂了。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;第二十二条 深度合成服务提供者和技术支持者违反本规定的，依照有关法律、行政法规的规定处罚；造成严重后果的，依法从重处罚。&lt;/p&gt;
+
+&lt;p&gt;构成违反治安管理行为的，由公安机关依法给予治安管理处罚；构成犯罪的，依法追究刑事责任。&lt;/p&gt;
+
+&lt;h3 id=&quot;第五章-附则&quot;&gt;第五章 附则&lt;/h3&gt;
+
+&lt;p&gt;第二十三条 本规定中下列用语的含义：&lt;/p&gt;
+
+&lt;p&gt;深度合成技术，是指利用深度学习、虚拟现实等生成合成类算法制作文本、图像、音频、视频、虚拟场景等网络信息的技术，包括但不限于：&lt;/p&gt;
+
+&lt;p&gt;（一）篇章生成、文本风格转换、问答对话等生成或者编辑文本内容的技术；&lt;/p&gt;
+
+&lt;p&gt;（二）文本转语音、语音转换、语音属性编辑等生成或者编辑语音内容的技术；&lt;/p&gt;
+
+&lt;p&gt;（三）音乐生成、场景声编辑等生成或者编辑非语音内容的技术；&lt;/p&gt;
+
+&lt;p&gt;（四）人脸生成、人脸替换、人物属性编辑、人脸操控、姿态操控等生成或者编辑图像、视频内容中生物特征的技术；&lt;/p&gt;
+
+&lt;p&gt;（五）图像生成、图像增强、图像修复等生成或者编辑图像、视频内容中非生物特征的技术；&lt;/p&gt;
+
+&lt;p&gt;（六）三维重建、数字仿真等生成或者编辑数字人物、虚拟场景的技术。&lt;/p&gt;
+
+&lt;p&gt;深度合成服务提供者，是指提供深度合成服务的组织、个人。&lt;/p&gt;
+
+&lt;p&gt;深度合成服务技术支持者，是指为深度合成服务提供技术支持的组织、个人。&lt;/p&gt;
+
+&lt;p&gt;深度合成服务使用者，是指使用深度合成服务制作、复制、发布、传播信息的组织、个人。&lt;/p&gt;
+
+&lt;p&gt;训练数据，是指被用于训练机器学习模型的标注或者基准数据集。&lt;/p&gt;
+
+&lt;p&gt;沉浸式拟真场景，是指应用深度合成技术生成或者编辑的、可供参与者体验或者互动的、具有高度真实感的虚拟场景。&lt;/p&gt;
+
+&lt;p&gt;第二十四条 深度合成服务提供者和技术支持者从事网络出版服务、网络文化活动和网络视听节目服务的，应当同时符合新闻出版、文化和旅游、广播电视主管部门的规定。&lt;/p&gt;
+
+&lt;p&gt;第二十五条 本规定自2023年1月10日起施行。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;麦克船长解读：不仅限于 AIGC，虚拟现实生成也被该规定覆盖。一些可能会想到的问题如下。&lt;/p&gt;
+  &lt;ol&gt;
+    &lt;li&gt;比如我只用 AI 改改文章风格不用被监管吧？否，也按本规定监管。&lt;/li&gt;
+    &lt;li&gt;艺术类，非写实类的图像生成，不用被监管吧？否，也被本规定监管，不是只有写实的内容才有可能不合规。&lt;/li&gt;
+    &lt;li&gt;用 AI 构建 3D 模型，主要用于装饰、装修、装潢的，不用被监管吧？否，这个能力有了，就不限于生成范围了，会有涉及监管的应用，所以也要被监管。&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;参考&quot;&gt;参考：&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;http://www.cac.gov.cn/2022-12/11/c_1672221949354811.htm&lt;/li&gt;
+  &lt;li&gt;https://tisi.org/14419&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><category term="AGI" /><category term="通用人工智能" /><summary type="html">国家互联网信息办公室、中华人民共和国工业和信息化部、中华人民共和国公安部 令 第12号</summary></entry><entry><title type="html">麦克船长的 OpenAI 模型 API 官方文档入门解读</title><link href="https://www.mikecaptain.com/2023/01/23/openai-official-doc/" rel="alternate" type="text/html" title="麦克船长的 OpenAI 模型 API 官方文档入门解读" /><published>2023-01-23T22:24:58+00:00</published><updated>2023-01-23T22:24:58+00:00</updated><id>https://www.mikecaptain.com/2023/01/23/openai-official-doc</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/23/openai-official-doc/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#一先大概看看-openai-目前最拿得出手的三个商业化产品用起来啥样&quot; id=&quot;markdown-toc-一先大概看看-openai-目前最拿得出手的三个商业化产品用起来啥样&quot;&gt;一、先大概看看 OpenAI 目前最拿得出手的三个商业化产品用起来啥样&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#1执行各种自然语言任务的-gpt-3&quot; id=&quot;markdown-toc-1执行各种自然语言任务的-gpt-3&quot;&gt;1、执行各种自然语言任务的 GPT-3&lt;/a&gt;        &lt;ul&gt;
@@ -489,14 +657,7 @@ Get the current value of a Bitcoin in US dollars using the bitcoincharts api
 &lt;ul&gt;
   &lt;li&gt;https://openai.com/api/&lt;/li&gt;
   &lt;li&gt;https://developer.aliyun.com/article/933516&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><category term="GPT-3" /><category term="OpenAI" /><category term="davinci" /><category term="curie" /><category term="ada" /><category term="babbage" /><category term="fine-tune" /><category term="fine-tuning" /><category term="精调" /><category term="ChatGPT" /><category term="completion" /><category term="prompting" /><category term="训练" /><category term="数据集" /><summary type="html">在 OpenAI 的 API 官方首页的大标题写着的是「用 OpenAI 的强力模型构建下一代应用（Build next-gen apps with OpenAI’s powerful models）」，并直接点出了自己最拿得出手的三个商业化产品 GPT-3、Codex、DALL·E。本文麦克船长重点为你解读基于 GPT-3 的几款模型的入门使用。</summary></entry><entry><title type="html">人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型</title><link href="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/" rel="alternate" type="text/html" title="人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型" /><published>2023-01-22T09:13:09+00:00</published><updated>2023-01-22T09:13:09+00:00</updated><id>https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/">&lt;blockquote&gt;
-  &lt;ul&gt;
-    &lt;li&gt;UPDATED：2023 年 1 月 27 日，本文登上 ATA 头条。（注：ATA 全称 Alibaba Technology Associate，是阿里集团最大的技术社区）&lt;/li&gt;
-    &lt;li&gt;UPDATED：2023 年 2 月 2 日，本文在 ATA 获得鲁肃点赞。（注：鲁肃，本名程立，是阿里合伙人、阿里集团上一任 CTO）&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><category term="GPT-3" /><category term="OpenAI" /><category term="davinci" /><category term="curie" /><category term="ada" /><category term="babbage" /><category term="fine-tune" /><category term="fine-tuning" /><category term="精调" /><category term="ChatGPT" /><category term="completion" /><category term="prompting" /><category term="训练" /><category term="数据集" /><summary type="html">在 OpenAI 的 API 官方首页的大标题写着的是「用 OpenAI 的强力模型构建下一代应用（Build next-gen apps with OpenAI’s powerful models）」，并直接点出了自己最拿得出手的三个商业化产品 GPT-3、Codex、DALL·E。本文麦克船长重点为你解读基于 GPT-3 的几款模型的入门使用。</summary></entry><entry><title type="html">人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型</title><link href="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/" rel="alternate" type="text/html" title="人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型" /><published>2023-01-22T09:13:09+00:00</published><updated>2023-01-22T09:13:09+00:00</updated><id>https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer</id><content type="html" xml:base="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/">&lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
 
 &lt;p&gt;本文试图从技术角度搞清楚一个问题：&lt;strong&gt;过去一年 AIGC 爆火、过去五年 NLP（自然语言处理）领域突飞猛进的缘起是什么？&lt;/strong&gt;&lt;/p&gt;
 
@@ -4638,7 +4799,14 @@ digraph G {
 
 &lt;p&gt;最后，船涨祝大家兔年里，健康又快乐。&lt;/p&gt;
 
-&lt;p&gt;PS：&lt;strong&gt;Mark 一下本文成为 ATA（Alibaba Technology Associate）头条文章；阿里合伙人、阿里集团前 CTO 程立（鲁肃）点赞&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;PS：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;UPDATED：2023 年 1 月 27 日，本文登上 ATA 头条。（注：ATA 全称 Alibaba Technology Associate，是阿里集团最大的技术社区）&lt;/li&gt;
+    &lt;li&gt;UPDATED：2023 年 2 月 2 日，本文在 ATA 获得鲁肃点赞。（注：鲁肃，本名程立，是阿里合伙人、阿里集团上一任 CTO）&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/src/2023/2023-01-29-ata-headline-top-1.jpg&quot; alt=&quot;image&quot; /&gt;
 &lt;img src=&quot;/img/src/2023/2023-01-29-ata-headline-top-2.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
@@ -6982,28 +7150,4 @@ cosine value :  0.8691698561422959
 
 &lt;h3 id=&quot;参考&quot;&gt;参考&lt;/h3&gt;
 
-&lt;p&gt;1、&lt;a href=&quot;https://github.com/fuergaosi233/wechat-chatgpt/tree/main&quot;&gt;https://github.com/fuergaosi233/wechat-chatgpt/tree/main&lt;/a&gt;&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="人工智能" /><category term="AI" /><category term="ChatGPT" /><category term="OpenAI" /><category term="微信" /><summary type="html">最近 OpenAI 的 ChatGPT 非常地出圈，ChatGPT 是一个由 OpenAI 训练的大型语言模型，被设计用来回答用户的问题并提供信息。官方的 Slogan 是「Optimizing Language Models for Dialogue」，所以非常适合做到 IM 里聊天。那么我在想如果用一个微信号，背后是 ChatGPT，是不是很有趣？正当我准备利用 WeChaty 开发一个服务端程序来连接 ChatGPT 时，发现目前 Github 上已经有人做了，刚好可以省去很多工程的工作 ……</summary></entry><entry><title type="html">确实惊艳！用 MidJourney 三分钟生成了两张 CG 级高清机甲特写</title><link href="https://www.mikecaptain.com/2022/11/30/midjourney-first-test/" rel="alternate" type="text/html" title="确实惊艳！用 MidJourney 三分钟生成了两张 CG 级高清机甲特写" /><published>2022-11-30T15:12:03+00:00</published><updated>2022-11-30T15:12:03+00:00</updated><id>https://www.mikecaptain.com/2022/11/30/midjourney-first-test</id><content type="html" xml:base="https://www.mikecaptain.com/2022/11/30/midjourney-first-test/">&lt;p&gt;因为 Diffusion 模型在计算机视觉领域的发展，最近文生图（Text2Image）很火，花了三分钟时间用 MidJourney 做了一组机甲图，确实非常惊艳，直接看图：&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;&lt;img src=&quot;/img/src/2022-12-16-midjourney-first-test-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/th&gt;
-      &lt;th&gt;&lt;img src=&quot;/img/src/2022-12-16-midjourney-first-test-2.png&quot; alt=&quot;image&quot; /&gt;&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;今年人工智能在 CV 领域的发展非常的精彩，目前市面上看到的主要应用，都是这种松散式的、对结果容错率很高图像生成，基于一段 prompt 生成一张或一组图片，甚至已经有了 avatarai.me 这种帮你打造全套的 photorealistic 层次质感的全套图片和视频商业化产品。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2022-12-16-midjourney-first-test-3.png&quot; alt=&quot;image&quot; /&gt;
-（&lt;em&gt;注：MidJourney 官网&lt;/em&gt;）&lt;/p&gt;
-
-&lt;p&gt;未来很快，我们将看到一些更精准满足图像生成需求的应用出现，比如生成游戏素材（其实现在已经有了，比如 Scenario.gg）、AI 替身生成等等。&lt;/p&gt;
-
-&lt;p&gt;相应的，对抗性的防御技术也会很快发展。&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="diffusion" /><category term="MidJourney" /><category term="Text2Image" /><category term="文生图" /><category term="AIGC" /><summary type="html">因为 Diffusion 模型在计算机视觉领域的发展，可以说今年人工智能在计算机视觉领域大放异彩，各种 Text2Image 项目层出不穷，花了三分钟时间做了一组机甲图，确实非常惊艳 ……</summary></entry></feed>
+&lt;p&gt;1、&lt;a href=&quot;https://github.com/fuergaosi233/wechat-chatgpt/tree/main&quot;&gt;https://github.com/fuergaosi233/wechat-chatgpt/tree/main&lt;/a&gt;&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="人工智能" /><category term="AI" /><category term="ChatGPT" /><category term="OpenAI" /><category term="微信" /><summary type="html">最近 OpenAI 的 ChatGPT 非常地出圈，ChatGPT 是一个由 OpenAI 训练的大型语言模型，被设计用来回答用户的问题并提供信息。官方的 Slogan 是「Optimizing Language Models for Dialogue」，所以非常适合做到 IM 里聊天。那么我在想如果用一个微信号，背后是 ChatGPT，是不是很有趣？正当我准备利用 WeChaty 开发一个服务端程序来连接 ChatGPT 时，发现目前 Github 上已经有人做了，刚好可以省去很多工程的工作 ……</summary></entry></feed>
