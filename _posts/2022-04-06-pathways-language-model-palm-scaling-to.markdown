@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Pathways 语言模型 (PaLM)：扩展到 5400 亿个参数以获得突破性性能
+title: 【编译】Pathways 语言模型 (PaLM)：扩展到 5400 亿个参数以获得突破性性能
 date:   2022-04-06 17:13:09 +0800
 categories: ai
 tags: [AI, 人工智能, NLP, 自然语言处理, 神经网络, Attention, 注意力, AIGC, Transformer, 自注意力, Self-Attention, 多头注意力, Multiple Head Attention, 残差网络, Short-Cut, 位置编码, Bahdanau, Encoder-Decoder]
