@@ -4,7 +4,7 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-02-08T17:25:04+00:00</updated>
+ <updated>2023-02-08T17:28:32+00:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
@@ -44,7 +44,7 @@
  
 
  <entry>
-   <title>三万字长文！LSTM 之父 Jürgen 带我们回顾深度学习发展史</title>
+   <title>【编译】三万字长文！LSTM 之父 Jürgen 带我们回顾深度学习发展史</title>
    <link href="https://www.mikecaptain.com/2023/01/14/juergen-deep-learning-history/"/>
    <id>https://www.mikecaptain.com/2023/01/14/juergen-deep-learning-history</id>
    <updated>2023-01-14T20:21:55+00:00</updated>
@@ -54,7 +54,7 @@
  
 
  <entry>
-   <title>当下生成式 AI（AIGC）领域的应用图景</title>
+   <title>【编译】当下生成式 AI（AIGC）领域的应用图景</title>
    <link href="https://www.mikecaptain.com/2023/01/13/antler-generative-ai/"/>
    <id>https://www.mikecaptain.com/2023/01/13/antler-generative-ai</id>
    <updated>2023-01-13T18:09:43+00:00</updated>
@@ -64,7 +64,7 @@
  
 
  <entry>
-   <title>游戏生产力革命：生成式 AI（AIGC）正在深度变革游戏领域</title>
+   <title>【编译】游戏生产力革命：生成式 AI（AIGC）正在深度变革游戏领域</title>
    <link href="https://www.mikecaptain.com/2023/01/11/generative-ai-revolution-in-games/"/>
    <id>https://www.mikecaptain.com/2023/01/11/generative-ai-revolution-in-games</id>
    <updated>2023-01-11T18:33:49+00:00</updated>
