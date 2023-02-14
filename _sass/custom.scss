@@ -36,6 +36,14 @@ ul li h2 a {
 	}
 }
 
+ol li a {
+	color: #1e6afe;
+	&:hover,
+	&:focus {
+		color: #6297ff;
+	}
+}
+
 ul li a {
 	color: #1e6afe;
 	&:hover,

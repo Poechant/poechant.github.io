@@ -72,3 +72,6 @@ asciidoctor:
     - idseparator=_
     - source-highlighter=coderay
     - icons=font
+
+# Google analytics
+google_analytics: 353717978
