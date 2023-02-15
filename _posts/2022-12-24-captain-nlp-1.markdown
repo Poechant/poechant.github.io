@@ -120,6 +120,8 @@ BERT 模型是在一篇于 2018 年发表的叫做《BERT: Pre-training of Deep 
 
 #### 7、InstructGPT
 
+2022 年 3 月 OpenAI 发表[《Training language models to follow instructions with human feedback》](https://arxiv.org/abs/2203.02155)论文，提出 InstructGPT。这篇论文的初衷，是 OpenAI 将其 GPT-3 全面开始考虑 Alignment 的开始。
+
 #### 其他的重量级论文
 
 * Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context（2019）
