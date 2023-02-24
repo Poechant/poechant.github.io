@@ -223,7 +223,7 @@ def extract_html(text):
 
 在 OpenAI 的 PlayGround 你可以试试：[https://platform.openai.com/playground/p/default-chat](https://platform.openai.com/playground/p/default-chat) 。
 
-![image](/img/src/2023/2023-01-24-openai-api.png)
+![image](/img/src/2023/2023-01-24-openai-api.jpg)
 
 ## 三、主要 API 介绍及代码示例
 
