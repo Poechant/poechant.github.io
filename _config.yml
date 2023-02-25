@@ -23,7 +23,7 @@ baseurl: "" # Change this to your relative path (ex: /blog/), or leave just a /
 source: .
 destination: ./_site
 permalink: /:title
-paginate: 20
+paginate: 30
 paginate_path: /page:num/
 # incremental: true # Incremental compiling
 collections:
