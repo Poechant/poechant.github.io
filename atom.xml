@@ -4,12 +4,22 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-02-24T07:06:07+00:00</updated>
+ <updated>2023-02-25T08:49:46+00:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
    <email>zhongchao.ustc@gmail.com</email>
  </author>
+
+ 
+
+ <entry>
+   <title>Meta推出开源LLaMA，用1/10参数规模打败GPT-3，群"模"乱舞的2023拉开序幕</title>
+   <link href="https://www.mikecaptain.com/2023/02/25/meta-llama/"/>
+   <id>https://www.mikecaptain.com/2023/02/25/meta-llama</id>
+   <updated>2023-02-25T05:54:13+00:00</updated>
+   <content type="html">&lt;p&gt;北京时间 2023 年 2 月 25 日 Meta AI 在其官网公开发布了 LLaMA（Large Language Model Meta AI）大型语言模型，包括 70 亿、130 亿、330 亿、650 亿 4 种参数规模，旨在推动 LLM 领域的小型化、平民化研究。&lt;/p&gt; &lt;p&gt;Guillaume Lample 在其 Twitter 上声称：LLaMA 130 亿参数版本的表现，在大多数测试上优于 OPT 和 GPT-3 1750 亿参数版，650 亿的版本表现基本可以比肩 Chinchilla 700 亿参数、PaLM 5400 亿参数这些大模型。&lt;/p&gt; &lt;p&gt;LLaMA 是由 Meta AI 的 FAIR 团队研发的，在 2022...</content>
+ </entry>
 
  
 
@@ -99,16 +109,6 @@
    <id>https://www.mikecaptain.com/2022/12/17/ai-bert-1</id>
    <updated>2022-12-17T15:08:01+00:00</updated>
    <content type="html">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#一关于-bert-的一些背景&quot; id=&quot;markdown-toc-一关于-bert-的一些背景&quot;&gt;一、关于 BERT 的一些背景&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#二开始一个-bert-的动手小试验&quot; id=&quot;markdown-toc-二开始一个-bert-的动手小试验&quot;&gt;二、开始一个 BERT 的动手小试验&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#1安装-anaconda-来为部署-bert-做环境准备&quot; id=&quot;markdown-toc-1安装-anaconda-来为部署-bert-做环境准备&quot;&gt;1、安装 Anaconda 来为部署 BERT 做环境准备&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#2安装-bert-所需要的各种依赖&quot; id=&quot;markdown-toc-2安装-bert-所需要的各种依赖&quot;&gt;2、安装 BERT 所需要的各种依赖&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#3下载一个预训练pre-train过的-bert-模型&quot; id=&quot;markdown-toc-3下载一个预训练pre-train过的-bert-模型&quot;&gt;3、下载一个预训练（Pre-Train）过的 BERT 模型&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#5启动-bert-服务端&quot; id=&quot;markdown-toc-5启动-bert-服务端&quot;&gt;5、启动 BERT 服务端&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#6在-pycharm-中使用-conda-的环境&quot; id=&quot;markdown-toc-6在-pycharm-中使用-conda-的环境&quot;&gt;6、在 PyCharm 中使用 Conda 的环境&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#7编写程序实现-bert-客户端&quot; id=&quot;markdown-toc-7编写程序实现-bert-客户端&quot;&gt;7、编写程序实现 BERT 客户端&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt;...</content>
- </entry>
-
- 
-
- <entry>
-   <title>动动手，让你和你的朋友们，在微信上跟 ChatGPT 聊聊天</title>
-   <link href="https://www.mikecaptain.com/2022/12/11/wechat-chatgpt/"/>
-   <id>https://www.mikecaptain.com/2022/12/11/wechat-chatgpt</id>
-   <updated>2022-12-11T15:59:57+00:00</updated>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2022-12-11-wechat-chatgpt-3.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt; &lt;h3 id=&quot;写在前面&quot;&gt;写在前面&lt;/h3&gt; &lt;p&gt;最近 OpenAI 的 ChatGPT 非常地出圈，ChatGPT 是一个由 OpenAI 训练的大型语言模型，被设计用来回答用户的问题并提供信息。官方的 Slogan 是 &lt;strong&gt;「Optimizing Language Models for Dialogue」&lt;/strong&gt;，所以非常适合做到 IM 里聊天。那么我在想如果用一个微信号，背后是 ChatGPT，是不是很有趣？正当我准备利用 WeChaty 开发一个服务端程序来连接 ChatGPT 时，发现目前 Github 上已经有人做了，刚好可以省去很多工程的工作。&lt;/p&gt; &lt;h3 id=&quot;stepbystep&quot;&gt;Step by step&lt;/h3&gt; &lt;p&gt;本实践依赖：CLI、Docker、npm、Github、fuergaosi233/wechat-chatgpt、git、YAML、Chrome 的使用。以下将简洁地 Step by step 列出步骤。&lt;/p&gt; &lt;p&gt;第一步，你要现有一个 OpenAI 的账号，注意注册时手机号不能是中国大陆或香港的，IP 地址和 GPS 也不能暴露你是中国大陆或者香港的。&lt;/p&gt; &lt;p&gt;第二步，准备一台服务器（否则个人电脑要一直处于开机运行状态），由于后面将用到 Session Token 来登录，因此 IP 地址是香港也没关系，于是我是在我的香港服务器上部署 wechat-chatgpt&lt;/p&gt; &lt;p&gt;第三步，在服务器上安装 Docker，不赘述。&lt;/p&gt; &lt;p&gt;第四步，从 Github 上拉取项目项目到服务器上。&lt;/p&gt; &lt;p&gt;第五步，任何设备上登录 ChatGPT，用 Chrome 的 Inspect 来查看并复制 session token 到剪贴板。&lt;/p&gt; &lt;p&gt;第六步，编辑 wechat-chatgpt 的 config.yaml，填写 session token；设置 private trigger keywords（可选）。&lt;/p&gt; &lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;chatGPTAccountPool&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;lt;your email&amp;gt;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;lt;your password&amp;gt;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# if you hope only some keywords can trigger chatgpt on...</content>
  </entry>
 
  
