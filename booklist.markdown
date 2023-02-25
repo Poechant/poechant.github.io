@@ -38,6 +38,25 @@ permalink: /booklist/
 * 《制造消费者：消费主义全球史》
 * 《区块链启示录》
 
+### 学习资料：人工智能
+
+* 船长三篇之一，[《人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer》](/2023/01/22/captain-aigc-1-transformer/)
+* 船长三篇之二，[《人工智能 LLM 革命破晓：一文读懂当下超大语言模型发展现状》](/2023/01/23/captain-aigc-2-llm/)
+* 船长三篇之三，[《人工智能 LLM 革命破晓：人类生产力新纪元的脉搏把控》](/2023/01/24/captain-aigc-3-future/)
+* 腾讯研究院，2023 年 01 月 01 日，[《AIGC 发展趋势报告 2023》](/sources/pdf/2023_genai_tencent_academy.pdf)
+* 中信建投证券，2023 年 01 月 29 日，[《从 ChatGPT 到生成式 AI（Generative AI）：人工智能新范式，重新定义生产力》](/sources/pdf/2023_01_29_genai_china_securities.pdf)
+* 中信建投证券，2023 年 02 月 02 日，[《为什么同花顺是 AIGC 商业落地的优质场景》](/sources/pdf/2023_02_02_genai_china_securities.pdf)
+* 华西证券，2023 年 02 月 01 日，[《ChatGPT：开启 AI 新纪元》](/sources/pdf/2023_02_01_genai_huaxi_securities.pdf)
+* 招银国际，2023 年 02 月 10 日，[《ChatGPT 跨行业专题报告》](/sources/pdf/2023_02_10_genai_cmb_international.pdf)
+* LLM 所用的数据集：[《What's in my AI?》](/sources/pdf/2022_whats_in_my_ai_alan.pdf)
+* ChatGPT 快速翻阅使用指南[《The ChatGPT Cheat Sheet》](/sources/pdf/2023_genai_cheat_sheet_neuralmagic.pdf)
+
+### 学习资料：互联网产品
+
+* [《张小龙：微信背后的产品观》](/sources/pdf/2012_08_wechat_allen_zhang.pdf)
+* [《王慧文的清华产品课》](/sources/pdf/2021_thu_product_huiwen_wang.pdf)
+* 《俞军产品方法论》
+
 ### 我的足迹
 
 * 2023：浙江·杭州，上海，江苏·盐城，广东·深圳，香港，澳门 // 台湾·台北，甘肃·兰州，
