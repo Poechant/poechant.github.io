@@ -23,7 +23,7 @@ LLaMA 是由 Meta AI 的 FAIR 团队研发的，在 2022 年 12 月到 2023 年 
 * 论文：https://research.facebook.com/file/1574548786327032/LLaMA--Open-and-Efficient-Foundation-Language-Models.pdf
 Meta AI 同时在其官方发布了论文《LLaMA: Open and Efficient Foundation Language Models》
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-9.png){: width=640}
+![](/img/src/2023/2023-02-25-meta-llama-9.png){: width=640}
 
 下面我们根据目前 LLaMA 公开的信息，第一时间快速浏览一些关键信息。
 
@@ -39,7 +39,7 @@ Meta AI 同时在其官方发布了论文《LLaMA: Open and Efficient Foundation
 
 Meta AI 公布了其各尺寸 LLaMA 模型的超参数：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-1.png)
+![](/img/src/2023/2023-02-25-meta-llama-1.png){: width="640"}
 
 与 GPT-3 模型对比可以看出，LLaMA 的四个版本中：
 
@@ -65,7 +65,7 @@ LLaMA 用到了如下这些训练数据集，并给出了相应的占比：
 
 可以看到以上训练数据源，主要来自网络内容，因此 Meta AI 也说包含了冒犯、有害和带偏见的内容。所以 Meta AI 对该模型的偏见方面表现在 RAI 数据集上进行了评估，以衡量模型在性别、宗教、种族、性取向、年龄、国籍、残疾、外貌和社会经济地位等方面表现出的偏见。Meta AI 还根据提示模型的上下文的有害程度来衡量模型生成的毒性：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-3.png){: width=640}
+![](/img/src/2023/2023-02-25-meta-llama-3.png){: width="320"}
 
 就像上面船长提到的，Meta AI 也对网络文本做了分类处理，如果其内容与 Wikipedia 或 Wikipedia 引用内容比较类似，则认为它是高质量的。这就像 GPT-3 认为 WebText 外链（Outbound Links）出去的且 Karma 大于 3 的网页是高质量的。这里 Meta AI 用到了 Kneser-Ney 语言模型和一个 fastText 线性分类器。
 
@@ -75,33 +75,33 @@ LLaMA 用到了如下这些评估数据集：BoolQ, PIQA, SIQA, HellaSwag, WinoG
 
 在一些推理任务上，LLaMA 有如下表现：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-2.png){: width=480}
+![](/img/src/2023/2023-02-25-meta-llama-2.png){: width="320"}
 
 在 NaturalQuestions 上和其他模型对比的表现：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-4.png){: width=640}
+![](/img/src/2023/2023-02-25-meta-llama-4.png){: width="320"}
 
 阅读理解上的表现对比：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-5.png){: width=640}
+![](/img/src/2023/2023-02-25-meta-llama-5.png){: width="320"}
 
 在 TriviaQA 上 Zero-shot、few-shot 对比问答效果的表现：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-6.png){: width=640}
+![](/img/src/2023/2023-02-25-meta-llama-6.png){: width="320"}
 
 代码生成方面的表现对比：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-7.png){: width=640}
+![](/img/src/2023/2023-02-25-meta-llama-7.png){: width="320"}
 
 大规模多任务语言理解（MMLU）的表现对比如下，论文的附录 B 中 Table 16 中有完整的各模型表现，大家可以去查看。
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-8.png){: width=640}
+![](/img/src/2023/2023-02-25-meta-llama-8.png){: width="560"}
 
 ## 3、算力
 
 Meta AI 还给出了碳足迹的计算，来衡量算力的消耗情况，随着 LLM 应用的普及，这样的环保议题在未来会越来越被重视。
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-10.png){: width=640}
+![](/img/src/2023/2023-02-25-meta-llama-10.png){: width="640"}
 
 在同一数据中心训练不同模型的碳足迹。Meta AI 在同一数据中心训练 OPT、BLOOM 和 LLaMA 的模型的碳排放。对于 A100-80GB 的功耗，LLaMA 采用 NVLink 系统的热设计功率（TDP），即 400W。Meta AI 采用 PUE 值为 1.1，碳强度系数设定为美国国家平均水平的 0.385 kg CO2e/KWh。
 
@@ -121,64 +121,64 @@ LLaMA 还未开放，目前你可以在如下链接申请访问，进入 Waiting
 
 但是我们可以看看 Meta AI 放出的例子，也蛮有趣的。下面先是 LLaMA-65B（不用指令精调）的输出，加粗的部分是输入给的 Prompt（提示）：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-11.png)
+![](/img/src/2023/2023-02-25-meta-llama-11.png){: width="720"}
 
 写推荐信：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-12.png)
+![](/img/src/2023/2023-02-25-meta-llama-12.png){: width="720"}
 
 给出 Python 函数定义和注释，续写代码：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-13.png)
+![](/img/src/2023/2023-02-25-meta-llama-13.png){: width="720"}
 
 Meta AI 团队调侃自己的老板 LeCun（hhhhh）：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-14.png)
+![](/img/src/2023/2023-02-25-meta-llama-14.png){: width="720"}
 
 给定场景，虚构对话的能力：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-15.png)
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-16.png)
+![](/img/src/2023/2023-02-25-meta-llama-15.png){: width="720"}
+![](/img/src/2023/2023-02-25-meta-llama-16.png){: width="720"}
 
 Meta AI 还展示了几个 LLaMA-I 的生成示例，LLaMA-I 是使用 Chung et al. (2022). 的协议和指令数据集对 LLaMA-65B 进行微调后的结果。第一个是让 LLaMA 写一个太阳和冥王星的对话：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-17.png)
+![](/img/src/2023/2023-02-25-meta-llama-17.png){: width="720"}
 
 再让 LLaMA 写一个用 JavaScript 发送 HTTP 请求的代码示例：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-18.png)
+![](/img/src/2023/2023-02-25-meta-llama-18.png){: width="720"}
 
 用 Python 写一个正则表达式移除 HTML 标签，以及用 Python 写一个抽取函数定义的正则表达式如下（说真的，船长之前用 ChatGPT 写正则表达式，这效率真的太高了，人脑写东西其实挺反人类的）：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-19.png)
+![](/img/src/2023/2023-02-25-meta-llama-19.png){: width="720"}
 
 一系列连续多轮对话的问答，LLaMA 也表现的很好：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-20.png)
+![](/img/src/2023/2023-02-25-meta-llama-20.png){: width="720"}
 
 写个小作文也不在话下：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-21.png)
+![](/img/src/2023/2023-02-25-meta-llama-21.png){: width="720"}
 
 瞎编一套理论解释猫从未存在过（研究人员的脑洞也挺大的 hhhh）：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-22.png)
+![](/img/src/2023/2023-02-25-meta-llama-22.png){: width="720"}
 
 写一个凯撒大帝和拿破仑之间的吵架场景（2333333）：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-23.png)
+![](/img/src/2023/2023-02-25-meta-llama-23.png){: width="720"}
 
 发送一封电子邮件，请求人们负责任地使用语言模型：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-24.png)
+![](/img/src/2023/2023-02-25-meta-llama-24.png){: width="720"}
 
 又是多轮的对话，并且涉及到大量真实实体，验证世界知识的准确性，可以看到模型准确给出了是爱因斯坦提出了质能方程的：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-25.png)
+![](/img/src/2023/2023-02-25-meta-llama-25.png){: width="720"}
 
 让 LLaMA 假装是一个可运行 bash 终端的：
 
-![](http://www.mikecaptain.com/img/src/2023/2023-02-25-meta-llama-26.png)
+![](/img/src/2023/2023-02-25-meta-llama-26.png){: width="720"}
 
 示例就看到这里，还是非常令船长兴奋的。可以想见，2023 注定是群魔乱舞的一年，我们一定会在模型发展上看到很多载入 AI 发展史册的事件发生。
 
