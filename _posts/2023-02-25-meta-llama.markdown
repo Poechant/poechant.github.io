@@ -13,7 +13,7 @@ author: 麦克船长
 
 ![](/img/src/2023/2023-02-25-meta-llama-29.jpg)
 
-北京时间 2023 年 2 月 25 日 Meta AI 在其官网公开发布了 LLaMA（Large Language Model Meta AI）大型语言模型，包括 70 亿、130 亿、330 亿、650 亿 4 种参数规模，旨在推动 LLM 领域的小型化、平民化研究。
+北京时间 2023 年 2 月 25 日 Meta AI 在其官网公开发布了 LLaMA（Large Language Model Meta AI）大型语言模型，包括 70 亿、130 亿、330 亿、650 亿 4 种参数规模，旨在推动 LLM 领域的小型化、平民化研究。有趣的是，LLaMA 是羊驼的意思。
 
 Guillaume Lample 在其 Twitter 上声称：LLaMA 130 亿参数版本的表现，在大多数测试上优于 OPT 和 GPT-3 1750 亿参数版，650 亿的版本表现基本可以比肩 Chinchilla 700 亿参数、PaLM 5400 亿参数这些大模型。
 
