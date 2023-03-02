@@ -413,85 +413,9 @@
 
 			<article id="post-page">
 	<h2>AI 应用第一次大爆发来了：一文入门 ChatGPT 官方 API 文档解读</h2>		
-	<time datetime="2023-03-02T00:54:13+00:00" class="by-line">02 Mar 2023, 杭州 | 麦克船长 | 总计 21020 字</time>
+	<time datetime="2023-03-02T00:54:13+00:00" class="by-line">02 Mar 2023, 杭州 | 麦克船长 | 总计 19589 字</time>
 	<div class="content">
-		<p><strong>本文目录</strong></p>
-<ul id="markdown-toc">
-  <li><a href="#一这次开放-chatgpt-和-whisper-的-api-都有什么基本看点" id="markdown-toc-一这次开放-chatgpt-和-whisper-的-api-都有什么基本看点">一、这次开放 ChatGPT 和 Whisper 的 API 都有什么基本看点</a>    <ul>
-      <li><a href="#1openai-开放模型库里新增-gpt-35-模型" id="markdown-toc-1openai-开放模型库里新增-gpt-35-模型">1、OpenAI 开放模型库里新增 GPT-3.5 模型</a></li>
-      <li><a href="#2openai-api-的一些基础概念" id="markdown-toc-2openai-api-的一些基础概念">2、OpenAI API 的一些基础概念</a></li>
-      <li><a href="#3模型" id="markdown-toc-3模型">3、模型</a>        <ul>
-          <li><a href="#31turbo" id="markdown-toc-31turbo">3.1、Turbo</a></li>
-          <li><a href="#32davinci" id="markdown-toc-32davinci">3.2、Davinci</a></li>
-          <li><a href="#33curie" id="markdown-toc-33curie">3.3、Curie</a></li>
-          <li><a href="#34babbage" id="markdown-toc-34babbage">3.4、Babbage</a></li>
-          <li><a href="#35ada" id="markdown-toc-35ada">3.5、Ada</a></li>
-        </ul>
-      </li>
-      <li><a href="#4具体模型按-gpt-35-还是-gpt-3-划分看下" id="markdown-toc-4具体模型按-gpt-35-还是-gpt-3-划分看下">4、具体模型：按 GPT-3.5 还是 GPT-3 划分看下</a>        <ul>
-          <li><a href="#41关于-gpt-35" id="markdown-toc-41关于-gpt-35">4.1、关于 GPT-3.5</a></li>
-          <li><a href="#42关于-gpt-3" id="markdown-toc-42关于-gpt-3">4.2、关于 GPT-3</a></li>
-        </ul>
-      </li>
-      <li><a href="#5定价" id="markdown-toc-5定价">5、定价</a></li>
-      <li><a href="#6专用实例" id="markdown-toc-6专用实例">6、专用实例</a></li>
-      <li><a href="#7whisper每分钟-06-美分-的语音识别翻译服务-api" id="markdown-toc-7whisper每分钟-06-美分-的语音识别翻译服务-api">7、Whisper：每分钟 0.6 美分 的语音识别/翻译服务 API</a></li>
-      <li><a href="#8开发者可能关注的几个问题" id="markdown-toc-8开发者可能关注的几个问题">8、开发者可能关注的几个问题</a></li>
-    </ul>
-  </li>
-  <li><a href="#二主要-api-介绍及代码示例" id="markdown-toc-二主要-api-介绍及代码示例">二、主要 API 介绍及代码示例</a>    <ul>
-      <li><a href="#1一起看看-chat-的-api" id="markdown-toc-1一起看看-chat-的-api">1、一起看看 Chat 的 API</a>        <ul>
-          <li><a href="#11chat-的-rest-api" id="markdown-toc-11chat-的-rest-api">1.1、Chat 的 REST API</a></li>
-          <li><a href="#12chat-的-python-api" id="markdown-toc-12chat-的-python-api">1.2、Chat 的 Python API</a></li>
-        </ul>
-      </li>
-      <li><a href="#2whisper-api" id="markdown-toc-2whisper-api">2、Whisper API</a></li>
-      <li><a href="#21whisper-的-rest-api" id="markdown-toc-21whisper-的-rest-api">2.1、Whisper 的 REST API</a>        <ul>
-          <li><a href="#22whisper-的-python-api" id="markdown-toc-22whisper-的-python-api">2.2、Whisper 的 Python API</a></li>
-        </ul>
-      </li>
-      <li><a href="#3text-completion-任务" id="markdown-toc-3text-completion-任务">3、Text Completion 任务</a></li>
-      <li><a href="#4text-edit-任务" id="markdown-toc-4text-edit-任务">4、Text Edit 任务</a></li>
-      <li><a href="#5顺便提一下基于-dalle-的-image-生成" id="markdown-toc-5顺便提一下基于-dalle-的-image-生成">5、顺便提一下基于 DALL·E 的 Image 生成</a>        <ul>
-          <li><a href="#51image-create-任务beta" id="markdown-toc-51image-create-任务beta">5.1、Image Create 任务（Beta）</a></li>
-          <li><a href="#52image-edit-任务" id="markdown-toc-52image-edit-任务">5.2、Image Edit 任务</a></li>
-        </ul>
-      </li>
-      <li><a href="#6code-生成" id="markdown-toc-6code-生成">6、Code 生成</a></li>
-      <li><a href="#7审查moderation" id="markdown-toc-7审查moderation">7、审查（Moderation）</a></li>
-    </ul>
-  </li>
-  <li><a href="#三一些-openai-目前开放的-api-使用示例" id="markdown-toc-三一些-openai-目前开放的-api-使用示例">三、一些 OpenAI 目前开放的 API 使用示例</a>    <ul>
-      <li><a href="#1执行各种自然语言任务的一些使用案例" id="markdown-toc-1执行各种自然语言任务的一些使用案例">1、执行各种自然语言任务的一些使用案例</a></li>
-      <li><a href="#2一些更详细的示例" id="markdown-toc-2一些更详细的示例">2、一些更详细的示例</a>        <ul>
-          <li><a href="#21写作-copywriting" id="markdown-toc-21写作-copywriting">2.1、写作 Copywriting</a></li>
-          <li><a href="#22摘要-summarization" id="markdown-toc-22摘要-summarization">2.2、摘要 Summarization</a></li>
-          <li><a href="#23分析无结构文本-parsing-unstructured-text" id="markdown-toc-23分析无结构文本-parsing-unstructured-text">2.3、分析无结构文本 Parsing Unstructured Text</a></li>
-          <li><a href="#24分类-classification" id="markdown-toc-24分类-classification">2.4、分类 Classification</a></li>
-          <li><a href="#25翻译-translation" id="markdown-toc-25翻译-translation">2.5、翻译 Translation</a></li>
-        </ul>
-      </li>
-      <li><a href="#3将自然语言翻译成代码的-codex" id="markdown-toc-3将自然语言翻译成代码的-codex">3、将自然语言翻译成代码的 Codex</a>        <ul>
-          <li><a href="#31用自然语言写-sql" id="markdown-toc-31用自然语言写-sql">3.1、用自然语言写 SQL</a></li>
-          <li><a href="#32用自然语言调用一个-api" id="markdown-toc-32用自然语言调用一个-api">3.2、用自然语言调用一个 API</a></li>
-          <li><a href="#33用自然语言续写代码" id="markdown-toc-33用自然语言续写代码">3.3、用自然语言续写代码</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li><a href="#四微调fine-tuning" id="markdown-toc-四微调fine-tuning">四、微调（Fine-tuning）</a>    <ul>
-      <li><a href="#1创建一个-fine-tune-模型" id="markdown-toc-1创建一个-fine-tune-模型">1、创建一个 fine-tune 模型</a></li>
-      <li><a href="#2使用-fine-tuned-模型" id="markdown-toc-2使用-fine-tuned-模型">2、使用 fine-tuned 模型</a></li>
-      <li><a href="#3删掉一个-fine-tuned-模型" id="markdown-toc-3删掉一个-fine-tuned-模型">3、删掉一个 fine-tuned 模型</a></li>
-      <li><a href="#4一个-fine-tuned-模型之上继续-fine-tune" id="markdown-toc-4一个-fine-tuned-模型之上继续-fine-tune">4、一个 fine-tuned 模型之上继续 fine-tune</a>        <ul>
-          <li><a href="#本文参考" id="markdown-toc-本文参考">本文参考</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<p>此前 GPT-3 也早已开放 API，我在麦克船长的博客 MikeCaptain.com 中已介绍过，当时在 NLP 方面能使用的 API 主要是。原文链接：http://www.mikecaptain.com/2023/01/24/openai-official-doc/ 。此前 OpenAI API 就已经有了不同功能和价位的多种模型，还提供了在基础模型上的 fine-tune 服务（当然 fine-tune 本身收费，且 fine-tune 后的模型调用费用比 base model 要贵得多）。本次更新，主要是增加了 GPT-3.5（用于 NLP）和 Whisper（用于 audio to text）的 API：</p>
+		<p>此前 GPT-3 也早已开放 API，我在麦克船长的博客 MikeCaptain.com 中已介绍过，当时在 NLP 方面能使用的 API 主要是。原文链接：http://www.mikecaptain.com/2023/01/24/openai-official-doc/ 。此前 OpenAI API 就已经有了不同功能和价位的多种模型，还提供了在基础模型上的 fine-tune 服务（当然 fine-tune 本身收费，且 fine-tune 后的模型调用费用比 base model 要贵得多）。本次更新，主要是增加了 GPT-3.5（用于 NLP）和 Whisper（用于 audio to text）的 API：</p>
 
 <p><img src="/img/src/2023/03/captain-chatgpt-api-1.png" alt="" /></p>
 
