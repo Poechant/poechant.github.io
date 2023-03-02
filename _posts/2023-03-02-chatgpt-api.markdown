@@ -13,7 +13,7 @@ author: 麦克船长
 
 此前 GPT-3 也早已开放 API，我在麦克船长的博客 MikeCaptain.com 中已介绍过，当时在 NLP 方面能使用的 API 主要是。原文链接：http://www.mikecaptain.com/2023/01/24/openai-official-doc/ 。此前 OpenAI API 就已经有了不同功能和价位的多种模型，还提供了在基础模型上的 fine-tune 服务（当然 fine-tune 本身收费，且 fine-tune 后的模型调用费用比 base model 要贵得多）。本次更新，主要是增加了 GPT-3.5（用于 NLP）和 Whisper（用于 audio to text）的 API：
 
-![](/img/src/2023/03/captain-chatgpt-api-1.png)
+![](/img/src/2023/03/captain-chatgpt-api-1.png){: width="720"}
 
 ChatGPT 和 Whisper 模型现已在 OpenAI 的 API 上可用，通过一系列系统范围的优化，自去年 12 月以来，OpenAI 已将 ChatGPT 的成本降低了 90%；不仅仅是 GPT-3.5，开发人员现在可以在 API 中使用 OpenAI 的开源 Whisper large-v2 模型。
 
@@ -23,11 +23,11 @@ ChatGPT 和 Whisper 模型现已在 OpenAI 的 API 上可用，通过一系列�
 
 GPT-3.5 模型可以理解并生成自然语言或代码，其最强大的是 `gpt-3.5-turbo`，这可是之前的库里没有的。它针对聊天进行了优化，但也适用于传统的完成任务。GPT 开放模型里原本只有 GPT-3 系列，包括如下系列模型：
 
-![](/img/src/2023/03/captain-chatgpt-api-3.png)
+![](/img/src/2023/03/captain-chatgpt-api-3.png){: width="720"}
 
 而这次更新后，增加了 GPT-3.5 系列，包括 5 款模型：
 
-![](/img/src/2023/03/captain-chatgpt-api-2.png)
+![](/img/src/2023/03/captain-chatgpt-api-2.png){: width="720"}
 
 OpenAI 建议在试验时使用 `gpt-3.5-turbo`，因为它会产生最佳结果。一旦跑起来都一切正常，可以尝试其他模型，看看是否能以更低的延迟或成本获得相同的结果，这才更划算。
 
