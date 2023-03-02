@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AI 应用第一次大爆发来了：ChatGPT API 官方文档入门解读
+title: AI 应用第一次大爆发来了：一文入门 ChatGPT 官方 API 文档解读
 date: 2023-03-02 08:54:13 +0800
 categories: ai
 tags: [AI, 人工智能, NLP, 自然语言处理, 神经网络, LLM, 大型语言模型, 语言模型, 大模型]
@@ -10,6 +10,10 @@ katex: True
 location: 杭州
 author: 麦克船长
 ---
+
+**本文目录**
+* TOC
+{:toc}
 
 此前 GPT-3 也早已开放 API，我在麦克船长的博客 MikeCaptain.com 中已介绍过，当时在 NLP 方面能使用的 API 主要是。原文链接：http://www.mikecaptain.com/2023/01/24/openai-official-doc/ 。此前 OpenAI API 就已经有了不同功能和价位的多种模型，还提供了在基础模型上的 fine-tune 服务（当然 fine-tune 本身收费，且 fine-tune 后的模型调用费用比 base model 要贵得多）。本次更新，主要是增加了 GPT-3.5（用于 NLP）和 Whisper（用于 audio to text）的 API：
 
