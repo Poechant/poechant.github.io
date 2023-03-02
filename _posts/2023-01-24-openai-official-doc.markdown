@@ -198,7 +198,7 @@ def extract_html(text):
 
 关于 token：我们理解和处理文本，是把文本先打碎成 token。以英文文本为例，token 可以是单词，也可以词根（一些字母组合），比如单词「hamburger」可能会被打碎成「ham」、「bur」、「ger」这几个 tokens。再比如「pear」这个单词，可能就会单独作为一个 token 不再打碎了。还有些 token 可能会以「空格」开头，比如「 hello」、「 bye」。一个大概的经验是，通常英文文本里 1 token 有 4 个字母或者 0.75 个单词。使用时的一个限制是，最好你的提示（prompt）或生成内容，不要超过 2048 个 tokens，大概相当于 1500 个单词。
 
-关于 model：目前 OpenAI 有这些基于 GPT-3 的基础模型 Davinci、Curie、Babbage、Ada 开放 API，另外 Codex 系列是 GPT-3 的后代，是用「自然语言 + 代码」训练的。
+关于 model：目前 OpenAI 有基于 GPT-3.5 的基础模型 Turbo 和这些基于 GPT-3 的基础模型 Davinci、Curie、Babbage、Ada 开放 API，另外 Codex 系列是 GPT-3 的后代，是用「自然语言 + 代码」训练的。
 
 ### 2、模型
 
@@ -213,6 +213,7 @@ def extract_html(text):
 * 基础模型使用 0.000**5** USD/1K tokens，Babbage
 * 基础模型使用 0.00**20** USD/1K tokens，Curie
 * 基础模型使用 0.0**200** USD/1K tokens，Davinci
+* 呼出模型使用 0.00**20** USD/1K tokens，Turbo
 
 从定价上看，Ada 和 Babbage 基本没有差多少。另外命名上，可以看出 OpenAI 有意地给他们取了 ABCD 开头的名字。另外你也可以 finetune 你自己的模型，对于 fine-tuned models 如下收费：
 
@@ -220,6 +221,7 @@ def extract_html(text):
 * Finetune 训练费 0.000**6** USD/1K tokens，使用费 0.00**24** USD/1K tokens，Babbage
 * Finetune 训练费 0.00**30** USD/1K tokens，使用费 0.0**120** USD/1K tokens，Curie
 * Finetune 训练费 0.0**300** USD/1K tokens，使用费 0.**1200** USD/1K tokens，Davinci
+* 暂未提供 Turbo 的 finetune。
 
 在 OpenAI 的 PlayGround 你可以试试：[https://platform.openai.com/playground/p/default-chat](https://platform.openai.com/playground/p/default-chat) 。
 
@@ -395,7 +397,7 @@ API 官网给出我们如下的返回结果示例：
 
 显然，对于使用 OpenAI 生成内容的场景下如果需要用到 Moderation，则是免费调用的。如果你不是对 OpenAI 的输入 & 生成场景，而是自己的其他内容想白嫖 Moderation API 是不可能的。但是我们也注意到，这里其实没有整治敏感的分类，因为 OpenAI 没有考虑具体的使用者所处的政体或政治环境，而且这些尺度是比较容易变化的，并且有一些可能并不是普适性的理念，因此某些国家的使用者要额外配套自己的内容审查能力。
 
-## 四、精调（Fine-tuning）
+## 四、微调（Fine-tuning）
 
 **Few-shot learning 是什么？**：GPT-3 用了互联网上的海量文本数据训练，所以当你给少量示例（a promopt with just a few examples）时，GPT-3 会从「直觉上」知道你大概是想要解决什么任务，然后给出一些大概齐的反馈内容作为 completion，这通常就被叫做「few-shot learning」或者「few-shot prompting」。
 
