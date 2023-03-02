@@ -410,7 +410,7 @@
 
 			<article id="post-page">
 	<h2>你可能已经听说 GPT-3，但是你也不能不知道 BERT —— 跟我一起用 BERT 跑个小用例</h2>		
-	<time datetime="2022-12-17T15:08:01+00:00" class="by-line">17 Dec 2022, 杭州 | 麦克船长 | 总计 7275 字</time>
+	<time datetime="2022-12-17T15:08:01+00:00" class="by-line">17 Dec 2022, 杭州 | 麦克船长 | 总计 7299 字</time>
 	<div class="content">
 		<p><strong>本文目录</strong></p>
 <ul id="markdown-toc">
@@ -419,6 +419,7 @@
       <li><a href="#1安装-anaconda-来为部署-bert-做环境准备" id="markdown-toc-1安装-anaconda-来为部署-bert-做环境准备">1、安装 Anaconda 来为部署 BERT 做环境准备</a></li>
       <li><a href="#2安装-bert-所需要的各种依赖" id="markdown-toc-2安装-bert-所需要的各种依赖">2、安装 BERT 所需要的各种依赖</a></li>
       <li><a href="#3下载一个预训练pre-train过的-bert-模型" id="markdown-toc-3下载一个预训练pre-train过的-bert-模型">3、下载一个预训练（Pre-Train）过的 BERT 模型</a></li>
+      <li><a href="#4安装-bert-的服务端和客户端" id="markdown-toc-4安装-bert-的服务端和客户端">4、安装 BERT 的服务端和客户端</a></li>
       <li><a href="#5启动-bert-服务端" id="markdown-toc-5启动-bert-服务端">5、启动 BERT 服务端</a></li>
       <li><a href="#6在-pycharm-中使用-conda-的环境" id="markdown-toc-6在-pycharm-中使用-conda-的环境">6、在 PyCharm 中使用 Conda 的环境</a></li>
       <li><a href="#7编写程序实现-bert-客户端" id="markdown-toc-7编写程序实现-bert-客户端">7、编写程序实现 BERT 客户端</a></li>
@@ -518,7 +519,7 @@ conda list
   <li>RoBERTa-wwm-ext：这是由清华大学自然语言处理实验室提供的中文 BERT 模型，在多种中文 NLP 任务中表现良好。你可以从 这里下载这个模型。</li>
 </ul>
 
-<p>4、安装 BERT 的服务端和客户端</p>
+<h4 id="4安装-bert-的服务端和客户端">4、安装 BERT 的服务端和客户端</h4>
 
 <p>这里我们使用 bert-as-service，bert-as-service 是一种将 BERT 模型部署为服务的方式。该工具使用 TensorFlow Serving 来运行 BERT 模型，并允许通过 REST API 进行调用。根据 bert-as-service 的文档，它已经在 TensorFlow 1.14.0 上测试过。</p>
 

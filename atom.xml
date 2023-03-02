@@ -4,12 +4,22 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-02-28T19:25:39+00:00</updated>
+ <updated>2023-03-02T07:01:49+00:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
    <email>zhongchao.ustc@gmail.com</email>
  </author>
+
+ 
+
+ <entry>
+   <title>AI 应用第一次大爆发来了：ChatGPT API 官方文档入门解读</title>
+   <link href="https://www.mikecaptain.com/2023/03/02/chatgpt-api/"/>
+   <id>https://www.mikecaptain.com/2023/03/02/chatgpt-api</id>
+   <updated>2023-03-02T00:54:13+00:00</updated>
+   <content type="html">&lt;p&gt;此前 GPT-3 也早已开放 API，我在麦克船长的博客 MikeCaptain.com 中已介绍过，当时在 NLP 方面能使用的 API 主要是。原文链接：http://www.mikecaptain.com/2023/01/24/openai-official-doc/ 。此前 OpenAI API 就已经有了不同功能和价位的多种模型，还提供了在基础模型上的 fine-tune 服务（当然 fine-tune 本身收费，且 fine-tune 后的模型调用费用比 base model 要贵得多）。本次更新，主要是增加了 GPT-3.5（用于 NLP）和 Whisper（用于 audio to text）的 API：&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/img/src/2023/03/captain-chatgpt-api-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;ChatGPT 和 Whisper 模型现已在 OpenAI 的 API 上可用，通过一系列系统范围的优化，自去年 12 月以来，OpenAI 已将 ChatGPT 的成本降低了 90%；不仅仅是 GPT-3.5，开发人员现在可以在 API...</content>
+ </entry>
 
  
 
@@ -120,16 +130,6 @@
    <id>https://www.mikecaptain.com/2023/01/11/generative-ai-revolution-in-games</id>
    <updated>2023-01-11T18:33:49+00:00</updated>
    <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-12-generative-ai-revolution-in-games-0.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;作者 James Gwertzman and Jack Soslow&lt;/li&gt; &lt;li&gt;[译] AI &amp;amp; 麦克船长&lt;/li&gt; &lt;li&gt;本文授权首发媒体「锐察力」，微信公众号 ID @ruichali&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#什么是生成式人工智能&quot; id=&quot;markdown-toc-什么是生成式人工智能&quot;&gt;什么是生成式人工智能&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#part-1观察和预测&quot; id=&quot;markdown-toc-part-1观察和预测&quot;&gt;Part 1、观察和预测&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#一假设&quot; id=&quot;markdown-toc-一假设&quot;&gt;一、假设&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#1通用人工智能的研究量将继续增长创造出更有效的技术&quot; id=&quot;markdown-toc-1通用人工智能的研究量将继续增长创造出更有效的技术&quot;&gt;1、通用人工智能的研究量将继续增长，创造出更有效的技术&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#2在所有娱乐中游戏将受生成人工智能的影响最大&quot; id=&quot;markdown-toc-2在所有娱乐中游戏将受生成人工智能的影响最大&quot;&gt;2、在所有娱乐中，游戏将受生成人工智能的影响最大&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#3游戏制作中涉及的每一项资产都会有一个生成式ai模型&quot; id=&quot;markdown-toc-3游戏制作中涉及的每一项资产都会有一个生成式ai模型&quot;&gt;3、游戏制作中涉及的每一项资产都会有一个生成式AI模型&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#4内容价格将大幅下降在某些情况下实际上会降为零&quot; id=&quot;markdown-toc-4内容价格将大幅下降在某些情况下实际上会降为零&quot;&gt;4、内容价格将大幅下降，在某些情况下实际上会降为零。&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#5我们还处于这场革命的初级阶段很多实践还需要完善&quot; id=&quot;markdown-toc-5我们还处于这场革命的初级阶段很多实践还需要完善&quot;&gt;5、我们还处于这场革命的初级阶段，很多实践还需要完善&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt;...</content>
- </entry>
-
- 
-
- <entry>
-   <title>【摘录】通向 AGI 之路：大型语言模型（LLM）技术精要</title>
-   <link href="https://www.mikecaptain.com/2023/01/08/agi-llm-tech/"/>
-   <id>https://www.mikecaptain.com/2023/01/08/agi-llm-tech</id>
-   <updated>2023-01-08T18:13:09+00:00</updated>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/backup/2023-01-09-agi-llm-tech-1.jpeg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt; &lt;p&gt;原文链接：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/597586623&quot;&gt;https://zhuanlan.zhihu.com/p/597586623&lt;/a&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#一潮流之巅nlp-研究范式的转换&quot; id=&quot;markdown-toc-一潮流之巅nlp-研究范式的转换&quot;&gt;一、潮流之巅：NLP 研究范式的转换&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#1范式转换-10从深度学习到两阶段预训练模型&quot; id=&quot;markdown-toc-1范式转换-10从深度学习到两阶段预训练模型&quot;&gt;1、范式转换 1.0：从深度学习到两阶段预训练模型&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#11影响一中间任务的消亡&quot; id=&quot;markdown-toc-11影响一中间任务的消亡&quot;&gt;1.1、影响一：中间任务的消亡&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#12影响二不同研究方向技术路线的统一&quot; id=&quot;markdown-toc-12影响二不同研究方向技术路线的统一&quot;&gt;1.2、影响二：不同研究方向技术路线的统一&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#2范式转换-20-从预训练模型走向通用人工智能-agiartificial-general-intelligence&quot; id=&quot;markdown-toc-2范式转换-20-从预训练模型走向通用人工智能-agiartificial-general-intelligence&quot;&gt;2、范式转换 2.0: 从预训练模型走向通用人工智能 （AGI，Artificial General Intelligence）&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#21过渡期以-gpt-30-为代表的自回归语言模型--prompting模式占据统治地位&quot; id=&quot;markdown-toc-21过渡期以-gpt-30-为代表的自回归语言模型--prompting模式占据统治地位&quot;&gt;2.1、过渡期：以 GPT 3.0 为代表的「自回归语言模型 + Prompting」模式占据统治地位&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#影响一让-llm-适配人的新型交互接口&quot; id=&quot;markdown-toc-影响一让-llm-适配人的新型交互接口&quot;&gt;影响一：让 LLM...</content>
  </entry>
 
  

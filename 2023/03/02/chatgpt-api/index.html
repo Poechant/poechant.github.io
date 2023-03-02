@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>AI 应用第一次大爆发来了：ChatGPT API 官方文档入门解读</title>
+  	<meta name="description" content="开发人员现在可以通过 API 将 ChatGPT 和 Whisper 模型集成到他们的应用程序和产品中。">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+  	<!-- KaTeX -->
+  	<link rel="stylesheet" href="/assets/plugins/katex.0.11.1/katex.min.css">
+  	
+
+  	
+  		<script async src="https://www.googletagmanager.com/gtag/js?id=G-CH4708X4R5"></script>
+  		<script>
+    		window.dataLayer = window.dataLayer || [];
+    		function gtag(){dataLayer.push(arguments);}
+    		gtag('js', new Date());
+
+    		gtag('config', 'G-CH4708X4R5');
+  		</script>
+	
+
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/booklist/" title="读书行路">读书行路</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>AI 应用第一次大爆发来了：ChatGPT API 官方文档入门解读</h2>		
+	<time datetime="2023-03-02T00:54:13+00:00" class="by-line">02 Mar 2023, 杭州 | 麦克船长 | 总计 19589 字</time>
+	<div class="content">
+		<p>此前 GPT-3 也早已开放 API，我在麦克船长的博客 MikeCaptain.com 中已介绍过，当时在 NLP 方面能使用的 API 主要是。原文链接：http://www.mikecaptain.com/2023/01/24/openai-official-doc/ 。此前 OpenAI API 就已经有了不同功能和价位的多种模型，还提供了在基础模型上的 fine-tune 服务（当然 fine-tune 本身收费，且 fine-tune 后的模型调用费用比 base model 要贵得多）。本次更新，主要是增加了 GPT-3.5（用于 NLP）和 Whisper（用于 audio to text）的 API：</p>
+
+<p><img src="/img/src/2023/03/captain-chatgpt-api-1.png" alt="" /></p>
+
+<p>ChatGPT 和 Whisper 模型现已在 OpenAI 的 API 上可用，通过一系列系统范围的优化，自去年 12 月以来，OpenAI 已将 ChatGPT 的成本降低了 90%；不仅仅是 GPT-3.5，开发人员现在可以在 API 中使用 OpenAI 的开源 Whisper large-v2 模型。</p>
+
+<h2 id="一这次开放-chatgpt-和-whisper-的-api-都有什么基本看点">一、这次开放 ChatGPT 和 Whisper 的 API 都有什么基本看点</h2>
+
+<h3 id="1openai-开放模型库里新增-gpt-35-模型">1、OpenAI 开放模型库里新增 GPT-3.5 模型</h3>
+
+<p>GPT-3.5 模型可以理解并生成自然语言或代码，其最强大的是 <code class="language-plaintext highlighter-rouge">gpt-3.5-turbo</code>，这可是之前的库里没有的。它针对聊天进行了优化，但也适用于传统的完成任务。GPT 开放模型里原本只有 GPT-3 系列，包括如下系列模型：</p>
+
+<p><img src="/img/src/2023/03/captain-chatgpt-api-3.png" alt="" /></p>
+
+<p>而这次更新后，增加了 GPT-3.5 系列，包括 5 款模型：</p>
+
+<p><img src="/img/src/2023/03/captain-chatgpt-api-2.png" alt="" /></p>
+
+<p>OpenAI 建议在试验时使用 <code class="language-plaintext highlighter-rouge">gpt-3.5-turbo</code>，因为它会产生最佳结果。一旦跑起来都一切正常，可以尝试其他模型，看看是否能以更低的延迟或成本获得相同的结果，这才更划算。</p>
+
+<p>可能此前的 GPT-3 期间开放的 API 大部分人也还没来得及了解，下面补充一些基本概念。</p>
+
+<h3 id="2openai-api-的一些基础概念">2、OpenAI API 的一些基础概念</h3>
+
+<p><strong>关于 prompt 和 completion</strong>：OpenAI 提到一个理念：「设计提示语，就相当于在用一些指令和少量例子给模型编程」。另外 OpenAI 还强调了在目标任务上的区别，就是 OpenAI 的 NLP 模型与其他 NLP 模型很大的一个区别是，它不是设计用来解决单一类型任务的，而是可以解决几乎各种类型的 NLP 任务，包括但不限于文本生成（content generation）、代码生成（code generation）、总结（summarization）、扩写（expansion）、对话（conversation）、创意写作（creative wrting）、风格转换（style transfer）等。</p>
+
+<p><strong>关于 token</strong>：我们理解和处理文本，是把文本先打碎成 token。以英文文本为例，token 可以是单词，也可以词根（一些字母组合），比如单词「hamburger」可能会被打碎成「ham」、「bur」、「ger」这几个 tokens。再比如「pear」这个单词，可能就会单独作为一个 token 不再打碎了。还有些 token 可能会以「空格」开头，比如「 hello」、「 bye」。一个大概的经验是，通常英文文本里 1 token 有 4 个字母或者 0.75 个单词。使用时的一个限制是，最好你的提示（prompt）或生成内容，不要超过 2048 个 tokens，大概相当于 1500 个单词。</p>
+
+<p><strong>关于 model</strong>：目前 OpenAI 有基于 GPT-3.5 的基础模型 Turbo 和这些基于 GPT-3 的基础模型 Davinci、Curie、Babbage、Ada 开放 API，另外 Codex 系列是 GPT-3 的后代，是用「自然语言 + 代码」训练的。</p>
+
+<p>虽然新的 <code class="language-plaintext highlighter-rouge">gpt-3.5-turbo</code> 模型针对聊天进行了优化，但它也非常适合传统的完成任务。原始 GPT-3.5 模型针对原来就开放的 API 文本补全（text completion）也进行了优化。我们用于 create embeddings 和 edit text 的 API 都使用了它们各自针对性的模型。</p>
+
+<h3 id="3模型">3、模型</h3>
+
+<p>OpenAI 今天发布的 ChatGPT 模型系列 GPT-3.5-turbo 与 ChatGPT 产品中使用的模型相同。它的价格为每 1k tokens 0.002 美元，比 OpenAI 现有的 GPT-3.5 模型便宜 10 倍。即使对于许多非聊天用例，它也是 OpenAI 的最佳模型 —— 如果你之前就用了 text-davinci-003，那么迁移到 gpt-3.5-turbo 时只需要对他们的提示进行少量调整。</p>
+
+<h4 id="31turbo">3.1、Turbo</h4>
+
+<p>Turbo 与支持 ChatGPT 的模型系列相同，它针对对话式聊天输入和输出进行了优化，但与 Davinci 模型系列相比，它在完成方面同样出色。在 ChatGPT 中可以很好地完成的任何用例都应该在 API 中与 Turbo 模型系列一起很好地执行。Turbo 模型家族也是第一个像 ChatGPT 一样接收定期模型更新的模型。</p>
+
+<p><strong>适合：对话、文本生成</strong>。</p>
+
+<h4 id="32davinci">3.2、Davinci</h4>
+
+<p>Davinci 在 GPT-3 中就已经存在，是最有能力的模型系列，可以执行其他模型（Ada、Curie 和 Babbage）可以执行的任何任务，而且通常只需要很少的 instruction。 对于需要对内容有大量理解的应用程序，例如针对特定受众的 summarization 和创意内容生成，Davinci 将产生最佳结果。 这些增加的功能需要更多的计算资源，因此 Davinci 每次 API 调用更贵，并且不如其他模型那么快。</p>
+
+<p>Davinci 的另一个亮点是理解文本的意图。Davinci 擅长解决多种逻辑问题和解释人物的动机。 达芬奇已经能够解决一些涉及因果关系的最具挑战性的人工智能问题。</p>
+
+<p><strong>适合：复杂的意图、因果分析、Summarization for Audience</strong>。</p>
+
+<h4 id="33curie">3.3、Curie</h4>
+
+<p>Curie 在 GPT-3 中就已经存在，也非常强大，速度也比较快。 虽然 Davinci 在分析复杂文本方面更强大，但 Curie 能够胜任许多细微的任务，例如情感分类和摘要。 Curie 还非常擅长回答问题和执行问答以及作为通用服务聊天机器人。</p>
+
+<p><strong>适合：机器翻译、复杂分类任务、情感分析、Summarization</strong>。</p>
+
+<h4 id="34babbage">3.4、Babbage</h4>
+
+<p>同样是 GPT-3 里就存在的。Babbage 可以执行简单的任务，例如简单的分类。在语义搜索方面，它也非常有能力对文档与搜索查询的匹配程度进行排名。</p>
+
+<p><strong>适合：适度分类、语义搜索分类</strong>。</p>
+
+<h4 id="35ada">3.5、Ada</h4>
+
+<p>也是 GPT-3 时期就有的。Ada 通常是最快的模型，可以执行解析文本、地址更正和不需要太多细微差别的某些分类任务等任务。 Ada 的性能通常可以通过提供更多上下文来提高。</p>
+
+<p><strong>适合：解析文本、简单分类、地址修正、关键词</strong>。</p>
+
+<p>需要注意的是：由像 Ada 这样更快的模型执行的任何任务都可以由像 Curie 或 Davinci 这样更强大的模型执行。</p>
+
+<h3 id="4具体模型按-gpt-35-还是-gpt-3-划分看下">4、具体模型：按 GPT-3.5 还是 GPT-3 划分看下</h3>
+
+<h4 id="41关于-gpt-35">4.1、关于 GPT-3.5</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">gpt-3.5-turbo</code>：功能最强大的 GPT-3.5 模型并针对聊天进行了优化，成本仅为 <code class="language-plaintext highlighter-rouge">text-davinci-003</code> 的 1/10。将使用我们最新的模型迭代进行更新。</li>
+  <li><code class="language-plaintext highlighter-rouge">gpt-3.5-turbo-0301</code>：2023 年 3 月 1 日的 <code class="language-plaintext highlighter-rouge">gpt-3.5-turbo</code> 快照。与 <code class="language-plaintext highlighter-rouge">gpt-3.5-turbo</code> 不同，此模型不会收到更新，并且仅在 2023 年 6 月 1 日结束的三个月内提供支持。</li>
+  <li><code class="language-plaintext highlighter-rouge">text-davinci-003</code>：此前 GPT-3 期间就有的 Davinci 模型，这次直接升级到了 GPT-3.5，与 GPT-3 阶段一样，仍然是最大请求 4000 tokens，同样训练数据 up to 2021 年 6 月，能做几乎所有 NLP 任务。</li>
+  <li><code class="language-plaintext highlighter-rouge">text-davinci-002</code>：与 <code class="language-plaintext highlighter-rouge">text-davinci-003</code> 类似情况，这次直接升级到了 GPT-3.5，专门为了代码生成任务优化的模型。与 GPT-3 阶段一样，仍然是最大请求 4000 tokens；训练数据也没有变，依然是 up to 2021 年 6 月。</li>
+</ul>
+
+<h4 id="42关于-gpt-3">4.2、关于 GPT-3</h4>
+
+<p>以下模型不再由 GPT-3 提供支持：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">text-davinci-003</code>：此前在 GPT-3 接口中存在，本次更新后由 GPT-3.5 支持提供了，见上一段。</li>
+</ul>
+
+<p>GPT-3 目前可用的模型包括下面这些，与 InstructGPT 背后的模型是一样的，它们的最大请求都是 2048 tokens，训练数据也都是 up to 2019 年 10 月：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">text-curie-001</code>：比 davinci 要弱一点，但是速度更快、更便宜。</li>
+  <li><code class="language-plaintext highlighter-rouge">text-babbage-001</code>：一些比较直接的任务（straightforward tasks），比 <code class="language-plaintext highlighter-rouge">text-curie-001</code> 更快、更便宜。</li>
+  <li><code class="language-plaintext highlighter-rouge">text-ada-001</code>：一些非常简单的任务，这些模型里最快、最便宜的。</li>
+  <li><code class="language-plaintext highlighter-rouge">davinci</code>：目前最强的 GPT-3 模型，任何其他模型能做的任务，<code class="language-plaintext highlighter-rouge">davinci</code> 都可以做。</li>
+  <li><code class="language-plaintext highlighter-rouge">curie</code>：就是 <code class="language-plaintext highlighter-rouge">text-curie-001</code>。</li>
+  <li><code class="language-plaintext highlighter-rouge">babbage</code>：就是 <code class="language-plaintext highlighter-rouge">text-babbage-001</code>。</li>
+  <li><code class="language-plaintext highlighter-rouge">ada</code>：就是 <code class="language-plaintext highlighter-rouge">text-ada-001</code>。</li>
+</ul>
+
+<h3 id="5定价">5、定价</h3>
+
+<p>这些模型根据输入的 token 数量做的如下定价，前四个是 GPT-3 阶段就存在的，也并未因本次 GPT-3.5 API 发布而调价：</p>
+
+<ul>
+  <li>基础模型使用 0.000<strong>4</strong> USD/1K tokens，Ada</li>
+  <li>基础模型使用 0.000<strong>5</strong> USD/1K tokens，Babbage</li>
+  <li>基础模型使用 0.00<strong>20</strong> USD/1K tokens，Curie</li>
+  <li>基础模型使用 0.0<strong>200</strong> USD/1K tokens，Davinci</li>
+  <li>基础模型使用 0.00<strong>20</strong> USD/1K tokens，Turbo，支持 Chat API</li>
+</ul>
+
+<p>从定价上看，Ada 和 Babbage 基本没有差多少。另外命名上，可以看出 OpenAI 有意地给他们取了 ABCD 开头的名字。另外你也可以 finetune 你自己的模型，对于 fine-tuned models 如下收费，并未因本次发布而调价：</p>
+
+<ul>
+  <li>Finetune 训练费 0.000<strong>4</strong> USD/1K tokens，使用费 0.00<strong>16</strong> USD/1K tokens，Ada</li>
+  <li>Finetune 训练费 0.000<strong>6</strong> USD/1K tokens，使用费 0.00<strong>24</strong> USD/1K tokens，Babbage</li>
+  <li>Finetune 训练费 0.00<strong>30</strong> USD/1K tokens，使用费 0.0<strong>120</strong> USD/1K tokens，Curie</li>
+  <li>Finetune 训练费 0.0<strong>300</strong> USD/1K tokens，使用费 0.<strong>1200</strong> USD/1K tokens，Davinci</li>
+  <li>暂未提供 Turbo 的 finetune。</li>
+</ul>
+
+<p>GPT-3.5 的效果，大家应该都在 ChatGPT 上试用过了，这里我也在放一下链接可能有一些 late massive 朋友还没有用过：<a href="https://chat.openai.com/chat">https://chat.openai.com/chat</a> 。</p>
+
+<p><img src="/img/src/2023/03/captain-chatgpt-api-4.png" alt="" /></p>
+
+<p>在 OpenAI 的基于 GPT-3 的 PlayGround 你可以试试：<a href="https://platform.openai.com/playground/p/default-chat">https://platform.openai.com/playground/p/default-chat</a> 。</p>
+
+<p><img src="/img/src/2023/2023-01-24-openai-api.jpg" alt="image" /></p>
+
+<h3 id="6专用实例">6、专用实例</h3>
+
+<p>说的就是之前爆出消息的 Foundry，也都是跑在微软的 Azure 上的。OpenAI 现在还为希望更深入控制特定型号版本和系统性能的用户提供专用实例。 默认情况下，开放的 API 都是在所有客户共享的基础设施上的模型中跑的，如果有额外需求得额外付费。
+开发人员可以完全控制实例的负载（更高的负载会提高吞吐量，当然这也会让对每个 request 的处理慢下来）、启用更长 context 限制等功能选项，以及保存模型快照的能力。</p>
+
+<p>对于每天要跑 4.5 亿以上 tokens 的开发者来说，用专用实例更划算。并且针对专用实例，开发者可以自己决定用什么硬件配置，这个就属于 OpenAI 的中大客户销售策略了，具体可以看 OpenAI 官网的销售联系页面：https://openai.com/contact-sales/ 。</p>
+
+<h3 id="7whisper每分钟-06-美分-的语音识别翻译服务-api">7、Whisper：每分钟 0.6 美分 的语音识别/翻译服务 API</h3>
+
+<p>Whisper 是 OpenAI 于 2022 年 9 月开源的语音转文本模型，开发者社区反馈还不错，但也挺麻烦的。今天开始，OpenAI 现在已经通过 OpenAI 的 API 提供了 large-v2 模型，它提供了方便的按需访问，价格为 <strong>0.006 美元/分钟</strong>。</p>
+
+<p>Whisper API 可通过 OpenAI 的 <code class="language-plaintext highlighter-rouge">transcriptions</code>（以源语言转录）或 <code class="language-plaintext highlighter-rouge">translations</code>（转录成英语）端点使用，并接受多种格式（m4a、mp3、mp4、mpeg、mpga、wav、webm）。</p>
+
+<h3 id="8开发者可能关注的几个问题">8、开发者可能关注的几个问题</h3>
+
+<p><strong>Q1：之前的模型都提供了 <code class="language-plaintext highlighter-rouge">fine-tune</code>，这次开放的 <code class="language-plaintext highlighter-rouge">gpt-3.5-turbo</code> 可以 fine-tune 吗？</strong></p>
+
+<p>A1：还不行，到目前为止，你还只能 fine-tune GPT-3 模型。</p>
+
+<p><strong>Q2：OpenAI 会把开发者调用 API 时发送的数据存下来吗？</strong></p>
+
+<p>从 2023 年 3 月 1 日开始，OpenAI 会把开发者调用 API 时发送的数据保留 30 天，但 OpenAI 声称不会使用开发者通过 API 发送的数据来改进模型（Who knows）。具体的政策，可以从 OpenAI 官网了解更多，这里是他们的数据使用政策链接：https://platform.openai.com/docs/data-usage-policies 。</p>
+
+<p><br /></p>
+
+<h2 id="二主要-api-介绍及代码示例">二、主要 API 介绍及代码示例</h2>
+
+<p>安装 OpenAI 的 python 库，参考 <code class="language-plaintext highlighter-rouge">https://anaconda.org/conda-forge/openai</code>：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@local <span class="nv">$ </span>conda <span class="nb">install</span> <span class="nt">-c</span> conda-forge openai
+</code></pre></div></div>
+
+<p>在 <code class="language-plaintext highlighter-rouge">https://platform.openai.com/account/api-keys</code> 创建自己的 API。完成这两步后就可以编写代码尝试一下：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">openai</span>
+
+<span class="n">openai</span><span class="p">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">"OPENAI_API_KEY"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">openai</span><span class="p">.</span><span class="n">Model</span><span class="p">.</span><span class="nb">list</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>会打印出 OpenAI 的各个 models 的一些信息、权限等等。</p>
+
+<h3 id="1一起看看-chat-的-api">1、一起看看 Chat 的 API</h3>
+
+<h4 id="11chat-的-rest-api">1.1、Chat 的 REST API</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl https://api.openai.com/v1/chat/completions
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer </span><span class="nv">$OPENAI_API_KEY</span><span class="s2">"</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-d</span> <span class="s1">'{
+  "model": "gpt-3.5-turbo",
+  "messages": [{"role": "user", "content": "What is the OpenAI mission?"}]
+}'</span>
+</code></pre></div></div>
+
+<p>相应的返回结果：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+  <span class="s2">"id"</span>: <span class="s2">"chatcmpl-6p5FEv1JHictSSnDZsGU4KvbuBsbu"</span>,
+  <span class="s2">"object"</span>: <span class="s2">"messages"</span>,
+  <span class="s2">"created"</span>: 1677693600,
+  <span class="s2">"model"</span>: <span class="s2">"gpt-3.5-turbo"</span>,
+  <span class="s2">"choices"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"index"</span>: 0,
+      <span class="s2">"finish_reason"</span>: <span class="s2">"stop"</span>,
+      <span class="s2">"messages"</span>: <span class="o">[</span>
+        <span class="o">{</span>
+          <span class="s2">"role"</span>: <span class="s2">"assistant"</span>,
+          <span class="s2">"content"</span>: <span class="s2">"OpenAI's mission is to ensure that artificial general intelligence benefits all of humanity."</span>
+        <span class="o">}</span>
+      <span class="o">]</span>
+    <span class="o">}</span>
+  <span class="o">]</span>,
+  <span class="s2">"usage"</span>: <span class="o">{</span>
+    <span class="s2">"prompt_tokens"</span>: 20,
+    <span class="s2">"completion_tokens"</span>: 18,
+    <span class="s2">"total_tokens"</span>: 38
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="12chat-的-python-api">1.2、Chat 的 Python API</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">openai</span>
+
+<span class="n">completion</span> <span class="o">=</span> <span class="n">openai</span><span class="p">.</span><span class="n">ChatCompletion</span><span class="p">.</span><span class="n">create</span><span class="p">(</span>
+  <span class="n">model</span><span class="o">=</span><span class="s">"gpt-3.5-turbo"</span><span class="p">,</span> 
+  <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s">"role"</span><span class="p">:</span> <span class="s">"user"</span><span class="p">,</span> <span class="s">"content"</span><span class="p">:</span> <span class="s">"Tell the world about the ChatGPT API in the style of a pirate."</span><span class="p">}]</span>
+<span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">completion</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="2whisper-api">2、Whisper API</h3>
+
+<h3 id="21whisper-的-rest-api">2.1、Whisper 的 REST API</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl https://api.openai.com/v1/audio/transcriptions <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer </span><span class="nv">$OPENAI_API_KEY</span><span class="s2">"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: multipart/form-data"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="nv">model</span><span class="o">=</span><span class="s2">"whisper-1"</span> <span class="se">\</span>
+  <span class="nt">-F</span> <span class="nv">file</span><span class="o">=</span><span class="s2">"@/path/to/file/openai.mp3"</span>
+</code></pre></div></div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+  <span class="s2">"text"</span>: <span class="s2">"Imagine the wildest idea that you've ever had, and you're curious about how it might scale to something that's a 100, a 1,000 times bigger..."</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="22whisper-的-python-api">2.2、Whisper 的 Python API</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">openai</span>
+
+<span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">"/path/to/file/openai.mp3"</span><span class="p">,</span> <span class="s">"rb"</span><span class="p">)</span>
+<span class="n">transcription</span> <span class="o">=</span> <span class="n">openai</span><span class="p">.</span><span class="n">Audio</span><span class="p">.</span><span class="n">transcribe</span><span class="p">(</span><span class="s">"whisper-1"</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">transcription</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="3text-completion-任务">3、Text Completion 任务</h3>
+
+<p>下面这个例子会简单调用一下 completion，并打印出结果，用了一句需要你自己编写的 prompt：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">openai</span>
+
+<span class="n">openai</span><span class="p">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">"OPENAI_API_KEY"</span><span class="p">)</span>
+<span class="n">text_prompt</span> <span class="o">=</span> <span class="s">"In a shocking turn of events, scientists have discovered that "</span>
+<span class="n">completion</span> <span class="o">=</span> <span class="n">openai</span><span class="p">.</span><span class="n">Completion</span><span class="p">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s">"text-davinci-002"</span><span class="p">,</span>
+    <span class="n">prompt</span><span class="o">=</span><span class="n">text_prompt</span><span class="p">,</span>
+    <span class="n">max_tokens</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">stop</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+    <span class="n">temperature</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">generated_text</span> <span class="o">=</span> <span class="n">completion</span><span class="p">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">text</span>
+<span class="k">print</span><span class="p">(</span><span class="n">generated_text</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>这里用到了最重要的 <code class="language-plaintext highlighter-rouge">openai.Completion</code>，其 <code class="language-plaintext highlighter-rouge">create</code> 函数的参数解释如下：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">model</code>：之前 OpenAI 把它叫「engine」，后来给 deprecated 了，现在都是用 <code class="language-plaintext highlighter-rouge">model</code>，所有的可用 models 可以通过 <code class="language-plaintext highlighter-rouge">open.Model.list()</code> 来查看。</li>
+  <li><code class="language-plaintext highlighter-rouge">prompt</code>：<code class="language-plaintext highlighter-rouge">string</code> 类型，就是输入数据。</li>
+  <li><code class="language-plaintext highlighter-rouge">suffix</code>：<code class="language-plaintext highlighter-rouge">string</code> 类型，生成文本的结束符。</li>
+  <li><code class="language-plaintext highlighter-rouge">max_tokens</code>：<code class="language-plaintext highlighter-rouge">integer</code> 类型，生成文本的最大 tokens 数。</li>
+  <li><code class="language-plaintext highlighter-rouge">n</code>：<code class="language-plaintext highlighter-rouge">integer</code> 类型，表示你要产生几个不同的输出结果。比如设置 3 就会得到 3 个不同的结果，以便您可以从中选择最合适的一个。</li>
+  <li><code class="language-plaintext highlighter-rouge">stop</code>：<code class="language-plaintext highlighter-rouge">string</code> 类型，用于指定模型何时应该停止生成文本。当模型在生成的文本中遇到 stop 字符串时，它将停止生成文本。ChatGPT 推出后迭代过一版增加了「stop generating」就是用的这个参数。</li>
+  <li><code class="language-plaintext highlighter-rouge">temperature</code>：<code class="language-plaintext highlighter-rouge">number</code> 类型，这是 NLP 模型里常见的一个超参数。这个参数，来自于统计热力学的概念，温度越高表示系统的熵越高、混乱度越高、随机性越强，这里的 temperature 也是值越高输出结果的随机性也越高。这样如果 temperature 设置得很低，生成的结果可能更正确，但没有多少创造性和随机性。</li>
+</ul>
+
+<h3 id="4text-edit-任务">4、Text Edit 任务</h3>
+
+<p>Completion 类任务，通俗点理解的话，完形填空、句子补齐、写作文、翻译 …… 都算 Completion，就是无中生有。而对于已经有的内容，做修改，就是 OpenAI 的 API 里的「Edit」类的任务了。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">openai</span>
+
+<span class="n">openai</span><span class="p">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">"OPENAI_API_KEY"</span><span class="p">)</span>
+<span class="n">openai</span><span class="p">.</span><span class="n">Edit</span><span class="p">.</span><span class="n">create</span><span class="p">(</span>
+  <span class="n">model</span><span class="o">=</span><span class="s">"text-davinci-edit-001"</span><span class="p">,</span>
+  <span class="nb">input</span><span class="o">=</span><span class="s">"The qick brown fox jumps over the layz dog."</span><span class="p">,</span>
+  <span class="n">instruction</span><span class="o">=</span><span class="s">"Fix the spelling mistakes"</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>调用 <code class="language-plaintext highlighter-rouge">openai.Edit.create</code>，用 <code class="language-plaintext highlighter-rouge">text-davinci-edit-001</code> 模型，输入一句有拼写错误的英文「The qick brown fox jumps over the layz dog.」，并提供一句指令 instruction「Fix the spelling mistakes」。</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">instruction</code>：要告诉模型如何修改，<strong>其实这句话就是新时代的「programming」了</strong>。</li>
+  <li><code class="language-plaintext highlighter-rouge">temperature</code>：默认是 0，对于纠正拼写类的任务，我们用默认 0 就可以了，不需要什么创造性和随机性。</li>
+</ul>
+
+<h3 id="5顺便提一下基于-dalle-的-image-生成">5、顺便提一下基于 DALL·E 的 Image 生成</h3>
+
+<p>这里也提一下 text2image 的 API，这与文本生成用的 GPT 是不同的，基于 DALL·E 的模型，但是很多开发者可能也是文本、图像、对话混合使用的，所以这里也提一下。</p>
+
+<h4 id="51image-create-任务beta">5.1、Image Create 任务（Beta）</h4>
+
+<p>截止 2023 年年初 1 月份，这个 API 还是 beta，我们看个例子：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">openai</span>
+<span class="n">openai</span><span class="p">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">"OPENAI_API_KEY"</span><span class="p">)</span>
+<span class="n">openai</span><span class="p">.</span><span class="n">Image</span><span class="p">.</span><span class="n">create</span><span class="p">(</span>
+  <span class="n">prompt</span><span class="o">=</span><span class="s">"A cute baby sea otter"</span><span class="p">,</span>
+  <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+  <span class="n">size</span><span class="o">=</span><span class="s">"1024x1024"</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>这也是一个 OpenAI 官网的例子。大家可能看到这里，船长没有指定 model，但是可以想到一定用的是 DALL·E，因为它没有像 GPT-3 一样提供很多版本的选择，所以就不需要传参数了。这个程序就是生成一个 1024x1024 的图片。</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">prompt</code>：就是输入的提示语，返回的数据里，会告诉你生成的图片的 URL.</li>
+  <li><code class="language-plaintext highlighter-rouge">n</code>：是图片结果数量，最多 10，默认 1.</li>
+</ul>
+
+<h4 id="52image-edit-任务">5.2、Image Edit 任务</h4>
+
+<p>给定一个图片，OpenAI 也可以来修改指定区域：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">openai</span>
+<span class="n">openai</span><span class="p">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">"OPENAI_API_KEY"</span><span class="p">)</span>
+<span class="n">openai</span><span class="p">.</span><span class="n">Image</span><span class="p">.</span><span class="n">create_edit</span><span class="p">(</span>
+  <span class="n">image</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s">"otter.png"</span><span class="p">,</span> <span class="s">"rb"</span><span class="p">),</span>
+  <span class="n">mask</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s">"mask.png"</span><span class="p">,</span> <span class="s">"rb"</span><span class="p">),</span>
+  <span class="n">prompt</span><span class="o">=</span><span class="s">"A cute baby sea otter wearing a beret"</span><span class="p">,</span>
+  <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+  <span class="n">size</span><span class="o">=</span><span class="s">"1024x1024"</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">image</code>：这里对输入图片有要求，必须是正方形的！另外不能超过 4MB，还得是 PNG。</li>
+  <li><code class="language-plaintext highlighter-rouge">mask</code>：还可以提供掩码图片（叫什么比较合适，掩图？哈哈）。如果不提供的话，<code class="language-plaintext highlighter-rouge">image</code> 里就必须有透明的部分（必须全透明，即 alpha = 0），那个透明部分就是被用来 Edit 的。如果有 <code class="language-plaintext highlighter-rouge">mask</code> 则透明部分用来做「掩图」来改 <code class="language-plaintext highlighter-rouge">image</code>。</li>
+  <li>同样地，结果图片的 URL 会返回给你。</li>
+</ul>
+
+<h3 id="6code-生成">6、Code 生成</h3>
+
+<p>这里也提一下 Code 生成，也是此前就有的能力，用的是 Codex 的模型。有个沙河可以感受下 JS 代码生成，你可以在这里试用一下：<a href="https://platform.openai.com/codex-javascript-sandbox">https://platform.openai.com/codex-javascript-sandbox</a> 。</p>
+
+<p><img src="/img/src/2023/03/captain-chatgpt-api-5.png" alt="" /></p>
+
+<h3 id="7审查moderation">7、审查（Moderation）</h3>
+
+<p>也不是随本次 GPT-3.5 发布的，我们也大致浏览一下。Moderation 用来审查内容是否符合 OpenAI 的内容政策，快速使用的方式如下：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">response</span> <span class="o">=</span> <span class="n">openai</span><span class="p">.</span><span class="n">Moderation</span><span class="p">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="nb">input</span><span class="o">=</span><span class="s">"Sample text goes here"</span>
+<span class="p">)</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s">"results"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>API 官网给出我们如下的返回结果示例：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="s">"id"</span><span class="p">:</span> <span class="s">"modr-XXXXX"</span><span class="p">,</span>
+  <span class="s">"model"</span><span class="p">:</span> <span class="s">"text-moderation-001"</span><span class="p">,</span>
+  <span class="s">"results"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s">"categories"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"hate"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s">"hate/threatening"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s">"self-harm"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s">"sexual"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s">"sexual/minors"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s">"violence"</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+        <span class="s">"violence/graphic"</span><span class="p">:</span> <span class="n">false</span>
+      <span class="p">},</span>
+      <span class="s">"category_scores"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"hate"</span><span class="p">:</span> <span class="mf">0.18805529177188873</span><span class="p">,</span>
+        <span class="s">"hate/threatening"</span><span class="p">:</span> <span class="mf">0.0001250059431185946</span><span class="p">,</span>
+        <span class="s">"self-harm"</span><span class="p">:</span> <span class="mf">0.0003706029092427343</span><span class="p">,</span>
+        <span class="s">"sexual"</span><span class="p">:</span> <span class="mf">0.0008735615410842001</span><span class="p">,</span>
+        <span class="s">"sexual/minors"</span><span class="p">:</span> <span class="mf">0.0007470346172340214</span><span class="p">,</span>
+        <span class="s">"violence"</span><span class="p">:</span> <span class="mf">0.0041268812492489815</span><span class="p">,</span>
+        <span class="s">"violence/graphic"</span><span class="p">:</span> <span class="mf">0.00023186142789199948</span>
+      <span class="p">},</span>
+      <span class="s">"flagged"</span><span class="p">:</span> <span class="n">false</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>输入参数很简单，关键看返回的输出结果。OpenAI 对于包含哪类不适内容，做了比较详尽的分类，比如对于色情内容，也分成了未成年色情和易引起性兴奋的内容。</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">hate</code>：是否包含基于种族、性别、民族、宗教、国籍、性取向、残疾状况或种姓表达、煽动或促进仇恨的内容，如果没有则是 <code class="language-plaintext highlighter-rouge">false</code>，否则为 <code class="language-plaintext highlighter-rouge">true</code>。</li>
+  <li><code class="language-plaintext highlighter-rouge">hate/threatening</code>：是否包含仇恨内容还包括对目标群体的暴力或严重伤害，没有则 <code class="language-plaintext highlighter-rouge">false</code>，包含则值为 <code class="language-plaintext highlighter-rouge">true</code>。</li>
+  <li><code class="language-plaintext highlighter-rouge">self-harm</code>：是否包含提倡、鼓励或描述自残行为（例如自杀、割伤和饮食失调）的内容，没有则 <code class="language-plaintext highlighter-rouge">false</code>，否则 <code class="language-plaintext highlighter-rouge">true</code>。</li>
+  <li><code class="language-plaintext highlighter-rouge">sexual</code>：是否包含意在引起性兴奋的内容，例如对性活动的描述，或宣传性服务（不包括性教育和健康）的内容，没有则 <code class="language-plaintext highlighter-rouge">false</code>，否则 <code class="language-plaintext highlighter-rouge">true</code>。</li>
+  <li><code class="language-plaintext highlighter-rouge">sexual/minors</code>：是否包含包含 18 岁以下个人的色情内容，没有则 <code class="language-plaintext highlighter-rouge">false</code>，否则 <code class="language-plaintext highlighter-rouge">true</code>。</li>
+  <li><code class="language-plaintext highlighter-rouge">violence</code>：是否包含宣扬或美化暴力或颂扬他人的痛苦或屈辱的内容，没有为 <code class="language-plaintext highlighter-rouge">false</code>，否则 <code class="language-plaintext highlighter-rouge">true</code>。</li>
+  <li><code class="language-plaintext highlighter-rouge">violence/graphic</code>：是否包含以极端的画面细节描绘死亡、暴力或严重身体伤害的暴力内容，没有 <code class="language-plaintext highlighter-rouge">false</code>，否则 <code class="language-plaintext highlighter-rouge">true</code>。</li>
+</ul>
+
+<p>显然，对于使用 OpenAI 生成内容的场景下如果需要用到 Moderation，则是免费调用的。如果你不是对 OpenAI 的输入 &amp; 生成场景，而是自己的其他内容想白嫖 Moderation API 是不可能的。但是我们也注意到，这里其实没有整治敏感的分类，因为 OpenAI 没有考虑具体的使用者所处的政体或政治环境，而且这些尺度是比较容易变化的，并且有一些可能并不是普适性的理念，因此某些国家的使用者要额外配套自己的内容审查能力。</p>
+
+<p><br /></p>
+
+<h2 id="三一些-openai-目前开放的-api-使用示例">三、一些 OpenAI 目前开放的 API 使用示例</h2>
+
+<p>在 OpenAI 的 API 官方首页的大标题写着的是「用 OpenAI 的强力模型构建下一代应用（Build next-gen apps with OpenAI’s powerful models）」，并直接点出了自己最拿得出手的三个商业化产品 GPT-3、Codex、DALL·E。</p>
+
+<p>并提到自己的 API 调用非常简单：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">openai</span>
+
+<span class="n">openai</span><span class="p">.</span><span class="n">Completion</span><span class="p">.</span><span class="n">create</span><span class="p">(</span>
+  <span class="n">engine</span><span class="o">=</span><span class="s">"davinci"</span><span class="p">,</span>
+  <span class="n">prompt</span><span class="o">=</span><span class="s">"Make a list of astronomical observatories:"</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>引入 OpenAI 的 python 依赖库后，调用时指定用哪个引擎、提示词是什么即可。轻松一些，我们先来看一些示例吧。</p>
+
+<h3 id="1执行各种自然语言任务的一些使用案例">1、执行各种自然语言任务的一些使用案例</h3>
+
+<p>GPT-3.5 已经在一些应用上跑起来了，OpenAI 列举了一些 ChatGPT 和 Whisper API 的早期客户：</p>
+
+<ul>
+  <li><strong>Snapchat（snap.com）</strong>的创建者 Snap Inc. 本周推出了适用于 Snapchat+ 的 My AI。 实验性功能在 ChatGPT API 上运行。 My AI 为 Snapchatter 提供了一个友好的、可定制的聊天机器人，可以在他们指尖提供建议，甚至可以在几秒钟内为朋友写一句俳句。 Snapchat 是日常交流和消息传递的场所，每月有 7.5 亿 Snapchatter。</li>
+  <li><strong>Quizlet（quizlet.com/labs/qchat）</strong>是一个全球学习平台，有超过 6000 万学生使用它来学习、练习和掌握他们正在学习的任何内容。 Quizlet 在过去三年中一直与 OpenAI 合作，在多个用例中利用 GPT-3，包括词汇学习和练习测试。 随着 ChatGPT API 的推出，Quizlet 推出了 Q-Chat，这是一种完全自适应的 AI 导师，可让学生根据通过有趣的聊天体验提供的相关学习材料提出自适应问题。</li>
+  <li><strong>Instacart（instacart.com）</strong>正在增强 Instacart 应用程序，使客户能够询问食物并获得鼓舞人心的、可购买的答案。这使用 ChatGPT 以及 Instacart 自己的 AI 和来自其 75,000 多家零售合作伙伴商店位置的产品数据来帮助客户发现开放式购物目标的想法，例如「我如何制作美味的鱼炸玉米饼？」或「对我的孩子来说，什么是健康的午餐？」Instacart 计划在今年晚些时候推出「Ask Instacart」。</li>
+  <li>Shopify 的消费者应用程序 <strong>Shop（shop.app）</strong>被 1 亿购物者用来寻找和参与他们喜爱的产品和品牌。 ChatGPT API 用于为 Shop 的新购物助手提供动力。 当购物者搜索商品时，导购会根据他们的需求进行个性化推荐。 Shop 的新人工智能购物助手将通过扫描数百万种产品来简化应用程序内购物，以快速找到买家正在寻找的东西，或者帮助他们发现新东西。</li>
+  <li><strong>Speak（speak.com）</strong>是一款人工智能语言学习应用程序，专注于打造流利口语的最佳途径。 他们是韩国发展最快的英语应用程序，并且已经在使用 Whisper API 来支持新的 AI 语音伴侣产品，并迅速将其推向全球其他地区。 Whisper 为各个级别的语言学习者提供了人类水平的准确性，解锁了真正的开放式会话练习和高度准确的反馈。</li>
+</ul>
+
+<h3 id="2一些更详细的示例">2、一些更详细的示例</h3>
+
+<p>API 还能实现什么功能？这里列举一些 GPT-3 API 期间就有的功能，调用的效果如何。</p>
+
+<h4 id="21写作-copywriting">2.1、写作 Copywriting</h4>
+
+<p>人类输入：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Create promo copy for the FamilyTime mobile application. It allows unlimited uploading, special filters and makes it easy to create albums of photos and videos. It runs on iOS and Android:
+</code></pre></div></div>
+
+<p>下面是 GPT-3 的输出：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FamilyTime is the perfect app to share and create memories with your family. FamilyTime is a free, unlimited photo and video editor that allows you to create albums of your memories. It has a special filter for the perfect summer look and is so simple to use.
+</code></pre></div></div>
+
+<h4 id="22摘要-summarization">2.2、摘要 Summarization</h4>
+
+<p>人类输入：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Summarize this email into a single sentence:
+
+Dear Olivia,
+
+The solar energy conference went great. New Horizon Manufacturing wants to meet with us to talk about our photovoltaic window system we’re about to launch.
+I think it would be great to talk this Tuesday.
+
+Best,
+Allison
+
+</code></pre></div></div>
+
+<p>下面是 GPT-3 输出：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Allison is excited to meet with New Horizon Manufacturing to discuss their photovoltaic window system.
+</code></pre></div></div>
+
+<h4 id="23分析无结构文本-parsing-unstructured-text">2.3、分析无结构文本 Parsing Unstructured Text</h4>
+
+<p>人类输入：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Answer the following questions about this customer email:
+
+I’m wondering if you could provide me with information about your cloud services for companies. I’m CTO for Moon Door, a movie production company and want to know if it can help us manage our different projects that are in production.
+
+Questions:
+1. What industry is the company
+2. What is the name of the company
+3. What are they interested in
+4. What is the customer’s position
+
+Answers:
+</code></pre></div></div>
+
+<p>下面是 GPT-3 输出：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. The company is in the movie production industry.
+2. The company is Moon Door.
+3. The customer is interested in cloud services for companies.
+4. The customer is the CTO.
+</code></pre></div></div>
+
+<h4 id="24分类-classification">2.4、分类 Classification</h4>
+
+<p>人类输入：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Choose a genre category for each book 1. The Hunger Games, 2. The Kite Runner 3. A Wrinkle in Time (“fiction”, “young adult”, “science fiction”, “fantasy”, “other”) and make a list of the book and its genre:
+</code></pre></div></div>
+
+<p>下面是 GPT-3 输出：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. The Hunger Games: young adult, fiction
+2. The Kite Runner: fiction, young adult
+3. A Wrinkle in Time: science fiction, fantasy, other
+</code></pre></div></div>
+
+<h4 id="25翻译-translation">2.5、翻译 Translation</h4>
+
+<p>人类输入：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Translate this into French: Where can I find a bookstore?
+</code></pre></div></div>
+
+<p>下面是 GPT-3 输出：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Où puis-je trouver un magasin de livres?
+</code></pre></div></div>
+
+<h3 id="3将自然语言翻译成代码的-codex">3、将自然语言翻译成代码的 Codex</h3>
+
+<h4 id="31用自然语言写-sql">3.1、用自然语言写 SQL</h4>
+
+<p>人类输入：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Table customers, columns = [CustomerId, FirstName, LastName, Company, Address, City, State, Country, PostalCode, Phone, Fax, Email, SupportRepId, TotalSpend]
+
+Create a MySQL query for all customers in Texas who have spent over five thousand dollars.
+</code></pre></div></div>
+
+<p>下面是 Codex 输出：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>query = "SELECT * FROM customers WHERE State = 'TX' AND TotalSpend &gt; 5000"
+</code></pre></div></div>
+
+<h4 id="32用自然语言调用一个-api">3.2、用自然语言调用一个 API</h4>
+
+<p>人类输入：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Python 3
+Get the current value of a Bitcoin in US dollars using the bitcoincharts api
+</code></pre></div></div>
+
+<p>Codex 输出：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">def</span> <span class="nf">get_bitcoin_price</span><span class="p">():</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s">'http://api.bitcoincharts.com/v1/weighted_prices.json'</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s">'USD'</span><span class="p">][</span><span class="s">'7d'</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">get_bitcoin_price</span><span class="p">())</span>
+</code></pre></div></div>
+
+<h4 id="33用自然语言续写代码">3.3、用自然语言续写代码</h4>
+
+<p>人类输入：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Extract all the html from the string and replace the tags with ''
+</code></pre></div></div>
+
+<p>Codex 输出：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def extract_html(text):
+    return re.sub('&amp;lt;[^&amp;lt;]+?&amp;gt;', '', text)
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="四微调fine-tuning">四、微调（Fine-tuning）</h2>
+
+<p>上面也提到了，暂时未开放对 Turbo（也就是 ChatGPT 背后的 GPT-3.5）的 finetune，但是开放后的使用方式也会是与 GPT-3 的 finetune 类似的。我们来看看目前 OpenAI 是如何让开发者来 finetune 他们的基础模型的。</p>
+
+<p><strong>Few-shot learning 是什么？</strong>：GPT-3 用了互联网上的海量文本数据训练，所以当你给少量示例（a promopt with just a few examples）时，GPT-3 会从「直觉上」知道你大概是想要解决什么任务，然后给出一些大概齐的反馈内容作为 completion，这通常就被叫做「few-shot learning」或者「few-shot prompting」。</p>
+
+<p>而如果你提供一些针对目标任务的训练数据，很可能可以实现没有 examples 也可以执行任务，也就是使用时连「few-shot learning」都免了。OpenAI 也提供了让用户自己 fine-tune 模型的接口，自己 fine-tune 的好处是：</p>
+
+<ul>
+  <li><strong>高质量</strong>：这是显然的，比「设计提示（prompt design）」得到的结果质量更高。</li>
+  <li><strong>相当于批量 prompt</strong>：可以比 prompt 给模型更多的 examples，比如用一个文件，里面包含大量用于 fine-tuning 的输入数据。</li>
+  <li><strong>更省</strong>：可以更省 tokens，也就更省钱。</li>
+  <li><strong>更快</strong>：更低的延迟的请求响应。</li>
+</ul>
+
+<p><strong>步骤和价格</strong>方面，Fine-tune 一共三步：上传用于 fine-tune 的数据、用数据 fine-tune 模型、使用属于你自己的 fine-tune 过的模型。从定价上我们看到 Fine-tune 后的模型使用费用基本翻了 4~6 倍，可以说相比基本模型的使用，是非常贵了。</p>
+
+<p>另外 OpenAI 也支持你对一个 fine-tune 过的模型继续 fine-tune，而不用从头开始。目前 davinci、curie、babbage、ada 都支持 fine-tuning。训练数据的格式也很简单，就是一组 prompt-completion 的 JSONL 文件，just like this：</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;prompt text&gt;"</span><span class="p">,</span><span class="w"> </span><span class="nl">"completion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ideal generated text&gt;"</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;prompt text&gt;"</span><span class="p">,</span><span class="w"> </span><span class="nl">"completion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ideal generated text&gt;"</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;prompt text&gt;"</span><span class="p">,</span><span class="w"> </span><span class="nl">"completion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ideal generated text&gt;"</span><span class="p">}</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Fine-tune 的 example 与 few-shot learning 的最大区别：</p>
+
+<ul>
+  <li>few-shot learning 要给出详尽的 instruction 来描述任务</li>
+  <li>few-shot learning 的一个 prompt 是在使用时给出的，所以一个 prompt 大概率会带多个 examples（相对详细）；而 fine-tune 的 example 都是一些简单直接的 prompt 以及直接对应的 completion。</li>
+</ul>
+
+<p>OpenAI 建议 fine-tune 的 examples 数量至少几百（a couple hundred）。另外 fine-tune 也符合 scaling law，基本上 fine-tune 的数据集成倍上翻的话，效果是线性增长的。</p>
+
+<h3 id="1创建一个-fine-tune-模型">1、创建一个 fine-tune 模型</h3>
+
+<p>CLI 下运行如下命令，其中 <code class="language-plaintext highlighter-rouge">&lt;TRAIN_FILE_ID_OR_PATH&gt;</code> 是你的训练数据文件，<code class="language-plaintext highlighter-rouge">&lt;BASE_MODEL&gt;</code> 是你要用的模型，具体的参数可以用 <code class="language-plaintext highlighter-rouge">ada</code>、<code class="language-plaintext highlighter-rouge">babbage</code>、<code class="language-plaintext highlighter-rouge">curie</code> 和 <code class="language-plaintext highlighter-rouge">davinci</code>。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@local <span class="nv">$ </span>openai api fine_tunes.create <span class="nt">-t</span> &lt;TRAIN_FILE_ID_OR_PATH&gt; <span class="nt">-m</span> &lt;BASE_MODEL&gt;
+</code></pre></div></div>
+
+<p>这句命令让 OpenAI 不仅基于 base model 创建了一个模型，而且开始运行训练任务。训练任务可能会花费几分钟、几小时甚至根据，取决于你的训练集和模型选择。训练任务可能会被 OpenAI 排队，不一定马上开始运行。如果过程中被打断了，可以如下继续：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@local <span class="nv">$ </span>openai api fine_tunes.follow <span class="nt">-i</span> &lt;YOUR_FINE_TUNE_JOB_ID&gt;
+</code></pre></div></div>
+
+<p>保存一个 fine-tune job 的命令如下：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@local <span class="nv">$ </span>openai api fine_tunes.get <span class="nt">-i</span> &lt;YOUR_FINE_TUNE_JOB_ID&gt;
+</code></pre></div></div>
+
+<p>取消一个 fine-tune job 的命令如下：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@local <span class="nv">$ </span>openai api fine_tunes.cancel <span class="nt">-i</span> &lt;YOUR_FINE_TUNE_JOB_ID&gt;
+</code></pre></div></div>
+
+<h3 id="2使用-fine-tuned-模型">2、使用 fine-tuned 模型</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">openai</span>
+<span class="n">openai</span><span class="p">.</span><span class="n">Completion</span><span class="p">.</span><span class="n">create</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">FINE_TUNED_MODEL</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="n">YOUR_PROMPT</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="3删掉一个-fine-tuned-模型">3、删掉一个 fine-tuned 模型</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">openai</span>
+<span class="n">openai</span><span class="p">.</span><span class="n">Model</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="n">FINE_TUNED_MODEL</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="4一个-fine-tuned-模型之上继续-fine-tune">4、一个 fine-tuned 模型之上继续 fine-tune</h3>
+
+<p>如果你微调了一个模型，现在又有为的训练数据想要合并进来，可以基于已 fine-tuned 模型继续微调，无需从头再全部训练一遍。唯一要做的，就是在创建新的 fine-tune job 时传入已 fine-tune 的模型名称，替代<code class="language-plaintext highlighter-rouge">&lt;BASE_MODEL&gt;</code>（例如 <code class="language-plaintext highlighter-rouge">-m curie:ft-&lt;org&gt;-&lt;date&gt;</code>），不必更改其他训练参数。</p>
+
+<p>有一个要注意的，如果新增的训练数据比以前的训练数据规模小得多，那最好把 <code class="language-plaintext highlighter-rouge">learning_rate_multiplier</code> 减少 2 到 4 倍，否则很可能跳过了最优解。</p>
+
+<h4 id="本文参考">本文参考</h4>
+
+<ol>
+  <li>https://openai.com/blog/introducing-chatgpt-and-whisper-apis</li>
+  <li>https://openai.com/pricing</li>
+  <li>https://platform.openai.com/docs/guides/chat/chat-vs-completions</li>
+  <li>https://platform.openai.com/docs/usage-policies</li>
+  <li>https://platform.openai.com/docs/models/gpt-3-5</li>
+  <li>https://openai.com/api/</li>
+  <li>https://developer.aliyun.com/article/933516</li>
+  <li>http://www.mikecaptain.com/2023/03/02/chatgpt-api/</li>
+  <li>http://www.mikecaptain.com/2023/01/24/openai-official-doc/</li>
+</ol>
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+	<span>
+		-<br/><br/>
+		船长还不会游泳 at 微信公众号/微博<br/>
+		@麦克船长 at 即刻/知乎/小宇宙/掘金/小红书/微信读书<br/>
+		@船长模玩 at Bilibili<br/>
+		Copyright © 2011-2023, MikeCaptain.com
+	</span>
+</footer>
+
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
