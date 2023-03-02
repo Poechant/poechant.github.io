@@ -4,7 +4,7 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-03-02T19:29:16+00:00</updated>
+ <updated>2023-03-02T19:29:48+00:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
@@ -18,7 +18,7 @@
    <link href="https://www.mikecaptain.com/2023/03/02/chatgpt-api/"/>
    <id>https://www.mikecaptain.com/2023/03/02/chatgpt-api</id>
    <updated>2023-03-02T00:54:13+00:00</updated>
-   <content type="html">&lt;p&gt;此前 GPT-3 也早已开放 API，我在麦克船长的博客 MikeCaptain.com 中已介绍过，当时在 NLP 方面能使用的 API 主要是。原文链接：http://www.mikecaptain.com/2023/01/24/openai-official-doc/ 。此前 OpenAI API 就已经有了不同功能和价位的多种模型，还提供了在基础模型上的 fine-tune 服务（当然 fine-tune 本身收费，且 fine-tune 后的模型调用费用比 base model 要贵得多）。本次更新，主要是增加了 GPT-3.5（用于 NLP）和 Whisper（用于 audio to text）的 API：&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/img/src/2023/03/captain-chatgpt-api-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;ChatGPT 和 Whisper 模型现已在 OpenAI 的 API 上可用，通过一系列系统范围的优化，自去年 12 月以来，OpenAI 已将 ChatGPT 的成本降低了 90%；不仅仅是 GPT-3.5，开发人员现在可以在 API...</content>
+   <content type="html">&lt;p&gt;此前 GPT-3 也早已开放 API，我在麦克船长的博客 MikeCaptain.com 中已介绍过，当时在 NLP 方面能使用的 API 主要是。原文链接：http://www.mikecaptain.com/2023/01/24/openai-official-doc/ 。此前 OpenAI API 就已经有了不同功能和价位的多种模型，还提供了在基础模型上的 fine-tune 服务（当然 fine-tune 本身收费，且 fine-tune 后的模型调用费用比 base model 要贵得多）。本次更新，主要是增加了 GPT-3.5（用于 NLP）和 Whisper（用于 audio to text）的 API：&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/img/src/2023/03/captain-chatgpt-api-1.png&quot; alt=&quot;&quot; width=&quot;720&quot; /&gt;&lt;/p&gt; &lt;p&gt;ChatGPT 和 Whisper 模型现已在 OpenAI 的 API 上可用，通过一系列系统范围的优化，自去年 12 月以来，OpenAI 已将 ChatGPT 的成本降低了 90%；不仅仅是 GPT-3.5，开发人员现在可以在...</content>
  </entry>
 
  
