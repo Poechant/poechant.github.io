@@ -11,7 +11,7 @@ location: 杭州
 author: 麦克船长
 ---
 
-此前 GPT-3 也早已开放 API，我在麦克船长的博客 MikeCaptain.com 中已介绍过，当时在 NLP 方面能使用的 API 主要是。原文链接：http://www.mikecaptain.com/2023/01/24/openai-official-doc/ 。此前 OpenAI API 就已经有了不同功能和价位的多种模型，还提供了在基础模型上的 fine-tune 服务（当然 fine-tune 本身收费，且 fine-tune 后的模型调用费用比 base model 要贵得多）。本次更新，主要是增加了 GPT-3.5（用于 NLP）和 Whisper（用于 audio to text）的 API：
+此前 GPT-3 也早已开放 API，我在麦克船长的博客 MikeCaptain.com 中已介绍过，当时在 NLP 方面能使用的 API 主要是 GPT-3，这是[原文链接](http://www.mikecaptain.com/2023/01/24/openai-official-doc/)。此前 OpenAI API 就已经有了不同功能和价位的多种模型，还提供了在基础模型上的 fine-tune 服务（当然 fine-tune 本身收费，且 fine-tune 后的模型调用费用比 base model 要贵得多）。本次更新，主要是增加了 GPT-3.5（用于 NLP）和 Whisper（用于 audio to text）的 API：
 
 ![](/img/src/2023/03/captain-chatgpt-api-1.png){: width="720"}
 
@@ -137,7 +137,7 @@ GPT-3.5 的效果，大家应该都在 ChatGPT 上试用过了，这里我也在
 说的就是之前爆出消息的 Foundry，也都是跑在微软的 Azure 上的。OpenAI 现在还为希望更深入控制特定型号版本和系统性能的用户提供专用实例。 默认情况下，开放的 API 都是在所有客户共享的基础设施上的模型中跑的，如果有额外需求得额外付费。
 开发人员可以完全控制实例的负载（更高的负载会提高吞吐量，当然这也会让对每个 request 的处理慢下来）、启用更长 context 限制等功能选项，以及保存模型快照的能力。
 
-对于每天要跑 4.5 亿以上 tokens 的开发者来说，用专用实例更划算。并且针对专用实例，开发者可以自己决定用什么硬件配置，这个就属于 OpenAI 的中大客户销售策略了，具体可以看 OpenAI 官网的销售联系页面：https://openai.com/contact-sales/ 。
+对于每天要跑 4.5 亿以上 tokens 的开发者来说，用专用实例更划算。并且针对专用实例，开发者可以自己决定用什么硬件配置，这个就属于 OpenAI 的中大客户销售策略了，具体可以看 [OpenAI 官网的销售联系页面](https://openai.com/contact-sales/)。
 
 ### 7、Whisper：每分钟 0.6 美分 的语音识别/翻译服务 API
 
@@ -153,7 +153,7 @@ A1：还不行，到目前为止，你还只能 fine-tune GPT-3 模型。
 
 **Q2：OpenAI 会把开发者调用 API 时发送的数据存下来吗？**
 
-从 2023 年 3 月 1 日开始，OpenAI 会把开发者调用 API 时发送的数据保留 30 天，但 OpenAI 声称不会使用开发者通过 API 发送的数据来改进模型（Who knows）。具体的政策，可以从 OpenAI 官网了解更多，这里是他们的数据使用政策链接：https://platform.openai.com/docs/data-usage-policies 。
+从 2023 年 3 月 1 日开始，OpenAI 会把开发者调用 API 时发送的数据保留 30 天，但 OpenAI 声称不会使用开发者通过 API 发送的数据来改进模型（Who knows）。具体的政策，可以从 OpenAI 官网了解更多，这里是他们的数据使用[政策链接](https://platform.openai.com/docs/data-usage-policies)。
 
 <br/>
 
