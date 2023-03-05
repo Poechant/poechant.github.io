@@ -413,7 +413,7 @@
 
 			<article id="post-page">
 	<h2>【摘录】通向 AGI 之路：大型语言模型（LLM）技术精要</h2>		
-	<time datetime="2023-01-08T18:13:09+00:00" class="by-line">08 Jan 2023, 杭州 | 麦克船长 | 总计 40590 字</time>
+	<time datetime="2023-01-08T18:13:09+00:00" class="by-line">08 Jan 2023, 杭州 | 张俊林 | 总计 40705 字</time>
 	<div class="content">
 		<p><img src="/img/backup/2023-01-09-agi-llm-tech-1.jpeg" alt="image" /></p>
 
@@ -443,10 +443,10 @@
     </ul>
   </li>
   <li><a href="#三规模效应当-llm-越来越大时会发生什么" id="markdown-toc-三规模效应当-llm-越来越大时会发生什么">三、规模效应：当 LLM 越来越大时会发生什么</a></li>
-  <li><a href="#四人机接口从-in-context-learning-到-instruct-理解" id="markdown-toc-四人机接口从-in-context-learning-到-instruct-理解">四、人机接口：从 In Context Learning 到 Instruct 理解</a>    <ul>
-      <li><a href="#1神秘的-in-context-learning" id="markdown-toc-1神秘的-in-context-learning">1、神秘的 In Context Learning</a></li>
+  <li><a href="#四人机接口从-in-context-learning-到-instruct-理解" id="markdown-toc-四人机接口从-in-context-learning-到-instruct-理解">四、人机接口：从 In-Context Learning 到 Instruct 理解</a>    <ul>
+      <li><a href="#1神秘的-in-context-learning" id="markdown-toc-1神秘的-in-context-learning">1、神秘的 In-Context Learning</a></li>
       <li><a href="#2神奇的-instruct-理解" id="markdown-toc-2神奇的-instruct-理解">2、神奇的 Instruct 理解</a></li>
-      <li><a href="#3in-context-learning-和-instruct-的联系" id="markdown-toc-3in-context-learning-和-instruct-的联系">3、In Context Learning 和 Instruct 的联系</a></li>
+      <li><a href="#3in-context-learning-和-instruct-的联系" id="markdown-toc-3in-context-learning-和-instruct-的联系">3、In-Context Learning 和 Instruct 的联系</a></li>
     </ul>
   </li>
   <li><a href="#五智慧之光如何增强-llm-的推理能力" id="markdown-toc-五智慧之光如何增强-llm-的推理能力">五、智慧之光：如何增强 LLM 的推理能力</a>    <ul>
@@ -479,7 +479,7 @@
 
 <p>本文梳理自 GPT 3.0 出现之后的主流 LLM 技术，能够让您对 LLM 领域的技术脉络，LLM 技术发展过程中出现过的不同发展理念，乃至未来可能的发展趋势，有比较清晰的认知。当然，很多地方讲的内容是我个人看法，有很大的主观性，错漏难免，所以还请谨慎参考。</p>
 
-<p>本文试图回答下面一些问题：ChatGPT 是否带来了 NLP 乃至 AI 领域的研究范式转换？如果是，那会带来怎样的影响？LLM 从海量数据中学到了什么知识？LLM 又是如何存取这些知识的？随着LLM规模逐步增大，会带来什么影响？什么是 In Context Learning？为什么它是一项很神秘的技术？它和 Instruct 又是什么关系？LLM 具备推理能力吗？思维链 CoT 又是怎么做的？等等，相信看完，能让您对这些问题有一个答案。</p>
+<p>本文试图回答下面一些问题：ChatGPT 是否带来了 NLP 乃至 AI 领域的研究范式转换？如果是，那会带来怎样的影响？LLM 从海量数据中学到了什么知识？LLM 又是如何存取这些知识的？随着LLM规模逐步增大，会带来什么影响？什么是 In-Context Learning？为什么它是一项很神秘的技术？它和 Instruct 又是什么关系？LLM 具备推理能力吗？思维链 CoT 又是怎么做的？等等，相信看完，能让您对这些问题有一个答案。</p>
 
 <p>首先，在谈 LLM 技术现状前，先宏观地谈下我心目中的研究范式转换问题。这样，我们才能「先见森林，再见树木」，对具体技术为何会是如此变化有个更清晰的认知。</p>
 
@@ -555,7 +555,7 @@
 
 <p>第二，zero shot prompting 也好，few shot prompting 也好，甚至促进LLM推理能力的思维链（CoT,Chain of Thought）Prompting 也好，就是上图中接口层中的现有技术。具体而言，zero shot prompting 的初衷，其实就是人类和 LLM 的理想接口，直接用人类所习惯的任务表述方式让 LLM 做事情，但是发现 LLM 并不能很好地理解，效果也不好。经过继续研究，转而发现：对于某项任务，如果给 LLM 几个示例，用这些示例来代表任务描述，效果会比 zero shot prompting 好，于是大家都去研究更好的 few shot prompting 技术。可以理解为，本来我们希望 LLM 能够用人类常用的命令方式来执行某个任务，但是目前技术还做不到，所以退而求其次，用这些替代技术来表达人类的任务需求。</p>
 
-<p>如果理解了上述逻辑，很容易得出如下结论：few shot prompting（也被称为In Context Learning）只是一种过渡时期的技术。如果我们能够更自然地去描述一个任务，而且 LLM 可以理解，那么，我们肯定会毫不犹豫地抛弃这些过渡期的技术，原因很明显，用这些方法来描述任务需求，并不符合人类的使用习惯。</p>
+<p>如果理解了上述逻辑，很容易得出如下结论：few shot prompting（也被称为 In-Context Learning）只是一种过渡时期的技术。如果我们能够更自然地去描述一个任务，而且 LLM 可以理解，那么，我们肯定会毫不犹豫地抛弃这些过渡期的技术，原因很明显，用这些方法来描述任务需求，并不符合人类的使用习惯。</p>
 
 <p>这也是为何我将 GPT 3.0 + Prompting 列为过渡期技术的原因，ChatGPT 的出现，改变了这个现状，用 Instruct 取代了 Prompting，由此带来新的技术范式转换，并产生若干后续影响。</p>
 
@@ -597,7 +597,7 @@
 
 <p>除了图像与多模态，很明显，其它领域也会逐渐被纳入到理想 LLM 中来，这个方向方兴未艾，是具备高价值的研究主题。</p>
 
-<p>以上是我对范式转换的个人思考，接下来，我们来梳理下 GPT 3.0 之后 LLM 模型的主流技术进展。如理想 LLM 模型所示，相关的技术其实可以分为两大类；一类是关于 LLM 模型如何从数据中吸收知识，也包括模型规模增长对 LLM 吸收知识能力带来的影响；第二类是关于人如何使用 LLM 内在能力来解决任务的人机接口，包括In Context Learning 和 Instruct 两种模式。思维链（CoT）prompting 这种 LLM 推理技术，本质上也属于 In Context Learning，因为比较重要，我就把它们单独拎出来讲一下。</p>
+<p>以上是我对范式转换的个人思考，接下来，我们来梳理下 GPT 3.0 之后 LLM 模型的主流技术进展。如理想 LLM 模型所示，相关的技术其实可以分为两大类；一类是关于 LLM 模型如何从数据中吸收知识，也包括模型规模增长对 LLM 吸收知识能力带来的影响；第二类是关于人如何使用 LLM 内在能力来解决任务的人机接口，包括 In-Context Learning 和 Instruct 两种模式。思维链（CoT）prompting 这种 LLM 推理技术，本质上也属于 In-Context Learning，因为比较重要，我就把它们单独拎出来讲一下。</p>
 
 <h2 id="二学习者从无尽数据到海量知识">二、学习者：从无尽数据到海量知识</h2>
 
@@ -633,9 +633,9 @@
 
 <p><a href="https://arxiv.org/pdf/2012.14913.pdf">《Transformer Feed-Forward Layers Are Key-Value Memories》</a>给出了一个比较新颖的观察视角，它把 Transformer 的 FFN 看成存储大量具体知识的 Key-Value 存储器。如上图所示（图左是原始论文图，其实不太好理解，可以看做了注释的图右，更好理解些），FFN 的第一层是个 MLP 宽隐层，这是 Key 层；第二层是 MLP 窄隐层，是 Value 层。FFN 的输入层其实是某个单词对应的 MHA 的输出结果Embedding，也就是通过 Self Attention，将整个句子有关的输入上下文集成到一起的 Embedding，代表了整个输入句子的整体信息。</p>
 
-<p>Key 层的每个神经元节点，记载了一对信息。比如对于上图中 FFN 第一个隐层的第 i 个节点 ki，也许就是它记载了 &lt;北京，is-capital-of，中国&gt; 这条知识。ki 节点对应的 key 向量，其实指的是节点 ki 和输入层每个节点的权重向量；而对应的 Value 向量，指的是节点 ki 和 FFN 第二层的 Value 层每个节点形成连接的权重向量。每个神经元的 Key 向量，用于识别输入中的某种语言或者知识模式，是一种模式探测器。如果输入中包含它要检测的某种模式，那么输入向量和 ki 节点的 key 权重进行向量内积计算，加上 Relu，形成 ki 的大数值响应，意味着 ki 检测到了这个模式，于是再把这个响应值，通过 ki 节点的 Value 权重向量向 FFN 第二层传播。这等价于将 Value 向量的值，用响应值加权，然后传递并体现到第二层 Value 层每个节点的输出上。如此这般，FFN 的正向传播计算过程，看起来就像是通过 Key 检测到某种知识模式，然后取出对应的 Value，并把 Value 体现在FFN的第二层输出上。当然，FFN 第二层每个节点，会收集 FFN 的 Key 层所有节点信息，所以是一种混合响应，而 Value 层所有节点的混合响应，可以解读为代表输出单词的概率分布信息。</p>
+<p>Key 层的每个神经元节点，记载了一对信息。比如对于上图中 FFN 第一个隐层的第 i 个节点 \(k_i\)，也许就是它记载了 &lt;北京，is-capital-of，中国&gt; 这条知识。\(k_i\) 节点对应的 key 向量，其实指的是节点 \(k_i\) 和输入层每个节点的权重向量；而对应的 Value 向量，指的是节点 \(k_i\) 和 FFN 第二层的 Value 层每个节点形成连接的权重向量。每个神经元的 Key 向量，用于识别输入中的某种语言或者知识模式，是一种模式探测器。如果输入中包含它要检测的某种模式，那么输入向量和 \(k_i\) 节点的 key 权重进行向量内积计算，加上 \(\text{Relu}\)，形成 \(k_i\) 的大数值响应，意味着 \(k_i\) 检测到了这个模式，于是再把这个响应值，通过 ki 节点的 Value 权重向量向 FFN 第二层传播。这等价于将 Value 向量的值，用响应值加权，然后传递并体现到第二层 Value 层每个节点的输出上。如此这般，FFN 的正向传播计算过程，看起来就像是通过 Key 检测到某种知识模式，然后取出对应的 Value，并把 Value 体现在FFN的第二层输出上。当然，FFN 第二层每个节点，会收集 FFN 的 Key 层所有节点信息，所以是一种混合响应，而 Value 层所有节点的混合响应，可以解读为代表输出单词的概率分布信息。</p>
 
-<p>听着可能还是比较复杂，我们用个极端的例子来说明。我们假设上图的节点 ki就是记载 &lt;北京，is-capital-of，中国&gt;这条知识的 Key-Value 存储器，它的 Key 向量，用于检测「中国的首都是…」这个知识模式，它的 Value 向量，基本存储了与单词「北京」的 Embedding 比较接近的向量。当 Transformer 的输入是「中国的首都是[Mask]」的时候，ki 节点从输入层探测到这个知识模式，所以产生较大的响应输出。我们假设 Key 层其它神经元对这个输入都没有任何响应，那么对应的Value层的节点，其实只会接收到「北京」这个 Value 对应的单词 embedding，并通过 ki的大响应值，进行了进一步的数值放大。于是，Mask 位置对应的输出，就自然会输出「北京」这个单词。基本就是这么个过程，看着很复杂，其实很简单。</p>
+<p>听着可能还是比较复杂，我们用个极端的例子来说明。我们假设上图的节点 ki就是记载 &lt;北京，is-capital-of，中国&gt;这条知识的 Key-Value 存储器，它的 Key 向量，用于检测「中国的首都是…」这个知识模式，它的 Value 向量，基本存储了与单词「北京」的 Embedding 比较接近的向量。当 Transformer 的输入是「中国的首都是[Mask]」的时候，\(k_i\) 节点从输入层探测到这个知识模式，所以产生较大的响应输出。我们假设 Key 层其它神经元对这个输入都没有任何响应，那么对应的Value层的节点，其实只会接收到「北京」这个 Value 对应的单词 embedding，并通过 \(k_i\) 的大响应值，进行了进一步的数值放大。于是，Mask 位置对应的输出，就自然会输出「北京」这个单词。基本就是这么个过程，看着很复杂，其实很简单。</p>
 
 <p>而且这篇文章还指出，Transformer 低层对句子的表层模式作出反应，高层对语义模式作出反应，就是说低层FFN存储词法、句法等表层知识，中层和高层存储语义及事实概念知识，这和其它研究结论是一致的。</p>
 
@@ -714,42 +714,42 @@
 第三类 U 型，《Inverse scaling can become U-shaped》猜测可能两种不同类型的子任务，一种是真正的任务，另外一种是「干扰任务（distractor task）」。</p>
 </blockquote>
 
-<h2 id="四人机接口从-in-context-learning-到-instruct-理解">四、人机接口：从 In Context Learning 到 Instruct 理解</h2>
+<h2 id="四人机接口从-in-context-learning-到-instruct-理解">四、人机接口：从 In-Context Learning 到 Instruct 理解</h2>
 
-<p>一般我们经常提到的人和 LLM 的接口技术包括：zero shot prompting、few shot prompting、In Context Learning，以及 Instruct。这些其实都是表达某个具体任务的描述方式。不过如果你看文献，会发现叫法比较乱。</p>
+<p>一般我们经常提到的人和 LLM 的接口技术包括：zero shot prompting、few shot prompting、In-Context Learning，以及 Instruct。这些其实都是表达某个具体任务的描述方式。不过如果你看文献，会发现叫法比较乱。</p>
 
 <p>其中 Instruct 是 ChatGPT 的接口方式，就是说人以自然语言给出任务的描述，比如「把这个句子从中文翻译成英文」，类似这种。zero shot prompting 我理解其实就是现在的 Instruct 的早期叫法，以前大家习惯叫 zero shot，现在很多改成叫 Instruct。尽管是一个内涵，但是具体做法是两种做法。早期大家做 zero shot prompting，实际上就是不知道怎么表达一个任务才好，于是就换不同的单词或者句子，反复在尝试好的任务表达方式，这种做法目前已经被证明是在拟合训练数据的分布，其实没啥意思。目前 Instruct 的做法则是给定命令表述语句，试图让 LLM 理解它。所以尽管表面都是任务的表述，但是思路是不同的。</p>
 
-<p>而In Context Learning 和 few shot prompting 意思类似，就是给 LLM 几个示例作为范本，然后让LLM解决新问题。我个人认为 In Context Learning 也可以理解为某项任务的描述，只是 Instruct 是一种抽象的描述方式，In Context Learning 是一种例子示范的例子说明法。当然，鉴于目前这几个叫法用的有点乱，所以上述理解仅代表个人看法。</p>
+<p>而 In-Context Learning 和 few shot prompting 意思类似，就是给 LLM 几个示例作为范本，然后让LLM解决新问题。我个人认为 In-Context Learning 也可以理解为某项任务的描述，只是 Instruct 是一种抽象的描述方式，In-Context Learning 是一种例子示范的例子说明法。当然，鉴于目前这几个叫法用的有点乱，所以上述理解仅代表个人看法。</p>
 
-<p>所以我们此处只对 In Context Learning 和 Instruct 进行介绍，不再提 zero shot 和 few shot 了。</p>
+<p>所以我们此处只对 In-Context Learning 和 Instruct 进行介绍，不再提 zero shot 和 few shot 了。</p>
 
-<h3 id="1神秘的-in-context-learning">1、神秘的 In Context Learning</h3>
+<h3 id="1神秘的-in-context-learning">1、神秘的 In-Context Learning</h3>
 
-<p>如果你细想，会发现 In Context Learning 是个很神奇的技术。它神奇在哪里呢？神奇在你提供给 LLM 几个样本示例,….，然后给它 x(n+1)，LLM 竟然能够成功预测对应的 y(n+1)。听到这你会反问：这有什么神奇的呢？Fine-tuning 不就是这样工作的吗？你要这么问的话，说明你对这个问题想得还不够深入。</p>
+<p>如果你细想，会发现 In-Context Learning 是个很神奇的技术。它神奇在哪里呢？神奇在你提供给 LLM 几个样本示例,….，然后给它 x(n+1)，LLM 竟然能够成功预测对应的 y(n+1)。听到这你会反问：这有什么神奇的呢？Fine-tuning 不就是这样工作的吗？你要这么问的话，说明你对这个问题想得还不够深入。</p>
 
 <p><img src="/img/backup/2023-01-09-agi-llm-tech-9.jpeg" alt="image" /></p>
 
-<p>Fine-tuning 和 In Context Learning 表面看似都提供了一些例子给 LLM，但两者有质的不同（参考上图示意）：Fine-tuning 拿这些例子当作训练数据，利用反向传播去修正 LLM 的模型参数，而修正模型参数这个动作，确实体现了 LLM 从这些例子学习的过程。但是，In Context Learning 只是拿出例子让 LLM 看了一眼，并没有根据例子，用反向传播去修正 LLM 模型参数的动作，就要求它去预测新例子。既然没有修正模型参数，这意味着貌似 LLM 并未经历一个学习过程，如果没有经历学习过程，那它为何能够做到仅看一眼，就能预测对新例子呢？这正是 In Context Learning 的神奇之处。这是否让你想起了一句歌词「只是因为在人群中多看了你一眼 再也没能忘掉你容颜」，而这首歌名叫「传奇」。你说传奇不传奇？</p>
+<p>Fine-tuning 和 In-Context Learning 表面看似都提供了一些例子给 LLM，但两者有质的不同（参考上图示意）：Fine-tuning 拿这些例子当作训练数据，利用反向传播去修正 LLM 的模型参数，而修正模型参数这个动作，确实体现了 LLM 从这些例子学习的过程。但是，In-Context Learning 只是拿出例子让 LLM 看了一眼，并没有根据例子，用反向传播去修正 LLM 模型参数的动作，就要求它去预测新例子。既然没有修正模型参数，这意味着貌似 LLM 并未经历一个学习过程，如果没有经历学习过程，那它为何能够做到仅看一眼，就能预测对新例子呢？这正是 In-Context Learning 的神奇之处。这是否让你想起了一句歌词「只是因为在人群中多看了你一眼 再也没能忘掉你容颜」，而这首歌名叫「传奇」。你说传奇不传奇？</p>
 
-<p>看似 In Context Learning 没从例子里学习知识，实际上，难道 LLM 通过一种奇怪的方式去学习？还是说，它确实也没学啥？关于这个问题的答案，目前仍是未解之谜。现有一些研究各有各的说法，五花八门，很难判断哪个讲述的是事实的真相，甚至有些研究结论还相互矛盾。这里提供几个目前的说法，至于谁对谁错，只能你自己把握了。当然，我认为追求这个神奇现象背后的真相，是一个好的研究课题。</p>
+<p>看似 In-Context Learning 没从例子里学习知识，实际上，难道 LLM 通过一种奇怪的方式去学习？还是说，它确实也没学啥？关于这个问题的答案，目前仍是未解之谜。现有一些研究各有各的说法，五花八门，很难判断哪个讲述的是事实的真相，甚至有些研究结论还相互矛盾。这里提供几个目前的说法，至于谁对谁错，只能你自己把握了。当然，我认为追求这个神奇现象背后的真相，是一个好的研究课题。</p>
 
-<p>试图证明 In Context Learning 没有从例子中学习的工作是<a href="https://arxiv.org/pdf/2202.12837">《Rethinking the Role of Demonstrations: What Makes In-Context Learning Work?》</a>。它发现了：在提供给 LLM 的样本示例中，yi 是否 xi 对应的正确答案，其实并不重要，如果我们把正确答案 yi 替换成随机的另外一个答案 yj ，这并不影响 In Context Learning 的效果。这起码说明了一点：In Context Learning 并没有提供给 LLM 那个从 x 映射到 y 的映射函数信息：y=f(x)，否则的话你乱换正确标签，肯定会扰乱这个 y=f(x) 映射函数。也就是说，In Context Learning 并未学习这个输入空间到输出空间的映射过程。</p>
+<p>试图证明 In-Context Learning 没有从例子中学习的工作是<a href="https://arxiv.org/pdf/2202.12837">《Rethinking the Role of Demonstrations: What Makes In-Context Learning Work?》</a>。它发现了：在提供给 LLM 的样本示例中，\(y_i\) 是否 \(x_i\) 对应的正确答案，其实并不重要，如果我们把正确答案 \(y_i\) 替换成随机的另外一个答案 yj ，这并不影响 In-Context Learning 的效果。这起码说明了一点：In-Context Learning 并没有提供给 LLM 那个从 \(x\) 映射到 \(y\) 的映射函数信息：\(y=f(x)\)，否则的话你乱换正确标签，肯定会扰乱这个 \(y=f(x)\) 映射函数。也就是说，In-Context Learning 并未学习这个输入空间到输出空间的映射过程。</p>
 
-<p>真正对 In Context Learning 影响比较大的是：x 和 y 的分布，也就是输入文本 x 的分布和候选答案 y 有哪些，如果你改变这两个分布，比如把 y 替换成候选答案之外的内容，则 In Context Learning 效果急剧下降。</p>
+<p>真正对 In-Context Learning 影响比较大的是：\(x\) 和 \(y\) 的分布，也就是输入文本 \(x\) 的分布和候选答案 \(y\) 有哪些，如果你改变这两个分布，比如把 \(y\) 替换成候选答案之外的内容，则 In-Context Learning 效果急剧下降。</p>
 
-<p>总之，这个工作证明了 In Context Learning 并未学习映射函数，但是输入和输出的分布很重要，这两个不能乱改。</p>
+<p>总之，这个工作证明了 In-Context Learning 并未学习映射函数，但是输入和输出的分布很重要，这两个不能乱改。</p>
 
-<p>有些工作认为 LLM 还是从给出的示例学习了这个映射函数 y=f(x)，不过是种隐式地学习。比如<a href="https://arxiv.org/pdf/2211.15661.pdf">《What learning algorithm is in-context learning? Investigations with linear models》</a>认为 Transformer 能够隐式地从示例中学习 x 到 y 的映射过程，它的激活函数中包含了一些简单映射函数，而 LLM 通过示例能够激发对应的那一个。而<a href="https://arxiv.org/pdf/2212.10559">《Why Can GPT Learn In-Context? Language Models Secretly Perform Gradient Descent as Meta-Optimizers》</a>这篇文章则将 ICL 看作是一种隐式的 Fine-tuning。</p>
+<p>有些工作认为 LLM 还是从给出的示例学习了这个映射函数 \(y=f(x)\)，不过是种隐式地学习。比如<a href="https://arxiv.org/pdf/2211.15661.pdf">《What learning algorithm is in-context learning? Investigations with linear models》</a>认为 Transformer 能够隐式地从示例中学习 x 到 y 的映射过程，它的激活函数中包含了一些简单映射函数，而 LLM 通过示例能够激发对应的那一个。而<a href="https://arxiv.org/pdf/2212.10559">《Why Can GPT Learn In-Context? Language Models Secretly Perform Gradient Descent as Meta-Optimizers》</a>这篇文章则将 ICL 看作是一种隐式的 Fine-tuning。</p>
 
 <p>总而言之，<strong>目前这还是一个未解之谜</strong>。</p>
 
 <blockquote>
-  <p><strong>【麦克船长注释】LLM 技术增量重点</strong>：In Context Learning</p>
+  <p><strong>【麦克船长注释】LLM 技术增量重点</strong>：In-Context Learning</p>
 </blockquote>
 
 <blockquote>
-  <p><strong>【麦克船长注释】2023 年初对于 LLM 的疑问</strong>：为什么 In Context Learning 有效？<br />
+  <p><strong>【麦克船长注释】2023 年初对于 LLM 的疑问</strong>：为什么 In-Context Learning 有效？<br />
 1、《Rethinking the Role of Demonstrations: What Makes In-Context Learning Work?》认为 ICL 没有从例子里学习 x 到 y 的映射关系，而只是学习了分布与分布的对应。<br />
 2、《What learning algorithm is in-context learning? Investigations with linear models》认为 ICL 隐式地学习了 x 到 y 的映射关系。<br />
 3、《Why Can GPT Learn In-Context? Language Models Secretly Perform Gradient Descent as Meta-Optimizers》认为 ICL 是隐式的 fine-tuning。</p>
@@ -791,9 +791,9 @@
 2、FLAN 不是从用户数据收集真实需求（研究人员构造任务），与用户真实需求不符。</p>
 </blockquote>
 
-<h3 id="3in-context-learning-和-instruct-的联系">3、In Context Learning 和 Instruct 的联系</h3>
+<h3 id="3in-context-learning-和-instruct-的联系">3、In-Context Learning 和 Instruct 的联系</h3>
 
-<p>如果我们假设 In Context Learning 是用一些例子来具象地表达任务命令，Instruct 是一种更符合人类习惯的抽象任务描述。那么，一个很自然的问题是：它们之间有什么联系吗？比如，我们是否能够提供给 LLM 完成某个任务的若干具体示例，让 LLM 找出其对应的自然语言描述的 Instruct 命令？</p>
+<p>如果我们假设 In-Context Learning 是用一些例子来具象地表达任务命令，Instruct 是一种更符合人类习惯的抽象任务描述。那么，一个很自然的问题是：它们之间有什么联系吗？比如，我们是否能够提供给 LLM 完成某个任务的若干具体示例，让 LLM 找出其对应的自然语言描述的 Instruct 命令？</p>
 
 <p><img src="/img/backup/2023-01-09-agi-llm-tech-11.jpeg" alt="image" /></p>
 
