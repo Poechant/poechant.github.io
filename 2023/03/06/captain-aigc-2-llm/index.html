@@ -413,7 +413,7 @@
 
 			<article id="post-page">
 	<h2>人工智能 LLM 革命破晓：一文读懂当下超大语言模型发展现状</h2>		
-	<time datetime="2023-03-06T06:54:13+00:00" class="by-line">06 Mar 2023, 杭州 | 麦克船长 | 总计 90989 字</time>
+	<time datetime="2023-03-06T06:54:13+00:00" class="by-line">06 Mar 2023, 杭州 | 麦克船长 | 总计 90988 字</time>
 	<div class="content">
 		<p>文本来自我的个人博客：<a href="https://www.mikecaptain.com/">MikeCaptain - 麦克船长的技术、产品与商业博客</a>，初次成稿于 2023 年初春节期间对 LLM（Large Language Models，大型语言模型）的技术演变学习的笔记记录，后来又补充了一些近期的内容（LLaMA 发布、ChatGPT API 发布等）。本文是<a href="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/">《人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型》</a>（以下简称《<strong>船涨：LLM 革命前夜</strong>》）的续篇，也是前篇中提到过的，近日终于抽了些时间完成了排版、插图与参考内容的完善。</p>
 
@@ -2034,7 +2034,7 @@ Turing-NLG: A 17-billion-parameter language model by Microsoft》</a>。当下�
 
 <p>GPT-3 的 <strong>batch size</strong> 都非常大，哪怕 Small 版本也有 0.5M，175B 版本更是达到 3.2M，这对内存要求非常高。如果 batch 处理并行的话，那么内存就是就是 3.2M 除以并行的数量。注意一般 batch 指的是每次训练迭代中模型处理的样本数，而不是具体的数据量，即 3,200,000 个样本，而不是 3.2MB 数据。把 batch size 做大的好处是，降低模型训练时的通讯量。不过对于小模型，batch size 太大的话很容易过拟合。对于参数量大的模型，batch size 自然也要相匹配的变大。</p>
 
-<p><strong>LR（Learning Rate，学习率）</strong>在 GPT-3 里是随着 batch size 增加而下降的，这与当时的一些研究的结果是相反的。</p>
+<p><strong>LR（Learning Rate，学习率）</strong>在 GPT-3 里是随着 batch size 增加而下降的，这与当时一些研究的结果是相反的。</p>
 
 <h4 id="113gpt-3-的训练数据">11.3、GPT-3 的训练数据</h4>
 
@@ -2070,7 +2070,7 @@ Turing-NLG: A 17-billion-parameter language model by Microsoft》</a>。当下�
 
 <p>上图展示了 GPT-3 与 BERT、RoBERTa、T5 的训练算力对比。可以看到 GPT-3 的算力开销有多么惊人。注意图标的纵轴是非线性的、指数级间隔。那么消耗这么多的算力，性能表现如何呢？我们看下面这张表。</p>
 
-<p><img src="https://ata2-img.oss-cn-zhangjiakou.aliyuncs.com/neweditor/29824164-5ed7-4ec4-a616-06d5a9833aa9.png" alt="" width="640" /></p>
+<p><img src="/img/src/2023/2023-01-23-captain-aigc-2-llm-59.png" alt="" width="640" /></p>
 
 <p>上表中横轴是算力（对应上上表中的纵轴，注意同样是指数增长），纵轴是训练期间的验证损失（注意也是指数增长）。可以看到每一条曲线都有一个大致的拐点，在拐点之后继续增加算力并不能显著提升性能。所有这个最优拐点连起来，是完全符合 Scaling Law 的（关于 Scaling Law 可以看本文的「第 10 节」）。</p>
 
