@@ -4,12 +4,22 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-03-05T00:40:52+00:00</updated>
+ <updated>2023-03-06T10:27:11+00:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
    <email>zhongchao.ustc@gmail.com</email>
  </author>
+
+ 
+
+ <entry>
+   <title>人工智能 LLM 革命破晓：一文读懂当下超大语言模型发展现状</title>
+   <link href="https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/"/>
+   <id>https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm</id>
+   <updated>2023-03-06T06:54:13+00:00</updated>
+   <content type="html">&lt;p&gt;文本来自我的个人博客：&lt;a href=&quot;https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/&quot;&gt;MikeCaptain - 麦克船长的技术、产品与商业博客&lt;/a&gt;（以下简称《&lt;strong&gt;船涨：LLM 革命前夜&lt;/strong&gt;》），初次成稿于 2023 年初春节期间对 LLM 的技术演变学习的笔记记录，后来又补充了一些近期的内容（LLaMA 发布、ChatGPT API 发布等）。本文是&lt;a href=&quot;https://ata.alibaba-inc.com/articles/256354&quot;&gt;《人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型》&lt;/a&gt;的续篇，也是前篇中提到过的，近日终于抽了些时间完成了排版、插图与参考内容的完善。&lt;/p&gt; &lt;ul&gt; &lt;li&gt;作者：钟超（船涨）&lt;/li&gt; &lt;li&gt;微信：sinosuperman&lt;/li&gt; &lt;/ul&gt; &lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt; &lt;p&gt;在船涨上一篇文章《&lt;strong&gt;船涨：LLM 革命前夜&lt;/strong&gt;》中，我们介绍了引领当下自然语言处理（Natural Language Processing，NLP）领域的基础模型 Transformer。但是 2017 年 Google 发表&lt;a href=&quot;https://arxiv.org/abs/1706.03762&quot;&gt;《Attention is All You Need》&lt;/a&gt;论文介绍 Transformer 后，经过了五年才让我们用到 ChatGPT 这样惊艳的文本生成 AI 模型，这中间发生的变化值得我们一窥究竟。本文试图解答两个问题：1）&lt;strong&gt;从 Transformer 问世后，这几年是哪些关键技术出现使得主流语言模型（Language Models，LM）进化到 ChatGPT 这种程度？&lt;/strong&gt;2）&lt;strong&gt;近几年大型语言模型（Large LM，LLM）的整体进展是怎样的？&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;本文的受众：希望产品、运营等非技术的同学也看的懂，有少量计算机技术基础，且大致对《船涨：LLM...</content>
+ </entry>
 
  
 
@@ -120,16 +130,6 @@
    <id>https://www.mikecaptain.com/2023/01/13/antler-generative-ai</id>
    <updated>2023-01-13T18:09:43+00:00</updated>
    <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-15-antler-generative-ai-1.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt; &lt;p&gt;本文译自 Antler Blog，原作者 Ollie Forsyth，中文译文由 AI 及麦克船长完成翻译。&lt;/p&gt; &lt;p&gt;随着 ChatGPT 和 DALL-E 的发布，2022 年社交媒体平台上最热门的话题之一在最近几周爆发，引发了关于其对全球人员、职业和行业影响的激烈辩论。 争议的核心是什么？ 生成式 AI (Gen-AI)——可以快速创建新内容的系统，例如大学论文、歌曲和数字艺术作品。 这些能力令人印象深刻，但它们也引发了关于工作的未来以及人类在 AI 主导的世界中的作用的重要问题。 随着生成式人工智能的不断发展，考虑伦理意义和对社会的潜在影响将变得至关重要。 如果创造性工作在很大程度上被人工智能机器取代，会发生什么？&lt;/p&gt; &lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#什么是-gen-ai&quot; id=&quot;markdown-toc-什么是-gen-ai&quot;&gt;什么是 Gen-AI？&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#人工智能与生成人工智能&quot; id=&quot;markdown-toc-人工智能与生成人工智能&quot;&gt;人工智能与生成人工智能&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#广阔的机遇正在展开&quot; id=&quot;markdown-toc-广阔的机遇正在展开&quot;&gt;广阔的机遇正在展开&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#gen-ai的影响&quot; id=&quot;markdown-toc-gen-ai的影响&quot;&gt;Gen-AI的影响&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#培训模型在实践中如何运作&quot; id=&quot;markdown-toc-培训模型在实践中如何运作&quot;&gt;培训模型在实践中如何运作？&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#语言模型是如何创建的&quot; id=&quot;markdown-toc-语言模型是如何创建的&quot;&gt;语言模型是如何创建的？&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#为什么-gen-ai-存在&quot;...</content>
- </entry>
-
- 
-
- <entry>
-   <title>【编译】游戏生产力革命：生成式 AI（AIGC）正在深度变革游戏领域</title>
-   <link href="https://www.mikecaptain.com/2023/01/11/generative-ai-revolution-in-games/"/>
-   <id>https://www.mikecaptain.com/2023/01/11/generative-ai-revolution-in-games</id>
-   <updated>2023-01-11T18:33:49+00:00</updated>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2023-01-12-generative-ai-revolution-in-games-0.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;作者 James Gwertzman and Jack Soslow&lt;/li&gt; &lt;li&gt;[译] AI &amp;amp; 麦克船长&lt;/li&gt; &lt;li&gt;本文授权首发媒体「锐察力」，微信公众号 ID @ruichali&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#什么是生成式人工智能&quot; id=&quot;markdown-toc-什么是生成式人工智能&quot;&gt;什么是生成式人工智能&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#part-1观察和预测&quot; id=&quot;markdown-toc-part-1观察和预测&quot;&gt;Part 1、观察和预测&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#一假设&quot; id=&quot;markdown-toc-一假设&quot;&gt;一、假设&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#1通用人工智能的研究量将继续增长创造出更有效的技术&quot; id=&quot;markdown-toc-1通用人工智能的研究量将继续增长创造出更有效的技术&quot;&gt;1、通用人工智能的研究量将继续增长，创造出更有效的技术&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#2在所有娱乐中游戏将受生成人工智能的影响最大&quot; id=&quot;markdown-toc-2在所有娱乐中游戏将受生成人工智能的影响最大&quot;&gt;2、在所有娱乐中，游戏将受生成人工智能的影响最大&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#3游戏制作中涉及的每一项资产都会有一个生成式ai模型&quot; id=&quot;markdown-toc-3游戏制作中涉及的每一项资产都会有一个生成式ai模型&quot;&gt;3、游戏制作中涉及的每一项资产都会有一个生成式AI模型&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#4内容价格将大幅下降在某些情况下实际上会降为零&quot; id=&quot;markdown-toc-4内容价格将大幅下降在某些情况下实际上会降为零&quot;&gt;4、内容价格将大幅下降，在某些情况下实际上会降为零。&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#5我们还处于这场革命的初级阶段很多实践还需要完善&quot; id=&quot;markdown-toc-5我们还处于这场革命的初级阶段很多实践还需要完善&quot;&gt;5、我们还处于这场革命的初级阶段，很多实践还需要完善&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt;...</content>
  </entry>
 
  
