@@ -41,7 +41,7 @@ permalink: /booklist/
 ### 学习资料：人工智能
 
 * 船长三篇之一，[《人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer》](/2023/01/22/captain-aigc-1-transformer/)
-<!-- * 船长三篇之二，[《人工智能 LLM 革命破晓：一文读懂当下超大语言模型发展现状》](/2023/01/23/captain-aigc-2-llm/) -->
+* 船长三篇之二，[《人工智能 LLM 革命破晓：一文读懂当下大型语言模型发展现状》](/2023/03/06/captain-aigc-2-llm/)
 <!-- * 船长三篇之三，[《人工智能 LLM 革命破晓：人类生产力新纪元的脉搏把控》](/2023/01/24/captain-aigc-3-future/) -->
 * 腾讯研究院，2023 年 01 月 01 日，[《AIGC 发展趋势报告 2023》](/sources/pdf/2023_genai_tencent_academy.pdf)
 * 中信建投证券，2023 年 01 月 29 日，[《从 ChatGPT 到生成式 AI（Generative AI）：人工智能新范式，重新定义生产力》](/sources/pdf/2023_01_29_genai_china_securities.pdf)
