@@ -413,7 +413,7 @@
 
 			<article id="post-page">
 	<h2>人工智能 LLM 革命破晓：一文读懂当下超大语言模型发展现状</h2>		
-	<time datetime="2023-03-06T06:54:13+00:00" class="by-line">06 Mar 2023, 杭州 | 麦克船长 | 总计 90988 字</time>
+	<time datetime="2023-03-06T06:54:13+00:00" class="by-line">06 Mar 2023, 杭州 | 麦克船长 | 总计 90635 字</time>
 	<div class="content">
 		<p>文本来自我的个人博客：<a href="https://www.mikecaptain.com/">MikeCaptain - 麦克船长的技术、产品与商业博客</a>，初次成稿于 2023 年初春节期间对 LLM（Large Language Models，大型语言模型）的技术演变学习的笔记记录，后来又补充了一些近期的内容（LLaMA 发布、ChatGPT API 发布等）。本文是<a href="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/">《人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型》</a>（以下简称《<strong>船涨：LLM 革命前夜</strong>》）的续篇，也是前篇中提到过的，近日终于抽了些时间完成了排版、插图与参考内容的完善。</p>
 
@@ -719,43 +719,6 @@
 <h4 id="53elmo基于两个单向-lstm-的语言模型">5.3、ELMo：基于两个单向 LSTM 的语言模型</h4>
 
 <p>2018 年 2 月 AI2（Allan Institution for AI）在论文<a href="https://arxiv.org/abs/1802.05365">《Deep contextualized word representations》</a>中提出了 ELMo 模型。该论文同时被 ICLR、NAACL 接受，并获得 NAACL 最佳论文奖。ELMo 是「Embeddings from Language Model」的意思，也是呼应美国知名儿童电视节目《芝麻街》里的角色 Elmo，这样给模型起名是比较容易口口相传的。</p>
-
-<div class="table-wrapper">
-
-  <table>
-    <tbody>
-      <tr>
-        <td><strong>模型</strong></td>
-        <td>ELMo</td>
-      </tr>
-      <tr>
-        <td><strong>发布时间</strong></td>
-        <td>2018 年 2 月</td>
-      </tr>
-      <tr>
-        <td><strong>参数量</strong></td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td><strong>与训练数据量</strong></td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td><strong>层数</strong></td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td><strong>上下文 tokens 数</strong></td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td><strong>词向量长度</strong></td>
-        <td> </td>
-      </tr>
-    </tbody>
-  </table>
-
-</div>
 
 <p>ELMo  会<strong>根据上下文信息</strong>给一个词编码出一个词向量。这样类似下面的 bank 在两个句子中含义不同，则有不同的词向量：</p>
 
@@ -1524,74 +1487,60 @@ cosine value :  0.8691698561422959
   <table>
     <tbody>
       <tr>
-        <td><strong>模型</strong></td>
-        <td><strong>参数量</strong></td>
-        <td><strong>层数</strong></td>
-        <td><strong>词向量长度</strong></td>
-        <td><strong>注意力头数</strong></td>
-        <td><strong>头宽度</strong></td>
-        <td><strong>Batch Size</strong></td>
-        <td><strong>Learning Rate</strong></td>
+        <td>Model Name</td>
+        <td>\(n_{params}\)</td>
+        <td>\(n_{layers}\)</td>
+        <td>\(d_{model}\)</td>
+        <td>\(n_{heads}\)</td>
       </tr>
       <tr>
-        <td>GPT-2 Small</td>
+        <td>GPT-1</td>
         <td>117M</td>
         <td>12</td>
         <td>768</td>
         <td>12</td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
       </tr>
       <tr>
-        <td>GPT-2 Medium</td>
-        <td>345M</td>
-        <td>24</td>
-        <td>1024</td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
+        <td><strong>GPT-2 Small</strong></td>
+        <td><strong>117M</strong></td>
+        <td><strong>12</strong></td>
+        <td><strong>768</strong></td>
+        <td><strong>12</strong></td>
       </tr>
       <tr>
-        <td>GPT-2 Large</td>
-        <td>762M</td>
-        <td>36</td>
-        <td>1280</td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
+        <td><strong>GPT-2 Medium</strong></td>
+        <td><strong>345M</strong></td>
+        <td><strong>24</strong></td>
+        <td><strong>1024</strong></td>
+        <td><strong>16</strong></td>
       </tr>
       <tr>
-        <td>GPT-2 Extra Large</td>
-        <td>1542M</td>
-        <td>48</td>
-        <td>1600</td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
+        <td><strong>GPT-2 Large</strong></td>
+        <td><strong>762M</strong></td>
+        <td><strong>36</strong></td>
+        <td><strong>1280</strong></td>
+        <td><strong>16</strong></td>
+      </tr>
+      <tr>
+        <td><strong>GPT-2 Extra Large</strong></td>
+        <td><strong>1542M</strong></td>
+        <td><strong>48</strong></td>
+        <td><strong>1600</strong></td>
+        <td><strong>24</strong></td>
       </tr>
       <tr>
         <td>BERT-Base</td>
         <td>110M</td>
         <td>12</td>
         <td>768</td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
+        <td>12</td>
       </tr>
       <tr>
         <td>BERT-Large</td>
         <td>340M</td>
         <td>24</td>
         <td>1024</td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
-        <td> </td>
+        <td>16</td>
       </tr>
     </tbody>
   </table>
