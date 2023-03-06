@@ -282,18 +282,6 @@ BERT 作者 Jacob Devlin 总结过「到 2018 年时为什么主流语言模型�
 
 2018 年 2 月 AI2（Allan Institution for AI）在论文[《Deep contextualized word representations》](https://arxiv.org/abs/1802.05365)中提出了 ELMo 模型。该论文同时被 ICLR、NAACL 接受，并获得 NAACL 最佳论文奖。ELMo 是「Embeddings from Language Model」的意思，也是呼应美国知名儿童电视节目《芝麻街》里的角色 Elmo，这样给模型起名是比较容易口口相传的。
 
-<div class="table-wrapper" markdown="block">
-
-| **模型**            | ELMo   |
-| **发布时间**         | 2018 年 2 月|
-| **参数量**          |   |
-| **与训练数据量**     |     |
-| **层数**            |       |
-| **上下文 tokens 数** |     |
-| **词向量长度**       |     |
-
-</div>
-
 ELMo  会**根据上下文信息**给一个词编码出一个词向量。这样类似下面的 bank 在两个句子中含义不同，则有不同的词向量：
 
 ![](/img/src/2023/2023-01-23-captain-aigc-2-llm-29.png){: width="490"}
@@ -875,13 +863,14 @@ GPT-2 模型的基本信息如下表，其中可以看出 117M 参数版本的 G
 
 <div class="table-wrapper" markdown="block">
 
-| **模型**             | **参数量** | **层数** | **词向量长度** | **注意力头数** | **头宽度** | **Batch Size** | **Learning Rate** |
-| GPT-2 Small         | 117M      | 12       | 768           | 12           |           |                |                   |
-| GPT-2 Medium        | 345M      | 24       | 1024          |              |           |                |                   |
-| GPT-2 Large         | 762M      | 36       | 1280          |              |           |                |                   |
-| GPT-2 Extra Large   | 1542M     | 48       | 1600          |              |           |                |                   |
-| BERT-Base           | 110M      | 12       | 768           |              |           |                |                   |
-| BERT-Large          | 340M      | 24       | 1024          |              |           |                |                   |
+| Model Name			| $$ n_{params} $$	| $$ n_{layers} $$	| $$ d_{model} $$	| $$ n_{heads} $$	| 
+| GPT-1 	         	| 117M      		| 12      			| 768          		| 12          		|
+| **GPT-2 Small**      	| **117M**      	| **12**       		| **768**           | **12**           	|
+| **GPT-2 Medium**    	| **345M**      	| **24**   			| **1024**          | **16**           	|
+| **GPT-2 Large**		| **762M**      	| **36**    		| **1280**          | **16**           	|
+| **GPT-2 Extra Large**	| **1542M**     	| **48**   			| **1600**          | **24**           	|
+| BERT-Base        		| 110M      		| 12   			    | 768           	| 12           		|
+| BERT-Large          	| 340M      		| 24   			    | 1024          	| 16           		|
 
 </div>
 
