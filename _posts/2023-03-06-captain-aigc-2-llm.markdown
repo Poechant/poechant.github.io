@@ -11,6 +11,8 @@ location: 杭州
 author: 麦克船长
 ---
 
+![](/img/src/2023/03/mikecaptain-llm-revolution-2.jpg)
+
 文本来自我的个人博客：[MikeCaptain - 麦克船长的技术、产品与商业博客](https://www.mikecaptain.com/)，初次成稿于 2023 年初春节期间对 LLM（Large Language Models，大型语言模型）的技术演变学习的笔记记录，后来又补充了一些近期的内容（LLaMA 发布、ChatGPT API 发布等）。本文是[《人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型》](https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/)（以下简称《**船涨：LLM 革命前夜**》）的续篇，也是前篇中提到过的，近日终于抽了些时间完成了排版、插图与参考内容的完善。
 
 * 作者：钟超（船涨）
