@@ -45,7 +45,7 @@ OpenAI 建议在试验时使用 `gpt-3.5-turbo`，因为它会产生最佳结果
 
 ### 3、模型
 
-OpenAI 今天发布的 ChatGPT 模型系列 GPT-3.5-turbo 与 ChatGPT 产品中使用的模型相同。它的价格为每 1k tokens 0.002 美元，比 OpenAI 现有的 GPT-3.5 模型便宜 10 倍。即使对于许多非聊天用例，它也是 OpenAI 的最佳模型 —— 如果你之前就用了 text-davinci-003，那么迁移到 gpt-3.5-turbo 时只需要对他们的提示进行少量调整。
+OpenAI 今天发布的 ChatGPT 模型系列 GPT-3.5-turbo 与 ChatGPT 产品中使用的模型相同。它的价格为每 1k tokens 0.002 美元，比 OpenAI 现有的 GPT-3 模型便宜 10 倍。即使对于许多非聊天用例，它也是 OpenAI 的最佳模型 —— 如果你之前就用了 text-davinci-003，那么迁移到 gpt-3.5-turbo 时只需要对他们的提示进行少量调整。
 
 #### 3.1、Turbo
 
