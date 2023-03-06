@@ -4,7 +4,7 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-03-06T10:27:11+00:00</updated>
+ <updated>2023-03-06T11:09:12+00:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
@@ -18,7 +18,7 @@
    <link href="https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/"/>
    <id>https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm</id>
    <updated>2023-03-06T06:54:13+00:00</updated>
-   <content type="html">&lt;p&gt;文本来自我的个人博客：&lt;a href=&quot;https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/&quot;&gt;MikeCaptain - 麦克船长的技术、产品与商业博客&lt;/a&gt;（以下简称《&lt;strong&gt;船涨：LLM 革命前夜&lt;/strong&gt;》），初次成稿于 2023 年初春节期间对 LLM 的技术演变学习的笔记记录，后来又补充了一些近期的内容（LLaMA 发布、ChatGPT API 发布等）。本文是&lt;a href=&quot;https://ata.alibaba-inc.com/articles/256354&quot;&gt;《人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型》&lt;/a&gt;的续篇，也是前篇中提到过的，近日终于抽了些时间完成了排版、插图与参考内容的完善。&lt;/p&gt; &lt;ul&gt; &lt;li&gt;作者：钟超（船涨）&lt;/li&gt; &lt;li&gt;微信：sinosuperman&lt;/li&gt; &lt;/ul&gt; &lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt; &lt;p&gt;在船涨上一篇文章《&lt;strong&gt;船涨：LLM 革命前夜&lt;/strong&gt;》中，我们介绍了引领当下自然语言处理（Natural Language Processing，NLP）领域的基础模型 Transformer。但是 2017 年 Google 发表&lt;a href=&quot;https://arxiv.org/abs/1706.03762&quot;&gt;《Attention is All You Need》&lt;/a&gt;论文介绍 Transformer 后，经过了五年才让我们用到 ChatGPT 这样惊艳的文本生成 AI 模型，这中间发生的变化值得我们一窥究竟。本文试图解答两个问题：1）&lt;strong&gt;从 Transformer 问世后，这几年是哪些关键技术出现使得主流语言模型（Language Models，LM）进化到 ChatGPT 这种程度？&lt;/strong&gt;2）&lt;strong&gt;近几年大型语言模型（Large LM，LLM）的整体进展是怎样的？&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;本文的受众：希望产品、运营等非技术的同学也看的懂，有少量计算机技术基础，且大致对《船涨：LLM...</content>
+   <content type="html">&lt;p&gt;文本来自我的个人博客：&lt;a href=&quot;https://www.mikecaptain.com/&quot;&gt;MikeCaptain - 麦克船长的技术、产品与商业博客&lt;/a&gt;，初次成稿于 2023 年初春节期间对 LLM（Large Language Models，大型语言模型）的技术演变学习的笔记记录，后来又补充了一些近期的内容（LLaMA 发布、ChatGPT API 发布等）。本文是&lt;a href=&quot;https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型》&lt;/a&gt;（以下简称《&lt;strong&gt;船涨：LLM 革命前夜&lt;/strong&gt;》）的续篇，也是前篇中提到过的，近日终于抽了些时间完成了排版、插图与参考内容的完善。&lt;/p&gt; &lt;ul&gt; &lt;li&gt;作者：钟超（船涨）&lt;/li&gt; &lt;li&gt;微信：sinosuperman&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;前篇《船涨：LLM 革命前夜》主要讲的是 LLM 发展的神经网络模型一路如何走到 Transformer 的，是过去。本篇《船涨：LLM 革命破晓》讲的是 LLM 近年到现在进行时的演进关键点，是当下。再后续，我还将以商业为第一视角，与大家一起探讨下未来一些年内，AGI 在应用领域的发展路线可能会是怎样的，那将更多围绕推演和畅享。&lt;/p&gt; &lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt; &lt;p&gt;在船涨上一篇文章&lt;a href=&quot;https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《船涨：LLM 革命前夜》&lt;/a&gt;中，我们介绍了引领当下自然语言处理（Natural Language Processing，NLP）领域的基础模型 Transformer。但是 2017 年 Google 发表&lt;a href=&quot;https://arxiv.org/abs/1706.03762&quot;&gt;《Attention is All You Need》&lt;/a&gt;论文介绍 Transformer...</content>
  </entry>
 
  

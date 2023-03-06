@@ -1,20 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-03-06T10:27:11+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">人工智能 LLM 革命破晓：一文读懂当下超大语言模型发展现状</title><link href="https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/" rel="alternate" type="text/html" title="人工智能 LLM 革命破晓：一文读懂当下超大语言模型发展现状" /><published>2023-03-06T06:54:13+00:00</published><updated>2023-03-06T06:54:13+00:00</updated><id>https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/">&lt;p&gt;文本来自我的个人博客：&lt;a href=&quot;https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/&quot;&gt;MikeCaptain - 麦克船长的技术、产品与商业博客&lt;/a&gt;（以下简称《&lt;strong&gt;船涨：LLM 革命前夜&lt;/strong&gt;》），初次成稿于 2023 年初春节期间对 LLM 的技术演变学习的笔记记录，后来又补充了一些近期的内容（LLaMA 发布、ChatGPT API 发布等）。本文是&lt;a href=&quot;https://ata.alibaba-inc.com/articles/256354&quot;&gt;《人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型》&lt;/a&gt;的续篇，也是前篇中提到过的，近日终于抽了些时间完成了排版、插图与参考内容的完善。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-03-06T11:09:12+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">人工智能 LLM 革命破晓：一文读懂当下超大语言模型发展现状</title><link href="https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/" rel="alternate" type="text/html" title="人工智能 LLM 革命破晓：一文读懂当下超大语言模型发展现状" /><published>2023-03-06T06:54:13+00:00</published><updated>2023-03-06T06:54:13+00:00</updated><id>https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/">&lt;p&gt;文本来自我的个人博客：&lt;a href=&quot;https://www.mikecaptain.com/&quot;&gt;MikeCaptain - 麦克船长的技术、产品与商业博客&lt;/a&gt;，初次成稿于 2023 年初春节期间对 LLM（Large Language Models，大型语言模型）的技术演变学习的笔记记录，后来又补充了一些近期的内容（LLaMA 发布、ChatGPT API 发布等）。本文是&lt;a href=&quot;https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型》&lt;/a&gt;（以下简称《&lt;strong&gt;船涨：LLM 革命前夜&lt;/strong&gt;》）的续篇，也是前篇中提到过的，近日终于抽了些时间完成了排版、插图与参考内容的完善。&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;作者：钟超（船涨）&lt;/li&gt;
   &lt;li&gt;微信：sinosuperman&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p&gt;前篇《船涨：LLM 革命前夜》主要讲的是 LLM 发展的神经网络模型一路如何走到 Transformer 的，是过去。本篇《船涨：LLM 革命破晓》讲的是 LLM 近年到现在进行时的演进关键点，是当下。再后续，我还将以商业为第一视角，与大家一起探讨下未来一些年内，AGI 在应用领域的发展路线可能会是怎样的，那将更多围绕推演和畅享。&lt;/p&gt;
+
 &lt;h2 id=&quot;前言&quot;&gt;前言&lt;/h2&gt;
 
-&lt;p&gt;在船涨上一篇文章《&lt;strong&gt;船涨：LLM 革命前夜&lt;/strong&gt;》中，我们介绍了引领当下自然语言处理（Natural Language Processing，NLP）领域的基础模型 Transformer。但是 2017 年 Google 发表&lt;a href=&quot;https://arxiv.org/abs/1706.03762&quot;&gt;《Attention is All You Need》&lt;/a&gt;论文介绍 Transformer 后，经过了五年才让我们用到 ChatGPT 这样惊艳的文本生成 AI 模型，这中间发生的变化值得我们一窥究竟。本文试图解答两个问题：1）&lt;strong&gt;从 Transformer 问世后，这几年是哪些关键技术出现使得主流语言模型（Language Models，LM）进化到 ChatGPT 这种程度？&lt;/strong&gt;2）&lt;strong&gt;近几年大型语言模型（Large LM，LLM）的整体进展是怎样的？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在船涨上一篇文章&lt;a href=&quot;https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《船涨：LLM 革命前夜》&lt;/a&gt;中，我们介绍了引领当下自然语言处理（Natural Language Processing，NLP）领域的基础模型 Transformer。但是 2017 年 Google 发表&lt;a href=&quot;https://arxiv.org/abs/1706.03762&quot;&gt;《Attention is All You Need》&lt;/a&gt;论文介绍 Transformer 后，经过了五年才让我们用到 ChatGPT 这样惊艳的文本生成 AI 模型，这中间发生的变化值得我们一窥究竟。本文试图解答两个问题：1）&lt;strong&gt;从 Transformer 问世后，这几年是哪些关键技术出现使得主流语言模型（Language Models，LM）进化到 ChatGPT 这种程度？&lt;/strong&gt;2）&lt;strong&gt;近几年大型语言模型（Large LM，LLM）的整体进展是怎样的？&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;本文的受众：希望产品、运营等非技术的同学也看的懂，有少量计算机技术基础，且大致对《船涨：LLM 革命前夜》所述基础模型有粗浅了解的朋友。&lt;/strong&gt;对于 NLP 领域的学者来讲，本文只是一篇易于理解的解读综述。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;本文的受众：希望产品、运营等非技术的同学也看的懂，有少量计算机技术基础，且大致对&lt;a href=&quot;https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《船涨：LLM 革命前夜》&lt;/a&gt;所述基础模型有粗浅了解的朋友。&lt;/strong&gt;对于 NLP 领域的学者来讲，本文只是一篇易于理解的解读综述。&lt;/p&gt;
 
 &lt;p&gt;本文包括这几部分内容：&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;第一章，初步了解自然语言处理的任务、方法和模型，其中方法部分介绍了近些年直到当下 NLP 的几个技术范式转换阶段，模型方面最好你有阅读过&lt;a href=&quot;https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/&quot;&gt;前篇《船涨：LLM 革命前夜》&lt;/a&gt;。&lt;/li&gt;
+  &lt;li&gt;第一章，初步了解自然语言处理的任务、方法和模型，其中方法部分介绍了近些年直到当下 NLP 的几个技术范式转换阶段，模型方面最好你有阅读过前篇&lt;a href=&quot;https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《船涨：LLM 革命前夜》&lt;/a&gt;。&lt;/li&gt;
   &lt;li&gt;第二章，介绍了 2018 - 2021 年 LLM 关键发展节点与主流模型，从 Transformer 之后的 ELMo，到 GPT-1、BERT、GPT-2、T5、GPT-3，以及 Scaling Law。&lt;/li&gt;
   &lt;li&gt;第三章，探究上下文学习（In-Context Learning）的应用（Prompt Engineering）、底层假设和原理探究，包括思维链（CoT）。&lt;/li&gt;
   &lt;li&gt;第四章，介绍了 2022 - 2023 年初 LLM 发展关键节点与主流模型，延续前面对 GPT 的探讨基础上，一起看下 InstructGPT、ChatGPT 以及近期出现的一些其他 LLM。&lt;/li&gt;
@@ -24,11 +26,11 @@
 &lt;p&gt;阅读本文，先对你过往的基础知识做了一些假设，如果你暂未了解，可能在阅读时遇到以下内容做一些简单地查询即可：&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;对人工神经网络有一点点基础，可以通过阅读船长的《船涨：LLM 革命前夜》第一章快速了解。&lt;/li&gt;
-  &lt;li&gt;对 Transformer 模型有一点点基础，可以通过阅读船长的《船涨：LLM 革命前夜》第二章快速了解。&lt;/li&gt;
+  &lt;li&gt;对人工神经网络有一点点基础，可以通过阅读船涨的&lt;a href=&quot;https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《船涨：LLM 革命前夜》&lt;/a&gt;第一章快速了解。&lt;/li&gt;
+  &lt;li&gt;对 Transformer 模型有一点点基础，可以通过阅读船涨的&lt;a href=&quot;https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《船涨：LLM 革命前夜》&lt;/a&gt;第二章快速了解。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;本文第一章和第二章，是关于自然语言处理的学习训练方法、语言模型基础的一些背景知识，对这些有了解的朋友可以直接跳到第三章开始阅读。&lt;/p&gt;
+&lt;p&gt;本文第一章是关于自然语言处理的任务、学习训练方法、语言模型基础的一些背景知识，对这些有了解的朋友可以直接跳到第二章开始阅读。希望本文能够以一种按图索骥、深入浅出的方式让大多数同学能了解到当下火热的 LLM 这几年都在发生什么。&lt;/p&gt;
 
 &lt;p&gt;由于船涨近些年主职并非技术，因此本文内容抛砖引玉，若有错误纰漏，请大家联系我及时修正。期待与大家多多交流、学习。
 &lt;!-- 声明：本文所有内容均来自公开论文、开源代码及模型、公开博客文章、社交媒体讨论、公开演示 DEMO，不涉及本人所就职机构的任何内部信息，且所发表言论仅代表个人，与本人所就职机构（聚划算$$^{\circledR}$$、淘宝$$^{\circledR}$$或阿里巴巴$$^{\circledR}$$集团）均无关。 --&gt;&lt;/p&gt;
@@ -37,7 +39,7 @@
 
 &lt;h3 id=&quot;第-1-节--我们要解决什么问题nlp-任务&quot;&gt;第 1 节 · 我们要解决什么问题：NLP 任务&lt;/h3&gt;
 
-&lt;p&gt;自然语言处理领域要实现的终极形态，就是让机器按照人类偏好的方式，与人类通过语言文字高效交互。而人类高等文明中「最高等」的那部分文明，全都是人类在发明了语言文字后才诞生的 —— 物理、数学、生物医药、金融体系、现代通信、航空航天、汽车工业、计算机科学等等。而绘画、音乐等视听刺激，更多来自本能。因此这里船长再引用&lt;a href=&quot;https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《船涨：LLM 革命前夜》&lt;/a&gt;中一段话：&lt;/p&gt;
+&lt;p&gt;自然语言处理领域要实现的终极形态，就是让机器按照人类偏好的方式，与人类通过语言文字高效交互。而人类高等文明中「最高等」的那部分文明，全都是人类在发明了语言文字后才诞生的 —— 物理、数学、生物医药、金融体系、现代通信、航空航天、汽车工业、计算机科学等等。而绘画、音乐等视听刺激，更多来自本能。因此这里船涨再引用&lt;a href=&quot;https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《船涨：LLM 革命前夜》&lt;/a&gt;中一段话：&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;从第一性原理角度讲，生成图片的应用广度，远远小于生成文本。文本内容的本质是语言文字的理解与生成，人类历史有 600 万年，但是人类文明历史大概就 6000 年，文明的大发展出现在近 2000 多年的原因，主要来自 3500 多年前人类发明了文字。所以 AI 生成文本，意味着 AI 可以用人类熟悉的方式（语言文字）与人类高效协作，这必将引爆生产力革命。而这必将深入影响电商、内容、游戏、云计算、企业服务等众多领域。&lt;/p&gt;
@@ -84,7 +86,7 @@
 
 &lt;p&gt;所以回到本篇开头处的探讨，既然高等文明的各项成功都建立在语言文字诞生的基础上，那么回归我们的直觉，机器在交互形式层面，如果能对语言文字进行听说读写，也就能达到人类对自然语言处理领域的终极诉求。听和读是输入，说和写是输出。说和写就对应着文本生成，而能「正确地」说和写就意味着已经能「正确地」听和读了，那从这个意义上说，自然语言处理是不是就等价于文本生成问题？&lt;/p&gt;
 
-&lt;p&gt;是这样吗？从近几年大型语言模型（Large Language Model，LLM）一路走过来看，似乎是这样。看过船长&lt;a href=&quot;http://localhost:4000/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《船涨：LLM 革命前夜》&lt;/a&gt;文章的朋友们应该还记得，在连结主义的路线上，人工神经网络的基础模型架构是如何从统计语言模型（Statistical Language Models）发展为神经语言模型（Neural Language Models），并在神经语言模型的道路上经历了从 MLP 到最终 Transformer 的迭代演化。Transformer 问世后几乎统一了 NLP 领域的基础模型架构，而一代又一代的模型在这几年时间里大爆发，向通用人工智能（Artificial General Intelligence）方向加速推进了 NLP 的进程，直到大家觉得几乎要逼近奇点的 ChatGPT 出现。这过程中，解决 NLP 问题的技术思路是怎么发展过来的？&lt;/p&gt;
+&lt;p&gt;是这样吗？从近几年大型语言模型（Large Language Model，LLM）一路走过来看，似乎是这样。看过&lt;a href=&quot;http://localhost:4000/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《船涨：LLM 革命前夜》&lt;/a&gt;文章的朋友们应该还记得，在连结主义的路线上，人工神经网络的基础模型架构是如何从统计语言模型（Statistical Language Models）发展为神经语言模型（Neural Language Models），并在神经语言模型的道路上经历了从 MLP 到最终 Transformer 的迭代演化。Transformer 问世后几乎统一了 NLP 领域的基础模型架构，而一代又一代的模型在这几年时间里大爆发，向通用人工智能（Artificial General Intelligence）方向加速推进了 NLP 的进程，直到大家觉得几乎要逼近奇点的 ChatGPT 出现。这过程中，解决 NLP 问题的技术思路是怎么发展过来的？&lt;/p&gt;
 
 &lt;p&gt;已经说了「要解决什么问题」，所以接下来我们要开始探讨下「解决问题的思路」。既然沿着连结主义的人工神经网络往前走，回忆下&lt;a href=&quot;http://localhost:4000/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《船涨：LLM 革命前夜》&lt;/a&gt;中我们提到的神经网络的基本研究范式。先要把文本转换为一组组的数字（文本表示，Word Representation），再由计算机寻找这些数字之间潜在关联（特征抽取，Feature Extraction）去优化参数（训练，Training）得到一个模型，然后就可以用它处理任务了。因此概括起来，解决问题的思路就变成了如何设计模型架构、设计学习方法。&lt;/p&gt;
 
@@ -97,7 +99,7 @@
 
 &lt;h3 id=&quot;第-2-节--解决问题的思路之方法神经网络模型学习方法的三个范式阶段&quot;&gt;第 2 节 · 解决问题的思路之方法：神经网络模型学习方法的三个范式阶段&lt;/h3&gt;
 
-&lt;p&gt;如果你了解船长&lt;a href=&quot;http://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/&quot;&gt;前篇《船涨：LLM 革命前夜》的 2.7 节中的「简述如何训练一个神经网络模型」&lt;/a&gt;的话，下面我们可以看下基于此，NLP 领域在几个阶段的不同学习范式。&lt;/p&gt;
+&lt;p&gt;如果你了解前篇&lt;a href=&quot;http://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《船涨：LLM 革命前夜》&lt;/a&gt;的 2.7 节中的「简述如何训练一个神经网络模型」的话，下面我们可以看下基于此，NLP 领域在几个阶段的不同学习范式。&lt;/p&gt;
 
 &lt;p&gt;卡耐基梅隆大学几位学者在 2021 年的论文&lt;a href=&quot;https://arxiv.org/abs/2107.13586&quot;&gt;《Pre-train, Prompt, and Predict: A Systematic Survey of Prompting Methods in Natural Language Processing》&lt;/a&gt;中对 NLP 领域到那个时间点的学习范式演进做了总结，我在其基础上做了一些修改，写一下我自己的理解。&lt;/p&gt;
 
@@ -118,7 +120,7 @@
 
 &lt;h4 id=&quot;22第二阶段预训练pre-train范式--为了更好的泛化性generalization&quot;&gt;2.2、第二阶段：预训练（Pre-train）范式 —— 为了更好的泛化性（Generalization）&lt;/h4&gt;
 
-&lt;p&gt;完全监督学习的范式非常不优雅，一方面上游标注数据难搞（记作「短板一」），另一方面因为针对特定任务训练，所以下游使用时只能对特定任务起作用（记作「短板二」）。这两个显著的短板，引出下面几个研究的技术路线，跟船长一起从逻辑上来理解一下。&lt;/p&gt;
+&lt;p&gt;完全监督学习的范式非常不优雅，一方面上游标注数据难搞（记作「短板一」），另一方面因为针对特定任务训练，所以下游使用时只能对特定任务起作用（记作「短板二」）。这两个显著的短板，引出下面几个研究的技术路线，跟船涨一起从逻辑上来理解一下。&lt;/p&gt;
 
 &lt;p&gt;思路一：构建 NLP 自己的 ImageNet。针对「短板一」是比较为难的，因为自然语言处理 (NLP) 的最大挑战之一就是训练标注数据的匮乏，这与计算机视觉（CV）领域形成鲜明对比。由于 NLP 任务的多元化，因此研究人员都在面向不同任务领域，各领域也只能有各自的、围绕目标任务的标记数据，很难全领域形成合力构筑统一的、海量的训练标记数据。然而，近些年 NLP 深度学习发展到了比拼大模型的阶段，这些大模型对有标注的大数据量有极度的渴求。填补这个 GAP 的其中一种思路就出现了：搞个 NLP 人的 ImageNet。ImageNet 是包含了超过 1400 万张手动标注图像、涵盖 2 万多个类别的大型图像数据库，这一直让 NLP 领域研究人员非常羡慕搞 CV 的，这些年围绕「NLP 的 ImageNet 时刻到来」的说法不少，也有不少相关研究是朝这个方向努力，但其实一直无法真正和 ImageNet 相提并论。&lt;/p&gt;
 
@@ -150,7 +152,7 @@
 
 &lt;p&gt;LLM 模型参数规模非常大，以大家熟悉的 2020 年出现的 GPT-3 为例，模型参数就达到了 1750 亿个。这样下游再去「微调」时，针对一个特定任务，都要更新一个巨大的模型，成本就有点高了。变相地拉高了「预训练-微调」范式的泛化成本。&lt;/p&gt;
 
-&lt;p&gt;如果面对下游任务时，不用更新参数就好了 —— 也就是预训练之后不用微调。能实现吗？2018、2019 年在这方面的探索蛮多的，例如 &lt;a href=&quot;https://arxiv.org/abs/1806.08730&quot;&gt;Salesforce Research 在 2018 年 6 月&lt;/a&gt;、&lt;a href=&quot;https://arxiv.org/abs/1901.11373&quot;&gt;DeepMind 在 2019 年 1 月&lt;/a&gt;、&lt;a href=&quot;https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf&quot;&gt;OpenAI 在 2019 年 2 月&lt;/a&gt; 都提出了这方面类似的论断：语言模型应该可以解决一切文本任务。船长会在本篇第 8 节 GPT-2 部分重点讲到。这里隐含着语言模型从大量语料里「隐式地」学到了很多任务该怎么做。既然学到了，下游可能就不用微调了，但是你可能需要给出一些「显式」的提醒来唤醒模型学到的「隐式」任务概念，这就是预训练范式下的第二个阶段：&lt;/p&gt;
+&lt;p&gt;如果面对下游任务时，不用更新参数就好了 —— 也就是预训练之后不用微调。能实现吗？2018、2019 年在这方面的探索蛮多的，例如 &lt;a href=&quot;https://arxiv.org/abs/1806.08730&quot;&gt;Salesforce Research 在 2018 年 6 月&lt;/a&gt;、&lt;a href=&quot;https://arxiv.org/abs/1901.11373&quot;&gt;DeepMind 在 2019 年 1 月&lt;/a&gt;、&lt;a href=&quot;https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf&quot;&gt;OpenAI 在 2019 年 2 月&lt;/a&gt; 都提出了这方面类似的论断：语言模型应该可以解决一切文本任务。船涨会在本篇第 8 节 GPT-2 部分重点讲到。这里隐含着语言模型从大量语料里「隐式地」学到了很多任务该怎么做。既然学到了，下游可能就不用微调了，但是你可能需要给出一些「显式」的提醒来唤醒模型学到的「隐式」任务概念，这就是预训练范式下的第二个阶段：&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;预训练-提示（Pre-train and Prompt）&lt;/strong&gt;学习范式：同样也可以具体说成是「语言建模预训练 - 提示」范式，举例来说比如你在使用模型时输入「北京，中国；纽约，美国；大阪，日本；悉尼，XXX。XXX 应该是什么？」，模型输出「澳大利亚」，这个输入的部分就是「提示（Prompt）」。Prompt 与 Fine-tune 最大的区别，是 Prompt 是不更新模型参数的，这是一种「上下文学习（In-Context Learning，ICL）」能力，这是一个非常重要的议题，因此本篇第四章将用一整章来探讨 ICL。&lt;/li&gt;
@@ -244,7 +246,7 @@
 
 &lt;h3 id=&quot;第-4-节--transformer2017-年-6-月&quot;&gt;第 4 节 · Transformer（2017 年 6 月）&lt;/h3&gt;
 
-&lt;p&gt;船长在&lt;a href=&quot;/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《船涨：LLM 革命前夜》&lt;/a&gt;中讲述了 NLP 领域基础模型如何发展出 Transformer 的。Transformer 最初只不过想解决机器翻译问题，输入 A 语言的文本序列，输出 B 语言的文本序列，但其强大的能力让其几乎正在统一 AI 个研究领域。Transformer 模型的最大亮点有两方面：&lt;/p&gt;
+&lt;p&gt;船涨在&lt;a href=&quot;/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《船涨：LLM 革命前夜》&lt;/a&gt;中讲述了 NLP 领域基础模型如何发展出 Transformer 的。Transformer 最初只不过想解决机器翻译问题，输入 A 语言的文本序列，输出 B 语言的文本序列，但其强大的能力让其几乎正在统一 AI 个研究领域。Transformer 模型的最大亮点有两方面：&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;特征提取能力强：捕获更大范围内的语言结构（Capture longer range linguistic structure）。&lt;/li&gt;
@@ -259,7 +261,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/img/src/2023/2023-01-23-captain-aigc-2-llm-55.png&quot; alt=&quot;&quot; width=&quot;640&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;要么基于 Encoder 和 Decoder 整体，比如 Google 推出的 T5。如果想搞懂 Transformer Encoder-Decoder 结构再继续阅读本文的话，建议先看&lt;a href=&quot;/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《船涨：LLM 革命前夜》&lt;/a&gt;。如果你已经大致了解了，后续提到 Encoder、Decoder 部分则不会有疑问，请跟随船长继续下去啦。&lt;/p&gt;
+&lt;p&gt;要么基于 Encoder 和 Decoder 整体，比如 Google 推出的 T5。如果想搞懂 Transformer Encoder-Decoder 结构再继续阅读本文的话，建议先看&lt;a href=&quot;/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《船涨：LLM 革命前夜》&lt;/a&gt;。如果你已经大致了解了，后续提到 Encoder、Decoder 部分则不会有疑问，请跟随船涨继续下去啦。&lt;/p&gt;
 
 &lt;h3 id=&quot;第-5-节--elmo词所在的上下文很重要2018-年-2-月&quot;&gt;第 5 节 · ELMo：词所在的上下文很重要（2018 年 2 月）&lt;/h3&gt;
 
@@ -352,11 +354,11 @@
 
 &lt;p&gt;&lt;img src=&quot;/img/src/2023/2023-01-23-captain-aigc-2-llm-32.png&quot; alt=&quot;&quot; width=&quot;260&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;下面是一个 ELMo 执行文本预测任务的过程，以此来说明 ELMo 的模型结构（这里只展示了 Left-to-Right 单向 LSTM 部分，Right-to-Left 与之相似略去）：对输入文本先 &lt;strong&gt;Word Embedding 提取单词特征&lt;/strong&gt;，然后经过两层 LSTM，研究表名&lt;strong&gt;第一层 LSTM 能够捕获句法特征&lt;/strong&gt;，&lt;strong&gt;第二层 LSTM 能够提取到语义特征&lt;/strong&gt;。最后到输出层（FFNN 前馈神经网络 + Softmax 回归，这两个概念也在船长的&lt;a href=&quot;https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型》&lt;/a&gt;的 2.8、2.5 中有简洁讲述）得到预测概率最高的词。&lt;/p&gt;
+&lt;p&gt;下面是一个 ELMo 执行文本预测任务的过程，以此来说明 ELMo 的模型结构（这里只展示了 Left-to-Right 单向 LSTM 部分，Right-to-Left 与之相似略去）：对输入文本先 &lt;strong&gt;Word Embedding 提取单词特征&lt;/strong&gt;，然后经过两层 LSTM，研究表名&lt;strong&gt;第一层 LSTM 能够捕获句法特征&lt;/strong&gt;，&lt;strong&gt;第二层 LSTM 能够提取到语义特征&lt;/strong&gt;。最后到输出层（FFNN 前馈神经网络 + Softmax 回归，这两个概念也在船涨的&lt;a href=&quot;https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型》&lt;/a&gt;的 2.8、2.5 中有简洁讲述）得到预测概率最高的词。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/src/2023/2023-01-23-captain-aigc-2-llm-33.png&quot; alt=&quot;&quot; width=&quot;490&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;更详细地结构描述中，补充一点，即在 ELMo 的第一第二层之间，还有一个 ResNet（ResNet 的快速了解可参考船长上一篇&lt;a href=&quot;https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型》&lt;/a&gt;）的第 9 节），这样可以增加模型的稳定性。&lt;/p&gt;
+&lt;p&gt;更详细地结构描述中，补充一点，即在 ELMo 的第一第二层之间，还有一个 ResNet（ResNet 的快速了解可参考船涨上一篇&lt;a href=&quot;https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型》&lt;/a&gt;）的第 9 节），这样可以增加模型的稳定性。&lt;/p&gt;
 
 &lt;h4 id=&quot;54elmo-训练及使用&quot;&gt;5.4、ELMo 训练及使用&lt;/h4&gt;
 
@@ -437,7 +439,7 @@
 
 &lt;h4 id=&quot;63gpt-1-为什么用-transformer-而不是-lstm&quot;&gt;6.3、GPT-1 为什么用 Transformer 而不是 LSTM？&lt;/h4&gt;
 
-&lt;p&gt;回到 2017 年的背景下（虽然是 2018 年初发布，但 GPT-1 的研发是从 2017 年 Transformer 发布后就开始的），哪怕知道 Transformer 是个不错的基础模型，但是当时一个新的语言模型采用 LSTM/RNN 还是 Transformer 并没有现在这么显而易见。为什么选择 Transformer？OpenAI 给出了两个原因。但是船长认为，按学界的通常情况，都是试出了结果再尝试归因，肯定不是分析出哪个模型更有效然后指哪打哪的。这并非吐槽，因为与理论科学不同，实验科学其实就要这样。&lt;/p&gt;
+&lt;p&gt;回到 2017 年的背景下（虽然是 2018 年初发布，但 GPT-1 的研发是从 2017 年 Transformer 发布后就开始的），哪怕知道 Transformer 是个不错的基础模型，但是当时一个新的语言模型采用 LSTM/RNN 还是 Transformer 并没有现在这么显而易见。为什么选择 Transformer？OpenAI 给出了两个原因。但是船涨认为，按学界的通常情况，都是试出了结果再尝试归因，肯定不是分析出哪个模型更有效然后指哪打哪的。这并非吐槽，因为与理论科学不同，实验科学其实就要这样。&lt;/p&gt;
 
 &lt;p&gt;我们来看下 OpenAI 给出的归因。&lt;/p&gt;
 
@@ -536,7 +538,7 @@ L_3(\mathcal{C}) = L_2(\mathcal{C}) + \lambda * L_1(\mathcal{C})
 
 &lt;p&gt;论文中所说的这个 BooksCorpus，其实是把 BookCorpus 拼写错误了。BookCorpus 也被称为 Toronto BookCorpus，是一个包含未出版的、免费的书籍内容的数据集，这些书籍都是来自 SmashWords 电子书网站（这个网站自称是全球最大独立电子书分销商，独立电子书的概念可以类比独立电影、独立游戏）。2018 年 OpenAI 训练 GPT-1 时，OpenAI 称该数据集包含 7000 多本未出版的书籍，4.6 GB 数据。&lt;/p&gt;
 
-&lt;p&gt;为什么用未出版的小说书籍训练呢？在船长的理解里，这是为了在一个相对隔离的数据集上训练，然后在真实世界中我们可能遇到的问题上做测试，这样可以更好地检验模型的泛化能力。因为 BookCorpus 这些书都是未公开的，而且小说又不像其他书籍，理论上构成的语料也都是原创性的，这样就能更好地检验泛化能力。&lt;/p&gt;
+&lt;p&gt;为什么用未出版的小说书籍训练呢？在船涨的理解里，这是为了在一个相对隔离的数据集上训练，然后在真实世界中我们可能遇到的问题上做测试，这样可以更好地检验模型的泛化能力。因为 BookCorpus 这些书都是未公开的，而且小说又不像其他书籍，理论上构成的语料也都是原创性的，这样就能更好地检验泛化能力。&lt;/p&gt;
 
 &lt;p&gt;在 2021 年时，一份对 BookCorpus 当时 11038 本书籍各类目分布的统计分析如下（来自 Alan D. Thompson, March 2022, What’S IN MY AI? ），从这个分布里大概能推测 GPT-1 用其中 7000 本书都学了什么：&lt;/p&gt;
 
@@ -756,7 +758,7 @@ L_3(\mathcal{C}) = L_2(\mathcal{C}) + \lambda * L_1(\mathcal{C})
 
 &lt;p&gt;OpenAI 发布 GPT-1 后，Google 大受震撼。在其发布 4 个月后的 2018 年 10 月，Google 终于推出了 BERT，它有两个版本 BERT-Base 和 BERT-Large。从性能表现上看，参数规模相当的情况下，BERT-Base 超越 GPT-1，而参数规模更大的 BERT-Large 又远好于 BERT-Base，可以说 Google 又穿上了黄色领骑衫。&lt;/p&gt;
 
-&lt;p&gt;BERT 的名字，在麦克船长看来也是作者们硬凑出来的，就是为了呼应 ELMo 这种芝麻街角色名字系列。BERT 是 Bidirectional Encoder Representations from Transformers 的缩写。下面是 BERT 的基本信息。&lt;/p&gt;
+&lt;p&gt;BERT 的名字，在船涨看来也是作者们硬凑出来的，就是为了呼应 ELMo 这种芝麻街角色名字系列。BERT 是 Bidirectional Encoder Representations from Transformers 的缩写。下面是 BERT 的基本信息。&lt;/p&gt;
 
 &lt;div class=&quot;table-wrapper&quot;&gt;
 
@@ -801,7 +803,7 @@ L_3(\mathcal{C}) = L_2(\mathcal{C}) + \lambda * L_1(\mathcal{C})
 
 &lt;p&gt;&lt;img src=&quot;/img/src/2023/2023-01-23-captain-aigc-2-llm-60.png&quot; alt=&quot;&quot; width=&quot;640&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;以下阅读前需要你初步了解 &lt;strong&gt;Transformer 基本架构&lt;/strong&gt;。如果你此前不了解 Transformer Encoder、Decoder 的架构特点，可以看船长的&lt;a href=&quot;http://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《船涨：LLM 革命前夜》&lt;/a&gt;中的第二章。&lt;/p&gt;
+&lt;p&gt;以下阅读前需要你初步了解 &lt;strong&gt;Transformer 基本架构&lt;/strong&gt;。如果你此前不了解 Transformer Encoder、Decoder 的架构特点，可以看&lt;a href=&quot;http://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/&quot;&gt;《船涨：LLM 革命前夜》&lt;/a&gt;中的第二章。&lt;/p&gt;
 
 &lt;p&gt;下面我们来看看在 Transformer 模型基础上研发的 BERT 吧。&lt;/p&gt;
 
@@ -1082,7 +1084,7 @@ cosine value :  0.8691698561422959
 
 &lt;p&gt;&lt;img src=&quot;/img/src/2023/2023-01-23-captain-aigc-2-llm-36.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;虽然 BERT 似乎在结果上「打败」了 GPT-1，但是用 Transformer Encoder（更容易）并且数据规模和参数规模都显著提升，多少有点「胜之不武」，OpenAI 自然不服。BERT 发布后又过了 4 个月，OpenAI 发布了比 BERT 更大的 GPT-2，俨然进入了军备竞赛。前面船长介绍 GPT-1 时仍以结构理念、训练方法为主，现在介绍这个扩展自 GPT-1 的 GPT-2，则我们主要以它在结构、方法、数据等方面改进了什么为讲解线索。&lt;/p&gt;
+&lt;p&gt;虽然 BERT 似乎在结果上「打败」了 GPT-1，但是用 Transformer Encoder（更容易）并且数据规模和参数规模都显著提升，多少有点「胜之不武」，OpenAI 自然不服。BERT 发布后又过了 4 个月，OpenAI 发布了比 BERT 更大的 GPT-2，俨然进入了军备竞赛。前面船涨介绍 GPT-1 时仍以结构理念、训练方法为主，现在介绍这个扩展自 GPT-1 的 GPT-2，则我们主要以它在结构、方法、数据等方面改进了什么为讲解线索。&lt;/p&gt;
 
 &lt;h4 id=&quot;81gpt-2-是对-gpt-1-的直接扩展但更笃定地追逐通用语言模型的理想&quot;&gt;8.1、GPT-2 是对 GPT-1 的直接扩展，但更笃定地追逐「通用语言模型」的理想&lt;/h4&gt;
 
@@ -1477,7 +1479,7 @@ cosine value :  0.8691698561422959
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;这也就是当下 LLM 的三要素。用麦克船长自己的理解概括 Scaling Law 就是说：LLM 三要素（算力、数据规模、参数规模）中任一要素的指数增长，都会带来模型性能的线性增长。但别急，这还没完，请往下看完。&lt;/p&gt;
+&lt;p&gt;这也就是当下 LLM 的三要素。用船涨自己的理解概括 Scaling Law 就是说：LLM 三要素（算力、数据规模、参数规模）中任一要素的指数增长，都会带来模型性能的线性增长。但别急，这还没完，请往下看完。&lt;/p&gt;
 
 &lt;p&gt;但尽管我们堆叠 LLM 三要素中任何一个，都能带来性能提升，但是三者的增长收益是不同的，我们看下面的图。&lt;/p&gt;
 
@@ -1502,7 +1504,7 @@ Turing-NLG: A 17-billion-parameter language model by Microsoft》&lt;/a&gt;。�
 
 &lt;h4 id=&quot;111gpt-3-表明-openai-进一步收紧其技术开放度&quot;&gt;11.1、GPT-3 表明 OpenAI 进一步收紧其技术开放度&lt;/h4&gt;
 
-&lt;p&gt;首先要明白 OpenAI 在技术开放上的收紧策略，自 GPT-2 发布时就已经给公众打了预防针了，这点船长在本篇 8.5.2 中已经提到。因此我们能看到 GPT 系列上 OpenAI 变得越来越 Closed：GPT-1、GPT-2 发布时，OpenAI 都在其官网发布了 blog，到了表现远超过 GPT-1、GPT-2 的 GPT-3 时，OpenAI 反而连一篇博客都没写。而其论文更是对关键的训练、模型、数据做了哪些重要工程表现得轻描淡写，花大篇幅着墨于实验及结果上。&lt;/p&gt;
+&lt;p&gt;首先要明白 OpenAI 在技术开放上的收紧策略，自 GPT-2 发布时就已经给公众打了预防针了，这点船涨在本篇 8.5.2 中已经提到。因此我们能看到 GPT 系列上 OpenAI 变得越来越 Closed：GPT-1、GPT-2 发布时，OpenAI 都在其官网发布了 blog，到了表现远超过 GPT-1、GPT-2 的 GPT-3 时，OpenAI 反而连一篇博客都没写。而其论文更是对关键的训练、模型、数据做了哪些重要工程表现得轻描淡写，花大篇幅着墨于实验及结果上。&lt;/p&gt;
 
 &lt;p&gt;GPT-3 没有放出源码、预训练好的模型参数等等，俨然变成了各国网友们调侃的 ClosedAI 了。&lt;/p&gt;
 
@@ -1686,7 +1688,7 @@ Turing-NLG: A 17-billion-parameter language model by Microsoft》&lt;/a&gt;。�
 
 &lt;p&gt;&lt;img src=&quot;/img/src/2023/2023-01-23-captain-aigc-2-llm-57.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;In-Context Learning 与 Fine-Tune 两者区别在于是否更新模型参数。In-Context Learning 这种神奇的能力为什么会 work，船长将和你在本文的「第 14 节 · 语言模型是如何具备 ICL 能力的？」一起来初步探索下（目前这个领域还没有完全清晰明确的理论证明）。OpenAI 评估模型性能时，对示例不同做了区分：&lt;/p&gt;
+&lt;p&gt;In-Context Learning 与 Fine-Tune 两者区别在于是否更新模型参数。In-Context Learning 这种神奇的能力为什么会 work，船涨将和你在本文的「第 14 节 · 语言模型是如何具备 ICL 能力的？」一起来初步探索下（目前这个领域还没有完全清晰明确的理论证明）。OpenAI 评估模型性能时，对示例不同做了区分：&lt;/p&gt;
 
 &lt;p&gt;Few-Shot Learning，对每个子任务提供 10-100 个样本。&lt;/p&gt;
 
@@ -1714,7 +1716,7 @@ Turing-NLG: A 17-billion-parameter language model by Microsoft》&lt;/a&gt;。�
 
 &lt;p&gt;关于 Few-Shot Prompt，沿着 Few Shot 的方向，机器学习的过程有点类似于人类的学习：大量无监督输入，针对特定任务只需极少量有监督输入。&lt;/p&gt;
 
-&lt;p&gt;更多与 In-Context Learning 有关的探讨，船长在本篇专门安排了一个章节（第三章），会探讨如何利用好 ICL 的能力、ICL 能力的底层是什么、为什么 LLM 具备 ICL 能力、ICL 具体是如何起作用的。&lt;/p&gt;
+&lt;p&gt;更多与 In-Context Learning 有关的探讨，船涨在本篇专门安排了一个章节（第三章），会探讨如何利用好 ICL 的能力、ICL 能力的底层是什么、为什么 LLM 具备 ICL 能力、ICL 具体是如何起作用的。&lt;/p&gt;
 
 &lt;h4 id=&quot;116gpt-3-api&quot;&gt;11.6、GPT-3 API&lt;/h4&gt;
 
@@ -1730,7 +1732,7 @@ Turing-NLG: A 17-billion-parameter language model by Microsoft》&lt;/a&gt;。�
 
 &lt;h5 id=&quot;1162gpt-3-的几个基础模型&quot;&gt;11.6.2、GPT-3 的几个基础模型&lt;/h5&gt;
 
-&lt;p&gt;注意：因为 2023.3 OpenAI 发布了 GPT-3.5 支持的 API，所以原有的模型已经有一些变化了，此处列出的并非 GPT 全部 API，详细信息可以看船长的一份入门解读&lt;a href=&quot;http://www.mikecaptain.com/2023/03/02/chatgpt-api/&quot;&gt;《AI 应用第一次大爆发来了：一文入门 ChatGPT 官方 API 文档解读》&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;注意：因为 2023.3 OpenAI 发布了 GPT-3.5 支持的 API，所以原有的模型已经有一些变化了，此处列出的并非 GPT 全部 API，详细信息可以看船涨的一份入门解读&lt;a href=&quot;http://www.mikecaptain.com/2023/03/02/chatgpt-api/&quot;&gt;《AI 应用第一次大爆发来了：一文入门 ChatGPT 官方 API 文档解读》&lt;/a&gt;。&lt;/p&gt;
 
 &lt;p&gt;先介绍下基础模型系列如下：&lt;/p&gt;
 
@@ -2211,7 +2213,7 @@ digraph G {
 &lt;p&gt;以下是一些显性的部分：&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;后面麦克船长会提到「Circulation revenue has increased by 5% in Finland」这句是 demo 中的 &lt;strong&gt;input&lt;/strong&gt;；&lt;/li&gt;
+  &lt;li&gt;后面船涨会提到「Circulation revenue has increased by 5% in Finland」这句是 demo 中的 &lt;strong&gt;input&lt;/strong&gt;；&lt;/li&gt;
   &lt;li&gt;对应的「Positive」是 demo 中的 &lt;strong&gt;label&lt;/strong&gt;；&lt;/li&gt;
   &lt;li&gt;input 和 label 组成的就是 &lt;strong&gt;demo&lt;/strong&gt;；&lt;/li&gt;
   &lt;li&gt;类似「The acquisition will have an immediate positive impact」这样的就是一个 &lt;strong&gt;test example&lt;/strong&gt;；&lt;/li&gt;
@@ -2292,7 +2294,7 @@ digraph G {
 
 &lt;p&gt;由此指导我们在实践中，给出尽量多的 demonstrations 时，不需要人工标注每个 input 有正确的 label，而是对于每个 input 可以批量化随机地给出符合 label space 的 label 即可，实现在下游任务上人工标注成本的下降。&lt;/p&gt;
 
-&lt;p&gt;但是关于本节的各项研究结论，目前还有很多是基于假设之上推演 + 实验的，并非如「理论科学」那么严谨，可以和船长一起持续关注后续学界与业界对于 ICL 的最新进展。&lt;/p&gt;
+&lt;p&gt;但是关于本节的各项研究结论，目前还有很多是基于假设之上推演 + 实验的，并非如「理论科学」那么严谨，可以和船涨一起持续关注后续学界与业界对于 ICL 的最新进展。&lt;/p&gt;
 
 &lt;h3 id=&quot;第-16-节--思维链chain-of-thoughtcot2022-年-1-月&quot;&gt;第 16 节 · 思维链（Chain of Thought，CoT，2022 年 1 月）&lt;/h3&gt;
 
@@ -2318,7 +2320,7 @@ digraph G {
 
 &lt;!-- ![](/img/src/2023/2023-01-23-captain-aigc-2-llm-8.jpeg) --&gt;
 
-&lt;p&gt;LLM 的研究者们也在探究那些 System-2 要解决的任务，于是有了下面船长了解到的几个技术方向，与大家分享探讨。&lt;/p&gt;
+&lt;p&gt;LLM 的研究者们也在探究那些 System-2 要解决的任务，于是有了下面船涨了解到的几个技术方向，与大家分享探讨。&lt;/p&gt;
 
 &lt;h4 id=&quot;162google-提出思维链提示cot-prompting&quot;&gt;16.2、Google 提出思维链提示（CoT Prompting）&lt;/h4&gt;
 
@@ -2728,6 +2730,11 @@ digraph G {
 &lt;p&gt;各章节内有单独的参考文献列表，未在其中标注出的，罗列如下：&lt;/p&gt;
 
 &lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/&quot;&gt;人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.mikecaptain.com/2023/03/02/chatgpt-api/&quot;&gt;AI 应用第一次大爆发来了：一文入门 ChatGPT 官方 API 文档解读&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.mikecaptain.com/2023/02/25/meta-llama/&quot;&gt;Meta 推出开源 LLaMA，用 1/10 参数规模打败 GPT-3，群”模”乱舞的 2023 拉开序幕&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.mikecaptain.com/2023/01/23/openai-official-doc/&quot;&gt;麦克船长的 OpenAI 模型 API 官方文档入门解读&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.mikecaptain.com/2022/12/17/ai-bert-1/&quot;&gt;你可能已经听说 GPT-3，但是你也不能不知道 BERT —— 跟我一起用 BERT 跑个小用例&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://openai.com/blog/chatgpt/&quot;&gt;ChatGPT: Optimizing Language Models for Dialogue&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://openai.com/blog/instruction-following/&quot;&gt;Aligning Language Models to Follow Instructions&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://openai.com/alignment/&quot;&gt;Aligning AI systems with human intent&lt;/a&gt;&lt;/li&gt;
