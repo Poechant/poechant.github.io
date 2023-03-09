@@ -13,10 +13,6 @@ author: 麦克船长
 
 ![](/img/src/2023/03/mikecaptain-llm-revolution-2.jpg)
 
-**本文目录**
-* TOC
-{:toc}
-
 文本来自我的个人博客：[MikeCaptain - 麦克船长的技术、产品与商业博客](https://www.mikecaptain.com/)，初次成稿于 2023 年初春节期间对 LLM（Large Language Models，大型语言模型）的技术演变学习的笔记记录，后来又补充了一些近期的内容（LLaMA 发布、ChatGPT API 发布等）。本文是[《人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型》](https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/)（以下简称《**船涨：LLM 革命前夜**》）的续篇，也是前篇中提到过的，近日终于抽了些时间完成了排版、插图与参考内容的完善。
 
 * 作者：钟超（船涨）
@@ -1975,6 +1971,12 @@ OpenAI 在本次开放中额外增加或更新了如下模型：
 * [@AlecRad](https://twitter.com/alecrad)，Alec Radford，OpenAI 研究员，GPT-1 / GPT-2 / GPT-3 的作者之一
 * [刘鹏飞](https://www.zhihu.com/people/liu-peng-fei-65-23)
 * [张俊林](https://www.zhihu.com/people/zhang-jun-lin-76)
+
+## Mark
+
+本文转载至阿里集团内部技术社区 ATA 头条推荐。
+
+![](/img/src/2023/2023-01-23-captain-aigc-2-llm-73.png)
 
 ## 本篇其他参考
 
