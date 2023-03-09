@@ -413,9 +413,200 @@
 
 			<article id="post-page">
 	<h2>人工智能 LLM 革命破晓：一文读懂当下超大语言模型发展现状</h2>		
-	<time datetime="2023-03-06T06:54:13+00:00" class="by-line">06 Mar 2023, 杭州 | 麦克船长 | 总计 90635 字</time>
+	<time datetime="2023-03-06T06:54:13+00:00" class="by-line">06 Mar 2023, 杭州 | 麦克船长 | 总计 95938 字</time>
 	<div class="content">
 		<p><img src="/img/src/2023/03/mikecaptain-llm-revolution-2.jpg" alt="" /></p>
+
+<p><strong>本文目录</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#前言" id="markdown-toc-前言">前言</a></li>
+  <li><a href="#第一章--初步了解自然语言处理的任务方法和模型" id="markdown-toc-第一章--初步了解自然语言处理的任务方法和模型">第一章 · 初步了解自然语言处理的任务、方法和模型</a>    <ul>
+      <li><a href="#第-1-节--我们要解决什么问题nlp-任务" id="markdown-toc-第-1-节--我们要解决什么问题nlp-任务">第 1 节 · 我们要解决什么问题：NLP 任务</a>        <ul>
+          <li><a href="#11相当长时间里nlp-领域都有大量细分任务" id="markdown-toc-11相当长时间里nlp-领域都有大量细分任务">1.1、相当长时间里，NLP 领域都有大量细分任务</a></li>
+          <li><a href="#12我们始终在追求简洁优雅的技术路线技术理论" id="markdown-toc-12我们始终在追求简洁优雅的技术路线技术理论">1.2、我们始终在追求简洁优雅的技术路线/技术理论</a></li>
+        </ul>
+      </li>
+      <li><a href="#第-2-节--解决问题的思路之方法神经网络模型学习方法的三个范式阶段" id="markdown-toc-第-2-节--解决问题的思路之方法神经网络模型学习方法的三个范式阶段">第 2 节 · 解决问题的思路之方法：神经网络模型学习方法的三个范式阶段</a>        <ul>
+          <li><a href="#21第一阶段完全监督学习fully-supervised-learning范式" id="markdown-toc-21第一阶段完全监督学习fully-supervised-learning范式">2.1、第一阶段：完全监督学习（Fully Supervised Learning）范式</a></li>
+          <li><a href="#22第二阶段预训练pre-train范式--为了更好的泛化性generalization" id="markdown-toc-22第二阶段预训练pre-train范式--为了更好的泛化性generalization">2.2、第二阶段：预训练（Pre-train）范式 —— 为了更好的泛化性（Generalization）</a>            <ul>
+              <li><a href="#221这四个思路的交汇点预训练-微调学习范式" id="markdown-toc-221这四个思路的交汇点预训练-微调学习范式">2.2.1、这四个思路的交汇点：「预训练-微调」学习范式</a></li>
+              <li><a href="#222解决-llm-微调成本高的问题预训练-提示学习范式" id="markdown-toc-222解决-llm-微调成本高的问题预训练-提示学习范式">2.2.2、解决 LLM 微调成本高的问题：「预训练-提示」学习范式</a></li>
+              <li><a href="#223特定领域的更优解预训练-微调-提示学习范式" id="markdown-toc-223特定领域的更优解预训练-微调-提示学习范式">2.2.3、特定领域的更优解：「预训练-微调-提示」学习范式</a></li>
+            </ul>
+          </li>
+          <li><a href="#23第三阶段预训练-人工反馈强化学习-提示pre-train-rlhf-and-prompt学习范式" id="markdown-toc-23第三阶段预训练-人工反馈强化学习-提示pre-train-rlhf-and-prompt学习范式">2.3、第三阶段：「预训练-人工反馈强化学习-提示（Pre-train, RLHF and Prompt）」学习范式</a></li>
+        </ul>
+      </li>
+      <li><a href="#第-3-节--解决问题的思路之模型初识预训练语言模型" id="markdown-toc-第-3-节--解决问题的思路之模型初识预训练语言模型">第 3 节 · 解决问题的思路之模型：初识预训练语言模型</a></li>
+      <li><a href="#本小节参考" id="markdown-toc-本小节参考">本小节参考</a></li>
+    </ul>
+  </li>
+  <li><a href="#第二章--llm-关键发展节点与主流模型2018---2021" id="markdown-toc-第二章--llm-关键发展节点与主流模型2018---2021">第二章 · LLM 关键发展节点与主流模型（2018 - 2021）</a>    <ul>
+      <li><a href="#第-4-节--transformer2017-年-6-月" id="markdown-toc-第-4-节--transformer2017-年-6-月">第 4 节 · Transformer（2017 年 6 月）</a></li>
+      <li><a href="#第-5-节--elmo词所在的上下文很重要2018-年-2-月" id="markdown-toc-第-5-节--elmo词所在的上下文很重要2018-年-2-月">第 5 节 · ELMo：词所在的上下文很重要（2018 年 2 月）</a>        <ul>
+          <li><a href="#51一词多义问题" id="markdown-toc-51一词多义问题">5.1、一词多义问题</a></li>
+          <li><a href="#52see-themselves-问题" id="markdown-toc-52see-themselves-问题">5.2、See-Themselves 问题</a></li>
+          <li><a href="#53elmo基于两个单向-lstm-的语言模型" id="markdown-toc-53elmo基于两个单向-lstm-的语言模型">5.3、ELMo：基于两个单向 LSTM 的语言模型</a></li>
+          <li><a href="#54elmo-训练及使用" id="markdown-toc-54elmo-训练及使用">5.4、ELMo 训练及使用</a></li>
+          <li><a href="#55双向语言模型是灯塔吗" id="markdown-toc-55双向语言模型是灯塔吗">5.5、双向语言模型，是灯塔吗？</a></li>
+          <li><a href="#56elmo-的局限性" id="markdown-toc-56elmo-的局限性">5.6、ELMo 的局限性</a></li>
+          <li><a href="#本小节参考-1" id="markdown-toc-本小节参考-1">本小节参考</a></li>
+        </ul>
+      </li>
+      <li><a href="#第-6-节--gpt2018-年-6-月" id="markdown-toc-第-6-节--gpt2018-年-6-月">第 6 节 · GPT（2018 年 6 月）</a>        <ul>
+          <li><a href="#61gpt-出现的背景监督学习模型为主但标注和泛化成为卡点" id="markdown-toc-61gpt-出现的背景监督学习模型为主但标注和泛化成为卡点">6.1、GPT 出现的背景：监督学习模型为主，但标注和泛化成为卡点</a></li>
+          <li><a href="#62gpt-1基于-transformer-decoder-的自监督训练语言模型" id="markdown-toc-62gpt-1基于-transformer-decoder-的自监督训练语言模型">6.2、GPT-1：基于 Transformer Decoder 的自监督训练语言模型</a></li>
+          <li><a href="#63gpt-1-为什么用-transformer-而不是-lstm" id="markdown-toc-63gpt-1-为什么用-transformer-而不是-lstm">6.3、GPT-1 为什么用 Transformer 而不是 LSTM？</a></li>
+          <li><a href="#64gpt-1-的无监督预训练unsupervised-pre-training" id="markdown-toc-64gpt-1-的无监督预训练unsupervised-pre-training">6.4、GPT-1 的无监督预训练（Unsupervised Pre-training）</a></li>
+          <li><a href="#65gpt-1-的监督微调supervised-fine-tuningsft" id="markdown-toc-65gpt-1-的监督微调supervised-fine-tuningsft">6.5、GPT-1 的监督微调（Supervised Fine-Tuning，SFT）</a></li>
+          <li><a href="#66gpt-1-的预训练数据集" id="markdown-toc-66gpt-1-的预训练数据集">6.6、GPT-1 的预训练数据集</a></li>
+          <li><a href="#67小结" id="markdown-toc-67小结">6.7、小结</a></li>
+          <li><a href="#本小节参考-2" id="markdown-toc-本小节参考-2">本小节参考</a></li>
+        </ul>
+      </li>
+      <li><a href="#第-7-节--bert2018-年-10-月" id="markdown-toc-第-7-节--bert2018-年-10-月">第 7 节 · BERT（2018 年 10 月）</a>        <ul>
+          <li><a href="#71bert-的模型架构双向" id="markdown-toc-71bert-的模型架构双向">7.1、BERT 的模型架构：双向</a>            <ul>
+              <li><a href="#711bert-是深度双向deeply-bidirectionalelmo-是浅度双向shallowly-bidrectional" id="markdown-toc-711bert-是深度双向deeply-bidirectionalelmo-是浅度双向shallowly-bidrectional">7.1.1、BERT 是深度双向（Deeply Bidirectional），ELMo 是浅度双向（Shallowly Bidrectional）</a></li>
+              <li><a href="#712基于-transformer-encoder-之上-bert-做了哪些架构改进" id="markdown-toc-712基于-transformer-encoder-之上-bert-做了哪些架构改进">7.1.2、基于 Transformer Encoder 之上 BERT 做了哪些架构改进</a></li>
+            </ul>
+          </li>
+          <li><a href="#72bert-的训练方法" id="markdown-toc-72bert-的训练方法">7.2、BERT 的训练方法</a>            <ul>
+              <li><a href="#721masked-language-modelingmlm预训练任务" id="markdown-toc-721masked-language-modelingmlm预训练任务">7.2.1、Masked Language Modeling（MLM）预训练任务</a></li>
+              <li><a href="#722next-sentence-predictionnsp预训练任务" id="markdown-toc-722next-sentence-predictionnsp预训练任务">7.2.2、Next Sentence Prediction（NSP）预训练任务</a></li>
+            </ul>
+          </li>
+          <li><a href="#73bert-的哪些改进是带来最显著性能提升的" id="markdown-toc-73bert-的哪些改进是带来最显著性能提升的">7.3、BERT 的哪些改进是带来最显著性能提升的？</a></li>
+          <li><a href="#74bert-的数据集" id="markdown-toc-74bert-的数据集">7.4、BERT 的数据集</a></li>
+          <li><a href="#75bert-小节" id="markdown-toc-75bert-小节">7.5、BERT 小节</a></li>
+          <li><a href="#76动手小实践" id="markdown-toc-76动手小实践">7.6、动手小实践</a>            <ul>
+              <li><a href="#761安装-bert-所需要的各种依赖" id="markdown-toc-761安装-bert-所需要的各种依赖">7.6.1、安装 BERT 所需要的各种依赖</a></li>
+              <li><a href="#762下载一个预训练pre-train过的-bert-模型" id="markdown-toc-762下载一个预训练pre-train过的-bert-模型">7.6.2、下载一个预训练（Pre-Train）过的 BERT 模型</a></li>
+              <li><a href="#763安装-bert-的服务端和客户端" id="markdown-toc-763安装-bert-的服务端和客户端">7.6.3、安装 BERT 的服务端和客户端</a></li>
+              <li><a href="#764启动-bert-服务端" id="markdown-toc-764启动-bert-服务端">7.6.4、启动 BERT 服务端</a></li>
+              <li><a href="#765编写程序实现-bert-客户端" id="markdown-toc-765编写程序实现-bert-客户端">7.6.5、编写程序实现 BERT 客户端</a></li>
+              <li><a href="#766测试效果" id="markdown-toc-766测试效果">7.6.6、测试效果</a></li>
+            </ul>
+          </li>
+          <li><a href="#本小节参考-3" id="markdown-toc-本小节参考-3">本小节参考</a></li>
+        </ul>
+      </li>
+      <li><a href="#第-8-节--gpt-22019-年-2-月" id="markdown-toc-第-8-节--gpt-22019-年-2-月">第 8 节 · GPT-2（2019 年 2 月）</a>        <ul>
+          <li><a href="#81gpt-2-是对-gpt-1-的直接扩展但更笃定地追逐通用语言模型的理想" id="markdown-toc-81gpt-2-是对-gpt-1-的直接扩展但更笃定地追逐通用语言模型的理想">8.1、GPT-2 是对 GPT-1 的直接扩展，但更笃定地追逐「通用语言模型」的理想</a></li>
+          <li><a href="#82gpt-2-大幅改进训练方法" id="markdown-toc-82gpt-2-大幅改进训练方法">8.2、GPT-2 大幅改进训练方法</a>            <ul>
+              <li><a href="#821zero-shot无需监督微调即可执行下游任务不用-fine-tune" id="markdown-toc-821zero-shot无需监督微调即可执行下游任务不用-fine-tune">8.2.1、Zero-Shot：无需监督微调即可执行下游任务，不用 fine-tune</a></li>
+              <li><a href="#822multitask-learning多任务学习共享参数更新" id="markdown-toc-822multitask-learning多任务学习共享参数更新">8.2.2、Multitask Learning：多任务学习共享参数更新</a></li>
+            </ul>
+          </li>
+          <li><a href="#83gpt-2-的预训练数据集高质量多样性的-webtext" id="markdown-toc-83gpt-2-的预训练数据集高质量多样性的-webtext">8.3、GPT-2 的预训练数据集：高质量、多样性的 WebText</a></li>
+          <li><a href="#84如果预训练直接喂生数据最终的效果怎样" id="markdown-toc-84如果预训练直接喂生数据最终的效果怎样">8.4、如果预训练直接喂生数据，最终的效果怎样？</a>            <ul>
+              <li><a href="#841生文本隐式包含任务模式上下文显式提示具象任务" id="markdown-toc-841生文本隐式包含任务模式上下文显式提示具象任务">8.4.1、生文本「隐式」包含任务模式，上下文「显式」提示具象任务</a></li>
+              <li><a href="#842llm-军备竞赛的序幕拉开" id="markdown-toc-842llm-军备竞赛的序幕拉开">8.4.2、LLM 军备竞赛的序幕拉开</a></li>
+            </ul>
+          </li>
+          <li><a href="#85openai-初步预见了-llm-可能带来的影响" id="markdown-toc-85openai-初步预见了-llm-可能带来的影响">8.5、OpenAI 初步预见了 LLM 可能带来的影响</a>            <ul>
+              <li><a href="#851openai-在-2019-年就倡议政府监管" id="markdown-toc-851openai-在-2019-年就倡议政府监管">8.5.1、OpenAI 在 2019 年就倡议政府监管</a></li>
+              <li><a href="#852同年-5-月公布-345-亿参数版本并暗示了后来微软对-openai-不-open-的影响" id="markdown-toc-852同年-5-月公布-345-亿参数版本并暗示了后来微软对-openai-不-open-的影响">8.5.2、同年 5 月公布 3.45 亿参数版本，并暗示了后来微软对 OpenAI 不 Open 的影响</a></li>
+            </ul>
+          </li>
+          <li><a href="#86gpt-2-小节" id="markdown-toc-86gpt-2-小节">8.6、GPT-2 小节</a></li>
+          <li><a href="#本小节参考-4" id="markdown-toc-本小节参考-4">本小节参考</a></li>
+        </ul>
+      </li>
+      <li><a href="#第-9-节--t5提出所有-nlp-任务可统一为文本生成任务2019-年-10-月" id="markdown-toc-第-9-节--t5提出所有-nlp-任务可统一为文本生成任务2019-年-10-月">第 9 节 · T5：提出所有 NLP 任务可统一为文本生成任务（2019 年 10 月）</a>        <ul>
+          <li><a href="#91对下游-nlp-任务的统一" id="markdown-toc-91对下游-nlp-任务的统一">9.1、对下游 NLP 任务的统一</a></li>
+          <li><a href="#92新开源数据集-c4colossal-clean-crawled-corpus" id="markdown-toc-92新开源数据集-c4colossal-clean-crawled-corpus">9.2、新开源数据集 C4（Colossal Clean Crawled Corpus）</a></li>
+          <li><a href="#93大量实验覆盖模型数据算力的多维度因素" id="markdown-toc-93大量实验覆盖模型数据算力的多维度因素">9.3、大量实验覆盖模型、数据、算力的多维度因素</a></li>
+          <li><a href="#94t5-小节" id="markdown-toc-94t5-小节">9.4、T5 小节</a></li>
+          <li><a href="#本小节参考-5" id="markdown-toc-本小节参考-5">本小节参考</a></li>
+        </ul>
+      </li>
+      <li><a href="#第-10-节--缩放定律scaling-lawai-时代的摩尔定律2020-年-1-月" id="markdown-toc-第-10-节--缩放定律scaling-lawai-时代的摩尔定律2020-年-1-月">第 10 节 · 缩放定律（Scaling Law）：AI 时代的摩尔定律（2020 年 1 月）</a></li>
+      <li><a href="#第-11-节--gpt-32020-年-5-月" id="markdown-toc-第-11-节--gpt-32020-年-5-月">第 11 节 · GPT-3（2020 年 5 月）</a>        <ul>
+          <li><a href="#111gpt-3-表明-openai-进一步收紧其技术开放度" id="markdown-toc-111gpt-3-表明-openai-进一步收紧其技术开放度">11.1、GPT-3 表明 OpenAI 进一步收紧其技术开放度</a></li>
+          <li><a href="#112gpt-3-参数规模直接比-gpt-2-放大-100-倍" id="markdown-toc-112gpt-3-参数规模直接比-gpt-2-放大-100-倍">11.2、GPT-3 参数规模：直接比 GPT-2 放大 100 倍</a></li>
+          <li><a href="#113gpt-3-的训练数据" id="markdown-toc-113gpt-3-的训练数据">11.3、GPT-3 的训练数据</a>            <ul>
+              <li><a href="#1131训练数据集" id="markdown-toc-1131训练数据集">11.3.1、训练数据集</a></li>
+              <li><a href="#1132提高数据质量的处理准备工作" id="markdown-toc-1132提高数据质量的处理准备工作">11.3.2、提高数据质量的处理准备工作</a></li>
+            </ul>
+          </li>
+          <li><a href="#114gpt-3-的训练开销" id="markdown-toc-114gpt-3-的训练开销">11.4、GPT-3 的训练开销</a></li>
+          <li><a href="#115in-context-learning" id="markdown-toc-115in-context-learning">11.5、In-Context Learning</a></li>
+          <li><a href="#116gpt-3-api" id="markdown-toc-116gpt-3-api">11.6、GPT-3 API</a>            <ul>
+              <li><a href="#1161gpt-一些基本概念" id="markdown-toc-1161gpt-一些基本概念">11.6.1、GPT 一些基本概念</a></li>
+              <li><a href="#1162gpt-3-的几个基础模型" id="markdown-toc-1162gpt-3-的几个基础模型">11.6.2、GPT-3 的几个基础模型</a></li>
+            </ul>
+          </li>
+          <li><a href="#117gpt-3-小节" id="markdown-toc-117gpt-3-小节">11.7、GPT-3 小节</a></li>
+          <li><a href="#本小节参考-6" id="markdown-toc-本小节参考-6">本小节参考</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#第三章--上下文学习in-context-learning" id="markdown-toc-第三章--上下文学习in-context-learning">第三章 · 上下文学习（In-Context Learning）</a>    <ul>
+      <li><a href="#第-12-节--icl-能力的直接应用prompt-engineering" id="markdown-toc-第-12-节--icl-能力的直接应用prompt-engineering">第 12 节 · ICL 能力的直接应用：Prompt Engineering</a>        <ul>
+          <li><a href="#121pet提出-pvp-框架" id="markdown-toc-121pet提出-pvp-框架">12.1、PET：提出 PVP 框架</a></li>
+          <li><a href="#122从硬提示到软提示" id="markdown-toc-122从硬提示到软提示">12.2、从硬提示到软提示</a></li>
+          <li><a href="#123prompt-tuning" id="markdown-toc-123prompt-tuning">12.3、Prompt Tuning</a></li>
+          <li><a href="#124prompt-带来的风险" id="markdown-toc-124prompt-带来的风险">12.4、Prompt 带来的风险</a></li>
+          <li><a href="#125小结" id="markdown-toc-125小结">12.5、小结</a></li>
+        </ul>
+      </li>
+      <li><a href="#第-13-节--icl-能力的底层假设贝叶斯推理" id="markdown-toc-第-13-节--icl-能力的底层假设贝叶斯推理">第 13 节 · ICL 能力的底层假设：贝叶斯推理</a></li>
+      <li><a href="#第-14-节--llm-是如何具备-icl-能力的2021-年-11-月" id="markdown-toc-第-14-节--llm-是如何具备-icl-能力的2021-年-11-月">第 14 节 · LLM 是如何具备 ICL 能力的？（2021 年 11 月）</a>        <ul>
+          <li><a href="#141预训练分布pretain-distribution的数学解读" id="markdown-toc-141预训练分布pretain-distribution的数学解读">14.1、预训练分布（Pretain Distribution）的数学解读</a></li>
+          <li><a href="#142上下文学习in-context-learning的数学解读" id="markdown-toc-142上下文学习in-context-learning的数学解读">14.2、上下文学习（In-Context Learning）的数学解读</a></li>
+          <li><a href="#143llm-是隐式马尔科夫模型的概念混合体mixture-of-hmm-concepts" id="markdown-toc-143llm-是隐式马尔科夫模型的概念混合体mixture-of-hmm-concepts">14.3、LLM 是隐式马尔科夫模型的概念混合体（Mixture of HMM Concepts）</a></li>
+        </ul>
+      </li>
+      <li><a href="#第-15-节--icl-是如何工作的2022-年-2-月" id="markdown-toc-第-15-节--icl-是如何工作的2022-年-2-月">第 15 节 · ICL 是如何工作的？（2022 年 2 月）</a>        <ul>
+          <li><a href="#151prompt-中的-input-label-mapping-不重要" id="markdown-toc-151prompt-中的-input-label-mapping-不重要">15.1、Prompt 中的 Input-Label Mapping 不重要</a></li>
+          <li><a href="#152prompt-中的-input-distribution-很重要" id="markdown-toc-152prompt-中的-input-distribution-很重要">15.2、Prompt 中的 Input Distribution 很重要</a></li>
+          <li><a href="#153prompt-中的-label-space-很重要" id="markdown-toc-153prompt-中的-label-space-很重要">15.3、Prompt 中的 Label Space 很重要</a></li>
+          <li><a href="#154prompt-中-format-of-demonstration-很重要" id="markdown-toc-154prompt-中-format-of-demonstration-很重要">15.4、Prompt 中 Format of Demonstration 很重要</a></li>
+          <li><a href="#155小结一下" id="markdown-toc-155小结一下">15.5、小结一下</a></li>
+        </ul>
+      </li>
+      <li><a href="#第-16-节--思维链chain-of-thoughtcot2022-年-1-月" id="markdown-toc-第-16-节--思维链chain-of-thoughtcot2022-年-1-月">第 16 节 · 思维链（Chain of Thought，CoT，2022 年 1 月）</a>        <ul>
+          <li><a href="#161深度学习就是要从-system-1-走向-system-2" id="markdown-toc-161深度学习就是要从-system-1-走向-system-2">16.1、深度学习就是要从 System-1 走向 System-2</a></li>
+          <li><a href="#162google-提出思维链提示cot-prompting" id="markdown-toc-162google-提出思维链提示cot-prompting">16.2、Google 提出思维链提示（CoT Prompting）</a></li>
+          <li><a href="#163lets-think-step-by-step" id="markdown-toc-163lets-think-step-by-step">16.3、Let’s Think Step by Step</a></li>
+        </ul>
+      </li>
+      <li><a href="#本小节参考-7" id="markdown-toc-本小节参考-7">本小节参考</a></li>
+    </ul>
+  </li>
+  <li><a href="#第四章--llm-发展关键节点与主流模型2022---2023" id="markdown-toc-第四章--llm-发展关键节点与主流模型2022---2023">第四章 · LLM 发展关键节点与主流模型（2022 - 2023）</a>    <ul>
+      <li><a href="#第-17-节--instructgpt为对齐alignment而生的指令式-gpt2022-年-3-月" id="markdown-toc-第-17-节--instructgpt为对齐alignment而生的指令式-gpt2022-年-3-月">第 17 节 · InstructGPT：为对齐（Alignment）而生的指令式 GPT（2022 年 3 月）</a>        <ul>
+          <li><a href="#171对齐alignment关于我们到底要-ai-未来变成什么样子这件事儿" id="markdown-toc-171对齐alignment关于我们到底要-ai-未来变成什么样子这件事儿">17.1、对齐（Alignment）：关于「我们到底要 AI 未来变成什么样子」这件事儿</a></li>
+          <li><a href="#172如何用-rlhf-方法训练得到更能对齐人类的-instructgpt" id="markdown-toc-172如何用-rlhf-方法训练得到更能对齐人类的-instructgpt">17.2、如何用 RLHF 方法训练得到更能对齐人类的 InstructGPT？</a></li>
+          <li><a href="#173对齐税alignment-tax" id="markdown-toc-173对齐税alignment-tax">17.3、对齐税（Alignment Tax）</a></li>
+          <li><a href="#174目前-instructgpt-的局限性" id="markdown-toc-174目前-instructgpt-的局限性">17.4、目前 InstructGPT 的局限性</a></li>
+          <li><a href="#175instructgpt-就是-gpt-35-吗" id="markdown-toc-175instructgpt-就是-gpt-35-吗">17.5、InstructGPT 就是 GPT-3.5 吗？</a></li>
+        </ul>
+      </li>
+      <li><a href="#第-18-节--chatgpt基于-rlhf-训练的对话式-gpt-模型2022-年-11-月底" id="markdown-toc-第-18-节--chatgpt基于-rlhf-训练的对话式-gpt-模型2022-年-11-月底">第 18 节 · ChatGPT：基于 RLHF 训练的对话式 GPT 模型（2022 年 11 月底）</a>        <ul>
+          <li><a href="#181chatgpt-的训练方法" id="markdown-toc-181chatgpt-的训练方法">18.1、ChatGPT 的训练方法</a></li>
+          <li><a href="#182chatgpt-与-instructgpt-的主要技术区别" id="markdown-toc-182chatgpt-与-instructgpt-的主要技术区别">18.2、ChatGPT 与 InstructGPT 的主要技术区别</a></li>
+          <li><a href="#183chatgpt-开放-chat-api" id="markdown-toc-183chatgpt-开放-chat-api">18.3、ChatGPT 开放 Chat API</a></li>
+        </ul>
+      </li>
+      <li><a href="#第-19-节--其他一些近期值得关注的模型" id="markdown-toc-第-19-节--其他一些近期值得关注的模型">第 19 节 · 其他一些近期值得关注的模型</a></li>
+      <li><a href="#191llamameta-对-chatgpt-的回应" id="markdown-toc-191llamameta-对-chatgpt-的回应">19.1、LLaMA：Meta 对 ChatGPT 的回应</a></li>
+      <li><a href="#192其他一些近期值得关注的创新性-llm" id="markdown-toc-192其他一些近期值得关注的创新性-llm">19.2、其他一些近期值得关注的、创新性 LLM</a></li>
+    </ul>
+  </li>
+  <li><a href="#第五章--未来技术趋势的关注重点及一些推荐参考" id="markdown-toc-第五章--未来技术趋势的关注重点及一些推荐参考">第五章 · 未来技术趋势的关注重点及一些推荐参考</a>    <ul>
+      <li><a href="#第-20-节--未来技术趋势的关注重点" id="markdown-toc-第-20-节--未来技术趋势的关注重点">第 20 节 · 未来技术趋势的关注重点</a></li>
+      <li><a href="#第-21-节--一些推荐" id="markdown-toc-第-21-节--一些推荐">第 21 节 · 一些推荐</a>        <ul>
+          <li><a href="#211关键论文" id="markdown-toc-211关键论文">21.1、关键论文</a></li>
+          <li><a href="#212值得关注的重要机构" id="markdown-toc-212值得关注的重要机构">21.2、值得关注的重要机构</a></li>
+          <li><a href="#213推荐关注的博客或-twitter" id="markdown-toc-213推荐关注的博客或-twitter">21.3、推荐关注的博客或 Twitter</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#本篇其他参考" id="markdown-toc-本篇其他参考">本篇其他参考</a></li>
+</ul>
 
 <p>文本来自我的个人博客：<a href="https://www.mikecaptain.com/">MikeCaptain - 麦克船长的技术、产品与商业博客</a>，初次成稿于 2023 年初春节期间对 LLM（Large Language Models，大型语言模型）的技术演变学习的笔记记录，后来又补充了一些近期的内容（LLaMA 发布、ChatGPT API 发布等）。本文是<a href="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/">《人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型》</a>（以下简称《<strong>船涨：LLM 革命前夜</strong>》）的续篇，也是前篇中提到过的，近日终于抽了些时间完成了排版、插图与参考内容的完善。</p>
 
