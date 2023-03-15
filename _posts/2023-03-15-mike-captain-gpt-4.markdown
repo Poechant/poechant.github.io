@@ -19,9 +19,9 @@ author: 麦克船长
 
 以下是 OpenAI 发布的 GPT-4 内容：
 
-* GPT-4 产品页面：https://openai.com/product/gpt-4
-* GPT-4 论文地址：https://cdn.openai.com/papers/gpt-4.pdf
-* GPT-4 申请使用：https://openai.com/waitlist/gpt-4-api
+* GPT-4 产品页面：`https://openai.com/product/gpt-4`
+* GPT-4 论文地址：`https://cdn.openai.com/papers/gpt-4.pdf`
+* GPT-4 申请使用：`https://openai.com/waitlist/gpt-4-api`
 
 阅读本文前，如果你对 GPT-3.5 此前的模型、API、定价等还不了解，可以阅读如[《AI 应用第一次大爆发来了：一文入门 ChatGPT 官方 API 文档解读》](https://www.mikecaptain.com/2023/03/02/chatgpt-api/)。如果你对 GPT 全系列及其他各大模型的演进历史都想了解，可以阅读[《人工智能 LLM 革命破晓：一文读懂当下超大语言模型发展现状》](https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/)。
 
@@ -270,7 +270,7 @@ $$ L(C) = aC^b + c $$
 
 下图是另一个任务（HumanEval）上的预测情况，拟合公式、曲线及实际值如下，可以看到整体预测效果也以接受。
 
-$$ -E_p\[log(pass_rate(C))\] = \alpha * C^{-k} $$
+$$ -E_p[log(pass_rate(C))] = \alpha * C^{-k} $$
 
 ![](/img/src/2023/03/2023-03-15-mike-captain-gpt-4-p18.png)
 
