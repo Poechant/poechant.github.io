@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 通往 AGI 的登月时刻：极速浏览 GPT-4 技术梗概
+title: 通往 AGI 的阿波罗时刻：极速浏览 GPT-4 技术梗概
 date:   2023-03-15 00:40:13 +0800
 categories: ai
 tags: [AI, 人工智能, NLP, 自然语言处理, 神经网络, LLM, 大型语言模型, 语言模型, 大模型]
