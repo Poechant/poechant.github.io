@@ -4,7 +4,7 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-03-15T16:52:24+00:00</updated>
+ <updated>2023-03-15T17:28:45+00:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
@@ -18,7 +18,7 @@
    <link href="https://www.mikecaptain.com/2023/03/14/mike-captain-gpt-4/"/>
    <id>https://www.mikecaptain.com/2023/03/14/mike-captain-gpt-4</id>
    <updated>2023-03-14T16:40:13+00:00</updated>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-15-mike-captain-gpt-4-p1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;北京时间 2023 年 3 月 15 日，OpenAI 正式发布 GPT-4 —— 大型多模态模型（Large Multimodal Model），输入支持文本和图像，输出支持文本。OpenAI 花了半年时间用对抗测试程序和 ChatGPT 来迭代对齐 GPT-4，结果上 GPT-4 尽管还有很多能力不及人类，但有些场景已经非常炸裂、拉齐人类水准，比如事实性（Factuality）、可控性（Steerability）、拒绝越界（Refusing to Go Outside of Guardrails）。举例来说，GPT-4 在模拟律师考试中获得了 Top 10% 的成绩（对比 GPT-3.5 是 Bottom 10%）。而船长的一个朋友在和他认识的律师围绕 GPT-3.5 和 GPT-4 的法律案例分析效果对比时，律师给出了极高的评价：&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;感觉 3.5 的智商是 8 岁孩子，4.0 的智商已经有 20 岁以上了。&lt;/p&gt; &lt;/blockquote&gt;...</content>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-15-mike-captain-gpt-4-p26.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;北京时间 2023 年 3 月 15 日，OpenAI 正式发布 GPT-4 —— 大型多模态模型（Large Multimodal Model），输入支持文本和图像，输出支持文本。OpenAI 花了半年时间用对抗测试程序和 ChatGPT 来迭代对齐 GPT-4，结果上 GPT-4 尽管还有很多能力不及人类，但有些场景已经非常炸裂、拉齐人类水准，比如事实性（Factuality）、可控性（Steerability）、拒绝越界（Refusing to Go Outside of Guardrails）。举例来说，GPT-4 在模拟律师考试中获得了 Top 10% 的成绩（对比 GPT-3.5 是 Bottom 10%）。而船长的一个朋友在和他认识的律师围绕 GPT-3.5 和 GPT-4 的法律案例分析效果对比时，律师给出了极高的评价：&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;感觉 3.5 的智商是 8 岁孩子，4.0 的智商已经有 20 岁以上了。&lt;/p&gt; &lt;/blockquote&gt;...</content>
  </entry>
 
  
