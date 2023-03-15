@@ -4,8 +4,8 @@ title: 通往 AGI 的阿波罗时刻：极速浏览 GPT-4 技术梗概
 date:   2023-03-15 00:40:13 +0800
 categories: ai
 tags: [AI, 人工智能, NLP, 自然语言处理, 神经网络, LLM, 大型语言模型, 语言模型, 大模型]
-description: 北京时间 2023 年 3 月 15 日，OpenAI 正式发布 GPT-4 —— 大型多模态模型（Large Multimodal Model），输入支持文本和图像，输出支持文本。OpenAI 花了半年时间用对抗测试程序和 ChatGPT 来迭代对齐 GPT-4，结果上 GPT-4 尽管还有很多能力不及人类，但有些场景已经非常炸裂、拉齐人类水准，比如事实性（Factuality）、可控性（Steerability）、拒绝越界（Refusing to Go Outside of Guardrails）。举例来说，GPT-4 在模拟律师考试中获得了 Top 10% 的成绩（对比 GPT-3.5 是 Bottom 10%）。而船长的一个朋友在和他认识的律师围绕 GPT-3.5 和 GPT-4 的法律案例分析效果对比时，律师给出了极高的评价：
-excerpt: 北京时间 2023 年 3 月 15 日，OpenAI 正式发布 GPT-4 —— 大型多模态模型（Large Multimodal Model），输入支持文本和图像，输出支持文本。OpenAI 花了半年时间用对抗测试程序和 ChatGPT 来迭代对齐 GPT-4，结果上 GPT-4 尽管还有很多能力不及人类，但有些场景已经非常炸裂、拉齐人类水准，比如事实性（Factuality）、可控性（Steerability）、拒绝越界（Refusing to Go Outside of Guardrails）。举例来说，GPT-4 在模拟律师考试中获得了 Top 10% 的成绩（对比 GPT-3.5 是 Bottom 10%）。而船长的一个朋友在和他认识的律师围绕 GPT-3.5 和 GPT-4 的法律案例分析效果对比时，律师给出了极高的评价：
+description: 北京时间 2023 年 3 月 15 日，OpenAI 正式发布 GPT-4 —— 大型多模态模型（Large Multimodal Model），输入支持文本和图像，输出支持文本。OpenAI 花了半年时间用对抗测试程序和 ChatGPT 来迭代对齐 GPT-4，结果上 GPT-4 尽管还有很多能力不及人类，但有些场景已经非常炸裂、拉齐人类水准，比如事实性（Factuality）、可控性（Steerability）、拒绝越界（Refusing to Go Outside of Guardrails）。举例来说，GPT-4 在模拟律师考试中获得了 Top 10% 的成绩（对比 GPT-3.5 是 Bottom 10%）。而船长的一个朋友在和他认识的律师围绕 GPT-3.5 和 GPT-4 的法律案例分析效果对比时，律师给出了极高的评价 ……
+excerpt: 北京时间 2023 年 3 月 15 日，OpenAI 正式发布 GPT-4 —— 大型多模态模型（Large Multimodal Model），输入支持文本和图像，输出支持文本。OpenAI 花了半年时间用对抗测试程序和 ChatGPT 来迭代对齐 GPT-4，结果上 GPT-4 尽管还有很多能力不及人类，但有些场景已经非常炸裂、拉齐人类水准，比如事实性（Factuality）、可控性（Steerability）、拒绝越界（Refusing to Go Outside of Guardrails）。举例来说，GPT-4 在模拟律师考试中获得了 Top 10% 的成绩（对比 GPT-3.5 是 Bottom 10%）。而船长的一个朋友在和他认识的律师围绕 GPT-3.5 和 GPT-4 的法律案例分析效果对比时，律师给出了极高的评价 ……
 katex: True
 location: 杭州
 author: 麦克船长
