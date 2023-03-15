@@ -13,13 +13,17 @@ author: 麦克船长
 
 ![](/img/src/2023/03/2023-03-15-mike-captain-gpt-4-p1.png)
 
+北京时间 2023 年 3 月 15 日，OpenAI 正式发布 GPT-4 —— 大型多模态模型（Large Multimodal Model），输入支持文本和图像，输出支持文本。OpenAI 花了半年时间用对抗测试程序和 ChatGPT 来迭代对齐 GPT-4，结果上 GPT-4 尽管还有很多能力不及人类，但有些场景已经非常炸裂、拉齐人类水准，比如事实性（Factuality）、可控性（Steerability）、拒绝越界（Refusing to Go Outside of Guardrails）。举例来说，GPT-4 在模拟律师考试中获得了 Top 10% 的成绩（对比 GPT-3.5 是 Bottom 10%）。而船长的一个朋友在和他认识的律师围绕 GPT-3.5 和 GPT-4 的法律案例分析效果对比时，律师给出了极高的评价：
+
+> 感觉 3.5 的智商是 8 岁孩子，4.0 的智商已经有 20 岁以上了。
+
+以下是 OpenAI 发布的 GPT-4 内容：
+
 * GPT-4 产品页面：https://openai.com/product/gpt-4
 * GPT-4 论文地址：https://cdn.openai.com/papers/gpt-4.pdf
 * GPT-4 申请使用：https://openai.com/waitlist/gpt-4-api
 
-北京时间 2023 年 3 月 15 日，OpenAI 正式发布 GPT-4 —— 大型多模态模型（Large Multimodal Model），输入支持文本和图像，输出支持文本。OpenAI 花了半年时间用对抗测试程序和 ChatGPT 来迭代对齐 GPT-4，结果上 GPT-4 尽管还有很多能力不及人类，但有些场景已经非常炸裂、拉齐人类水准，比如事实性（Factuality）、可控性（Steerability）、拒绝越界（Refusing to Go Outside of Guardrails）。举例来说，GPT-4 在模拟律师考试中获得了 Top 10% 的成绩（对比 GPT-3.5 是 Bottom 10%）。而船长的一个朋友在和他认识的律师围绕 GPT-3.5 和 GPT-4 的法律案例分析效果对比时，律师给出了极高的评价：
-
-> 感觉 3.5 的智商是 8 岁孩子，4.0 的智商已经有 20 岁以上了。
+阅读本文前，如果你对 GPT-3.5 此前的模型、API、定价等还不了解，可以阅读如[《AI 应用第一次大爆发来了：一文入门 ChatGPT 官方 API 文档解读》](https://www.mikecaptain.com/2023/03/02/chatgpt-api/)。如果你对 GPT 全系列及其他各大模型的演进历史都想了解，可以阅读[《人工智能 LLM 革命破晓：一文读懂当下超大语言模型发展现状》](https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/)。
 
 ## 1、一分钟了解 GPT-4
 
@@ -145,6 +149,8 @@ OpenAI 在原有 GPT 系列 API 基础（详细信息可以通过 `http://www.mi
 ![](/img/src/2023/03/2023-03-15-mike-captain-gpt-4-p25.png){: width="640"}
 
 关于 tokens、基础模型的介绍，也可以参见 `http://www.mikecaptain.com/2023/03/02/chatgpt-api/` 这篇文章。这里只讲解增量信息。
+
+与 GPT-3.5 的 API 各维度对比，可以自行参照如下[《AI 应用第一次大爆发来了：一文入门 ChatGPT 官方 API 文档解读》](https://www.mikecaptain.com/2023/03/02/chatgpt-api/)。
 
 ### 3.1、各模型
 
@@ -297,3 +303,13 @@ GPT 的迭代速度越来越快，其他大厂也在快马加鞭。本次多模�
 可以想见，在未来，各类创作的成本急剧下降之后，海量的小众内容将爆发。比如以前一个小众类型的电影，可能至少要有 X 个观众受众规模才值得投资拍摄，那么未来可能这个 X 会降低为 0.0001 X。
 
 AI 时代，小众市场将变得更可行。《纳瓦尔宝典》里说期望 70 亿人有 70 亿个公司，我希望「每个人都可以是一支队伍」的时代，即将到来。
+
+## 参考
+
+1. `https://openai.com/pricing`
+2. `https://platform.openai.com/docs/guides/rate-limits/overview`
+3. `https://cdn.openai.com/papers/gpt-4.pdf`
+4. `https://openai.com/research/gpt-4`
+5. `https://openai.com/product/gpt-4`
+6. `https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/`
+7. `https://www.mikecaptain.com/2023/03/02/chatgpt-api/`
