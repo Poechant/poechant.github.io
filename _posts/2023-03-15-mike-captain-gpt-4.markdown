@@ -11,7 +11,7 @@ location: 杭州
 author: 麦克船长
 ---
 
-![](/img/src/2023/03/2023-03-15-mike-captain-gpt-4-p1.png)
+![](/img/src/2023/03/2023-03-15-mike-captain-gpt-4-p26.png)
 
 北京时间 2023 年 3 月 15 日，OpenAI 正式发布 GPT-4 —— 大型多模态模型（Large Multimodal Model），输入支持文本和图像，输出支持文本。OpenAI 花了半年时间用对抗测试程序和 ChatGPT 来迭代对齐 GPT-4，结果上 GPT-4 尽管还有很多能力不及人类，但有些场景已经非常炸裂、拉齐人类水准，比如事实性（Factuality）、可控性（Steerability）、拒绝越界（Refusing to Go Outside of Guardrails）。举例来说，GPT-4 在模拟律师考试中获得了 Top 10% 的成绩（对比 GPT-3.5 是 Bottom 10%）。而船长的一个朋友在和他认识的律师围绕 GPT-3.5 和 GPT-4 的法律案例分析效果对比时，律师给出了极高的评价：
 
