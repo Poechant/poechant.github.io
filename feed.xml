@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-03-15T17:43:57+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">通往 AGI 的阿波罗时刻：极速浏览 GPT-4 技术梗概</title><link href="https://www.mikecaptain.com/2023/03/14/mike-captain-gpt-4/" rel="alternate" type="text/html" title="通往 AGI 的阿波罗时刻：极速浏览 GPT-4 技术梗概" /><published>2023-03-14T16:40:13+00:00</published><updated>2023-03-14T16:40:13+00:00</updated><id>https://www.mikecaptain.com/2023/03/14/mike-captain-gpt-4</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/14/mike-captain-gpt-4/">&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-15-mike-captain-gpt-4-p26.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-03-20T13:12:31+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">通往 AGI 的阿波罗时刻：极速浏览 GPT-4 技术梗概</title><link href="https://www.mikecaptain.com/2023/03/14/mike-captain-gpt-4/" rel="alternate" type="text/html" title="通往 AGI 的阿波罗时刻：极速浏览 GPT-4 技术梗概" /><published>2023-03-14T16:40:13+00:00</published><updated>2023-03-14T16:40:13+00:00</updated><id>https://www.mikecaptain.com/2023/03/14/mike-captain-gpt-4</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/14/mike-captain-gpt-4/">&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-15-mike-captain-gpt-4-p26.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;北京时间 2023 年 3 月 15 日，OpenAI 正式发布 GPT-4 —— 大型多模态模型（Large Multimodal Model），输入支持文本和图像，输出支持文本。OpenAI 花了半年时间用对抗测试程序和 ChatGPT 来迭代对齐 GPT-4，结果上 GPT-4 尽管还有很多能力不及人类，但有些场景已经非常炸裂、拉齐人类水准，比如事实性（Factuality）、可控性（Steerability）、拒绝越界（Refusing to Go Outside of Guardrails）。举例来说，GPT-4 在模拟律师考试中获得了 Top 10% 的成绩（对比 GPT-3.5 是 Bottom 10%）。而船长的一个朋友在和他认识的律师围绕 GPT-3.5 和 GPT-4 的法律案例分析效果对比时，律师给出了极高的评价：&lt;/p&gt;
 
@@ -466,7 +466,10 @@
       &lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#第-18-节--chatgpt基于-rlhf-训练的对话式-gpt-模型2022-年-11-月底&quot; id=&quot;markdown-toc-第-18-节--chatgpt基于-rlhf-训练的对话式-gpt-模型2022-年-11-月底&quot;&gt;第 18 节 · ChatGPT：基于 RLHF 训练的对话式 GPT 模型（2022 年 11 月底）&lt;/a&gt;        &lt;ul&gt;
           &lt;li&gt;&lt;a href=&quot;#181chatgpt-的训练方法&quot; id=&quot;markdown-toc-181chatgpt-的训练方法&quot;&gt;18.1、ChatGPT 的训练方法&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#182chatgpt-与-instructgpt-的主要技术区别&quot; id=&quot;markdown-toc-182chatgpt-与-instructgpt-的主要技术区别&quot;&gt;18.2、ChatGPT 与 InstructGPT 的主要技术区别&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#182chatgpt-与-instructgpt-的主要技术区别&quot; id=&quot;markdown-toc-182chatgpt-与-instructgpt-的主要技术区别&quot;&gt;18.2、ChatGPT 与 InstructGPT 的主要技术区别&lt;/a&gt;            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#1821训练数据的格式&quot; id=&quot;markdown-toc-1821训练数据的格式&quot;&gt;18.2.1、训练数据的格式&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#183chatgpt-开放-chat-api&quot; id=&quot;markdown-toc-183chatgpt-开放-chat-api&quot;&gt;18.3、ChatGPT 开放 Chat API&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
@@ -1936,7 +1939,7 @@ cosine value :  0.8691698561422959
 &lt;p&gt;&lt;img src=&quot;/img/src/2023/2023-01-23-captain-aigc-2-llm-11.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;上图数据来自&lt;a href=&quot;https://arxiv.org/abs/1910.01108&quot;&gt;《DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter》&lt;/a&gt;和&lt;a href=&quot;https://www.microsoft.com/en-us/research/blog/turing-nlg-a-17-billion-parameter-language-model-by-microsoft/&quot;&gt;《
-Turing-NLG: A 17-billion-parameter language model by Microsoft》&lt;/a&gt;。当下语言模型的参数大型化趋势已经成为共识（但这反而值得我们警惕），例如 OpenAI 的 GPT-3 规模为 1750 亿，Google 的 LaMDA 规模为 1370 亿，PaLM 的规模为 5400 亿，DeepMind 的 Gogher 规模为 2800 亿.&lt;/p&gt;
+Turing-NLG: A 17-billion-parameter language model by Microsoft》&lt;/a&gt;。当下语言模型的参数大型化趋势已经成为共识（但这反而值得我们警惕），例如 OpenAI 的 · 规模为 1750 亿，Google 的 LaMDA 规模为 1370 亿，PaLM 的规模为 5400 亿，DeepMind 的 Gogher 规模为 2800 亿.&lt;/p&gt;
 
 &lt;h3 id=&quot;第-11-节--gpt-32020-年-5-月&quot;&gt;第 11 节 · GPT-3（2020 年 5 月）&lt;/h3&gt;
 
@@ -2939,6 +2942,50 @@ digraph G {
   &lt;li&gt;训练数据格式不同：InstructGPT 的训练数据用的还是「指令-响应」的格式，而训练 ChatGPT 时 OpenAI 将数据转换成「对话」格式。&lt;/li&gt;
   &lt;li&gt;基础模型版本不同：InstructGPT 是基于 GPT-3 微调的，ChatGPT 是基于 GPT-3.5 微调的。&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h5 id=&quot;1821训练数据的格式&quot;&gt;18.2.1、训练数据的格式&lt;/h5&gt;
+
+&lt;p&gt;SFT 时用的数据，ChatGPT 是基于 InstructGPT 数据集改的。&lt;/p&gt;
+
+&lt;p&gt;具体来说，比如 InstructGPT 有如下指令数据集：&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Make a sandwich.
+Pour milk into a glass.
+Write a letter to your friend.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这每一个 Instruct 都会有一个 respond，根据 OpenAI  的解释，在 InstructGPT 中，AI 训练师编写了这些「指令-响应」对（指令和响应都是人工编写的），而 ChatGPT 把这些对儿改为了对话形式，举例如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;User: Make a sandwich.
+AI: Sure, what kind of sandwich would you like?
+User: A turkey and cheese sandwich, please.
+AI: Alright, what kind of bread do you prefer?
+User: Whole wheat.
+AI: Great. What type of cheese would you like on your sandwich?
+User: Swiss cheese.
+AI: Got it. Would you like any condiments on your sandwich?
+User: Just mayo, please.
+AI: Okay, your turkey and Swiss cheese sandwich with mayo is ready.
+
+User: Pour milk into a glass.
+AI: Do you have a specific type of milk you&apos;d like to use?
+User: Just regular cow&apos;s milk.
+AI: Sure thing. How much milk would you like to pour?
+User: About half a glass.
+AI: Okay, half a glass of milk coming up.
+
+User: Write a letter to your friend.
+AI: What would you like the letter to say?
+User: I want to ask them how their vacation was.
+AI: Okay, I can help you with that. Do you want to start with a greeting?
+User: Yes, &quot;Dear Sarah.&quot;
+AI: Got it. What do you want to ask about their vacation?
+User: I want to know if they had a good time and if they went anywhere interesting.
+AI: Alright, I can help you write that. Here&apos;s what I suggest... (and so on)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后将 AI 的部分做文本生成任务的 SFT。&lt;/p&gt;
 
 &lt;h4 id=&quot;183chatgpt-开放-chat-api&quot;&gt;18.3、ChatGPT 开放 Chat API&lt;/h4&gt;
 
@@ -4967,7 +5014,7 @@ Get the current value of a Bitcoin in US dollars using the bitcoincharts api
 
 &lt;h2 id=&quot;第一章--2017-年之前的几个关键-nlp-语言模型&quot;&gt;第一章 · 2017 年之前的几个关键 NLP 语言模型&lt;/h2&gt;
 
-&lt;p&gt;NLP 的技术基础方面，我认为主要是这两部分：词表示法（Word Presentation）、语言模型（Language Model）。对于词表示法，这里不做详细介绍，基本的思路就是把词表示为向量（一维张量），最基本的 One-Hot、Word2Vec、GloVe、fastText 等。这部分的技术演进也在不断前进，比如本文将要重点介绍的 Transformer 模型里，用到的词表示法是「引入上下文感知的词向量」。&lt;/p&gt;
+&lt;p&gt;NLP 的技术基础方面，我认为主要是这两部分：词表示法（Word Representation）、语言模型（Language Model）。对于词表示法，这里不做详细介绍，基本的思路就是把词表示为向量（一维张量），最基本的 One-Hot、Word2Vec、GloVe、fastText 等。这部分的技术演进也在不断前进，比如本文将要重点介绍的 Transformer 模型里，用到的词表示法是「引入上下文感知的词向量」。&lt;/p&gt;
 
 &lt;p&gt;语言模型从早期的 N 元文法（N-Gram，本文要介绍的），到神经网络被提出后最早期的感知器（Perceptron），再到后来席卷计算机视觉（CV）领域的卷积神经网络（CNN），然后出现考虑序列特征的循环神经网络（RNN，包括 Encoder-Decoder 模型），直到 2017 年横空出世的 Transformer，大概分这五个主要阶段。因为本文的重点是 Transformer，所以前面四个模型我会快速概览一下，然后介绍下最朴素的注意力（Attention）机制，基于此再详细介绍下 Transformer，并对一个完整的、精炼实现的代码实例进行精讲。&lt;/p&gt;
 
