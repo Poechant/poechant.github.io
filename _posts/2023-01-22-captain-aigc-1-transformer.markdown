@@ -67,7 +67,7 @@ AI 生成图片确实非常惊人。我酷爱变形金刚模玩，进而对机�
 
 ## 第一章 · 2017 年之前的几个关键 NLP 语言模型
 
-NLP 的技术基础方面，我认为主要是这两部分：词表示法（Word Presentation）、语言模型（Language Model）。对于词表示法，这里不做详细介绍，基本的思路就是把词表示为向量（一维张量），最基本的 One-Hot、Word2Vec、GloVe、fastText 等。这部分的技术演进也在不断前进，比如本文将要重点介绍的 Transformer 模型里，用到的词表示法是「引入上下文感知的词向量」。
+NLP 的技术基础方面，我认为主要是这两部分：词表示法（Word Representation）、语言模型（Language Model）。对于词表示法，这里不做详细介绍，基本的思路就是把词表示为向量（一维张量），最基本的 One-Hot、Word2Vec、GloVe、fastText 等。这部分的技术演进也在不断前进，比如本文将要重点介绍的 Transformer 模型里，用到的词表示法是「引入上下文感知的词向量」。
 
 语言模型从早期的 N 元文法（N-Gram，本文要介绍的），到神经网络被提出后最早期的感知器（Perceptron），再到后来席卷计算机视觉（CV）领域的卷积神经网络（CNN），然后出现考虑序列特征的循环神经网络（RNN，包括 Encoder-Decoder 模型），直到 2017 年横空出世的 Transformer，大概分这五个主要阶段。因为本文的重点是 Transformer，所以前面四个模型我会快速概览一下，然后介绍下最朴素的注意力（Attention）机制，基于此再详细介绍下 Transformer，并对一个完整的、精炼实现的代码实例进行精讲。
 

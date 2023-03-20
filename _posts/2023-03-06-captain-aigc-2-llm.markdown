@@ -1130,7 +1130,7 @@ Google 团队在 2019 年 10 月发布了一个对 NLP 任务大一统的 T5 模
 ![](/img/src/2023/2023-01-23-captain-aigc-2-llm-11.png)
 
 上图数据来自[《DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter》](https://arxiv.org/abs/1910.01108)和[《
-Turing-NLG: A 17-billion-parameter language model by Microsoft》](https://www.microsoft.com/en-us/research/blog/turing-nlg-a-17-billion-parameter-language-model-by-microsoft/ )。当下语言模型的参数大型化趋势已经成为共识（但这反而值得我们警惕），例如 OpenAI 的 GPT-3 规模为 1750 亿，Google 的 LaMDA 规模为 1370 亿，PaLM 的规模为 5400 亿，DeepMind 的 Gogher 规模为 2800 亿.
+Turing-NLG: A 17-billion-parameter language model by Microsoft》](https://www.microsoft.com/en-us/research/blog/turing-nlg-a-17-billion-parameter-language-model-by-microsoft/ )。当下语言模型的参数大型化趋势已经成为共识（但这反而值得我们警惕），例如 OpenAI 的 · 规模为 1750 亿，Google 的 LaMDA 规模为 1370 亿，PaLM 的规模为 5400 亿，DeepMind 的 Gogher 规模为 2800 亿.
 
 ### 第 11 节 · GPT-3（2020 年 5 月）
 
@@ -1840,6 +1840,52 @@ InstructGPT 是基于人类指令输入，给予对应的输出结果，OpenAI �
 * 训练数据来源不同：ChatGPT 所用的训练数据，是在 InstructGPT 所用训练数据的基础上，混入了人类训练师编写的对话数据。
 * 训练数据格式不同：InstructGPT 的训练数据用的还是「指令-响应」的格式，而训练 ChatGPT 时 OpenAI 将数据转换成「对话」格式。
 * 基础模型版本不同：InstructGPT 是基于 GPT-3 微调的，ChatGPT 是基于 GPT-3.5 微调的。
+
+##### 18.2.1、训练数据的格式
+
+SFT 时用的数据，ChatGPT 是基于 InstructGPT 数据集改的。
+
+具体来说，比如 InstructGPT 有如下指令数据集：
+
+```
+Make a sandwich.
+Pour milk into a glass.
+Write a letter to your friend.
+```
+
+这每一个 Instruct 都会有一个 respond，根据 OpenAI  的解释，在 InstructGPT 中，AI 训练师编写了这些「指令-响应」对（指令和响应都是人工编写的），而 ChatGPT 把这些对儿改为了对话形式，举例如下：
+
+```
+User: Make a sandwich.
+AI: Sure, what kind of sandwich would you like?
+User: A turkey and cheese sandwich, please.
+AI: Alright, what kind of bread do you prefer?
+User: Whole wheat.
+AI: Great. What type of cheese would you like on your sandwich?
+User: Swiss cheese.
+AI: Got it. Would you like any condiments on your sandwich?
+User: Just mayo, please.
+AI: Okay, your turkey and Swiss cheese sandwich with mayo is ready.
+
+User: Pour milk into a glass.
+AI: Do you have a specific type of milk you'd like to use?
+User: Just regular cow's milk.
+AI: Sure thing. How much milk would you like to pour?
+User: About half a glass.
+AI: Okay, half a glass of milk coming up.
+
+User: Write a letter to your friend.
+AI: What would you like the letter to say?
+User: I want to ask them how their vacation was.
+AI: Okay, I can help you with that. Do you want to start with a greeting?
+User: Yes, "Dear Sarah."
+AI: Got it. What do you want to ask about their vacation?
+User: I want to know if they had a good time and if they went anywhere interesting.
+AI: Alright, I can help you write that. Here's what I suggest... (and so on)
+
+```
+
+然后将 AI 的部分做文本生成任务的 SFT。
 
 #### 18.3、ChatGPT 开放 Chat API
 
