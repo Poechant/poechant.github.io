@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ChatGPT plugins 发布：OpenAI 教你怎么做平台
-date:   2023-03-24 00:40:13 +0800
+date:   2023-03-24 12:40:13 +0800
 categories: ai
 tags: [AI, 人工智能, NLP, 自然语言处理, 神经网络, LLM, 大型语言模型, 语言模型, 大模型]
 description: We’ve implemented initial support for plugins in ChatGPT. Plugins are tools designed specifically for language models with safety as a core principle, and help ChatGPT access up-to-date information, run computations, or use third-party services.
