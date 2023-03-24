@@ -4,7 +4,7 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-03-24T03:49:19+00:00</updated>
+ <updated>2023-03-24T04:41:30+00:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
@@ -15,9 +15,9 @@
 
  <entry>
    <title>ChatGPT plugins 发布：OpenAI 教你怎么做平台</title>
-   <link href="https://www.mikecaptain.com/2023/03/23/chatgpt-plugin/"/>
-   <id>https://www.mikecaptain.com/2023/03/23/chatgpt-plugin</id>
-   <updated>2023-03-23T16:40:13+00:00</updated>
+   <link href="https://www.mikecaptain.com/2023/03/24/chatgpt-plugin/"/>
+   <id>https://www.mikecaptain.com/2023/03/24/chatgpt-plugin</id>
+   <updated>2023-03-24T04:40:13+00:00</updated>
    <content type="html">&lt;p&gt;北京时间 3 月 24 日凌晨，OpenAI 官方发布了重磅的「ChatGPT plugins」，这将开启大模型作为平台的模式定义、商业化模式定义、插件产品开发热潮、全新的大模型优化（LMO）等等。本文共分三个部分：&lt;/p&gt; &lt;ul&gt; &lt;li&gt;第一部分先速览几个重要的关注点，尤其是&lt;strong&gt;本次插件发布带来的行业影响&lt;/strong&gt;；&lt;/li&gt; &lt;li&gt;第二部分针对本次 OpenAI 官方推出的插件做介绍；&lt;/li&gt; &lt;li&gt;第三部分是开发者最关心的第三方插件的支持能力做简述。&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;跟船长出发吧，坐稳了：&lt;/p&gt; &lt;h2 id=&quot;第一部分速览-chatgpt-插件并聚焦本次变化带来的几大核心关注点&quot;&gt;第一部分：速览 ChatGPT 插件，并聚焦本次变化带来的几大核心关注点&lt;/h2&gt; &lt;h3 id=&quot;1快速了解-chatgpt-插件是什么&quot;&gt;1、快速了解 ChatGPT 插件是什么&lt;/h3&gt; &lt;p&gt;首先要知道 ChatGPT 插件是什么，我们来看下官方视频一睹为快：&lt;/p&gt; &lt;div style=&quot;text-align:center&quot;&gt; &lt;video width=&quot;720&quot; controls=&quot;&quot;&gt; &lt;source src=&quot;/img/src/2023/03/2023-03-24-chatgpt-plugin-10.mov&quot; type=&quot;video/mp4&quot; /&gt;你的浏览器不支持视频标签。 &lt;/video&gt; &lt;/div&gt; &lt;p&gt;以下这些公司产品已经接入 ChatGPT 插件：&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-24-chatgpt-plugin-9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;h3 id=&quot;2插件能做什么&quot;&gt;2、插件能做什么？&lt;/h3&gt; &lt;p&gt;OpenAI 插件可以连接 ChatGPT 与第三方应用，通过接入你的应用做什么呢？举一些例子：&lt;/p&gt;...</content>
  </entry>
 
