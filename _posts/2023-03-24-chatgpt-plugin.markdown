@@ -4,8 +4,8 @@ title: ChatGPT 插件的十大关注点：OpenAI 定义大模型消费级平台
 date:   2023-03-24 12:40:13 +0800
 categories: ai
 tags: [AI, 人工智能, NLP, 自然语言处理, 神经网络, LLM, 大型语言模型, 语言模型, 大模型]
-description: We’ve implemented initial support for plugins in ChatGPT. Plugins are tools designed specifically for language models with safety as a core principle, and help ChatGPT access up-to-date information, run computations, or use third-party services.
-excerpt: We’ve implemented initial support for plugins in ChatGPT. Plugins are tools designed specifically for language models with safety as a core principle, and help ChatGPT access up-to-date information, run computations, or use third-party services.
+description: 北京时间 3 月 24 日凌晨，OpenAI 官方发布了重磅的「ChatGPT plugins」，这将开启大模型作为平台的模式定义、商业化模式定义、插件产品开发热潮、全新的大模型优化（LMO）等等。本文共分三个部分：第一部分先速览几个重要的关注点，尤其是本次插件发布带来的行业影响；第二部分针对本次 OpenAI 官方推出的插件做介绍；第三部分是开发者最关心的第三方插件的支持能力做简述。跟船长出发吧，坐稳了！
+excerpt: 北京时间 3 月 24 日凌晨，OpenAI 官方发布了重磅的「ChatGPT plugins」，这将开启大模型作为平台的模式定义、商业化模式定义、插件产品开发热潮、全新的大模型优化（LMO）等等。本文共分三个部分：第一部分先速览几个重要的关注点，尤其是本次插件发布带来的行业影响；第二部分针对本次 OpenAI 官方推出的插件做介绍；第三部分是开发者最关心的第三方插件的支持能力做简述。跟船长出发吧，坐稳了！
 katex: True
 location: 北京
 author: 麦克船长
