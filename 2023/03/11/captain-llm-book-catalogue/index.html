@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>书籍大纲《麦克船长 LLM 革命未来》</title>
+  	<meta name="description" content="麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+  	<!-- KaTeX -->
+  	<link rel="stylesheet" href="/assets/plugins/katex.0.11.1/katex.min.css">
+  	
+
+  	
+  		<script async src="https://www.googletagmanager.com/gtag/js?id=G-CH4708X4R5"></script>
+  		<script>
+    		window.dataLayer = window.dataLayer || [];
+    		function gtag(){dataLayer.push(arguments);}
+    		gtag('js', new Date());
+
+    		gtag('config', 'G-CH4708X4R5');
+  		</script>
+	
+
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/booklist/" title="读书行路">读书行路</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/target/" title="目标感">目标感</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/energy" title="能源">能源</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/business" title="商业">商业</a>
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="/target/" title="目标感">目标感</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/energy" title="能源">能源</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/business" title="商业">商业</a>
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="/target/" title="目标感">目标感</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>书籍大纲《麦克船长 LLM 革命未来》</h2>		
+	<time datetime="2023-03-11T19:40:13+00:00" class="by-line">11 Mar 2023, 上海 | 麦克船长 | 总计 1619 字</time>
+	<div class="content">
+		<!-- 推荐语：
+* 张凯夫
+* 赵德丽：达摩院计算机视觉负责人、资深算法专家
+* 熊皓：淘宝直播算法负责人，资深技术专家
+* 黄眉：
+* 三七：企业智能事业部总经理
+* 锡泽：阿里集团资深
+* 韩锷：资深技术专家
+* 张斯成：前钉钉副总裁
+* 罗璇
+* 刘江？
+* 赖晓春，上海科技大学研究员、联影首席科学家
+* 牛力，上海交通大学
+* 王猛，Google 自动驾驶 AI 研究员
+* 田飞，Meta
+* 赵明夷，Notion
+* 孙鹏，世界之窗浏览器创始人
+* 王宇航，核桃编程创始人
+* 陆铭，宝云科技创始人
+
+
+大模型革命：自然语言处理篇
+演化：大语言模型编年史
+
+--- -->
+
+<h2 id="目录">目录</h2>
+
+<h4 id="先导篇--自然语言处理的基本背景">先导篇 · 自然语言处理的基本背景</h4>
+<ul>
+  <li><strong>第 1 章：人工智能皇冠的明珠</strong>：自然语言处理</li>
+  <li><strong>第 2 章：自然语言处理的任务</strong>
+<br /></li>
+</ul>
+
+<h4 id="第一部分--革命前夜从统计语言模型到-transformer">第一部分 · 革命前夜：从统计语言模型到 Transformer</h4>
+
+<ul>
+  <li><strong>第 3 章：自然语言处理的「史前」时代</strong>：2017 年之前模型
+    <ul>
+      <li>统计语言模型</li>
+      <li>感知机（Perceptron）</li>
+      <li>卷积神经网络（CNN）</li>
+      <li>循环神经网络（RNN）</li>
+      <li>为什么说 RNN 模型没有体现「注意力」？</li>
+      <li>基于 Attention 机制的 Encoder-Decoder 模型</li>
+      <li>本章小节</li>
+    </ul>
+  </li>
+  <li><strong>第 4 章：Transformer 横空出世</strong>：开启 NLP 新纪元的 2017 年
+    <ul>
+      <li>自注意力机制（Self-Attention）</li>
+      <li>多头注意力（Multi-Head Attention）</li>
+      <li>退化现象、残差网络与 Short-Cut</li>
+      <li>位置编码（Positional Embedding）</li>
+      <li>Transformer 的编码器</li>
+      <li>Transformer 的解码器</li>
+      <li>本章小节</li>
+    </ul>
+  </li>
+  <li><strong>第 5 章：亲手实现 Transformer</strong>：基于 TensorFlow 架构的 Python 实现
+    <ul>
+      <li>先训练和测试一个 Transformer 实例</li>
+      <li>超参数、预处理、数据加载、模型构建及训练</li>
+      <li>编码器（Encoder）</li>
+      <li>解码器（Decoder）</li>
+      <li>编码和解码完成后的操作</li>
+      <li>效果评价</li>
+      <li>本章小节
+<br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="第二部分--革命破晓从-transformer-到-gpt-4">第二部分 · 革命破晓：从 Transformer 到 GPT-4</h4>
+
+<ul>
+  <li><strong>第 6 章：神经语言模型的范式演进</strong>
+    <ul>
+      <li>第一阶段：完全监督学习（Fully Supervised Learning）范式</li>
+      <li>第二阶段：预训练（Pre-train）范式 —— 为了更好的泛化性（Generalization）</li>
+      <li>第三阶段：「预训练-人工反馈强化学习-提示（Pre-train, RLHF and Prompt）」学习范式</li>
+      <li>本章小节</li>
+    </ul>
+  </li>
+  <li><strong>第 7 章：预训练大行其道</strong>：从 ELMo 到 GPT-3（2018-2021）
+    <ul>
+      <li><strong>ELMo</strong>：词所在的上下文很重要（2018 年 2 月）</li>
+      <li><strong>GPT</strong>（2018 年 6 月）</li>
+      <li><strong>BERT</strong>（2018 年 10 月）</li>
+      <li><strong>GPT-2</strong>（2019 年 2 月）</li>
+      <li><strong>T5</strong>：提出所有 NLP 任务可统一为文本生成任务（2019 年 10 月）</li>
+      <li><strong>缩放定律</strong>（Scaling Law）：AI 时代的摩尔定律（2020 年 1 月）</li>
+      <li><strong>GPT-3</strong>（2020 年 5 月）</li>
+      <li>本章小节</li>
+    </ul>
+  </li>
+  <li><strong>第 8 章：大模型推理能力</strong>：神奇的上下文学习（In-Context Learning）
+    <ul>
+      <li>ICL 能力的直接应用：Prompt Engineering</li>
+      <li>ICL 能力的底层假设：贝叶斯推理</li>
+      <li>ICL 是如何工作的？</li>
+      <li>思维链（Chain of Thought，CoT）</li>
+      <li>本章小节</li>
+    </ul>
+  </li>
+  <li><strong>第 9 章：预训练对齐人类</strong>：从 InstructGPT 到 ChatGPT
+    <ul>
+      <li><strong>InstructGPT</strong>：为对齐（Alignment）而生的指令式 GPT（2022 年 3 月）</li>
+      <li><strong>ChatGPT</strong>：基于 RLHF 训练的对话式 GPT 模型（2022 年 11 月底）</li>
+      <li>本章小节</li>
+    </ul>
+  </li>
+  <li><strong>第 10 章：多模态语言模型</strong>
+    <ul>
+      <li>Visual ChatGPT</li>
+      <li>GPT-4</li>
+      <li>本章小节
+<br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="番外篇--革命征程展望-agi">番外篇 · 革命征程：展望 AGI</h4>
+
+<!-- <br/><br/>
+
+---
+
+
+
+* **神经网络模型训练的基本方法**
+
+```
+MLP 多层感知机、CNN 卷积神经网络、RNN 循环神经网络、LSTM 长短时记忆网络、基于注意力机制的 Encoder-Decoder
+```
+```
+ELMo（2018）、GPT-1（2018）、BERT（2018）、GPT-2（2019）、T5（2019）、GPT-3（2020）
+```
+```
+Prompt Engineering（PET、Hard Prompt & Soft Prompt、Prompt Tuning）、贝叶斯推理、WHY can it work、HOW does it work、思维链、涌现
+```
+```
+InstructGPT、ChatGPT、GPT-4
+```
+ -->
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+	<span>
+		-<br/><br/>
+		船长还不会游泳 at 微信公众号/微博<br/>
+		@麦克船长 at 即刻/知乎/小宇宙/掘金/小红书/微信读书<br/>
+		@船长模玩 at Bilibili<br/>
+		Copyright © 2011-2023, MikeCaptain.com
+	</span>
+</footer>
+
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>

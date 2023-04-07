@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>如何使用 Jekyll 基于 Github Pages 搭建个人博客</title>
+  	<meta name="description" content="GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用 GitHub Pages 搭建博客，然后使用 Jekyll 生成的静态网站文件上传到该仓库。花 10 分钟时间，通过本文让你快速地实现了一个免费、简单、快速、安全、支持版本控制、支持自定义域名的独立域名博客。">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+
+  	
+  		<script async src="https://www.googletagmanager.com/gtag/js?id=G-CH4708X4R5"></script>
+  		<script>
+    		window.dataLayer = window.dataLayer || [];
+    		function gtag(){dataLayer.push(arguments);}
+    		gtag('js', new Date());
+
+    		gtag('config', 'G-CH4708X4R5');
+  		</script>
+	
+
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/booklist/" title="读书行路">读书行路</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/target/" title="目标感">目标感</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/energy" title="能源">能源</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/business" title="商业">商业</a>
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="/target/" title="目标感">目标感</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/energy" title="能源">能源</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/business" title="商业">商业</a>
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="/target/" title="目标感">目标感</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>如何使用 Jekyll 基于 Github Pages 搭建个人博客</h2>		
+	<time datetime="2021-12-21T15:53:57+00:00" class="by-line">21 Dec 2021, 杭州 | 麦克船长 | 总计 12796 字</time>
+	<div class="content">
+		<p><strong>本文目录</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#写在前面" id="markdown-toc-写在前面">写在前面</a></li>
+  <li><a href="#1github上的准备" id="markdown-toc-1github上的准备">1、GitHub 上的准备</a></li>
+  <li><a href="#2了解ruby和jekyll" id="markdown-toc-2了解ruby和jekyll">2、了解 Ruby 和 Jekyll</a></li>
+  <li><a href="#3了解gem" id="markdown-toc-3了解gem">3、了解 Gem</a></li>
+  <li><a href="#4安装homebrew" id="markdown-toc-4安装homebrew">4、安装 Homebrew</a></li>
+  <li><a href="#5用homebrew安装ruby" id="markdown-toc-5用homebrew安装ruby">5、用 Homebrew 安装 Ruby</a></li>
+  <li><a href="#6安装jekyll和bundler" id="markdown-toc-6安装jekyll和bundler">6、安装 Jekyll 和 Bundler</a></li>
+  <li><a href="#7使用bundle管理包依赖关系" id="markdown-toc-7使用bundle管理包依赖关系">7、使用 bundle 管理包依赖关系</a></li>
+  <li><a href="#8本地启动一下看看" id="markdown-toc-8本地启动一下看看">8、本地启动一下看看</a></li>
+  <li><a href="#9用jekyll创建一个项目" id="markdown-toc-9用jekyll创建一个项目">9、用 Jekyll 创建一个项目</a></li>
+  <li><a href="#10修改gemfile文件" id="markdown-toc-10修改gemfile文件">10、修改 Gemfile 文件</a></li>
+  <li><a href="#11配置githubpages" id="markdown-toc-11配置githubpages">11、配置 Github Pages</a></li>
+  <li><a href="#12配置一个jekylltheme" id="markdown-toc-12配置一个jekylltheme">12、配置一个 Jekyll Theme</a></li>
+  <li><a href="#13设置自定义域名" id="markdown-toc-13设置自定义域名">13、设置自定义域名</a></li>
+  <li><a href="#14用-rouge-实现代码高亮" id="markdown-toc-14用-rouge-实现代码高亮">14、用 rouge 实现代码高亮</a></li>
+  <li><a href="#15一些扩展问题" id="markdown-toc-15一些扩展问题">15、一些扩展问题</a>    <ul>
+      <li><a href="#q1我想在网站的首页的每一篇文章标题下显示一个指定的摘要而不是自动从文章内容开头截取的应该如何实现呢" id="markdown-toc-q1我想在网站的首页的每一篇文章标题下显示一个指定的摘要而不是自动从文章内容开头截取的应该如何实现呢">Q1：我想在网站的首页的每一篇文章标题下，显示一个指定的摘要，而不是自动从文章内容开头截取的，应该如何实现呢？</a></li>
+      <li><a href="#q2如何支持对每一个分类都可以显示一个该分类下的所有文章的页面" id="markdown-toc-q2如何支持对每一个分类都可以显示一个该分类下的所有文章的页面">Q2：如何支持对每一个分类都可以显示一个该分类下的所有文章的页面？</a></li>
+      <li><a href="#q3如何为每篇文章添加一个目录" id="markdown-toc-q3如何为每篇文章添加一个目录">Q3：如何为每篇文章添加一个目录</a></li>
+      <li><a href="#q4如何在-jekyll-中支持-katex" id="markdown-toc-q4如何在-jekyll-中支持-katex">Q4：如何在 Jekyll 中支持 KaTeX</a>        <ul>
+          <li><a href="#在-githubio-上" id="markdown-toc-在-githubio-上">在 GitHub.io 上</a></li>
+          <li><a href="#本问题参考" id="markdown-toc-本问题参考">本问题参考：</a></li>
+          <li><a href="#如果不在-githubio-上则还需要额外工作" id="markdown-toc-如果不在-githubio-上则还需要额外工作">如果不在 GitHub.io 上，则还需要额外工作</a></li>
+          <li><a href="#使用示例" id="markdown-toc-使用示例">使用示例</a></li>
+        </ul>
+      </li>
+      <li><a href="#q5jekyll-中如何支持-graphviz-" id="markdown-toc-q5jekyll-中如何支持-graphviz-">Q5：Jekyll 中如何支持 Graphviz ？</a>        <ul>
+          <li><a href="#本地-jekyll-先运行起来-graphviz" id="markdown-toc-本地-jekyll-先运行起来-graphviz">本地 Jekyll 先运行起来 Graphviz</a></li>
+          <li><a href="#github-pages-上正常显示-graphviz" id="markdown-toc-github-pages-上正常显示-graphviz">Github Pages 上正常显示 Graphviz</a></li>
+          <li><a href="#本问题参考-1" id="markdown-toc-本问题参考-1">本问题参考：</a></li>
+        </ul>
+      </li>
+      <li><a href="#q6如何显示--或者--" id="markdown-toc-q6如何显示--或者--">Q6：如何显示 <code class="language-plaintext highlighter-rouge">{%</code> 或者 <code class="language-plaintext highlighter-rouge">{{</code> ？</a></li>
+      <li><a href="#q7jekyll-编译速度太慢怎么办" id="markdown-toc-q7jekyll-编译速度太慢怎么办">Q7、Jekyll 编译速度太慢怎么办？</a></li>
+    </ul>
+  </li>
+  <li><a href="#参考" id="markdown-toc-参考">参考</a></li>
+</ul>
+
+<h3 id="写在前面">写在前面</h3>
+
+<p>常见的静态网站生成器有 Jekyll、Hexo、Hugo。本文介绍如何用 Jekyll 生成静态的个人博客并关联 Github Pages，它也是 GitHub Pages 官方推荐的工具。</p>
+
+<p>GitHub Pages 是 GitHub 提供的免费托管静态网站的服务。使用 GitHub Pages 搭建博客，然后使用 Jekyll 生成的静态网站文件上传到该仓库。花 10 分钟时间，通过本文让你快速地实现了一个免费、简单、快速、安全、支持版本控制、支持自定义域名的独立域名博客。这样实现的优势：</p>
+
+<ul>
+  <li><strong>免费</strong>：GitHub Pages 允许用户免费使用其托管静态网站。</li>
+  <li><strong>简单</strong>：Jekyll 是一个轻量级的静态网站生成器，它使用简单的 Markdown 格式写文章，不需要数据库或者后端语言的支持。</li>
+  <li><strong>快速</strong>：由于 Jekyll 生成的网站是静态的，所以可以通过 CDN 加速访问速度。</li>
+  <li><strong>安全</strong>：由于 Jekyll 生成的网站是静态的，所以不存在脚本攻击、SQL 注入等安全问题。</li>
+  <li><strong>版本控制</strong>：GitHub 提供了强大的版本控制功能，你可以使用 Git 记录每一次修改，方便查看和回滚。</li>
+  <li><strong>自定义域名</strong>：你可以在仓库的设置页面中自定义域名，让你的博客更专业和个性化。</li>
+</ul>
+
+<p>使用 Jekyll 和 GitHub Pages 搭建博客，你可以快速、简单、免费地拥有一个个人博客，并且可以享受到较高的安全性、版本控制和自定义域名的优势。</p>
+
+<p>本文涉及到 macOS 命令行的一点点基础，以及 git 版本控制软件、Web 前端的一点点基础，但是船长会尽量浅显地写在本文，避免太多其他依赖。</p>
+
+<h3 id="1github上的准备">1、GitHub 上的准备</h3>
+
+<p>在 Github 上创建一个新的仓库，命名为「账户名.github.io」。然后将仓库拉取到本地：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone https://github.com/username/username.github.io
+</code></pre></div></div>
+
+<p>创建一些 web 文件后再推到 Github 上就可以了：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git add <span class="nt">--all</span>
+<span class="nv">$ </span>git commit <span class="nt">-m</span> <span class="s2">"Initial commit"</span>
+<span class="nv">$ </span>git push <span class="nt">-u</span> origin main
+</code></pre></div></div>
+
+<h3 id="2了解ruby和jekyll">2、了解 Ruby 和 Jekyll</h3>
+
+<p>Ruby 目前业界的主要应用都在 Web 开发领域，有不少框架，比如 Ruby on Rails、Sinatra、Padrino. 我们这里要用到的 Jekyll 是用 Ruby 实现的一个构建静态网站的工具，用 HTML 和 Markdown 作为源码，再通过布局和模板生成网页文件。</p>
+
+<p>Jekyll 特别适合构建博客，支持标签、分类、搜索，并支持自定义模板和布局。</p>
+
+<h3 id="3了解gem">3、了解 Gem</h3>
+
+<p>Gem 是 Ruby 常用的一个管理库的工具，类似于 Pip 是 Python 常用的一个管理库的工具。</p>
+
+<p>为 Gem 配置国内的源，这样访问速度更快：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem sources --add https://mirrors.tuna.tsinghua.edu.cn/rubygems/ --remove https://rubygems.org/
+gem sources -l
+</code></pre></div></div>
+
+<h3 id="4安装homebrew">4、安装 Homebrew</h3>
+
+<p>Homebrew 是一个专门为 macOS 设计的开源软件包管理工具，熟悉 Linux 的朋友可以把 Homebrew 理解成 macOS 的 apt-get。先安装 Homebrew：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>/bin/bash <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="si">)</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p>为了让 Homebrew 在国内安装快一些，可以替换下镜像源：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles'</span> <span class="o">&gt;&gt;</span> ~/.bash_profile
+</code></pre></div></div>
+
+<p>以上用的是阿里云的源，也可以用网易的源：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'export HOMEBREW_BOTTLE_DOMAIN=http://mirrors.163.com/homebrew/bottles'</span> <span class="o">&gt;&gt;</span> ~/.bash_profile
+</code></pre></div></div>
+
+<p>Homebrew 安装、卸载软件的命令都很简单，brew install wget和brew uninstall wget。</p>
+
+<h3 id="5用homebrew安装ruby">5、用 Homebrew 安装 Ruby</h3>
+
+<p>用 Homebrew 安装 chruby 和 ruby-install</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>brew <span class="nb">install </span>chruby ruby-install xz
+</code></pre></div></div>
+
+<p>安装 Ruby 的最新版本：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ruby-install ruby
+</code></pre></div></div>
+
+<p>这时候提示如下问题：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> Updating ruby versions ...
+<span class="o">!!!</span> Failed to download https://raw.githubusercontent.com/postmodern/ruby-versions/master/ruby/versions.txt <span class="se">\</span>
+to /Users/captain/.cache/ruby-install/ruby/versions.txt!
+<span class="o">!!!</span> Failed to download ruby versions!
+</code></pre></div></div>
+
+<p>因为 raw.githubusercontent.com 在国内是被 blocked，所以用https://www.ipaddress.com查一下 IP 地址，然后修改下/etc/hosts：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ echo "185.199.111.133 raw.githubusercontent.com" &gt;&gt; /etc/hosts
+</code></pre></div></div>
+
+<p>然后再运行ruby-install ruby就可以正常安装了，这个过程会非常的慢，安装完成后，配置 zsh 脚本的 .zshrc 文件以便后续可以使用 chruby：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"source </span><span class="si">$(</span>brew <span class="nt">--prefix</span><span class="si">)</span><span class="s2">/opt/chruby/share/chruby/chruby.sh"</span> <span class="o">&gt;&gt;</span> ~/.zshrc
+<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"source </span><span class="si">$(</span>brew <span class="nt">--prefix</span><span class="si">)</span><span class="s2">/opt/chruby/share/chruby/auto.sh"</span> <span class="o">&gt;&gt;</span> ~/.zshrc
+<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"chruby ruby-3.1.2"</span> <span class="o">&gt;&gt;</span> ~/.zshrc <span class="c"># run 'chruby' to see actual version</span>
+</code></pre></div></div>
+
+<p>再看下 Ruby 版本对不对：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ruby <span class="nt">-v</span>
+</code></pre></div></div>
+
+<p>Jekyll 官网要求 Ruby 版本大于 3.1.2p20.</p>
+
+<h3 id="6安装jekyll和bundler">6、安装 Jekyll 和 Bundler</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gem <span class="nb">install </span>jekyll bundler
+</code></pre></div></div>
+
+<p>上面顺便安装了 Bundler，Bundler 是 Ruby 常用的管理项目依赖关系的工具，类似于 virtualenv 之于 Python，可以简化项目的包依赖管理，帮你维护一份 Gemfile 文件，里面包含了所有依赖关系。这个工具的名字叫 Bundler，使用的时候都是用这个词的动词 bundle 命令。</p>
+
+<h3 id="7使用bundle管理包依赖关系">7、使用 bundle 管理包依赖关系</h3>
+
+<p>创建 Gemfile 文件，Gemfile 是 Ruby 项目的依赖包管理文件：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> <span class="s1">'https://rubygems.org'</span>
+gem <span class="s1">'nokogiri'</span>
+gem <span class="s1">'rack'</span>, <span class="s1">'~&gt; 2.2.4'</span>
+gem <span class="s1">'rspec'</span>
+gem <span class="s1">'jekyll'</span>
+</code></pre></div></div>
+
+<p>然后安装依赖包，这里默认会根据运行命令时所在的目录的 Gemfile 来安装：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle <span class="nb">install</span>
+</code></pre></div></div>
+
+<p>Gemfile.lock 是 Gemfile 的锁定版本，记录了当前项目所使用的所有依赖包的版本信息。下面把这两个文件都加入到 Git 版本控制中。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git add Gemfile Gemfile.lock
+</code></pre></div></div>
+
+<h3 id="8本地启动一下看看">8、本地启动一下看看</h3>
+
+<p>先用 bundle 如下命令来启动：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div>
+
+<p>启动日志如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Configuration file: none
+            Source: /Users/captain/Workspace/poechant.github.io
+       Destination: /Users/captain/Workspace/poechant.github.io/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
+                    done in 0.014 seconds.
+ Auto-regeneration: enabled for '/Users/captain/Workspace/poechant.github.io'
+    Server address: http://127.0.0.1:4000
+  Server running... press ctrl-c to stop.
+</code></pre></div></div>
+
+<p>然后打开浏览器输入http://localhost:4000看看效果：</p>
+
+<p><img src="/img/src/2022-12-21-build-github-pages-with-jekyll-1.png" alt="image" /></p>
+
+<p>这就说明 Jekyll 本地配置已经成功了。然后把当前的版本同步到 Git 上：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git pull <span class="nt">--no-rebase</span>
+<span class="nv">$ </span>git push <span class="nt">-u</span> origin main
+</code></pre></div></div>
+
+<h3 id="9用jekyll创建一个项目">9、用 Jekyll 创建一个项目</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll new CaptainMikeBlog
+<span class="nv">$ </span><span class="nb">cd </span>CaptainMikeBlog
+<span class="nv">$ </span>jekyll server
+</code></pre></div></div>
+
+<p>启动日志如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Configuration file: /Users/captain/Workspace/poechant.github.io/CaptainMikeBlog/_config.yml
+            Source: /Users/captain/Workspace/poechant.github.io/CaptainMikeBlog
+       Destination: /Users/captain/Workspace/poechant.github.io/CaptainMikeBlog/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
+       Jekyll Feed: Generating feed for posts
+                    done in 0.365 seconds.
+ Auto-regeneration: enabled for '/Users/captain/Workspace/poechant.github.io/CaptainMikeBlog'
+    Server address: http://127.0.0.1:4000/
+  Server running... press ctrl-c to stop.
+</code></pre></div></div>
+
+<p>再打开浏览器输入http://localhost:4000看看效果：</p>
+
+<p><img src="/img/src/2022-12-21-build-github-pages-with-jekyll-2.png" alt="image" /></p>
+
+<h3 id="10修改gemfile文件">10、修改 Gemfile 文件</h3>
+
+<p>注释掉 <code class="language-plaintext highlighter-rouge">gem "jekyll"</code> 开头的这一行，修改 <code class="language-plaintext highlighter-rouge"># gem "github-pages"</code> 开头的这一行：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gem <span class="s2">"github-pages"</span>, <span class="s2">"~&gt; GITHUB-PAGES-VERSION"</span>, group: :jekyll_plugins
+</code></pre></div></div>
+
+<p>其中的 <code class="language-plaintext highlighter-rouge">GITHUB-PAGES-VERSION</code> 改为具体的版本号，版本号参考https://pages.github.com/versions/ ，我写本文的时候 github-pages 最新版本号是 227。关闭 <code class="language-plaintext highlighter-rouge">Gemfile</code> 文件然后命令行运行如下命令：</p>
+
+<p>$ bundle install</p>
+
+<p>再本地启动服务器测试：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>jekyll server
+</code></pre></div></div>
+
+<p>得到如下提示：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>You have already activated i18n 1.12.0, but your Gemfile requires i18n 0.9.5.
+Prepending <span class="sb">`</span>bundle <span class="nb">exec</span><span class="sb">`</span> to your <span class="nb">command </span>may solve this. <span class="o">(</span>Gem::LoadError<span class="o">)</span>
+</code></pre></div></div>
+
+<p>参考https://github.com/Homebrew/brew.sh/issues/845这个 issue 后如下解决：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>bundle add webrick
+<span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div>
+
+<p>这里注意 <code class="language-plaintext highlighter-rouge">jekyll server</code> 和 <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> 两个的区别是前者基本本地 Jekyll 版本启动服务，后者基于目录下的 <code class="language-plaintext highlighter-rouge">Gemfile</code> 文件启动服务，所以我们要用后者。</p>
+
+<h3 id="11配置githubpages">11、配置 Github Pages</h3>
+
+<p>在 Github 的仓库页面进入「Settings - Code and Automation - Pages - Build and Deploy」，选择「Deploy from a branch」，然后选择你设定的分支。再选发布源的文件夹，这里我设置为根目录。然后「保存」。再修改 _config.yml 文件：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>baseurl: ""
+url: "http://your-username.github.io"
+</code></pre></div></div>
+
+<p>将本地代码push到 Github 仓库中，在浏览器访问your-username.github.io即可，有时候可能要等几分钟。</p>
+
+<h3 id="12配置一个jekylltheme">12、配置一个 Jekyll Theme</h3>
+
+<p>可以在http://jekyllthemes.org/这个网站上找一下喜欢的 theme，下载后将如下文件都 copy 到你项目目录下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_includes
+_layouts
+_sass
+css
+js
+img
+404.markdown
+index.html
+</code></pre></div></div>
+
+<p>不同主题会有所不同，这里只列个大概。</p>
+
+<h3 id="13设置自定义域名">13、设置自定义域名</h3>
+
+<p>添加四条 A 记录，记录值如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+</code></pre></div></div>
+
+<p>添加 CNAME，主机记录为www，记录值为your-username.github.io。然后在「Github 你的仓库里 - Settings - Pages - Custom Domain」填写你刚使用的域名，并把Enforce HTTPS打上勾。</p>
+
+<p>一旦解析成功，Github 上会自动多一个 CNAME 文件。把你最新的代码都 push 到 Github 仓库上，稍等片刻就可以从你自己的域名访问 Github Pages 搭建的博客啦。</p>
+
+<h3 id="14用-rouge-实现代码高亮">14、用 rouge 实现代码高亮</h3>
+
+<p>我们用支持 Markdown 内代码语法高亮的 Rouge 来实现，首先安装 Rouge：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install kramdom rouge
+</code></pre></div></div>
+
+<p>然后配置 _config.yml 文件：</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">markdown</span><span class="pi">:</span> <span class="s">kramdown</span>
+<span class="na">highlighter</span><span class="pi">:</span> <span class="s">rouge</span>
+
+<span class="na">kramdown</span><span class="pi">:</span>
+  <span class="na">input</span><span class="pi">:</span> <span class="s">GFM</span>
+  <span class="na">syntax_highlighter</span><span class="pi">:</span> <span class="s">rouge</span>
+</code></pre></div></div>
+
+<p>然后用 rouge 创建 syntax.css 文件：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>rougify style github <span class="o">&gt;</span> css/syntax.css
+</code></pre></div></div>
+
+<p>在 <code class="language-plaintext highlighter-rouge">_include/head.html</code> 文件中添加：</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/css/syntax.css"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<h3 id="15一些扩展问题">15、一些扩展问题</h3>
+
+<h4 id="q1我想在网站的首页的每一篇文章标题下显示一个指定的摘要而不是自动从文章内容开头截取的应该如何实现呢">Q1：我想在网站的首页的每一篇文章标题下，显示一个指定的摘要，而不是自动从文章内容开头截取的，应该如何实现呢？</h4>
+
+<p>在 Jekyll 中，你可以在每篇文章的 front matter 中设置摘要字段。例如，你可以在文章的 front matter 中添加一个 excerpt 字段，然后在该字段中填入你想要在首页显示的摘要内容。</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">这是一篇文章</span>
+<span class="na">excerpt</span><span class="pi">:</span> <span class="s">这是文章的摘要</span>
+<span class="nn">---</span>
+
+这是文章的正文内容
+</code></pre></div></div>
+
+<p>然后，在你的首页模板中，你可以使用``输出文章的摘要。例如：</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ul&gt;</span>
+  {% for post in paginator.posts %}
+    <span class="nt">&lt;li&gt;</span>
+      <span class="nt">&lt;h2&gt;&lt;a</span> <span class="na">href=</span><span class="s">"{{ post.url }}"</span><span class="nt">&gt;</span>{{ post.title }}<span class="nt">&lt;/a&gt;&lt;/h2&gt;</span>
+      <span class="nt">&lt;p&gt;</span>{{ post.excerpt }}<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+  {% endfor %}
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre></div></div>
+
+<p>这样，在首页显示文章列表时，每篇文章就会带上它的摘要内容。</p>
+
+<p>注意，如果文章的 excerpt 字段没有设置，那么在首页显示时就不会有摘要内容。因此，建议在发布新文章时务必检查 excerpt 字段是否已经设置。</p>
+
+<h4 id="q2如何支持对每一个分类都可以显示一个该分类下的所有文章的页面">Q2：如何支持对每一个分类都可以显示一个该分类下的所有文章的页面？</h4>
+
+<p>有很多种办法，但是这里我讲一个比较简单且容易维护的方法，不过也有其弊端。首先在<code class="language-plaintext highlighter-rouge">_layouts</code>目录下创建一个<code class="language-plaintext highlighter-rouge">category.html</code>文件：</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+layout: default
+---
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;br&gt;</span>
+    {% if site.categories[page.category] %}
+      {% for post in site.categories[page.category] %}
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{% if site.baseurl == "</span><span class="err">/"</span> <span class="err">%}{{</span> <span class="na">post.url</span> <span class="err">}}{%</span> <span class="na">else</span> <span class="err">%}{{</span> <span class="na">post.url</span> <span class="err">|</span> <span class="na">prepend:</span> <span class="na">site.baseurl</span> <span class="err">}}{%</span> <span class="na">endif</span> <span class="err">%}"</span><span class="nt">&gt;</span>
+            {%if post.header %}{{ post.header }}{% else %}{{ post.title }}{% endif %}
+        <span class="nt">&lt;/a&gt;</span>
+      {% endfor %}
+    {% else %}
+      <span class="nt">&lt;br&gt;</span>
+      <span class="nt">&lt;p&gt;</span>No posts for this category. If you have something in mind, check <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/write"</span><span class="nt">&gt;</span>Write For Us<span class="nt">&lt;/a&gt;</span>page.<span class="nt">&lt;/p&gt;</span>
+    {% endif %}
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>这样就有了一个可以显示某个 category 下的所有 posts 的布局文件了。然后修改<code class="language-plaintext highlighter-rouge">_config.yml</code>文件：</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">include</span><span class="pi">:</span> <span class="pi">[</span><span class="s1">'</span><span class="s">_categories'</span><span class="pi">]</span>
+</code></pre></div></div>
+
+<p>在根目录创建一个<code class="language-plaintext highlighter-rouge">categories</code>目录，并在里面对每个 category 分别创建一个 html 文件，文件名即 category 的名字。但这个文件特别的简单，就是只需要写一个头部，例如我的「AI」分类的<code class="language-plaintext highlighter-rouge">ai.html</code>如下：</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">category</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">人工智能</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">This is the description.</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">/category/ai</span>
+<span class="na">category</span><span class="pi">:</span> <span class="s">ai</span>
+<span class="na">category_type</span><span class="pi">:</span> <span class="s">tech</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<p>那么之后每次创建文件时，在头部写<code class="language-plaintext highlighter-rouge">category</code>一定要与这些<code class="language-plaintext highlighter-rouge">categories</code>中的<code class="language-plaintext highlighter-rouge">html</code>文件对应起来。</p>
+
+<h4 id="q3如何为每篇文章添加一个目录">Q3：如何为每篇文章添加一个目录</h4>
+
+<p>这个是 Markdown 可以解决的，并不涉及 Jekyll，对于 Jekyll 的 Markdown 引擎可以用如下极其简单的方式实现：</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">*</span> TOC
+{:toc}
+</code></pre></div></div>
+
+<h4 id="q4如何在-jekyll-中支持-katex">Q4：如何在 Jekyll 中支持 KaTeX</h4>
+
+<p>Katex 是一个开源的 JavaScript 库，能够在浏览器端快速渲染 LaTeX 格式的数学公式。</p>
+
+<h5 id="在-githubio-上">在 GitHub.io 上</h5>
+
+<p>先修改 <code class="language-plaintext highlighter-rouge">_config.yml</code>：</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">kramdown</span><span class="pi">:</span>
+  <span class="na">math_engine</span><span class="pi">:</span> <span class="s">katex</span>
+</code></pre></div></div>
+
+<p>然后修改 <code class="language-plaintext highlighter-rouge">_includes/head.html</code> 文件，在 <code class="language-plaintext highlighter-rouge">&lt;head&gt;</code> 与 <code class="language-plaintext highlighter-rouge">&lt;/head&gt;</code> 中间：</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!--KaTeX--&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span>
+        <span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"</span>
+        <span class="na">integrity=</span><span class="s">"sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X"</span>
+        <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">defer</span>
+        <span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"</span>
+        <span class="na">integrity=</span><span class="s">"sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4"</span>
+        <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">defer</span>
+        <span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"</span>
+        <span class="na">integrity=</span><span class="s">"sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"</span>
+        <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script&gt;</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">DOMContentLoaded</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+          <span class="nx">renderMathInElement</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="p">{</span>
+              <span class="c1">// ...options...</span>
+          <span class="p">});</span>
+      <span class="p">});</span>
+  <span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h5 id="本问题参考">本问题参考：</h5>
+
+<ul>
+  <li><a href="https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/">https://www.xuningyang.com/blog/2021-01-11-katex-with-jekyll/</a></li>
+</ul>
+
+<h5 id="如果不在-githubio-上则还需要额外工作">如果不在 GitHub.io 上，则还需要额外工作</h5>
+
+<p>以上方式只适合于 GitHub.io 的网站，如果是自己搭建的网站用 Jekyll 则要自己安装，如下：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>kramdom-math-katex
+
+gem <span class="nb">install </span>katex
+gem <span class="nb">install </span>execjs
+
+gem <span class="nb">install </span>therubyracer
+gem <span class="nb">install </span>therubyrhino
+gem <span class="nb">install </span>duktape
+</code></pre></div></div>
+
+<h5 id="使用示例">使用示例</h5>
+
+<p>以如下方式输入输入如下内容：</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% raw %}
+$$ \sum_{i=1}^{n} a_i $$
+{% endraw %}
+</code></pre></div></div>
+
+<p>就会得到一个数学公式：</p>
+
+\[\sum_{i=1}^{n} a_i\]
+
+<h4 id="q5jekyll-中如何支持-graphviz-">Q5：Jekyll 中如何支持 Graphviz ？</h4>
+
+<h5 id="本地-jekyll-先运行起来-graphviz">本地 Jekyll 先运行起来 Graphviz</h5>
+
+<p>这要依赖 <code class="language-plaintext highlighter-rouge">jekyll-graphviz</code>，修改 <code class="language-plaintext highlighter-rouge">Gemfile</code> 增加一句：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>group :jekyll_plugins <span class="k">do
+  </span>gem <span class="s2">"jekyll-graphviz"</span>
+end
+</code></pre></div></div>
+
+<p>再修改 <code class="language-plaintext highlighter-rouge">_config.yml</code> 配置文件：</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">plugins</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">jekyll-graphviz</span>
+</code></pre></div></div>
+
+<p>再在本地安装 graphviz，可以通过 <code class="language-plaintext highlighter-rouge">conda install graphviz</code> 或者 <code class="language-plaintext highlighter-rouge">brew install graphviz</code>。然后 <code class="language-plaintext highlighter-rouge">bundle install</code> 再 <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve</code> 在本地下一段看看效果：</p>
+
+<pre><code class="language-graphviz">{% graph some graph title %}
+digraph G {
+    a -&gt; b
+    b -&gt; c
+    c -&gt; a
+}
+{% endgraph %}
+</code></pre>
+
+<p>如果看到如下效果，就说明你都配置成功了：</p>
+
+<div class="graphviz-wrapper">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg role="img" aria-label="some graph title" width="89pt" height="188pt" viewBox="0.00 0.00 89.00 188.00">
+<title>some graph title</title>
+<desc>
+digraph G {
+    a -&gt; b
+    b -&gt; c
+    c -&gt; a
+}
+</desc>
+
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-184 85,-184 85,4 -4,4" />
+<!-- a -->
+<g id="node1" class="node">
+<title>a</title>
+<ellipse fill="none" stroke="black" cx="54" cy="-162" rx="27" ry="18" />
+<text text-anchor="middle" x="54" y="-158.3" font-family="Times,serif" font-size="14.00">a</text>
+</g>
+<!-- b -->
+<g id="node2" class="node">
+<title>b</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="27" y="-86.3" font-family="Times,serif" font-size="14.00">b</text>
+</g>
+<!-- a&#45;&gt;b -->
+<g id="edge1" class="edge">
+<title>a&#45;&gt;b</title>
+<path fill="none" stroke="black" d="M47.6,-144.41C44.49,-136.34 40.67,-126.43 37.17,-117.35" />
+<polygon fill="black" stroke="black" points="40.4,-116.03 33.54,-107.96 33.87,-118.55 40.4,-116.03" />
+</g>
+<!-- c -->
+<g id="node3" class="node">
+<title>c</title>
+<ellipse fill="none" stroke="black" cx="54" cy="-18" rx="27" ry="18" />
+<text text-anchor="middle" x="54" y="-14.3" font-family="Times,serif" font-size="14.00">c</text>
+</g>
+<!-- b&#45;&gt;c -->
+<g id="edge2" class="edge">
+<title>b&#45;&gt;c</title>
+<path fill="none" stroke="black" d="M33.4,-72.41C36.51,-64.34 40.33,-54.43 43.83,-45.35" />
+<polygon fill="black" stroke="black" points="47.13,-46.55 47.46,-35.96 40.6,-44.03 47.13,-46.55" />
+</g>
+<!-- c&#45;&gt;a -->
+<g id="edge3" class="edge">
+<title>c&#45;&gt;a</title>
+<path fill="none" stroke="black" d="M57.65,-36.09C59.68,-46.43 61.98,-59.91 63,-72 64.34,-87.94 64.34,-92.06 63,-108 62.28,-116.5 60.93,-125.69 59.49,-133.99" />
+<polygon fill="black" stroke="black" points="56.03,-133.44 57.65,-143.91 62.91,-134.71 56.03,-133.44" />
+</g>
+</g>
+</svg>
+</div>
+
+<h5 id="github-pages-上正常显示-graphviz">Github Pages 上正常显示 Graphviz</h5>
+
+<p>因为 GitHub Pages 默认并不支持 Graphviz 插件，所以还需要如下处理：</p>
+
+<ul>
+  <li>在 Github 上创建一个分支，可以叫做 gh-pages</li>
+  <li>配置 Github Pages 的生成来自分支 gh-pages 并且选择目录为 <code class="language-plaintext highlighter-rouge">/</code> 根目录</li>
+  <li>在本地项目中创建一个文件 <code class="language-plaintext highlighter-rouge">.github/workflows/gh-pages.yml</code>，内容如下：</li>
+</ul>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Build and deploy Jekyll site to GitHub Pages</span>
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">branches</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">master</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">jekyll</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">📂 setup</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Setup Graphviz</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">ts-graphviz/setup-graphviz@v1</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">💎 setup ruby</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">ruby/setup-ruby@v1</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">ruby-version</span><span class="pi">:</span> <span class="s">3.0.2</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">🔨 install dependencies &amp; build site</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">limjh16/jekyll-action-ts@v2</span>
+        <span class="na">env</span><span class="pi">:</span>
+          <span class="na">NODE_ENV</span><span class="pi">:</span> <span class="s2">"</span><span class="s">production"</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">enable_cache</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">🚀 deploy</span>
+        <span class="na">uses</span><span class="pi">:</span> <span class="s">peaceiris/actions-gh-pages@v3</span>
+        <span class="na">with</span><span class="pi">:</span>
+          <span class="na">github_token</span><span class="pi">:</span> <span class="s">$</span>
+          <span class="na">base_url</span><span class="pi">:</span> <span class="s">/</span>
+          <span class="na">publish_dir</span><span class="pi">:</span> <span class="s">./_site</span>
+          <span class="na">publish_branch</span><span class="pi">:</span> <span class="s">gh-pages</span>
+          <span class="na">cname</span><span class="pi">:</span> <span class="s">www.mikecaptain.com</span>
+          <span class="na">enable_jekyll</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<p>如果你遇到了生成的网站中所有 URL 都带着 <code class="language-plaintext highlighter-rouge">pages/username</code>，那么这个问题修改 <code class="language-plaintext highlighter-rouge">_config.yml</code> 即可：</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">baseurl</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span> <span class="c1"># Change this to your relative path (ex: /blog/), or leave just a /</span>
+</code></pre></div></div>
+
+<h5 id="本问题参考-1">本问题参考：</h5>
+
+<ul>
+  <li><a href="https://github.com/DerekStride/jekyll-graphviz">https://github.com/DerekStride/jekyll-graphviz</a></li>
+</ul>
+
+<h4 id="q6如何显示--或者--">Q6：如何显示 <code class="language-plaintext highlighter-rouge">{%</code> 或者 <code class="language-plaintext highlighter-rouge">{{</code> ？</h4>
+
+<p>其实也是一个字符转义的问题，我们直接面对一个在 StackOverflow 上会被问的终极 Jekyll 中 Markdown 转义问题（与 Liquid Template Tags 冲突的问题），如何实现显示 <code class="language-plaintext highlighter-rouge">{% raw %}</code> 和 <code class="language-plaintext highlighter-rouge">{% endraw %}</code> 呢？方法如下：</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% raw %}{%{% endraw %} raw %}
+{% raw %}{%{% endraw %} endraw %}
+</code></pre></div></div>
+
+<p>如上，就是用 <code class="language-plaintext highlighter-rouge">{% raw %}</code> 和 <code class="language-plaintext highlighter-rouge">{% endraw %}</code> 把 <code class="language-plaintext highlighter-rouge">{%</code> 包起来，但是 <code class="language-plaintext highlighter-rouge">%}</code> 不用包。应该讲的很清楚了吧。</p>
+
+<h4 id="q7jekyll-编译速度太慢怎么办">Q7、Jekyll 编译速度太慢怎么办？</h4>
+
+<p>可以使用 <code class="language-plaintext highlighter-rouge">bundle exec jekyll serve --incremental</code> 仅针对有修改的增量部分进行编译，减少重复编译已经没有变更的文件。</p>
+
+<h3 id="参考">参考</h3>
+
+<ol>
+  <li><a href="https://chat.openai.com/chat">OpenAI ChatGPT</a></li>
+  <li><a href="https://jekyllrb.com/docs/">https://jekyllrb.com/docs/</a></li>
+  <li><a href="https://zhuanlan.zhihu.com/p/87225594">https://zhuanlan.zhihu.com/p/87225594</a></li>
+  <li><a href="https://bundler.io">Bundler IO</a></li>
+  <li><a href="https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll">Creating a GitHub Pages Site with Jekyll</a></li>
+  <li><a href="https://docs.github.com/zh/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">Configuring a Publishing Source for Your GitHub Pages Site</a></li>
+  <li><a href="https://github.com/dyutibarma/monochrome">https://github.com/dyutibarma/monochrome</a></li>
+  <li><a href="https://docs.github.com/zh/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain">Managing a Custom Domain for Your Github Pages Site - Configuring a Subdomain</a></li>
+  <li><a href="http://www.seanbuscay.com/blog/jekyll-toc-markdown/">Jekyll TOC Markdown</a></li>
+</ol>
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+	<span>
+		-<br/><br/>
+		船长还不会游泳 at 微信公众号/微博<br/>
+		@麦克船长 at 即刻/知乎/小宇宙/掘金/小红书/微信读书<br/>
+		@船长模玩 at Bilibili<br/>
+		Copyright © 2011-2023, MikeCaptain.com
+	</span>
+</footer>
+
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,2859 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>自然语言处理的基本语言模型（Language Models）原理</title>
+  	<meta name="description" content="麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+  	<!-- KaTeX -->
+  	<link rel="stylesheet" href="/assets/plugins/katex.0.11.1/katex.min.css">
+  	
+
+  	
+  		<script async src="https://www.googletagmanager.com/gtag/js?id=G-CH4708X4R5"></script>
+  		<script>
+    		window.dataLayer = window.dataLayer || [];
+    		function gtag(){dataLayer.push(arguments);}
+    		gtag('js', new Date());
+
+    		gtag('config', 'G-CH4708X4R5');
+  		</script>
+	
+
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/booklist/" title="读书行路">读书行路</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/target/" title="目标感">目标感</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/energy" title="能源">能源</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/business" title="商业">商业</a>
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="/target/" title="目标感">目标感</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/energy" title="能源">能源</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/business" title="商业">商业</a>
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="/target/" title="目标感">目标感</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>自然语言处理的基本语言模型（Language Models）原理</h2>		
+	<time datetime="2022-12-19T15:58:11+00:00" class="by-line">19 Dec 2022, 杭州 | 麦克船长 | 总计 25844 字</time>
+	<div class="content">
+		<p><strong>本文目录</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#一语言模型" id="markdown-toc-一语言模型">一、语言模型</a></li>
+  <li><a href="#二n-元文法语言模型n-gram-language-model" id="markdown-toc-二n-元文法语言模型n-gram-language-model">二、N 元文法语言模型（N-gram Language Model）</a>    <ul>
+      <li><a href="#平滑技术" id="markdown-toc-平滑技术">平滑技术</a>        <ul>
+          <li><a href="#折扣法" id="markdown-toc-折扣法">折扣法</a></li>
+          <li><a href="#加-1-平滑" id="markdown-toc-加-1-平滑">加 1 平滑</a></li>
+          <li><a href="#δ-平滑" id="markdown-toc-δ-平滑">δ 平滑</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#三神经网络语言模型neural-network-langauge-model" id="markdown-toc-三神经网络语言模型neural-network-langauge-model">三、神经网络语言模型（Neural Network Langauge Model）</a>    <ul>
+      <li><a href="#1mlpmulti-layer-perceptron" id="markdown-toc-1mlpmulti-layer-perceptron">1、MLP（Multi-Layer Perceptron）</a>        <ul>
+          <li><a href="#11感知器perceptron解决二元分类任务的前馈神经网络" id="markdown-toc-11感知器perceptron解决二元分类任务的前馈神经网络">1.1、感知器（Perceptron）：解决二元分类任务的前馈神经网络</a></li>
+          <li><a href="#12线性回归linear-regression从离散值的感知器分类问题到连续值的线性回归回归问题" id="markdown-toc-12线性回归linear-regression从离散值的感知器分类问题到连续值的线性回归回归问题">1.2、线性回归（Linear Regression）：从离散值的感知器（分类问题），到连续值的线性回归（回归问题）</a></li>
+          <li><a href="#13逻辑回归logistic-regression没有值域约束的线性回归到限定在一个范围内的逻辑回归常用于分类问题" id="markdown-toc-13逻辑回归logistic-regression没有值域约束的线性回归到限定在一个范围内的逻辑回归常用于分类问题">1.3、逻辑回归（Logistic Regression）：没有值域约束的线性回归，到限定在一个范围内的逻辑回归（常用于分类问题）</a></li>
+          <li><a href="#14sigmoid-回归sigmoid-regression归一化的逻辑回归一般用于二元分类任务" id="markdown-toc-14sigmoid-回归sigmoid-regression归一化的逻辑回归一般用于二元分类任务">1.4、Sigmoid 回归（Sigmoid Regression）：归一化的逻辑回归，一般用于二元分类任务</a></li>
+          <li><a href="#15softmax-回归softmax-regression从解决二元任务的-sigmoid到解决多元分类任务的-softmax" id="markdown-toc-15softmax-回归softmax-regression从解决二元任务的-sigmoid到解决多元分类任务的-softmax">1.5、Softmax 回归（Softmax Regression）：从解决二元任务的 sigmoid，到解决多元分类任务的 softmax</a></li>
+          <li><a href="#16多层感知器multi-layer-perceptron" id="markdown-toc-16多层感知器multi-layer-perceptron">1.6、多层感知器（Multi-Layer Perceptron）</a></li>
+          <li><a href="#mlp-的一个显著问题帮我们引出-cnn-模型" id="markdown-toc-mlp-的一个显著问题帮我们引出-cnn-模型">MLP 的一个显著问题，帮我们引出 CNN 模型</a></li>
+        </ul>
+      </li>
+      <li><a href="#2cnnconvolutional-neural-network" id="markdown-toc-2cnnconvolutional-neural-network">2、CNN（Convolutional Neural Network）</a></li>
+      <li><a href="#3rnnrecurrent-neural-network" id="markdown-toc-3rnnrecurrent-neural-network">3、RNN（Recurrent Neural Network）</a>        <ul>
+          <li><a href="#31经典结构的-rnn" id="markdown-toc-31经典结构的-rnn">3.1、经典结构的 RNN</a></li>
+          <li><a href="#32n-vs1-的-rnn" id="markdown-toc-32n-vs1-的-rnn">3.2、N vs.1 的 RNN</a></li>
+          <li><a href="#331-vs-n-的-rnn" id="markdown-toc-331-vs-n-的-rnn">3.3、1 vs. N 的 RNN</a></li>
+          <li><a href="#34lstmlong-short-term-memory长短时记忆网络" id="markdown-toc-34lstmlong-short-term-memory长短时记忆网络">3.4、LSTM（Long Short-Term Memory）长短时记忆网络</a>            <ul>
+              <li><a href="#341如何理解这个-short-term-呢" id="markdown-toc-341如何理解这个-short-term-呢">3.4.1、如何理解这个 Short-Term 呢？</a></li>
+              <li><a href="#342引入遗忘门-f输入门-i输出门-o记忆细胞-c" id="markdown-toc-342引入遗忘门-f输入门-i输出门-o记忆细胞-c">3.4.2、引入遗忘门 f、输入门 i、输出门 o、记忆细胞 c</a></li>
+            </ul>
+          </li>
+          <li><a href="#35双向循环神经网络双向-lstm" id="markdown-toc-35双向循环神经网络双向-lstm">3.5、双向循环神经网络、双向 LSTM</a></li>
+          <li><a href="#36堆叠循环神经网络堆叠-lstm" id="markdown-toc-36堆叠循环神经网络堆叠-lstm">3.6、堆叠循环神经网络、堆叠 LSTM</a></li>
+          <li><a href="#37n-vs-m-的-rnn" id="markdown-toc-37n-vs-m-的-rnn">3.7、N vs. M 的 RNN</a></li>
+        </ul>
+      </li>
+      <li><a href="#4attention-机制" id="markdown-toc-4attention-机制">4、Attention 机制</a>        <ul>
+          <li><a href="#为什么说-rnn-模型没有体现注意力" id="markdown-toc-为什么说-rnn-模型没有体现注意力">为什么说 RNN 模型没有体现「注意力」？</a></li>
+          <li><a href="#参考" id="markdown-toc-参考">参考：</a></li>
+        </ul>
+      </li>
+      <li><a href="#5transformer" id="markdown-toc-5transformer">5、Transformer</a>        <ul>
+          <li><a href="#参考-1" id="markdown-toc-参考-1">参考：</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#reference" id="markdown-toc-reference">Reference</a></li>
+</ul>
+
+<p>文章进度：</p>
+
+<ol>
+  <li>N 元文法
+    <ul>
+      <li>语言模型开头</li>
+      <li>N 元文法语言模型</li>
+      <li>平滑技术</li>
+      <li>折扣法</li>
+      <li>加 1 平滑</li>
+      <li>δ 平滑</li>
+    </ul>
+  </li>
+  <li>MLP
+    <ul>
+      <li>【完成】神经网络开头</li>
+      <li>【完成】MLP 开头</li>
+      <li>【完成】感知器</li>
+      <li>【完成】线性回归</li>
+      <li>【完成】逻辑回归</li>
+      <li>【完成】softmax 回归</li>
+      <li>【完成】多层感知器</li>
+    </ul>
+  </li>
+  <li>
+    <p>CNN</p>
+  </li>
+  <li>RNN
+    <ul>
+      <li>【完成】RNN 开头</li>
+      <li>【完成】RNN 经典结构 nvsn</li>
+      <li>【完成】RNN nvs1</li>
+      <li>【完成】RNN 1vsn</li>
+      <li>【完成】RNN nvsm</li>
+      <li>【完成】LSTM</li>
+      <li>【完成】BiRNN、BiLSTM、stacked RNN、stacked LSTM</li>
+      <li>【完成】RNN nm</li>
+    </ul>
+  </li>
+  <li>
+    <p>Attention</p>
+  </li>
+  <li>Transformer</li>
+</ol>
+
+<h3 id="一语言模型">一、语言模型</h3>
+
+<h3 id="二n-元文法语言模型n-gram-language-model">二、N 元文法语言模型（N-gram Language Model）</h3>
+
+<p>下一次词出现的概率只依赖于它前面 n-1 个词，这种假设被称为「马尔科夫假设（Markov Assumption」。N 元文法，也称为 N-1 阶马尔科夫链。</p>
+
+<ul>
+  <li>一元文法（1-gram），unigram，零阶马尔科夫链，不依赖前面任何词；</li>
+  <li>二元文法（2-gram），bigram，一阶马尔科夫链，只依赖于前 1 个词；</li>
+  <li>三元文法（3-gram），trigram，二阶马尔科夫链，只依赖于前 2 个词；</li>
+  <li>……</li>
+</ul>
+
+<p>通过前 t-1 个词预测时刻 t 出现某词的概率，用最大似然估计：</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>P(Wt</td>
+      <td>W1,W2…Wt-1) = C(W1,W2,…Wt) / C(W1,W2,…Wt-1)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>进一步地，一组词（也就是一个句子）出现的概率就是：</p>
+
+<p>P(W1,W2,…Wt) = P(Wt | W1,W2,…Wt-1)
+			   * P(Wt-1 | W1,W2,…Wt-2)
+			   * P(Wt-2 | W1,W2,…Wt-3)
+			   * …
+			   * P(W1)</p>
+
+<h4 id="平滑技术">平滑技术</h4>
+
+<h5 id="折扣法">折扣法</h5>
+
+<h5 id="加-1-平滑">加 1 平滑</h5>
+
+<h5 id="δ-平滑">δ 平滑</h5>
+
+<h3 id="三神经网络语言模型neural-network-langauge-model">三、神经网络语言模型（Neural Network Langauge Model）</h3>
+
+<p>N 元文法的缺陷是非常明显的：</p>
+
+<ul>
+  <li>模型容易受到数据稀疏的影响，一般需要对模型进行平滑处理；</li>
+  <li>无法对长度超过 N 的上下文依赖关系进行建模。</li>
+</ul>
+
+<p>神经网络很好地解决了这两个问题：</p>
+
+<ul>
+  <li>引入了词向量，解决了数据稀疏的影响；</li>
+  <li>更先进的模型结构，可以对长距离上下文依赖进行有效的建模。</li>
+</ul>
+
+<h4 id="1mlpmulti-layer-perceptron">1、MLP（Multi-Layer Perceptron）</h4>
+
+<p>关键词：感知器、线性回归、逻辑回归、激活函数、Sigmoid 函数/归一化/回归、Softmax 回归</p>
+
+<p>1957 年感知机（Perceptron）模型被提出，1959 年多层感知机（MLP）模型被提出。MLP 有时候也被称为 ANN，即 Artificial Neural Network，接下来我们来深入浅出地了解一下，并有一些动手的练习。</p>
+
+<h5 id="11感知器perceptron解决二元分类任务的前馈神经网络">1.1、感知器（Perceptron）：解决二元分类任务的前馈神经网络</h5>
+
+<p>\(x\) 是一个输入向量，\(\omega\) 是一个权重向量（对输入向量里的而每个值分配一个权重值所组成的向量）。举一个具体任务例子，比如如果这两个响亮的内积超过某个值，则判断为 1，否则为 0，这其实就是一个分类任务。那么这个最终输出值可以如下表示：</p>
+
+\[y = \begin{cases} 1 &amp; (\omega \cdot x \geq 0) \\ 0 &amp; (\omega \cdot x \lt 0) \end{cases}\]
+
+<p>这就是一个典型的感知器（Perceptron，一般用来解决分类问题。还可以再增加一个偏差项（bias），如下：</p>
+
+\[y = \begin{cases} 1 &amp; (\omega \cdot x + b \geq 0) \\ 0 &amp; (\omega \cdot x + b \lt 0) \end{cases}\]
+
+<p>感知器其实就是一个前馈神经网络，由输入层、输出层组成，没有隐藏层。而且输出是一个二元函数，用于解决二元分类问题。</p>
+
+<h5 id="12线性回归linear-regression从离散值的感知器分类问题到连续值的线性回归回归问题">1.2、线性回归（Linear Regression）：从离散值的感知器（分类问题），到连续值的线性回归（回归问题）</h5>
+
+<p>一般来说，我们认为感知器的输出结果，是离散值。一般来说，我们认为离散值作为输出解决的问题，是分类问题；相应地，连续值解决的问题是回归（Regression）。比如对于上面的感知器，如果我们直接将 \(\omega \cdot x + b\) 作为输出值，则就变成了一个线性回归问题的模型了。</p>
+
+<p>下面我们用 PyTorch 来实现一个线性回归的代码示例，首先我们要了解在 PyTorch 库里有一个非常常用的函数：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="p">,</span> <span class="n">out_features</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>这个函数在创建时会自动初始化权值和偏置，并且可以通过调用它的 <code class="language-plaintext highlighter-rouge">forward</code> 函数来计算输入数据的线性变换。具体来说，当输入为 <code class="language-plaintext highlighter-rouge">x</code> 时，<code class="language-plaintext highlighter-rouge">forward</code> 函数会计算 \(y = \omega \cdot x + b\)，其中  \(W\)  和  \(b\)  分别是 <code class="language-plaintext highlighter-rouge">nn.Linear</code> 图层的权值和偏置。</p>
+
+<p>我们来一个完整的代码示例：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="n">nn</span>
+
+<span class="c1"># 定义模型
+</span><span class="k">class</span> <span class="nc">LinearRegression</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LinearRegression</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">linear</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">linear</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># 初始化模型
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="n">input_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">output_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 定义损失函数和优化器
+</span><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">MSELoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">optim</span><span class="p">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="c1"># 创建输入特征 X 和标签 y
+</span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">Tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">]])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">Tensor</span><span class="p">([[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">]])</span>
+
+<span class="c1"># 训练模型
+</span><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="c1"># 前向传播
+</span>    <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="c1"># 反向传播
+</span>    <span class="n">optimizer</span><span class="p">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    <span class="n">loss</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="p">.</span><span class="n">step</span><span class="p">()</span>
+
+<span class="c1"># 创建测试数据 X_test 和标签 y_test
+</span><span class="n">X_test</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">Tensor</span><span class="p">([[</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">]])</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">Tensor</span><span class="p">([[</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="p">[</span><span class="mi">16</span><span class="p">]])</span>
+
+<span class="c1"># 测试模型
+</span><span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Test loss: </span><span class="si">{</span><span class="n">loss</span><span class="p">:.</span><span class="mi">4</span><span class="n">f</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>上述代码，一开始先创建一个 LinearRegression 线性回归模型的类，其中有一个 <code class="language-plaintext highlighter-rouge">forward</code> 前向传播函数，调用时其实就是计算一下输出值 <code class="language-plaintext highlighter-rouge">y</code>。</p>
+
+<p>主程序，一开始创建一个线性回归模型实例，然后定义一个用于评价模型效果的损失函数评价器，和用随机梯度下降（Stochastic Gradient Descent）作为优化器。</p>
+
+<p>然后创建一个输入特征张量，和标签张量。用这组特征和标签进行训练，训练的过程就是根据 <code class="language-plaintext highlighter-rouge">X</code> 计算与测试 <code class="language-plaintext highlighter-rouge">predictions</code> 向量，再把它和 <code class="language-plaintext highlighter-rouge">y</code> 一起给评价器算出损失 <code class="language-plaintext highlighter-rouge">loss</code>，然后进行反向传播。注意反向传播的三行代码：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">optimizer</span><span class="p">.</span><span class="n">zero_grad</span><span class="p">()</span>
+<span class="n">loss</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+<span class="n">optimizer</span><span class="p">.</span><span class="n">step</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>如此训练 100 次（每一次都会黑盒化地更新模型的参数，一个 <code class="language-plaintext highlighter-rouge">epoch</code> 就是一次训练过程，有时也称为 <code class="language-plaintext highlighter-rouge">iteration</code> 或者 <code class="language-plaintext highlighter-rouge">step</code>，不断根据 <code class="language-plaintext highlighter-rouge">loss</code> 训练优化模型参数。</p>
+
+<p>然后我们创建了一组测试特征值张量 <code class="language-plaintext highlighter-rouge">X_test</code>，和测试标签张量 <code class="language-plaintext highlighter-rouge">y_test</code>，然后用它们测试模型性能，把测试特征得到的 <code class="language-plaintext highlighter-rouge">predictions</code> 与 <code class="language-plaintext highlighter-rouge">y_test</code> 共同传给评价器，得到 <code class="language-plaintext highlighter-rouge">loss</code>。在这个例子中我们会得到如下结果：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Test</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">0.0034</span>
+</code></pre></div></div>
+
+<h5 id="13逻辑回归logistic-regression没有值域约束的线性回归到限定在一个范围内的逻辑回归常用于分类问题">1.3、逻辑回归（Logistic Regression）：没有值域约束的线性回归，到限定在一个范围内的逻辑回归（常用于分类问题）</h5>
+
+<p>可以看到线性回归问题，输出值是没有范围限定的。如果限定（limit）在特定的  \((0, L)\)  范围内，则就叫做逻辑回归了。那么如何将一个线性回归变成逻辑回归呢？一般通过如下公式变换：</p>
+
+\[y = \frac{L}{1 + e^{-k(z-z_0)}}\]
+
+<p>这样原来的  \(z \in (-\infty, +\infty)\)  就被变换成了  \(y \in (0, L)\)  了。</p>
+
+<ul>
+  <li><strong>激活函数</strong>：这种把输出值限定在一个目标范围内的函数，被叫做 <strong>激活函数（Activation Function）</strong>。</li>
+  <li><strong>函数的陡峭程度</strong> 由  \(k\)  控制，越大越陡。</li>
+  <li>当  \(z = z_0\)  时， \(y = \frac{L}{2}\) 。</li>
+</ul>
+
+<p>下面给出一个基于 Python 的 scikit-learn 库的示例代码：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="o">//</span> <span class="n">这是</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span> <span class="n">库里的一个简单的数据集</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+
+<span class="o">//</span> <span class="n">把</span> <span class="n">iris</span> <span class="n">数据集拆分成训练集和测试集两部分</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">iris</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="p">.</span><span class="n">target</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="o">//</span> <span class="n">用</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span> <span class="n">库创建一个逻辑回归模型的实例</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+
+<span class="o">//</span> <span class="n">用上边</span> <span class="n">split</span> <span class="n">出来的训练集数据</span><span class="err">，</span><span class="n">训练</span> <span class="n">lr</span> <span class="n">模型实例</span>
+<span class="n">lr</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="o">//</span> <span class="n">用训练过的模型</span><span class="err">，</span><span class="n">拿测试集的输入数据做测试</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">lr</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="o">//</span> <span class="n">用测试集的数据验证精确性</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">lr</span><span class="p">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h5 id="14sigmoid-回归sigmoid-regression归一化的逻辑回归一般用于二元分类任务">1.4、Sigmoid 回归（Sigmoid Regression）：归一化的逻辑回归，一般用于二元分类任务</h5>
+
+<p>当  \(L = 1, k = 1, z_0 = 0\) ，此时的激活函数就是 <strong>Sigmoid</strong> 函数，如下：</p>
+
+\[y = \frac{1}{1 + e^{-z}}\]
+
+<p>Sigmoid 回归的值域，恰好在 (0, 1) 之间，所以常备作为用来归一化的激活函数。而一个线性回归模型，再用 sigmoid 函数归一化，这种也常被称为「Sigmoid 回归」。Sigmoid 这个单词的意思也就是 S 形，我们可以看下它的函数图像如下：</p>
+
+<p><img src="/img/src/2022-12-19-language-model-2.png" alt="image" /></p>
+
+<p>因为归一化，所以也可以把输出值理解为一个概率。比如我们面对一个二元分类问题，那么输出结果就对应属于这个类别的概率。</p>
+
+<p>这样一个 sigmoid 模型可以表示为：</p>
+
+\[\bold{y} = Sigmoid(\bold{W} \cdot \bold{x} + \bold{b})\]
+
+<p>另外 sigmoid 函数的导数（即梯度）是很好算的： \(y' = y \cdot (1-y)\) 。这非常方便用于「梯度下降算法」根据 loss 对模型参数进行优化。Sigmoid 回归，一般用于二元分类任务。那么对于超过二元的情况怎么办呢？这就引出了下面的 Softmax 回归。</p>
+
+<h5 id="15softmax-回归softmax-regression从解决二元任务的-sigmoid到解决多元分类任务的-softmax">1.5、Softmax 回归（Softmax Regression）：从解决二元任务的 sigmoid，到解决多元分类任务的 softmax</h5>
+
+<p>相对逻辑回归，Softmax 也称为多项逻辑回归。上面说 Sigmoid 一般用于解决二元分类问题，那么多元问题就要用 Softmax 回归了。我们来拿一个具体问题来解释，比如问题是对于任意输入的一个电商商品的图片，来判断这个图片所代表的的商品，属于哪个商品类目。假设我们一共有 100 个类目。那么一个图片比如说其所有像素值作为输入特征值，输出就是一个 100 维的向量 ** \(z\) **，输出向量中的每个值  \(z_i\)  表示属于相对应类目的概率  \(y_i\)  ：</p>
+
+\[y_i = Softmax(\bold{z})_i = \frac{e^{z_i}}{e^{z_1} + e^{z_2} + ... + e^{z_100}}\]
+
+<p>那么最后得到的  \(y\)  向量中的每一项就对应这个输入  \(z\)  属于这 100 个类目的各自概率了。所以如果回归到一般问题，这个 Softmax 回归的模型就如下：</p>
+
+\[\bold{y} = Softmax(\bold{W} \cdot \bold{x} + \bold{b})\]
+
+<p>对于上面电商商品图片的例子，假设每个图片的尺寸是 512x512，这个模型展开式如下：</p>
+
+\[\begin{bmatrix} y_1 \\ y_2 \\ ... \\ y_{100} \end{bmatrix} = Softmax(\begin{bmatrix} w_{1,1}, &amp; w_{1,2}, &amp; ... &amp; w_{1, 512} \\ w_{2,1}, &amp; w_{2,2}, &amp; ... &amp; w_{2, 512} \\ ... &amp; ... &amp; ... &amp; ... \\ w_{100,1}, &amp; w_{100,2}, &amp; ... &amp; w_{100, 512} \end{bmatrix} \cdot \begin{bmatrix} x_1 \\ x_2 \\ ... \\ x_{512} \end{bmatrix} + \begin{bmatrix} b_1 \\ b_2 \\ ... \\ b_{512} \end{bmatrix})\]
+
+<p>这个对输入向量  \(x\)  执行  \(w \cdot x + b\)  运算，一般也常称为「线性映射/线性变化」。</p>
+
+<h5 id="16多层感知器multi-layer-perceptron">1.6、多层感知器（Multi-Layer Perceptron）</h5>
+
+<p>上面我们遇到的所有任务，都是用线性模型（Linear Models）解决的。有时候问题复杂起来，我们就要引入非线性模型了。</p>
+
+<p>这里我们要介绍一个新的激活函数 —— ReLU（Rectified Linear Unit）—— 一个非线性激活函数，其定义如下：</p>
+
+\[ReLU(\bold{z}) = max(0, \bold{z})\]
+
+<p>比如对于 MNIST 数据集的手写数字分类问题，就是一个典型的非线性的分类任务，下面给出一个示例代码：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="n">nn</span>
+<span class="kn">import</span> <span class="nn">torchvision</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="n">transforms</span>
+
+<span class="c1"># 定义多层感知器模型
+</span><span class="k">class</span> <span class="nc">MLP</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MLP</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">relu</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+<span class="c1"># 超参数
+</span><span class="n">input_size</span> <span class="o">=</span> <span class="mi">784</span>
+<span class="n">hidden_size</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">num_classes</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.001</span>
+
+<span class="c1"># 加载 MNIST 数据集
+</span><span class="n">train_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s">'../../data'</span><span class="p">,</span>
+                               <span class="n">train</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                               <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="p">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                               <span class="n">download</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">test_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="p">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s">'../../data'</span><span class="p">,</span>
+                              <span class="n">train</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                              <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="p">.</span><span class="n">ToTensor</span><span class="p">())</span>
+
+<span class="c1"># 数据加载器
+</span><span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span>
+                                           <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+                                           <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">test_dataset</span><span class="p">,</span>
+                                          <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+                                          <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">MLP</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+
+<span class="c1"># 定义损失函数和优化器
+</span><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">optim</span><span class="p">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">)</span>
+
+<span class="c1"># 训练模型
+</span><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
+        <span class="c1"># 前向传播
+</span>        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+        <span class="c1"># 反向传播
+</span>        <span class="n">optimizer</span><span class="p">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">loss</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="p">.</span><span class="n">step</span><span class="p">()</span>
+
+    <span class="c1"># 输出训练损失
+</span>    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'Epoch </span><span class="si">{</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s">, Training Loss: </span><span class="si">{</span><span class="n">loss</span><span class="p">.</span><span class="n">item</span><span class="p">():.</span><span class="mi">4</span><span class="n">f</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>这段代码里，我们能看到 MLP 的模型定义是：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+<span class="n">nn</span><span class="p">.</span><span class="n">ReLU</span><span class="p">()</span>
+<span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>与前面的模型示例代码类似，也都用到了反向传播、损失函数评价器、优化器。如果用公式表示的话，就是如下的模型定义：</p>
+
+\[\begin{aligned}
+&amp;\bold{z} = \bold{W}_1 \cdot \bold{x} + \bold{b}_1 \\
+&amp;\bold{h} = ReLU(\bold{z}) \\
+&amp;\bold{y} = \bold{W}_2 \cdot \bold{h} + \bold{b}_2
+\end{aligned}\]
+
+<p>我们知道 MLP 通常是一个输入和输出长度相同的模型，但少数情况下也可以构建输入和输出长度不同的 MLP 模型，比如输入一组序列后，输出是一个离散的分类结果。</p>
+
+<h5 id="mlp-的一个显著问题帮我们引出-cnn-模型">MLP 的一个显著问题，帮我们引出 CNN 模型</h5>
+
+<p>我们可以看到，在 MLP 中，不论有多少层，某一层的输出向量  \(h_n\)  中的每个值，都会在下一层计算输出向量  \(h_{n+1}\)  的每个值时用到。具体来说，如果对于某一层的输出值如下：</p>
+
+\[\bold{h}_{n+1} = Softmax(\bold{W}_{n+1} \cdot \bold{h}_n + \bold{b}_{n+1})\]
+
+<p>上一段话里所谓的「用到」，其实就是要针对  \(h_n\)  生成相应的特征值  \(W_{n+1}\)  权重矩阵中的每个行列里的数值和  \(b_{n+1}\) 偏差向量 里的每个值。如果用图画出来，就是：</p>
+
+<div style="text-align: center;">
+<div class="graphviz-wrapper">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg role="img" aria-label="graphviz-1b1299448dc08c90d29bebf8b1f045c1" width="428pt" height="116pt" viewBox="0.00 0.00 427.64 116.00">
+<title>graphviz-1b1299448dc08c90d29bebf8b1f045c1</title>
+<desc>
+digraph G {
+	rankdir=TB
+	a[label=&quot;...&quot;]
+	b[label=&quot;...&quot;]
+	h_2_1[label=&quot;h_n+1_1&quot;]
+	h_2_2[label=&quot;h_n+1_2&quot;]
+	h_2_m[label=&quot;h_n+1_m&quot;]
+
+	{rank=same h_n_1 h_n_2 b h_n_m}
+	{rank=same h_2_1 h_2_2 a h_2_m}
+
+	h_n_1 -&gt; h_2_1
+	h_n_1 -&gt; h_2_2
+	h_n_1 -&gt; a
+	h_n_1 -&gt; h_2_m
+
+	h_n_1 -&gt; h_2_1
+	h_n_2 -&gt; h_2_2
+	h_n_2 -&gt; a
+	h_n_2 -&gt; h_2_m
+
+	b -&gt; h_2_1
+	b -&gt; h_2_2
+	b -&gt; a
+	b -&gt; h_2_m
+
+	h_n_m -&gt; h_2_1
+	h_n_m -&gt; h_2_2
+	h_n_m -&gt; a
+	h_n_m -&gt; h_2_m
+}
+</desc>
+
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-112 423.64,-112 423.64,4 -4,4" />
+<!-- a -->
+<g id="node1" class="node">
+<title>a</title>
+<ellipse fill="none" stroke="black" cx="146.7" cy="-18" rx="27" ry="18" />
+<text text-anchor="middle" x="146.7" y="-14.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- b -->
+<g id="node2" class="node">
+<title>b</title>
+<ellipse fill="none" stroke="black" cx="151.7" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="151.7" y="-86.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- b&#45;&gt;a -->
+<g id="edge11" class="edge">
+<title>b&#45;&gt;a</title>
+<path fill="none" stroke="black" d="M150.46,-71.7C149.91,-63.98 149.25,-54.71 148.63,-46.11" />
+<polygon fill="black" stroke="black" points="152.12,-45.83 147.92,-36.1 145.14,-46.33 152.12,-45.83" />
+</g>
+<!-- h_2_1 -->
+<g id="node3" class="node">
+<title>h_2_1</title>
+<ellipse fill="none" stroke="black" cx="50.7" cy="-18" rx="50.89" ry="18" />
+<text text-anchor="middle" x="50.7" y="-14.3" font-family="Times,serif" font-size="14.00">h_n+1_1</text>
+</g>
+<!-- b&#45;&gt;h_2_1 -->
+<g id="edge9" class="edge">
+<title>b&#45;&gt;h_2_1</title>
+<path fill="none" stroke="black" d="M133.64,-76.49C119.14,-66.44 98.46,-52.11 81.38,-40.27" />
+<polygon fill="black" stroke="black" points="83.04,-37.16 72.83,-34.34 79.05,-42.91 83.04,-37.16" />
+</g>
+<!-- h_2_2 -->
+<g id="node4" class="node">
+<title>h_2_2</title>
+<ellipse fill="none" stroke="black" cx="242.7" cy="-18" rx="50.89" ry="18" />
+<text text-anchor="middle" x="242.7" y="-14.3" font-family="Times,serif" font-size="14.00">h_n+1_2</text>
+</g>
+<!-- b&#45;&gt;h_2_2 -->
+<g id="edge10" class="edge">
+<title>b&#45;&gt;h_2_2</title>
+<path fill="none" stroke="black" d="M168.81,-75.83C181.67,-65.94 199.56,-52.18 214.52,-40.67" />
+<polygon fill="black" stroke="black" points="216.69,-43.42 222.48,-34.55 212.42,-37.87 216.69,-43.42" />
+</g>
+<!-- h_2_m -->
+<g id="node5" class="node">
+<title>h_2_m</title>
+<ellipse fill="none" stroke="black" cx="365.7" cy="-18" rx="53.89" ry="18" />
+<text text-anchor="middle" x="365.7" y="-14.3" font-family="Times,serif" font-size="14.00">h_n+1_m</text>
+</g>
+<!-- b&#45;&gt;h_2_m -->
+<g id="edge12" class="edge">
+<title>b&#45;&gt;h_2_m</title>
+<path fill="none" stroke="black" d="M172.78,-78.39C177.62,-76.14 182.79,-73.88 187.7,-72 211.14,-63.03 271.93,-45.36 315.95,-32.9" />
+<polygon fill="black" stroke="black" points="316.96,-36.25 325.63,-30.16 315.05,-29.51 316.96,-36.25" />
+</g>
+<!-- h_n_1 -->
+<g id="node6" class="node">
+<title>h_n_1</title>
+<ellipse fill="none" stroke="black" cx="69.7" cy="-90" rx="37.09" ry="18" />
+<text text-anchor="middle" x="69.7" y="-86.3" font-family="Times,serif" font-size="14.00">h_n_1</text>
+</g>
+<!-- h_n_1&#45;&gt;a -->
+<g id="edge3" class="edge">
+<title>h_n_1&#45;&gt;a</title>
+<path fill="none" stroke="black" d="M86.4,-73.81C97.36,-63.85 111.83,-50.7 123.85,-39.77" />
+<polygon fill="black" stroke="black" points="126.28,-42.29 131.33,-32.97 121.57,-37.11 126.28,-42.29" />
+</g>
+<!-- h_n_1&#45;&gt;h_2_1 -->
+<g id="edge1" class="edge">
+<title>h_n_1&#45;&gt;h_2_1</title>
+<path fill="none" stroke="black" d="M59.35,-72.41C56.39,-64.62 53.56,-55.14 51.51,-46.33" />
+<polygon fill="black" stroke="black" points="54.92,-45.55 49.5,-36.45 48.06,-46.94 54.92,-45.55" />
+</g>
+<!-- h_n_1&#45;&gt;h_2_1 -->
+<g id="edge5" class="edge">
+<title>h_n_1&#45;&gt;h_2_1</title>
+<path fill="none" stroke="black" d="M70.91,-71.7C69.57,-63.7 67.15,-54.02 64.35,-45.15" />
+<polygon fill="black" stroke="black" points="67.63,-43.93 61.05,-35.62 61.01,-46.22 67.63,-43.93" />
+</g>
+<!-- h_n_1&#45;&gt;h_2_2 -->
+<g id="edge2" class="edge">
+<title>h_n_1&#45;&gt;h_2_2</title>
+<path fill="none" stroke="black" d="M97.49,-77.75C125.45,-66.44 168.9,-48.86 200.99,-35.87" />
+<polygon fill="black" stroke="black" points="202.6,-39 210.56,-32 199.97,-32.51 202.6,-39" />
+</g>
+<!-- h_n_1&#45;&gt;h_2_m -->
+<g id="edge4" class="edge">
+<title>h_n_1&#45;&gt;h_2_m</title>
+<path fill="none" stroke="black" d="M97.68,-77.83C103.57,-75.71 109.79,-73.65 115.7,-72 197.22,-49.25 220.23,-55.04 302.7,-36 307.03,-35 311.53,-33.9 316.02,-32.77" />
+<polygon fill="black" stroke="black" points="317.01,-36.13 325.81,-30.24 315.26,-29.35 317.01,-36.13" />
+</g>
+<!-- h_n_2 -->
+<g id="node7" class="node">
+<title>h_n_2</title>
+<ellipse fill="none" stroke="black" cx="331.7" cy="-90" rx="37.09" ry="18" />
+<text text-anchor="middle" x="331.7" y="-86.3" font-family="Times,serif" font-size="14.00">h_n_2</text>
+</g>
+<!-- h_n_2&#45;&gt;a -->
+<g id="edge7" class="edge">
+<title>h_n_2&#45;&gt;a</title>
+<path fill="none" stroke="black" d="M303.01,-78.31C297.28,-76.2 291.3,-74.02 285.7,-72 240.06,-55.59 227.57,-54.38 182.7,-36 180.87,-35.25 179.01,-34.46 177.14,-33.65" />
+<polygon fill="black" stroke="black" points="178.4,-30.38 167.85,-29.44 175.52,-36.75 178.4,-30.38" />
+</g>
+<!-- h_n_2&#45;&gt;h_2_2 -->
+<g id="edge6" class="edge">
+<title>h_n_2&#45;&gt;h_2_2</title>
+<path fill="none" stroke="black" d="M312.82,-74.15C300.65,-64.58 284.6,-51.96 270.93,-41.21" />
+<polygon fill="black" stroke="black" points="272.8,-38.23 262.78,-34.8 268.48,-43.73 272.8,-38.23" />
+</g>
+<!-- h_n_2&#45;&gt;h_2_m -->
+<g id="edge8" class="edge">
+<title>h_n_2&#45;&gt;h_2_m</title>
+<path fill="none" stroke="black" d="M339.75,-72.41C343.72,-64.25 348.59,-54.22 353.04,-45.07" />
+<polygon fill="black" stroke="black" points="356.24,-46.48 357.46,-35.96 349.94,-43.42 356.24,-46.48" />
+</g>
+<!-- h_n_m -->
+<g id="node8" class="node">
+<title>h_n_m</title>
+<ellipse fill="none" stroke="black" cx="236.7" cy="-90" rx="40.09" ry="18" />
+<text text-anchor="middle" x="236.7" y="-86.3" font-family="Times,serif" font-size="14.00">h_n_m</text>
+</g>
+<!-- h_n_m&#45;&gt;a -->
+<g id="edge15" class="edge">
+<title>h_n_m&#45;&gt;a</title>
+<path fill="none" stroke="black" d="M217.17,-73.81C203.86,-63.46 186.11,-49.66 171.76,-38.49" />
+<polygon fill="black" stroke="black" points="173.8,-35.65 163.76,-32.27 169.5,-41.17 173.8,-35.65" />
+</g>
+<!-- h_n_m&#45;&gt;h_2_1 -->
+<g id="edge13" class="edge">
+<title>h_n_m&#45;&gt;h_2_1</title>
+<path fill="none" stroke="black" d="M206.81,-77.75C176.21,-66.24 128.35,-48.22 93.68,-35.18" />
+<polygon fill="black" stroke="black" points="94.87,-31.89 84.28,-31.64 92.41,-38.44 94.87,-31.89" />
+</g>
+<!-- h_n_m&#45;&gt;h_2_2 -->
+<g id="edge14" class="edge">
+<title>h_n_m&#45;&gt;h_2_2</title>
+<path fill="none" stroke="black" d="M238.18,-71.7C238.84,-63.98 239.63,-54.71 240.37,-46.11" />
+<polygon fill="black" stroke="black" points="243.86,-46.37 241.23,-36.1 236.89,-45.77 243.86,-46.37" />
+</g>
+<!-- h_n_m&#45;&gt;h_2_m -->
+<g id="edge16" class="edge">
+<title>h_n_m&#45;&gt;h_2_m</title>
+<path fill="none" stroke="black" d="M261.26,-75.67C280.58,-65.19 307.78,-50.43 329.57,-38.6" />
+<polygon fill="black" stroke="black" points="331.42,-41.58 338.54,-33.73 328.08,-35.43 331.42,-41.58" />
+</g>
+</g>
+</svg>
+</div>
+</div>
+
+<p>可以看到，输入的所有元素都被连接，即被分配权重 w 和偏差项 b，所以这被称为一个「全连接层（<strong>Fully Connected Layer</strong>）」或者「<strong>稠密层（Dense Layer）</strong>」。但是对于一些任务这样做是很蠢的，会付出大量无效的计算。这样的网络，也被叫做「全连接神经网络」，或者「前馈神经网络（Feed Forward neural Network，简称 FFN）」</p>
+
+<p>因此我们需要 focus 在更少量计算成本的模型，于是有了卷积神经网络（CNN）。</p>
+
+<h4 id="2cnnconvolutional-neural-network">2、CNN（Convolutional Neural Network）</h4>
+
+<p>卷积神经网络（Convolutional Neural Network，简称 CNN）于 1989 年在论文《Backpropagation Applied to Handwritten Zip Code Recognition》中被提出。</p>
+
+<h4 id="3rnnrecurrent-neural-network">3、RNN（Recurrent Neural Network）</h4>
+
+<p>RNN 的 R 是 Recurrent 的意思，所以这是一个贷循环的神经网络。首先要明白一点，你并不需要搞懂 CNN 后才能学习 RNN 模型。你只要了解了 MLP 就可以学习 RNN 了。</p>
+
+<h5 id="31经典结构的-rnn">3.1、经典结构的 RNN</h5>
+
+<p><img src="/img/src/2022-12-19-language-model-1.png" alt="image" /></p>
+
+<p>上图这是一个经典结构的 RNN 示意图，Unfold 箭头右侧是展开示意。输入序列（这里用 x 表示）传递给隐藏层（hidden layer，这里用 h 表示），处理完生成输出序列（这里用 o 表示）。序列的下一个词输入时的、上一步隐藏层会一起影响这一步的输出。U、V、W 都表示权重。在这个经典结构理，你可以看到非常重要的一点，就是输入序列长度与输出序列长度是相同的。</p>
+
+<p>这种经典结构的应用场景，比如对一段普通话输入它的四川话版本，比如对视频的每一帧进行处理并输出，等等。</p>
+
+<p>我们知道 RNN 是一个一个序列处理的，每个序列中的数据项都是有序的，所以对于计算一个序列内的所有数据项是无法并行的。但是计算不同序列时，不同序列各自的计算则是可以并行的。如果我们把上一个时刻 t 隐藏层输出的结果（ \(h_{t-1}\) ）传给一个激活函数（比如说用正切函数 <code class="language-plaintext highlighter-rouge">tanh</code> 函数），然后和当下时刻 t 的这个输入（ \(x_{t}\) ）一起，处理后产生一个时刻 t 的输出（ \(h_t\) ）。然后把隐藏层的输出通过多项逻辑回归（Softmax）生成最终的输出值（ \(\bm{y}\) ），我们可以如下表示这个模型：</p>
+
+\[\begin{aligned}
+&amp;\bm{h}_t = tanh(\bm{W}^{xh} \cdot \bm{x}_t + \bm{b}^{xh} + \bm{W}^{hh} \cdot \bm{h}_{t-1} + \bm{b}^{hh}) \\
+&amp;\bm{y}_t = Softmax(\bm{W}^{hy} \cdot \bm{h_t} + \bm{b}^{hy})
+\end{aligned}\]
+
+<p>对应的示意图如下：</p>
+
+<div style="text-align: center;">
+<div class="graphviz-wrapper">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg role="img" aria-label="graphviz-34cd77ba92d6e898bab41a54b23f2324" width="278pt" height="188pt" viewBox="0.00 0.00 278.00 188.00">
+<title>graphviz-34cd77ba92d6e898bab41a54b23f2324</title>
+<desc>
+digraph G {
+	rankdir=BT
+	{rank=same h1 h2 hddd hn}
+	{rank=same x1 x2 xddd xn}
+	{rank=same y1 y2 yddd yn}
+	xddd[label=&quot;...&quot;]
+	yddd[label=&quot;...&quot;]
+	hddd[label=&quot;...&quot;]
+
+	y1[shape=plaintext]
+	y2[shape=plaintext]
+	yddd[shape=plaintext]
+	yn[shape=plaintext]
+	x1[shape=plaintext]
+	x2[shape=plaintext]
+	xddd[shape=plaintext]
+	xn[shape=plaintext]
+
+	h1 -&gt; h2
+	h2 -&gt; hddd
+	hddd -&gt; hn
+
+	x1 -&gt; h1
+	x2 -&gt; h2
+	xddd -&gt; hddd
+	xn -&gt; hn
+
+	h1 -&gt; y1
+	h2 -&gt; y2
+	hddd -&gt; yddd
+	hn -&gt; yn
+}
+</desc>
+
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-184 274,-184 274,4 -4,4" />
+<!-- h1 -->
+<g id="node1" class="node">
+<title>h1</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="27" y="-86.3" font-family="Times,serif" font-size="14.00">h1</text>
+</g>
+<!-- h2 -->
+<g id="node2" class="node">
+<title>h2</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="99" y="-86.3" font-family="Times,serif" font-size="14.00">h2</text>
+</g>
+<!-- h1&#45;&gt;h2 -->
+<g id="edge1" class="edge">
+<title>h1&#45;&gt;h2</title>
+<path fill="none" stroke="black" d="M54,-90C56.61,-90 59.23,-90 61.84,-90" />
+<polygon fill="black" stroke="black" points="61.93,-93.5 71.93,-90 61.93,-86.5 61.93,-93.5" />
+</g>
+<!-- y1 -->
+<g id="node9" class="node">
+<title>y1</title>
+<text text-anchor="middle" x="27" y="-158.3" font-family="Times,serif" font-size="14.00">y1</text>
+</g>
+<!-- h1&#45;&gt;y1 -->
+<g id="edge8" class="edge">
+<title>h1&#45;&gt;y1</title>
+<path fill="none" stroke="black" d="M27,-108.3C27,-116.02 27,-125.29 27,-133.89" />
+<polygon fill="black" stroke="black" points="23.5,-133.9 27,-143.9 30.5,-133.9 23.5,-133.9" />
+</g>
+<!-- hddd -->
+<g id="node3" class="node">
+<title>hddd</title>
+<ellipse fill="none" stroke="black" cx="171" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="171" y="-86.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- h2&#45;&gt;hddd -->
+<g id="edge2" class="edge">
+<title>h2&#45;&gt;hddd</title>
+<path fill="none" stroke="black" d="M126,-90C128.61,-90 131.23,-90 133.84,-90" />
+<polygon fill="black" stroke="black" points="133.93,-93.5 143.93,-90 133.93,-86.5 133.93,-93.5" />
+</g>
+<!-- y2 -->
+<g id="node10" class="node">
+<title>y2</title>
+<text text-anchor="middle" x="99" y="-158.3" font-family="Times,serif" font-size="14.00">y2</text>
+</g>
+<!-- h2&#45;&gt;y2 -->
+<g id="edge9" class="edge">
+<title>h2&#45;&gt;y2</title>
+<path fill="none" stroke="black" d="M99,-108.3C99,-116.02 99,-125.29 99,-133.89" />
+<polygon fill="black" stroke="black" points="95.5,-133.9 99,-143.9 102.5,-133.9 95.5,-133.9" />
+</g>
+<!-- hn -->
+<g id="node4" class="node">
+<title>hn</title>
+<ellipse fill="none" stroke="black" cx="243" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="243" y="-86.3" font-family="Times,serif" font-size="14.00">hn</text>
+</g>
+<!-- hddd&#45;&gt;hn -->
+<g id="edge3" class="edge">
+<title>hddd&#45;&gt;hn</title>
+<path fill="none" stroke="black" d="M198,-90C200.61,-90 203.23,-90 205.84,-90" />
+<polygon fill="black" stroke="black" points="205.93,-93.5 215.93,-90 205.93,-86.5 205.93,-93.5" />
+</g>
+<!-- yddd -->
+<g id="node11" class="node">
+<title>yddd</title>
+<text text-anchor="middle" x="171" y="-158.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- hddd&#45;&gt;yddd -->
+<g id="edge10" class="edge">
+<title>hddd&#45;&gt;yddd</title>
+<path fill="none" stroke="black" d="M171,-108.3C171,-116.02 171,-125.29 171,-133.89" />
+<polygon fill="black" stroke="black" points="167.5,-133.9 171,-143.9 174.5,-133.9 167.5,-133.9" />
+</g>
+<!-- yn -->
+<g id="node12" class="node">
+<title>yn</title>
+<text text-anchor="middle" x="243" y="-158.3" font-family="Times,serif" font-size="14.00">yn</text>
+</g>
+<!-- hn&#45;&gt;yn -->
+<g id="edge11" class="edge">
+<title>hn&#45;&gt;yn</title>
+<path fill="none" stroke="black" d="M243,-108.3C243,-116.02 243,-125.29 243,-133.89" />
+<polygon fill="black" stroke="black" points="239.5,-133.9 243,-143.9 246.5,-133.9 239.5,-133.9" />
+</g>
+<!-- x1 -->
+<g id="node5" class="node">
+<title>x1</title>
+<text text-anchor="middle" x="27" y="-14.3" font-family="Times,serif" font-size="14.00">x1</text>
+</g>
+<!-- x1&#45;&gt;h1 -->
+<g id="edge4" class="edge">
+<title>x1&#45;&gt;h1</title>
+<path fill="none" stroke="black" d="M27,-36.3C27,-44.02 27,-53.29 27,-61.89" />
+<polygon fill="black" stroke="black" points="23.5,-61.9 27,-71.9 30.5,-61.9 23.5,-61.9" />
+</g>
+<!-- x2 -->
+<g id="node6" class="node">
+<title>x2</title>
+<text text-anchor="middle" x="99" y="-14.3" font-family="Times,serif" font-size="14.00">x2</text>
+</g>
+<!-- x2&#45;&gt;h2 -->
+<g id="edge5" class="edge">
+<title>x2&#45;&gt;h2</title>
+<path fill="none" stroke="black" d="M99,-36.3C99,-44.02 99,-53.29 99,-61.89" />
+<polygon fill="black" stroke="black" points="95.5,-61.9 99,-71.9 102.5,-61.9 95.5,-61.9" />
+</g>
+<!-- xddd -->
+<g id="node7" class="node">
+<title>xddd</title>
+<text text-anchor="middle" x="171" y="-14.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- xddd&#45;&gt;hddd -->
+<g id="edge6" class="edge">
+<title>xddd&#45;&gt;hddd</title>
+<path fill="none" stroke="black" d="M171,-36.3C171,-44.02 171,-53.29 171,-61.89" />
+<polygon fill="black" stroke="black" points="167.5,-61.9 171,-71.9 174.5,-61.9 167.5,-61.9" />
+</g>
+<!-- xn -->
+<g id="node8" class="node">
+<title>xn</title>
+<text text-anchor="middle" x="243" y="-14.3" font-family="Times,serif" font-size="14.00">xn</text>
+</g>
+<!-- xn&#45;&gt;hn -->
+<g id="edge7" class="edge">
+<title>xn&#45;&gt;hn</title>
+<path fill="none" stroke="black" d="M243,-36.3C243,-44.02 243,-53.29 243,-61.89" />
+<polygon fill="black" stroke="black" points="239.5,-61.9 243,-71.9 246.5,-61.9 239.5,-61.9" />
+</g>
+</g>
+</svg>
+</div>
+</div>
+
+<p>这种输入和输出数据项数一致的 RNN，一般叫做 N vs. N 的 RNN。</p>
+
+<h5 id="32n-vs1-的-rnn">3.2、N vs.1 的 RNN</h5>
+
+<p>上面那个图里，如果只保留最后一个输出，那就是一个 N vs. 1 的 RNN 了。这种的应用场景，比如说判断一个文本序列是英语还是德语，比如根据一个输入序列来判断是一个正向情绪内容还是负向或者中性，或者比如根据一段语音输入序列来判断是哪一首曲子（听歌识曲）。</p>
+
+\[\begin{aligned}
+&amp;\bm{h}_t = tanh(\bm{W^{xh}} \cdot \bm{x}_t + \bm{b^{xh}} + \bm{W^{hh}} \cdot \bm{h}_{t-1} + \bm{b^{hh}}) \\
+&amp;\bm{y} = Softmax(\bm{W^{hy}} \cdot \bm{h}_n + \bm{b^{hy}})
+\end{aligned}\]
+
+<p>即这个模型里，每个序列只有隐藏层对最后一个数据项进行处理时才产生输出  \(h_n\)  如果用示意图表示，则是如下结构：</p>
+
+<div style="text-align: center;">
+<div class="graphviz-wrapper">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg role="img" aria-label="graphviz-c7d284aff07f0372b0164457429412ff" width="242pt" height="206pt" viewBox="0.00 0.00 242.00 206.00">
+<title>graphviz-c7d284aff07f0372b0164457429412ff</title>
+<desc>
+digraph G {
+	rankdir=LR
+	{rank=same h1 h2 hddd hn}
+	hddd[label=&quot;...&quot;]
+	xddd[label=&quot;...&quot;]
+
+	y[shape=plaintext]
+	x1[shape=plaintext]
+	x2[shape=plaintext]
+	xddd[shape=plaintext]
+	xn[shape=plaintext]
+
+	h1 -&gt; h2
+	h2 -&gt; hddd
+	hddd -&gt; hn
+
+	x1 -&gt; h1
+	x2 -&gt; h2
+	xn -&gt; hn
+	xddd -&gt; hddd
+
+	hn -&gt; y
+}
+</desc>
+
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 202)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-202 238,-202 238,4 -4,4" />
+<!-- h1 -->
+<g id="node1" class="node">
+<title>h1</title>
+<ellipse fill="none" stroke="black" cx="117" cy="-180" rx="27" ry="18" />
+<text text-anchor="middle" x="117" y="-176.3" font-family="Times,serif" font-size="14.00">h1</text>
+</g>
+<!-- h2 -->
+<g id="node2" class="node">
+<title>h2</title>
+<ellipse fill="none" stroke="black" cx="117" cy="-126" rx="27" ry="18" />
+<text text-anchor="middle" x="117" y="-122.3" font-family="Times,serif" font-size="14.00">h2</text>
+</g>
+<!-- h1&#45;&gt;h2 -->
+<g id="edge1" class="edge">
+<title>h1&#45;&gt;h2</title>
+<path fill="none" stroke="black" d="M117,-161.79C117,-159.31 117,-156.83 117,-154.34" />
+<polygon fill="black" stroke="black" points="120.5,-154.14 117,-144.14 113.5,-154.14 120.5,-154.14" />
+</g>
+<!-- hddd -->
+<g id="node3" class="node">
+<title>hddd</title>
+<ellipse fill="none" stroke="black" cx="117" cy="-72" rx="27" ry="18" />
+<text text-anchor="middle" x="117" y="-68.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- h2&#45;&gt;hddd -->
+<g id="edge2" class="edge">
+<title>h2&#45;&gt;hddd</title>
+<path fill="none" stroke="black" d="M117,-107.79C117,-105.31 117,-102.83 117,-100.34" />
+<polygon fill="black" stroke="black" points="120.5,-100.14 117,-90.14 113.5,-100.14 120.5,-100.14" />
+</g>
+<!-- hn -->
+<g id="node4" class="node">
+<title>hn</title>
+<ellipse fill="none" stroke="black" cx="117" cy="-18" rx="27" ry="18" />
+<text text-anchor="middle" x="117" y="-14.3" font-family="Times,serif" font-size="14.00">hn</text>
+</g>
+<!-- hddd&#45;&gt;hn -->
+<g id="edge3" class="edge">
+<title>hddd&#45;&gt;hn</title>
+<path fill="none" stroke="black" d="M117,-53.79C117,-51.31 117,-48.83 117,-46.34" />
+<polygon fill="black" stroke="black" points="120.5,-46.14 117,-36.14 113.5,-46.14 120.5,-46.14" />
+</g>
+<!-- y -->
+<g id="node6" class="node">
+<title>y</title>
+<text text-anchor="middle" x="207" y="-14.3" font-family="Times,serif" font-size="14.00">y</text>
+</g>
+<!-- hn&#45;&gt;y -->
+<g id="edge8" class="edge">
+<title>hn&#45;&gt;y</title>
+<path fill="none" stroke="black" d="M144.4,-18C152.39,-18 161.31,-18 169.82,-18" />
+<polygon fill="black" stroke="black" points="169.92,-21.5 179.92,-18 169.92,-14.5 169.92,-21.5" />
+</g>
+<!-- xddd -->
+<g id="node5" class="node">
+<title>xddd</title>
+<text text-anchor="middle" x="27" y="-68.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- xddd&#45;&gt;hddd -->
+<g id="edge7" class="edge">
+<title>xddd&#45;&gt;hddd</title>
+<path fill="none" stroke="black" d="M54.4,-72C62.39,-72 71.31,-72 79.82,-72" />
+<polygon fill="black" stroke="black" points="79.92,-75.5 89.92,-72 79.92,-68.5 79.92,-75.5" />
+</g>
+<!-- x1 -->
+<g id="node7" class="node">
+<title>x1</title>
+<text text-anchor="middle" x="27" y="-176.3" font-family="Times,serif" font-size="14.00">x1</text>
+</g>
+<!-- x1&#45;&gt;h1 -->
+<g id="edge4" class="edge">
+<title>x1&#45;&gt;h1</title>
+<path fill="none" stroke="black" d="M54.4,-180C62.39,-180 71.31,-180 79.82,-180" />
+<polygon fill="black" stroke="black" points="79.92,-183.5 89.92,-180 79.92,-176.5 79.92,-183.5" />
+</g>
+<!-- x2 -->
+<g id="node8" class="node">
+<title>x2</title>
+<text text-anchor="middle" x="27" y="-122.3" font-family="Times,serif" font-size="14.00">x2</text>
+</g>
+<!-- x2&#45;&gt;h2 -->
+<g id="edge5" class="edge">
+<title>x2&#45;&gt;h2</title>
+<path fill="none" stroke="black" d="M54.4,-126C62.39,-126 71.31,-126 79.82,-126" />
+<polygon fill="black" stroke="black" points="79.92,-129.5 89.92,-126 79.92,-122.5 79.92,-129.5" />
+</g>
+<!-- xn -->
+<g id="node9" class="node">
+<title>xn</title>
+<text text-anchor="middle" x="27" y="-14.3" font-family="Times,serif" font-size="14.00">xn</text>
+</g>
+<!-- xn&#45;&gt;hn -->
+<g id="edge6" class="edge">
+<title>xn&#45;&gt;hn</title>
+<path fill="none" stroke="black" d="M54.4,-18C62.39,-18 71.31,-18 79.82,-18" />
+<polygon fill="black" stroke="black" points="79.92,-21.5 89.92,-18 79.92,-14.5 79.92,-21.5" />
+</g>
+</g>
+</svg>
+</div>
+</div>
+
+<h5 id="331-vs-n-的-rnn">3.3、1 vs. N 的 RNN</h5>
+
+<p>反过来，上面那个图里，如果只保留一个 x，那么就是一个 1 vs. N 的 RNN 了。这种场景的应用，比如 AI 创作音乐，还有通过一个 image 提炼或识别某些文本内容输出。</p>
+
+\[\begin{aligned}
+&amp;\bm{h}_t = \begin{cases} tanh(\bm{W^{xh}} \cdot \bm{x} + \bm{b^{xh}} + 0 + \bm{b^{hh}}) &amp; (t=1) \\
+tanh(0 + \bm{b^{xh}} + \bm{W^{hh}} \cdot \bm{h}_{t-1} + \bm{b^{hh}}) &amp; (t&gt;1) \end{cases} \\
+&amp;\bm{y} = Softmax(\bm{W^{hy}} \cdot \bm{h}_n + \bm{b^{hy}})
+\end{aligned}\]
+
+<p>示意图如下：</p>
+
+<div style="text-align: center;">
+<div class="graphviz-wrapper">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg role="img" aria-label="graphviz-aecb5ea5cd91fc1106b18c3c4059fa0a" width="278pt" height="188pt" viewBox="0.00 0.00 278.00 188.00">
+<title>graphviz-aecb5ea5cd91fc1106b18c3c4059fa0a</title>
+<desc>
+digraph G {
+	rankdir=BT
+	{rank=same h1 h2 hddd hn}
+	{rank=same y1 y2 yddd yn}
+	hddd[label=&quot;...&quot;]
+	yddd[label=&quot;...&quot;]
+
+	y1[shape=plaintext]
+	y2[shape=plaintext]
+	yddd[shape=plaintext]
+	yn[shape=plaintext]
+	x[shape=plaintext]
+
+	h1 -&gt; h2
+	h2 -&gt; hddd
+	hddd -&gt; hn
+
+	x -&gt; h1
+
+	h1 -&gt; y1
+	h2 -&gt; y2
+	hddd -&gt; yddd
+	hn -&gt; yn
+}
+</desc>
+
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-184 274,-184 274,4 -4,4" />
+<!-- h1 -->
+<g id="node1" class="node">
+<title>h1</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="27" y="-86.3" font-family="Times,serif" font-size="14.00">h1</text>
+</g>
+<!-- h2 -->
+<g id="node2" class="node">
+<title>h2</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="99" y="-86.3" font-family="Times,serif" font-size="14.00">h2</text>
+</g>
+<!-- h1&#45;&gt;h2 -->
+<g id="edge1" class="edge">
+<title>h1&#45;&gt;h2</title>
+<path fill="none" stroke="black" d="M54,-90C56.61,-90 59.23,-90 61.84,-90" />
+<polygon fill="black" stroke="black" points="61.93,-93.5 71.93,-90 61.93,-86.5 61.93,-93.5" />
+</g>
+<!-- y1 -->
+<g id="node5" class="node">
+<title>y1</title>
+<text text-anchor="middle" x="27" y="-158.3" font-family="Times,serif" font-size="14.00">y1</text>
+</g>
+<!-- h1&#45;&gt;y1 -->
+<g id="edge5" class="edge">
+<title>h1&#45;&gt;y1</title>
+<path fill="none" stroke="black" d="M27,-108.3C27,-116.02 27,-125.29 27,-133.89" />
+<polygon fill="black" stroke="black" points="23.5,-133.9 27,-143.9 30.5,-133.9 23.5,-133.9" />
+</g>
+<!-- hddd -->
+<g id="node3" class="node">
+<title>hddd</title>
+<ellipse fill="none" stroke="black" cx="171" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="171" y="-86.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- h2&#45;&gt;hddd -->
+<g id="edge2" class="edge">
+<title>h2&#45;&gt;hddd</title>
+<path fill="none" stroke="black" d="M126,-90C128.61,-90 131.23,-90 133.84,-90" />
+<polygon fill="black" stroke="black" points="133.93,-93.5 143.93,-90 133.93,-86.5 133.93,-93.5" />
+</g>
+<!-- y2 -->
+<g id="node6" class="node">
+<title>y2</title>
+<text text-anchor="middle" x="99" y="-158.3" font-family="Times,serif" font-size="14.00">y2</text>
+</g>
+<!-- h2&#45;&gt;y2 -->
+<g id="edge6" class="edge">
+<title>h2&#45;&gt;y2</title>
+<path fill="none" stroke="black" d="M99,-108.3C99,-116.02 99,-125.29 99,-133.89" />
+<polygon fill="black" stroke="black" points="95.5,-133.9 99,-143.9 102.5,-133.9 95.5,-133.9" />
+</g>
+<!-- hn -->
+<g id="node4" class="node">
+<title>hn</title>
+<ellipse fill="none" stroke="black" cx="243" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="243" y="-86.3" font-family="Times,serif" font-size="14.00">hn</text>
+</g>
+<!-- hddd&#45;&gt;hn -->
+<g id="edge3" class="edge">
+<title>hddd&#45;&gt;hn</title>
+<path fill="none" stroke="black" d="M198,-90C200.61,-90 203.23,-90 205.84,-90" />
+<polygon fill="black" stroke="black" points="205.93,-93.5 215.93,-90 205.93,-86.5 205.93,-93.5" />
+</g>
+<!-- yddd -->
+<g id="node7" class="node">
+<title>yddd</title>
+<text text-anchor="middle" x="171" y="-158.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- hddd&#45;&gt;yddd -->
+<g id="edge7" class="edge">
+<title>hddd&#45;&gt;yddd</title>
+<path fill="none" stroke="black" d="M171,-108.3C171,-116.02 171,-125.29 171,-133.89" />
+<polygon fill="black" stroke="black" points="167.5,-133.9 171,-143.9 174.5,-133.9 167.5,-133.9" />
+</g>
+<!-- yn -->
+<g id="node8" class="node">
+<title>yn</title>
+<text text-anchor="middle" x="243" y="-158.3" font-family="Times,serif" font-size="14.00">yn</text>
+</g>
+<!-- hn&#45;&gt;yn -->
+<g id="edge8" class="edge">
+<title>hn&#45;&gt;yn</title>
+<path fill="none" stroke="black" d="M243,-108.3C243,-116.02 243,-125.29 243,-133.89" />
+<polygon fill="black" stroke="black" points="239.5,-133.9 243,-143.9 246.5,-133.9 239.5,-133.9" />
+</g>
+<!-- x -->
+<g id="node9" class="node">
+<title>x</title>
+<text text-anchor="middle" x="27" y="-14.3" font-family="Times,serif" font-size="14.00">x</text>
+</g>
+<!-- x&#45;&gt;h1 -->
+<g id="edge4" class="edge">
+<title>x&#45;&gt;h1</title>
+<path fill="none" stroke="black" d="M27,-36.3C27,-44.02 27,-53.29 27,-61.89" />
+<polygon fill="black" stroke="black" points="23.5,-61.9 27,-71.9 30.5,-61.9 23.5,-61.9" />
+</g>
+</g>
+</svg>
+</div>
+</div>
+
+<p>到这里我们可以看到，在 RNN 的隐藏层是能够存储一些有关于输入数据的一些相关内容的，所以也常把 RNN 的隐藏层叫做记忆单元。</p>
+
+<h5 id="34lstmlong-short-term-memory长短时记忆网络">3.4、LSTM（Long Short-Term Memory）长短时记忆网络</h5>
+
+<h6 id="341如何理解这个-short-term-呢">3.4.1、如何理解这个 Short-Term 呢？</h6>
+
+<p>1997 年论文《Long Short-Term Memory》中提出 LSTM 模型。我们先从模型的定义，精确地来理解一下：</p>
+
+\[\begin{aligned}
+&amp;\bm{h}_t = \bm{h}_{t-1} + tanh(\bm{W}^{xh} \cdot \bm{x}_t + \bm{b}^{xh} + \bm{W}^{hh} \cdot \bm{h}_{t-1} + \bm{b}^{hh}) \\
+&amp;\bm{y}_t = Softmax(\bm{W}^{hy} \cdot \bm{h_t} + \bm{b}^{hy})
+\end{aligned}\]
+
+<p>上式中与经典结构的 RNN（输入与输出是 N vs. N）相比，唯一的区别是第一个式子中多了一个「 \(\bm{h}_{t-1}\) 」。如果我们把第一个式子的  \(tanh\)  部分记作  \(u_t\) ：</p>
+
+\[\bm{u}_t = tanh(\bm{W}^{xh} \cdot \bm{x}_t + \bm{b}^{xh} + \bm{W}^{hh} \cdot \bm{h}_{t-1} + \bm{b}^{hh})\]
+
+<p>所以：</p>
+
+\[\bm{h}_t = \bm{h}_{t-1} + \bm{u}_t\]
+
+<p>那么可以展开出如下一组式子：</p>
+
+\[\begin{aligned}
+\bm{h}_{k+1} &amp;= \bm{h}_k + \bm{u}_{k+1} \\
+\bm{h}_{k+2} &amp;= \bm{h}_{k+1} + \bm{u}_{k+2} \\
+&amp;...... \\
+\bm{h}_{t-1} &amp;= \bm{h}_{t-2} + \bm{u}_{t-1} \\
+\bm{h}_t &amp;= \bm{h}_{t-1} + \bm{u}_t
+\end{aligned}\]
+
+<p>如果我们从  \(h_{k+1}\)  到  \(h_n\)  的所有式子左侧相加、右侧相加，我们就得到如下式子：</p>
+
+\[\begin{aligned}
+&amp;\bm{h}_{k+1} + ... + \bm{h}_{t-1} + \bm{h}_t \\
+= &amp;\bm{h}_k + \bm{h}_{k+1} + ... + \bm{h}_{t-2} + \bm{h}_{t-1} \\+ &amp;\bm{u}_{k+1} + \bm{u}_{k+2} + ... + \bm{u}_{t-1} + \bm{u}_t
+\end{aligned}\]
+
+<p>进而推导出：</p>
+
+\[\bm{h}_t = \bm{h}_k + \bm{u}_{k+1} + \bm{u}_{k+2} + ... + \bm{u}_{t-1} + \bm{u}_t\]
+
+<p>从这里我们就可以看到，第 t 时刻的隐藏层输出，直接关联到第 k 时刻的输出，t 到 k 时刻的相关性则用  \(\bm{u}_{k+1}\)  到  \(\bm{u}_t\)  相加表示。也就是有 t-k 的短期（Short Term）记忆。</p>
+
+<h6 id="342引入遗忘门-f输入门-i输出门-o记忆细胞-c">3.4.2、引入遗忘门 f、输入门 i、输出门 o、记忆细胞 c</h6>
+
+<p>如果我们为式子  \(\bm{h}_t = \bm{h}_{t-1} + \bm{u}_t\)  右侧两项分配一个权重呢？就是隐藏层对上一个数据项本身被上一个数据项经过隐藏层计算的结果，这两者做一对权重考虑配比，如下：</p>
+
+\[\begin{aligned}
+&amp;\bm{f}_t = sigmoid(\bm{W}^{f,xh} \cdot \bm{x}_t + \bm{b}^{f,xh} + \bm{W}^{f,hh} \cdot \bm{x}_{t-1} + \bm{b}^{f,hh}) \\
+&amp;\bm{h}_t = \bm{f}_t \odot \bm{h}_{t-1} + (1 - \bm{f}_t) \odot \bm{u}_t
+\end{aligned}\]
+
+<p>其中：</p>
+
+<ul>
+  <li>\(\odot\)  是 Hardamard 乘积，即张量的对应元素相乘。</li>
+  <li>\(\bm{f}_t\)  是「遗忘门（Forget Gate）」，该值很小时 t-1 时刻的权重就很小，也就是「此刻遗忘上一刻」。该值应根据 t 时刻的输入数据、t-1 时刻数据在隐藏层的输出计算，而且其每个元素必须是 (0, 1) 之间的值，所以可以用 sigmoid 函数来得到该值：</li>
+</ul>
+
+<p>但这种方式，对于过去  \(\bm{h}_{t-1}\)  和当下  \(\bm{u}_t\)  形成了互斥，只能此消彼长。但其实过去和当下可能都很重要，有可能都恨不重要，所以我们对过去继续采用  \(\bm{f}_t\)  遗忘门，对当下采用  \(\bm{i}_t\)  输入门（Input Gate）：</p>
+
+\[\begin{aligned}
+&amp;\bm{f}_t = sigmoid(\bm{W}^{f,xh} \cdot \bm{x}_t + \bm{b}^{f,xh} + \bm{W}^{f,hh} \cdot \bm{x}_{t-1} + \bm{b}^{f,hh}) \\
+&amp;\bm{i}_t = sigmoid(\bm{W}^{i,xh} \cdot \bm{x}_t + \bm{b}^{i,xh} + \bm{W}^{i,hh} \cdot \bm{h}_{t-1} + \bm{b}^{i,hh}) \\
+&amp;\bm{h}_t = \bm{f}_t \odot \bm{h}_{t-1} + \bm{i}_t \odot \bm{u}_t
+\end{aligned}\]
+
+<p>其中：</p>
+<ul>
+  <li>与  \(\bm{f}_t\)  类似地，定义输入门  \(\bm{i}_t\)  ，但是注意  \(\bm{f}_t\)  与  \(\bm{h}_{t-1}\)  而非  \(\bm{x}_{t-1}\)  有关。</li>
+</ul>
+
+<p>再引入一个输出门：</p>
+
+\[\bm{o}_t = sigmoid(\bm{W}^{o,xh} \cdot \bm{x}_t + \bm{b}^{o,xh} + \bm{W}^{o,hh} \cdot \bm{x}_{t-1} + \bm{b}^{o,hh})\]
+
+<p>再引入记忆细胞  \(\bm{c}_t\) ，它是原来  \(\bm{h}_t\)  的变体，与 t-1 时刻的记忆细胞有遗忘关系（通过遗忘门），与当下时刻有输入门的关系：</p>
+
+\[\bm{c}_t = \bm{f}_t \odot \bm{c}_{t-1} + \bm{i}_t \odot \bm{u}_t\]
+
+<p>那么此时  \(\bm{h}_t\)  ，我们可以把  \(\bm{h}_t\)  变成：</p>
+
+\[\bm{h}_t = \bm{o}_t \odot tanh(\bm{c}_t)\]
+
+<p>记忆细胞这个概念还有有一点点形象的，它存储了过去的一些信息。OK，到此我们整体的 LSTM 模型就变成了这个样子：</p>
+
+\[\begin{aligned}
+&amp;\bm{f}_t = sigmoid(\bm{W}^{f,xh} \cdot \bm{x}_t + \bm{b}^{f,xh} + \bm{W}^{f,hh} \cdot \bm{x}_{t-1} + \bm{b}^{f,hh}) \\
+&amp;\bm{i}_t = sigmoid(\bm{W}^{i,xh} \cdot \bm{x}_t + \bm{b}^{i,xh} + \bm{W}^{i,hh} \cdot \bm{h}_{t-1} + \bm{b}^{i,hh}) \\
+&amp;\bm{o}_t = sigmoid(\bm{W}^{o,xh} \cdot \bm{x}_t + \bm{b}^{o,xh} + \bm{W}^{o,hh} \cdot \bm{x}_{t-1} + \bm{b}^{o,hh}) \\
+&amp;\bm{u}_t = tanh(\bm{W}^{xh} \cdot \bm{x}_t + \bm{b}^{xh} + \bm{W}^{hh} \cdot \bm{h}_{t-1} + \bm{b}^{hh}) \\
+&amp;\bm{c}_t = \bm{f}_t \odot \bm{c}_{t-1} + \bm{i}_t \odot \bm{u}_t \\
+&amp;\bm{h}_t = \bm{o}_t \odot tanh(\bm{c}_t) \\
+&amp;\bm{y}_t = Softmax(\bm{W}^{hy} \cdot \bm{h_t} + \bm{b}^{hy})
+\end{aligned}\]
+
+<h5 id="35双向循环神经网络双向-lstm">3.5、双向循环神经网络、双向 LSTM</h5>
+
+<div style="text-align: center;">
+<div class="graphviz-wrapper">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg role="img" aria-label="graphviz-ca96fa8362afcc34e346783b5768b142" width="278pt" height="188pt" viewBox="0.00 0.00 278.00 188.00">
+<title>graphviz-ca96fa8362afcc34e346783b5768b142</title>
+<desc>
+digraph G {
+	rankdir=BT
+	splines=ortho
+	{rank=same h1 h2 hddd hn}
+
+	hddd[label=&quot;...&quot;]
+	xddd[label=&quot;...&quot;]
+	yddd[label=&quot;...&quot;]
+
+	y1[shape=plaintext]
+	y2[shape=plaintext]
+	yddd[shape=plaintext]
+	yn[shape=plaintext]
+	x1[shape=plaintext]
+	x2[shape=plaintext]
+	xddd[shape=plaintext]
+	xn[shape=plaintext]
+
+	h1 -&gt; y1
+	h2 -&gt; y2
+	hddd -&gt; yddd
+	hn -&gt; yn
+
+	h1 -&gt; h2
+	h2 -&gt; hddd
+	hddd -&gt; hn
+
+	hn -&gt; hddd
+	hddd -&gt; h2
+	h2 -&gt; h1
+
+	x1 -&gt; h1
+	x2 -&gt; h2
+	xddd -&gt; hddd
+	xn -&gt; hn
+}
+</desc>
+
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-184 274,-184 274,4 -4,4" />
+<!-- h1 -->
+<g id="node1" class="node">
+<title>h1</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="27" y="-86.3" font-family="Times,serif" font-size="14.00">h1</text>
+</g>
+<!-- h2 -->
+<g id="node2" class="node">
+<title>h2</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="99" y="-86.3" font-family="Times,serif" font-size="14.00">h2</text>
+</g>
+<!-- h1&#45;&gt;h2 -->
+<g id="edge5" class="edge">
+<title>h1&#45;&gt;h2</title>
+<path fill="none" stroke="black" d="M52.59,-84C52.59,-84 63.5,-84 63.5,-84" />
+<polygon fill="black" stroke="black" points="63.5,-87.5 73.5,-84 63.5,-80.5 63.5,-87.5" />
+</g>
+<!-- y1 -->
+<g id="node7" class="node">
+<title>y1</title>
+<text text-anchor="middle" x="27" y="-158.3" font-family="Times,serif" font-size="14.00">y1</text>
+</g>
+<!-- h1&#45;&gt;y1 -->
+<g id="edge1" class="edge">
+<title>h1&#45;&gt;y1</title>
+<path fill="none" stroke="black" d="M27,-108.17C27,-108.17 27,-133.59 27,-133.59" />
+<polygon fill="black" stroke="black" points="23.5,-133.59 27,-143.59 30.5,-133.59 23.5,-133.59" />
+</g>
+<!-- h2&#45;&gt;h1 -->
+<g id="edge10" class="edge">
+<title>h2&#45;&gt;h1</title>
+<path fill="none" stroke="black" d="M73.41,-96C73.41,-96 62.5,-96 62.5,-96" />
+<polygon fill="black" stroke="black" points="62.5,-92.5 52.5,-96 62.5,-99.5 62.5,-92.5" />
+</g>
+<!-- hddd -->
+<g id="node3" class="node">
+<title>hddd</title>
+<ellipse fill="none" stroke="black" cx="171" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="171" y="-86.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- h2&#45;&gt;hddd -->
+<g id="edge6" class="edge">
+<title>h2&#45;&gt;hddd</title>
+<path fill="none" stroke="black" d="M124.59,-84C124.59,-84 135.5,-84 135.5,-84" />
+<polygon fill="black" stroke="black" points="135.5,-87.5 145.5,-84 135.5,-80.5 135.5,-87.5" />
+</g>
+<!-- y2 -->
+<g id="node8" class="node">
+<title>y2</title>
+<text text-anchor="middle" x="99" y="-158.3" font-family="Times,serif" font-size="14.00">y2</text>
+</g>
+<!-- h2&#45;&gt;y2 -->
+<g id="edge2" class="edge">
+<title>h2&#45;&gt;y2</title>
+<path fill="none" stroke="black" d="M99,-108.17C99,-108.17 99,-133.59 99,-133.59" />
+<polygon fill="black" stroke="black" points="95.5,-133.59 99,-143.59 102.5,-133.59 95.5,-133.59" />
+</g>
+<!-- hddd&#45;&gt;h2 -->
+<g id="edge9" class="edge">
+<title>hddd&#45;&gt;h2</title>
+<path fill="none" stroke="black" d="M145.41,-96C145.41,-96 134.5,-96 134.5,-96" />
+<polygon fill="black" stroke="black" points="134.5,-92.5 124.5,-96 134.5,-99.5 134.5,-92.5" />
+</g>
+<!-- hn -->
+<g id="node4" class="node">
+<title>hn</title>
+<ellipse fill="none" stroke="black" cx="243" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="243" y="-86.3" font-family="Times,serif" font-size="14.00">hn</text>
+</g>
+<!-- hddd&#45;&gt;hn -->
+<g id="edge7" class="edge">
+<title>hddd&#45;&gt;hn</title>
+<path fill="none" stroke="black" d="M196.59,-84C196.59,-84 207.5,-84 207.5,-84" />
+<polygon fill="black" stroke="black" points="207.5,-87.5 217.5,-84 207.5,-80.5 207.5,-87.5" />
+</g>
+<!-- yddd -->
+<g id="node6" class="node">
+<title>yddd</title>
+<text text-anchor="middle" x="171" y="-158.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- hddd&#45;&gt;yddd -->
+<g id="edge3" class="edge">
+<title>hddd&#45;&gt;yddd</title>
+<path fill="none" stroke="black" d="M171,-108.17C171,-108.17 171,-133.59 171,-133.59" />
+<polygon fill="black" stroke="black" points="167.5,-133.59 171,-143.59 174.5,-133.59 167.5,-133.59" />
+</g>
+<!-- hn&#45;&gt;hddd -->
+<g id="edge8" class="edge">
+<title>hn&#45;&gt;hddd</title>
+<path fill="none" stroke="black" d="M217.41,-96C217.41,-96 206.5,-96 206.5,-96" />
+<polygon fill="black" stroke="black" points="206.5,-92.5 196.5,-96 206.5,-99.5 206.5,-92.5" />
+</g>
+<!-- yn -->
+<g id="node9" class="node">
+<title>yn</title>
+<text text-anchor="middle" x="243" y="-158.3" font-family="Times,serif" font-size="14.00">yn</text>
+</g>
+<!-- hn&#45;&gt;yn -->
+<g id="edge4" class="edge">
+<title>hn&#45;&gt;yn</title>
+<path fill="none" stroke="black" d="M243,-108.17C243,-108.17 243,-133.59 243,-133.59" />
+<polygon fill="black" stroke="black" points="239.5,-133.59 243,-143.59 246.5,-133.59 239.5,-133.59" />
+</g>
+<!-- xddd -->
+<g id="node5" class="node">
+<title>xddd</title>
+<text text-anchor="middle" x="171" y="-14.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- xddd&#45;&gt;hddd -->
+<g id="edge13" class="edge">
+<title>xddd&#45;&gt;hddd</title>
+<path fill="none" stroke="black" d="M171,-36.17C171,-36.17 171,-61.59 171,-61.59" />
+<polygon fill="black" stroke="black" points="167.5,-61.59 171,-71.59 174.5,-61.59 167.5,-61.59" />
+</g>
+<!-- x1 -->
+<g id="node10" class="node">
+<title>x1</title>
+<text text-anchor="middle" x="27" y="-14.3" font-family="Times,serif" font-size="14.00">x1</text>
+</g>
+<!-- x1&#45;&gt;h1 -->
+<g id="edge11" class="edge">
+<title>x1&#45;&gt;h1</title>
+<path fill="none" stroke="black" d="M27,-36.17C27,-36.17 27,-61.59 27,-61.59" />
+<polygon fill="black" stroke="black" points="23.5,-61.59 27,-71.59 30.5,-61.59 23.5,-61.59" />
+</g>
+<!-- x2 -->
+<g id="node11" class="node">
+<title>x2</title>
+<text text-anchor="middle" x="99" y="-14.3" font-family="Times,serif" font-size="14.00">x2</text>
+</g>
+<!-- x2&#45;&gt;h2 -->
+<g id="edge12" class="edge">
+<title>x2&#45;&gt;h2</title>
+<path fill="none" stroke="black" d="M99,-36.17C99,-36.17 99,-61.59 99,-61.59" />
+<polygon fill="black" stroke="black" points="95.5,-61.59 99,-71.59 102.5,-61.59 95.5,-61.59" />
+</g>
+<!-- xn -->
+<g id="node12" class="node">
+<title>xn</title>
+<text text-anchor="middle" x="243" y="-14.3" font-family="Times,serif" font-size="14.00">xn</text>
+</g>
+<!-- xn&#45;&gt;hn -->
+<g id="edge14" class="edge">
+<title>xn&#45;&gt;hn</title>
+<path fill="none" stroke="black" d="M243,-36.17C243,-36.17 243,-61.59 243,-61.59" />
+<polygon fill="black" stroke="black" points="239.5,-61.59 243,-71.59 246.5,-61.59 239.5,-61.59" />
+</g>
+</g>
+</svg>
+</div>
+</div>
+
+<h5 id="36堆叠循环神经网络堆叠-lstm">3.6、堆叠循环神经网络、堆叠 LSTM</h5>
+
+<div style="text-align: center;">
+<div class="graphviz-wrapper">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg role="img" aria-label="graphviz-79478ee70f94925103b38a21c70c2539" width="288pt" height="260pt" viewBox="0.00 0.00 288.19 260.00">
+<title>graphviz-79478ee70f94925103b38a21c70c2539</title>
+<desc>
+digraph G {
+	rankdir=BT
+	{rank=same h11 h12 h1ddd h1n}
+	{rank=same h21 h22 h2ddd h2n}
+
+	h1ddd[label=&quot;...&quot;]
+	h2ddd[label=&quot;...&quot;]
+	xddd[label=&quot;...&quot;]
+	yddd[label=&quot;...&quot;]
+
+	y1[shape=plaintext]
+	y2[shape=plaintext]
+	yddd[shape=plaintext]
+	yn[shape=plaintext]
+	x1[shape=plaintext]
+	x2[shape=plaintext]
+	xddd[shape=plaintext]
+	xn[shape=plaintext]
+
+	h11 -&gt; y1
+	h12 -&gt; y2
+	h1ddd -&gt; yddd
+	h1n -&gt; yn
+
+	h11 -&gt; h12
+	h12 -&gt; h1ddd
+	h1ddd -&gt; h1n
+
+	h21 -&gt; h22
+	h22 -&gt; h2ddd
+	h2ddd -&gt; h2n
+
+	h21 -&gt; h11
+	h22 -&gt; h12
+	h2ddd -&gt; h1ddd
+	h2n -&gt; h1n
+
+	x1 -&gt; h21
+	x2 -&gt; h22
+	xddd -&gt; h2ddd
+	xn -&gt; h2n
+}
+</desc>
+
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 256)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-256 284.19,-256 284.19,4 -4,4" />
+<!-- h11 -->
+<g id="node1" class="node">
+<title>h11</title>
+<ellipse fill="none" stroke="black" cx="28.6" cy="-162" rx="28.7" ry="18" />
+<text text-anchor="middle" x="28.6" y="-158.3" font-family="Times,serif" font-size="14.00">h11</text>
+</g>
+<!-- h12 -->
+<g id="node2" class="node">
+<title>h12</title>
+<ellipse fill="none" stroke="black" cx="103.6" cy="-162" rx="28.7" ry="18" />
+<text text-anchor="middle" x="103.6" y="-158.3" font-family="Times,serif" font-size="14.00">h12</text>
+</g>
+<!-- h11&#45;&gt;h12 -->
+<g id="edge5" class="edge">
+<title>h11&#45;&gt;h12</title>
+<path fill="none" stroke="black" d="M57.31,-162C59.75,-162 62.19,-162 64.63,-162" />
+<polygon fill="black" stroke="black" points="64.67,-165.5 74.67,-162 64.67,-158.5 64.67,-165.5" />
+</g>
+<!-- y1 -->
+<g id="node11" class="node">
+<title>y1</title>
+<text text-anchor="middle" x="28.6" y="-230.3" font-family="Times,serif" font-size="14.00">y1</text>
+</g>
+<!-- h11&#45;&gt;y1 -->
+<g id="edge1" class="edge">
+<title>h11&#45;&gt;y1</title>
+<path fill="none" stroke="black" d="M28.6,-180.3C28.6,-188.02 28.6,-197.29 28.6,-205.89" />
+<polygon fill="black" stroke="black" points="25.1,-205.9 28.6,-215.9 32.1,-205.9 25.1,-205.9" />
+</g>
+<!-- h1ddd -->
+<g id="node3" class="node">
+<title>h1ddd</title>
+<ellipse fill="none" stroke="black" cx="177.6" cy="-162" rx="27" ry="18" />
+<text text-anchor="middle" x="177.6" y="-158.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- h12&#45;&gt;h1ddd -->
+<g id="edge6" class="edge">
+<title>h12&#45;&gt;h1ddd</title>
+<path fill="none" stroke="black" d="M132.21,-162C134.85,-162 137.49,-162 140.13,-162" />
+<polygon fill="black" stroke="black" points="140.3,-165.5 150.3,-162 140.3,-158.5 140.3,-165.5" />
+</g>
+<!-- y2 -->
+<g id="node12" class="node">
+<title>y2</title>
+<text text-anchor="middle" x="103.6" y="-230.3" font-family="Times,serif" font-size="14.00">y2</text>
+</g>
+<!-- h12&#45;&gt;y2 -->
+<g id="edge2" class="edge">
+<title>h12&#45;&gt;y2</title>
+<path fill="none" stroke="black" d="M103.6,-180.3C103.6,-188.02 103.6,-197.29 103.6,-205.89" />
+<polygon fill="black" stroke="black" points="100.1,-205.9 103.6,-215.9 107.1,-205.9 100.1,-205.9" />
+</g>
+<!-- h1n -->
+<g id="node4" class="node">
+<title>h1n</title>
+<ellipse fill="none" stroke="black" cx="251.6" cy="-162" rx="28.7" ry="18" />
+<text text-anchor="middle" x="251.6" y="-158.3" font-family="Times,serif" font-size="14.00">h1n</text>
+</g>
+<!-- h1ddd&#45;&gt;h1n -->
+<g id="edge7" class="edge">
+<title>h1ddd&#45;&gt;h1n</title>
+<path fill="none" stroke="black" d="M204.77,-162C207.38,-162 210,-162 212.61,-162" />
+<polygon fill="black" stroke="black" points="212.7,-165.5 222.7,-162 212.7,-158.5 212.7,-165.5" />
+</g>
+<!-- yddd -->
+<g id="node10" class="node">
+<title>yddd</title>
+<text text-anchor="middle" x="177.6" y="-230.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- h1ddd&#45;&gt;yddd -->
+<g id="edge3" class="edge">
+<title>h1ddd&#45;&gt;yddd</title>
+<path fill="none" stroke="black" d="M177.6,-180.3C177.6,-188.02 177.6,-197.29 177.6,-205.89" />
+<polygon fill="black" stroke="black" points="174.1,-205.9 177.6,-215.9 181.1,-205.9 174.1,-205.9" />
+</g>
+<!-- yn -->
+<g id="node13" class="node">
+<title>yn</title>
+<text text-anchor="middle" x="251.6" y="-230.3" font-family="Times,serif" font-size="14.00">yn</text>
+</g>
+<!-- h1n&#45;&gt;yn -->
+<g id="edge4" class="edge">
+<title>h1n&#45;&gt;yn</title>
+<path fill="none" stroke="black" d="M251.6,-180.3C251.6,-188.02 251.6,-197.29 251.6,-205.89" />
+<polygon fill="black" stroke="black" points="248.1,-205.9 251.6,-215.9 255.1,-205.9 248.1,-205.9" />
+</g>
+<!-- h21 -->
+<g id="node5" class="node">
+<title>h21</title>
+<ellipse fill="none" stroke="black" cx="28.6" cy="-90" rx="28.7" ry="18" />
+<text text-anchor="middle" x="28.6" y="-86.3" font-family="Times,serif" font-size="14.00">h21</text>
+</g>
+<!-- h21&#45;&gt;h11 -->
+<g id="edge11" class="edge">
+<title>h21&#45;&gt;h11</title>
+<path fill="none" stroke="black" d="M28.6,-108.3C28.6,-116.02 28.6,-125.29 28.6,-133.89" />
+<polygon fill="black" stroke="black" points="25.1,-133.9 28.6,-143.9 32.1,-133.9 25.1,-133.9" />
+</g>
+<!-- h22 -->
+<g id="node6" class="node">
+<title>h22</title>
+<ellipse fill="none" stroke="black" cx="103.6" cy="-90" rx="28.7" ry="18" />
+<text text-anchor="middle" x="103.6" y="-86.3" font-family="Times,serif" font-size="14.00">h22</text>
+</g>
+<!-- h21&#45;&gt;h22 -->
+<g id="edge8" class="edge">
+<title>h21&#45;&gt;h22</title>
+<path fill="none" stroke="black" d="M57.31,-90C59.75,-90 62.19,-90 64.63,-90" />
+<polygon fill="black" stroke="black" points="64.67,-93.5 74.67,-90 64.67,-86.5 64.67,-93.5" />
+</g>
+<!-- h22&#45;&gt;h12 -->
+<g id="edge12" class="edge">
+<title>h22&#45;&gt;h12</title>
+<path fill="none" stroke="black" d="M103.6,-108.3C103.6,-116.02 103.6,-125.29 103.6,-133.89" />
+<polygon fill="black" stroke="black" points="100.1,-133.9 103.6,-143.9 107.1,-133.9 100.1,-133.9" />
+</g>
+<!-- h2ddd -->
+<g id="node7" class="node">
+<title>h2ddd</title>
+<ellipse fill="none" stroke="black" cx="177.6" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="177.6" y="-86.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- h22&#45;&gt;h2ddd -->
+<g id="edge9" class="edge">
+<title>h22&#45;&gt;h2ddd</title>
+<path fill="none" stroke="black" d="M132.21,-90C134.85,-90 137.49,-90 140.13,-90" />
+<polygon fill="black" stroke="black" points="140.3,-93.5 150.3,-90 140.3,-86.5 140.3,-93.5" />
+</g>
+<!-- h2ddd&#45;&gt;h1ddd -->
+<g id="edge13" class="edge">
+<title>h2ddd&#45;&gt;h1ddd</title>
+<path fill="none" stroke="black" d="M177.6,-108.3C177.6,-116.02 177.6,-125.29 177.6,-133.89" />
+<polygon fill="black" stroke="black" points="174.1,-133.9 177.6,-143.9 181.1,-133.9 174.1,-133.9" />
+</g>
+<!-- h2n -->
+<g id="node8" class="node">
+<title>h2n</title>
+<ellipse fill="none" stroke="black" cx="251.6" cy="-90" rx="28.7" ry="18" />
+<text text-anchor="middle" x="251.6" y="-86.3" font-family="Times,serif" font-size="14.00">h2n</text>
+</g>
+<!-- h2ddd&#45;&gt;h2n -->
+<g id="edge10" class="edge">
+<title>h2ddd&#45;&gt;h2n</title>
+<path fill="none" stroke="black" d="M204.77,-90C207.38,-90 210,-90 212.61,-90" />
+<polygon fill="black" stroke="black" points="212.7,-93.5 222.7,-90 212.7,-86.5 212.7,-93.5" />
+</g>
+<!-- h2n&#45;&gt;h1n -->
+<g id="edge14" class="edge">
+<title>h2n&#45;&gt;h1n</title>
+<path fill="none" stroke="black" d="M251.6,-108.3C251.6,-116.02 251.6,-125.29 251.6,-133.89" />
+<polygon fill="black" stroke="black" points="248.1,-133.9 251.6,-143.9 255.1,-133.9 248.1,-133.9" />
+</g>
+<!-- xddd -->
+<g id="node9" class="node">
+<title>xddd</title>
+<text text-anchor="middle" x="177.6" y="-14.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- xddd&#45;&gt;h2ddd -->
+<g id="edge17" class="edge">
+<title>xddd&#45;&gt;h2ddd</title>
+<path fill="none" stroke="black" d="M177.6,-36.3C177.6,-44.02 177.6,-53.29 177.6,-61.89" />
+<polygon fill="black" stroke="black" points="174.1,-61.9 177.6,-71.9 181.1,-61.9 174.1,-61.9" />
+</g>
+<!-- x1 -->
+<g id="node14" class="node">
+<title>x1</title>
+<text text-anchor="middle" x="28.6" y="-14.3" font-family="Times,serif" font-size="14.00">x1</text>
+</g>
+<!-- x1&#45;&gt;h21 -->
+<g id="edge15" class="edge">
+<title>x1&#45;&gt;h21</title>
+<path fill="none" stroke="black" d="M28.6,-36.3C28.6,-44.02 28.6,-53.29 28.6,-61.89" />
+<polygon fill="black" stroke="black" points="25.1,-61.9 28.6,-71.9 32.1,-61.9 25.1,-61.9" />
+</g>
+<!-- x2 -->
+<g id="node15" class="node">
+<title>x2</title>
+<text text-anchor="middle" x="103.6" y="-14.3" font-family="Times,serif" font-size="14.00">x2</text>
+</g>
+<!-- x2&#45;&gt;h22 -->
+<g id="edge16" class="edge">
+<title>x2&#45;&gt;h22</title>
+<path fill="none" stroke="black" d="M103.6,-36.3C103.6,-44.02 103.6,-53.29 103.6,-61.89" />
+<polygon fill="black" stroke="black" points="100.1,-61.9 103.6,-71.9 107.1,-61.9 100.1,-61.9" />
+</g>
+<!-- xn -->
+<g id="node16" class="node">
+<title>xn</title>
+<text text-anchor="middle" x="251.6" y="-14.3" font-family="Times,serif" font-size="14.00">xn</text>
+</g>
+<!-- xn&#45;&gt;h2n -->
+<g id="edge18" class="edge">
+<title>xn&#45;&gt;h2n</title>
+<path fill="none" stroke="black" d="M251.6,-36.3C251.6,-44.02 251.6,-53.29 251.6,-61.89" />
+<polygon fill="black" stroke="black" points="248.1,-61.9 251.6,-71.9 255.1,-61.9 248.1,-61.9" />
+</g>
+</g>
+</svg>
+</div>
+</div>
+
+<h5 id="37n-vs-m-的-rnn">3.7、N vs. M 的 RNN</h5>
+
+<p>对于输入序列长度（长度 N）和输出序列长度（长度 M）不一样的 RNN 模型结构，也可以叫做 Encoder-Decoder 模型，也可以叫 Seq2Seq 模型。首先接收输入序列的 Encoder 先将输入序列转成一个隐藏态的上下文表示 C。C 可以只与最后一个隐藏层有关，甚至可以是最后一个隐藏层生成的隐藏态直接设置为 C，C 还可以与所有隐藏层有关。</p>
+
+<p>有了这个 C 之后，再用 Decoder 进行解码，也就是从把 C 作为输入状态开始，生成输出序列。</p>
+
+<div style="text-align: center;">
+<div class="graphviz-wrapper">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg role="img" aria-label="graphviz-094de5e41d0af67d4c5617e0f04d7b57" width="638pt" height="188pt" viewBox="0.00 0.00 638.00 188.00">
+<title>graphviz-094de5e41d0af67d4c5617e0f04d7b57</title>
+<desc>
+digraph G {
+	rankdir=BT
+	{rank=same e1 e2 eddd en C d1 d2 dddd dm}
+
+	eddd[label=&quot;...&quot;]
+	dddd[label=&quot;...&quot;]
+	xddd[label=&quot;...&quot;]
+	yddd[label=&quot;...&quot;]
+	C[shape=plaintext]
+	x1[shape=plaintext]
+	x2[shape=plaintext]
+	xddd[shape=plaintext]
+	xn[shape=plaintext]
+	y1[shape=plaintext]
+	y2[shape=plaintext]
+	yddd[shape=plaintext]
+	yn[shape=plaintext]
+
+	x1 -&gt; e1
+	x2 -&gt; e2
+	xddd -&gt; eddd
+	xn -&gt; en
+
+	e1 -&gt; e2
+	e2 -&gt; eddd
+	eddd -&gt; en
+
+	en -&gt; C
+	C -&gt; d1
+
+	d1 -&gt; y1
+	d2 -&gt; y2
+	dddd -&gt; yddd
+	dm -&gt; yn
+
+	d1 -&gt; d2
+	d2 -&gt; dddd
+	dddd -&gt; dm
+}
+</desc>
+
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-184 634,-184 634,4 -4,4" />
+<!-- e1 -->
+<g id="node1" class="node">
+<title>e1</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="27" y="-86.3" font-family="Times,serif" font-size="14.00">e1</text>
+</g>
+<!-- e2 -->
+<g id="node2" class="node">
+<title>e2</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="99" y="-86.3" font-family="Times,serif" font-size="14.00">e2</text>
+</g>
+<!-- e1&#45;&gt;e2 -->
+<g id="edge5" class="edge">
+<title>e1&#45;&gt;e2</title>
+<path fill="none" stroke="black" d="M54,-90C56.61,-90 59.23,-90 61.84,-90" />
+<polygon fill="black" stroke="black" points="61.93,-93.5 71.93,-90 61.93,-86.5 61.93,-93.5" />
+</g>
+<!-- eddd -->
+<g id="node3" class="node">
+<title>eddd</title>
+<ellipse fill="none" stroke="black" cx="171" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="171" y="-86.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- e2&#45;&gt;eddd -->
+<g id="edge6" class="edge">
+<title>e2&#45;&gt;eddd</title>
+<path fill="none" stroke="black" d="M126,-90C128.61,-90 131.23,-90 133.84,-90" />
+<polygon fill="black" stroke="black" points="133.93,-93.5 143.93,-90 133.93,-86.5 133.93,-93.5" />
+</g>
+<!-- en -->
+<g id="node4" class="node">
+<title>en</title>
+<ellipse fill="none" stroke="black" cx="243" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="243" y="-86.3" font-family="Times,serif" font-size="14.00">en</text>
+</g>
+<!-- eddd&#45;&gt;en -->
+<g id="edge7" class="edge">
+<title>eddd&#45;&gt;en</title>
+<path fill="none" stroke="black" d="M198,-90C200.61,-90 203.23,-90 205.84,-90" />
+<polygon fill="black" stroke="black" points="205.93,-93.5 215.93,-90 205.93,-86.5 205.93,-93.5" />
+</g>
+<!-- C -->
+<g id="node5" class="node">
+<title>C</title>
+<text text-anchor="middle" x="315" y="-86.3" font-family="Times,serif" font-size="14.00">C</text>
+</g>
+<!-- en&#45;&gt;C -->
+<g id="edge8" class="edge">
+<title>en&#45;&gt;C</title>
+<path fill="none" stroke="black" d="M270,-90C272.61,-90 275.23,-90 277.84,-90" />
+<polygon fill="black" stroke="black" points="277.93,-93.5 287.93,-90 277.93,-86.5 277.93,-93.5" />
+</g>
+<!-- d1 -->
+<g id="node6" class="node">
+<title>d1</title>
+<ellipse fill="none" stroke="black" cx="387" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="387" y="-86.3" font-family="Times,serif" font-size="14.00">d1</text>
+</g>
+<!-- C&#45;&gt;d1 -->
+<g id="edge9" class="edge">
+<title>C&#45;&gt;d1</title>
+<path fill="none" stroke="black" d="M342.28,-90C344.74,-90 347.19,-90 349.65,-90" />
+<polygon fill="black" stroke="black" points="349.75,-93.5 359.75,-90 349.75,-86.5 349.75,-93.5" />
+</g>
+<!-- d2 -->
+<g id="node7" class="node">
+<title>d2</title>
+<ellipse fill="none" stroke="black" cx="459" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="459" y="-86.3" font-family="Times,serif" font-size="14.00">d2</text>
+</g>
+<!-- d1&#45;&gt;d2 -->
+<g id="edge14" class="edge">
+<title>d1&#45;&gt;d2</title>
+<path fill="none" stroke="black" d="M414,-90C416.61,-90 419.23,-90 421.84,-90" />
+<polygon fill="black" stroke="black" points="421.93,-93.5 431.93,-90 421.93,-86.5 421.93,-93.5" />
+</g>
+<!-- y1 -->
+<g id="node15" class="node">
+<title>y1</title>
+<text text-anchor="middle" x="387" y="-158.3" font-family="Times,serif" font-size="14.00">y1</text>
+</g>
+<!-- d1&#45;&gt;y1 -->
+<g id="edge10" class="edge">
+<title>d1&#45;&gt;y1</title>
+<path fill="none" stroke="black" d="M387,-108.3C387,-116.02 387,-125.29 387,-133.89" />
+<polygon fill="black" stroke="black" points="383.5,-133.9 387,-143.9 390.5,-133.9 383.5,-133.9" />
+</g>
+<!-- dddd -->
+<g id="node8" class="node">
+<title>dddd</title>
+<ellipse fill="none" stroke="black" cx="531" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="531" y="-86.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- d2&#45;&gt;dddd -->
+<g id="edge15" class="edge">
+<title>d2&#45;&gt;dddd</title>
+<path fill="none" stroke="black" d="M486,-90C488.61,-90 491.23,-90 493.84,-90" />
+<polygon fill="black" stroke="black" points="493.93,-93.5 503.93,-90 493.93,-86.5 493.93,-93.5" />
+</g>
+<!-- y2 -->
+<g id="node16" class="node">
+<title>y2</title>
+<text text-anchor="middle" x="459" y="-158.3" font-family="Times,serif" font-size="14.00">y2</text>
+</g>
+<!-- d2&#45;&gt;y2 -->
+<g id="edge11" class="edge">
+<title>d2&#45;&gt;y2</title>
+<path fill="none" stroke="black" d="M459,-108.3C459,-116.02 459,-125.29 459,-133.89" />
+<polygon fill="black" stroke="black" points="455.5,-133.9 459,-143.9 462.5,-133.9 455.5,-133.9" />
+</g>
+<!-- dm -->
+<g id="node9" class="node">
+<title>dm</title>
+<ellipse fill="none" stroke="black" cx="603" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="603" y="-86.3" font-family="Times,serif" font-size="14.00">dm</text>
+</g>
+<!-- dddd&#45;&gt;dm -->
+<g id="edge16" class="edge">
+<title>dddd&#45;&gt;dm</title>
+<path fill="none" stroke="black" d="M558,-90C560.61,-90 563.23,-90 565.84,-90" />
+<polygon fill="black" stroke="black" points="565.93,-93.5 575.93,-90 565.93,-86.5 565.93,-93.5" />
+</g>
+<!-- yddd -->
+<g id="node11" class="node">
+<title>yddd</title>
+<text text-anchor="middle" x="531" y="-158.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- dddd&#45;&gt;yddd -->
+<g id="edge12" class="edge">
+<title>dddd&#45;&gt;yddd</title>
+<path fill="none" stroke="black" d="M531,-108.3C531,-116.02 531,-125.29 531,-133.89" />
+<polygon fill="black" stroke="black" points="527.5,-133.9 531,-143.9 534.5,-133.9 527.5,-133.9" />
+</g>
+<!-- yn -->
+<g id="node17" class="node">
+<title>yn</title>
+<text text-anchor="middle" x="603" y="-158.3" font-family="Times,serif" font-size="14.00">yn</text>
+</g>
+<!-- dm&#45;&gt;yn -->
+<g id="edge13" class="edge">
+<title>dm&#45;&gt;yn</title>
+<path fill="none" stroke="black" d="M603,-108.3C603,-116.02 603,-125.29 603,-133.89" />
+<polygon fill="black" stroke="black" points="599.5,-133.9 603,-143.9 606.5,-133.9 599.5,-133.9" />
+</g>
+<!-- xddd -->
+<g id="node10" class="node">
+<title>xddd</title>
+<text text-anchor="middle" x="171" y="-14.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- xddd&#45;&gt;eddd -->
+<g id="edge3" class="edge">
+<title>xddd&#45;&gt;eddd</title>
+<path fill="none" stroke="black" d="M171,-36.3C171,-44.02 171,-53.29 171,-61.89" />
+<polygon fill="black" stroke="black" points="167.5,-61.9 171,-71.9 174.5,-61.9 167.5,-61.9" />
+</g>
+<!-- x1 -->
+<g id="node12" class="node">
+<title>x1</title>
+<text text-anchor="middle" x="27" y="-14.3" font-family="Times,serif" font-size="14.00">x1</text>
+</g>
+<!-- x1&#45;&gt;e1 -->
+<g id="edge1" class="edge">
+<title>x1&#45;&gt;e1</title>
+<path fill="none" stroke="black" d="M27,-36.3C27,-44.02 27,-53.29 27,-61.89" />
+<polygon fill="black" stroke="black" points="23.5,-61.9 27,-71.9 30.5,-61.9 23.5,-61.9" />
+</g>
+<!-- x2 -->
+<g id="node13" class="node">
+<title>x2</title>
+<text text-anchor="middle" x="99" y="-14.3" font-family="Times,serif" font-size="14.00">x2</text>
+</g>
+<!-- x2&#45;&gt;e2 -->
+<g id="edge2" class="edge">
+<title>x2&#45;&gt;e2</title>
+<path fill="none" stroke="black" d="M99,-36.3C99,-44.02 99,-53.29 99,-61.89" />
+<polygon fill="black" stroke="black" points="95.5,-61.9 99,-71.9 102.5,-61.9 95.5,-61.9" />
+</g>
+<!-- xn -->
+<g id="node14" class="node">
+<title>xn</title>
+<text text-anchor="middle" x="243" y="-14.3" font-family="Times,serif" font-size="14.00">xn</text>
+</g>
+<!-- xn&#45;&gt;en -->
+<g id="edge4" class="edge">
+<title>xn&#45;&gt;en</title>
+<path fill="none" stroke="black" d="M243,-36.3C243,-44.02 243,-53.29 243,-61.89" />
+<polygon fill="black" stroke="black" points="239.5,-61.9 243,-71.9 246.5,-61.9 239.5,-61.9" />
+</g>
+</g>
+</svg>
+</div>
+</div>
+
+<p>这种的应用就非常广了，因为大多数时候输入序列与输出序列的长度都是不同的，比如最常见的应用「翻译」，从一个语言翻译成另一个语言；再比如 AI 的一个领域「语音识别」，将语音序列输入后生成所识别的文本内容；还有比如 ChatGPT 这种问答应用等等。</p>
+
+<p>但是 Seq2Seq 模型有一个很显著的问题，就是当输入序列很长时，Encoder 生成的 Context 可能就会出现所捕捉的信息不充分的情况，导致 Decoder 最终的输出是不尽如人意的。</p>
+
+<h4 id="4attention-机制">4、Attention 机制</h4>
+
+<p>Encoder-Decoder 的一个非常严重的问题，是依赖中间那个 context 向量，则无法处理特别长的输入序列 —— 记忆力不足，会忘事儿。而忘事儿的根本原因，是没有「注意力」。</p>
+
+<h5 id="为什么说-rnn-模型没有体现注意力">为什么说 RNN 模型没有体现「注意力」？</h5>
+
+<p>对于一般的 RNN 模型，Encoder-Decoder 结构并没有体现「注意力」—— 这句话怎么理解？当输入序列经过 Encoder 生成的中间结果（上下文 C），被喂给 Decoder 时，这些中间结果对所生成序列里的哪个词，都没有区别（没有特别关照谁）。这相当于在说：输入序列里的每个词，对于生成任何一个输出的词的影响，是一样的，而不是输出某个词时是聚焦特定的一些输入词。这就是模型没有注意力机制。</p>
+
+<p>人脑的注意力模型，其实是资源分配模型。NLP 领域的注意力模型，是在 2014 年被提出的，后来逐渐成为 NLP 领域的一个广泛应用的机制。</p>
+
+<p>所以 Attention 机制，就是在 Decoder 时，不是所有输出都依赖相同的「上下文  \(\bm{C}_t\) 」，而是时刻 t 的输出，使用  \(C_t\) ，而这个  \(\bm{C}_t\)  来自对每个输入数据项根据「注意力」进行的加权。</p>
+
+<div style="text-align: center;">
+<div class="graphviz-wrapper">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg role="img" aria-label="graphviz-f66c634a9c7c02915e5610af76c3b1b7" width="436pt" height="336pt" viewBox="0.00 0.00 436.00 336.00">
+<title>graphviz-f66c634a9c7c02915e5610af76c3b1b7</title>
+<desc>
+digraph G {
+	rankdir=BT
+	splines=ortho
+	{rank=same e1 e2 eddd en}
+	{rank=same d1 d2 dddd dt0 dt dddd2}
+
+	eddd[label=&quot;...&quot;]
+	dddd[label=&quot;...&quot;]
+	xddd[label=&quot;...&quot;]
+	yddd[label=&quot;...&quot;]
+	dt[label=&quot;d_t&quot;]
+	dt0[label=&quot;d_t-1&quot;]
+	yt[label=&quot;y_t&quot;]
+	yt0[label=&quot;y_t-1&quot;]
+	Ct[shape=plaintext]
+	x1[shape=plaintext]
+	x2[shape=plaintext]
+	xddd[shape=plaintext]
+	xn[shape=plaintext]
+	y1[shape=plaintext]
+	y2[shape=plaintext]
+	yddd[shape=plaintext]
+	dddd2[shape=plaintext, label=&quot;&quot;]
+	Ct[label=&quot;C_t&quot;, shape=&quot;square&quot;]
+
+	x1 -&gt; e1
+	x2 -&gt; e2
+	xddd -&gt; eddd
+	xn -&gt; en
+
+	e1 -&gt; e2
+	e2 -&gt; eddd
+	eddd -&gt; en
+
+	Ct -&gt; dt
+
+	d1 -&gt; y1
+	d2 -&gt; y2
+	dddd -&gt; yddd
+	dt0 -&gt; yt0
+	dt -&gt; yt
+
+	d1 -&gt; d2
+	d2 -&gt; dddd
+	dddd -&gt; dt0
+	dt0 -&gt; dt
+
+	e1 -&gt; Ct
+	e2 -&gt; Ct
+	eddd -&gt; Ct
+	en -&gt; Ct
+
+	dt -&gt; dddd2
+	dt0 -&gt; Ct
+}
+</desc>
+
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 332)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-332 432,-332 432,4 -4,4" />
+<!-- e1 -->
+<g id="node1" class="node">
+<title>e1</title>
+<ellipse fill="none" stroke="black" cx="181" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="181" y="-86.3" font-family="Times,serif" font-size="14.00">e1</text>
+</g>
+<!-- e2 -->
+<g id="node2" class="node">
+<title>e2</title>
+<ellipse fill="none" stroke="black" cx="253" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="253" y="-86.3" font-family="Times,serif" font-size="14.00">e2</text>
+</g>
+<!-- e1&#45;&gt;e2 -->
+<g id="edge5" class="edge">
+<title>e1&#45;&gt;e2</title>
+<path fill="none" stroke="black" d="M208.22,-90C208.22,-90 215.74,-90 215.74,-90" />
+<polygon fill="black" stroke="black" points="215.74,-93.5 225.74,-90 215.74,-86.5 215.74,-93.5" />
+</g>
+<!-- Ct -->
+<g id="node15" class="node">
+<title>Ct</title>
+<polygon fill="none" stroke="black" points="309,-184 269,-184 269,-144 309,-144 309,-184" />
+<text text-anchor="middle" x="289" y="-160.3" font-family="Times,serif" font-size="14.00">C_t</text>
+</g>
+<!-- e1&#45;&gt;Ct -->
+<g id="edge18" class="edge">
+<title>e1&#45;&gt;Ct</title>
+<path fill="none" stroke="black" d="M203,-100.6C203,-121.06 203,-164 203,-164 203,-164 258.62,-164 258.62,-164" />
+<polygon fill="black" stroke="black" points="258.62,-167.5 268.62,-164 258.62,-160.5 258.62,-167.5" />
+</g>
+<!-- eddd -->
+<g id="node3" class="node">
+<title>eddd</title>
+<ellipse fill="none" stroke="black" cx="325" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="325" y="-86.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- e2&#45;&gt;eddd -->
+<g id="edge6" class="edge">
+<title>e2&#45;&gt;eddd</title>
+<path fill="none" stroke="black" d="M280.22,-90C280.22,-90 287.74,-90 287.74,-90" />
+<polygon fill="black" stroke="black" points="287.74,-93.5 297.74,-90 287.74,-86.5 287.74,-93.5" />
+</g>
+<!-- e2&#45;&gt;Ct -->
+<g id="edge19" class="edge">
+<title>e2&#45;&gt;Ct</title>
+<path fill="none" stroke="black" d="M274.5,-100.92C274.5,-100.92 274.5,-133.82 274.5,-133.82" />
+<polygon fill="black" stroke="black" points="271,-133.82 274.5,-143.82 278,-133.82 271,-133.82" />
+</g>
+<!-- en -->
+<g id="node4" class="node">
+<title>en</title>
+<ellipse fill="none" stroke="black" cx="397" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="397" y="-86.3" font-family="Times,serif" font-size="14.00">en</text>
+</g>
+<!-- eddd&#45;&gt;en -->
+<g id="edge7" class="edge">
+<title>eddd&#45;&gt;en</title>
+<path fill="none" stroke="black" d="M352.22,-90C352.22,-90 359.74,-90 359.74,-90" />
+<polygon fill="black" stroke="black" points="359.74,-93.5 369.74,-90 359.74,-86.5 359.74,-93.5" />
+</g>
+<!-- eddd&#45;&gt;Ct -->
+<g id="edge20" class="edge">
+<title>eddd&#45;&gt;Ct</title>
+<path fill="none" stroke="black" d="M303.5,-100.92C303.5,-100.92 303.5,-133.82 303.5,-133.82" />
+<polygon fill="black" stroke="black" points="300,-133.82 303.5,-143.82 307,-133.82 300,-133.82" />
+</g>
+<!-- en&#45;&gt;Ct -->
+<g id="edge21" class="edge">
+<title>en&#45;&gt;Ct</title>
+<path fill="none" stroke="black" d="M399,-108.29C399,-130.21 399,-164 399,-164 399,-164 319.18,-164 319.18,-164" />
+<polygon fill="black" stroke="black" points="319.18,-160.5 309.18,-164 319.18,-167.5 319.18,-160.5" />
+</g>
+<!-- d1 -->
+<g id="node5" class="node">
+<title>d1</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-238" rx="27" ry="18" />
+<text text-anchor="middle" x="27" y="-234.3" font-family="Times,serif" font-size="14.00">d1</text>
+</g>
+<!-- d2 -->
+<g id="node6" class="node">
+<title>d2</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-238" rx="27" ry="18" />
+<text text-anchor="middle" x="99" y="-234.3" font-family="Times,serif" font-size="14.00">d2</text>
+</g>
+<!-- d1&#45;&gt;d2 -->
+<g id="edge14" class="edge">
+<title>d1&#45;&gt;d2</title>
+<path fill="none" stroke="black" d="M54.22,-238C54.22,-238 61.74,-238 61.74,-238" />
+<polygon fill="black" stroke="black" points="61.74,-241.5 71.74,-238 61.74,-234.5 61.74,-241.5" />
+</g>
+<!-- y1 -->
+<g id="node19" class="node">
+<title>y1</title>
+<text text-anchor="middle" x="27" y="-306.3" font-family="Times,serif" font-size="14.00">y1</text>
+</g>
+<!-- d1&#45;&gt;y1 -->
+<g id="edge9" class="edge">
+<title>d1&#45;&gt;y1</title>
+<path fill="none" stroke="black" d="M27,-256.17C27,-256.17 27,-281.59 27,-281.59" />
+<polygon fill="black" stroke="black" points="23.5,-281.59 27,-291.59 30.5,-281.59 23.5,-281.59" />
+</g>
+<!-- dddd -->
+<g id="node7" class="node">
+<title>dddd</title>
+<ellipse fill="none" stroke="black" cx="171" cy="-238" rx="27" ry="18" />
+<text text-anchor="middle" x="171" y="-234.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- d2&#45;&gt;dddd -->
+<g id="edge15" class="edge">
+<title>d2&#45;&gt;dddd</title>
+<path fill="none" stroke="black" d="M126.22,-238C126.22,-238 133.74,-238 133.74,-238" />
+<polygon fill="black" stroke="black" points="133.74,-241.5 143.74,-238 133.74,-234.5 133.74,-241.5" />
+</g>
+<!-- y2 -->
+<g id="node20" class="node">
+<title>y2</title>
+<text text-anchor="middle" x="99" y="-306.3" font-family="Times,serif" font-size="14.00">y2</text>
+</g>
+<!-- d2&#45;&gt;y2 -->
+<g id="edge10" class="edge">
+<title>d2&#45;&gt;y2</title>
+<path fill="none" stroke="black" d="M99,-256.17C99,-256.17 99,-281.59 99,-281.59" />
+<polygon fill="black" stroke="black" points="95.5,-281.59 99,-291.59 102.5,-281.59 95.5,-281.59" />
+</g>
+<!-- dt0 -->
+<g id="node8" class="node">
+<title>dt0</title>
+<ellipse fill="none" stroke="black" cx="250" cy="-238" rx="33.6" ry="18" />
+<text text-anchor="middle" x="250" y="-234.3" font-family="Times,serif" font-size="14.00">d_t&#45;1</text>
+</g>
+<!-- dddd&#45;&gt;dt0 -->
+<g id="edge16" class="edge">
+<title>dddd&#45;&gt;dt0</title>
+<path fill="none" stroke="black" d="M198.19,-238C198.19,-238 206.2,-238 206.2,-238" />
+<polygon fill="black" stroke="black" points="206.2,-241.5 216.2,-238 206.2,-234.5 206.2,-241.5" />
+</g>
+<!-- yddd -->
+<g id="node12" class="node">
+<title>yddd</title>
+<text text-anchor="middle" x="171" y="-306.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- dddd&#45;&gt;yddd -->
+<g id="edge11" class="edge">
+<title>dddd&#45;&gt;yddd</title>
+<path fill="none" stroke="black" d="M171,-256.17C171,-256.17 171,-281.59 171,-281.59" />
+<polygon fill="black" stroke="black" points="167.5,-281.59 171,-291.59 174.5,-281.59 167.5,-281.59" />
+</g>
+<!-- dt -->
+<g id="node9" class="node">
+<title>dt</title>
+<ellipse fill="none" stroke="black" cx="329" cy="-238" rx="27" ry="18" />
+<text text-anchor="middle" x="329" y="-234.3" font-family="Times,serif" font-size="14.00">d_t</text>
+</g>
+<!-- dt0&#45;&gt;dt -->
+<g id="edge17" class="edge">
+<title>dt0&#45;&gt;dt</title>
+<path fill="none" stroke="black" d="M283.96,-238C283.96,-238 291.98,-238 291.98,-238" />
+<polygon fill="black" stroke="black" points="291.98,-241.5 301.98,-238 291.98,-234.5 291.98,-241.5" />
+</g>
+<!-- yt0 -->
+<g id="node14" class="node">
+<title>yt0</title>
+<ellipse fill="none" stroke="black" cx="250" cy="-310" rx="33.29" ry="18" />
+<text text-anchor="middle" x="250" y="-306.3" font-family="Times,serif" font-size="14.00">y_t&#45;1</text>
+</g>
+<!-- dt0&#45;&gt;yt0 -->
+<g id="edge12" class="edge">
+<title>dt0&#45;&gt;yt0</title>
+<path fill="none" stroke="black" d="M250,-256.17C250,-256.17 250,-281.59 250,-281.59" />
+<polygon fill="black" stroke="black" points="246.5,-281.59 250,-291.59 253.5,-281.59 246.5,-281.59" />
+</g>
+<!-- dt0&#45;&gt;Ct -->
+<g id="edge23" class="edge">
+<title>dt0&#45;&gt;Ct</title>
+<path fill="none" stroke="black" d="M276.4,-226.44C276.4,-226.44 276.4,-194.12 276.4,-194.12" />
+<polygon fill="black" stroke="black" points="279.9,-194.12 276.4,-184.12 272.9,-194.12 279.9,-194.12" />
+</g>
+<!-- dddd2 -->
+<g id="node10" class="node">
+<title>dddd2</title>
+</g>
+<!-- dt&#45;&gt;dddd2 -->
+<g id="edge22" class="edge">
+<title>dt&#45;&gt;dddd2</title>
+<path fill="none" stroke="black" d="M356.22,-238C356.22,-238 363.74,-238 363.74,-238" />
+<polygon fill="black" stroke="black" points="363.74,-241.5 373.74,-238 363.74,-234.5 363.74,-241.5" />
+</g>
+<!-- yt -->
+<g id="node13" class="node">
+<title>yt</title>
+<ellipse fill="none" stroke="black" cx="329" cy="-310" rx="27" ry="18" />
+<text text-anchor="middle" x="329" y="-306.3" font-family="Times,serif" font-size="14.00">y_t</text>
+</g>
+<!-- dt&#45;&gt;yt -->
+<g id="edge13" class="edge">
+<title>dt&#45;&gt;yt</title>
+<path fill="none" stroke="black" d="M329,-256.17C329,-256.17 329,-281.59 329,-281.59" />
+<polygon fill="black" stroke="black" points="325.5,-281.59 329,-291.59 332.5,-281.59 325.5,-281.59" />
+</g>
+<!-- xddd -->
+<g id="node11" class="node">
+<title>xddd</title>
+<text text-anchor="middle" x="325" y="-14.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- xddd&#45;&gt;eddd -->
+<g id="edge3" class="edge">
+<title>xddd&#45;&gt;eddd</title>
+<path fill="none" stroke="black" d="M325,-36.17C325,-36.17 325,-61.59 325,-61.59" />
+<polygon fill="black" stroke="black" points="321.5,-61.59 325,-71.59 328.5,-61.59 321.5,-61.59" />
+</g>
+<!-- Ct&#45;&gt;dt -->
+<g id="edge8" class="edge">
+<title>Ct&#45;&gt;dt</title>
+<path fill="none" stroke="black" d="M305.5,-184.22C305.5,-184.22 305.5,-218.8 305.5,-218.8" />
+<polygon fill="black" stroke="black" points="302,-218.8 305.5,-228.8 309,-218.8 302,-218.8" />
+</g>
+<!-- x1 -->
+<g id="node16" class="node">
+<title>x1</title>
+<text text-anchor="middle" x="181" y="-14.3" font-family="Times,serif" font-size="14.00">x1</text>
+</g>
+<!-- x1&#45;&gt;e1 -->
+<g id="edge1" class="edge">
+<title>x1&#45;&gt;e1</title>
+<path fill="none" stroke="black" d="M181,-36.17C181,-36.17 181,-61.59 181,-61.59" />
+<polygon fill="black" stroke="black" points="177.5,-61.59 181,-71.59 184.5,-61.59 177.5,-61.59" />
+</g>
+<!-- x2 -->
+<g id="node17" class="node">
+<title>x2</title>
+<text text-anchor="middle" x="253" y="-14.3" font-family="Times,serif" font-size="14.00">x2</text>
+</g>
+<!-- x2&#45;&gt;e2 -->
+<g id="edge2" class="edge">
+<title>x2&#45;&gt;e2</title>
+<path fill="none" stroke="black" d="M253,-36.17C253,-36.17 253,-61.59 253,-61.59" />
+<polygon fill="black" stroke="black" points="249.5,-61.59 253,-71.59 256.5,-61.59 249.5,-61.59" />
+</g>
+<!-- xn -->
+<g id="node18" class="node">
+<title>xn</title>
+<text text-anchor="middle" x="397" y="-14.3" font-family="Times,serif" font-size="14.00">xn</text>
+</g>
+<!-- xn&#45;&gt;en -->
+<g id="edge4" class="edge">
+<title>xn&#45;&gt;en</title>
+<path fill="none" stroke="black" d="M397,-36.17C397,-36.17 397,-61.59 397,-61.59" />
+<polygon fill="black" stroke="black" points="393.5,-61.59 397,-71.59 400.5,-61.59 393.5,-61.59" />
+</g>
+</g>
+</svg>
+</div>
+</div>
+
+<p>可以应用的场景，比如对于一个电商平台中很常见的白底图，其边缘的白色区域都是无用的，那么就不应该被关注（关注权重为 0）。比如机器翻译中，翻译词都是对局部输入重点关注的。</p>
+
+<p>针对时刻 t 要产出的输出，隐藏层每一个隐藏细胞都与  \(\bm{C}_t\)  有一个权重关系  \(\bm{\alpha}_{t,i}\)  其中  \(1\le i\le n\) ，这个权重值与「输入项经过编码器后隐藏层后的输出、解码器的前一时刻隐藏层输出」两者有关：</p>
+
+\[\begin{aligned}
+&amp;\bm{e} = tanh(\bm{W}^{xe} \cdot \bm{x} + \bm{b}^{xe}) \\
+&amp;s_{i,t} = score(\bm{e}_i,\bm{d}_{t-1}) \\
+&amp;\alpha_{i,t} = \frac{e^{s_{i,t}}}{\textstyle\sum_{j=1}^n e^{s_{j,t}}} \\
+&amp;\bm{C}_t = \displaystyle\sum_{i=1}^n \alpha_{i,t} \bm{e}_i \\
+&amp;\bm{d}_t = function(\bm{d}_{t-1}, \bm{y}_{t-1}, \bm{C}_t) \\
+&amp;\bm{y} = Softmax(\bm{W}^{dy} \cdot \bm{d} + \bm{b}^{dy})
+\end{aligned}\]
+
+<h5 id="参考">参考：</h5>
+
+<ul>
+  <li>《自然语言处理：基于预训练模型的方法》车万翔 等</li>
+  <li>《自然语言处理实战：预训练模型应用及其产品化》安库·A·帕特尔 等</li>
+  <li>https://lilianweng.github.io/posts/2018-06-24-attention/</li>
+</ul>
+
+<h4 id="5transformer">5、Transformer</h4>
+
+<p>这里引用一段车教授在《自然语言处理：基于预训练模型的方法》中的一段话：</p>
+
+<blockquote>
+  <p>从本意上讲，其是将一个向量序列变换成另一个向量序列，所以可以翻译成“变换器”或“转换器”。其还有另一个含义是“变压器”，也就是对电压进行变换，所以翻译成变压器也比较形象。当然，还有一个更有趣的翻译是“变形金刚”，这一翻译不但体现了其能变换的特性，还寓意着该模型如同变形金刚一样强大。目前，Transformer还没有一个翻译的共识，绝大部分人更愿意使用其英文名。</p>
+</blockquote>
+
+<h5 id="参考-1">参考：</h5>
+
+<ul>
+  <li>《自然语言处理：基于预训练模型的方法》车万翔 等</li>
+  <li>《自然语言处理实战：预训练模型应用及其产品化》安库·A·帕特尔 等</li>
+  <li>https://github.com/lilianweng/transformer-tensorflow/blob/master/transformer.py</li>
+</ul>
+
+<h3 id="reference">Reference</h3>
+
+<ol>
+  <li>https://stanford.edu/~shervine/teaching/cs-230/</li>
+  <li>https://www.analyticsvidhya.com/blog/2020/02/cnn-vs-rnn-vs-mlp-analyzing-3-types-of-neural-networks-in-deep-learning/</li>
+  <li>https://en.wikipedia.org/wiki/Recurrent_neural_network</li>
+  <li>https://www.telusinternational.com/insights/ai-data/article/difference-between-cnn-and-rnn</li>
+  <li>http://colah.github.io/posts/2015-08-Understanding-LSTMs/</li>
+  <li>https://zhuanlan.zhihu.com/p/52119092</li>
+  <li>https://katex.org/docs/supported.html</li>
+  <li>https://zhuanlan.zhihu.com/p/28054589</li>
+  <li>https://zhuanlan.zhihu.com/p/91315967</li>
+  <li>https://zhuanlan.zhihu.com/p/460967976</li>
+  <li>https://zhuanlan.zhihu.com/p/47184529</li>
+  <li>http://www.idryman.org/blog/2012/04/04/jekyll-graphviz-plugin/</li>
+  <li>http://wjhsh.net/jiangxinyang-p-9367497.html</li>
+</ol>
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+	<span>
+		-<br/><br/>
+		船长还不会游泳 at 微信公众号/微博<br/>
+		@麦克船长 at 即刻/知乎/小宇宙/掘金/小红书/微信读书<br/>
+		@船长模玩 at Bilibili<br/>
+		Copyright © 2011-2023, MikeCaptain.com
+	</span>
+</footer>
+
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>

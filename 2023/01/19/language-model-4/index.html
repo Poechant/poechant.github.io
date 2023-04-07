@@ -1,0 +1,1985 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>麦克船长 NLP 语言模型技术笔记 4：循环神经网络（RNN）</title>
+  	<meta name="description" content="如果您喜欢机器学习，那么您一定会喜欢这篇文章。在这篇文章中，我们将深入探讨 RNN（循环神经网络），这是一种强大的神经网络模型，能够预测序列数据，例如文本、语音和时间序列。我们将通过生动的代码示例和实际案例来演示如何使用 RNN，并在日常生活中真实地体验它的功能。您将学习到如何使用 RNN 解决各种机器学习问题，并动手尝试运用 RNN 解决实际问题。这篇文章将为您提供一个完整的 RNN 入门指南，并使您对 RNN 有更深入的了解。">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+  	<!-- KaTeX -->
+  	<link rel="stylesheet" href="/assets/plugins/katex.0.11.1/katex.min.css">
+  	
+
+  	
+  		<script async src="https://www.googletagmanager.com/gtag/js?id=G-CH4708X4R5"></script>
+  		<script>
+    		window.dataLayer = window.dataLayer || [];
+    		function gtag(){dataLayer.push(arguments);}
+    		gtag('js', new Date());
+
+    		gtag('config', 'G-CH4708X4R5');
+  		</script>
+	
+
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/booklist/" title="读书行路">读书行路</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/target/" title="目标感">目标感</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/energy" title="能源">能源</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/business" title="商业">商业</a>
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="/target/" title="目标感">目标感</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/energy" title="能源">能源</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/business" title="商业">商业</a>
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="/target/" title="目标感">目标感</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>麦克船长 NLP 语言模型技术笔记 4：循环神经网络（RNN）</h2>		
+	<time datetime="2023-01-19T21:01:31+00:00" class="by-line">19 Jan 2023, 香港 | 麦克船长 | 总计 14225 字</time>
+	<div class="content">
+		<p><strong>本文目录</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#1经典结构的-rnn" id="markdown-toc-1经典结构的-rnn">1、经典结构的 RNN</a></li>
+  <li><a href="#2n-vs1-的-rnn" id="markdown-toc-2n-vs1-的-rnn">2、N vs.1 的 RNN</a></li>
+  <li><a href="#31-vs-n-的-rnn" id="markdown-toc-31-vs-n-的-rnn">3、1 vs. N 的 RNN</a></li>
+  <li><a href="#4lstmlong-short-term-memory长短时记忆网络" id="markdown-toc-4lstmlong-short-term-memory长短时记忆网络">4、LSTM（Long Short-Term Memory）长短时记忆网络</a>    <ul>
+      <li><a href="#41如何理解这个-short-term-呢" id="markdown-toc-41如何理解这个-short-term-呢">4.1、如何理解这个 Short-Term 呢？</a></li>
+      <li><a href="#42引入遗忘门-f输入门-i输出门-o记忆细胞-c" id="markdown-toc-42引入遗忘门-f输入门-i输出门-o记忆细胞-c">4.2、引入遗忘门 f、输入门 i、输出门 o、记忆细胞 c</a></li>
+    </ul>
+  </li>
+  <li><a href="#5双向循环神经网络双向-lstm" id="markdown-toc-5双向循环神经网络双向-lstm">5、双向循环神经网络、双向 LSTM</a></li>
+  <li><a href="#6堆叠循环神经网络堆叠-lstm" id="markdown-toc-6堆叠循环神经网络堆叠-lstm">6、堆叠循环神经网络、堆叠 LSTM</a></li>
+  <li><a href="#7n-vs-m-的-rnn" id="markdown-toc-7n-vs-m-的-rnn">7、N vs. M 的 RNN</a></li>
+  <li><a href="#reference" id="markdown-toc-reference">Reference</a></li>
+</ul>
+
+<p>如果您喜欢机器学习，那么您一定会喜欢这篇文章。在这篇文章中，我们将深入探讨 RNN（循环神经网络），这是一种强大的神经网络模型，能够预测序列数据，例如文本、语音和时间序列。我们将通过生动的代码示例和实际案例来演示如何使用 RNN，并在日常生活中真实地体验它的功能。您将学习到如何使用 RNN 解决各种机器学习问题，并动手尝试运用 RNN 解决实际问题。这篇文章将为您提供一个完整的 RNN 入门指南，并使您对 RNN 有更深入的了解。</p>
+
+<p>RNN（Recurrent Neural Network）的 R 是 Recurrent 的意思，所以这是一个贷循环的神经网络。首先要明白一点，你并不需要搞懂 CNN 后才能学习 RNN 模型。你只要了解了 MLP 就可以学习 RNN 了。</p>
+
+<h3 id="1经典结构的-rnn">1、经典结构的 RNN</h3>
+
+<p><img src="/img/src/2022-12-19-language-model-1.png" alt="image" /></p>
+
+<p>上图这是一个经典结构的 RNN 示意图，Unfold 箭头右侧是展开示意。输入序列（这里用 x 表示）传递给隐藏层（hidden layer，这里用 h 表示），处理完生成输出序列（这里用 o 表示）。序列的下一个词输入时的、上一步隐藏层会一起影响这一步的输出。U、V、W 都表示权重。在这个经典结构理，你可以看到非常重要的一点，就是输入序列长度与输出序列长度是相同的。</p>
+
+<p>这种经典结构的应用场景，比如对一段普通话输入它的四川话版本，比如对视频的每一帧进行处理并输出，等等。</p>
+
+<p>我们知道 RNN 是一个一个序列处理的，每个序列中的数据项都是有序的，所以对于计算一个序列内的所有数据项是无法并行的。但是计算不同序列时，不同序列各自的计算则是可以并行的。如果我们把上一个时刻 t 隐藏层输出的结果（ \(h_{t-1}\) ）传给一个激活函数（比如说用正切函数 <code class="language-plaintext highlighter-rouge">tanh</code> 函数），然后和当下时刻 t 的这个输入（ \(x_{t}\) ）一起，处理后产生一个时刻 t 的输出（ \(h_t\) ）。然后把隐藏层的输出通过多项逻辑回归（Softmax）生成最终的输出值（ \(\bm{y}\) ），我们可以如下表示这个模型：</p>
+
+\[\begin{aligned}
+&amp;\bm{h}_t = tanh(\bm{W}^{xh} \cdot \bm{x}_t + \bm{b}^{xh} + \bm{W}^{hh} \cdot \bm{h}_{t-1} + \bm{b}^{hh}) \\
+&amp;\bm{y}_t = Softmax(\bm{W}^{hy} \cdot \bm{h_t} + \bm{b}^{hy})
+\end{aligned}\]
+
+<p>对应的示意图如下：</p>
+
+<div style="text-align: center;">
+<div class="graphviz-wrapper">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg role="img" aria-label="graphviz-34cd77ba92d6e898bab41a54b23f2324" width="278pt" height="188pt" viewBox="0.00 0.00 278.00 188.00">
+<title>graphviz-34cd77ba92d6e898bab41a54b23f2324</title>
+<desc>
+digraph G {
+	rankdir=BT
+	{rank=same h1 h2 hddd hn}
+	{rank=same x1 x2 xddd xn}
+	{rank=same y1 y2 yddd yn}
+	xddd[label=&quot;...&quot;]
+	yddd[label=&quot;...&quot;]
+	hddd[label=&quot;...&quot;]
+
+	y1[shape=plaintext]
+	y2[shape=plaintext]
+	yddd[shape=plaintext]
+	yn[shape=plaintext]
+	x1[shape=plaintext]
+	x2[shape=plaintext]
+	xddd[shape=plaintext]
+	xn[shape=plaintext]
+
+	h1 -&gt; h2
+	h2 -&gt; hddd
+	hddd -&gt; hn
+
+	x1 -&gt; h1
+	x2 -&gt; h2
+	xddd -&gt; hddd
+	xn -&gt; hn
+
+	h1 -&gt; y1
+	h2 -&gt; y2
+	hddd -&gt; yddd
+	hn -&gt; yn
+}
+</desc>
+
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-184 274,-184 274,4 -4,4" />
+<!-- h1 -->
+<g id="node1" class="node">
+<title>h1</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="27" y="-86.3" font-family="Times,serif" font-size="14.00">h1</text>
+</g>
+<!-- h2 -->
+<g id="node2" class="node">
+<title>h2</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="99" y="-86.3" font-family="Times,serif" font-size="14.00">h2</text>
+</g>
+<!-- h1&#45;&gt;h2 -->
+<g id="edge1" class="edge">
+<title>h1&#45;&gt;h2</title>
+<path fill="none" stroke="black" d="M54,-90C56.61,-90 59.23,-90 61.84,-90" />
+<polygon fill="black" stroke="black" points="61.93,-93.5 71.93,-90 61.93,-86.5 61.93,-93.5" />
+</g>
+<!-- y1 -->
+<g id="node9" class="node">
+<title>y1</title>
+<text text-anchor="middle" x="27" y="-158.3" font-family="Times,serif" font-size="14.00">y1</text>
+</g>
+<!-- h1&#45;&gt;y1 -->
+<g id="edge8" class="edge">
+<title>h1&#45;&gt;y1</title>
+<path fill="none" stroke="black" d="M27,-108.3C27,-116.02 27,-125.29 27,-133.89" />
+<polygon fill="black" stroke="black" points="23.5,-133.9 27,-143.9 30.5,-133.9 23.5,-133.9" />
+</g>
+<!-- hddd -->
+<g id="node3" class="node">
+<title>hddd</title>
+<ellipse fill="none" stroke="black" cx="171" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="171" y="-86.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- h2&#45;&gt;hddd -->
+<g id="edge2" class="edge">
+<title>h2&#45;&gt;hddd</title>
+<path fill="none" stroke="black" d="M126,-90C128.61,-90 131.23,-90 133.84,-90" />
+<polygon fill="black" stroke="black" points="133.93,-93.5 143.93,-90 133.93,-86.5 133.93,-93.5" />
+</g>
+<!-- y2 -->
+<g id="node10" class="node">
+<title>y2</title>
+<text text-anchor="middle" x="99" y="-158.3" font-family="Times,serif" font-size="14.00">y2</text>
+</g>
+<!-- h2&#45;&gt;y2 -->
+<g id="edge9" class="edge">
+<title>h2&#45;&gt;y2</title>
+<path fill="none" stroke="black" d="M99,-108.3C99,-116.02 99,-125.29 99,-133.89" />
+<polygon fill="black" stroke="black" points="95.5,-133.9 99,-143.9 102.5,-133.9 95.5,-133.9" />
+</g>
+<!-- hn -->
+<g id="node4" class="node">
+<title>hn</title>
+<ellipse fill="none" stroke="black" cx="243" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="243" y="-86.3" font-family="Times,serif" font-size="14.00">hn</text>
+</g>
+<!-- hddd&#45;&gt;hn -->
+<g id="edge3" class="edge">
+<title>hddd&#45;&gt;hn</title>
+<path fill="none" stroke="black" d="M198,-90C200.61,-90 203.23,-90 205.84,-90" />
+<polygon fill="black" stroke="black" points="205.93,-93.5 215.93,-90 205.93,-86.5 205.93,-93.5" />
+</g>
+<!-- yddd -->
+<g id="node11" class="node">
+<title>yddd</title>
+<text text-anchor="middle" x="171" y="-158.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- hddd&#45;&gt;yddd -->
+<g id="edge10" class="edge">
+<title>hddd&#45;&gt;yddd</title>
+<path fill="none" stroke="black" d="M171,-108.3C171,-116.02 171,-125.29 171,-133.89" />
+<polygon fill="black" stroke="black" points="167.5,-133.9 171,-143.9 174.5,-133.9 167.5,-133.9" />
+</g>
+<!-- yn -->
+<g id="node12" class="node">
+<title>yn</title>
+<text text-anchor="middle" x="243" y="-158.3" font-family="Times,serif" font-size="14.00">yn</text>
+</g>
+<!-- hn&#45;&gt;yn -->
+<g id="edge11" class="edge">
+<title>hn&#45;&gt;yn</title>
+<path fill="none" stroke="black" d="M243,-108.3C243,-116.02 243,-125.29 243,-133.89" />
+<polygon fill="black" stroke="black" points="239.5,-133.9 243,-143.9 246.5,-133.9 239.5,-133.9" />
+</g>
+<!-- x1 -->
+<g id="node5" class="node">
+<title>x1</title>
+<text text-anchor="middle" x="27" y="-14.3" font-family="Times,serif" font-size="14.00">x1</text>
+</g>
+<!-- x1&#45;&gt;h1 -->
+<g id="edge4" class="edge">
+<title>x1&#45;&gt;h1</title>
+<path fill="none" stroke="black" d="M27,-36.3C27,-44.02 27,-53.29 27,-61.89" />
+<polygon fill="black" stroke="black" points="23.5,-61.9 27,-71.9 30.5,-61.9 23.5,-61.9" />
+</g>
+<!-- x2 -->
+<g id="node6" class="node">
+<title>x2</title>
+<text text-anchor="middle" x="99" y="-14.3" font-family="Times,serif" font-size="14.00">x2</text>
+</g>
+<!-- x2&#45;&gt;h2 -->
+<g id="edge5" class="edge">
+<title>x2&#45;&gt;h2</title>
+<path fill="none" stroke="black" d="M99,-36.3C99,-44.02 99,-53.29 99,-61.89" />
+<polygon fill="black" stroke="black" points="95.5,-61.9 99,-71.9 102.5,-61.9 95.5,-61.9" />
+</g>
+<!-- xddd -->
+<g id="node7" class="node">
+<title>xddd</title>
+<text text-anchor="middle" x="171" y="-14.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- xddd&#45;&gt;hddd -->
+<g id="edge6" class="edge">
+<title>xddd&#45;&gt;hddd</title>
+<path fill="none" stroke="black" d="M171,-36.3C171,-44.02 171,-53.29 171,-61.89" />
+<polygon fill="black" stroke="black" points="167.5,-61.9 171,-71.9 174.5,-61.9 167.5,-61.9" />
+</g>
+<!-- xn -->
+<g id="node8" class="node">
+<title>xn</title>
+<text text-anchor="middle" x="243" y="-14.3" font-family="Times,serif" font-size="14.00">xn</text>
+</g>
+<!-- xn&#45;&gt;hn -->
+<g id="edge7" class="edge">
+<title>xn&#45;&gt;hn</title>
+<path fill="none" stroke="black" d="M243,-36.3C243,-44.02 243,-53.29 243,-61.89" />
+<polygon fill="black" stroke="black" points="239.5,-61.9 243,-71.9 246.5,-61.9 239.5,-61.9" />
+</g>
+</g>
+</svg>
+</div>
+</div>
+
+<p>这种输入和输出数据项数一致的 RNN，一般叫做 N vs. N 的 RNN。如果我们用 PyTorch 来实现一个非常简单的经典 RNN 则如下：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="n">nn</span>
+
+<span class="c1"># 创建一个 RNN 实例
+# 第一个参数
+</span><span class="n">rnn</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">RNN</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># 实例化一个单向单层RNN
+</span>
+<span class="c1"># 输入是一个形状为 (5, 3, 10) 的张量
+# 5 个输入数据项（也可以说是样本）
+# 3 个数据项是一个序列，有 3 个 steps
+# 每个 step 有 10 个特征
+</span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># 隐藏层是一个 (1, 5, 20) 的张量
+</span><span class="n">h0</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># 调用 rnn 函数后，返回输出、最终的隐藏状态
+</span><span class="n">output</span><span class="p">,</span> <span class="n">hn</span> <span class="o">=</span> <span class="n">rnn</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">h0</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">hn</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>我们来解读一下这段代码：</p>
+
+<ul>
+  <li>这段代码实例化了一个带有 1 个隐藏层的 RNN 网络。</li>
+  <li>它的输入是一个形状为 (5, 3, 10) 的张量，表示有 5 个样本，每个样本有 3 个时间步，每个时间步的特征维度是 10。</li>
+  <li>初始隐藏状态是一个形状为 (1, 5, 20) 的张量。</li>
+  <li>调用 rnn 函数后，会返回输出和最终的隐藏状态。</li>
+  <li>输出的形状是 (5, 3, 20)，表示有 5 个样本，每个样本有 3 个时间步，每个时间步的输出维度是 20。</li>
+  <li>最终的隐藏状态的形状是 (1, 5, 20)，表示最后的隐藏状态是 5</li>
+</ul>
+
+<p>但是上面的代码示例，并没有自己编写一个具体的 RNN，而是用了默认的 PyTorch 的 RNN，那么下面我们就自己编写一个：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MikeCaptainRNN</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">()</span>
+
+        <span class="c1"># 对于 RNN，输入维度就是序列数
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">input_size</span> <span class="o">=</span> <span class="n">input_size</span>
+
+        <span class="c1"># 隐藏层有多少个节点/神经元，经常将 hidden_size 设置为与序列长度相同
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">hidden_size</span> <span class="o">=</span> <span class="n">hidden_size</span>
+
+        <span class="c1"># 输入层到隐藏层的 W^{xh} 权重、bias^{xh} 偏置项
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">weight_xh</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">input_size</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.01</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">bias_xh</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">hidden_size</span><span class="p">)</span>
+
+        <span class="c1"># 隐藏层到隐藏层的 W^{hh} 权重、bias^{hh} 偏置项
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">weight_hh</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">hidden_size</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.01</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">bias_hh</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">hidden_size</span><span class="p">)</span>
+
+    <span class="c1"># 前向传播
+</span>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">h0</span><span class="p">):</span>
+
+    	<span class="c1"># 取出这个张量的形状
+</span>        <span class="n">N</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">input_size</span> <span class="o">=</span> <span class="nb">input</span><span class="p">.</span><span class="n">shape</span>
+
+        <span class="c1"># 初始化一个全零张量
+</span>        <span class="n">output</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="bp">self</span><span class="p">.</span><span class="n">hidden_size</span><span class="p">)</span>
+
+        <span class="c1"># 处理每个时刻的输入特征
+</span>        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+
+        	<span class="c1"># 获得当前时刻的输入特征，[N, input_size, 1]。unsqueeze(n)，在第 n 维上增加一维
+</span>            <span class="n">x</span> <span class="o">=</span> <span class="nb">input</span><span class="p">[:,</span> <span class="n">t</span><span class="p">,</span> <span class="p">:].</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  
+            <span class="n">w_xh_batch</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">weight_xh</span><span class="p">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">tile</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># [N, hidden_size, input_size]
+</span>            <span class="n">w_hh_batch</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">weight_hh</span><span class="p">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="n">tile</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># [N, hidden_size, hidden_size]
+</span>
+            <span class="c1"># bmm 是矩阵乘法函数
+</span>            <span class="n">w_times_x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">bmm</span><span class="p">(</span><span class="n">w_xh_batch</span><span class="p">,</span> <span class="n">x</span><span class="p">).</span><span class="n">squeeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># [N, hidden_size]。squeeze(n)，在第n维上减小一维
+</span>            <span class="n">w_times_h</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">bmm</span><span class="p">(</span><span class="n">w_hh_batch</span><span class="p">,</span> <span class="n">h0</span><span class="p">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">2</span><span class="p">)).</span><span class="n">squeeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># [N, hidden_size]
+</span>            <span class="n">h0</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">w_times_x</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">bias_ih</span> <span class="o">+</span> <span class="n">w_times_h</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">bias_hh</span><span class="p">)</span>
+            <span class="n">output</span><span class="p">[:,</span> <span class="n">t</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">h0</span>
+        <span class="k">return</span> <span class="n">output</span><span class="p">,</span> <span class="n">h0</span><span class="p">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>上述代码中 <code class="language-plaintext highlighter-rouge">weight_xh</code>、<code class="language-plaintext highlighter-rouge">bias_xh</code>。<code class="language-plaintext highlighter-rouge">weighthh</code></p>
+
+<h3 id="2n-vs1-的-rnn">2、N vs.1 的 RNN</h3>
+
+<p>上面那个图里，如果只保留最后一个输出，那就是一个 N vs. 1 的 RNN 了。这种的应用场景，比如说判断一个文本序列是英语还是德语，比如根据一个输入序列来判断是一个正向情绪内容还是负向或者中性，或者比如根据一段语音输入序列来判断是哪一首曲子（听歌识曲）。</p>
+
+\[\begin{aligned}
+&amp;\bm{h}_t = tanh(\bm{W^{xh}} \cdot \bm{x}_t + \bm{b^{xh}} + \bm{W^{hh}} \cdot \bm{h}_{t-1} + \bm{b^{hh}}) \\
+&amp;\bm{y} = Softmax(\bm{W^{hy}} \cdot \bm{h}_n + \bm{b^{hy}})
+\end{aligned}\]
+
+<p>即这个模型里，每个序列只有隐藏层对最后一个数据项进行处理时才产生输出  \(h_n\)  如果用示意图表示，则是如下结构：</p>
+
+<div style="text-align: center;">
+<div class="graphviz-wrapper">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg role="img" aria-label="graphviz-99506286249ff03a109fde8e4294e12c" width="278pt" height="188pt" viewBox="0.00 0.00 278.00 188.00">
+<title>graphviz-99506286249ff03a109fde8e4294e12c</title>
+<desc>
+digraph G {
+	rankdir=BT
+	{rank=same h1 h2 hddd hn}
+	hddd[label=&quot;...&quot;]
+	xddd[label=&quot;...&quot;]
+
+	y[shape=plaintext]
+	x1[shape=plaintext]
+	x2[shape=plaintext]
+	xddd[shape=plaintext]
+	xn[shape=plaintext]
+
+	h1 -&gt; h2
+	h2 -&gt; hddd
+	hddd -&gt; hn
+
+	x1 -&gt; h1
+	x2 -&gt; h2
+	xn -&gt; hn
+	xddd -&gt; hddd
+
+	hn -&gt; y
+}
+</desc>
+
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-184 274,-184 274,4 -4,4" />
+<!-- h1 -->
+<g id="node1" class="node">
+<title>h1</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="27" y="-86.3" font-family="Times,serif" font-size="14.00">h1</text>
+</g>
+<!-- h2 -->
+<g id="node2" class="node">
+<title>h2</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="99" y="-86.3" font-family="Times,serif" font-size="14.00">h2</text>
+</g>
+<!-- h1&#45;&gt;h2 -->
+<g id="edge1" class="edge">
+<title>h1&#45;&gt;h2</title>
+<path fill="none" stroke="black" d="M54,-90C56.61,-90 59.23,-90 61.84,-90" />
+<polygon fill="black" stroke="black" points="61.93,-93.5 71.93,-90 61.93,-86.5 61.93,-93.5" />
+</g>
+<!-- hddd -->
+<g id="node3" class="node">
+<title>hddd</title>
+<ellipse fill="none" stroke="black" cx="171" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="171" y="-86.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- h2&#45;&gt;hddd -->
+<g id="edge2" class="edge">
+<title>h2&#45;&gt;hddd</title>
+<path fill="none" stroke="black" d="M126,-90C128.61,-90 131.23,-90 133.84,-90" />
+<polygon fill="black" stroke="black" points="133.93,-93.5 143.93,-90 133.93,-86.5 133.93,-93.5" />
+</g>
+<!-- hn -->
+<g id="node4" class="node">
+<title>hn</title>
+<ellipse fill="none" stroke="black" cx="243" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="243" y="-86.3" font-family="Times,serif" font-size="14.00">hn</text>
+</g>
+<!-- hddd&#45;&gt;hn -->
+<g id="edge3" class="edge">
+<title>hddd&#45;&gt;hn</title>
+<path fill="none" stroke="black" d="M198,-90C200.61,-90 203.23,-90 205.84,-90" />
+<polygon fill="black" stroke="black" points="205.93,-93.5 215.93,-90 205.93,-86.5 205.93,-93.5" />
+</g>
+<!-- y -->
+<g id="node6" class="node">
+<title>y</title>
+<text text-anchor="middle" x="243" y="-158.3" font-family="Times,serif" font-size="14.00">y</text>
+</g>
+<!-- hn&#45;&gt;y -->
+<g id="edge8" class="edge">
+<title>hn&#45;&gt;y</title>
+<path fill="none" stroke="black" d="M243,-108.3C243,-116.02 243,-125.29 243,-133.89" />
+<polygon fill="black" stroke="black" points="239.5,-133.9 243,-143.9 246.5,-133.9 239.5,-133.9" />
+</g>
+<!-- xddd -->
+<g id="node5" class="node">
+<title>xddd</title>
+<text text-anchor="middle" x="171" y="-14.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- xddd&#45;&gt;hddd -->
+<g id="edge7" class="edge">
+<title>xddd&#45;&gt;hddd</title>
+<path fill="none" stroke="black" d="M171,-36.3C171,-44.02 171,-53.29 171,-61.89" />
+<polygon fill="black" stroke="black" points="167.5,-61.9 171,-71.9 174.5,-61.9 167.5,-61.9" />
+</g>
+<!-- x1 -->
+<g id="node7" class="node">
+<title>x1</title>
+<text text-anchor="middle" x="27" y="-14.3" font-family="Times,serif" font-size="14.00">x1</text>
+</g>
+<!-- x1&#45;&gt;h1 -->
+<g id="edge4" class="edge">
+<title>x1&#45;&gt;h1</title>
+<path fill="none" stroke="black" d="M27,-36.3C27,-44.02 27,-53.29 27,-61.89" />
+<polygon fill="black" stroke="black" points="23.5,-61.9 27,-71.9 30.5,-61.9 23.5,-61.9" />
+</g>
+<!-- x2 -->
+<g id="node8" class="node">
+<title>x2</title>
+<text text-anchor="middle" x="99" y="-14.3" font-family="Times,serif" font-size="14.00">x2</text>
+</g>
+<!-- x2&#45;&gt;h2 -->
+<g id="edge5" class="edge">
+<title>x2&#45;&gt;h2</title>
+<path fill="none" stroke="black" d="M99,-36.3C99,-44.02 99,-53.29 99,-61.89" />
+<polygon fill="black" stroke="black" points="95.5,-61.9 99,-71.9 102.5,-61.9 95.5,-61.9" />
+</g>
+<!-- xn -->
+<g id="node9" class="node">
+<title>xn</title>
+<text text-anchor="middle" x="243" y="-14.3" font-family="Times,serif" font-size="14.00">xn</text>
+</g>
+<!-- xn&#45;&gt;hn -->
+<g id="edge6" class="edge">
+<title>xn&#45;&gt;hn</title>
+<path fill="none" stroke="black" d="M243,-36.3C243,-44.02 243,-53.29 243,-61.89" />
+<polygon fill="black" stroke="black" points="239.5,-61.9 243,-71.9 246.5,-61.9 239.5,-61.9" />
+</g>
+</g>
+</svg>
+</div>
+</div>
+
+<h3 id="31-vs-n-的-rnn">3、1 vs. N 的 RNN</h3>
+
+<p>反过来，上面那个图里，如果只保留一个 x，那么就是一个 1 vs. N 的 RNN 了。这种场景的应用，比如 AI 创作音乐，还有通过一个 image 提炼或识别某些文本内容输出。</p>
+
+\[\begin{aligned}
+&amp;\bm{h}_t = \begin{cases} tanh(\bm{W^{xh}} \cdot \bm{x} + \bm{b^{xh}} + 0 + \bm{b^{hh}}) &amp; (t=1) \\
+tanh(0 + \bm{b^{xh}} + \bm{W^{hh}} \cdot \bm{h}_{t-1} + \bm{b^{hh}}) &amp; (t&gt;1) \end{cases} \\
+&amp;\bm{y}_t = Softmax(\bm{W^{hy}} \cdot \bm{h}_t + \bm{b^{hy}})
+\end{aligned}\]
+
+<p>示意图如下：</p>
+
+<div style="text-align: center;">
+<div class="graphviz-wrapper">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg role="img" aria-label="graphviz-aecb5ea5cd91fc1106b18c3c4059fa0a" width="278pt" height="188pt" viewBox="0.00 0.00 278.00 188.00">
+<title>graphviz-aecb5ea5cd91fc1106b18c3c4059fa0a</title>
+<desc>
+digraph G {
+	rankdir=BT
+	{rank=same h1 h2 hddd hn}
+	{rank=same y1 y2 yddd yn}
+	hddd[label=&quot;...&quot;]
+	yddd[label=&quot;...&quot;]
+
+	y1[shape=plaintext]
+	y2[shape=plaintext]
+	yddd[shape=plaintext]
+	yn[shape=plaintext]
+	x[shape=plaintext]
+
+	h1 -&gt; h2
+	h2 -&gt; hddd
+	hddd -&gt; hn
+
+	x -&gt; h1
+
+	h1 -&gt; y1
+	h2 -&gt; y2
+	hddd -&gt; yddd
+	hn -&gt; yn
+}
+</desc>
+
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-184 274,-184 274,4 -4,4" />
+<!-- h1 -->
+<g id="node1" class="node">
+<title>h1</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="27" y="-86.3" font-family="Times,serif" font-size="14.00">h1</text>
+</g>
+<!-- h2 -->
+<g id="node2" class="node">
+<title>h2</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="99" y="-86.3" font-family="Times,serif" font-size="14.00">h2</text>
+</g>
+<!-- h1&#45;&gt;h2 -->
+<g id="edge1" class="edge">
+<title>h1&#45;&gt;h2</title>
+<path fill="none" stroke="black" d="M54,-90C56.61,-90 59.23,-90 61.84,-90" />
+<polygon fill="black" stroke="black" points="61.93,-93.5 71.93,-90 61.93,-86.5 61.93,-93.5" />
+</g>
+<!-- y1 -->
+<g id="node5" class="node">
+<title>y1</title>
+<text text-anchor="middle" x="27" y="-158.3" font-family="Times,serif" font-size="14.00">y1</text>
+</g>
+<!-- h1&#45;&gt;y1 -->
+<g id="edge5" class="edge">
+<title>h1&#45;&gt;y1</title>
+<path fill="none" stroke="black" d="M27,-108.3C27,-116.02 27,-125.29 27,-133.89" />
+<polygon fill="black" stroke="black" points="23.5,-133.9 27,-143.9 30.5,-133.9 23.5,-133.9" />
+</g>
+<!-- hddd -->
+<g id="node3" class="node">
+<title>hddd</title>
+<ellipse fill="none" stroke="black" cx="171" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="171" y="-86.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- h2&#45;&gt;hddd -->
+<g id="edge2" class="edge">
+<title>h2&#45;&gt;hddd</title>
+<path fill="none" stroke="black" d="M126,-90C128.61,-90 131.23,-90 133.84,-90" />
+<polygon fill="black" stroke="black" points="133.93,-93.5 143.93,-90 133.93,-86.5 133.93,-93.5" />
+</g>
+<!-- y2 -->
+<g id="node6" class="node">
+<title>y2</title>
+<text text-anchor="middle" x="99" y="-158.3" font-family="Times,serif" font-size="14.00">y2</text>
+</g>
+<!-- h2&#45;&gt;y2 -->
+<g id="edge6" class="edge">
+<title>h2&#45;&gt;y2</title>
+<path fill="none" stroke="black" d="M99,-108.3C99,-116.02 99,-125.29 99,-133.89" />
+<polygon fill="black" stroke="black" points="95.5,-133.9 99,-143.9 102.5,-133.9 95.5,-133.9" />
+</g>
+<!-- hn -->
+<g id="node4" class="node">
+<title>hn</title>
+<ellipse fill="none" stroke="black" cx="243" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="243" y="-86.3" font-family="Times,serif" font-size="14.00">hn</text>
+</g>
+<!-- hddd&#45;&gt;hn -->
+<g id="edge3" class="edge">
+<title>hddd&#45;&gt;hn</title>
+<path fill="none" stroke="black" d="M198,-90C200.61,-90 203.23,-90 205.84,-90" />
+<polygon fill="black" stroke="black" points="205.93,-93.5 215.93,-90 205.93,-86.5 205.93,-93.5" />
+</g>
+<!-- yddd -->
+<g id="node7" class="node">
+<title>yddd</title>
+<text text-anchor="middle" x="171" y="-158.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- hddd&#45;&gt;yddd -->
+<g id="edge7" class="edge">
+<title>hddd&#45;&gt;yddd</title>
+<path fill="none" stroke="black" d="M171,-108.3C171,-116.02 171,-125.29 171,-133.89" />
+<polygon fill="black" stroke="black" points="167.5,-133.9 171,-143.9 174.5,-133.9 167.5,-133.9" />
+</g>
+<!-- yn -->
+<g id="node8" class="node">
+<title>yn</title>
+<text text-anchor="middle" x="243" y="-158.3" font-family="Times,serif" font-size="14.00">yn</text>
+</g>
+<!-- hn&#45;&gt;yn -->
+<g id="edge8" class="edge">
+<title>hn&#45;&gt;yn</title>
+<path fill="none" stroke="black" d="M243,-108.3C243,-116.02 243,-125.29 243,-133.89" />
+<polygon fill="black" stroke="black" points="239.5,-133.9 243,-143.9 246.5,-133.9 239.5,-133.9" />
+</g>
+<!-- x -->
+<g id="node9" class="node">
+<title>x</title>
+<text text-anchor="middle" x="27" y="-14.3" font-family="Times,serif" font-size="14.00">x</text>
+</g>
+<!-- x&#45;&gt;h1 -->
+<g id="edge4" class="edge">
+<title>x&#45;&gt;h1</title>
+<path fill="none" stroke="black" d="M27,-36.3C27,-44.02 27,-53.29 27,-61.89" />
+<polygon fill="black" stroke="black" points="23.5,-61.9 27,-71.9 30.5,-61.9 23.5,-61.9" />
+</g>
+</g>
+</svg>
+</div>
+</div>
+
+<p>到这里我们可以看到，在 RNN 的隐藏层是能够存储一些有关于输入数据的一些相关内容的，所以也常把 RNN 的隐藏层叫做记忆单元。</p>
+
+<h3 id="4lstmlong-short-term-memory长短时记忆网络">4、LSTM（Long Short-Term Memory）长短时记忆网络</h3>
+
+<h4 id="41如何理解这个-short-term-呢">4.1、如何理解这个 Short-Term 呢？</h4>
+
+<p>1997 年论文《Long Short-Term Memory》中提出 LSTM 模型。我们先从模型的定义，精确地来理解一下：</p>
+
+\[\begin{aligned}
+&amp;\bm{h}_t = \bm{h}_{t-1} + tanh(\bm{W}^{xh} \cdot \bm{x}_t + \bm{b}^{xh} + \bm{W}^{hh} \cdot \bm{h}_{t-1} + \bm{b}^{hh}) \\
+&amp;\bm{y}_t = Softmax(\bm{W}^{hy} \cdot \bm{h_t} + \bm{b}^{hy})
+\end{aligned}\]
+
+<p>上式中与经典结构的 RNN（输入与输出是 N vs. N）相比，唯一的区别是第一个式子中多了一个「 \(\bm{h}_{t-1}\) 」。如果我们把第一个式子的  \(tanh\)  部分记作  \(u_t\) ：</p>
+
+\[\bm{u}_t = tanh(\bm{W}^{xh} \cdot \bm{x}_t + \bm{b}^{xh} + \bm{W}^{hh} \cdot \bm{h}_{t-1} + \bm{b}^{hh})\]
+
+<p>所以：</p>
+
+\[\bm{h}_t = \bm{h}_{t-1} + \bm{u}_t\]
+
+<p>那么可以展开出如下一组式子：</p>
+
+\[\begin{aligned}
+\bm{h}_{k+1} &amp;= \bm{h}_k + \bm{u}_{k+1} \\
+\bm{h}_{k+2} &amp;= \bm{h}_{k+1} + \bm{u}_{k+2} \\
+&amp;...... \\
+\bm{h}_{t-1} &amp;= \bm{h}_{t-2} + \bm{u}_{t-1} \\
+\bm{h}_t &amp;= \bm{h}_{t-1} + \bm{u}_t
+\end{aligned}\]
+
+<p>如果我们从  \(h_{k+1}\)  到  \(h_n\)  的所有式子左侧相加、右侧相加，我们就得到如下式子：</p>
+
+\[\begin{aligned}
+&amp;\bm{h}_{k+1} + ... + \bm{h}_{t-1} + \bm{h}_t \\
+= &amp;\bm{h}_k + \bm{h}_{k+1} + ... + \bm{h}_{t-2} + \bm{h}_{t-1} \\+ &amp;\bm{u}_{k+1} + \bm{u}_{k+2} + ... + \bm{u}_{t-1} + \bm{u}_t
+\end{aligned}\]
+
+<p>进而推导出：</p>
+
+\[\bm{h}_t = \bm{h}_k + \bm{u}_{k+1} + \bm{u}_{k+2} + ... + \bm{u}_{t-1} + \bm{u}_t\]
+
+<p>从这里我们就可以看到，第 t 时刻的隐藏层输出，直接关联到第 k 时刻的输出，t 到 k 时刻的相关性则用  \(\bm{u}_{k+1}\)  到  \(\bm{u}_t\)  相加表示。也就是有 t-k 的短期（Short Term）记忆。</p>
+
+<h4 id="42引入遗忘门-f输入门-i输出门-o记忆细胞-c">4.2、引入遗忘门 f、输入门 i、输出门 o、记忆细胞 c</h4>
+
+<p>如果我们为式子  \(\bm{h}_t = \bm{h}_{t-1} + \bm{u}_t\)  右侧两项分配一个权重呢？就是隐藏层对上一个数据项本身被上一个数据项经过隐藏层计算的结果，这两者做一对权重考虑配比，如下：</p>
+
+\[\begin{aligned}
+&amp;\bm{f}_t = sigmoid(\bm{W}^{f,xh} \cdot \bm{x}_t + \bm{b}^{f,xh} + \bm{W}^{f,hh} \cdot \bm{x}_{t-1} + \bm{b}^{f,hh}) \\
+&amp;\bm{h}_t = \bm{f}_t \odot \bm{h}_{t-1} + (1 - \bm{f}_t) \odot \bm{u}_t
+\end{aligned}\]
+
+<p>其中：</p>
+
+<ul>
+  <li>\(\odot\)  是 Hardamard 乘积，即张量的对应元素相乘。</li>
+  <li>\(\bm{f}_t\)  是「遗忘门（Forget Gate）」，该值很小时 t-1 时刻的权重就很小，也就是「此刻遗忘上一刻」。该值应根据 t 时刻的输入数据、t-1 时刻数据在隐藏层的输出计算，而且其每个元素必须是 (0, 1) 之间的值，所以可以用 sigmoid 函数来得到该值：</li>
+</ul>
+
+<p>但这种方式，对于过去  \(\bm{h}_{t-1}\)  和当下  \(\bm{u}_t\)  形成了互斥，只能此消彼长。但其实过去和当下可能都很重要，有可能都恨不重要，所以我们对过去继续采用  \(\bm{f}_t\)  遗忘门，对当下采用  \(\bm{i}_t\)  输入门（Input Gate）：</p>
+
+\[\begin{aligned}
+&amp;\bm{f}_t = sigmoid(\bm{W}^{f,xh} \cdot \bm{x}_t + \bm{b}^{f,xh} + \bm{W}^{f,hh} \cdot \bm{x}_{t-1} + \bm{b}^{f,hh}) \\
+&amp;\bm{i}_t = sigmoid(\bm{W}^{i,xh} \cdot \bm{x}_t + \bm{b}^{i,xh} + \bm{W}^{i,hh} \cdot \bm{h}_{t-1} + \bm{b}^{i,hh}) \\
+&amp;\bm{h}_t = \bm{f}_t \odot \bm{h}_{t-1} + \bm{i}_t \odot \bm{u}_t
+\end{aligned}\]
+
+<p>其中：</p>
+<ul>
+  <li>与  \(\bm{f}_t\)  类似地，定义输入门  \(\bm{i}_t\)  ，但是注意  \(\bm{f}_t\)  与  \(\bm{h}_{t-1}\)  而非  \(\bm{x}_{t-1}\)  有关。</li>
+</ul>
+
+<p>再引入一个输出门：</p>
+
+\[\bm{o}_t = sigmoid(\bm{W}^{o,xh} \cdot \bm{x}_t + \bm{b}^{o,xh} + \bm{W}^{o,hh} \cdot \bm{x}_{t-1} + \bm{b}^{o,hh})\]
+
+<p>再引入记忆细胞  \(\bm{c}_t\) ，它是原来  \(\bm{h}_t\)  的变体，与 t-1 时刻的记忆细胞有遗忘关系（通过遗忘门），与当下时刻有输入门的关系：</p>
+
+\[\bm{c}_t = \bm{f}_t \odot \bm{c}_{t-1} + \bm{i}_t \odot \bm{u}_t\]
+
+<p>那么此时  \(\bm{h}_t\)  ，我们可以把  \(\bm{h}_t\)  变成：</p>
+
+\[\bm{h}_t = \bm{o}_t \odot tanh(\bm{c}_t)\]
+
+<p>记忆细胞这个概念还有有一点点形象的，它存储了过去的一些信息。OK，到此我们整体的 LSTM 模型就变成了这个样子：</p>
+
+\[\begin{aligned}
+&amp;\bm{f}_t = sigmoid(\bm{W}^{f,xh} \cdot \bm{x}_t + \bm{b}^{f,xh} + \bm{W}^{f,hh} \cdot \bm{x}_{t-1} + \bm{b}^{f,hh}) \\
+&amp;\bm{i}_t = sigmoid(\bm{W}^{i,xh} \cdot \bm{x}_t + \bm{b}^{i,xh} + \bm{W}^{i,hh} \cdot \bm{h}_{t-1} + \bm{b}^{i,hh}) \\
+&amp;\bm{o}_t = sigmoid(\bm{W}^{o,xh} \cdot \bm{x}_t + \bm{b}^{o,xh} + \bm{W}^{o,hh} \cdot \bm{x}_{t-1} + \bm{b}^{o,hh}) \\
+&amp;\bm{u}_t = tanh(\bm{W}^{xh} \cdot \bm{x}_t + \bm{b}^{xh} + \bm{W}^{hh} \cdot \bm{h}_{t-1} + \bm{b}^{hh}) \\
+&amp;\bm{c}_t = \bm{f}_t \odot \bm{c}_{t-1} + \bm{i}_t \odot \bm{u}_t \\
+&amp;\bm{h}_t = \bm{o}_t \odot tanh(\bm{c}_t) \\
+&amp;\bm{y}_t = Softmax(\bm{W}^{hy} \cdot \bm{h_t} + \bm{b}^{hy})
+\end{aligned}\]
+
+<h3 id="5双向循环神经网络双向-lstm">5、双向循环神经网络、双向 LSTM</h3>
+
+<p>双向循环神经网络很好理解，就是两个方向都有，例如下图：</p>
+
+<div style="text-align: center;">
+<div class="graphviz-wrapper">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg role="img" aria-label="graphviz-5d130f67fc1bf07abc38d62da6ddb01a" width="278pt" height="188pt" viewBox="0.00 0.00 278.00 188.00">
+<title>graphviz-5d130f67fc1bf07abc38d62da6ddb01a</title>
+<desc>
+digraph G {
+	rankdir=BT
+	{rank=same h1 h2 hddd hn}
+
+	hddd[label=&quot;...&quot;]
+	xddd[label=&quot;...&quot;]
+	yddd[label=&quot;...&quot;]
+
+	y1[shape=plaintext]
+	y2[shape=plaintext]
+	yddd[shape=plaintext]
+	yn[shape=plaintext]
+	x1[shape=plaintext]
+	x2[shape=plaintext]
+	xddd[shape=plaintext]
+	xn[shape=plaintext]
+
+	h1 -&gt; y1
+	h2 -&gt; y2
+	hddd -&gt; yddd
+	hn -&gt; yn
+
+	h1 -&gt; h2
+	h2 -&gt; hddd
+	hddd -&gt; hn
+
+	hn -&gt; hddd
+	hddd -&gt; h2
+	h2 -&gt; h1
+
+	x1 -&gt; h1
+	x2 -&gt; h2
+	xddd -&gt; hddd
+	xn -&gt; hn
+}
+</desc>
+
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-184 274,-184 274,4 -4,4" />
+<!-- h1 -->
+<g id="node1" class="node">
+<title>h1</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="27" y="-86.3" font-family="Times,serif" font-size="14.00">h1</text>
+</g>
+<!-- h2 -->
+<g id="node2" class="node">
+<title>h2</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="99" y="-86.3" font-family="Times,serif" font-size="14.00">h2</text>
+</g>
+<!-- h1&#45;&gt;h2 -->
+<g id="edge5" class="edge">
+<title>h1&#45;&gt;h2</title>
+<path fill="none" stroke="black" d="M48.38,-101.27C54.78,-103.22 61.18,-103.89 67.58,-103.28" />
+<polygon fill="black" stroke="black" points="68.52,-106.66 77.64,-101.27 67.15,-99.8 68.52,-106.66" />
+</g>
+<!-- y1 -->
+<g id="node7" class="node">
+<title>y1</title>
+<text text-anchor="middle" x="27" y="-158.3" font-family="Times,serif" font-size="14.00">y1</text>
+</g>
+<!-- h1&#45;&gt;y1 -->
+<g id="edge1" class="edge">
+<title>h1&#45;&gt;y1</title>
+<path fill="none" stroke="black" d="M27,-108.3C27,-116.02 27,-125.29 27,-133.89" />
+<polygon fill="black" stroke="black" points="23.5,-133.9 27,-143.9 30.5,-133.9 23.5,-133.9" />
+</g>
+<!-- h2&#45;&gt;h1 -->
+<g id="edge10" class="edge">
+<title>h2&#45;&gt;h1</title>
+<path fill="none" stroke="black" d="M77.64,-78.73C71.24,-76.78 64.84,-76.11 58.44,-76.72" />
+<polygon fill="black" stroke="black" points="57.49,-73.34 48.38,-78.73 58.87,-80.2 57.49,-73.34" />
+</g>
+<!-- hddd -->
+<g id="node3" class="node">
+<title>hddd</title>
+<ellipse fill="none" stroke="black" cx="171" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="171" y="-86.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- h2&#45;&gt;hddd -->
+<g id="edge6" class="edge">
+<title>h2&#45;&gt;hddd</title>
+<path fill="none" stroke="black" d="M120.38,-101.27C126.78,-103.22 133.18,-103.89 139.58,-103.28" />
+<polygon fill="black" stroke="black" points="140.52,-106.66 149.64,-101.27 139.15,-99.8 140.52,-106.66" />
+</g>
+<!-- y2 -->
+<g id="node8" class="node">
+<title>y2</title>
+<text text-anchor="middle" x="99" y="-158.3" font-family="Times,serif" font-size="14.00">y2</text>
+</g>
+<!-- h2&#45;&gt;y2 -->
+<g id="edge2" class="edge">
+<title>h2&#45;&gt;y2</title>
+<path fill="none" stroke="black" d="M99,-108.3C99,-116.02 99,-125.29 99,-133.89" />
+<polygon fill="black" stroke="black" points="95.5,-133.9 99,-143.9 102.5,-133.9 95.5,-133.9" />
+</g>
+<!-- hddd&#45;&gt;h2 -->
+<g id="edge9" class="edge">
+<title>hddd&#45;&gt;h2</title>
+<path fill="none" stroke="black" d="M149.64,-78.73C143.24,-76.78 136.84,-76.11 130.44,-76.72" />
+<polygon fill="black" stroke="black" points="129.49,-73.34 120.38,-78.73 130.87,-80.2 129.49,-73.34" />
+</g>
+<!-- hn -->
+<g id="node4" class="node">
+<title>hn</title>
+<ellipse fill="none" stroke="black" cx="243" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="243" y="-86.3" font-family="Times,serif" font-size="14.00">hn</text>
+</g>
+<!-- hddd&#45;&gt;hn -->
+<g id="edge7" class="edge">
+<title>hddd&#45;&gt;hn</title>
+<path fill="none" stroke="black" d="M192.38,-101.27C198.78,-103.22 205.18,-103.89 211.58,-103.28" />
+<polygon fill="black" stroke="black" points="212.52,-106.66 221.64,-101.27 211.15,-99.8 212.52,-106.66" />
+</g>
+<!-- yddd -->
+<g id="node6" class="node">
+<title>yddd</title>
+<text text-anchor="middle" x="171" y="-158.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- hddd&#45;&gt;yddd -->
+<g id="edge3" class="edge">
+<title>hddd&#45;&gt;yddd</title>
+<path fill="none" stroke="black" d="M171,-108.3C171,-116.02 171,-125.29 171,-133.89" />
+<polygon fill="black" stroke="black" points="167.5,-133.9 171,-143.9 174.5,-133.9 167.5,-133.9" />
+</g>
+<!-- hn&#45;&gt;hddd -->
+<g id="edge8" class="edge">
+<title>hn&#45;&gt;hddd</title>
+<path fill="none" stroke="black" d="M221.64,-78.73C215.24,-76.78 208.84,-76.11 202.44,-76.72" />
+<polygon fill="black" stroke="black" points="201.49,-73.34 192.38,-78.73 202.87,-80.2 201.49,-73.34" />
+</g>
+<!-- yn -->
+<g id="node9" class="node">
+<title>yn</title>
+<text text-anchor="middle" x="243" y="-158.3" font-family="Times,serif" font-size="14.00">yn</text>
+</g>
+<!-- hn&#45;&gt;yn -->
+<g id="edge4" class="edge">
+<title>hn&#45;&gt;yn</title>
+<path fill="none" stroke="black" d="M243,-108.3C243,-116.02 243,-125.29 243,-133.89" />
+<polygon fill="black" stroke="black" points="239.5,-133.9 243,-143.9 246.5,-133.9 239.5,-133.9" />
+</g>
+<!-- xddd -->
+<g id="node5" class="node">
+<title>xddd</title>
+<text text-anchor="middle" x="171" y="-14.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- xddd&#45;&gt;hddd -->
+<g id="edge13" class="edge">
+<title>xddd&#45;&gt;hddd</title>
+<path fill="none" stroke="black" d="M171,-36.3C171,-44.02 171,-53.29 171,-61.89" />
+<polygon fill="black" stroke="black" points="167.5,-61.9 171,-71.9 174.5,-61.9 167.5,-61.9" />
+</g>
+<!-- x1 -->
+<g id="node10" class="node">
+<title>x1</title>
+<text text-anchor="middle" x="27" y="-14.3" font-family="Times,serif" font-size="14.00">x1</text>
+</g>
+<!-- x1&#45;&gt;h1 -->
+<g id="edge11" class="edge">
+<title>x1&#45;&gt;h1</title>
+<path fill="none" stroke="black" d="M27,-36.3C27,-44.02 27,-53.29 27,-61.89" />
+<polygon fill="black" stroke="black" points="23.5,-61.9 27,-71.9 30.5,-61.9 23.5,-61.9" />
+</g>
+<!-- x2 -->
+<g id="node11" class="node">
+<title>x2</title>
+<text text-anchor="middle" x="99" y="-14.3" font-family="Times,serif" font-size="14.00">x2</text>
+</g>
+<!-- x2&#45;&gt;h2 -->
+<g id="edge12" class="edge">
+<title>x2&#45;&gt;h2</title>
+<path fill="none" stroke="black" d="M99,-36.3C99,-44.02 99,-53.29 99,-61.89" />
+<polygon fill="black" stroke="black" points="95.5,-61.9 99,-71.9 102.5,-61.9 95.5,-61.9" />
+</g>
+<!-- xn -->
+<g id="node12" class="node">
+<title>xn</title>
+<text text-anchor="middle" x="243" y="-14.3" font-family="Times,serif" font-size="14.00">xn</text>
+</g>
+<!-- xn&#45;&gt;hn -->
+<g id="edge14" class="edge">
+<title>xn&#45;&gt;hn</title>
+<path fill="none" stroke="black" d="M243,-36.3C243,-44.02 243,-53.29 243,-61.89" />
+<polygon fill="black" stroke="black" points="239.5,-61.9 243,-71.9 246.5,-61.9 239.5,-61.9" />
+</g>
+</g>
+</svg>
+</div>
+</div>
+
+<p>在 PyTorch 中使用 <code class="language-plaintext highlighter-rouge">nn.RNN</code> 就有参数表示双向：</p>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">bidirectional</code> – If True, becomes a bidirectional RNN. Default: False</p>
+</blockquote>
+
+<p><code class="language-plaintext highlighter-rouge">bidirectional</code>：默认设置为 <code class="language-plaintext highlighter-rouge">False</code>。若为 <code class="language-plaintext highlighter-rouge">True</code>，即为双向 RNN。</p>
+
+<h3 id="6堆叠循环神经网络堆叠-lstm">6、堆叠循环神经网络、堆叠 LSTM</h3>
+
+<div style="text-align: center;">
+<div class="graphviz-wrapper">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg role="img" aria-label="graphviz-79478ee70f94925103b38a21c70c2539" width="288pt" height="260pt" viewBox="0.00 0.00 288.19 260.00">
+<title>graphviz-79478ee70f94925103b38a21c70c2539</title>
+<desc>
+digraph G {
+	rankdir=BT
+	{rank=same h11 h12 h1ddd h1n}
+	{rank=same h21 h22 h2ddd h2n}
+
+	h1ddd[label=&quot;...&quot;]
+	h2ddd[label=&quot;...&quot;]
+	xddd[label=&quot;...&quot;]
+	yddd[label=&quot;...&quot;]
+
+	y1[shape=plaintext]
+	y2[shape=plaintext]
+	yddd[shape=plaintext]
+	yn[shape=plaintext]
+	x1[shape=plaintext]
+	x2[shape=plaintext]
+	xddd[shape=plaintext]
+	xn[shape=plaintext]
+
+	h11 -&gt; y1
+	h12 -&gt; y2
+	h1ddd -&gt; yddd
+	h1n -&gt; yn
+
+	h11 -&gt; h12
+	h12 -&gt; h1ddd
+	h1ddd -&gt; h1n
+
+	h21 -&gt; h22
+	h22 -&gt; h2ddd
+	h2ddd -&gt; h2n
+
+	h21 -&gt; h11
+	h22 -&gt; h12
+	h2ddd -&gt; h1ddd
+	h2n -&gt; h1n
+
+	x1 -&gt; h21
+	x2 -&gt; h22
+	xddd -&gt; h2ddd
+	xn -&gt; h2n
+}
+</desc>
+
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 256)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-256 284.19,-256 284.19,4 -4,4" />
+<!-- h11 -->
+<g id="node1" class="node">
+<title>h11</title>
+<ellipse fill="none" stroke="black" cx="28.6" cy="-162" rx="28.7" ry="18" />
+<text text-anchor="middle" x="28.6" y="-158.3" font-family="Times,serif" font-size="14.00">h11</text>
+</g>
+<!-- h12 -->
+<g id="node2" class="node">
+<title>h12</title>
+<ellipse fill="none" stroke="black" cx="103.6" cy="-162" rx="28.7" ry="18" />
+<text text-anchor="middle" x="103.6" y="-158.3" font-family="Times,serif" font-size="14.00">h12</text>
+</g>
+<!-- h11&#45;&gt;h12 -->
+<g id="edge5" class="edge">
+<title>h11&#45;&gt;h12</title>
+<path fill="none" stroke="black" d="M57.31,-162C59.75,-162 62.19,-162 64.63,-162" />
+<polygon fill="black" stroke="black" points="64.67,-165.5 74.67,-162 64.67,-158.5 64.67,-165.5" />
+</g>
+<!-- y1 -->
+<g id="node11" class="node">
+<title>y1</title>
+<text text-anchor="middle" x="28.6" y="-230.3" font-family="Times,serif" font-size="14.00">y1</text>
+</g>
+<!-- h11&#45;&gt;y1 -->
+<g id="edge1" class="edge">
+<title>h11&#45;&gt;y1</title>
+<path fill="none" stroke="black" d="M28.6,-180.3C28.6,-188.02 28.6,-197.29 28.6,-205.89" />
+<polygon fill="black" stroke="black" points="25.1,-205.9 28.6,-215.9 32.1,-205.9 25.1,-205.9" />
+</g>
+<!-- h1ddd -->
+<g id="node3" class="node">
+<title>h1ddd</title>
+<ellipse fill="none" stroke="black" cx="177.6" cy="-162" rx="27" ry="18" />
+<text text-anchor="middle" x="177.6" y="-158.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- h12&#45;&gt;h1ddd -->
+<g id="edge6" class="edge">
+<title>h12&#45;&gt;h1ddd</title>
+<path fill="none" stroke="black" d="M132.21,-162C134.85,-162 137.49,-162 140.13,-162" />
+<polygon fill="black" stroke="black" points="140.3,-165.5 150.3,-162 140.3,-158.5 140.3,-165.5" />
+</g>
+<!-- y2 -->
+<g id="node12" class="node">
+<title>y2</title>
+<text text-anchor="middle" x="103.6" y="-230.3" font-family="Times,serif" font-size="14.00">y2</text>
+</g>
+<!-- h12&#45;&gt;y2 -->
+<g id="edge2" class="edge">
+<title>h12&#45;&gt;y2</title>
+<path fill="none" stroke="black" d="M103.6,-180.3C103.6,-188.02 103.6,-197.29 103.6,-205.89" />
+<polygon fill="black" stroke="black" points="100.1,-205.9 103.6,-215.9 107.1,-205.9 100.1,-205.9" />
+</g>
+<!-- h1n -->
+<g id="node4" class="node">
+<title>h1n</title>
+<ellipse fill="none" stroke="black" cx="251.6" cy="-162" rx="28.7" ry="18" />
+<text text-anchor="middle" x="251.6" y="-158.3" font-family="Times,serif" font-size="14.00">h1n</text>
+</g>
+<!-- h1ddd&#45;&gt;h1n -->
+<g id="edge7" class="edge">
+<title>h1ddd&#45;&gt;h1n</title>
+<path fill="none" stroke="black" d="M204.77,-162C207.38,-162 210,-162 212.61,-162" />
+<polygon fill="black" stroke="black" points="212.7,-165.5 222.7,-162 212.7,-158.5 212.7,-165.5" />
+</g>
+<!-- yddd -->
+<g id="node10" class="node">
+<title>yddd</title>
+<text text-anchor="middle" x="177.6" y="-230.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- h1ddd&#45;&gt;yddd -->
+<g id="edge3" class="edge">
+<title>h1ddd&#45;&gt;yddd</title>
+<path fill="none" stroke="black" d="M177.6,-180.3C177.6,-188.02 177.6,-197.29 177.6,-205.89" />
+<polygon fill="black" stroke="black" points="174.1,-205.9 177.6,-215.9 181.1,-205.9 174.1,-205.9" />
+</g>
+<!-- yn -->
+<g id="node13" class="node">
+<title>yn</title>
+<text text-anchor="middle" x="251.6" y="-230.3" font-family="Times,serif" font-size="14.00">yn</text>
+</g>
+<!-- h1n&#45;&gt;yn -->
+<g id="edge4" class="edge">
+<title>h1n&#45;&gt;yn</title>
+<path fill="none" stroke="black" d="M251.6,-180.3C251.6,-188.02 251.6,-197.29 251.6,-205.89" />
+<polygon fill="black" stroke="black" points="248.1,-205.9 251.6,-215.9 255.1,-205.9 248.1,-205.9" />
+</g>
+<!-- h21 -->
+<g id="node5" class="node">
+<title>h21</title>
+<ellipse fill="none" stroke="black" cx="28.6" cy="-90" rx="28.7" ry="18" />
+<text text-anchor="middle" x="28.6" y="-86.3" font-family="Times,serif" font-size="14.00">h21</text>
+</g>
+<!-- h21&#45;&gt;h11 -->
+<g id="edge11" class="edge">
+<title>h21&#45;&gt;h11</title>
+<path fill="none" stroke="black" d="M28.6,-108.3C28.6,-116.02 28.6,-125.29 28.6,-133.89" />
+<polygon fill="black" stroke="black" points="25.1,-133.9 28.6,-143.9 32.1,-133.9 25.1,-133.9" />
+</g>
+<!-- h22 -->
+<g id="node6" class="node">
+<title>h22</title>
+<ellipse fill="none" stroke="black" cx="103.6" cy="-90" rx="28.7" ry="18" />
+<text text-anchor="middle" x="103.6" y="-86.3" font-family="Times,serif" font-size="14.00">h22</text>
+</g>
+<!-- h21&#45;&gt;h22 -->
+<g id="edge8" class="edge">
+<title>h21&#45;&gt;h22</title>
+<path fill="none" stroke="black" d="M57.31,-90C59.75,-90 62.19,-90 64.63,-90" />
+<polygon fill="black" stroke="black" points="64.67,-93.5 74.67,-90 64.67,-86.5 64.67,-93.5" />
+</g>
+<!-- h22&#45;&gt;h12 -->
+<g id="edge12" class="edge">
+<title>h22&#45;&gt;h12</title>
+<path fill="none" stroke="black" d="M103.6,-108.3C103.6,-116.02 103.6,-125.29 103.6,-133.89" />
+<polygon fill="black" stroke="black" points="100.1,-133.9 103.6,-143.9 107.1,-133.9 100.1,-133.9" />
+</g>
+<!-- h2ddd -->
+<g id="node7" class="node">
+<title>h2ddd</title>
+<ellipse fill="none" stroke="black" cx="177.6" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="177.6" y="-86.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- h22&#45;&gt;h2ddd -->
+<g id="edge9" class="edge">
+<title>h22&#45;&gt;h2ddd</title>
+<path fill="none" stroke="black" d="M132.21,-90C134.85,-90 137.49,-90 140.13,-90" />
+<polygon fill="black" stroke="black" points="140.3,-93.5 150.3,-90 140.3,-86.5 140.3,-93.5" />
+</g>
+<!-- h2ddd&#45;&gt;h1ddd -->
+<g id="edge13" class="edge">
+<title>h2ddd&#45;&gt;h1ddd</title>
+<path fill="none" stroke="black" d="M177.6,-108.3C177.6,-116.02 177.6,-125.29 177.6,-133.89" />
+<polygon fill="black" stroke="black" points="174.1,-133.9 177.6,-143.9 181.1,-133.9 174.1,-133.9" />
+</g>
+<!-- h2n -->
+<g id="node8" class="node">
+<title>h2n</title>
+<ellipse fill="none" stroke="black" cx="251.6" cy="-90" rx="28.7" ry="18" />
+<text text-anchor="middle" x="251.6" y="-86.3" font-family="Times,serif" font-size="14.00">h2n</text>
+</g>
+<!-- h2ddd&#45;&gt;h2n -->
+<g id="edge10" class="edge">
+<title>h2ddd&#45;&gt;h2n</title>
+<path fill="none" stroke="black" d="M204.77,-90C207.38,-90 210,-90 212.61,-90" />
+<polygon fill="black" stroke="black" points="212.7,-93.5 222.7,-90 212.7,-86.5 212.7,-93.5" />
+</g>
+<!-- h2n&#45;&gt;h1n -->
+<g id="edge14" class="edge">
+<title>h2n&#45;&gt;h1n</title>
+<path fill="none" stroke="black" d="M251.6,-108.3C251.6,-116.02 251.6,-125.29 251.6,-133.89" />
+<polygon fill="black" stroke="black" points="248.1,-133.9 251.6,-143.9 255.1,-133.9 248.1,-133.9" />
+</g>
+<!-- xddd -->
+<g id="node9" class="node">
+<title>xddd</title>
+<text text-anchor="middle" x="177.6" y="-14.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- xddd&#45;&gt;h2ddd -->
+<g id="edge17" class="edge">
+<title>xddd&#45;&gt;h2ddd</title>
+<path fill="none" stroke="black" d="M177.6,-36.3C177.6,-44.02 177.6,-53.29 177.6,-61.89" />
+<polygon fill="black" stroke="black" points="174.1,-61.9 177.6,-71.9 181.1,-61.9 174.1,-61.9" />
+</g>
+<!-- x1 -->
+<g id="node14" class="node">
+<title>x1</title>
+<text text-anchor="middle" x="28.6" y="-14.3" font-family="Times,serif" font-size="14.00">x1</text>
+</g>
+<!-- x1&#45;&gt;h21 -->
+<g id="edge15" class="edge">
+<title>x1&#45;&gt;h21</title>
+<path fill="none" stroke="black" d="M28.6,-36.3C28.6,-44.02 28.6,-53.29 28.6,-61.89" />
+<polygon fill="black" stroke="black" points="25.1,-61.9 28.6,-71.9 32.1,-61.9 25.1,-61.9" />
+</g>
+<!-- x2 -->
+<g id="node15" class="node">
+<title>x2</title>
+<text text-anchor="middle" x="103.6" y="-14.3" font-family="Times,serif" font-size="14.00">x2</text>
+</g>
+<!-- x2&#45;&gt;h22 -->
+<g id="edge16" class="edge">
+<title>x2&#45;&gt;h22</title>
+<path fill="none" stroke="black" d="M103.6,-36.3C103.6,-44.02 103.6,-53.29 103.6,-61.89" />
+<polygon fill="black" stroke="black" points="100.1,-61.9 103.6,-71.9 107.1,-61.9 100.1,-61.9" />
+</g>
+<!-- xn -->
+<g id="node16" class="node">
+<title>xn</title>
+<text text-anchor="middle" x="251.6" y="-14.3" font-family="Times,serif" font-size="14.00">xn</text>
+</g>
+<!-- xn&#45;&gt;h2n -->
+<g id="edge18" class="edge">
+<title>xn&#45;&gt;h2n</title>
+<path fill="none" stroke="black" d="M251.6,-36.3C251.6,-44.02 251.6,-53.29 251.6,-61.89" />
+<polygon fill="black" stroke="black" points="248.1,-61.9 251.6,-71.9 255.1,-61.9 248.1,-61.9" />
+</g>
+</g>
+</svg>
+</div>
+</div>
+
+<p>在 PyTorch 中使用 <code class="language-plaintext highlighter-rouge">nn.RNN</code> 就有参数表示双向：</p>
+
+<blockquote>
+  <p>num_layers – Number of recurrent layers. E.g., setting num_layers=2 would mean stacking two RNNs together to form a stacked RNN, with the second RNN taking in outputs of the first RNN and computing the final results. Default: 1</p>
+</blockquote>
+
+<p><code class="language-plaintext highlighter-rouge">num_layers</code>：隐藏层层数，默认设置为 1 层。当 <code class="language-plaintext highlighter-rouge">num_layers</code> &gt;= 2 时，就是一个 stacked RNN 了。</p>
+
+<h3 id="7n-vs-m-的-rnn">7、N vs. M 的 RNN</h3>
+
+<p>对于输入序列长度（长度 N）和输出序列长度（长度 M）不一样的 RNN 模型结构，也可以叫做 Encoder-Decoder 模型，也可以叫 Seq2Seq 模型。首先接收输入序列的 Encoder 先将输入序列转成一个隐藏态的上下文表示 C。C 可以只与最后一个隐藏层有关，甚至可以是最后一个隐藏层生成的隐藏态直接设置为 C，C 还可以与所有隐藏层有关。</p>
+
+<p>有了这个 C 之后，再用 Decoder 进行解码，也就是从把 C 作为输入状态开始，生成输出序列。</p>
+
+<div style="text-align: center;">
+<div class="graphviz-wrapper">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg role="img" aria-label="graphviz-094de5e41d0af67d4c5617e0f04d7b57" width="638pt" height="188pt" viewBox="0.00 0.00 638.00 188.00">
+<title>graphviz-094de5e41d0af67d4c5617e0f04d7b57</title>
+<desc>
+digraph G {
+	rankdir=BT
+	{rank=same e1 e2 eddd en C d1 d2 dddd dm}
+
+	eddd[label=&quot;...&quot;]
+	dddd[label=&quot;...&quot;]
+	xddd[label=&quot;...&quot;]
+	yddd[label=&quot;...&quot;]
+	C[shape=plaintext]
+	x1[shape=plaintext]
+	x2[shape=plaintext]
+	xddd[shape=plaintext]
+	xn[shape=plaintext]
+	y1[shape=plaintext]
+	y2[shape=plaintext]
+	yddd[shape=plaintext]
+	yn[shape=plaintext]
+
+	x1 -&gt; e1
+	x2 -&gt; e2
+	xddd -&gt; eddd
+	xn -&gt; en
+
+	e1 -&gt; e2
+	e2 -&gt; eddd
+	eddd -&gt; en
+
+	en -&gt; C
+	C -&gt; d1
+
+	d1 -&gt; y1
+	d2 -&gt; y2
+	dddd -&gt; yddd
+	dm -&gt; yn
+
+	d1 -&gt; d2
+	d2 -&gt; dddd
+	dddd -&gt; dm
+}
+</desc>
+
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-184 634,-184 634,4 -4,4" />
+<!-- e1 -->
+<g id="node1" class="node">
+<title>e1</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="27" y="-86.3" font-family="Times,serif" font-size="14.00">e1</text>
+</g>
+<!-- e2 -->
+<g id="node2" class="node">
+<title>e2</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="99" y="-86.3" font-family="Times,serif" font-size="14.00">e2</text>
+</g>
+<!-- e1&#45;&gt;e2 -->
+<g id="edge5" class="edge">
+<title>e1&#45;&gt;e2</title>
+<path fill="none" stroke="black" d="M54,-90C56.61,-90 59.23,-90 61.84,-90" />
+<polygon fill="black" stroke="black" points="61.93,-93.5 71.93,-90 61.93,-86.5 61.93,-93.5" />
+</g>
+<!-- eddd -->
+<g id="node3" class="node">
+<title>eddd</title>
+<ellipse fill="none" stroke="black" cx="171" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="171" y="-86.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- e2&#45;&gt;eddd -->
+<g id="edge6" class="edge">
+<title>e2&#45;&gt;eddd</title>
+<path fill="none" stroke="black" d="M126,-90C128.61,-90 131.23,-90 133.84,-90" />
+<polygon fill="black" stroke="black" points="133.93,-93.5 143.93,-90 133.93,-86.5 133.93,-93.5" />
+</g>
+<!-- en -->
+<g id="node4" class="node">
+<title>en</title>
+<ellipse fill="none" stroke="black" cx="243" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="243" y="-86.3" font-family="Times,serif" font-size="14.00">en</text>
+</g>
+<!-- eddd&#45;&gt;en -->
+<g id="edge7" class="edge">
+<title>eddd&#45;&gt;en</title>
+<path fill="none" stroke="black" d="M198,-90C200.61,-90 203.23,-90 205.84,-90" />
+<polygon fill="black" stroke="black" points="205.93,-93.5 215.93,-90 205.93,-86.5 205.93,-93.5" />
+</g>
+<!-- C -->
+<g id="node5" class="node">
+<title>C</title>
+<text text-anchor="middle" x="315" y="-86.3" font-family="Times,serif" font-size="14.00">C</text>
+</g>
+<!-- en&#45;&gt;C -->
+<g id="edge8" class="edge">
+<title>en&#45;&gt;C</title>
+<path fill="none" stroke="black" d="M270,-90C272.61,-90 275.23,-90 277.84,-90" />
+<polygon fill="black" stroke="black" points="277.93,-93.5 287.93,-90 277.93,-86.5 277.93,-93.5" />
+</g>
+<!-- d1 -->
+<g id="node6" class="node">
+<title>d1</title>
+<ellipse fill="none" stroke="black" cx="387" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="387" y="-86.3" font-family="Times,serif" font-size="14.00">d1</text>
+</g>
+<!-- C&#45;&gt;d1 -->
+<g id="edge9" class="edge">
+<title>C&#45;&gt;d1</title>
+<path fill="none" stroke="black" d="M342.28,-90C344.74,-90 347.19,-90 349.65,-90" />
+<polygon fill="black" stroke="black" points="349.75,-93.5 359.75,-90 349.75,-86.5 349.75,-93.5" />
+</g>
+<!-- d2 -->
+<g id="node7" class="node">
+<title>d2</title>
+<ellipse fill="none" stroke="black" cx="459" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="459" y="-86.3" font-family="Times,serif" font-size="14.00">d2</text>
+</g>
+<!-- d1&#45;&gt;d2 -->
+<g id="edge14" class="edge">
+<title>d1&#45;&gt;d2</title>
+<path fill="none" stroke="black" d="M414,-90C416.61,-90 419.23,-90 421.84,-90" />
+<polygon fill="black" stroke="black" points="421.93,-93.5 431.93,-90 421.93,-86.5 421.93,-93.5" />
+</g>
+<!-- y1 -->
+<g id="node15" class="node">
+<title>y1</title>
+<text text-anchor="middle" x="387" y="-158.3" font-family="Times,serif" font-size="14.00">y1</text>
+</g>
+<!-- d1&#45;&gt;y1 -->
+<g id="edge10" class="edge">
+<title>d1&#45;&gt;y1</title>
+<path fill="none" stroke="black" d="M387,-108.3C387,-116.02 387,-125.29 387,-133.89" />
+<polygon fill="black" stroke="black" points="383.5,-133.9 387,-143.9 390.5,-133.9 383.5,-133.9" />
+</g>
+<!-- dddd -->
+<g id="node8" class="node">
+<title>dddd</title>
+<ellipse fill="none" stroke="black" cx="531" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="531" y="-86.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- d2&#45;&gt;dddd -->
+<g id="edge15" class="edge">
+<title>d2&#45;&gt;dddd</title>
+<path fill="none" stroke="black" d="M486,-90C488.61,-90 491.23,-90 493.84,-90" />
+<polygon fill="black" stroke="black" points="493.93,-93.5 503.93,-90 493.93,-86.5 493.93,-93.5" />
+</g>
+<!-- y2 -->
+<g id="node16" class="node">
+<title>y2</title>
+<text text-anchor="middle" x="459" y="-158.3" font-family="Times,serif" font-size="14.00">y2</text>
+</g>
+<!-- d2&#45;&gt;y2 -->
+<g id="edge11" class="edge">
+<title>d2&#45;&gt;y2</title>
+<path fill="none" stroke="black" d="M459,-108.3C459,-116.02 459,-125.29 459,-133.89" />
+<polygon fill="black" stroke="black" points="455.5,-133.9 459,-143.9 462.5,-133.9 455.5,-133.9" />
+</g>
+<!-- dm -->
+<g id="node9" class="node">
+<title>dm</title>
+<ellipse fill="none" stroke="black" cx="603" cy="-90" rx="27" ry="18" />
+<text text-anchor="middle" x="603" y="-86.3" font-family="Times,serif" font-size="14.00">dm</text>
+</g>
+<!-- dddd&#45;&gt;dm -->
+<g id="edge16" class="edge">
+<title>dddd&#45;&gt;dm</title>
+<path fill="none" stroke="black" d="M558,-90C560.61,-90 563.23,-90 565.84,-90" />
+<polygon fill="black" stroke="black" points="565.93,-93.5 575.93,-90 565.93,-86.5 565.93,-93.5" />
+</g>
+<!-- yddd -->
+<g id="node11" class="node">
+<title>yddd</title>
+<text text-anchor="middle" x="531" y="-158.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- dddd&#45;&gt;yddd -->
+<g id="edge12" class="edge">
+<title>dddd&#45;&gt;yddd</title>
+<path fill="none" stroke="black" d="M531,-108.3C531,-116.02 531,-125.29 531,-133.89" />
+<polygon fill="black" stroke="black" points="527.5,-133.9 531,-143.9 534.5,-133.9 527.5,-133.9" />
+</g>
+<!-- yn -->
+<g id="node17" class="node">
+<title>yn</title>
+<text text-anchor="middle" x="603" y="-158.3" font-family="Times,serif" font-size="14.00">yn</text>
+</g>
+<!-- dm&#45;&gt;yn -->
+<g id="edge13" class="edge">
+<title>dm&#45;&gt;yn</title>
+<path fill="none" stroke="black" d="M603,-108.3C603,-116.02 603,-125.29 603,-133.89" />
+<polygon fill="black" stroke="black" points="599.5,-133.9 603,-143.9 606.5,-133.9 599.5,-133.9" />
+</g>
+<!-- xddd -->
+<g id="node10" class="node">
+<title>xddd</title>
+<text text-anchor="middle" x="171" y="-14.3" font-family="Times,serif" font-size="14.00">...</text>
+</g>
+<!-- xddd&#45;&gt;eddd -->
+<g id="edge3" class="edge">
+<title>xddd&#45;&gt;eddd</title>
+<path fill="none" stroke="black" d="M171,-36.3C171,-44.02 171,-53.29 171,-61.89" />
+<polygon fill="black" stroke="black" points="167.5,-61.9 171,-71.9 174.5,-61.9 167.5,-61.9" />
+</g>
+<!-- x1 -->
+<g id="node12" class="node">
+<title>x1</title>
+<text text-anchor="middle" x="27" y="-14.3" font-family="Times,serif" font-size="14.00">x1</text>
+</g>
+<!-- x1&#45;&gt;e1 -->
+<g id="edge1" class="edge">
+<title>x1&#45;&gt;e1</title>
+<path fill="none" stroke="black" d="M27,-36.3C27,-44.02 27,-53.29 27,-61.89" />
+<polygon fill="black" stroke="black" points="23.5,-61.9 27,-71.9 30.5,-61.9 23.5,-61.9" />
+</g>
+<!-- x2 -->
+<g id="node13" class="node">
+<title>x2</title>
+<text text-anchor="middle" x="99" y="-14.3" font-family="Times,serif" font-size="14.00">x2</text>
+</g>
+<!-- x2&#45;&gt;e2 -->
+<g id="edge2" class="edge">
+<title>x2&#45;&gt;e2</title>
+<path fill="none" stroke="black" d="M99,-36.3C99,-44.02 99,-53.29 99,-61.89" />
+<polygon fill="black" stroke="black" points="95.5,-61.9 99,-71.9 102.5,-61.9 95.5,-61.9" />
+</g>
+<!-- xn -->
+<g id="node14" class="node">
+<title>xn</title>
+<text text-anchor="middle" x="243" y="-14.3" font-family="Times,serif" font-size="14.00">xn</text>
+</g>
+<!-- xn&#45;&gt;en -->
+<g id="edge4" class="edge">
+<title>xn&#45;&gt;en</title>
+<path fill="none" stroke="black" d="M243,-36.3C243,-44.02 243,-53.29 243,-61.89" />
+<polygon fill="black" stroke="black" points="239.5,-61.9 243,-71.9 246.5,-61.9 239.5,-61.9" />
+</g>
+</g>
+</svg>
+</div>
+</div>
+
+<p>具体地，可以如下表示：</p>
+
+\[\begin{aligned}
+&amp;\bm{C} = Encoder(\bm{X}) \\
+&amp;\bm{Y} = Decoder(\bm{C}) \\
+\end{aligned}\]
+
+<p>进一步展开：</p>
+
+\[\begin{aligned}
+e_t &amp;= Encoder_{LSTM/GRU}(x_t, e_{t-1}) \\
+\bm{C} &amp;= f_1(e_n) \\
+d_t &amp;= f_2(d_{t-1}, \bm{C}) \\
+y_t &amp;= Decoder_{LSTM/GRU}(y_{t-1}, d_{t-1}, \bm{C})
+\end{aligned}\]
+
+<p>这种的应用就非常广了，因为大多数时候输入序列与输出序列的长度都是不同的，比如最常见的应用「翻译」，从一个语言翻译成另一个语言；再比如 AI 的一个领域「语音识别」，将语音序列输入后生成所识别的文本内容；还有比如 ChatGPT 这种问答应用等等。</p>
+
+<p>Seq2Seq 模型非常出色，一直到 2018 年之前 NLP 领域里该模型已成为主流。但是它有很显著的问题：</p>
+
+<ul>
+  <li>当输入序列很长时，Encoder 生成的 Context 可能就会出现所捕捉的信息不充分的情况，导致 Decoder 最终的输出是不尽如人意的。具体地，毕竟还是 RNN 模型，其词间距过长时还是会有梯度消失问题，根本原因在于用到了「递归」。当递归作用在同一个 weight matrix 上时，使得如果这个矩阵满足条件的话，其最大的特征值要是小于 1 的话，就一定出现梯度消失问题。后来的 LSTM 和 GRU 也仅仅能缓解问题，并不能根本解决。</li>
+  <li>并行效果差：每个时刻的结果依赖前一时刻。</li>
+</ul>
+
+<h3 id="reference">Reference</h3>
+
+<ul>
+  <li>《自然语言处理：基于预训练模型的方法》车万翔 等</li>
+  <li>《自然语言处理实战：预训练模型应用及其产品化》安库·A·帕特尔 等</li>
+  <li>https://www.cnblogs.com/engpj/p/16906911.html</li>
+</ul>
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+	<span>
+		-<br/><br/>
+		船长还不会游泳 at 微信公众号/微博<br/>
+		@麦克船长 at 即刻/知乎/小宇宙/掘金/小红书/微信读书<br/>
+		@船长模玩 at Bilibili<br/>
+		Copyright © 2011-2023, MikeCaptain.com
+	</span>
+</footer>
+
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>

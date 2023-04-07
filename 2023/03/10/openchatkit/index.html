@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>OpenChatKit</title>
+  	<meta name="description" content="OpenChatKit provides a powerful, open-source base to create both specialized and general purpose chatbots for various applications. We collaborated with LAION and Ontocord to create the training dataset. Much more than a model release, this is the beginning of an open source project. We are releasing a set of tools and processes for ongoing improvement with community contributions.">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+  	<!-- KaTeX -->
+  	<link rel="stylesheet" href="/assets/plugins/katex.0.11.1/katex.min.css">
+  	
+
+  	
+  		<script async src="https://www.googletagmanager.com/gtag/js?id=G-CH4708X4R5"></script>
+  		<script>
+    		window.dataLayer = window.dataLayer || [];
+    		function gtag(){dataLayer.push(arguments);}
+    		gtag('js', new Date());
+
+    		gtag('config', 'G-CH4708X4R5');
+  		</script>
+	
+
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/booklist/" title="读书行路">读书行路</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/target/" title="目标感">目标感</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/energy" title="能源">能源</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/business" title="商业">商业</a>
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="/target/" title="目标感">目标感</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/energy" title="能源">能源</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/business" title="商业">商业</a>
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="/target/" title="目标感">目标感</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>OpenChatKit</h2>		
+	<time datetime="2023-03-10T21:54:13+00:00" class="by-line">10 Mar 2023, 杭州 | 麦克船长 | 总计 16674 字</time>
+	<div class="content">
+		<p><strong>本文目录</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#instruction-tuned-large-language-model" id="markdown-toc-instruction-tuned-large-language-model">Instruction-tuned large language model</a>    <ul>
+      <li><a href="#strengths-of-the-model" id="markdown-toc-strengths-of-the-model">Strengths of the model</a>        <ul>
+          <li><a href="#example-1-summarization-and-question-answering-within-context" id="markdown-toc-example-1-summarization-and-question-answering-within-context">Example 1: Summarization and question answering within context</a></li>
+          <li><a href="#example-2-information-extraction" id="markdown-toc-example-2-information-extraction">Example 2: Information extraction</a></li>
+          <li><a href="#example-3-text-classification" id="markdown-toc-example-3-text-classification">Example 3: Text classification</a></li>
+        </ul>
+      </li>
+      <li><a href="#weaknesses-of-the-model" id="markdown-toc-weaknesses-of-the-model">Weaknesses of the model</a></li>
+    </ul>
+  </li>
+  <li><a href="#customization-recipes-to-fine-tune-the-model" id="markdown-toc-customization-recipes-to-fine-tune-the-model">Customization recipes to fine-tune the model</a>    <ul>
+      <li><a href="#how-to-fine-tune" id="markdown-toc-how-to-fine-tune">How to fine-tune</a></li>
+    </ul>
+  </li>
+  <li><a href="#extensible-retrieval-system-for-live-updating-answers" id="markdown-toc-extensible-retrieval-system-for-live-updating-answers">Extensible retrieval system for live-updating answers</a>    <ul>
+      <li><a href="#how-to-use-the-chatbot-in-retrieval-mode" id="markdown-toc-how-to-use-the-chatbot-in-retrieval-mode">How to use the chatbot in retrieval mode</a></li>
+    </ul>
+  </li>
+  <li><a href="#moderation-model-to-intervene-when-needed" id="markdown-toc-moderation-model-to-intervene-when-needed">Moderation model to intervene when needed</a></li>
+  <li><a href="#how-can-you-help-contribute-feedback-datasets-and-improvements" id="markdown-toc-how-can-you-help-contribute-feedback-datasets-and-improvements">How can you help? Contribute feedback, datasets and improvements!</a></li>
+  <li><a href="#built-on-the-together-decentralized-cloud" id="markdown-toc-built-on-the-together-decentralized-cloud">Built on the Together Decentralized Cloud</a></li>
+</ul>
+
+<p>原文链接：https://www.together.xyz/blog/openchatkit</p>
+
+<p>OpenChatKit provides a powerful, open-source base to create both specialized and general purpose chatbots for various applications. We collaborated with LAION and Ontocord to create the training dataset. Much more than a model release, this is the beginning of an open source project. We are releasing a set of tools and processes for ongoing improvement with community contributions.</p>
+
+<p>At Together, we believe open-source foundation models can be more inclusive, transparent, robust and capable. We are releasing OpenChatKit 0.15 under an Apache-2.0 license, with full access to source code, model weights and training datasets. This is a community driven project, and we are excited to see how it develops and grows!</p>
+
+<p>A useful chatbot needs to follow instructions in natural language, maintain context in dialog, and moderate responses. OpenChatKit provides a base bot, and the building blocks to derive purpose-built chatbots from this base.</p>
+
+<p>The kit has 4 key components:</p>
+
+<ol>
+  <li>An instruction-tuned large language model, fine-tuned for chat from EleutherAI’s GPT-NeoX-20B with over 43 million instructions on 100% carbon negative compute;</li>
+  <li>Customization recipes to fine-tune the model to achieve high accuracy on your tasks;</li>
+  <li>An extensible retrieval system enabling you to augment bot responses with information from a document repository, API, or other live-updating information source at inference time;</li>
+  <li>A moderation model, fine-tuned from GPT-JT-6B, designed to filter which questions the bot responds to.</li>
+</ol>
+
+<p>OpenChatKit includes tools that allow users to provide feedback and enable community members to add new datasets; contributing to a growing corpus of open training data that will improve LLMs over time.</p>
+
+<p><a href="https://huggingface.co/spaces/togethercomputer/OpenChatKit"><strong>Try it out on Hugging Face and give us your feedback!</strong></a></p>
+
+<p><img src="https://images.squarespace-cdn.com/content/v1/6358bea282189a0adf57fe16/21c15f3f-d0b9-4c77-bb23-d6f40657a935/OpenChatKit+-+Email+Summarization+to+Table.png?format=2500w" alt="" /></p>
+
+<p>The OpenChatKit feedback app on Hugging Face enables community members to test the chatbot and provide feedback.</p>
+
+<h2 id="instruction-tuned-large-language-model">Instruction-tuned large language model</h2>
+
+<p>GPT-NeoXT-Chat-Base-20B is the large language model that forms the base of OpenChatKit. It is based on EleutherAI’s GPT-NeoX model, and fine-tuned with data focusing on conversational interactions. We focused the tuning on several tasks such as multi-turn dialogue, question answering, classification, extraction, and summarization. We’ve fine-tuned the model with a collection of 43 million high-quality instructions. Together partnered with LAION and Ontocord to create the OIG-43M dataset the model is based on. You can read more about this process and the availability of the training dataset in LAION’s blog post here.</p>
+
+<p>Out of the box, GPT-NeoXT-Chat-Base-20B provides a strong base for a broad set of natural language tasks. Qualitatively, it has higher scores than its base model GPT-NeoX on the HELM benchmark, especially on tasks involving question and answering, extraction and classification.</p>
+
+<p><img src="https://images.squarespace-cdn.com/content/v1/6358bea282189a0adf57fe16/fa6d48bc-68ba-4434-b401-f096994978c2/OpenChatKit+HELM+Benchmarks.png?format=2500w" alt="" /></p>
+
+<p>Evaluating GPT-NeoXT-Chat-Base-20B on HELM and comparing with GPT-NeoX. † indicates tests that include data that was also in our fine-tuning corpus.</p>
+
+<h3 id="strengths-of-the-model">Strengths of the model</h3>
+
+<p>There are several tasks that OpenChatKit excels at out of the box. This includes:</p>
+
+<h4 id="example-1-summarization-and-question-answering-within-context">Example 1: Summarization and question answering within context</h4>
+
+<p>Summarize a long document into a single sentence and conduct question answering related to the document, with multiple rounds.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;user&gt;: Last year, the travel industry saw a big rebound in demand — and that demand is showing no signs of slowing down this spring break travel season. Planes and hotels will be full, travelers will likely face long queues, cancellations, massive crowds and plenty of other travel nightmares. But perhaps the most frustrating thing you’ll have to prepare for this spring break is if your luggage goes missing. You’ve got to somehow track down your belongings that were in the airline’s care and then wait to be reunited — all while trying to enjoy the start of your long-awaited vacation. As far as travel nightmares go, lost luggage is up there as one of the worst.
+
+To be honest up front, I am great at strategically losing things — or rather, losing stuff with style. (I hope you appreciate the “Toy Story” reference.) So when a product comes along that’s a perfect way to keep track of my belongings — especially when traveling — I’m adding it to my travel bag.
+
+I’ve been a big fan of Apple’s $29 item tracker, dubbed AirTag. The long-rumored AirTag product finally launched in 2021, and while it’s not the first item tracker to exist, it has two key features that set it apart from the rest to make it the ultimate travel companion: access to the Find My network and Precision Finding technology.
+
+The Federal Aviation Administration has even ruled that having an AirTag in your luggage is permitted and, in fact, not a safety hazard. The devices only contain 0.1 grams of lithium, which falls below the FAA’s limit.
+
+“Luggage tracking devices powered by lithium metal cells that have 0.3 grams or less of lithium can be used on checked baggage,” the FAA said in a statement. “Apple AirTags meet this threshold; other luggage tracking devices may not.”
+
+But, you may be wondering what makes them so special and why you should carry one in your checked luggage this spring break? Let’s explain why.
+
+Summarize the above into a single paragraph.
+
+&lt;bot&gt;: If you're traveling this spring break, you might want to consider investing in an item tracker to help you find your lost luggage. Apple's AirTag is the best option, according to a new report.
+
+&lt;user&gt;: But isn't it unsafe to put AirTag in a luggage?
+
+&lt;bot&gt;: The Federal Aviation Administration has ruled that having an AirTag in your luggage is permitted and, in fact, not a safety hazard.
+
+&lt;user&gt;: Ah, why is that?
+
+&lt;bot&gt;: The devices only contain 0.1 grams of lithium, which falls below the FAA’s limit.
+</code></pre></div></div>
+
+<h4 id="example-2-information-extraction">Example 2: Information extraction</h4>
+
+<p>Extract structured information from unstructured documents, as illustrated in the following example.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;user&gt;: Team, we have to make a decision on the product plan for Goocrux v2. 
+
+The first option will take us 3 weeks of development, and will achieve performance of 80ms, but means that the UI has to change. 
+
+The second option will take us 4 weeks of development, and will achieve performance of 60ms, without any UI change. 
+
+The third option will take the longest -- 6 weeks of development, will achieve performance of 30ms, without any UI change. 
+
+Summarize the above email into a markdown table with four columns: (1) Option ID, (2) Development time, (3) Performance, (4) UI Change.
+
+&lt;bot&gt;: #.
+
+| ID | Option ID | Development time | Performance | UI Change |
+| --------- | --------- | --------- | --------- | --------- |
+| 1 | 1 | 3 weeks | 80ms | Yes |
+| 2 | 2 | 4 weeks | 60ms | No |
+| 3 | 3 | 6 weeks | 30ms | No |
+</code></pre></div></div>
+
+<h4 id="example-3-text-classification">Example 3: Text classification</h4>
+
+<p>Classifying a sentence or paragraph into different categories.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;user&gt;: Classify the sentiment of the following sentence into Positive, Neutral, or Negative: Super excited about teaching Stanford’s first course on Large Language Models! Check the syllabus out here
+
+&lt;bot&gt;: Positive
+
+&lt;user&gt;: Classify the sentiment of the following sentence into Positive, Neutral, or Negative: How about the following sentence: It is raining outside and I feel so blue
+
+&lt;bot&gt;: Negative
+</code></pre></div></div>
+
+<p>In addition, the model does well on few-shot prompts. For both text classification and information extraction, the model performs even better with few shot prompting, as in most HELM tasks. We encourage you to try it out and let us know what you think.</p>
+
+<h3 id="weaknesses-of-the-model">Weaknesses of the model</h3>
+
+<p>That said, there are several areas where we have more work to do, and we need your help! Some of these include:</p>
+
+<ul>
+  <li>Knowledge-based closed question and answering: The chatbot may hallucinate and give incorrect results. Be sure to fact check, and if possible provide feedback with the corrected information. We are also working to bolster the retrieval system which will help with this.</li>
+  <li>Coding tasks: The chatbot was not trained on a large enough corpus of source code to excel at writing code. We welcome contributions of additional datasets to improve this!</li>
+  <li>Repetition: Sometimes the chatbot will repeat its response. We’re working to improve this, but in the meantime you can click the refresh button to start a new conversation.</li>
+  <li>Context switching: If you change the topic in the middle of a conversation, the chatbot often cannot make the switch automatically and will continue to give answers related to the prior topic.</li>
+  <li>Creative writing and longer answers: The chatbot does not generate long, creative text such as an essay or story.</li>
+</ul>
+
+<p>We are excited to work with you to address these weaknesses by getting your feedback, bolstering data sets, and improving accuracy.</p>
+
+<h2 id="customization-recipes-to-fine-tune-the-model">Customization recipes to fine-tune the model</h2>
+
+<p>LLMs have shown impressive ability to do general purpose question answering, and they tend to achieve higher accuracy when fine-tuned for specific applications. For example, Google’s PaLM achieves ~50% accuracy on medical answers, but by adding instruction support and fine-tuning with medical specific information, Google created Med-PaLM which achieved 92.6% accuracy. The same approach can be taken for other tasks.</p>
+
+<p>OpenChatKit provides tools to fine-tune the chatbot to specialized applications, and we are working with research groups and companies to help them create custom models for a variety of tasks:</p>
+
+<ul>
+  <li>Educational helper — Fine-tuning on open textbook datasets to create a chatbot that will help students of all ages learn about a variety of topics through natural conversation.</li>
+  <li>Financial question answering — Fine-tuning and leveraging retrieval of financial data such as SEC filings to enable question answering in the financial domain.</li>
+  <li>Customer support agents — Fine-tuning with knowledge base data to create chatbots that help end users diagnose issues and quickly find answers.</li>
+</ul>
+
+<h3 id="how-to-fine-tune">How to fine-tune</h3>
+
+<p>What it takes to fine-tune:</p>
+
+<ul>
+  <li>Prepare your data sets, with example interactions in the specified format.</li>
+  <li>Save your dataset as a jsonl file, and follow instructions here to fine-tune the chat model.</li>
+  <li>Don’t forget the moderation model! Before you start to use your fine-tuned model, be careful about out-of-domain questions that the moderation model may need to filter. If necessary, prepare some moderation data and fine-tune the moderation model.</li>
+</ul>
+
+<p>Documentation and source code for this process is available in the GitHub repository. With OpenChatKit fully open source under the Apache-2.0 license, you can deeply tune, modify or inspect the weights for your own applications or research.</p>
+
+<p>The above examples are just the beginning and we are excited by what the innovative open community will do. Send us your ideas and let us know if we can help!</p>
+
+<h2 id="extensible-retrieval-system-for-live-updating-answers">Extensible retrieval system for live-updating answers</h2>
+
+<p>OpenChatKit also includes an extensible retrieval system. With the retrieval system the chatbot is able to incorporate regularly updated or custom content, such as knowledge from Wikipedia, news feeds, or sports scores in responses.</p>
+
+<p><img src="https://images.squarespace-cdn.com/content/v1/6358bea282189a0adf57fe16/af5a08bc-606c-4f47-838a-962c1332a808/OpenChatKit+Retrieval+System.png?format=2500w" alt="" /></p>
+
+<p>An example workflow of retrieval augmented systems.</p>
+
+<p>With the retrieval system the chatbot will retrieve relevant information on a given question, giving it access to up-to-date information. This provides the “context” for the model to answer questions. As two examples of this retrieval system, we include support for a Wikipedia index and sample code for how you would call a web search API during retrieval. Following the documentation, you can use the retrieval system to connect the chatbot to any data set or API at inference time, incorporating the live-updating data into responses.</p>
+
+<h3 id="how-to-use-the-chatbot-in-retrieval-mode">How to use the chatbot in retrieval mode</h3>
+
+<p>We have provided an all-in-one script that combines the retrieval model along with the chat model. See full details in the README.</p>
+
+<p>In the provided Wikipedia example, the system performs the following steps for a given user query:</p>
+
+<ol>
+  <li>The server retrieves relevant sentences from the Wikipedia index based on the user’s query.</li>
+  <li>The server prepends the output of step 1 to the query and generates a response using the chatbot model. You can make changes to the code and the prompt to suit your specific use case.</li>
+</ol>
+
+<h2 id="moderation-model-to-intervene-when-needed">Moderation model to intervene when needed</h2>
+
+<p>The final component of OpenChatKit is a 6 billion parameter moderation model fine-tuned from GPT-JT. In chat applications, the moderation model runs in tandem with the main chat model, checking the user utterance for any inappropriate content. Based on the moderation model’s assessment, the chatbot can limit the input to moderated subjects. For more narrow tasks the moderation model can be used to detect out-of-domain questions and override when the question is not on topic.</p>
+
+<p>During inference, we conduct few-shot classification and classify user questions into five categories. The chatbot only responds when the question falls into allowed classifications:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Classification</th>
+      <th>Response allowed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>casual</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>possibly needs caution</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>probably needs caution</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>needs caution</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>needs intervention</td>
+      <td>No</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Moderation is a difficult and subjective task, and depends a lot on the context. The moderation model provided is a baseline that can be adapted and customized to various needs. We hope that the community can continue to improve the base moderation model, and will develop specific datasets appropriate for various cultural and organizational contexts.</p>
+
+<p>We collaborated with LAION and Ontocord to on the training data set for the the moderation model and fine-tuned GPT-JT over a collection of inappropriate questions. Read more about this process, the availability of open training data, and how you can participate in the LAION blogpost here.</p>
+
+<h2 id="how-can-you-help-contribute-feedback-datasets-and-improvements">How can you help? Contribute feedback, datasets and improvements!</h2>
+
+<p>Much more than a model release, this is the beginning of an open source project. We are releasing a set of tools and processes for ongoing improvement with community contributions.</p>
+
+<p>This includes:</p>
+
+<ul>
+  <li><strong>Process for dataset contributions</strong> — Add a YAML file to our GitHub repository with a URL and metadata. Together will download the dataset from the URL, process the data and integrate it into the next training run.</li>
+  <li><strong>Process for incorporating feedback</strong> — User reports will be periodically reviewed and processed to create aggregated datasets which may be released as open-source for future AI research.</li>
+  <li><strong>Hugging Face app</strong> — Use the app provided on Hugging Face and submit 👍, 👎 or flag inappropriate responses. This feedback helps us improve and provides additional data to the community. The chatbot will also give you a link to provide more details and the ideal correct response.</li>
+</ul>
+
+<h2 id="built-on-the-together-decentralized-cloud">Built on the Together Decentralized Cloud</h2>
+
+<p>Together is building an intuitive platform combining data, models and computation to enable researchers, developers, and companies to leverage and improve the latest advances in artificial intelligence. Both models in OpenChatKit were trained on the Together Decentralized Cloud — a collection of compute nodes from across the Internet.</p>
+
+<p>The fine-tuning process for this model used aggressive communication compression, incurring only 1.95 TB of communication for the whole fine-tuning process, compared with 172 TB when communicating with fp16 precision. This allows us to conduct data parallel training over slow 1Gbps networks. The time taken to fine-tune with this technique is similar to running over 100Gbps data center networks, in fact 93.2% as fast! This shows the incredible potential of decentralized compute for building large foundation models. Read more about how we do this here.</p>
+
+<p>Together also deeply values sustainability and has developed a green zone of the Together Decentralized Cloud which includes compute resources that are 100% carbon negative. The fine-tuning of GPT-NeoXT-Chat-Base-20B was done exclusively in this green zone. We are excited to continue expanding our carbon negative compute resources with partners like CrusoeEnergy.</p>
+
+<p>If you are interested in leveraging the Together Platform for your organization, please contact us to learn more.</p>
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+	<span>
+		-<br/><br/>
+		船长还不会游泳 at 微信公众号/微博<br/>
+		@麦克船长 at 即刻/知乎/小宇宙/掘金/小红书/微信读书<br/>
+		@船长模玩 at Bilibili<br/>
+		Copyright © 2011-2023, MikeCaptain.com
+	</span>
+</footer>
+
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
