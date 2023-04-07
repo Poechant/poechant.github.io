@@ -4,67 +4,12 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-04-07T16:31:55+00:00</updated>
+ <updated>2023-04-07T16:37:24+00:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
    <email>zhongchao.ustc@gmail.com</email>
  </author>
-
- 
-
- <entry>
-   <title>电商 SaaS 格局</title>
-   <link href="https://www.mikecaptain.com/2023/04/05/ecommerce-saas/"/>
-   <id>https://www.mikecaptain.com/2023/04/05/ecommerce-saas</id>
-   <updated>2023-04-05T04:40:13+00:00</updated>
-   <content type="html">&lt;h2 id=&quot;一国内电商-saas&quot;&gt;一、国内电商 SaaS&lt;/h2&gt; &lt;h2 id=&quot;二跨境电商-saas&quot;&gt;二、跨境电商 SaaS&lt;/h2&gt; &lt;p&gt;跨境电商 SaaS 产品，可以划分为营销、ERP、供应链三大领域。一般大家虽说「跨境电商」，但默认语境下主要说的都是「跨境出口电商」。目前跨境 SaaS 厂商主要服务出口商家，也就是中国境内的商家，主要聚焦 B2B、B2C 卖家，出口 C2C 卖家过于零散。&lt;/p&gt; &lt;h3 id=&quot;1跨境出口的营销-saas&quot;&gt;1、跨境出口的营销 SaaS&lt;/h3&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;跨境出口的营销 SaaS，主要服务建站、选品、运营/获客三大场景&lt;/strong&gt;。&lt;/li&gt; &lt;/ul&gt; &lt;h4 id=&quot;11营销建站-saas&quot;&gt;1.1、营销：建站 SaaS&lt;/h4&gt; &lt;ul&gt; &lt;li&gt;跨境出口的营销 SaaS 市场相对成熟，头部厂商以国外公司为主。建站的头部厂商集中度高，Shopify 市场份额近 60%，Shopline 次之。&lt;/li&gt; &lt;li&gt;跨境出口的&lt;strong&gt;营销 SaaS 主要厂商&lt;/strong&gt;有：Shopify、SHOPLINE、宜选 ecer、店匠 Shoplazza、SHOPYY、myyshop、FunPinPin、UEESHOP、BIGCOMMERCE、Square。 &lt;ul&gt; &lt;li&gt;建站 SaaS：差异性较小，主要拼服务能力。&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;产品趋势：极致单品 -&amp;gt; 生态套件&lt;/li&gt; &lt;li&gt;生态趋势：充分竞争 -&amp;gt; 头部集中&lt;/li&gt; &lt;/ul&gt; &lt;h4...</content>
- </entry>
-
- 
-
- <entry>
-   <title>AI 创业机会</title>
-   <link href="https://www.mikecaptain.com/2023/04/05/AI-startup-opportunities/"/>
-   <id>https://www.mikecaptain.com/2023/04/05/AI-startup-opportunities</id>
-   <updated>2023-04-05T04:40:13+00:00</updated>
-   <content type="html">&lt;h2 id=&quot;思考梳理&quot;&gt;思考梳理&lt;/h2&gt;
-
-&lt;h3 id=&quot;to-c&quot;&gt;To C&lt;/h3&gt;
-
-&lt;h3 id=&quot;to-b&quot;&gt;To B&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;个人微信助理（基于企业微信），输入个人聊天记录、即刻/微博/小红书/朋友圈文案、小红书/B站/抖音/快手视频、公众号文章、录音文件、视频文件 …… 即可 fine-tune 个人模型。支持回复文本、语音内容。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;个人分身短视频&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;个人分身直播&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;##&lt;/p&gt;
-
-&lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;https://mp.weixin.qq.com/s/8VU_ekaHAO93YhmkYgQJCw&lt;/li&gt;
-&lt;/ul&gt;
-</content>
- </entry>
-
- 
-
- <entry>
-   <title>LLaMA 羊驼家族：大模型世界里的 Linux 内核</title>
-   <link href="https://www.mikecaptain.com/2023/03/24/llama-family/"/>
-   <id>https://www.mikecaptain.com/2023/03/24/llama-family</id>
-   <updated>2023-03-24T04:40:13+00:00</updated>
-   <content type="html">&lt;p&gt;85060909&lt;/p&gt; &lt;h2 id=&quot;一llama&quot;&gt;一、LLaMA&lt;/h2&gt; &lt;p&gt;目前基于预训练 LLM 研发性能较好的对话机器人，其难点之一是高质量数据。目前调教开源模型，基本都在用 ChatGPT 作为老师，常用的方式就两种：&lt;/p&gt; &lt;ol&gt; &lt;li&gt; &lt;p&gt;自己准备问题，让老师给答案：研发团队准备一组问题（instruction），然后用 ChatGPT 根据这些问题生成答案（following），这样得到一组 instruction-following 数据作为微调的训练数据。这样做的一个前提是认为 ChatGPT 本身就是高质量对齐的模型。&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;用公开收集的 ChatGPT 的高质量对话作为微调的训练数据，这里的一个好的参考是 ShareGPT，它是一个大量用户分享 ChatGPT 对话内容的网站。&lt;/p&gt; &lt;/li&gt; &lt;/ol&gt; &lt;h3 id=&quot;1llama&quot;&gt;1、LLaMA&lt;/h3&gt; &lt;ul&gt; &lt;li&gt;Blog：https://ai.facebook.com/blog/large-language-model-llama-meta-ai/&lt;/li&gt; &lt;/ul&gt; &lt;h4 id=&quot;11在手机上跑一个-llamacpp&quot;&gt;1.1、在手机上跑一个 LLaMA.cpp&lt;/h4&gt; &lt;p&gt;下载 &lt;a href=&quot;https://developer.android.com/ndk&quot;&gt;Android NDK&lt;/a&gt; 到你的本地电脑上，编译一个支持 Android 平台运行的 LLaMA 出来：&lt;/p&gt; &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@local %...</content>
- </entry>
 
  
 
@@ -84,17 +29,6 @@
    <id>https://www.mikecaptain.com/2023/03/15/nuclear-fission</id>
    <updated>2023-03-15T19:40:13+00:00</updated>
    <content type="html">&lt;h2 id=&quot;1什么是核反应&quot;&gt;1、什么是核反应？&lt;/h2&gt; &lt;p&gt;核反应是一种将原子核转化为不同核素的物理或化学过程。它通常涉及核子的结合和释放，产生放射性粒子、能量和新的核素。核反应可分为两类：核裂变和核聚变。&lt;/p&gt; &lt;ul&gt; &lt;li&gt;在&lt;strong&gt;核裂变&lt;/strong&gt;中，一个原子核分裂成两个或更多轻子和自由中子，通常伴随着大量的能量释放。&lt;/li&gt; &lt;li&gt;在&lt;strong&gt;核聚变&lt;/strong&gt;中，两个或多个原子核结合形成一个更重的核，同时释放出能量。&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;这些反应在核电站、原子弹、氢弹等方面都有应用。另外核反应的一种分类方式，是看反应是否可控。以核裂变为例，则不可控和可控的两种核裂变如下：&lt;/p&gt; &lt;ul&gt; &lt;li&gt;在&lt;strong&gt;不可控核裂变&lt;/strong&gt;中，一旦核裂变反应链被启动，就会不断加速反应速度，释放出大量的能量，导致核反应失控，从而产生灾难性的后果。例如，原子弹就是一种不可控核裂变装置。&lt;/li&gt; &lt;li&gt;&lt;strong&gt;可控核裂变&lt;/strong&gt;是指通过控制核反应链的反应速率，使核反应可以在可控范围内进行。核电站就是一种可控核裂变的装置。核电站使用的燃料（如铀-235）进行核反应时，通过控制反应链的反应速率，从而可以安全地控制反应过程，获得持续稳定的能量输出。&lt;/li&gt; &lt;/ul&gt; &lt;h3 id=&quot;11核裂变的技术原理&quot;&gt;1.1、核裂变的技术原理&lt;/h3&gt; &lt;p&gt;一般的核裂变反应方程式，可以表示如下：&lt;/p&gt; \[^A_ZX + n \rightarrow ^{A_1}_{Z_1}X + ^{A_2}_{Z_2}X + ... + ^{A_k}_{Z_k}X + n\] &lt;p&gt;用中子轰击 \(\mathrm{^{235}_{92}U}\)，裂变出 \(\mathrm{^{93}_{36}Kr}\) 和 \(\mathrm{^{141}_{56}Ba}\) 以及 3 个中子，同时该裂变产生大量能量。这就是 \(\mathrm{^{235}_{92}U}\) 的裂变链式反应方程式，如下：&lt;/p&gt; \[\mathrm{n} + \mathrm{^{235}_{92}U} \rightarrow \mathrm{^{93}_{36}Kr} + \mathrm{^{141}_{56}Ba} + 3\mathrm{n} + 200\mathrm{MeV}\] &lt;h3...</content>
- </entry>
-
- 
-
- <entry>
-   <title>Alibaba 企业智能与 AI</title>
-   <link href="https://www.mikecaptain.com/2023/03/14/ali-enterprise-intelligence/"/>
-   <id>https://www.mikecaptain.com/2023/03/14/ali-enterprise-intelligence</id>
-   <updated>2023-03-14T16:40:13+00:00</updated>
-   <content type="html">
-</content>
  </entry>
 
  
@@ -147,6 +81,50 @@ cd alpaca.cpp
    <id>https://www.mikecaptain.com/2023/03/11/next-generation-ai-google</id>
    <updated>2023-03-11T19:40:13+00:00</updated>
    <content type="html">&lt;ul&gt; &lt;li&gt;原文标题：The next generation of AI for developers and Google Workspace&lt;/li&gt; &lt;/ul&gt; &lt;blockquote&gt; &lt;p&gt;We’re bringing the power of generative AI to developers and businesses through Google Cloud and MakerSuite. And we’re introducing new AI-powered features in Google Workspace. —— Thomas Kurian, CEO of Google Cloud&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Google has been investing...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>Google Cloud 为开发者、企业和政府带来了生成式 AI</title>
+   <link href="https://www.mikecaptain.com/2023/03/11/google-cloud-gen-ai/"/>
+   <id>https://www.mikecaptain.com/2023/03/11/google-cloud-gen-ai</id>
+   <updated>2023-03-11T19:40:13+00:00</updated>
+   <content type="html">&lt;ul&gt; &lt;li&gt;原文标题：Google Cloud brings generative AI to developers, businesses, and governments&lt;/li&gt; &lt;li&gt;原文链接：https://cloud.google.com/blog/products/ai-machine-learning/generative-ai-for-businesses-and-governments&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Generative AI is poised to usher in a new wave of interactive, multimodal experiences that transform how we interact with information, brands, and one another. Harnessing the power of decades of Google’s research, innovation, and investment in...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>书籍大纲《麦克船长 LLM 革命未来》</title>
+   <link href="https://www.mikecaptain.com/2023/03/11/captain-llm-book-catalogue/"/>
+   <id>https://www.mikecaptain.com/2023/03/11/captain-llm-book-catalogue</id>
+   <updated>2023-03-11T19:40:13+00:00</updated>
+   <content type="html">&lt;!-- 推荐语： * 张凯夫 * 赵德丽：达摩院计算机视觉负责人、资深算法专家 * 熊皓：淘宝直播算法负责人，资深技术专家 * 黄眉： * 三七：企业智能事业部总经理 * 锡泽：阿里集团资深 * 韩锷：资深技术专家 * 张斯成：前钉钉副总裁 * 罗璇 * 刘江？ * 赖晓春，上海科技大学研究员、联影首席科学家 * 牛力，上海交通大学 * 王猛，Google 自动驾驶 AI 研究员 * 田飞，Meta * 赵明夷，Notion * 孙鹏，世界之窗浏览器创始人 * 王宇航，核桃编程创始人 * 陆铭，宝云科技创始人 大模型革命：自然语言处理篇 演化：大语言模型编年史 --- --&gt; &lt;h2 id=&quot;目录&quot;&gt;目录&lt;/h2&gt; &lt;h4 id=&quot;先导篇--自然语言处理的基本背景&quot;&gt;先导篇 ·...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>OpenChatKit</title>
+   <link href="https://www.mikecaptain.com/2023/03/10/openchatkit/"/>
+   <id>https://www.mikecaptain.com/2023/03/10/openchatkit</id>
+   <updated>2023-03-10T21:54:13+00:00</updated>
+   <content type="html">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#instruction-tuned-large-language-model&quot; id=&quot;markdown-toc-instruction-tuned-large-language-model&quot;&gt;Instruction-tuned large language model&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#strengths-of-the-model&quot; id=&quot;markdown-toc-strengths-of-the-model&quot;&gt;Strengths of the model&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#example-1-summarization-and-question-answering-within-context&quot; id=&quot;markdown-toc-example-1-summarization-and-question-answering-within-context&quot;&gt;Example 1: Summarization and question answering within context&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#example-2-information-extraction&quot; id=&quot;markdown-toc-example-2-information-extraction&quot;&gt;Example 2: Information extraction&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#example-3-text-classification&quot; id=&quot;markdown-toc-example-3-text-classification&quot;&gt;Example 3: Text classification&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#weaknesses-of-the-model&quot; id=&quot;markdown-toc-weaknesses-of-the-model&quot;&gt;Weaknesses of the model&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>Midjourney Collection</title>
+   <link href="https://www.mikecaptain.com/2023/03/07/midjourney-collection/"/>
+   <id>https://www.mikecaptain.com/2023/03/07/midjourney-collection</id>
+   <updated>2023-03-07T00:00:00+00:00</updated>
+   <content type="html">
+&lt;p&gt;https://discord.com/channels/662267976984297473/1008571063732539392/1082402117890875513&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://media.discordapp.net/attachments/1008571063732539392/1082402117614063726/Llib_Logo_design_for_private_investigation_crisis_management_ri_4af33b35-19d4-4035-9391-1b333fc5e041.png?width=1118&amp;amp;height=1118&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+</content>
  </entry>
 
  

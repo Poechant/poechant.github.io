@@ -1,116 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-04-07T16:31:55+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">AI 创业机会</title><link href="https://www.mikecaptain.com/2023/04/05/AI-startup-opportunities/" rel="alternate" type="text/html" title="AI 创业机会" /><published>2023-04-05T04:40:13+00:00</published><updated>2023-04-05T04:40:13+00:00</updated><id>https://www.mikecaptain.com/2023/04/05/AI-startup-opportunities</id><content type="html" xml:base="https://www.mikecaptain.com/2023/04/05/AI-startup-opportunities/">&lt;h2 id=&quot;思考梳理&quot;&gt;思考梳理&lt;/h2&gt;
-
-&lt;h3 id=&quot;to-c&quot;&gt;To C&lt;/h3&gt;
-
-&lt;h3 id=&quot;to-b&quot;&gt;To B&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;个人微信助理（基于企业微信），输入个人聊天记录、即刻/微博/小红书/朋友圈文案、小红书/B站/抖音/快手视频、公众号文章、录音文件、视频文件 …… 即可 fine-tune 个人模型。支持回复文本、语音内容。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;个人分身短视频&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;个人分身直播&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;##&lt;/p&gt;
-
-&lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;https://mp.weixin.qq.com/s/8VU_ekaHAO93YhmkYgQJCw&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="电商" /><category term="SaaS" /><category term="AI" /><category term="软件" /><category term="服务" /><category term="工具" /><category term="出海" /><category term="中国" /><category term="DaaS" /><category term="PaaS" /><category term="云服务" /><summary type="html">思考梳理</summary></entry><entry><title type="html">电商 SaaS 格局</title><link href="https://www.mikecaptain.com/2023/04/05/ecommerce-saas/" rel="alternate" type="text/html" title="电商 SaaS 格局" /><published>2023-04-05T04:40:13+00:00</published><updated>2023-04-05T04:40:13+00:00</updated><id>https://www.mikecaptain.com/2023/04/05/ecommerce-saas</id><content type="html" xml:base="https://www.mikecaptain.com/2023/04/05/ecommerce-saas/">&lt;h2 id=&quot;一国内电商-saas&quot;&gt;一、国内电商 SaaS&lt;/h2&gt;
-
-&lt;h2 id=&quot;二跨境电商-saas&quot;&gt;二、跨境电商 SaaS&lt;/h2&gt;
-
-&lt;p&gt;跨境电商 SaaS 产品，可以划分为营销、ERP、供应链三大领域。一般大家虽说「跨境电商」，但默认语境下主要说的都是「跨境出口电商」。目前跨境 SaaS 厂商主要服务出口商家，也就是中国境内的商家，主要聚焦 B2B、B2C 卖家，出口 C2C 卖家过于零散。&lt;/p&gt;
-
-&lt;h3 id=&quot;1跨境出口的营销-saas&quot;&gt;1、跨境出口的营销 SaaS&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;跨境出口的营销 SaaS，主要服务建站、选品、运营/获客三大场景&lt;/strong&gt;。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;11营销建站-saas&quot;&gt;1.1、营销：建站 SaaS&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;跨境出口的营销 SaaS 市场相对成熟，头部厂商以国外公司为主。建站的头部厂商集中度高，Shopify 市场份额近 60%，Shopline 次之。&lt;/li&gt;
-  &lt;li&gt;跨境出口的&lt;strong&gt;营销 SaaS 主要厂商&lt;/strong&gt;有：Shopify、SHOPLINE、宜选 ecer、店匠 Shoplazza、SHOPYY、myyshop、FunPinPin、UEESHOP、BIGCOMMERCE、Square。
-    &lt;ul&gt;
-      &lt;li&gt;建站 SaaS：差异性较小，主要拼服务能力。&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;产品趋势：极致单品 -&amp;gt; 生态套件&lt;/li&gt;
-  &lt;li&gt;生态趋势：充分竞争 -&amp;gt; 头部集中&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;12营销选品-saas&quot;&gt;1.2、营销：选品 SaaS&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;跨境出口的选品 SaaS 目前主要服务亚马逊卖家，服务独立站的选品较少。头部厂商集中度高，头部占整体约 60%&lt;/li&gt;
-  &lt;li&gt;跨境出口的&lt;strong&gt;选品 SaaS 主要厂商&lt;/strong&gt;有：myyshop、JungleScout、SELLERMOTOR、shopify、CaptainBI、鸥鹭、Sorftime&lt;/li&gt;
-  &lt;li&gt;产品趋势：整合独立站的选品逻辑，并与 ERP 互相渗透&lt;/li&gt;
-  &lt;li&gt;市场趋势：从重视获客，到重视留客。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;13营销运营获客-saas&quot;&gt;1.3、营销：运营/获客 SaaS&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;跨境出口的&lt;strong&gt;运营/获客 SaaS 产品尚有提升空间&lt;/strong&gt;。厂商类型多，竞争格局分散。广告运营业务相对成熟，但是网红运营市场潜力大，较受资本追捧。&lt;/li&gt;
-  &lt;li&gt;跨境出口的&lt;strong&gt;运营/获客 SaaS 主要厂商&lt;/strong&gt;有：shopify、宜选 ecer、SHOPLINE、myyshop、星盘跨境、询盘云、木瓜移动、OKKICRM、小渔夫 LIFISHER、SinoClick、isellerPal、NXCLOUD&lt;/li&gt;
-  &lt;li&gt;产品趋势：专业性提升，产品分化&lt;/li&gt;
-  &lt;li&gt;市场趋势：社媒获客是新战场，从重视 SMB 到重视 KA&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;14典型厂商&quot;&gt;1.4、典型厂商&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;MyyShop：敦煌网集团孵化，包括产品先知 AI 选品、星移建站、纵横营销、驼飞侠物流 4 个产品。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;2erp&quot;&gt;2、ERP&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;轻型运营 ERP：LINGXING 领星、光云、CaptainBI、CHUANFIC.COM 川流、BANMA.ERP、赛狐、Ginee 聚灵、LENGOW、芒果店长、蓝鲸跨境&lt;/li&gt;
-  &lt;li&gt;重型运营 ERP：G+ 积家 ERP&lt;/li&gt;
-  &lt;li&gt;轻型供应链 ERP：店小秘、MABAN、万里牛、聚水潭、客优云、小老板、慧策、旺店通&lt;/li&gt;
-  &lt;li&gt;重型供应链 ERP：ECCANG、赛盒科技、TONGTOOL 通途&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;3供应链&quot;&gt;3、供应链&lt;/h3&gt;
-
-&lt;p&gt;供应链 SaaS 整体渗透率 25%&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;支付管理
-    &lt;ul&gt;
-      &lt;li&gt;支付工具 SaaS：渗透率 45%&lt;/li&gt;
-      &lt;li&gt;资产管理 SaaS：渗透率 5%&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;仓储物流管理 SaaS：WMS 和 TMS 渗透率 40%，履约管理渗透率 5%
-    &lt;ul&gt;
-      &lt;li&gt;WMS（Warehouse Management System）SaaS：客户是仓储服务商，对接 OMS 和 ERP，提供库存管理、发货管理等功能。&lt;/li&gt;
-      &lt;li&gt;TMS（Transportation Management System）SaaS：客户是物流服务商，调动运力完成商品配送及物流跟踪。&lt;/li&gt;
-      &lt;li&gt;履约管理 SaaS：客户是跨境卖家，缓解物流行业发货不稳定、价格不透明带来的影响，提供物流服务商运力、价格对比，帮助商家快速询价。&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;采购寻源管理 SaaS：渗透率 20%&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;31厂商&quot;&gt;3.1、厂商&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;支付管理：SUNRATE 寻汇、LianLian Global 连连国际、pingpong、XTransfer、拉卡拉、kyriba、Coralglobal、驼驼数科、汇付天下&lt;/li&gt;
-  &lt;li&gt;资产管理：&lt;/li&gt;
-  &lt;li&gt;WMS 厂商：ECCANG、MABAN、易牵星、TONGTOOL 通途、ShipOut&lt;/li&gt;
-  &lt;li&gt;TMS 厂商：ECCANG、MABAN TMS、店小秘、芥舟科技&lt;/li&gt;
-  &lt;li&gt;履约管理：跨境好运、JOYING BOX 飞盒跨境、aftership&lt;/li&gt;
-  &lt;li&gt;采购寻源：易牵星、MABAN、我有货 YOHO、瓴犀&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="电商" /><category term="SaaS" /><category term="AI" /><category term="软件" /><category term="服务" /><category term="工具" /><category term="出海" /><category term="中国" /><category term="DaaS" /><category term="PaaS" /><category term="云服务" /><summary type="html">一、国内电商 SaaS</summary></entry><entry><title type="html">ChatGPT 插件的十大关注点：OpenAI 定义大模型消费级平台</title><link href="https://www.mikecaptain.com/2023/03/24/chatgpt-plugin/" rel="alternate" type="text/html" title="ChatGPT 插件的十大关注点：OpenAI 定义大模型消费级平台" /><published>2023-03-24T04:40:13+00:00</published><updated>2023-03-24T04:40:13+00:00</updated><id>https://www.mikecaptain.com/2023/03/24/chatgpt-plugin</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/24/chatgpt-plugin/">&lt;p&gt;北京时间 3 月 24 日凌晨，OpenAI 官方发布了重磅的「ChatGPT plugins」，这将开启大模型作为平台的模式定义、商业化模式定义、插件产品开发热潮、全新的大模型优化（LMO）等等。本文共分三个部分：&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-04-07T16:37:24+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">ChatGPT 插件的十大关注点：OpenAI 定义大模型消费级平台</title><link href="https://www.mikecaptain.com/2023/03/24/chatgpt-plugin/" rel="alternate" type="text/html" title="ChatGPT 插件的十大关注点：OpenAI 定义大模型消费级平台" /><published>2023-03-24T04:40:13+00:00</published><updated>2023-03-24T04:40:13+00:00</updated><id>https://www.mikecaptain.com/2023/03/24/chatgpt-plugin</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/24/chatgpt-plugin/">&lt;p&gt;北京时间 3 月 24 日凌晨，OpenAI 官方发布了重磅的「ChatGPT plugins」，这将开启大模型作为平台的模式定义、商业化模式定义、插件产品开发热潮、全新的大模型优化（LMO）等等。本文共分三个部分：&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;第一部分先速览几个重要的关注点，尤其是&lt;strong&gt;本次插件发布带来的行业影响&lt;/strong&gt;；&lt;/li&gt;
@@ -354,230 +242,7 @@
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://platform.openai.com/docs/plugins/getting-started&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://github.com/openai/chatgpt-retrieval-plugin&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://platform.openai.com/docs/plugins/introduction&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><summary type="html">We’ve implemented initial support for plugins in ChatGPT. Plugins are tools designed specifically for language models with safety as a core principle, and help ChatGPT access up-to-date information, run computations, or use third-party services.</summary></entry><entry><title type="html">LLaMA 羊驼家族：大模型世界里的 Linux 内核</title><link href="https://www.mikecaptain.com/2023/03/24/llama-family/" rel="alternate" type="text/html" title="LLaMA 羊驼家族：大模型世界里的 Linux 内核" /><published>2023-03-24T04:40:13+00:00</published><updated>2023-03-24T04:40:13+00:00</updated><id>https://www.mikecaptain.com/2023/03/24/llama-family</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/24/llama-family/">&lt;p&gt;85060909&lt;/p&gt;
-
-&lt;h2 id=&quot;一llama&quot;&gt;一、LLaMA&lt;/h2&gt;
-
-&lt;p&gt;目前基于预训练 LLM 研发性能较好的对话机器人，其难点之一是高质量数据。目前调教开源模型，基本都在用 ChatGPT 作为老师，常用的方式就两种：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;自己准备问题，让老师给答案：研发团队准备一组问题（instruction），然后用 ChatGPT 根据这些问题生成答案（following），这样得到一组 instruction-following 数据作为微调的训练数据。这样做的一个前提是认为 ChatGPT 本身就是高质量对齐的模型。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;用公开收集的 ChatGPT 的高质量对话作为微调的训练数据，这里的一个好的参考是 ShareGPT，它是一个大量用户分享 ChatGPT 对话内容的网站。&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;1llama&quot;&gt;1、LLaMA&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Blog：https://ai.facebook.com/blog/large-language-model-llama-meta-ai/&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;11在手机上跑一个-llamacpp&quot;&gt;1.1、在手机上跑一个 LLaMA.cpp&lt;/h4&gt;
-
-&lt;p&gt;下载 &lt;a href=&quot;https://developer.android.com/ndk&quot;&gt;Android NDK&lt;/a&gt; 到你的本地电脑上，编译一个支持 Android 平台运行的 LLaMA 出来：&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@local % &lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;build-android
-mikecaptain@local % &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;build-android
-mikecaptain@local % &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;NDK&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;lt;your_ndk_directory&amp;gt;
-mikecaptain@local % cmake &lt;span class=&quot;nt&quot;&gt;-DCMAKE_TOOLCHAIN_FILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$NDK&lt;/span&gt;/build/cmake/android.toolchain.cmake &lt;span class=&quot;nt&quot;&gt;-DANDROID_ABI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;arm64-v8a &lt;span class=&quot;nt&quot;&gt;-DANDROID_PLATFORM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;android-23 &lt;span class=&quot;nt&quot;&gt;-DCMAKE_C_FLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-march&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;armv8.4a+dotprod ..
-mikecaptain@local % make
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;在 Android 设备上安装 &lt;a href=&quot;https://termux.dev/&quot;&gt;Termux&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@local % git clone https://github.com/ggerganov/llama.cpp
-mikecaptain@local % &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;llama.cpp
-mikecaptain@local % make
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;2llama-家族的-alpaca-7b2023-年-3-月-13-日&quot;&gt;2、LLaMA 家族的 Alpaca-7B（2023 年 3 月 13 日）&lt;/h3&gt;
-
-&lt;p&gt;Alpaca 是一个在 LLaMA-7B 基础上用 5.2 万条的「instruction-following」微调得到的 LLM，由 Stanford 大学的一个研究团队发布，训练总花费约不到 600 美元。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Blog：https://crfm.stanford.edu/2023/03/13/alpaca.html&lt;/li&gt;
-  &lt;li&gt;DEMO：https://crfm.stanford.edu/alpaca/&lt;/li&gt;
-  &lt;li&gt;Code：https://github.com/tatsu-lab/stanford_alpaca&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://crfm.stanford.edu/static/img/posts/2023-03-13-alpaca/alpaca_main.jpg&quot; alt=&quot;&quot; width=&quot;720&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;关于训练数据：发布在 https://github.com/tatsu-lab/stanford_alpaca#data-release ，数据生成过程 https://github.com/tatsu-lab/stanford_alpaca#data-generation-process&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;21alpaca-7b&quot;&gt;2.1、Alpaca-7B&lt;/h4&gt;
-
-&lt;h3 id=&quot;3llama-家族的-gpt4all&quot;&gt;3、LLaMA 家族的 GPT4ALL&lt;/h3&gt;
-
-&lt;h3 id=&quot;4llama-家族的-vicuna-13b2023-年-3-月-31-日&quot;&gt;4、LLaMA 家族的 Vicuna-13B（2023 年 3 月 31 日）&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Blog：https://vicuna.lmsys.org/&lt;/li&gt;
-  &lt;li&gt;DEMO：https://chat.lmsys.org/&lt;/li&gt;
-  &lt;li&gt;示例：https://vicuna.lmsys.org/eval/&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Vicuna 是一个在 LLaMA-13B 基础上用了 7 万条 ShareGPT 的对话微调得到的 LLM，由加州大学伯克利分校（UCBerkeley）的一个研究团队主导，联合卡耐基梅隆大学（CMU）、斯坦福大学和加州大学圣地亚哥分校（UCSD）发布，训练总花费约 300 美元。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;关于模型参数：截止 2023 年 4 月 3 日暂未发布。&lt;/li&gt;
-  &lt;li&gt;关于训练数据：根据其官方网页上的声明，研发团队没有发布训练数据的计划。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/04/2023-04-02-llama-01.png&quot; alt=&quot;&quot; width=&quot;720&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Clone this repository and navigate to FastChat folder:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@localhost % git clone https://github.com/lm-sys/FastChat.git
-mikecaptain@localhost % &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;FastChat
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Install the latest main branch of huggingface/transformers:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@localhost % pip3 &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;git+https://github.com/huggingface/transformers
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;安装依赖&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@localhost % pip3 &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Launch a controller:&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@localhost % python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; fastchat.serve.controller
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Launch a model worker&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@localhost % python3 &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; fastchat.serve.model_worker &lt;span class=&quot;nt&quot;&gt;--model-path&lt;/span&gt; facebook/opt-1.3b
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;本段参考&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;https://zhuanlan.zhihu.com/p/618389519&lt;/li&gt;
-  &lt;li&gt;https://vicuna.lmsys.org/&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;5llama-的局限性&quot;&gt;5、LLaMA 的局限性&lt;/h3&gt;
-
-&lt;h3 id=&quot;6llama-的其他版本&quot;&gt;6、LLaMA 的其他版本&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Chinese Vicuna：https://github.com/Facico/Chinese-Vicuna&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;二cerebras-gpt真开源2023-年-3-月-28-日&quot;&gt;二、Cerebras-GPT：真·开源（2023 年 3 月 28 日）&lt;/h2&gt;
-
-&lt;p&gt;3 月 28 日，芯片初创公司 Cerebras 发布开源大模型 Cereras-GPT 系列，包括 111M、256M、590M、1.3B、2.7B、6.7B、13B 七个参数规模的模型。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://www.cerebras.net/wp-content/uploads/2023/03/Scaling-laws-blog-banner.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;1真开源&quot;&gt;1、真·开源&lt;/h3&gt;
-
-&lt;p&gt;模型架构、训练数据、预训练好的模型权重参数、Checkpoints、计算优化训练、License 等全部开源。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://www.cerebras.net/wp-content/uploads/2023/03/Scaling-laws-blog-comparison.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;2计算优化训练--训练效率提升&quot;&gt;2、计算优化训练 —— 训练效率提升&lt;/h3&gt;
-
-&lt;p&gt;船长在&lt;a href=&quot;https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/&quot;&gt;《麦克船长 LLM 革命系列 2：破晓》&lt;/a&gt;一文中介绍了 2020 年 1 月 OpenAI 提出的「Scaling Law」，指出了训练算力、训练数据规模、模型参数规模指数增长，模型性能表现线性提升的规律。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://www.mikecaptain.com/img/src/2023/2023-01-23-captain-aigc-2-llm-10.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;2022 年 DeepMind 在提出 Chinchilla（中文意思「龙猫」）模型时，顺便指出 LLM 的训练数据规模（training data）与训练算力（compute）之间的最优关系。&lt;/p&gt;
-
-&lt;h2 id=&quot;三bloomberggpt2023-年-3-月-30-日&quot;&gt;三、BloombergGPT（2023 年 3 月 30 日）&lt;/h2&gt;
-
-&lt;h2 id=&quot;四chatrwkv一个匹敌-transformer-表现的并行化-rnn-模型&quot;&gt;四、ChatRWKV：一个匹敌 Transformer 表现的并行化 RNN 模型&lt;/h2&gt;
-
-&lt;h2 id=&quot;五glm&quot;&gt;五、GLM&lt;/h2&gt;
-
-&lt;h2 id=&quot;背景&quot;&gt;背景&lt;/h2&gt;
-
-&lt;h3 id=&quot;1chinchilla-ai&quot;&gt;1、Chinchilla AI&lt;/h3&gt;
-
-&lt;p&gt;2022 年 3 月 DeepMind 在&lt;a href=&quot;https://arxiv.org/abs/2203.15556&quot;&gt;《Training Compute-Optimal Large Language Models》&lt;/a&gt;一文中提到：&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;By training over 400 language models ranging from 70 million to over 16 billion parameters on 5 to 500 billion tokens, we find that for compute-optimal training, the model size and the number of training tokens should be scaled equally: for every doubling of model size the number of training tokens should also be doubled. &lt;br /&gt; 通过在 50~5000 亿个训练数据上（具体说是指 tokens 规模）训练 400 多个语言模型，模型参数规模从 7000 万到超过 160 亿个参数，DeepMind 发现对于计算优化训练（Compute-Optimal Traning），模型规模和训练数据规模应该等比缩放：模型规模翻倍时，训练数据量也应翻倍。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;DeepMind 认为当时很多 LLM 的训练都是不充分的，在暴力堆大模型参数规模时，很多 LLM 的训练数据规模并没有相应放大。DeepMind 顺便在发布该文时提出了 Chinchilla 模型，其参数规模、训练数据规模对比如下：&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;模型&lt;/th&gt;
-      &lt;th&gt;模型参数规模&lt;/th&gt;
-      &lt;th&gt;训练数据规模&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;LaMDA&lt;/td&gt;
-      &lt;td&gt;137B&lt;/td&gt;
-      &lt;td&gt;168B&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;GPT-3&lt;/td&gt;
-      &lt;td&gt;175B&lt;/td&gt;
-      &lt;td&gt;300B&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Jurassic&lt;/td&gt;
-      &lt;td&gt;178B&lt;/td&gt;
-      &lt;td&gt;300B&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Gopher&lt;/td&gt;
-      &lt;td&gt;280B&lt;/td&gt;
-      &lt;td&gt;300B&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;MT-NLG 530B&lt;/td&gt;
-      &lt;td&gt;530B&lt;/td&gt;
-      &lt;td&gt;270B&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Chinchilla&lt;/td&gt;
-      &lt;td&gt;70B&lt;/td&gt;
-      &lt;td&gt;1.4T&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;此前 DeepMind 还发布过一个名为 Gopher 的 LLM（在 Chinchilla 发布前两个月），发布 Chinchilla 时用了与 Gopher 同等规模的预算，但在用更小的模型参数规模情况下，用更多的训练数据，Chinchilla 取得了更好的效果。&lt;/p&gt;
-
-&lt;p&gt;发布大语言模型 Chinchilla，官方声称其表现可以超过 GPT-3，并且用更少的&lt;/p&gt;
-
-&lt;h3 id=&quot;2moemixture-of-experts&quot;&gt;2、MoE（Mixture of Experts）&lt;/h3&gt;
-
-&lt;p&gt;混合专家系统（Mixture of Experts，简称 MoE）是把处理不同任务的不同神经网络专家系统（Expert Model），通过门控模型（Gating Model），组合成一个系统。针对下游任务，门控模型来决定使用哪个神经网络会得到更好表现。这个技术整体算是一种集成学习技术（Emsemble Learning）。&lt;/p&gt;
-
-&lt;h3 id=&quot;3physics-of-ai&quot;&gt;3、Physics of AI&lt;/h3&gt;
-
-&lt;h4 id=&quot;参考&quot;&gt;参考：&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;https://www.youtube.com/watch?v=XLNmgviQHPA&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;参考-1&quot;&gt;参考&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;https://www.cerebras.net/blog/cerebras-gpt-a-family-of-open-compute-efficient-large-language-models/&lt;/li&gt;
-  &lt;li&gt;https://arxiv.org/pdf/2203.15556.pdf&lt;/li&gt;
-  &lt;li&gt;https://vicuna.lmsys.org/&lt;/li&gt;
-  &lt;li&gt;https://mp.weixin.qq.com/s/Q1jHC5b7NMvrOVTd9dIJCw&lt;/li&gt;
-  &lt;li&gt;https://zhuanlan.zhihu.com/p/618776565&lt;/li&gt;
-  &lt;li&gt;https://crfm.stanford.edu/2023/03/13/alpaca.html&lt;/li&gt;
-  &lt;li&gt;https://medium.com/geekculture/list-of-open-sourced-fine-tuned-large-language-models-llm-8d95a2e0dc76&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><summary type="html">85060909</summary></entry><entry><title type="html">核裂变的原理</title><link href="https://www.mikecaptain.com/2023/03/15/nuclear-fission/" rel="alternate" type="text/html" title="核裂变的原理" /><published>2023-03-15T19:40:13+00:00</published><updated>2023-03-15T19:40:13+00:00</updated><id>https://www.mikecaptain.com/2023/03/15/nuclear-fission</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/15/nuclear-fission/">&lt;h2 id=&quot;1什么是核反应&quot;&gt;1、什么是核反应？&lt;/h2&gt;
+&lt;/ol&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><summary type="html">We’ve implemented initial support for plugins in ChatGPT. Plugins are tools designed specifically for language models with safety as a core principle, and help ChatGPT access up-to-date information, run computations, or use third-party services.</summary></entry><entry><title type="html">核裂变的原理</title><link href="https://www.mikecaptain.com/2023/03/15/nuclear-fission/" rel="alternate" type="text/html" title="核裂变的原理" /><published>2023-03-15T19:40:13+00:00</published><updated>2023-03-15T19:40:13+00:00</updated><id>https://www.mikecaptain.com/2023/03/15/nuclear-fission</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/15/nuclear-fission/">&lt;h2 id=&quot;1什么是核反应&quot;&gt;1、什么是核反应？&lt;/h2&gt;
 
 &lt;p&gt;核反应是一种将原子核转化为不同核素的物理或化学过程。它通常涉及核子的结合和释放，产生放射性粒子、能量和新的核素。核反应可分为两类：核裂变和核聚变。&lt;/p&gt;
 
@@ -921,7 +586,7 @@ cd alpaca.cpp
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;make chat
 ./chat
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><summary type="html">git clone https://github.com/antimatter15/alpaca.cpp cd alpaca.cpp</summary></entry><entry><title type="html">Alibaba 企业智能与 AI</title><link href="https://www.mikecaptain.com/2023/03/14/ali-enterprise-intelligence/" rel="alternate" type="text/html" title="Alibaba 企业智能与 AI" /><published>2023-03-14T16:40:13+00:00</published><updated>2023-03-14T16:40:13+00:00</updated><id>https://www.mikecaptain.com/2023/03/14/ali-enterprise-intelligence</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/14/ali-enterprise-intelligence/"></content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><summary type="html"></summary></entry><entry><title type="html">麦克船长 LLM 书籍第一部分</title><link href="https://www.mikecaptain.com/2023/03/12/captain-llm-book-content-part-1/" rel="alternate" type="text/html" title="麦克船长 LLM 书籍第一部分" /><published>2023-03-12T09:13:09+00:00</published><updated>2023-03-12T09:13:09+00:00</updated><id>https://www.mikecaptain.com/2023/03/12/captain-llm-book-content-part-1</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/12/captain-llm-book-content-part-1/">&lt;p&gt;&lt;img src=&quot;/img/src/2023/2023-01-23-aigc-llm-1-transformer-cover.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><summary type="html">git clone https://github.com/antimatter15/alpaca.cpp cd alpaca.cpp</summary></entry><entry><title type="html">麦克船长 LLM 书籍第一部分</title><link href="https://www.mikecaptain.com/2023/03/12/captain-llm-book-content-part-1/" rel="alternate" type="text/html" title="麦克船长 LLM 书籍第一部分" /><published>2023-03-12T09:13:09+00:00</published><updated>2023-03-12T09:13:09+00:00</updated><id>https://www.mikecaptain.com/2023/03/12/captain-llm-book-content-part-1</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/12/captain-llm-book-content-part-1/">&lt;p&gt;&lt;img src=&quot;/img/src/2023/2023-01-23-aigc-llm-1-transformer-cover.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -5303,4 +4968,454 @@ Prompt Engineering（PET、Hard Prompt &amp; Soft Prompt、Prompt Tuning）、�
 ```
 InstructGPT、ChatGPT、GPT-4
 ```
- --&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><summary type="html">&amp;lt;!– 推荐语： 张凯夫 赵德丽：达摩院计算机视觉负责人、资深算法专家 熊皓：淘宝直播算法负责人，资深技术专家 黄眉： 三七：企业智能事业部总经理 锡泽：阿里集团资深 韩锷：资深技术专家 张斯成：前钉钉副总裁 罗璇 刘江？ 赖晓春，上海科技大学研究员、联影首席科学家 牛力，上海交通大学 王猛，Google 自动驾驶 AI 研究员 田飞，Meta 赵明夷，Notion 孙鹏，世界之窗浏览器创始人 王宇航，核桃编程创始人 陆铭，宝云科技创始人</summary></entry></feed>
+ --&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><summary type="html">&amp;lt;!– 推荐语： 张凯夫 赵德丽：达摩院计算机视觉负责人、资深算法专家 熊皓：淘宝直播算法负责人，资深技术专家 黄眉： 三七：企业智能事业部总经理 锡泽：阿里集团资深 韩锷：资深技术专家 张斯成：前钉钉副总裁 罗璇 刘江？ 赖晓春，上海科技大学研究员、联影首席科学家 牛力，上海交通大学 王猛，Google 自动驾驶 AI 研究员 田飞，Meta 赵明夷，Notion 孙鹏，世界之窗浏览器创始人 王宇航，核桃编程创始人 陆铭，宝云科技创始人</summary></entry><entry><title type="html">Google Cloud 为开发者、企业和政府带来了生成式 AI</title><link href="https://www.mikecaptain.com/2023/03/11/google-cloud-gen-ai/" rel="alternate" type="text/html" title="Google Cloud 为开发者、企业和政府带来了生成式 AI" /><published>2023-03-11T19:40:13+00:00</published><updated>2023-03-11T19:40:13+00:00</updated><id>https://www.mikecaptain.com/2023/03/11/google-cloud-gen-ai</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/11/google-cloud-gen-ai/">&lt;ul&gt;
+  &lt;li&gt;原文标题：Google Cloud brings generative AI to developers, businesses, and governments&lt;/li&gt;
+  &lt;li&gt;原文链接：https://cloud.google.com/blog/products/ai-machine-learning/generative-ai-for-businesses-and-governments&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Generative AI is poised to usher in a new wave of interactive, multimodal experiences that transform how we interact with information, brands, and one another. Harnessing the power of decades of Google’s research, innovation, and investment in AI, Google Cloud is bringing businesses and governments the ability to generate text, images, code, videos, audio, and more from simple natural language prompts.&lt;/p&gt;
+
+&lt;p&gt;生成式 AI（Gen-AI）有望迎来新一波交互式、多模态体验，改变我们与信息、品牌和彼此互动的方式。 利用 Google 数十年来在 AI 方面的研究、创新和投资，Google Cloud 使企业和政府能够根据简单的自然语言提示生成文本、图像、代码、视频、音频等。&lt;/p&gt;
+
+&lt;p&gt;Realizing the potential of this technology means putting it in the hands of every developer, business, and government. To date, it has been difficult for organizations to access generative AI, let alone customize it, and at times the technology is prone to producing inaccurate information that could undermine trust. A decade ago, mobile ecosystems soared as businesses and developers gained safe, secure, and powerful tools suited to new form factors, interfaces, and interactions — and likewise, for generative AI to blossom, organizations need a new generation of tools that make it simple to build generative AI applications, or gen apps.&lt;/p&gt;
+
+&lt;p&gt;实现这项技术的潜力意味着将它交到每个开发人员、企业和政府的手中。 迄今为止，组织很难访问生成式人工智能，更不用说定制它了，而且有时该技术容易产生可能破坏信任的不准确信息。 十年前，随着企业和开发人员获得适用于新外形、界面和交互的安全、可靠和强大的工具，移动生态系统蓬勃发展——同样，为了使生成人工智能蓬勃发展，组织需要新一代工具来简化它 构建生成式 AI 应用程序或生成应用程序。&lt;/p&gt;
+
+&lt;p&gt;To address these needs, Google Cloud will launch a range of products that infuse generative AI into our offerings, empowering developers to responsibly build with enterprise-level safety, security, and privacy. This journey starts today with the introduction of two new technologies:&lt;/p&gt;
+
+&lt;p&gt;为了满足这些需求，谷歌云将推出一系列产品，将生成式人工智能融入我们的产品中，使开发人员能够负责任地构建具有企业级安全、保障和隐私的产品。 这一旅程从今天开始引入两项新技术：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Generative AI support in Vertex AI gives data science teams access to foundation models from Google and others, letting them build and customize atop these models on the same platform they use for homegrown ML models and MLOps.&lt;/li&gt;
+  &lt;li&gt;Vertex AI 中的生成式 AI 支持使数据科学团队能够访问来自 Google 和其他公司的基础模型，让他们在用于本地 ML 模型和 MLOps 的同一平台上构建和自定义这些模型。&lt;/li&gt;
+  &lt;li&gt;Generative AI App Builder allows developers to quickly ship new experiences including bots, chat interfaces, custom search engines, digital assistants, and more. Developers have API access to Google’s foundation models and can use out-of-the-box templates to jumpstart the creation of gen apps in minutes or hours.&lt;/li&gt;
+  &lt;li&gt;Generative AI App Builder 允许开发人员快速交付新体验，包括机器人、聊天界面、自定义搜索引擎、数字助理等。 开发人员可以通过 API 访问 Google 的基础模型，并可以使用开箱即用的模板在几分钟或几小时内快速启动生成应用程序的创建。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Across these, Google Cloud ensures organizations have complete control over if, how, and for what their data is used.&lt;/p&gt;
+
+&lt;p&gt;在这些方面，谷歌云确保组织可以完全控制他们的数据是否、如何以及用于什么目的。&lt;/p&gt;
+
+&lt;p&gt;“Google Cloud is bringing decades of AI research, innovation, and investment to the world with the launch of Generative AI support in Vertex AI and Generative AI App Builder,” said Ritu Jyoti, Group Vice President, Worldwide Artificial Intelligence (AI) and Automation Research, IDC. “With this, Google Cloud is poised to enable a whole new generation of builders, innovators, developers and doers to harness the power of AI in novel ways. Google Cloud’s vision to empower teams, transform industries and truly change the world for the better is inspiring, and what sets them apart is their thoughtful yet bold approach, grounded in their deep commitment to responsibility.”&lt;/p&gt;
+
+&lt;p&gt;全球人工智能 (AI) 和自动化集团副总裁 Ritu Jyoti 表示：“通过在 Vertex AI 和 Generative AI App Builder 中推出 Generative AI 支持，Google Cloud 正在为世界带来数十年的 AI 研究、创新和投资。” 研究，国际数据中心。 “有了这个，谷歌云准备让全新一代的建设者、创新者、开发者和实干家以新颖的方式利用人工智能的力量。 Google Cloud 赋予团队权力、转变行业并真正让世界变得更美好的愿景令人鼓舞，而让他们与众不同的是他们周到而大胆的方法，这些方法基于他们对责任的坚定承诺。”&lt;/p&gt;
+
+&lt;h2 id=&quot;build-tune-and-deploy-foundation-models-with-vertex-ai&quot;&gt;Build, tune, and deploy foundation models with Vertex AI&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-launches-vertex-ai-unified-platform-for-mlops&quot;&gt;Vertex AI&lt;/a&gt;, Google Cloud’s machine learning platform for training and deploying ML models and AI applications, is getting its biggest upgrade ever.&lt;/p&gt;
+
+&lt;p&gt;Vertex AI 是 Google Cloud 用于训练和部署 ML 模型和 AI 应用程序的机器学习平台，正在进行有史以来最大的升级。&lt;/p&gt;
+
+&lt;p&gt;Generative AI support in Vertex AI offers the simplest way for data science teams to take advantage of foundation models like PaLM, in a way that provides them with the most choice and control, including the ability to:&lt;/p&gt;
+
+&lt;p&gt;Vertex AI 中的生成式 AI 支持为数据科学团队提供了利用 PaLM 等基础模型的最简单方式，为他们提供最多的选择和控制，包括能够：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Choose the use case you want to solve for. Developers can now easily access PaLM API on Vertex AI to immediately address use cases such as content generation, chat, summarization, classification, and more.&lt;/li&gt;
+  &lt;li&gt;选择您要解决的用例。 开发人员现在可以轻松访问 Vertex AI 上的 PaLM API，以立即处理内容生成、聊天、摘要、分类等用例。&lt;/li&gt;
+  &lt;li&gt;Choose from Google’s latest foundation models. Options will include models invented by Google Research and DeepMind, and support for a variety of data formats, including text, image, video, code, and audio.&lt;/li&gt;
+  &lt;li&gt;从 Google 的最新基础模型中进行选择。 选项将包括由 Google Research 和 DeepMind 发明的模型，并支持多种数据格式，包括文本、图像、视频、代码和音频。&lt;/li&gt;
+  &lt;li&gt;Choose from a variety of models. Over time, Vertex AI will support open-source and third-party models. With the widest variety of model types and sizes available in one place, Vertex AI gives customers the flexibility to use the best resource for their business needs.&lt;/li&gt;
+  &lt;li&gt;从多种型号中进行选择。 随着时间的推移，Vertex AI 将支持开源和第三方模型。 Vertex AI 可在一处提供最广泛的模型类型和尺寸，使客户能够灵活地使用最佳资源来满足其业务需求。&lt;/li&gt;
+  &lt;li&gt;Choose how to tune, customize, and optimize prompts. Use business data to increase the relevance of foundation model output and maintain control over costs, while ensuring data sovereignty and privacy.&lt;/li&gt;
+  &lt;li&gt;选择如何调整、自定义和优化提示。 使用业务数据来增加基础模型输出的相关性并保持对成本的控制，同时确保数据主权和隐私。&lt;/li&gt;
+  &lt;li&gt;Choose how to engage with models. Whether via notebooks, APIs, or interactive prompts, a variety of tools lets developers, data scientists, and data engineers all contribute to building gen apps and customized models.&lt;/li&gt;
+  &lt;li&gt;选择如何与模特互动。 无论是通过笔记本、API 还是交互式提示，各种工具都可以让开发人员、数据科学家和数据工程师都为构建生成应用程序和定制模型做出贡献。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;“Since its launch, Vertex AI has helped transform the way CNA scales AI, better managing machine learning models in production,” said Santosh Bardwaj, SVP, Global Chief Data &amp;amp; Analytics Officer at CNA Insurance. “With Generative AI support in Vertex AI, CNA can now tailor its insights to best suit the unique business needs of customers and colleagues.”&lt;/p&gt;
+
+&lt;p&gt;“自推出以来，Vertex AI 帮助改变了 CNA 扩展 AI 的方式，更好地管理生产中的机器学习模型，”CNA Insurance 高级副总裁兼全球首席数据与分析官 Santosh Bardwaj 说。 “借助 Vertex AI 对生成式 AI 的支持，CNA 现在可以定制其见解，以最好地满足客户和同事的独特业务需求。”&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://storage.googleapis.com/gweb-cloudblog-publish/images/SummitAI_YT_thumb_1280x720_Vertex_v3.max-1300x1300.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Starting today, trusted testers are accessing Generative AI support in Vertex AI. If you are interested in updates on our early access opportunities, please join our technical community, &lt;a href=&quot;https://cloud.google.com/ai&quot;&gt;Google Cloud Innovators&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;从今天开始，受信任的测试人员可以访问 Vertex AI 中的生成式 AI 支持。 如果您对我们的早期访问机会的更新感兴趣，请加入我们的技术社区 Google Cloud Innovators。&lt;/p&gt;
+
+&lt;h2 id=&quot;build-applications-in-minutes-or-hours-with-generative-ai-app-builder&quot;&gt;Build applications in minutes or hours with Generative AI App Builder&lt;/h2&gt;
+&lt;h2 id=&quot;使用-generative-ai-app-builder-在几分钟或几小时内构建应用程序&quot;&gt;使用 Generative AI App Builder 在几分钟或几小时内构建应用程序&lt;/h2&gt;
+
+&lt;p&gt;Businesses and governments also want to make customer, partner, and employee interactions more effective and helpful with this new AI technology. To enable this, we are announcing our new Generative AI App Builder, the fastest way for developers to jumpstart the creation of gen apps such as bots, chat apps, digital assistants, custom search engines, and more, with limited technical expertise required. It lets developers:&lt;/p&gt;
+
+&lt;p&gt;企业和政府还希望通过这种新的 AI 技术使客户、合作伙伴和员工的互动更有效、更有帮助。 为实现这一点，我们宣布推出新的 Generative AI App Builder，这是开发人员快速开始创建 gen 应用程序（例如机器人、聊天应用程序、数字助理、自定义搜索引擎等）的最快方式，只需要有限的技术专业知识。 它让开发人员：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Build in minutes or hours — not weeks or years. Developers can get going quickly with direct API access to foundation models and out-of-the-box templates for major use cases, including search, support, product recommendations and discovery, and media creation. Additionally, pre-built connectors let developers integrate their data with the intelligence of foundation models, all while keeping data private.&lt;/li&gt;
+  &lt;li&gt;在数分钟或数小时内完成构建，而不是数周或数年。 开发人员可以通过直接 API 访问基础模型和适用于主要用例（包括搜索、支持、产品推荐和发现以及媒体创建）的开箱即用模板来快速上手。 此外，预建连接器让开发人员能够将他们的数据与基础模型的智能集成，同时保持数据的私密性。&lt;/li&gt;
+  &lt;li&gt;Combine organizational data and information retrieval techniques to provide relevant answers. Organizations can now build apps that infer the intent of a user’s question, surface proprietary data alongside relevant information from the foundation model, and serve responses with the required citations and attributions, all while ensuring data isolation and sovereignty.&lt;/li&gt;
+  &lt;li&gt;结合组织数据和信息检索技术以提供相关答案。组织现在可以构建应用程序来推断用户问题的意图，显示专有数据以及来自基础模型的相关信息，并提供具有所需引用和属性的响应，同时确保数据隔离和主权。&lt;/li&gt;
+  &lt;li&gt;Search and respond with more than just text. Customers can type, talk, tap, and submit images when they interact — and bots, assistants, and other gen apps can reply with text, voice, and media.&lt;/li&gt;
+  &lt;li&gt;搜索和回复不仅仅是文本。 客户可以在互动时打字、交谈、点击和提交图像——而机器人、助手和其他生成应用程序可以用文本、语音和媒体进行回复。&lt;/li&gt;
+  &lt;li&gt;Combine natural conversations with structured flows. With granular control, developers can now blend the output of foundation models with step-by-step conversation orchestration to guide customers to the right answers, no matter the duration of engagement.&lt;/li&gt;
+  &lt;li&gt;将自然对话与结构化流程相结合。 通过精细控制，开发人员现在可以将基础模型的输出与逐步对话编排相结合，以引导客户找到正确的答案，无论参与时间长短。&lt;/li&gt;
+  &lt;li&gt;Don’t just inform — transact. Beyond just serving content, digital assistants and bots can connect to purchasing and provisioning systems, and escalate customer conversations to a human agent when the context demands.&lt;/li&gt;
+  &lt;li&gt;不要只是通知——交易。 除了提供内容之外，数字助理和机器人还可以连接到采购和供应系统，并在上下文需要时将客户对话升级为人工代理。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;“With the growing popularity of voice assistants in everyday life, consumers increasingly expect accurate and consistent voice interactions. The integration of Google Cloud’s industry-leading, AI-based speech services are already providing high-quality voice services to Toyota and Lexus customers,” said Steve Basra, CEO and president, Toyota Connected North America. “With these latest generative AI announcements, we’re excited to expand our partnership and explore how foundation language models can further our vision to bring the best and most innovative in-car experiences to drivers.”&lt;/p&gt;
+
+&lt;p&gt;“随着语音助手在日常生活中的日益普及，消费者越来越期望准确和一致的语音交互。 丰田 Connected North America 首席执行官兼总裁 Steve Basra 表示：“Google Cloud 行业领先的基于人工智能的语音服务的集成已经在为丰田和雷克萨斯的客户提供高质量的语音服务。通过这些最新的生成人工智能公告， 我们很高兴扩大我们的合作伙伴关系，并探索基础语言模型如何进一步推进我们的愿景，为驾驶员带来最好和最具创新性的车内体验。”&lt;/p&gt;
+
+&lt;p&gt;“Thanks to their AI capabilities, Google Cloud has been a key strategic partner for Mayo Clinic in advancing the diagnosis and treatment of disease to improve the health of people and communities,” said Christopher Ross, CIO, Mayo Clinic. “Generative AI-powered search has the potential to help clinicians find, understand, and interpret information while keeping the data private and secure. We look forward to our continued co-innovation to deliver solutions for clinicians and employees to help reduce cognitive information overload and improve operational efficiencies.”&lt;/p&gt;
+
+&lt;p&gt;梅奥诊所首席信息官 Christopher Ross 表示：“凭借其 AI 功能，谷歌云已成为梅奥诊所在推进疾病诊断和治疗以改善人们和社区健康方面的重要战略合作伙伴。” “生成式人工智能搜索有可能帮助临床医生查找、理解和解释信息，同时保持数据的私密性和安全性。 我们期待着我们继续共同创新，为临床医生和员工提供解决方案，以帮助减少认知信息过载并提高运营效率。”&lt;/p&gt;
+
+&lt;p&gt;“Google Cloud’s leading AI technology enables STARZ customers to discover more relevant content, increasing engagement with, and the likelihood of completing the content served to them,” said Robin Chacko, EVP Direct-to-Consumer, STARZ. “We’re excited about how generative AI-powered search will help users find the most relevant content even easier and faster.”&lt;/p&gt;
+
+&lt;p&gt;STARZ 直接面向消费者的执行副总裁 Robin Chacko 表示：“谷歌云领先的 AI 技术使 STARZ 客户能够发现更多相关内容，增加参与度，并更有可能完成向他们提供的内容。” “我们对生成式人工智能搜索将如何帮助用户更轻松、更快速地找到最相关的内容感到兴奋。”&lt;/p&gt;
+
+&lt;p&gt;Starting today, trusted testers are accessing Generative AI App Builder. If you are interested in updates on our early access opportunities, please join our technical community, &lt;a href=&quot;https://cloud.google.com/ai&quot;&gt;Google Cloud Innovators&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;从今天开始，受信任的测试人员可以访问 Generative AI App Builder。 如果您对我们的早期访问机会的更新感兴趣，请加入我们的技术社区 Google Cloud Innovators。&lt;/p&gt;
+
+&lt;h2 id=&quot;turning-generative-ai-building-blocks-into-enterprise-value&quot;&gt;Turning generative AI building blocks into enterprise value&lt;/h2&gt;
+&lt;h2 id=&quot;将生成式-ai-构建模块转化为企业价值&quot;&gt;将生成式 AI 构建模块转化为企业价值&lt;/h2&gt;
+
+&lt;p&gt;Let’s look at a few examples of how organizations are already looking to unlock the power of generative AI with Google Cloud:&lt;/p&gt;
+
+&lt;p&gt;让我们看一些组织已经在寻求如何使用 Google Cloud 释放生成式 AI 的力量的例子：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Automated content generation. Generative AI can facilitate brainstorming, perform copywriting, and generate media assets — meaning that emails, marketing messages, and creative assets can be prototyped in seconds, and ready for review within minutes or hours, not weeks or months. Marketing and creative teams across organizations are looking to augment current workflows with this technology to instantly bring more choices, more flavors, and greater ingenuity to campaigns, programs, ads, and more.&lt;/li&gt;
+  &lt;li&gt;自动化内容生成。 生成式 AI 可以促进头脑风暴、执行文案和生成媒体资产——这意味着电子邮件、营销信息和创意资产可以在几秒钟内制作原型，并在几分钟或几小时内准备好进行审查，而不是几周或几个月。 跨组织的营销和创意团队正在寻求利用这项技术来增强当前的工作流程，以立即为活动、计划、广告等带来更多选择、更多口味和更大的独创性。&lt;/li&gt;
+  &lt;li&gt;AI experiences and assistants for virtually any task. Because generative AI lets businesses and governments turn large, complex volumes of data into summaries, interactive multimedia experiences, and human-like conversations, we see many customers interested in leveraging this technology for not only customer-facing experiences, like brand or product Q&amp;amp;As, but also more complex data science scenarios. For example, gen apps, like digital assistants, can help data analysts and business users up-level their skills, by generating SQL queries, enabling exploration of data through natural language queries, and more.&lt;/li&gt;
+  &lt;li&gt;几乎任何任务的 AI 体验和助手。由于生成人工智能让企业和政府能够将大量复杂的数据转化为摘要、交互式多媒体体验和类似人类的对话，我们看到许多客户对利用这项技术感兴趣，不仅是面向客户的体验，如品牌或产品问答， 还有更复杂的数据科学场景。 例如，生成应用程序，如数字助理，可以通过生成 SQL 查询、通过自然语言查询探索数据等，帮助数据分析师和业务用户提升技能。&lt;/li&gt;
+  &lt;li&gt;Searching and understanding large, internal datasets that span many sources. Many of our banking customers analyze various internal and external data sources to get a comprehensive view of the market. They’re exploring how to use this technology to ensure that when employees search for information across these sources, they get relevant results, accurate summaries of large documents, tools to refine queries’ sources, and citations and attributions so employees can trust outputs and dig deeper as needed.&lt;/li&gt;
+  &lt;li&gt;搜索和理解跨多个来源的大型内部数据集。 我们的许多银行客户分析各种内部和外部数据源以全面了解市场。 他们正在探索如何使用这项技术来确保当员工在这些来源中搜索信息时，他们会得到相关的结果、大型文档的准确摘要、优化查询来源的工具以及引用和归属，以便员工可以信任输出并挖掘 根据需要更深。&lt;/li&gt;
+  &lt;li&gt;Providing a foundation to jumpstart the wave of gen app startups. Vertex AI levels the playing field for development with generative AI. By providing API access to foundation models while reducing the massive and prohibitive data requirements these technologies usually entail, Vertex AI will empower builders and innovators of all kinds, from data scientists to self-taught developers, to create the next generation of startups.&lt;/li&gt;
+  &lt;li&gt;为启动新一代应用程序创业浪潮奠定基础。 Vertex AI 为生成式 AI 的开发创造了公平的竞争环境。 通过提供对基础模型的 API 访问，同时减少这些技术通常需要的大量和禁止的数据要求，Vertex AI 将使从数据科学家到自学成才的开发人员的各种构建者和创新者能够创建下一代初创公司。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;protecting-data-and-shaping-conversation-flows-with-responsible-ai&quot;&gt;Protecting data and shaping conversation flows with Responsible AI&lt;/h2&gt;
+&lt;h2 id=&quot;使用-responsible-ai-保护数据和塑造对话流&quot;&gt;使用 Responsible AI 保护数据和塑造对话流&lt;/h2&gt;
+
+&lt;p&gt;When Google Cloud brings new AI advances to our products, our commitment is two-fold: to deliver transformative capabilities, while ensuring our technologies include proper protections for our organizations, their users, and society. To this end, our AI Principles, established in 2017, form a living constitution that guides our approach to building advanced technologies, conducting research, and drafting our product development policies. For more information about how we put our AI Principles into practice, read our most comprehensive report to date.&lt;/p&gt;
+
+&lt;p&gt;当 Google Cloud 为我们的产品带来新的 AI 进步时，我们的承诺有两个：提供变革性功能，同时确保我们的技术包括对我们的组织、他们的用户和社会的适当保护。 为此，我们于 2017 年制定的 AI 原则构成了一部活生生的宪法，指导我们构建先进技术、开展研究和起草产品开发政策的方法。 有关我们如何将 AI 原则付诸实践的更多信息，请阅读我们迄今为止最全面的报告。&lt;/p&gt;
+
+&lt;p&gt;Our new announcements are no exception, providing:&lt;/p&gt;
+
+&lt;p&gt;我们的新公告也不例外，提供：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Transparency and explainability: Both Vertex AI and Generative AI App Builder include tools to inspect, understand, and modify model behavior.&lt;/li&gt;
+  &lt;li&gt;透明度和可解释性：Vertex AI 和 Generative AI App Builder 都包含用于检查、理解和修改模型行为的工具。&lt;/li&gt;
+  &lt;li&gt;Data privacy and sovereignty: Whether a company is training a model in Vertex AI or building a customer service experience on Generative AI App Builder, private data is kept private, and not used in the broader foundation model training corpus. Organizations always maintain control over where data is stored and how or if it is used, letting them safely pursue data-rich use cases while complying with various regulations and data sovereignty laws.&lt;/li&gt;
+  &lt;li&gt;数据隐私和主权：无论公司是在 Vertex AI 中训练模型，还是在 Generative AI App Builder 上构建客户服务体验，私有数据都是保密的，不会用于更广泛的基础模型训练语料库。 组织始终保持对数据存储位置以及使用方式或是否使用的控制，让他们在遵守各种法规和数据主权法律的同时安全地追求数据丰富的用例。&lt;/li&gt;
+  &lt;li&gt;Factuality and freshness: Generative AI App Builder uses information retrieval algorithms to provide the right sourcing and attribution while serving the most relevant information.&lt;/li&gt;
+  &lt;li&gt;真实性和新鲜度：Generative AI App Builder 使用信息检索算法来提供正确的来源和归因，同时提供最相关的信息。&lt;/li&gt;
+  &lt;li&gt;Probabilistic models with deterministic workflow controls: Organizations want to blend the interactive and probabilistic nature of generative AI with results that are controlled, deterministic, and reliable.&lt;/li&gt;
+  &lt;li&gt;具有确定性工作流控制的概率模型：组织希望将生成 AI 的交互性和概率性与受控、确定性和可靠的结果相结合。&lt;/li&gt;
+  &lt;li&gt;Choices to fit different requirements: To meet organizations’ differing needs, our platforms are designed to be flexible, including data and model lineage capabilities, integrated security and identity management services, support for third-party models, choice and transparency on models and costs, integrated billing and entitlement support, and support across many languages.&lt;/li&gt;
+  &lt;li&gt;满足不同需求的选择：为了满足组织的不同需求，我们的平台设计灵活，包括数据和模型沿袭功能、集成安全和身份管理服务、对第三方模型的支持、模型和成本的选择和透明度， 集成的计费和授权支持，以及跨多种语言的支持。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;“Google Cloud has been a strategic partner for Deutsche Bank, working with us to improve operational efficiency and reshape how we design and deliver products for our customers,” said Gil Perez, Chief Innovation Officer, Deutsche Bank. “We appreciate their approach to Responsible AI and look forward to co-innovating with their advancements in generative AI, building on our success to date in enhancing developer productivity, boosting innovation, and increasing employee retention.”&lt;/p&gt;
+
+&lt;p&gt;“谷歌云一直是德意志银行的战略合作伙伴，与我们合作提高运营效率并重塑我们为客户设计和交付产品的方式，”德意志银行首席创新官 Gil Perez 说。 “我们赞赏他们对 Responsible AI 的方法，并期待与他们在生成 AI 方面的进步共同创新，在我们迄今为止在提高开发人员生产力、促进创新和提高员工保留率方面取得的成功的基础上再接再厉。”&lt;/p&gt;
+
+&lt;p&gt;Additionally, as part of our commitment to an open approach to AI development, we’re also announcing &lt;a href=&quot;https://cloud.google.com/blog/products/ai-machine-learning/building-an-open-generative-ai-partner-ecosystem&quot;&gt;new AI partnerships and programs&lt;/a&gt; that make it easier for startups, developers, and enterprises to accelerate their AI projects.&lt;/p&gt;
+
+&lt;p&gt;此外，作为我们对 AI 开发开放方法的承诺的一部分，我们还宣布了新的 AI 合作伙伴关系和计划，使初创公司、开发人员和企业更容易加速他们的 AI 项目。&lt;/p&gt;
+
+&lt;p&gt;Visit our &lt;a href=&quot;https://cloud.google.com/ai&quot;&gt;AI on Google Cloud&lt;/a&gt; webpage or join us at &lt;a href=&quot;https://cloudonair.withgoogle.com/events/summit-data-cloud-2023?_gl=1*82x527*_ga*NzM2NDc2ODAzLjE2Nzg4MDQ1OTI.*_ga_WH2QY8WWF5*MTY3ODgwNDU5MS4xLjEuMTY3ODgwNDU5MS4wLjAuMA..&amp;amp;_ga=2.254159438.-736476803.1678804592&quot;&gt;Google Data Cloud &amp;amp; AI Summit&lt;/a&gt;, live online March 29, to learn more about our new announcements.&lt;/p&gt;
+
+&lt;p&gt;请访问我们的 AI on Google Cloud 网页或加入我们的 Google 数据云和 AI 峰会（3 月 29 日在线直播），以详细了解我们的新公告。&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><summary type="html">原文标题：Google Cloud brings generative AI to developers, businesses, and governments 原文链接：https://cloud.google.com/blog/products/ai-machine-learning/generative-ai-for-businesses-and-governments</summary></entry><entry><title type="html">The next generation of AI for developers and Google Workspace</title><link href="https://www.mikecaptain.com/2023/03/11/next-generation-ai-google/" rel="alternate" type="text/html" title="The next generation of AI for developers and Google Workspace" /><published>2023-03-11T19:40:13+00:00</published><updated>2023-03-11T19:40:13+00:00</updated><id>https://www.mikecaptain.com/2023/03/11/next-generation-ai-google</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/11/next-generation-ai-google/">&lt;ul&gt;
+  &lt;li&gt;原文标题：The next generation of AI for developers and Google Workspace&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;We’re bringing the power of generative AI to developers and businesses through Google Cloud and MakerSuite. And we’re introducing new AI-powered features in Google Workspace. —— Thomas Kurian, CEO of Google Cloud&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Google has been investing in AI for many years and bringing its benefits to individuals, businesses and communities. Whether it’s publishing state-of-the-art research, building helpful products or developing tools and resources that enable others, we’re committed to making AI accessible to everyone.&lt;/p&gt;
+
+&lt;p&gt;Google 在 AI 领域投入多年，并且把它&lt;/p&gt;
+
+&lt;p&gt;We’re now at a pivotal moment in our AI journey. Breakthroughs in generative AI are fundamentally changing how people interact with technology — and at Google, we’ve been responsibly developing large language models so we can safely bring them to our products. Today, we’re excited to share our early progress. Developers and businesses can now try new APIs and products that make it easy, safe and scalable to start building with Google’s best AI models through Google Cloud and a new prototyping environment called MakerSuite. And in Google Workspace, we’re introducing new features that help people harness the power of generative AI to create, connect and collaborate.&lt;/p&gt;
+
+&lt;h2 id=&quot;palm-api--makersuite-an-approachable-way-to-explore-and-prototype-with-generative-ai-applications&quot;&gt;PaLM API &amp;amp; MakerSuite: An approachable way to explore and prototype with generative AI applications&lt;/h2&gt;
+
+&lt;p&gt;So many technology and platform shifts — from mobile to cloud computing — have inspired entire ecosystems of developers to start new businesses, imagine new products, and transform how they create. We’re in the midst of another shift with AI that is having a profound effect on every industry.&lt;/p&gt;
+
+&lt;p&gt;For developers who are experimenting with AI, we’re introducing the PaLM API, an easy and safe way to build on top of our best language models. Today, we’re making an efficient model available, in terms of size and capabilities, and we’ll add other sizes soon. The API also comes with an intuitive tool called MakerSuite, which lets you quickly prototype ideas and, over time, will have features for prompt engineering, synthetic data generation and custom-model tuning — all supported by robust safety tools. Select developers can access the PaLM API and MakerSuite in Private Preview today, and stay tuned for our waitlist soon.&lt;/p&gt;
+
+&lt;h2 id=&quot;bringing-generative-ai-capabilities-to-google-cloud&quot;&gt;Bringing generative AI capabilities to Google Cloud&lt;/h2&gt;
+
+&lt;p&gt;For developers who want to build and customize their own models and apps using generative AI, they can access Google’s AI models, including PaLM, on Google Cloud. We’re bringing new generative AI capabilities to our Google Cloud AI portfolio to help developers and organizations access enterprise-level safety, security, privacy, as well as integrate with their existing Cloud solutions:&lt;/p&gt;
+
+&lt;p&gt;Generative AI support in Vertex AI: Developers and businesses already use Google Cloud’s Vertex AI platform to build and deploy machine learning models and AI applications at scale. We are now providing foundation models, initially for generating text and images, and over time with audio and video. Google Cloud customers will have the ability to discover models, create and modify prompts, fine tune them with their own data, and deploy applications that use these powerful new technologies.&lt;/p&gt;
+
+&lt;p&gt;Generative AI App Builder: Businesses and governments also want to build their own AI-powered chat interfaces and digital assistants. To enable this, we are introducing Generative AI App Builder, which connects conversational AI flows with out of the box search experiences and foundation models — helping companies build generative AI applications in minutes or hours.&lt;/p&gt;
+
+&lt;p&gt;New AI partnerships and programs: In addition to announcing new Google Cloud AI products, we’re also committed to being the most open cloud provider. We’re expanding our AI ecosystem and specialized programs for technology partners, AI-focused software providers and startups.&lt;/p&gt;
+
+&lt;p&gt;Starting today, trusted testers are accessing Vertex AI with Generative AI support and Generative AI App Builder.&lt;/p&gt;
+
+&lt;h2 id=&quot;new-generative-ai-features-in-workspace&quot;&gt;New generative AI features in Workspace&lt;/h2&gt;
+
+&lt;p&gt;More than 3 billion people already benefit from AI-powered features in Google Workspace, whether it’s using Smart Compose in Gmail or auto-generated summaries in Google Docs. Now, we’re excited to take the next step and bring a limited set of trusted testers a new set of features that makes the process of writing even easier. In Gmail and Google Docs, you can simply type in a topic you’d like to write about, and a draft will be instantly generated for you. So if you’re a manager onboarding a new employee, Workspace saves you the time and effort involved in writing that first welcome email. From there, you can elaborate upon or abbreviate the message or adjust the tone to be more playful or professional — all in just a few clicks. We’ll be rolling out these new experiences to testers in the coming weeks.&lt;/p&gt;
+
+&lt;p&gt;Generative AI in Docs helping to write a job description.&lt;/p&gt;
+
+&lt;h2 id=&quot;scaling-ai-responsibly&quot;&gt;Scaling AI responsibly&lt;/h2&gt;
+
+&lt;p&gt;Generative AI is an emerging and rapidly evolving technology with complex challenges. That’s why we invite external and internal testers to pressure test new experiences, and why we have AI Principles to guide this work. These principles also serve as an ongoing commitment to our customers worldwide who rely on our products to build and grow their businesses safely with AI. Our goal is to continue to be bold and responsible in our approach and partner with others to improve our AI models so they’re safe and helpful for everyone.&lt;/p&gt;
+
+&lt;p&gt;We’re so excited by the potential of generative AI, and the opportunities it will unlock — from helping people express themselves creatively, to helping developers build brand new types of applications, to transforming how businesses and governments engage their customers and constituents. Stay tuned for more to come in the weeks and months ahead.&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><summary type="html">原文标题：The next generation of AI for developers and Google Workspace</summary></entry><entry><title type="html">OpenChatKit</title><link href="https://www.mikecaptain.com/2023/03/10/openchatkit/" rel="alternate" type="text/html" title="OpenChatKit" /><published>2023-03-10T21:54:13+00:00</published><updated>2023-03-10T21:54:13+00:00</updated><id>https://www.mikecaptain.com/2023/03/10/openchatkit</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/10/openchatkit/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#instruction-tuned-large-language-model&quot; id=&quot;markdown-toc-instruction-tuned-large-language-model&quot;&gt;Instruction-tuned large language model&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#strengths-of-the-model&quot; id=&quot;markdown-toc-strengths-of-the-model&quot;&gt;Strengths of the model&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#example-1-summarization-and-question-answering-within-context&quot; id=&quot;markdown-toc-example-1-summarization-and-question-answering-within-context&quot;&gt;Example 1: Summarization and question answering within context&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#example-2-information-extraction&quot; id=&quot;markdown-toc-example-2-information-extraction&quot;&gt;Example 2: Information extraction&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#example-3-text-classification&quot; id=&quot;markdown-toc-example-3-text-classification&quot;&gt;Example 3: Text classification&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#weaknesses-of-the-model&quot; id=&quot;markdown-toc-weaknesses-of-the-model&quot;&gt;Weaknesses of the model&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#customization-recipes-to-fine-tune-the-model&quot; id=&quot;markdown-toc-customization-recipes-to-fine-tune-the-model&quot;&gt;Customization recipes to fine-tune the model&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#how-to-fine-tune&quot; id=&quot;markdown-toc-how-to-fine-tune&quot;&gt;How to fine-tune&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#extensible-retrieval-system-for-live-updating-answers&quot; id=&quot;markdown-toc-extensible-retrieval-system-for-live-updating-answers&quot;&gt;Extensible retrieval system for live-updating answers&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#how-to-use-the-chatbot-in-retrieval-mode&quot; id=&quot;markdown-toc-how-to-use-the-chatbot-in-retrieval-mode&quot;&gt;How to use the chatbot in retrieval mode&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#moderation-model-to-intervene-when-needed&quot; id=&quot;markdown-toc-moderation-model-to-intervene-when-needed&quot;&gt;Moderation model to intervene when needed&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#how-can-you-help-contribute-feedback-datasets-and-improvements&quot; id=&quot;markdown-toc-how-can-you-help-contribute-feedback-datasets-and-improvements&quot;&gt;How can you help? Contribute feedback, datasets and improvements!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#built-on-the-together-decentralized-cloud&quot; id=&quot;markdown-toc-built-on-the-together-decentralized-cloud&quot;&gt;Built on the Together Decentralized Cloud&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;原文链接：https://www.together.xyz/blog/openchatkit&lt;/p&gt;
+
+&lt;p&gt;OpenChatKit provides a powerful, open-source base to create both specialized and general purpose chatbots for various applications. We collaborated with LAION and Ontocord to create the training dataset. Much more than a model release, this is the beginning of an open source project. We are releasing a set of tools and processes for ongoing improvement with community contributions.&lt;/p&gt;
+
+&lt;p&gt;At Together, we believe open-source foundation models can be more inclusive, transparent, robust and capable. We are releasing OpenChatKit 0.15 under an Apache-2.0 license, with full access to source code, model weights and training datasets. This is a community driven project, and we are excited to see how it develops and grows!&lt;/p&gt;
+
+&lt;p&gt;A useful chatbot needs to follow instructions in natural language, maintain context in dialog, and moderate responses. OpenChatKit provides a base bot, and the building blocks to derive purpose-built chatbots from this base.&lt;/p&gt;
+
+&lt;p&gt;The kit has 4 key components:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;An instruction-tuned large language model, fine-tuned for chat from EleutherAI’s GPT-NeoX-20B with over 43 million instructions on 100% carbon negative compute;&lt;/li&gt;
+  &lt;li&gt;Customization recipes to fine-tune the model to achieve high accuracy on your tasks;&lt;/li&gt;
+  &lt;li&gt;An extensible retrieval system enabling you to augment bot responses with information from a document repository, API, or other live-updating information source at inference time;&lt;/li&gt;
+  &lt;li&gt;A moderation model, fine-tuned from GPT-JT-6B, designed to filter which questions the bot responds to.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;OpenChatKit includes tools that allow users to provide feedback and enable community members to add new datasets; contributing to a growing corpus of open training data that will improve LLMs over time.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://huggingface.co/spaces/togethercomputer/OpenChatKit&quot;&gt;&lt;strong&gt;Try it out on Hugging Face and give us your feedback!&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.squarespace-cdn.com/content/v1/6358bea282189a0adf57fe16/21c15f3f-d0b9-4c77-bb23-d6f40657a935/OpenChatKit+-+Email+Summarization+to+Table.png?format=2500w&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The OpenChatKit feedback app on Hugging Face enables community members to test the chatbot and provide feedback.&lt;/p&gt;
+
+&lt;h2 id=&quot;instruction-tuned-large-language-model&quot;&gt;Instruction-tuned large language model&lt;/h2&gt;
+
+&lt;p&gt;GPT-NeoXT-Chat-Base-20B is the large language model that forms the base of OpenChatKit. It is based on EleutherAI’s GPT-NeoX model, and fine-tuned with data focusing on conversational interactions. We focused the tuning on several tasks such as multi-turn dialogue, question answering, classification, extraction, and summarization. We’ve fine-tuned the model with a collection of 43 million high-quality instructions. Together partnered with LAION and Ontocord to create the OIG-43M dataset the model is based on. You can read more about this process and the availability of the training dataset in LAION’s blog post here.&lt;/p&gt;
+
+&lt;p&gt;Out of the box, GPT-NeoXT-Chat-Base-20B provides a strong base for a broad set of natural language tasks. Qualitatively, it has higher scores than its base model GPT-NeoX on the HELM benchmark, especially on tasks involving question and answering, extraction and classification.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.squarespace-cdn.com/content/v1/6358bea282189a0adf57fe16/fa6d48bc-68ba-4434-b401-f096994978c2/OpenChatKit+HELM+Benchmarks.png?format=2500w&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Evaluating GPT-NeoXT-Chat-Base-20B on HELM and comparing with GPT-NeoX. † indicates tests that include data that was also in our fine-tuning corpus.&lt;/p&gt;
+
+&lt;h3 id=&quot;strengths-of-the-model&quot;&gt;Strengths of the model&lt;/h3&gt;
+
+&lt;p&gt;There are several tasks that OpenChatKit excels at out of the box. This includes:&lt;/p&gt;
+
+&lt;h4 id=&quot;example-1-summarization-and-question-answering-within-context&quot;&gt;Example 1: Summarization and question answering within context&lt;/h4&gt;
+
+&lt;p&gt;Summarize a long document into a single sentence and conduct question answering related to the document, with multiple rounds.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;user&amp;gt;: Last year, the travel industry saw a big rebound in demand — and that demand is showing no signs of slowing down this spring break travel season. Planes and hotels will be full, travelers will likely face long queues, cancellations, massive crowds and plenty of other travel nightmares. But perhaps the most frustrating thing you’ll have to prepare for this spring break is if your luggage goes missing. You’ve got to somehow track down your belongings that were in the airline’s care and then wait to be reunited — all while trying to enjoy the start of your long-awaited vacation. As far as travel nightmares go, lost luggage is up there as one of the worst.
+
+To be honest up front, I am great at strategically losing things — or rather, losing stuff with style. (I hope you appreciate the “Toy Story” reference.) So when a product comes along that’s a perfect way to keep track of my belongings — especially when traveling — I’m adding it to my travel bag.
+
+I’ve been a big fan of Apple’s $29 item tracker, dubbed AirTag. The long-rumored AirTag product finally launched in 2021, and while it’s not the first item tracker to exist, it has two key features that set it apart from the rest to make it the ultimate travel companion: access to the Find My network and Precision Finding technology.
+
+The Federal Aviation Administration has even ruled that having an AirTag in your luggage is permitted and, in fact, not a safety hazard. The devices only contain 0.1 grams of lithium, which falls below the FAA’s limit.
+
+“Luggage tracking devices powered by lithium metal cells that have 0.3 grams or less of lithium can be used on checked baggage,” the FAA said in a statement. “Apple AirTags meet this threshold; other luggage tracking devices may not.”
+
+But, you may be wondering what makes them so special and why you should carry one in your checked luggage this spring break? Let’s explain why.
+
+Summarize the above into a single paragraph.
+
+&amp;lt;bot&amp;gt;: If you&apos;re traveling this spring break, you might want to consider investing in an item tracker to help you find your lost luggage. Apple&apos;s AirTag is the best option, according to a new report.
+
+&amp;lt;user&amp;gt;: But isn&apos;t it unsafe to put AirTag in a luggage?
+
+&amp;lt;bot&amp;gt;: The Federal Aviation Administration has ruled that having an AirTag in your luggage is permitted and, in fact, not a safety hazard.
+
+&amp;lt;user&amp;gt;: Ah, why is that?
+
+&amp;lt;bot&amp;gt;: The devices only contain 0.1 grams of lithium, which falls below the FAA’s limit.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;example-2-information-extraction&quot;&gt;Example 2: Information extraction&lt;/h4&gt;
+
+&lt;p&gt;Extract structured information from unstructured documents, as illustrated in the following example.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;user&amp;gt;: Team, we have to make a decision on the product plan for Goocrux v2. 
+
+The first option will take us 3 weeks of development, and will achieve performance of 80ms, but means that the UI has to change. 
+
+The second option will take us 4 weeks of development, and will achieve performance of 60ms, without any UI change. 
+
+The third option will take the longest -- 6 weeks of development, will achieve performance of 30ms, without any UI change. 
+
+Summarize the above email into a markdown table with four columns: (1) Option ID, (2) Development time, (3) Performance, (4) UI Change.
+
+&amp;lt;bot&amp;gt;: #.
+
+| ID | Option ID | Development time | Performance | UI Change |
+| --------- | --------- | --------- | --------- | --------- |
+| 1 | 1 | 3 weeks | 80ms | Yes |
+| 2 | 2 | 4 weeks | 60ms | No |
+| 3 | 3 | 6 weeks | 30ms | No |
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;example-3-text-classification&quot;&gt;Example 3: Text classification&lt;/h4&gt;
+
+&lt;p&gt;Classifying a sentence or paragraph into different categories.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;user&amp;gt;: Classify the sentiment of the following sentence into Positive, Neutral, or Negative: Super excited about teaching Stanford’s first course on Large Language Models! Check the syllabus out here
+
+&amp;lt;bot&amp;gt;: Positive
+
+&amp;lt;user&amp;gt;: Classify the sentiment of the following sentence into Positive, Neutral, or Negative: How about the following sentence: It is raining outside and I feel so blue
+
+&amp;lt;bot&amp;gt;: Negative
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In addition, the model does well on few-shot prompts. For both text classification and information extraction, the model performs even better with few shot prompting, as in most HELM tasks. We encourage you to try it out and let us know what you think.&lt;/p&gt;
+
+&lt;h3 id=&quot;weaknesses-of-the-model&quot;&gt;Weaknesses of the model&lt;/h3&gt;
+
+&lt;p&gt;That said, there are several areas where we have more work to do, and we need your help! Some of these include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Knowledge-based closed question and answering: The chatbot may hallucinate and give incorrect results. Be sure to fact check, and if possible provide feedback with the corrected information. We are also working to bolster the retrieval system which will help with this.&lt;/li&gt;
+  &lt;li&gt;Coding tasks: The chatbot was not trained on a large enough corpus of source code to excel at writing code. We welcome contributions of additional datasets to improve this!&lt;/li&gt;
+  &lt;li&gt;Repetition: Sometimes the chatbot will repeat its response. We’re working to improve this, but in the meantime you can click the refresh button to start a new conversation.&lt;/li&gt;
+  &lt;li&gt;Context switching: If you change the topic in the middle of a conversation, the chatbot often cannot make the switch automatically and will continue to give answers related to the prior topic.&lt;/li&gt;
+  &lt;li&gt;Creative writing and longer answers: The chatbot does not generate long, creative text such as an essay or story.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We are excited to work with you to address these weaknesses by getting your feedback, bolstering data sets, and improving accuracy.&lt;/p&gt;
+
+&lt;h2 id=&quot;customization-recipes-to-fine-tune-the-model&quot;&gt;Customization recipes to fine-tune the model&lt;/h2&gt;
+
+&lt;p&gt;LLMs have shown impressive ability to do general purpose question answering, and they tend to achieve higher accuracy when fine-tuned for specific applications. For example, Google’s PaLM achieves ~50% accuracy on medical answers, but by adding instruction support and fine-tuning with medical specific information, Google created Med-PaLM which achieved 92.6% accuracy. The same approach can be taken for other tasks.&lt;/p&gt;
+
+&lt;p&gt;OpenChatKit provides tools to fine-tune the chatbot to specialized applications, and we are working with research groups and companies to help them create custom models for a variety of tasks:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Educational helper — Fine-tuning on open textbook datasets to create a chatbot that will help students of all ages learn about a variety of topics through natural conversation.&lt;/li&gt;
+  &lt;li&gt;Financial question answering — Fine-tuning and leveraging retrieval of financial data such as SEC filings to enable question answering in the financial domain.&lt;/li&gt;
+  &lt;li&gt;Customer support agents — Fine-tuning with knowledge base data to create chatbots that help end users diagnose issues and quickly find answers.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;how-to-fine-tune&quot;&gt;How to fine-tune&lt;/h3&gt;
+
+&lt;p&gt;What it takes to fine-tune:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Prepare your data sets, with example interactions in the specified format.&lt;/li&gt;
+  &lt;li&gt;Save your dataset as a jsonl file, and follow instructions here to fine-tune the chat model.&lt;/li&gt;
+  &lt;li&gt;Don’t forget the moderation model! Before you start to use your fine-tuned model, be careful about out-of-domain questions that the moderation model may need to filter. If necessary, prepare some moderation data and fine-tune the moderation model.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Documentation and source code for this process is available in the GitHub repository. With OpenChatKit fully open source under the Apache-2.0 license, you can deeply tune, modify or inspect the weights for your own applications or research.&lt;/p&gt;
+
+&lt;p&gt;The above examples are just the beginning and we are excited by what the innovative open community will do. Send us your ideas and let us know if we can help!&lt;/p&gt;
+
+&lt;h2 id=&quot;extensible-retrieval-system-for-live-updating-answers&quot;&gt;Extensible retrieval system for live-updating answers&lt;/h2&gt;
+
+&lt;p&gt;OpenChatKit also includes an extensible retrieval system. With the retrieval system the chatbot is able to incorporate regularly updated or custom content, such as knowledge from Wikipedia, news feeds, or sports scores in responses.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://images.squarespace-cdn.com/content/v1/6358bea282189a0adf57fe16/af5a08bc-606c-4f47-838a-962c1332a808/OpenChatKit+Retrieval+System.png?format=2500w&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;An example workflow of retrieval augmented systems.&lt;/p&gt;
+
+&lt;p&gt;With the retrieval system the chatbot will retrieve relevant information on a given question, giving it access to up-to-date information. This provides the “context” for the model to answer questions. As two examples of this retrieval system, we include support for a Wikipedia index and sample code for how you would call a web search API during retrieval. Following the documentation, you can use the retrieval system to connect the chatbot to any data set or API at inference time, incorporating the live-updating data into responses.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-use-the-chatbot-in-retrieval-mode&quot;&gt;How to use the chatbot in retrieval mode&lt;/h3&gt;
+
+&lt;p&gt;We have provided an all-in-one script that combines the retrieval model along with the chat model. See full details in the README.&lt;/p&gt;
+
+&lt;p&gt;In the provided Wikipedia example, the system performs the following steps for a given user query:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The server retrieves relevant sentences from the Wikipedia index based on the user’s query.&lt;/li&gt;
+  &lt;li&gt;The server prepends the output of step 1 to the query and generates a response using the chatbot model. You can make changes to the code and the prompt to suit your specific use case.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;moderation-model-to-intervene-when-needed&quot;&gt;Moderation model to intervene when needed&lt;/h2&gt;
+
+&lt;p&gt;The final component of OpenChatKit is a 6 billion parameter moderation model fine-tuned from GPT-JT. In chat applications, the moderation model runs in tandem with the main chat model, checking the user utterance for any inappropriate content. Based on the moderation model’s assessment, the chatbot can limit the input to moderated subjects. For more narrow tasks the moderation model can be used to detect out-of-domain questions and override when the question is not on topic.&lt;/p&gt;
+
+&lt;p&gt;During inference, we conduct few-shot classification and classify user questions into five categories. The chatbot only responds when the question falls into allowed classifications:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Classification&lt;/th&gt;
+      &lt;th&gt;Response allowed&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;casual&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;possibly needs caution&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;probably needs caution&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;needs caution&lt;/td&gt;
+      &lt;td&gt;Yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;needs intervention&lt;/td&gt;
+      &lt;td&gt;No&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Moderation is a difficult and subjective task, and depends a lot on the context. The moderation model provided is a baseline that can be adapted and customized to various needs. We hope that the community can continue to improve the base moderation model, and will develop specific datasets appropriate for various cultural and organizational contexts.&lt;/p&gt;
+
+&lt;p&gt;We collaborated with LAION and Ontocord to on the training data set for the the moderation model and fine-tuned GPT-JT over a collection of inappropriate questions. Read more about this process, the availability of open training data, and how you can participate in the LAION blogpost here.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-can-you-help-contribute-feedback-datasets-and-improvements&quot;&gt;How can you help? Contribute feedback, datasets and improvements!&lt;/h2&gt;
+
+&lt;p&gt;Much more than a model release, this is the beginning of an open source project. We are releasing a set of tools and processes for ongoing improvement with community contributions.&lt;/p&gt;
+
+&lt;p&gt;This includes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Process for dataset contributions&lt;/strong&gt; — Add a YAML file to our GitHub repository with a URL and metadata. Together will download the dataset from the URL, process the data and integrate it into the next training run.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Process for incorporating feedback&lt;/strong&gt; — User reports will be periodically reviewed and processed to create aggregated datasets which may be released as open-source for future AI research.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Hugging Face app&lt;/strong&gt; — Use the app provided on Hugging Face and submit 👍, 👎 or flag inappropriate responses. This feedback helps us improve and provides additional data to the community. The chatbot will also give you a link to provide more details and the ideal correct response.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;built-on-the-together-decentralized-cloud&quot;&gt;Built on the Together Decentralized Cloud&lt;/h2&gt;
+
+&lt;p&gt;Together is building an intuitive platform combining data, models and computation to enable researchers, developers, and companies to leverage and improve the latest advances in artificial intelligence. Both models in OpenChatKit were trained on the Together Decentralized Cloud — a collection of compute nodes from across the Internet.&lt;/p&gt;
+
+&lt;p&gt;The fine-tuning process for this model used aggressive communication compression, incurring only 1.95 TB of communication for the whole fine-tuning process, compared with 172 TB when communicating with fp16 precision. This allows us to conduct data parallel training over slow 1Gbps networks. The time taken to fine-tune with this technique is similar to running over 100Gbps data center networks, in fact 93.2% as fast! This shows the incredible potential of decentralized compute for building large foundation models. Read more about how we do this here.&lt;/p&gt;
+
+&lt;p&gt;Together also deeply values sustainability and has developed a green zone of the Together Decentralized Cloud which includes compute resources that are 100% carbon negative. The fine-tuning of GPT-NeoXT-Chat-Base-20B was done exclusively in this green zone. We are excited to continue expanding our carbon negative compute resources with partners like CrusoeEnergy.&lt;/p&gt;
+
+&lt;p&gt;If you are interested in leveraging the Together Platform for your organization, please contact us to learn more.&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><summary type="html">OpenChatKit provides a powerful, open-source base to create both specialized and general purpose chatbots for various applications. We collaborated with LAION and Ontocord to create the training dataset. Much more than a model release, this is the beginning of an open source project. We are releasing a set of tools and processes for ongoing improvement with community contributions.</summary></entry><entry><title type="html">Midjourney Collection</title><link href="https://www.mikecaptain.com/2023/03/07/midjourney-collection/" rel="alternate" type="text/html" title="Midjourney Collection" /><published>2023-03-07T00:00:00+00:00</published><updated>2023-03-07T00:00:00+00:00</updated><id>https://www.mikecaptain.com/2023/03/07/midjourney-collection</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/07/midjourney-collection/">&lt;p&gt;https://discord.com/channels/662267976984297473/1008571063732539392/1082402117890875513&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://media.discordapp.net/attachments/1008571063732539392/1082402117614063726/Llib_Logo_design_for_private_investigation_crisis_management_ri_4af33b35-19d4-4035-9391-1b333fc5e041.png?width=1118&amp;amp;height=1118&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><summary type="html"></summary></entry></feed>
