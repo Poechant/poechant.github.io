@@ -4,7 +4,7 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-04-07T16:55:28+00:00</updated>
+ <updated>2023-04-07T16:56:39+00:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
@@ -24,38 +24,6 @@
  
 
  <entry>
-   <title>核裂变的原理</title>
-   <link href="https://www.mikecaptain.com/2023/03/15/nuclear-fission/"/>
-   <id>https://www.mikecaptain.com/2023/03/15/nuclear-fission</id>
-   <updated>2023-03-15T19:40:13+00:00</updated>
-   <content type="html">&lt;h2 id=&quot;1什么是核反应&quot;&gt;1、什么是核反应？&lt;/h2&gt; &lt;p&gt;核反应是一种将原子核转化为不同核素的物理或化学过程。它通常涉及核子的结合和释放，产生放射性粒子、能量和新的核素。核反应可分为两类：核裂变和核聚变。&lt;/p&gt; &lt;ul&gt; &lt;li&gt;在&lt;strong&gt;核裂变&lt;/strong&gt;中，一个原子核分裂成两个或更多轻子和自由中子，通常伴随着大量的能量释放。&lt;/li&gt; &lt;li&gt;在&lt;strong&gt;核聚变&lt;/strong&gt;中，两个或多个原子核结合形成一个更重的核，同时释放出能量。&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;这些反应在核电站、原子弹、氢弹等方面都有应用。另外核反应的一种分类方式，是看反应是否可控。以核裂变为例，则不可控和可控的两种核裂变如下：&lt;/p&gt; &lt;ul&gt; &lt;li&gt;在&lt;strong&gt;不可控核裂变&lt;/strong&gt;中，一旦核裂变反应链被启动，就会不断加速反应速度，释放出大量的能量，导致核反应失控，从而产生灾难性的后果。例如，原子弹就是一种不可控核裂变装置。&lt;/li&gt; &lt;li&gt;&lt;strong&gt;可控核裂变&lt;/strong&gt;是指通过控制核反应链的反应速率，使核反应可以在可控范围内进行。核电站就是一种可控核裂变的装置。核电站使用的燃料（如铀-235）进行核反应时，通过控制反应链的反应速率，从而可以安全地控制反应过程，获得持续稳定的能量输出。&lt;/li&gt; &lt;/ul&gt; &lt;h3 id=&quot;11核裂变的技术原理&quot;&gt;1.1、核裂变的技术原理&lt;/h3&gt; &lt;p&gt;一般的核裂变反应方程式，可以表示如下：&lt;/p&gt; \[^A_ZX + n \rightarrow ^{A_1}_{Z_1}X + ^{A_2}_{Z_2}X + ... + ^{A_k}_{Z_k}X + n\] &lt;p&gt;用中子轰击 \(\mathrm{^{235}_{92}U}\)，裂变出 \(\mathrm{^{93}_{36}Kr}\) 和 \(\mathrm{^{141}_{56}Ba}\) 以及 3 个中子，同时该裂变产生大量能量。这就是 \(\mathrm{^{235}_{92}U}\) 的裂变链式反应方程式，如下：&lt;/p&gt; \[\mathrm{n} + \mathrm{^{235}_{92}U} \rightarrow \mathrm{^{93}_{36}Kr} + \mathrm{^{141}_{56}Ba} + 3\mathrm{n} + 200\mathrm{MeV}\] &lt;h3...</content>
- </entry>
-
- 
-
- <entry>
-   <title>笔记本上就能跑的 ChatGPT-like 模型！</title>
-   <link href="https://www.mikecaptain.com/2023/03/14/alpaca-cpp/"/>
-   <id>https://www.mikecaptain.com/2023/03/14/alpaca-cpp</id>
-   <updated>2023-03-14T16:40:13+00:00</updated>
-   <content type="html">&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/antimatter15/alpaca.cpp
-cd alpaca.cpp
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;下载训练好的数据集：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget -O ggml-alpaca-7b-q4.bin -c https://gateway.estuary.tech/gw/ipfs/QmQ1bf2BTnYxq73MFJWu1B7bQ2UD6qG7D7YDCxhTndVkPC
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;make chat
-./chat
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</content>
- </entry>
-
- 
-
- <entry>
    <title>通往 AGI 的阿波罗时刻：极速浏览 GPT-4 技术梗概</title>
    <link href="https://www.mikecaptain.com/2023/03/14/mike-captain-gpt-4/"/>
    <id>https://www.mikecaptain.com/2023/03/14/mike-captain-gpt-4</id>
@@ -66,61 +34,102 @@ cd alpaca.cpp
  
 
  <entry>
-   <title>麦克船长 LLM 书籍第一部分</title>
-   <link href="https://www.mikecaptain.com/2023/03/12/captain-llm-book-content-part-1/"/>
-   <id>https://www.mikecaptain.com/2023/03/12/captain-llm-book-content-part-1</id>
-   <updated>2023-03-12T09:13:09+00:00</updated>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2023/2023-01-23-aigc-llm-1-transformer-cover.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#第-3-章--自然语言处理的史前时代&quot; id=&quot;markdown-toc-第-3-章--自然语言处理的史前时代&quot;&gt;第 3 章 · 自然语言处理的「史前」时代&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#第-1-节--n-元文法语言模型&quot; id=&quot;markdown-toc-第-1-节--n-元文法语言模型&quot;&gt;第 1 节 · N 元文法语言模型&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#11马尔科夫假设markov-assumption与-n-元文法语言模型n-gram-language-model&quot; id=&quot;markdown-toc-11马尔科夫假设markov-assumption与-n-元文法语言模型n-gram-language-model&quot;&gt;1.1、马尔科夫假设（Markov Assumption）与 N 元文法语言模型（N-gram Language Model）&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#12平滑smoothing-折扣discounting&quot; id=&quot;markdown-toc-12平滑smoothing-折扣discounting&quot;&gt;1.2、平滑（Smoothing）/ 折扣（Discounting）&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#121加-1-平滑--拉普拉斯平滑add-one-discounting--laplace-smoothing&quot; id=&quot;markdown-toc-121加-1-平滑--拉普拉斯平滑add-one-discounting--laplace-smoothing&quot;&gt;1.2.1、加 1 平滑 / 拉普拉斯平滑（Add-One Discounting / Laplace Smoothing）&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#122加-k-平滑--δ-平滑add-k-discounting--delta-smoothing&quot;...</content>
- </entry>
-
- 
-
- <entry>
-   <title>The next generation of AI for developers and Google Workspace</title>
-   <link href="https://www.mikecaptain.com/2023/03/11/next-generation-ai-google/"/>
-   <id>https://www.mikecaptain.com/2023/03/11/next-generation-ai-google</id>
-   <updated>2023-03-11T19:40:13+00:00</updated>
-   <content type="html">&lt;ul&gt; &lt;li&gt;原文标题：The next generation of AI for developers and Google Workspace&lt;/li&gt; &lt;/ul&gt; &lt;blockquote&gt; &lt;p&gt;We’re bringing the power of generative AI to developers and businesses through Google Cloud and MakerSuite. And we’re introducing new AI-powered features in Google Workspace. —— Thomas Kurian, CEO of Google Cloud&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Google has been investing...</content>
- </entry>
-
- 
-
- <entry>
-   <title>Google Cloud 为开发者、企业和政府带来了生成式 AI</title>
-   <link href="https://www.mikecaptain.com/2023/03/11/google-cloud-gen-ai/"/>
-   <id>https://www.mikecaptain.com/2023/03/11/google-cloud-gen-ai</id>
-   <updated>2023-03-11T19:40:13+00:00</updated>
-   <content type="html">&lt;ul&gt; &lt;li&gt;原文标题：Google Cloud brings generative AI to developers, businesses, and governments&lt;/li&gt; &lt;li&gt;原文链接：https://cloud.google.com/blog/products/ai-machine-learning/generative-ai-for-businesses-and-governments&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Generative AI is poised to usher in a new wave of interactive, multimodal experiences that transform how we interact with information, brands, and one another. Harnessing the power of decades of Google’s research, innovation, and investment in...</content>
- </entry>
-
- 
-
- <entry>
-   <title>书籍大纲《麦克船长 LLM 革命未来》</title>
-   <link href="https://www.mikecaptain.com/2023/03/11/captain-llm-book-catalogue/"/>
-   <id>https://www.mikecaptain.com/2023/03/11/captain-llm-book-catalogue</id>
-   <updated>2023-03-11T19:40:13+00:00</updated>
-   <content type="html">&lt;!-- 推荐语： * 张凯夫 * 赵德丽：达摩院计算机视觉负责人、资深算法专家 * 熊皓：淘宝直播算法负责人，资深技术专家 * 黄眉： * 三七：企业智能事业部总经理 * 锡泽：阿里集团资深 * 韩锷：资深技术专家 * 张斯成：前钉钉副总裁 * 罗璇 * 刘江？ * 赖晓春，上海科技大学研究员、联影首席科学家 * 牛力，上海交通大学 * 王猛，Google 自动驾驶 AI 研究员 * 田飞，Meta * 赵明夷，Notion * 孙鹏，世界之窗浏览器创始人 * 王宇航，核桃编程创始人 * 陆铭，宝云科技创始人 大模型革命：自然语言处理篇 演化：大语言模型编年史 --- --&gt; &lt;h2 id=&quot;目录&quot;&gt;目录&lt;/h2&gt; &lt;h4 id=&quot;先导篇--自然语言处理的基本背景&quot;&gt;先导篇 ·...</content>
- </entry>
-
- 
-
- <entry>
-   <title>OpenChatKit</title>
-   <link href="https://www.mikecaptain.com/2023/03/10/openchatkit/"/>
-   <id>https://www.mikecaptain.com/2023/03/10/openchatkit</id>
-   <updated>2023-03-10T21:54:13+00:00</updated>
-   <content type="html">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#instruction-tuned-large-language-model&quot; id=&quot;markdown-toc-instruction-tuned-large-language-model&quot;&gt;Instruction-tuned large language model&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#strengths-of-the-model&quot; id=&quot;markdown-toc-strengths-of-the-model&quot;&gt;Strengths of the model&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#example-1-summarization-and-question-answering-within-context&quot; id=&quot;markdown-toc-example-1-summarization-and-question-answering-within-context&quot;&gt;Example 1: Summarization and question answering within context&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#example-2-information-extraction&quot; id=&quot;markdown-toc-example-2-information-extraction&quot;&gt;Example 2: Information extraction&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#example-3-text-classification&quot; id=&quot;markdown-toc-example-3-text-classification&quot;&gt;Example 3: Text classification&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#weaknesses-of-the-model&quot; id=&quot;markdown-toc-weaknesses-of-the-model&quot;&gt;Weaknesses of the model&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a...</content>
- </entry>
-
- 
-
- <entry>
    <title>人工智能 LLM 革命破晓：一文读懂当下超大语言模型发展现状</title>
    <link href="https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/"/>
    <id>https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm</id>
    <updated>2023-03-06T06:54:13+00:00</updated>
    <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/mikecaptain-llm-revolution-2.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#前言&quot; id=&quot;markdown-toc-前言&quot;&gt;前言&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第一章--初步了解自然语言处理的任务方法和模型&quot; id=&quot;markdown-toc-第一章--初步了解自然语言处理的任务方法和模型&quot;&gt;第一章 · 初步了解自然语言处理的任务、方法和模型&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#第-1-节--我们要解决什么问题nlp-任务&quot; id=&quot;markdown-toc-第-1-节--我们要解决什么问题nlp-任务&quot;&gt;第 1 节 · 我们要解决什么问题：NLP 任务&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#11相当长时间里nlp-领域都有大量细分任务&quot; id=&quot;markdown-toc-11相当长时间里nlp-领域都有大量细分任务&quot;&gt;1.1、相当长时间里，NLP 领域都有大量细分任务&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#12我们始终在追求简洁优雅的技术路线技术理论&quot; id=&quot;markdown-toc-12我们始终在追求简洁优雅的技术路线技术理论&quot;&gt;1.2、我们始终在追求简洁优雅的技术路线/技术理论&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第-2-节--解决问题的思路之方法神经网络模型学习方法的三个范式阶段&quot; id=&quot;markdown-toc-第-2-节--解决问题的思路之方法神经网络模型学习方法的三个范式阶段&quot;&gt;第 2 节 · 解决问题的思路之方法：神经网络模型学习方法的三个范式阶段&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#21第一阶段完全监督学习fully-supervised-learning范式&quot; id=&quot;markdown-toc-21第一阶段完全监督学习fully-supervised-learning范式&quot;&gt;2.1、第一阶段：完全监督学习（Fully Supervised Learning）范式&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#22第二阶段预训练pre-train范式--为了更好的泛化性generalization&quot; id=&quot;markdown-toc-22第二阶段预训练pre-train范式--为了更好的泛化性generalization&quot;&gt;2.2、第二阶段：预训练（Pre-train）范式...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>AI 应用第一次大爆发来了：一文入门 ChatGPT 官方 API 文档解读</title>
+   <link href="https://www.mikecaptain.com/2023/03/02/chatgpt-api/"/>
+   <id>https://www.mikecaptain.com/2023/03/02/chatgpt-api</id>
+   <updated>2023-03-02T00:54:13+00:00</updated>
+   <content type="html">&lt;p&gt;此前 GPT-3 也早已开放 API，我在麦克船长的博客 MikeCaptain.com 中已介绍过，当时在 NLP 方面能使用的 API 主要是 GPT-3，这是&lt;a href=&quot;http://www.mikecaptain.com/2023/01/24/openai-official-doc/&quot;&gt;原文链接&lt;/a&gt;。此前 OpenAI API 就已经有了不同功能和价位的多种模型，还提供了在基础模型上的 fine-tune 服务（当然 fine-tune 本身收费，且 fine-tune 后的模型调用费用比 base model 要贵得多）。本次更新，主要是增加了 GPT-3.5（用于 NLP）和 Whisper（用于 audio to text）的 API：&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/img/src/2023/03/captain-chatgpt-api-1.png&quot; alt=&quot;&quot; width=&quot;720&quot; /&gt;&lt;/p&gt; &lt;p&gt;ChatGPT 和 Whisper 模型现已在 OpenAI 的 API 上可用，通过一系列系统范围的优化，自去年 12 月以来，OpenAI 已将 ChatGPT 的成本降低了 90%；不仅仅是...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>千日酒：麦克船长在阿里巴巴的第 999 天</title>
+   <link href="https://www.mikecaptain.com/2023/02/27/captain-alibaba-999/"/>
+   <id>https://www.mikecaptain.com/2023/02/27/captain-alibaba-999</id>
+   <updated>2023-02-27T11:12:13+00:00</updated>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2023/captain-alibaba-999-1.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;千日酒&quot;&gt;千日酒&lt;/h3&gt;
+
+&lt;p&gt;[晋] 干宝&lt;/p&gt;
+
+&lt;p&gt;狄希，中山人也。能造「千日酒」，饮之千日醉。时有州人姓刘，名玄石，好饮酒，往求之。希曰：「我酒发来未定，不敢饮君。」石曰：「纵未熟，且与一杯，得否？」希闻此语，不免饮之。复索曰：「美哉！可更与之。」希曰：「且归，别日当来，只此一杯，可眠千日也。」石别，似有怍色。至家，醉死。家人不之疑，哭而葬之。&lt;/p&gt;
+
+&lt;p&gt;经三年，希曰：「玄石必应酒醒，宜往问之。」既往石家，语曰：「石在家否？」家人皆怪之，曰：「玄石亡来，服以阕矣。」希惊曰：「酒之美矣，而致醉眠千日，今合醒矣。」乃命其家人凿冢破棺看之。冢上汗气彻天，遂命发冢。方见开目张口，引声而言曰：「快哉，醉我也！」因问希曰：“「作何物也，令我一杯大醉，今日方醒？日高几许？」墓上人皆笑之，被石酒气冲入鼻中，亦各醉卧三月。&lt;/p&gt;
+
+&lt;p&gt;——《搜神记》&lt;/p&gt;
+
+&lt;h3 id=&quot;终为始&quot;&gt;终为始&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;目标驱动，以终为始，纵情向前。&lt;/li&gt;
+  &lt;li&gt;不要在虚假繁荣、自圆其说中虚度光阴。&lt;/li&gt;
+  &lt;li&gt;要追随大才之人。&lt;/li&gt;
+  &lt;li&gt;爱，财富与创造。&lt;/li&gt;
+  &lt;li&gt;正视你的财富与地位。&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>Meta 推出开源 LLaMA，用 1/10 参数规模打败 GPT-3，群"模"乱舞的 2023 拉开序幕</title>
+   <link href="https://www.mikecaptain.com/2023/02/25/meta-llama/"/>
+   <id>https://www.mikecaptain.com/2023/02/25/meta-llama</id>
+   <updated>2023-02-25T05:54:13+00:00</updated>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2023/2023-02-25-meta-llama-29.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;北京时间 2023 年 2 月 25 日 Meta AI 在其官网公开发布了 LLaMA（Large Language Model Meta AI）大型语言模型，包括 70 亿、130 亿、330 亿、650 亿 4 种参数规模，旨在推动 LLM 领域的小型化、平民化研究。有趣的是，LLaMA 是羊驼的意思。&lt;/p&gt; &lt;p&gt;Guillaume Lample 在其 Twitter 上声称：LLaMA 130 亿参数版本的表现，在大多数测试上优于 OPT 和 GPT-3 1750 亿参数版，650 亿的版本表现基本可以比肩 Chinchilla 700 亿参数、PaLM 5400 亿参数这些大模型。&lt;/p&gt; &lt;p&gt;LLaMA 是由 Meta...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>design | Michael & Greta Anniversary</title>
+   <link href="https://www.mikecaptain.com/2023/02/13/mandg-anniversary-rings/"/>
+   <id>https://www.mikecaptain.com/2023/02/13/mandg-anniversary-rings</id>
+   <updated>2023-02-13T08:53:57+00:00</updated>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2023/02/mandg-ring-1.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/img/src/2023/02/mandg-ring-2.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;div align=&quot;center&quot;&gt; Michael and Greta&apos;s one-year anniversary ring&lt;br /&gt;&lt;br /&gt; Einjähriger Jahrestagsring von Michael und Greta&lt;br /&gt;&lt;br /&gt; Bague d&apos;anniversaire d&apos;un an de Michael et Greta&lt;br /&gt;&lt;br /&gt; マイケルとグレタの1周年記念リング&lt;br /&gt;&lt;br /&gt; 마이클과 그레타의 1주년 기념 반지&lt;br /&gt;&lt;br /&gt; Anillo de aniversario de...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>麦克船长：国家网信办《互联网信息服务深度合成管理规定》解读</title>
+   <link href="https://www.mikecaptain.com/2023/02/06/cac-generative-information/"/>
+   <id>https://www.mikecaptain.com/2023/02/06/cac-generative-information</id>
+   <updated>2023-02-06T15:24:58+00:00</updated>
+   <content type="html">&lt;h2 id=&quot;国家互联网信息办公室中华人民共和国工业和信息化部中华人民共和国公安部-令-第12号&quot;&gt;国家互联网信息办公室、中华人民共和国工业和信息化部、中华人民共和国公安部 令 第12号&lt;/h2&gt; &lt;p&gt;《互联网信息服务深度合成管理规定》已经2022年11月3日国家互联网信息办公室2022年第21次室务会议审议通过，并经工业和信息化部、公安部同意，现予公布，自2023年1月10日起施行。&lt;/p&gt; &lt;p&gt;国家互联网信息办公室主任 庄荣文&lt;/p&gt; &lt;p&gt;工业和信息化部部长 金壮龙&lt;/p&gt; &lt;p&gt;公安部部长 王小洪&lt;/p&gt; &lt;p&gt;2022年11月25日&lt;/p&gt; &lt;h2 id=&quot;互联网信息服务深度合成管理规定&quot;&gt;互联网信息服务深度合成管理规定&lt;/h2&gt; &lt;h3 id=&quot;第一章-总则&quot;&gt;第一章 总则&lt;/h3&gt; &lt;p&gt;第一条 为了加强互联网信息服务深度合成管理，弘扬社会主义核心价值观，维护国家安全和社会公共利益，保护公民、法人和其他组织的合法权益，根据《中华人民共和国网络安全法》、《中华人民共和国数据安全法》、《中华人民共和国个人信息保护法》、《互联网信息服务管理办法》等法律、行政法规，制定本规定。&lt;/p&gt; &lt;p&gt;第二条 在中华人民共和国境内应用深度合成技术提供互联网信息服务（以下简称深度合成服务），适用本规定。法律、行政法规另有规定的，依照其规定。&lt;/p&gt; &lt;p&gt;第三条 国家网信部门负责统筹协调全国深度合成服务的治理和相关监督管理工作。国务院电信主管部门、公安部门依据各自职责负责深度合成服务的监督管理工作。&lt;/p&gt; &lt;p&gt;地方网信部门负责统筹协调本行政区域内的深度合成服务的治理和相关监督管理工作。地方电信主管部门、公安部门依据各自职责负责本行政区域内的深度合成服务的监督管理工作。&lt;/p&gt; &lt;p&gt;第四条 提供深度合成服务，应当遵守法律法规，尊重社会公德和伦理道德，坚持正确政治方向、舆论导向、价值取向，促进深度合成服务向上向善。&lt;/p&gt; &lt;p&gt;第五条 鼓励相关行业组织加强行业自律，建立健全行业标准、行业准则和自律管理制度，督促指导深度合成服务提供者和技术支持者制定完善业务规范、依法开展业务和接受社会监督。&lt;/p&gt; &lt;h3 id=&quot;第二章-一般规定&quot;&gt;第二章 一般规定&lt;/h3&gt; &lt;p&gt;第六条 任何组织和个人不得利用深度合成服务制作、复制、发布、传播法律、行政法规禁止的信息，不得利用深度合成服务从事危害国家安全和利益、损害国家形象、侵害社会公共利益、扰乱经济和社会秩序、侵犯他人合法权益等法律、行政法规禁止的活动。&lt;/p&gt; &lt;p&gt;&lt;strong&gt;&lt;u&gt;深度合成服务提供者和使用者不得利用深度合成服务制作、复制、发布、传播虚假新闻信息。转载基于深度合成服务制作发布的新闻信息的，应当依法转载互联网新闻信息稿源单位发布的新闻信息&lt;/u&gt;&amp;gt;&lt;/strong&gt;。&lt;/p&gt; &lt;p&gt;第七条 深度合成服务提供者应当落实信息安全主体责任，建立健全用户注册、&lt;strong&gt;&lt;u&gt;算法机制机理审核、科技伦理审查&lt;/u&gt;&lt;/strong&gt;、信息发布审核、数据安全、个人信息保护、反电信网络诈骗、应急处置等管理制度，具有安全可控的技术保障措施。&lt;/p&gt; &lt;p&gt;第八条 深度合成服务提供者应当制定和公开管理规则、平台公约，完善服务协议，依法依约履行管理责任，以显著方式提示深度合成服务技术支持者和使用者承担信息安全义务。&lt;/p&gt; &lt;p&gt;第九条 深度合成服务提供者应当基于移动电话号码、身份证件号码、统一社会信用代码或者国家网络身份认证公共服务等方式，依法对深度合成服务使用者进行真实身份信息认证，&lt;strong&gt;&lt;u&gt;不得向未进行真实身份信息认证的深度合成服务使用者提供信息发布服务&lt;/u&gt;&lt;/strong&gt;。&lt;/p&gt; &lt;p&gt;第十条 深度合成服务提供者应当加强深度合成内容管理，采取&lt;strong&gt;&lt;u&gt;技术&lt;/u&gt;&lt;/strong&gt;或者人工方式对深度合成服务使用者的输入数据和合成结果进行审核。&lt;/p&gt; &lt;p&gt;&lt;strong&gt;&lt;u&gt;深度合成服务提供者应当建立健全用于识别违法和不良信息的特征库，完善入库标准、规则和程序，记录并留存相关网络日志&lt;/u&gt;&lt;/strong&gt;。&lt;/p&gt; &lt;p&gt;深度合成服务提供者发现违法和不良信息的，应当依法采取处置措施，保存有关记录，及时向网信部门和有关主管部门报告；对相关深度合成服务使用者依法依约采取警示、限制功能、暂停服务、关闭账号等处置措施。&lt;/p&gt; &lt;p&gt;第十一条 &lt;strong&gt;&lt;u&gt;深度合成服务提供者应当建立健全辟谣机制&lt;/u&gt;&lt;/strong&gt;，发现利用深度合成服务制作、复制、发布、传播虚假信息的，应当及时采取辟谣措施，保存有关记录，并向网信部门和有关主管部门报告。&lt;/p&gt; &lt;p&gt;第十二条 深度合成服务提供者应当设置便捷的用户申诉和公众投诉、举报入口，公布处理流程和反馈时限，及时受理、处理和反馈处理结果。&lt;/p&gt; &lt;p&gt;第十三条 互联网应用商店等应用程序分发平台应当落实上架审核、日常管理、应急处置等安全管理责任，核验深度合成类应用程序的安全评估、备案等情况；对违反国家有关规定的，应当及时采取不予上架、警示、暂停服务或者下架等处置措施。&lt;/p&gt;...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>麦克船长的 OpenAI 模型 API 官方文档入门解读</title>
+   <link href="https://www.mikecaptain.com/2023/01/23/openai-official-doc/"/>
+   <id>https://www.mikecaptain.com/2023/01/23/openai-official-doc</id>
+   <updated>2023-01-23T22:24:58+00:00</updated>
+   <content type="html">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#一先大概看看-openai-目前最拿得出手的三个商业化产品用起来啥样&quot; id=&quot;markdown-toc-一先大概看看-openai-目前最拿得出手的三个商业化产品用起来啥样&quot;&gt;一、先大概看看 OpenAI 目前最拿得出手的三个商业化产品用起来啥样&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#1执行各种自然语言任务的-gpt-3&quot; id=&quot;markdown-toc-1执行各种自然语言任务的-gpt-3&quot;&gt;1、执行各种自然语言任务的 GPT-3&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#示例-1copywriting&quot; id=&quot;markdown-toc-示例-1copywriting&quot;&gt;示例 1：Copywriting&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#示例-2summarization&quot; id=&quot;markdown-toc-示例-2summarization&quot;&gt;示例 2：Summarization&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#示例-3parsing-unstructured-text&quot; id=&quot;markdown-toc-示例-3parsing-unstructured-text&quot;&gt;示例 3：Parsing Unstructured Text&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#示例-4classification&quot; id=&quot;markdown-toc-示例-4classification&quot;&gt;示例 4：Classification&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#示例-5translation&quot; id=&quot;markdown-toc-示例-5translation&quot;&gt;示例 5：Translation&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#2将自然语言翻译成代码的-codex&quot; id=&quot;markdown-toc-2将自然语言翻译成代码的-codex&quot;&gt;2、将自然语言翻译成代码的 Codex&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#示例-6用自然语言写-sql&quot; id=&quot;markdown-toc-示例-6用自然语言写-sql&quot;&gt;示例 6：用自然语言写 SQL&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#示例-7用自然语言调用一个-api&quot;...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型</title>
+   <link href="https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/"/>
+   <id>https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer</id>
+   <updated>2023-01-22T09:13:09+00:00</updated>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2023/2023-01-23-aigc-llm-1-transformer-cover.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#前言&quot; id=&quot;markdown-toc-前言&quot;&gt;前言&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#1我来阿里之后第一个新增爱好是变形金刚模型第二个新增爱好是变形金刚模型&quot; id=&quot;markdown-toc-1我来阿里之后第一个新增爱好是变形金刚模型第二个新增爱好是变形金刚模型&quot;&gt;1、我来阿里之后第一个新增爱好是「变形金刚模型」，第二个新增爱好是「变形金刚模型」&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#2掌握技术基础是当下读懂-ai-脉搏的基本功而这个脉搏将带动各行各业&quot; id=&quot;markdown-toc-2掌握技术基础是当下读懂-ai-脉搏的基本功而这个脉搏将带动各行各业&quot;&gt;2、掌握技术基础，是当下读懂 AI 脉搏的基本功，而这个脉搏将带动各行各业&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第一章--2017-年之前的几个关键-nlp-语言模型&quot; id=&quot;markdown-toc-第一章--2017-年之前的几个关键-nlp-语言模型&quot;&gt;第一章 · 2017 年之前的几个关键 NLP 语言模型&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#第-1-节--n-元文法语言模型&quot; id=&quot;markdown-toc-第-1-节--n-元文法语言模型&quot;&gt;第 1 节 · N 元文法语言模型&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#11马尔科夫假设markov-assumption与-n-元文法语言模型n-gram-language-model&quot; id=&quot;markdown-toc-11马尔科夫假设markov-assumption与-n-元文法语言模型n-gram-language-model&quot;&gt;1.1、马尔科夫假设（Markov Assumption）与 N 元文法语言模型（N-gram Language Model）&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#12平滑smoothing-折扣discounting&quot; id=&quot;markdown-toc-12平滑smoothing-折扣discounting&quot;&gt;1.2、平滑（Smoothing）/...</content>
  </entry>
 
  
