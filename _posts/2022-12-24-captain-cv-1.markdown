@@ -1,0 +1,78 @@
+---
+layout: post
+title:  计算机视觉领域 AIGC 近年的发展脉络、关键论文、技术里程碑和商业应用
+date:   2022-12-25 23:48:29 +0800
+categories: ai
+tags: [AI, 人工智能, CV, AIGC, 计算机视觉]
+description: 
+excerpt: 
+location: 杭州
+author: 麦克船长
+---
+
+* 作者：麦克船长（钟超）
+* 微信：sinosuperman
+
+**本文目录**
+* TOC
+{:toc}
+
+### 一、计算机视觉领域近年的发展关键节点
+
+
+
+### 二、学术里程碑：几篇重量级论文
+
+有人说「Diffusion 宣告着 GAN 在（计算机视觉）生成领域的终结」。
+
+
+### 三、行业里程碑
+
+2021 年 10 月，基于 Google Colab，Accomplice 公司发布基于 CLIP-Guided Diffusion 模型的 Disco Diffusion 人工智能绘画工具。
+
+2022 年 7 月 21 日，百度世界大会上展示了百度文心大模型「补全」的《富春山居图》，其光线风格一致、山水脉络和谐，令公众印象深刻。
+
+2022 年 8 月，借鉴 DALL·E 2 的思路，并给予最新的 Diffusion 模型，初创公司 Stability 推出 Stable Diffusion，其能够在消费级显卡上运行，生成图片的速度是 DALL·E 2 的 30 倍。国内 AI 绘画平台「盗梦师」、百度的「文心 · 一格」文生图系统，也都于本月上线。
+
+2022 年 9 月，Meta 发布了 Make-A-Video 人工智能 Text2Video 系统。紧随其后，Google 发布了重点关注视频品质的 Imagen Video 和主打视频长度的 Phenaki.
+
+2022 年国庆假期，B 站一位叫「拯救世界的狗子」的 UP 主发布了叫做「《漠河舞厅》全由 AI 作画竟然把我看哭了！！！」引起 B 站网友的大量关注，达到 80 多万播放量。
+
+2022 年 10 月 18 日，Stability 宣布完成 1.01 亿美元融资，估值达到 10 亿美元。到目前为止，通过各个渠道使用 Stable Diffusion 每日活跃用户数已经突破千万，并累计吸引超过 20 万开发者。
+
+2022 年 11 月，MidJourney V4 发布，业内惊讶于 MidJourney 的迭代速度之快，V4 版本所生成的作品十分惊艳。
+
+
+### 四、业内应用
+
+* Disco Diffusion
+
+https://colab.research.google.com/github/alembics/disco-diffusion/blob/main/Disco_Diffusion.ipynb
+
+* Stable Diffusion
+
+* MidJourney
+
+* DALL·E 2
+
+* 室内设计生成 AI：INTERIORAI.com https://interiorai.com
+
+![image](/img/src/2022-12-24-captain-nlp-6.png)
+
+* 文本引导生成艺术（基于 Stable Diffusion）：Lexica https://lexica.art/aperture
+
+![image](/img/src/2022-12-24-captain-nlp-5.png)
+
+* 2022 年 12 月，游戏形象资产道具生成 AI Scenario.gg（https://www.scenario.gg） 上线。
+
+![image](/img/src/2022-12-24-captain-nlp-4.png)
+
+* 虚拟形象生成 AI：Avatar AI https://avatarai.me/
+
+![image](/img/src/2022-12-24-captain-nlp-3.jpg)
+
+### 五、行业内哪些人的言论值得我们日常重点关注
+
+
+
+### Reference
