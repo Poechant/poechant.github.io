@@ -64,8 +64,8 @@ permalink: /booklist/
 
 ### 学习资料：互联网产品
 
-* [《张小龙：微信背后的产品观》](/sources/pdf/2012_08_wechat_allen_zhang.pdf)
-* [《王慧文的清华产品课》](/sources/pdf/2021_thu_product_huiwen_wang.pdf)
+* [《张小龙：微信背后的产品观》](/resources/pdf/2012_08_wechat_allen_zhang.pdf)
+* [《王慧文的清华产品课》](/resources/pdf/2021_thu_product_huiwen_wang.pdf)
 * 《俞军产品方法论》
 
 ### 我的足迹
