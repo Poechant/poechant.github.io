@@ -4,7 +4,7 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-04-13T14:22:02+00:00</updated>
+ <updated>2023-04-13T15:24:35+00:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
@@ -35,9 +35,9 @@
 
  <entry>
    <title>一键运行 Alpaca.cpp：笔记本上就能跑的 LLaMA！</title>
-   <link href="https://www.mikecaptain.com/2023/03/14/alpaca-cpp/"/>
-   <id>https://www.mikecaptain.com/2023/03/14/alpaca-cpp</id>
-   <updated>2023-03-14T16:40:13+00:00</updated>
+   <link href="https://www.mikecaptain.com/2023/03/17/alpaca-cpp/"/>
+   <id>https://www.mikecaptain.com/2023/03/17/alpaca-cpp</id>
+   <updated>2023-03-17T16:40:13+00:00</updated>
    <content type="html">&lt;p&gt;Clone 项目到本地&lt;/p&gt;
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % git clone https://github.com/antimatter15/alpaca.cpp
