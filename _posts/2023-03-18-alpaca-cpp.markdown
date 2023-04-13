@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 一键运行 Alpaca.cpp：笔记本上就能跑的 LLaMA！
-date:   2023-03-15 00:40:13 +0800
+date:   2023-03-18 00:40:13 +0800
 categories: ai
 tags: [AI, 人工智能, NLP, 自然语言处理, 神经网络, LLM, 大型语言模型, 语言模型, 大模型]
 description: 
