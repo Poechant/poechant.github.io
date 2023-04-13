@@ -4,7 +4,7 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-04-11T20:04:35+00:00</updated>
+ <updated>2023-04-13T14:22:02+00:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
@@ -29,6 +29,32 @@
    <id>https://www.mikecaptain.com/2023/03/24/chatgpt-plugin</id>
    <updated>2023-03-24T04:40:13+00:00</updated>
    <content type="html">&lt;p&gt;北京时间 3 月 24 日凌晨，OpenAI 官方发布了重磅的「ChatGPT plugins」，这将开启大模型作为平台的模式定义、商业化模式定义、插件产品开发热潮、全新的大模型优化（LMO）等等。本文共分三个部分：&lt;/p&gt; &lt;ul&gt; &lt;li&gt;第一部分先速览几个重要的关注点，尤其是&lt;strong&gt;本次插件发布带来的行业影响&lt;/strong&gt;；&lt;/li&gt; &lt;li&gt;第二部分针对本次 OpenAI 官方推出的插件做介绍；&lt;/li&gt; &lt;li&gt;第三部分是开发者最关心的第三方插件的支持能力做简述。&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;跟船长出发吧，坐稳了：&lt;/p&gt; &lt;h2 id=&quot;第一部分速览-chatgpt-插件并聚焦本次变化带来的几大核心关注点&quot;&gt;第一部分：速览 ChatGPT 插件，并聚焦本次变化带来的几大核心关注点&lt;/h2&gt; &lt;h3 id=&quot;1快速了解-chatgpt-插件是什么&quot;&gt;1、快速了解 ChatGPT 插件是什么&lt;/h3&gt; &lt;p&gt;首先要知道 ChatGPT 插件是什么，我们来看下官方视频一睹为快：&lt;/p&gt; &lt;div style=&quot;text-align:center&quot;&gt; &lt;video width=&quot;720&quot; controls=&quot;&quot;&gt; &lt;source src=&quot;/img/src/2023/03/2023-03-24-chatgpt-plugin-10.mov&quot; type=&quot;video/mp4&quot; /&gt;你的浏览器不支持视频标签。 &lt;/video&gt; &lt;/div&gt; &lt;p&gt;以下这些公司产品已经接入 ChatGPT 插件：&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-24-chatgpt-plugin-9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;h3 id=&quot;2插件能做什么&quot;&gt;2、插件能做什么？&lt;/h3&gt; &lt;p&gt;OpenAI 插件可以连接 ChatGPT 与第三方应用，通过接入你的应用做什么呢？举一些例子：&lt;/p&gt;...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>一键运行 Alpaca.cpp：笔记本上就能跑的 LLaMA！</title>
+   <link href="https://www.mikecaptain.com/2023/03/14/alpaca-cpp/"/>
+   <id>https://www.mikecaptain.com/2023/03/14/alpaca-cpp</id>
+   <updated>2023-03-14T16:40:13+00:00</updated>
+   <content type="html">&lt;p&gt;Clone 项目到本地&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % git clone https://github.com/antimatter15/alpaca.cpp
+mikecaptain@CVN % &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;alpaca.cpp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;下载训练好的数据集：&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % wget &lt;span class=&quot;nt&quot;&gt;-O&lt;/span&gt; ggml-alpaca-7b-q4.bin &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; https://gateway.estuary.tech/gw/ipfs/QmQ1bf2BTnYxq73MFJWu1B7bQ2UD6qG7D7YDCxhTndVkPC
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;编译、运行&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % make chat
+mikecaptain@CVN % ./chat
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
  </entry>
 
  
@@ -120,16 +146,6 @@
    <id>https://www.mikecaptain.com/2023/02/06/cac-generative-information</id>
    <updated>2023-02-06T15:24:58+00:00</updated>
    <content type="html">&lt;h2 id=&quot;国家互联网信息办公室中华人民共和国工业和信息化部中华人民共和国公安部-令-第12号&quot;&gt;国家互联网信息办公室、中华人民共和国工业和信息化部、中华人民共和国公安部 令 第12号&lt;/h2&gt; &lt;p&gt;《互联网信息服务深度合成管理规定》已经2022年11月3日国家互联网信息办公室2022年第21次室务会议审议通过，并经工业和信息化部、公安部同意，现予公布，自2023年1月10日起施行。&lt;/p&gt; &lt;p&gt;国家互联网信息办公室主任 庄荣文&lt;/p&gt; &lt;p&gt;工业和信息化部部长 金壮龙&lt;/p&gt; &lt;p&gt;公安部部长 王小洪&lt;/p&gt; &lt;p&gt;2022年11月25日&lt;/p&gt; &lt;h2 id=&quot;互联网信息服务深度合成管理规定&quot;&gt;互联网信息服务深度合成管理规定&lt;/h2&gt; &lt;h3 id=&quot;第一章-总则&quot;&gt;第一章 总则&lt;/h3&gt; &lt;p&gt;第一条 为了加强互联网信息服务深度合成管理，弘扬社会主义核心价值观，维护国家安全和社会公共利益，保护公民、法人和其他组织的合法权益，根据《中华人民共和国网络安全法》、《中华人民共和国数据安全法》、《中华人民共和国个人信息保护法》、《互联网信息服务管理办法》等法律、行政法规，制定本规定。&lt;/p&gt; &lt;p&gt;第二条 在中华人民共和国境内应用深度合成技术提供互联网信息服务（以下简称深度合成服务），适用本规定。法律、行政法规另有规定的，依照其规定。&lt;/p&gt; &lt;p&gt;第三条 国家网信部门负责统筹协调全国深度合成服务的治理和相关监督管理工作。国务院电信主管部门、公安部门依据各自职责负责深度合成服务的监督管理工作。&lt;/p&gt; &lt;p&gt;地方网信部门负责统筹协调本行政区域内的深度合成服务的治理和相关监督管理工作。地方电信主管部门、公安部门依据各自职责负责本行政区域内的深度合成服务的监督管理工作。&lt;/p&gt; &lt;p&gt;第四条 提供深度合成服务，应当遵守法律法规，尊重社会公德和伦理道德，坚持正确政治方向、舆论导向、价值取向，促进深度合成服务向上向善。&lt;/p&gt; &lt;p&gt;第五条 鼓励相关行业组织加强行业自律，建立健全行业标准、行业准则和自律管理制度，督促指导深度合成服务提供者和技术支持者制定完善业务规范、依法开展业务和接受社会监督。&lt;/p&gt; &lt;h3 id=&quot;第二章-一般规定&quot;&gt;第二章 一般规定&lt;/h3&gt; &lt;p&gt;第六条 任何组织和个人不得利用深度合成服务制作、复制、发布、传播法律、行政法规禁止的信息，不得利用深度合成服务从事危害国家安全和利益、损害国家形象、侵害社会公共利益、扰乱经济和社会秩序、侵犯他人合法权益等法律、行政法规禁止的活动。&lt;/p&gt; &lt;p&gt;&lt;strong&gt;&lt;u&gt;深度合成服务提供者和使用者不得利用深度合成服务制作、复制、发布、传播虚假新闻信息。转载基于深度合成服务制作发布的新闻信息的，应当依法转载互联网新闻信息稿源单位发布的新闻信息&lt;/u&gt;&amp;gt;&lt;/strong&gt;。&lt;/p&gt; &lt;p&gt;第七条 深度合成服务提供者应当落实信息安全主体责任，建立健全用户注册、&lt;strong&gt;&lt;u&gt;算法机制机理审核、科技伦理审查&lt;/u&gt;&lt;/strong&gt;、信息发布审核、数据安全、个人信息保护、反电信网络诈骗、应急处置等管理制度，具有安全可控的技术保障措施。&lt;/p&gt; &lt;p&gt;第八条 深度合成服务提供者应当制定和公开管理规则、平台公约，完善服务协议，依法依约履行管理责任，以显著方式提示深度合成服务技术支持者和使用者承担信息安全义务。&lt;/p&gt; &lt;p&gt;第九条 深度合成服务提供者应当基于移动电话号码、身份证件号码、统一社会信用代码或者国家网络身份认证公共服务等方式，依法对深度合成服务使用者进行真实身份信息认证，&lt;strong&gt;&lt;u&gt;不得向未进行真实身份信息认证的深度合成服务使用者提供信息发布服务&lt;/u&gt;&lt;/strong&gt;。&lt;/p&gt; &lt;p&gt;第十条 深度合成服务提供者应当加强深度合成内容管理，采取&lt;strong&gt;&lt;u&gt;技术&lt;/u&gt;&lt;/strong&gt;或者人工方式对深度合成服务使用者的输入数据和合成结果进行审核。&lt;/p&gt; &lt;p&gt;&lt;strong&gt;&lt;u&gt;深度合成服务提供者应当建立健全用于识别违法和不良信息的特征库，完善入库标准、规则和程序，记录并留存相关网络日志&lt;/u&gt;&lt;/strong&gt;。&lt;/p&gt; &lt;p&gt;深度合成服务提供者发现违法和不良信息的，应当依法采取处置措施，保存有关记录，及时向网信部门和有关主管部门报告；对相关深度合成服务使用者依法依约采取警示、限制功能、暂停服务、关闭账号等处置措施。&lt;/p&gt; &lt;p&gt;第十一条 &lt;strong&gt;&lt;u&gt;深度合成服务提供者应当建立健全辟谣机制&lt;/u&gt;&lt;/strong&gt;，发现利用深度合成服务制作、复制、发布、传播虚假信息的，应当及时采取辟谣措施，保存有关记录，并向网信部门和有关主管部门报告。&lt;/p&gt; &lt;p&gt;第十二条 深度合成服务提供者应当设置便捷的用户申诉和公众投诉、举报入口，公布处理流程和反馈时限，及时受理、处理和反馈处理结果。&lt;/p&gt; &lt;p&gt;第十三条 互联网应用商店等应用程序分发平台应当落实上架审核、日常管理、应急处置等安全管理责任，核验深度合成类应用程序的安全评估、备案等情况；对违反国家有关规定的，应当及时采取不予上架、警示、暂停服务或者下架等处置措施。&lt;/p&gt;...</content>
- </entry>
-
- 
-
- <entry>
-   <title>麦克船长的 OpenAI 模型 API 官方文档入门解读</title>
-   <link href="https://www.mikecaptain.com/2023/01/23/openai-official-doc/"/>
-   <id>https://www.mikecaptain.com/2023/01/23/openai-official-doc</id>
-   <updated>2023-01-23T22:24:58+00:00</updated>
-   <content type="html">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#一先大概看看-openai-目前最拿得出手的三个商业化产品用起来啥样&quot; id=&quot;markdown-toc-一先大概看看-openai-目前最拿得出手的三个商业化产品用起来啥样&quot;&gt;一、先大概看看 OpenAI 目前最拿得出手的三个商业化产品用起来啥样&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#1执行各种自然语言任务的-gpt-3&quot; id=&quot;markdown-toc-1执行各种自然语言任务的-gpt-3&quot;&gt;1、执行各种自然语言任务的 GPT-3&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#示例-1copywriting&quot; id=&quot;markdown-toc-示例-1copywriting&quot;&gt;示例 1：Copywriting&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#示例-2summarization&quot; id=&quot;markdown-toc-示例-2summarization&quot;&gt;示例 2：Summarization&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#示例-3parsing-unstructured-text&quot; id=&quot;markdown-toc-示例-3parsing-unstructured-text&quot;&gt;示例 3：Parsing Unstructured Text&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#示例-4classification&quot; id=&quot;markdown-toc-示例-4classification&quot;&gt;示例 4：Classification&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#示例-5translation&quot; id=&quot;markdown-toc-示例-5translation&quot;&gt;示例 5：Translation&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#2将自然语言翻译成代码的-codex&quot; id=&quot;markdown-toc-2将自然语言翻译成代码的-codex&quot;&gt;2、将自然语言翻译成代码的 Codex&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#示例-6用自然语言写-sql&quot; id=&quot;markdown-toc-示例-6用自然语言写-sql&quot;&gt;示例 6：用自然语言写 SQL&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#示例-7用自然语言调用一个-api&quot;...</content>
  </entry>
 
  
