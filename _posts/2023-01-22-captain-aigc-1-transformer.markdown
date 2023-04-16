@@ -128,11 +128,9 @@ $$
 
 加 1 平滑，就是直接将所有词汇的出现次数都 +1，不止针对零频词、低频词。如果继续拿 bigram 举例来说，模型就会变成：
 
-{% raw %}
 $$
 P(w_i | w_{i-1}) = \frac{C_(w_{i-1},w_i) + 1}{\displaystyle\sum_{j=1}^n(C_(w_{i-1},w_j) + 1)} = \frac{C(w_{i-1}, w_i) + 1}{C(w_{i-1}) + |\mathbb{V}|}
 $$
-{% endraw %}
 
 其中 {% raw %} $$ N $$ {% endraw %} 表示所有词的词频之和，{% raw %} $$ |\mathbb{V}| $$ {% endraw %} 表示词汇表的大小。
 
@@ -142,11 +140,9 @@ $$
 
 把 +1 换成 δ，我们看下上面 bigram 模型应该变成上面样子：
 
-{% raw %}
 $$
 P(w_i | w{i-1}) = \frac{C_(w_{i-1},w_i) + \delta}{\displaystyle\sum_{j=1}^n(C_(w_{i-1},w_j) + \delta)} = \frac{C(w_{i-1}, w_i) + \delta}{C(w_{i-1}) + \delta|\mathbb{V}|}
 $$
-{% endraw %}
 
 δ 是一个超参数，确定它的值需要用到困惑度（Perplexity，一般用缩写 PPL）。另外，有些文章里也会把这个方法叫做「加 K 平滑，Add-K Smoothing」。
 
@@ -154,19 +150,15 @@ $$
 
 对于指定的测试集，困惑度定义为测试集中每一个词概率的几何平均数的倒数，公式如下：
 
-{% raw %}
 $$
 \operatorname{PPL}(\mathbb{D}_{test}) = \frac{1}{\sqrt[n]{P(w_1,w_2...w_n)}}
 $$
-{% endraw %}
 
 把 {% raw %} $$ P(w_1,w_2,...w_t) = \displaystyle\prod_{i=1}^{t-1}P(w_i\text{\textbar}w_{i-1}) $$ {% endraw %} 带入上述公式，就得到了 PPL 的计算公式：
 
-{% raw %}
 $$
 \operatorname{PPL}(\mathbb{D}_{test}) = (\displaystyle\prod_{i=1}^nP(w_i|w_{1:i-1}))^{-\frac{1}{n}}
 $$
-{% endraw %}
 
 #### 1.3、回退（Back-off）
 
