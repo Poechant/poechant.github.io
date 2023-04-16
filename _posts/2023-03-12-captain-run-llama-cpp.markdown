@@ -123,7 +123,7 @@ Astronaut Neil Armstrong, at age 24, became a naval aviator flying fighter jets 
 
 #### 2.1、准备 LLaMA 13B 环境
 
-运行如下命令，生成一个 `ggml-model-f16.bin` 文件：
+运行如下命令，生成文件 26.03GB 大小的 `ggml-model-f16.bin`：
 
 ```shell
 mikecaptain@CVN % python convert-pth-to-ggml.py models/13B/ 1
@@ -131,7 +131,7 @@ mikecaptain@CVN % python convert-pth-to-ggml.py models/13B/ 1
 
 ![](/img/src/2023/03/2023-03-12-llama-cpp-5.png)
 
-再运行如下命令，生成文件 `./models/13B/ggml-model-q4_0.bin`：
+再运行如下命令，生成文件 8.14GB 大小的 `./models/13B/ggml-model-q4_0.bin`：
 
 ```shell
 mikecaptain@CVN % ./quantize ./models/13B/ggml-model-f16.bin   ./models/13B/ggml-model-q4_0.bin 2
@@ -168,5 +168,5 @@ mikecaptain@CVN % cd llama-docker-playground
 
 ## 参考
 
-* [Running LLaMA 7B and 13B on a 64GB M2 MacBook Pro with llama.cpp](https://soulteary.com/2023/03/09/quick-start-llama-model-created-by-meta-research.html)
+* [Running LLaMA 7B and 13B on a 64GB M2 MacBook Pro with llama.cpp](https://til.simonwillison.net/llms/llama-7b-m2)
 * [ggerganov - llama.cpp](https://github.com/ggerganov/llama.cpp)
