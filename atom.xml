@@ -4,7 +4,7 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-04-16T17:28:08+00:00</updated>
+ <updated>2023-04-16T17:39:54+00:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
@@ -24,7 +24,7 @@
  
 
  <entry>
-   <title>上船跑模型之基于 LLaMA 13B 的 Vicuna</title>
+   <title>上船跑模型之 MacBook 上运行 Vicuna（ShareGPT 微调版 LLaMA-13B）</title>
    <link href="https://www.mikecaptain.com/2023/04/01/captain-run-vicuna/"/>
    <id>https://www.mikecaptain.com/2023/04/01/captain-run-vicuna</id>
    <updated>2023-04-01T00:40:13+00:00</updated>
