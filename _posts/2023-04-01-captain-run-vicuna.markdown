@@ -1,11 +1,11 @@
 ---
 layout: post
-title: 上船跑模型之基于 LLaMA 13B 的 Vicuna
+title: 上船跑模型之 MacBook 上运行 Vicuna（ShareGPT 微调版 LLaMA-13B）
 date:   2023-04-01 08:40:13 +0800
 categories: ai
 tags: [llama, vicuna, ai, aigc, chatgpt, gpt, meta, open source, 开源]
-description: 
-excerpt: 
+description: Vicuna 是一个基于 LLaMA 微调的大语言模型。Vicuna-13B 是一个使用 ShareGPT 收集的用户对话数据进行训练的开源 ChatBot。Vicuna 使用 GPT-4 进行评估，其在质量方面已经达到了超过 90% 的 OpenAI ChatGPT 和 Google Bard，同时在超过 90% 的情况下表现优于 LLaMA、Stanford Alpaca。今天跟着船长一起，在你的 MacBook 上把 Vicuna 跑起来！
+excerpt: Vicuna 是一个基于 LLaMA 微调的大语言模型。Vicuna-13B 是一个使用 ShareGPT 收集的用户对话数据进行训练的开源 ChatBot。Vicuna 使用 GPT-4 进行评估，其在质量方面已经达到了超过 90% 的 OpenAI ChatGPT 和 Google Bard，同时在超过 90% 的情况下表现优于 LLaMA、Stanford Alpaca。今天跟着船长一起，在你的 MacBook 上把 Vicuna 跑起来！
 katex: True
 location: 杭州
 author: 麦克船长
@@ -240,3 +240,4 @@ AssertionError: Torch not compiled with CUDA enabled
 * https://github.com/oobabooga/text-generation-webui/issues/122
 * https://zhuanlan.zhihu.com/p/619551575
 * https://github.com/lm-sys/FastChat/issues/411
+* https://huggingface.co/docs/transformers/main/model_doc/llama
