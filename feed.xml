@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-04-16T11:18:12+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">对比解读半年两次 AI 监管条例 10 点变化：从强调自律到鼓励创新，支持发展定调！</title><link href="https://www.mikecaptain.com/2023/04/11/gen-ai-cac/" rel="alternate" type="text/html" title="对比解读半年两次 AI 监管条例 10 点变化：从强调自律到鼓励创新，支持发展定调！" /><published>2023-04-11T04:40:13+00:00</published><updated>2023-04-11T04:40:13+00:00</updated><id>https://www.mikecaptain.com/2023/04/11/gen-ai-cac</id><content type="html" xml:base="https://www.mikecaptain.com/2023/04/11/gen-ai-cac/">&lt;p&gt;&lt;img src=&quot;/img/src/2023/04/2023-04-11-gen-ai-cac.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-04-16T17:28:08+00:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">对比解读半年两次 AI 监管条例 10 点变化：从强调自律到鼓励创新，支持发展定调！</title><link href="https://www.mikecaptain.com/2023/04/11/gen-ai-cac/" rel="alternate" type="text/html" title="对比解读半年两次 AI 监管条例 10 点变化：从强调自律到鼓励创新，支持发展定调！" /><published>2023-04-11T04:40:13+00:00</published><updated>2023-04-11T04:40:13+00:00</updated><id>https://www.mikecaptain.com/2023/04/11/gen-ai-cac</id><content type="html" xml:base="https://www.mikecaptain.com/2023/04/11/gen-ai-cac/">&lt;p&gt;&lt;img src=&quot;/img/src/2023/04/2023-04-11-gen-ai-cac.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;背景&quot;&gt;背景&lt;/h2&gt;
 
@@ -276,7 +276,220 @@
 
 &lt;p&gt;&lt;strong&gt;第二十四条&lt;/strong&gt; 深度合成服务提供者和技术支持者从事网络出版服务、网络文化活动和网络视听节目服务的，应当同时符合新闻出版、文化和旅游、广播电视主管部门的规定。&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;第二十五条&lt;/strong&gt; 本规定自2023年1月10日起施行。&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="电商" /><category term="SaaS" /><category term="AI" /><category term="软件" /><category term="服务" /><category term="工具" /><category term="出海" /><category term="中国" /><category term="DaaS" /><category term="PaaS" /><category term="云服务" /><summary type="html">近日一条通知引起了 AI 圈子的广泛关注《国家互联网信息办公室关于〈生成式人工智能服务管理办法（征求意见稿）〉公开征求意见的通知》，网络上有一些解读，但是我发现都忽视了一点，就是在 2022 年 11 月 25 日，就在 ChatGPT 要横空出世前不到一周，国家网信办就发布过一则《互联网信息服务深度合成管理规定》（以下简称为《202211 规定》），原文链接：`http://www.cac.gov.cn/2022-12/11/c_1672221949354811.htm`。这两次内容之间的对比，能让我们显著看到网信办在过去小半年的时间里，对哪些方面做了深入研究、推演，整体政策出发点、基调发生了什么变化，因此而释放了什么信号。</summary></entry><entry><title type="html">ChatGPT 插件的十大关注点：OpenAI 定义大模型消费级平台</title><link href="https://www.mikecaptain.com/2023/03/24/chatgpt-plugin/" rel="alternate" type="text/html" title="ChatGPT 插件的十大关注点：OpenAI 定义大模型消费级平台" /><published>2023-03-24T04:40:13+00:00</published><updated>2023-03-24T04:40:13+00:00</updated><id>https://www.mikecaptain.com/2023/03/24/chatgpt-plugin</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/24/chatgpt-plugin/">&lt;p&gt;北京时间 3 月 24 日凌晨，OpenAI 官方发布了重磅的「ChatGPT plugins」，这将开启大模型作为平台的模式定义、商业化模式定义、插件产品开发热潮、全新的大模型优化（LMO）等等。本文共分三个部分：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第二十五条&lt;/strong&gt; 本规定自2023年1月10日起施行。&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="电商" /><category term="SaaS" /><category term="AI" /><category term="软件" /><category term="服务" /><category term="工具" /><category term="出海" /><category term="中国" /><category term="DaaS" /><category term="PaaS" /><category term="云服务" /><summary type="html">近日一条通知引起了 AI 圈子的广泛关注《国家互联网信息办公室关于〈生成式人工智能服务管理办法（征求意见稿）〉公开征求意见的通知》，网络上有一些解读，但是我发现都忽视了一点，就是在 2022 年 11 月 25 日，就在 ChatGPT 要横空出世前不到一周，国家网信办就发布过一则《互联网信息服务深度合成管理规定》（以下简称为《202211 规定》），原文链接：`http://www.cac.gov.cn/2022-12/11/c_1672221949354811.htm`。这两次内容之间的对比，能让我们显著看到网信办在过去小半年的时间里，对哪些方面做了深入研究、推演，整体政策出发点、基调发生了什么变化，因此而释放了什么信号。</summary></entry><entry><title type="html">上船跑模型之基于 LLaMA 13B 的 Vicuna</title><link href="https://www.mikecaptain.com/2023/04/01/captain-run-vicuna/" rel="alternate" type="text/html" title="上船跑模型之基于 LLaMA 13B 的 Vicuna" /><published>2023-04-01T00:40:13+00:00</published><updated>2023-04-01T00:40:13+00:00</updated><id>https://www.mikecaptain.com/2023/04/01/captain-run-vicuna</id><content type="html" xml:base="https://www.mikecaptain.com/2023/04/01/captain-run-vicuna/">&lt;h2 id=&quot;1vicuna-是什么&quot;&gt;1、Vicuna 是什么？&lt;/h2&gt;
+
+&lt;p&gt;一个基于 LLaMA 微调的大语言模型。Vicuna-13B 是一个使用 ShareGPT 收集的用户对话数据进行训练的开源 ChatBot。Vicuna 使用 GPT-4 进行评估，其在质量方面已经达到了超过 90% 的 OpenAI ChatGPT 和 Google Bard，同时在超过 90% 的情况下表现优于 LLaMA、Stanford Alpaca。&lt;/p&gt;
+
+&lt;p&gt;线上试用地址：&lt;a href=&quot;https://chat.lmsys.org/&quot;&gt;https://chat.lmsys.org/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;2下载-fastchat&quot;&gt;2、下载 FastChat&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;(fastchat) mikecaptain@CVN % git clone https://github.com/lm-sys/FastChat.git
+(fastchat) mikecaptain@CVN % mv FastChat fastchat
+(fastchat) mikecaptain@CVN % cd fastchat
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我的设备是 MacBook Pro 14-inch（M2 Max, 64 GB RAM），所以在 macOS 上要安装下 rust 和 cmake：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;(fastchat) mikecaptain@CVN % brew install rust cmake
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;安装包&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;(fastchat) mikecaptain@CVN % pip3 install --upgrade pip  # enable PEP 660 support
+(fastchat) mikecaptain@CVN % pip3 install -e .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;3下载-vicuna-delta-weights&quot;&gt;3、下载 Vicuna delta weights&lt;/h2&gt;
+
+&lt;p&gt;有 7B 和 13B 两个版本，其 Hugginface 主页分别为：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://huggingface.co/lmsys/vicuna-7b-delta-v1.1&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://huggingface.co/lmsys/vicuna-13b-delta-v1.1&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;追踪最新 delta 看如下页面：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://github.com/lm-sys/FastChat/blob/main/docs/weights_version.md&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;下面以 13B 版本为例，先下载 lm-sys 提供的 delta weights：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;(fastchat) mikecaptain@CVN % git clone https://huggingface.co/lmsys/vicuna-13b-delta-v1.1
+(fastchat) mikecaptain@CVN % cd vicuna-13b-delta-v1
+(fastchat) mikecaptain@CVN % wget -c https://huggingface.co/lmsys/vicuna-13b-delta-v1.1/resolve/main/pytorch_model-00001-of-00003.bin
+(fastchat) mikecaptain@CVN % wget -c https://huggingface.co/lmsys/vicuna-13b-delta-v1.1/resolve/main/pytorch_model-00002-of-00003.bin
+(fastchat) mikecaptain@CVN % wget -c https://huggingface.co/lmsys/vicuna-13b-delta-v1.1/resolve/main/pytorch_model-00003-of-00003.bin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;4将-llama-weights-转换为-huggingface-的格式&quot;&gt;4、将 LLaMA weights 转换为 HuggingFace 的格式&lt;/h2&gt;
+
+&lt;p&gt;对于 LLaMA 原始的权重文件，在 &lt;a href=&quot;https://huggingface.co/docs/transformers/main/model_doc/llama#overview&quot;&gt;HugginFace 官网文档&lt;/a&gt;里有这么一段话：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;After downloading the weights, they will need to be converted to the Hugging Face Transformers format using the conversion script.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;主要提到的「Hugging Face Transformers format」，所以这里就用到了官网给到的转换脚本文件（&lt;a href=&quot;https://github.com/huggingface/transformers/blob/main/src/transformers/models/llama/convert_llama_weights_to_hf.py&quot;&gt;GitHub 网站上 huggingface 的 transformers 仓库里的「conver_llama_weights_to_hf.py」文件&lt;/a&gt;）：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;mikecaptain@CVN % wget https://raw.githubusercontent.com/huggingface/transformers/main/src/transformers/models/llama/convert_llama_weights_to_hf.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后调用转换脚本：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;(fastchat) mikecaptain@CVN % python convert_llama_weights_to_hf.py --input_dir /path/to/downloaded/llama/weights --model_size 13B --output_dir /output/path
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;第一次转换失败，系统提示：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;TypeError: Descriptors cannot not be created directly.
+If this call came from a _pb2.py file, your generated code is out of date and must be regenerated with protoc &amp;gt;= 3.19.0.
+If you cannot immediately regenerate your protos, some other possible workarounds are:
+ 1. Downgrade the protobuf package to 3.20.x or lower.
+ 2. Set PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python (but this will use pure-Python parsing and will be much slower).
+
+More information: https://developers.google.com/protocol-buffers/docs/news/2022-05-06#python-updates
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;查看一下本机的 protobuf 版本号，如果太高了就降低为 3.20：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;(fastchat) mikecaptain@CVN llama % pip list | grep protobuf
+protobuf           4.22.3
+(fastchat) mikecaptain@CVN llama % conda install protobuf=3.20
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;再次运行，提示成功：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;(fastchat) mikecaptain@CVN llama % python convert_llama_weights_to_hf.py --input_dir . --model_size 13B --output_dir .
+Fetching all parameters from the checkpoint at ./13B.
+Loading the checkpoint in a Llama model.
+Loading checkpoint shards: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 41/41 [00:09&amp;lt;00:00,  4.48it/s]
+Saving in the Transformers format.
+Saving a LlamaTokenizerFast to ..
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;output_dir&lt;/code&gt; 目录得到如下一组文件：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;config.json				
+generation_config.json			
+pytorch_model-00001-of-00003.bin	
+pytorch_model-00002-of-00003.bin	
+pytorch_model-00003-of-00003.bin	
+pytorch_model.bin.index.json		
+special_tokens_map.json
+tokenizer.json
+tokenizer_config.json
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;5根据-basedelta-一起生成-vicuna-模型文件&quot;&gt;5、根据 base、delta 一起生成 Vicuna 模型文件&lt;/h2&gt;
+
+&lt;p&gt;如下是根据 base model、delta 一起生成 Vicuna 模型的命令，注意如果你这一步可能会执行很多次都不成功，船长会逐一带你解决问题。如果还是解决不了，建议你用在 Google 搜索错误信息时用双引号带上 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;vicuna&quot;&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;fastchat&quot;&lt;/code&gt; 进行搜索。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;mikecaptain@CVN % python3 -m fastchat.model.apply_delta \
+    --base /path/to/llama-13b \
+    --target /output/path/to/vicuna-13b \
+    --delta lmsys/vicuna-13b-delta-v1.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;51可能出现的错误一fastchat-版本过低&quot;&gt;5.1、可能出现的「错误一」：FastChat 版本过低&lt;/h3&gt;
+
+&lt;p&gt;如果出现如下类似提示，则需要升级 fschat 版本到 0.2.1 或以上（注意，本文编写时间为 2023 年 4 月初，请注意时效性）。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;OSError: Can&apos;t load tokenizer for &apos;/Users/mikecaptain/workspace/vicuna-13b-delta-v1.1&apos;. If you were trying to load it from &apos;https://huggingface.co/models&apos;, make sure you don&apos;t have a local 
+directory with the same name. Otherwise, make sure &apos;/Users/mikecaptain/workspace/vicuna-13b-delta-v1.1&apos; is the correct path to a directory containing all relevant files for a LlamaTokenizer 
+tokenizer.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;则查看 FastChat 的项目版本号：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;(fastchat) mikecaptain@CVN fastchat % cat fschat.egg-info/PKG-INFO | grep Version
+Metadata-Version: 2.1
+Version: 0.1.9
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Version: 0.1.9&lt;/code&gt; 即代表 FastChat 版本号，升级 fschat 版本的方法如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;(fastchat) mikecaptain@CVN % wget https://github.com/lm-sys/FastChat/archive/refs/tags/v0.2.1.tar.gz
+(fastchat) mikecaptain@CVN % tar -xzvf FastChat-0.2.1.tar.gz
+(fastchat) mikecaptain@CVN % mv FastChat-0.2.1 fastchat-0.2.1
+(fastchat) mikecaptain@CVN % cd fastchat-0.2.1
+(fastchat) mikecaptain@CVN % pip3 install -e .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;再次查看版本就是正确的了：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;(fastchat) mikecaptain@CVN fastchat-0.2.1 % pip list | grep fschat
+fschat             0.2.1       /Users/mikecaptain/workspace/fastchat-0.2.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;52可能出现的错误二llama-权重文件转换-hf-格式异常导致&quot;&gt;5.2、可能出现的「错误二」：LLaMA 权重文件转换 HF 格式异常导致&lt;/h3&gt;
+
+&lt;p&gt;再次执行 base、delta 合成 vicuna，如果提示 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TypeError: not a string&lt;/code&gt;，则大概率是LLaMA 权重文件转换 HF 格式异常导致的，只需要重新转换一次即可。&lt;/p&gt;
+
+&lt;p&gt;再次执行：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;mikecaptain@CVN % python3 -m fastchat.model.apply_delta \
+    --base /path/to/llama-13b \
+    --target /output/path/to/vicuna-13b \
+    --delta lmsys/vicuna-13b-delta-v1.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;得到如下结果：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/04/2023-04-01-captain-vicuna-01.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;终于成功合成 Vicuna 13B 的权重文件了。这里想提一下，只放出 delta 文件，也非常大，并没有节省文件大小，那为什么不把合成好的 Vicuna 直接放出来呢？因为 Meta 的 LLaMA 的使用协议所限，所以作者为了规避此问题，只放出了 delta，就没有关系了。&lt;/p&gt;
+
+&lt;h2 id=&quot;6运行-vicuna-13b&quot;&gt;6、运行 Vicuna 13B&lt;/h2&gt;
+
+&lt;h3 id=&quot;61命令行模式&quot;&gt;6.1、命令行模式&lt;/h3&gt;
+
+&lt;p&gt;在搭载 Apple 芯片的 MacBook 上运行时，可以用如下命令：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;(fastchat) mikecaptain@CVN % python3 -m fastchat.serve.cli --model-path /path/to/vicuna/weights --device mps --load-8bit
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/04/2023-04-01-captain-vicuna-03.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;更多其他平台不同情况的运行方法，可以参考 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://github.com/lm-sys/FastChat#vicuna-weights&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;62web-gui-模式&quot;&gt;6.2、Web GUI 模式&lt;/h3&gt;
+
+&lt;p&gt;运行 Controller：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;(fastchat) mikecaptain@CVN % python3 -m fastchat.serve.controller
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;运行 model worker：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;(fastchat) mikecaptain@CVN % python3 -m fastchat.serve.model_worker --model-path /path/to/vicuna/weights --device mps --load-8bit
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在 macOS 上如果你没有添加 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--device mps&lt;/code&gt; 或 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--device cpu&lt;/code&gt; 会出现提示错误：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;AssertionError: Torch not compiled with CUDA enabled
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后运行 Gradio Web Server：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-cmd&quot;&gt;(fastchat) mikecaptain@CVN % python3 -m fastchat.serve.gradio_web_server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果没有修改默认端口的话，则可以在浏览器访问 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:7861/&lt;/code&gt;，可以看到如下页面，就可以开始聊天啦：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/04/2023-04-01-captain-vicuna-02.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;https://github.com/lm-sys/FastChat#vicuna-weights&lt;/li&gt;
+  &lt;li&gt;https://github.com/lm-sys/FastChat/blob/main/docs/weights_version.md&lt;/li&gt;
+  &lt;li&gt;https://github.com/oobabooga/text-generation-webui/issues/122&lt;/li&gt;
+  &lt;li&gt;https://zhuanlan.zhihu.com/p/619551575&lt;/li&gt;
+  &lt;li&gt;https://github.com/lm-sys/FastChat/issues/411&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="llama" /><category term="vicuna" /><category term="ai" /><category term="aigc" /><category term="chatgpt" /><category term="gpt" /><category term="meta" /><category term="open source" /><category term="开源" /><summary type="html">1、Vicuna 是什么？</summary></entry><entry><title type="html">ChatGPT 插件的十大关注点：OpenAI 定义大模型消费级平台</title><link href="https://www.mikecaptain.com/2023/03/24/chatgpt-plugin/" rel="alternate" type="text/html" title="ChatGPT 插件的十大关注点：OpenAI 定义大模型消费级平台" /><published>2023-03-24T04:40:13+00:00</published><updated>2023-03-24T04:40:13+00:00</updated><id>https://www.mikecaptain.com/2023/03/24/chatgpt-plugin</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/24/chatgpt-plugin/">&lt;p&gt;北京时间 3 月 24 日凌晨，OpenAI 官方发布了重磅的「ChatGPT plugins」，这将开启大模型作为平台的模式定义、商业化模式定义、插件产品开发热潮、全新的大模型优化（LMO）等等。本文共分三个部分：&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;第一部分先速览几个重要的关注点，尤其是&lt;strong&gt;本次插件发布带来的行业影响&lt;/strong&gt;；&lt;/li&gt;
@@ -955,14 +1168,14 @@ Astronaut Neil Armstrong, at age 24, became a naval aviator flying fighter jets 
 
 &lt;h4 id=&quot;21准备-llama-13b-环境&quot;&gt;2.1、准备 LLaMA 13B 环境&lt;/h4&gt;
 
-&lt;p&gt;运行如下命令，生成一个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ggml-model-f16.bin&lt;/code&gt; 文件：&lt;/p&gt;
+&lt;p&gt;运行如下命令，生成文件 26.03GB 大小的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ggml-model-f16.bin&lt;/code&gt;：&lt;/p&gt;
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % python convert-pth-to-ggml.py models/13B/ 1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-12-llama-cpp-5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;再运行如下命令，生成文件 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./models/13B/ggml-model-q4_0.bin&lt;/code&gt;：&lt;/p&gt;
+&lt;p&gt;再运行如下命令，生成文件 8.14GB 大小的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./models/13B/ggml-model-q4_0.bin&lt;/code&gt;：&lt;/p&gt;
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % ./quantize ./models/13B/ggml-model-f16.bin   ./models/13B/ggml-model-q4_0.bin 2
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -997,7 +1210,7 @@ mikecaptain@CVN % cd llama-docker-playground
 &lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://soulteary.com/2023/03/09/quick-start-llama-model-created-by-meta-research.html&quot;&gt;Running LLaMA 7B and 13B on a 64GB M2 MacBook Pro with llama.cpp&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://til.simonwillison.net/llms/llama-7b-m2&quot;&gt;Running LLaMA 7B and 13B on a 64GB M2 MacBook Pro with llama.cpp&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/ggerganov/llama.cpp&quot;&gt;ggerganov - llama.cpp&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><category term="LLaMA" /><category term="Meta" /><category term="GPT" /><category term="本地" /><category term="MacBook" /><category term="ChatGPT" /><category term="平替" /><category term="OpenAI" /><category term="开源" /><category term="免费" /><category term="推理" /><category term="模型" /><summary type="html">简单几步，让你在你的 MacBook 上运行 LlaMA 7B 和 13B。</summary></entry><entry><title type="html">人工智能 LLM 革命破晓：一文读懂当下超大语言模型发展现状</title><link href="https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/" rel="alternate" type="text/html" title="人工智能 LLM 革命破晓：一文读懂当下超大语言模型发展现状" /><published>2023-03-06T06:54:13+00:00</published><updated>2023-03-06T06:54:13+00:00</updated><id>https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/">&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/mikecaptain-llm-revolution-2.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
@@ -4852,21 +5065,4 @@ Meta AI 同时在其官方发布了论文《LLaMA: Open and Efficient Foundation
   &lt;li&gt;[8] https://twitter.com/GuillaumeLample/status/1629151231800115202&lt;/li&gt;
   &lt;li&gt;[9] Hyung Won Chung, Le Hou, S. Longpre, Barret Zoph, Yi Tay, William Fedus, Eric Li, Xuezhi Wang, Mostafa Dehghani, Siddhartha Brahma, Albert Webson, Shixiang Shane Gu, Zhuyun Dai, Mirac Suzgun, Xinyun Chen, Aakanksha Chowdhery, Dasha Valter, Sharan Narang, Gaurav Mishra, Adams Wei Yu, Vincent Zhao, Yanping Huang, Andrew M. Dai, Hongkun Yu, Slav Petrov, Ed Huai hsin Chi, Jeff Dean, Jacob Devlin, Adam Roberts, Denny Zhou, Quoc Le, and Jason Wei. 2022. Scaling instruction-finetuned language models. arXiv preprint arXiv:2210.11416.
 行数：174&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><category term="Meta" /><category term="ChatGPT" /><category term="LLaMa" /><summary type="html">北京时间 2023 年 2 月 25 日 Meta AI 在其官网公开发布了 LLaMA（Large Language Model Meta AI）大型语言模型，包括 70 亿、130 亿、330 亿、650 亿 4 种参数规模，旨在推动 LLM 领域的小型化、平民化研究。Guillaume Lample 在其 Twitter 上声称：LLaMA 130 亿参数版本的表现，在大多数测试上优于 OPT 和 GPT-3 1750 亿参数版，650 亿的版本表现基本可以比肩 Chinchilla 700 亿参数、PaLM 5400 亿参数这些大模型。</summary></entry><entry><title type="html">design | Michael &amp;amp; Greta Anniversary</title><link href="https://www.mikecaptain.com/2023/02/13/mandg-anniversary-rings/" rel="alternate" type="text/html" title="design | Michael &amp;amp; Greta Anniversary" /><published>2023-02-13T08:53:57+00:00</published><updated>2023-02-13T08:53:57+00:00</updated><id>https://www.mikecaptain.com/2023/02/13/mandg-anniversary-rings</id><content type="html" xml:base="https://www.mikecaptain.com/2023/02/13/mandg-anniversary-rings/">&lt;p&gt;&lt;img src=&quot;/img/src/2023/02/mandg-ring-1.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/02/mandg-ring-2.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;div align=&quot;center&quot;&gt;
-
-Michael and Greta&apos;s one-year anniversary ring&lt;br /&gt;&lt;br /&gt;
-Einjähriger Jahrestagsring von Michael und Greta&lt;br /&gt;&lt;br /&gt;
-Bague d&apos;anniversaire d&apos;un an de Michael et Greta&lt;br /&gt;&lt;br /&gt;
-マイケルとグレタの1周年記念リング&lt;br /&gt;&lt;br /&gt;
-마이클과 그레타의 1주년 기념 반지&lt;br /&gt;&lt;br /&gt;
-Anillo de aniversario de un año de Michael y Greta&lt;br /&gt;&lt;br /&gt;
-Anel de aniversário de um ano de Michael e Greta&lt;br /&gt;&lt;br /&gt;
-Anniversarium unius anni annuli Michaelis et Gretae&lt;br /&gt;&lt;br /&gt;
-Кольцо на годовщину Майкла и Греты&lt;br /&gt;&lt;br /&gt;
-Anello di anniversario di un anno di Michael e Greta&lt;br /&gt;&lt;br /&gt;
-
-&lt;/div&gt;</content><author><name>Greta</name></author><category term="design" /><category term="思考" /><summary type="html">Michael and Greta&apos;s one-year anniversary ring! Einjähriger Jahrestagsring von Michael und Greta! Bague d&apos;anniversaire d&apos;un an de Michael et Greta! マイケルとグレタの1周年記念リング! 마이클과 그레타의 1주년 기념 반지! Anillo de aniversario de un año de Michael y Greta! Anel de aniversário de um ano de Michael e Greta! Anniversarium unius anni annuli Michaelis et Gretae! Кольцо на годовщину Майкла и Греты! Anello di anniversario di un anno di Michael e Greta!</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><category term="Meta" /><category term="ChatGPT" /><category term="LLaMa" /><summary type="html">北京时间 2023 年 2 月 25 日 Meta AI 在其官网公开发布了 LLaMA（Large Language Model Meta AI）大型语言模型，包括 70 亿、130 亿、330 亿、650 亿 4 种参数规模，旨在推动 LLM 领域的小型化、平民化研究。Guillaume Lample 在其 Twitter 上声称：LLaMA 130 亿参数版本的表现，在大多数测试上优于 OPT 和 GPT-3 1750 亿参数版，650 亿的版本表现基本可以比肩 Chinchilla 700 亿参数、PaLM 5400 亿参数这些大模型。</summary></entry></feed>

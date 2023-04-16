@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>上船跑模型之基于 LLaMA 13B 的 Vicuna</title>
+  	<meta name="description" content="麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+  	<!-- KaTeX -->
+  	<link rel="stylesheet" href="/assets/plugins/katex.0.11.1/katex.min.css">
+  	
+
+  	
+  		<script async src="https://www.googletagmanager.com/gtag/js?id=G-CH4708X4R5"></script>
+  		<script>
+    		window.dataLayer = window.dataLayer || [];
+    		function gtag(){dataLayer.push(arguments);}
+    		gtag('js', new Date());
+
+    		gtag('config', 'G-CH4708X4R5');
+  		</script>
+	
+
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/booklist/" title="读书行路">读书行路</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>上船跑模型之基于 LLaMA 13B 的 Vicuna</h2>		
+	<time datetime="2023-04-01T00:40:13+00:00" class="by-line">01 Apr 2023, 杭州 | 麦克船长 | 总计 6571 字</time>
+	<div class="content">
+		<h2 id="1vicuna-是什么">1、Vicuna 是什么？</h2>
+
+<p>一个基于 LLaMA 微调的大语言模型。Vicuna-13B 是一个使用 ShareGPT 收集的用户对话数据进行训练的开源 ChatBot。Vicuna 使用 GPT-4 进行评估，其在质量方面已经达到了超过 90% 的 OpenAI ChatGPT 和 Google Bard，同时在超过 90% 的情况下表现优于 LLaMA、Stanford Alpaca。</p>
+
+<p>线上试用地址：<a href="https://chat.lmsys.org/">https://chat.lmsys.org/</a></p>
+
+<h2 id="2下载-fastchat">2、下载 FastChat</h2>
+
+<pre><code class="language-cmd">(fastchat) mikecaptain@CVN % git clone https://github.com/lm-sys/FastChat.git
+(fastchat) mikecaptain@CVN % mv FastChat fastchat
+(fastchat) mikecaptain@CVN % cd fastchat
+</code></pre>
+
+<p>我的设备是 MacBook Pro 14-inch（M2 Max, 64 GB RAM），所以在 macOS 上要安装下 rust 和 cmake：</p>
+
+<pre><code class="language-cmd">(fastchat) mikecaptain@CVN % brew install rust cmake
+</code></pre>
+
+<p>安装包</p>
+
+<pre><code class="language-cmd">(fastchat) mikecaptain@CVN % pip3 install --upgrade pip  # enable PEP 660 support
+(fastchat) mikecaptain@CVN % pip3 install -e .
+</code></pre>
+
+<h2 id="3下载-vicuna-delta-weights">3、下载 Vicuna delta weights</h2>
+
+<p>有 7B 和 13B 两个版本，其 Hugginface 主页分别为：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">https://huggingface.co/lmsys/vicuna-7b-delta-v1.1</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://huggingface.co/lmsys/vicuna-13b-delta-v1.1</code></li>
+</ul>
+
+<p>追踪最新 delta 看如下页面：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">https://github.com/lm-sys/FastChat/blob/main/docs/weights_version.md</code></li>
+</ul>
+
+<p>下面以 13B 版本为例，先下载 lm-sys 提供的 delta weights：</p>
+
+<pre><code class="language-cmd">(fastchat) mikecaptain@CVN % git clone https://huggingface.co/lmsys/vicuna-13b-delta-v1.1
+(fastchat) mikecaptain@CVN % cd vicuna-13b-delta-v1
+(fastchat) mikecaptain@CVN % wget -c https://huggingface.co/lmsys/vicuna-13b-delta-v1.1/resolve/main/pytorch_model-00001-of-00003.bin
+(fastchat) mikecaptain@CVN % wget -c https://huggingface.co/lmsys/vicuna-13b-delta-v1.1/resolve/main/pytorch_model-00002-of-00003.bin
+(fastchat) mikecaptain@CVN % wget -c https://huggingface.co/lmsys/vicuna-13b-delta-v1.1/resolve/main/pytorch_model-00003-of-00003.bin
+</code></pre>
+
+<h2 id="4将-llama-weights-转换为-huggingface-的格式">4、将 LLaMA weights 转换为 HuggingFace 的格式</h2>
+
+<p>对于 LLaMA 原始的权重文件，在 <a href="https://huggingface.co/docs/transformers/main/model_doc/llama#overview">HugginFace 官网文档</a>里有这么一段话：</p>
+
+<blockquote>
+  <p>After downloading the weights, they will need to be converted to the Hugging Face Transformers format using the conversion script.</p>
+</blockquote>
+
+<p>主要提到的「Hugging Face Transformers format」，所以这里就用到了官网给到的转换脚本文件（<a href="https://github.com/huggingface/transformers/blob/main/src/transformers/models/llama/convert_llama_weights_to_hf.py">GitHub 网站上 huggingface 的 transformers 仓库里的「conver_llama_weights_to_hf.py」文件</a>）：</p>
+
+<pre><code class="language-cmd">mikecaptain@CVN % wget https://raw.githubusercontent.com/huggingface/transformers/main/src/transformers/models/llama/convert_llama_weights_to_hf.py
+</code></pre>
+
+<p>然后调用转换脚本：</p>
+
+<pre><code class="language-cmd">(fastchat) mikecaptain@CVN % python convert_llama_weights_to_hf.py --input_dir /path/to/downloaded/llama/weights --model_size 13B --output_dir /output/path
+</code></pre>
+
+<p>第一次转换失败，系统提示：</p>
+
+<pre><code class="language-cmd">TypeError: Descriptors cannot not be created directly.
+If this call came from a _pb2.py file, your generated code is out of date and must be regenerated with protoc &gt;= 3.19.0.
+If you cannot immediately regenerate your protos, some other possible workarounds are:
+ 1. Downgrade the protobuf package to 3.20.x or lower.
+ 2. Set PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python (but this will use pure-Python parsing and will be much slower).
+
+More information: https://developers.google.com/protocol-buffers/docs/news/2022-05-06#python-updates
+</code></pre>
+
+<p>查看一下本机的 protobuf 版本号，如果太高了就降低为 3.20：</p>
+
+<pre><code class="language-cmd">(fastchat) mikecaptain@CVN llama % pip list | grep protobuf
+protobuf           4.22.3
+(fastchat) mikecaptain@CVN llama % conda install protobuf=3.20
+</code></pre>
+
+<p>再次运行，提示成功：</p>
+
+<pre><code class="language-cmd">(fastchat) mikecaptain@CVN llama % python convert_llama_weights_to_hf.py --input_dir . --model_size 13B --output_dir .
+Fetching all parameters from the checkpoint at ./13B.
+Loading the checkpoint in a Llama model.
+Loading checkpoint shards: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 41/41 [00:09&lt;00:00,  4.48it/s]
+Saving in the Transformers format.
+Saving a LlamaTokenizerFast to ..
+</code></pre>
+
+<p>在 <code class="language-plaintext highlighter-rouge">output_dir</code> 目录得到如下一组文件：</p>
+
+<pre><code class="language-cmd">config.json				
+generation_config.json			
+pytorch_model-00001-of-00003.bin	
+pytorch_model-00002-of-00003.bin	
+pytorch_model-00003-of-00003.bin	
+pytorch_model.bin.index.json		
+special_tokens_map.json
+tokenizer.json
+tokenizer_config.json
+</code></pre>
+
+<h2 id="5根据-basedelta-一起生成-vicuna-模型文件">5、根据 base、delta 一起生成 Vicuna 模型文件</h2>
+
+<p>如下是根据 base model、delta 一起生成 Vicuna 模型的命令，注意如果你这一步可能会执行很多次都不成功，船长会逐一带你解决问题。如果还是解决不了，建议你用在 Google 搜索错误信息时用双引号带上 <code class="language-plaintext highlighter-rouge">"vicuna"</code> 和 <code class="language-plaintext highlighter-rouge">"fastchat"</code> 进行搜索。</p>
+
+<pre><code class="language-cmd">mikecaptain@CVN % python3 -m fastchat.model.apply_delta \
+    --base /path/to/llama-13b \
+    --target /output/path/to/vicuna-13b \
+    --delta lmsys/vicuna-13b-delta-v1.1
+</code></pre>
+
+<h3 id="51可能出现的错误一fastchat-版本过低">5.1、可能出现的「错误一」：FastChat 版本过低</h3>
+
+<p>如果出现如下类似提示，则需要升级 fschat 版本到 0.2.1 或以上（注意，本文编写时间为 2023 年 4 月初，请注意时效性）。</p>
+
+<pre><code class="language-cmd">OSError: Can't load tokenizer for '/Users/mikecaptain/workspace/vicuna-13b-delta-v1.1'. If you were trying to load it from 'https://huggingface.co/models', make sure you don't have a local 
+directory with the same name. Otherwise, make sure '/Users/mikecaptain/workspace/vicuna-13b-delta-v1.1' is the correct path to a directory containing all relevant files for a LlamaTokenizer 
+tokenizer.
+</code></pre>
+
+<p>则查看 FastChat 的项目版本号：</p>
+
+<pre><code class="language-cmd">(fastchat) mikecaptain@CVN fastchat % cat fschat.egg-info/PKG-INFO | grep Version
+Metadata-Version: 2.1
+Version: 0.1.9
+</code></pre>
+
+<p>其中 <code class="language-plaintext highlighter-rouge">Version: 0.1.9</code> 即代表 FastChat 版本号，升级 fschat 版本的方法如下：</p>
+
+<pre><code class="language-cmd">(fastchat) mikecaptain@CVN % wget https://github.com/lm-sys/FastChat/archive/refs/tags/v0.2.1.tar.gz
+(fastchat) mikecaptain@CVN % tar -xzvf FastChat-0.2.1.tar.gz
+(fastchat) mikecaptain@CVN % mv FastChat-0.2.1 fastchat-0.2.1
+(fastchat) mikecaptain@CVN % cd fastchat-0.2.1
+(fastchat) mikecaptain@CVN % pip3 install -e .
+</code></pre>
+
+<p>再次查看版本就是正确的了：</p>
+
+<pre><code class="language-cmd">(fastchat) mikecaptain@CVN fastchat-0.2.1 % pip list | grep fschat
+fschat             0.2.1       /Users/mikecaptain/workspace/fastchat-0.2.1
+</code></pre>
+
+<h3 id="52可能出现的错误二llama-权重文件转换-hf-格式异常导致">5.2、可能出现的「错误二」：LLaMA 权重文件转换 HF 格式异常导致</h3>
+
+<p>再次执行 base、delta 合成 vicuna，如果提示 <code class="language-plaintext highlighter-rouge">TypeError: not a string</code>，则大概率是LLaMA 权重文件转换 HF 格式异常导致的，只需要重新转换一次即可。</p>
+
+<p>再次执行：</p>
+
+<pre><code class="language-cmd">mikecaptain@CVN % python3 -m fastchat.model.apply_delta \
+    --base /path/to/llama-13b \
+    --target /output/path/to/vicuna-13b \
+    --delta lmsys/vicuna-13b-delta-v1.1
+</code></pre>
+
+<p>得到如下结果：</p>
+
+<p><img src="/img/src/2023/04/2023-04-01-captain-vicuna-01.png" alt="" /></p>
+
+<p>终于成功合成 Vicuna 13B 的权重文件了。这里想提一下，只放出 delta 文件，也非常大，并没有节省文件大小，那为什么不把合成好的 Vicuna 直接放出来呢？因为 Meta 的 LLaMA 的使用协议所限，所以作者为了规避此问题，只放出了 delta，就没有关系了。</p>
+
+<h2 id="6运行-vicuna-13b">6、运行 Vicuna 13B</h2>
+
+<h3 id="61命令行模式">6.1、命令行模式</h3>
+
+<p>在搭载 Apple 芯片的 MacBook 上运行时，可以用如下命令：</p>
+
+<pre><code class="language-cmd">(fastchat) mikecaptain@CVN % python3 -m fastchat.serve.cli --model-path /path/to/vicuna/weights --device mps --load-8bit
+</code></pre>
+
+<p><img src="/img/src/2023/04/2023-04-01-captain-vicuna-03.png" alt="" /></p>
+
+<p>更多其他平台不同情况的运行方法，可以参考 <code class="language-plaintext highlighter-rouge">https://github.com/lm-sys/FastChat#vicuna-weights</code>。</p>
+
+<h3 id="62web-gui-模式">6.2、Web GUI 模式</h3>
+
+<p>运行 Controller：</p>
+
+<pre><code class="language-cmd">(fastchat) mikecaptain@CVN % python3 -m fastchat.serve.controller
+</code></pre>
+
+<p>运行 model worker：</p>
+
+<pre><code class="language-cmd">(fastchat) mikecaptain@CVN % python3 -m fastchat.serve.model_worker --model-path /path/to/vicuna/weights --device mps --load-8bit
+</code></pre>
+
+<p>在 macOS 上如果你没有添加 <code class="language-plaintext highlighter-rouge">--device mps</code> 或 <code class="language-plaintext highlighter-rouge">--device cpu</code> 会出现提示错误：</p>
+
+<pre><code class="language-cmd">AssertionError: Torch not compiled with CUDA enabled
+</code></pre>
+
+<p>然后运行 Gradio Web Server：</p>
+
+<pre><code class="language-cmd">(fastchat) mikecaptain@CVN % python3 -m fastchat.serve.gradio_web_server
+</code></pre>
+
+<p>如果没有修改默认端口的话，则可以在浏览器访问 <code class="language-plaintext highlighter-rouge">http://localhost:7861/</code>，可以看到如下页面，就可以开始聊天啦：</p>
+
+<p><img src="/img/src/2023/04/2023-04-01-captain-vicuna-02.png" alt="" /></p>
+
+<h2 id="参考">参考</h2>
+
+<ul>
+  <li>https://github.com/lm-sys/FastChat#vicuna-weights</li>
+  <li>https://github.com/lm-sys/FastChat/blob/main/docs/weights_version.md</li>
+  <li>https://github.com/oobabooga/text-generation-webui/issues/122</li>
+  <li>https://zhuanlan.zhihu.com/p/619551575</li>
+  <li>https://github.com/lm-sys/FastChat/issues/411</li>
+</ul>
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+	<span>
+		-<br/><br/>
+		船长还不会游泳 at 微信公众号/微博<br/>
+		@麦克船长 at 即刻/知乎/小宇宙/掘金/小红书/微信读书<br/>
+		@船长模玩 at Bilibili<br/>
+		Copyright © 2011-2023, MikeCaptain.com
+	</span>
+</footer>
+
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>

@@ -395,7 +395,7 @@
 
 			<article id="post-page">
 	<h2>上船跑模型之 MacBook 上运行 LLaMA 7B 和 13B 原始模型</h2>		
-	<time datetime="2023-03-11T16:40:13+00:00" class="by-line">11 Mar 2023, 杭州 | 麦克船长 | 总计 3072 字</time>
+	<time datetime="2023-03-11T16:40:13+00:00" class="by-line">11 Mar 2023, 杭州 | 麦克船长 | 总计 3092 字</time>
 	<div class="content">
 		<p><strong>本文目录</strong></p>
 <ul id="markdown-toc">
@@ -520,14 +520,14 @@ Astronaut Neil Armstrong, at age 24, became a naval aviator flying fighter jets 
 
 <h4 id="21准备-llama-13b-环境">2.1、准备 LLaMA 13B 环境</h4>
 
-<p>运行如下命令，生成一个 <code class="language-plaintext highlighter-rouge">ggml-model-f16.bin</code> 文件：</p>
+<p>运行如下命令，生成文件 26.03GB 大小的 <code class="language-plaintext highlighter-rouge">ggml-model-f16.bin</code>：</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@CVN % python convert-pth-to-ggml.py models/13B/ 1
 </code></pre></div></div>
 
 <p><img src="/img/src/2023/03/2023-03-12-llama-cpp-5.png" alt="" /></p>
 
-<p>再运行如下命令，生成文件 <code class="language-plaintext highlighter-rouge">./models/13B/ggml-model-q4_0.bin</code>：</p>
+<p>再运行如下命令，生成文件 8.14GB 大小的 <code class="language-plaintext highlighter-rouge">./models/13B/ggml-model-q4_0.bin</code>：</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@CVN % ./quantize ./models/13B/ggml-model-f16.bin   ./models/13B/ggml-model-q4_0.bin 2
 </code></pre></div></div>
@@ -562,7 +562,7 @@ mikecaptain@CVN % cd llama-docker-playground
 <h2 id="参考">参考</h2>
 
 <ul>
-  <li><a href="https://soulteary.com/2023/03/09/quick-start-llama-model-created-by-meta-research.html">Running LLaMA 7B and 13B on a 64GB M2 MacBook Pro with llama.cpp</a></li>
+  <li><a href="https://til.simonwillison.net/llms/llama-7b-m2">Running LLaMA 7B and 13B on a 64GB M2 MacBook Pro with llama.cpp</a></li>
   <li><a href="https://github.com/ggerganov/llama.cpp">ggerganov - llama.cpp</a></li>
 </ul>
 
