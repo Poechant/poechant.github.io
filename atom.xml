@@ -4,7 +4,7 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-04-13T15:24:35+00:00</updated>
+ <updated>2023-04-16T11:16:46+00:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
@@ -34,37 +34,21 @@
  
 
  <entry>
-   <title>一键运行 Alpaca.cpp：笔记本上就能跑的 LLaMA！</title>
-   <link href="https://www.mikecaptain.com/2023/03/17/alpaca-cpp/"/>
-   <id>https://www.mikecaptain.com/2023/03/17/alpaca-cpp</id>
-   <updated>2023-03-17T16:40:13+00:00</updated>
-   <content type="html">&lt;p&gt;Clone 项目到本地&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % git clone https://github.com/antimatter15/alpaca.cpp
-mikecaptain@CVN % &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;alpaca.cpp
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;下载训练好的数据集：&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % wget &lt;span class=&quot;nt&quot;&gt;-O&lt;/span&gt; ggml-alpaca-7b-q4.bin &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; https://gateway.estuary.tech/gw/ipfs/QmQ1bf2BTnYxq73MFJWu1B7bQ2UD6qG7D7YDCxhTndVkPC
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;编译、运行&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % make chat
-mikecaptain@CVN % ./chat
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</content>
- </entry>
-
- 
-
- <entry>
    <title>通往 AGI 的阿波罗时刻：极速浏览 GPT-4 技术梗概</title>
    <link href="https://www.mikecaptain.com/2023/03/14/mike-captain-gpt-4/"/>
    <id>https://www.mikecaptain.com/2023/03/14/mike-captain-gpt-4</id>
    <updated>2023-03-14T16:40:13+00:00</updated>
    <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-15-mike-captain-gpt-4-p26.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;北京时间 2023 年 3 月 15 日，OpenAI 正式发布 GPT-4 —— 大型多模态模型（Large Multimodal Model），输入支持文本和图像，输出支持文本。OpenAI 花了半年时间用对抗测试程序和 ChatGPT 来迭代对齐 GPT-4，结果上 GPT-4 尽管还有很多能力不及人类，但有些场景已经非常炸裂、拉齐人类水准，比如事实性（Factuality）、可控性（Steerability）、拒绝越界（Refusing to Go Outside of Guardrails）。举例来说，GPT-4 在模拟律师考试中获得了 Top 10% 的成绩（对比 GPT-3.5 是 Bottom 10%）。而船长的一个朋友在和他认识的律师围绕 GPT-3.5 和 GPT-4 的法律案例分析效果对比时，律师给出了极高的评价：&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;感觉 3.5 的智商是 8 岁孩子，4.0 的智商已经有 20 岁以上了。&lt;/p&gt; &lt;/blockquote&gt;...</content>
+ </entry>
+
+ 
+
+ <entry>
+   <title>上船跑模型之 MacBook 上运行 LLaMA 7B 和 13B 原始模型</title>
+   <link href="https://www.mikecaptain.com/2023/03/11/captain-run-llama-cpp/"/>
+   <id>https://www.mikecaptain.com/2023/03/11/captain-run-llama-cpp</id>
+   <updated>2023-03-11T16:40:13+00:00</updated>
+   <content type="html">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#一llama-预训练模型下载&quot; id=&quot;markdown-toc-一llama-预训练模型下载&quot;&gt;一、LLaMA 预训练模型下载&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#二用-ggerganovllamacpp-运行&quot; id=&quot;markdown-toc-二用-ggerganovllamacpp-运行&quot;&gt;二、用 ggerganov/llama.cpp 运行&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#1llama-7b-版本&quot; id=&quot;markdown-toc-1llama-7b-版本&quot;&gt;1、LLaMA 7B 版本&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#11下载-llamacpp-项目&quot; id=&quot;markdown-toc-11下载-llamacpp-项目&quot;&gt;1.1、下载 LLaMA.cpp 项目&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#12准备-llama-7b-环境&quot; id=&quot;markdown-toc-12准备-llama-7b-环境&quot;&gt;1.2、准备 llama 7B 环境&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#13运行-llama-7b-模型&quot; id=&quot;markdown-toc-13运行-llama-7b-模型&quot;&gt;1.3、运行 LLaMA 7B 模型&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#2llama-13b-版本&quot; id=&quot;markdown-toc-2llama-13b-版本&quot;&gt;2、LLaMA 13B 版本&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#21准备-llama-13b-环境&quot; id=&quot;markdown-toc-21准备-llama-13b-环境&quot;&gt;2.1、准备 LLaMA 13B 环境&lt;/a&gt;&lt;/li&gt;...</content>
  </entry>
 
  
