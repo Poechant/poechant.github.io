@@ -231,6 +231,32 @@ AssertionError: Torch not compiled with CUDA enabled
 
 ![](/img/src/2023/04/2023-04-01-captain-vicuna-02.png)
 
+## 7、解释一下 Vicuna 13B 的配置文件
+
+网络上还有很多其他版本的 vicuna-13b 模型权重文件，可以下载下来后，直接替换 `pytorch_model-0000*-of-00003.bin` 这一组文件，其他文件不要动。尤其是 `tokenizer.model`，如果不对是无法运行的。其他文件的配置大差不差。
+
+### 7.1、`config.json`
+
+* `"transformers_version"` 参数，我用的是与环境匹配一直的 `4.29.0.dev0`。【！】
+* `"_name_or_path"` 参数。【！】
+
+### 7.2、`generation_config.json`
+
+* 其中也有 `"transformers_version"` 参数，我将其与 `config.json` 文件保持一致。【！】
+
+### 7.3、`pytorch_model.bin.index.json`
+
+* `"metadata": {"total_size": 26031738880}`【！】
+
+### 7.4、`tokenizer_config.json`
+
+* 需要有 `"add_bos_token": true` 和 `"add_eos_token": false`。不过没有也没关系。
+* 不需要 `special_tokens_map_file`。不过有这个也没关系，哪怕写错了。
+
+### 7.6、`tokenizer.model`、`special_tokens_map.json`
+
+* `special_tokens_map.json` 没什么特别之处。
+* `tokenizer.model` 不太一样。【！】
 
 
 ## 参考
