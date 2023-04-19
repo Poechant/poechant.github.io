@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>上船跑模型之 MacBook 上运行 LLaMA 7B 和 13B 原始模型</title>
+  	<meta name="description" content="Meta 推出的 LLaMA 被「开源」了 …… 基于 LLaMA 更高参数利用效率的基础上，我们可以用 ggerganov/llama.cpp 来实现 MacBook 上简单几步，就能运行 LLaMA 7B 和 13B，甚至可以运行在智能手机上 ……">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+  	<!-- KaTeX -->
+  	<link rel="stylesheet" href="/assets/plugins/katex.0.11.1/katex.min.css">
+  	
+
+  	
+  		<script async src="https://www.googletagmanager.com/gtag/js?id=G-CH4708X4R5"></script>
+  		<script>
+    		window.dataLayer = window.dataLayer || [];
+    		function gtag(){dataLayer.push(arguments);}
+    		gtag('js', new Date());
+
+    		gtag('config', 'G-CH4708X4R5');
+  		</script>
+	
+
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/booklist/" title="读书行路">读书行路</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>上船跑模型之 MacBook 上运行 LLaMA 7B 和 13B 原始模型</h2>		
+	<time datetime="2023-03-12T00:40:13+08:00" class="by-line">12 Mar 2023, 杭州 | 麦克船长 | 总计 3092 字</time>
+	<div class="content">
+		<p><strong>本文目录</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#一llama-预训练模型下载" id="markdown-toc-一llama-预训练模型下载">一、LLaMA 预训练模型下载</a></li>
+  <li><a href="#二用-ggerganovllamacpp-运行" id="markdown-toc-二用-ggerganovllamacpp-运行">二、用 ggerganov/llama.cpp 运行</a>    <ul>
+      <li><a href="#1llama-7b-版本" id="markdown-toc-1llama-7b-版本">1、LLaMA 7B 版本</a>        <ul>
+          <li><a href="#11下载-llamacpp-项目" id="markdown-toc-11下载-llamacpp-项目">1.1、下载 LLaMA.cpp 项目</a></li>
+          <li><a href="#12准备-llama-7b-环境" id="markdown-toc-12准备-llama-7b-环境">1.2、准备 llama 7B 环境</a></li>
+          <li><a href="#13运行-llama-7b-模型" id="markdown-toc-13运行-llama-7b-模型">1.3、运行 LLaMA 7B 模型</a></li>
+        </ul>
+      </li>
+      <li><a href="#2llama-13b-版本" id="markdown-toc-2llama-13b-版本">2、LLaMA 13B 版本</a>        <ul>
+          <li><a href="#21准备-llama-13b-环境" id="markdown-toc-21准备-llama-13b-环境">2.1、准备 LLaMA 13B 环境</a></li>
+          <li><a href="#22运行-llama-13b-模型" id="markdown-toc-22运行-llama-13b-模型">2.2、运行 LLaMA 13B 模型</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#参考" id="markdown-toc-参考">参考</a></li>
+</ul>
+
+<h2 id="一llama-预训练模型下载">一、LLaMA 预训练模型下载</h2>
+
+<p>LLaMA 是什么？关于 LLaMA 的介绍，看这篇<a href="https://www.mikecaptain.com/2023/02/25/meta-llama/">《Meta 推出开源 LLaMA，用 1/10 参数规模打败 GPT-3，群”模”乱舞的 2023 拉开序幕》</a>。</p>
+
+<p>聊了 LLaMA 后，接下来，下载 LLaMA 模型文件，这里略去下载地址（网上很多，但普遍地址有效生命周期不长）。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>─ models
+ ├── 7B
+ │   ├── checklist.chk
+ │   ├── consolidated.00.pth
+ │   └── params.json
+ ├── 13B
+ │   ├── checklist.chk
+ │   ├── consolidated.00.pth
+ │   ├── consolidated.01.pth
+ │   └── params.json
+ ├── 30B
+ │   ├── checklist.chk
+ │   ├── consolidated.00.pth
+ │   ├── consolidated.01.pth
+ │   ├── consolidated.02.pth
+ │   ├── consolidated.03.pth
+ │   └── params.json
+ ├── 65B
+ │   ├── checklist.chk
+ │   ├── consolidated.00.pth
+ │   ├── consolidated.01.pth
+ │   ├── consolidated.02.pth
+ │   ├── consolidated.03.pth
+ │   ├── consolidated.04.pth
+ │   ├── consolidated.05.pth
+ │   ├── consolidated.06.pth
+ │   ├── consolidated.07.pth
+ │   └── params.json
+ └── tokenizer.model
+</code></pre></div></div>
+
+<p>因为文件太大，估计会出现多次断点续传，所以一定要校验下文件是否正确，正确与否与 checklist.chk 文件对比。比如：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@CVN % <span class="nb">md5sum </span>7B/consolidated.00.pth
+6efc8dab194ab59e49cd24be5574d85e
+</code></pre></div></div>
+
+<h2 id="二用-ggerganovllamacpp-运行">二、用 ggerganov/llama.cpp 运行</h2>
+
+<h3 id="1llama-7b-版本">1、LLaMA 7B 版本</h3>
+
+<h4 id="11下载-llamacpp-项目">1.1、下载 LLaMA.cpp 项目</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@CVN % git clone git@github.com:ggerganov/llama.cpp.git
+mikecaptain@CVN % <span class="nb">cd </span>llama.cpp
+mikecaptain@CVN % make
+</code></pre></div></div>
+
+<h4 id="12准备-llama-7b-环境">1.2、准备 llama 7B 环境</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@CVN % conda <span class="nb">install </span>pytorch numpy sentencepiece 
+</code></pre></div></div>
+
+<p>The first script converts the model to “ggml FP16 format”:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@CVN % python convert-pth-to-ggml.py models/7B/ 1
+</code></pre></div></div>
+
+<p><img src="/img/src/2023/03/2023-03-12-llama-cpp-1.png" alt="" /></p>
+
+<p>这样会得到一个 13GB 的文件 <code class="language-plaintext highlighter-rouge">models/7B/ggml-model-f16.bin</code>，然后再运行脚本 <code class="language-plaintext highlighter-rouge">quantize</code> 用来把 <code class="language-plaintext highlighter-rouge">models/7B/ggml-model-f16.bin</code> 转为 <code class="language-plaintext highlighter-rouge">4-bits</code> 版本：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@CVN % ./quantize ./models/7B/ggml-model-f16.bin ./models/7B/ggml-model-q4_0.bin 2
+</code></pre></div></div>
+
+<p><img src="/img/src/2023/03/2023-03-12-llama-cpp-2.png" alt="" /></p>
+
+<p>这样会生成一个 3.9GB 的 <code class="language-plaintext highlighter-rouge">models/7B/ggml-model-q4_0.bin</code> 文件。</p>
+
+<h4 id="13运行-llama-7b-模型">1.3、运行 LLaMA 7B 模型</h4>
+
+<p>脚本 <code class="language-plaintext highlighter-rouge">main</code> 用于启动，使用刚得到的 <code class="language-plaintext highlighter-rouge">models/7B/ggml-model-q4_0.bin</code> 模型文件。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@CVN % ./main <span class="nt">-m</span> ./models/7B/ggml-model-q4_0.bin <span class="se">\</span>
+  <span class="nt">-t</span> 8 <span class="se">\</span>
+  <span class="nt">-n</span> 128 <span class="se">\</span>
+  <span class="nt">-p</span> <span class="s1">'The first man on the moon was '</span>
+</code></pre></div></div>
+
+<p><img src="/img/src/2023/03/2023-03-12-llama-cpp-4.png" alt="" /></p>
+
+<p>可以看到续写的内容是：</p>
+
+<blockquote>
+  <p>The first man on the moon was 38-years old.
+Astronaut Neil Armstrong, at age 24, became a naval aviator flying fighter jets in World War II. He later flew for Pan American Airlines as a test pilot and flight engineer before he joined NASA’s Mercury space program.
+“Houston, Tranquillity Base here. The Eagle has landed.” Armstrong spoke those words on July 20, 1969, as the United States beat Russia in the Cold War race to put a man on the moon. [end of text]</p>
+</blockquote>
+
+<p>可以用 <code class="language-plaintext highlighter-rouge">./main --help</code> 来查看多有哪些参数可以设置。</p>
+
+<p><img src="/img/src/2023/03/2023-03-12-llama-cpp-3.png" alt="" /></p>
+
+<h3 id="2llama-13b-版本">2、LLaMA 13B 版本</h3>
+
+<h4 id="21准备-llama-13b-环境">2.1、准备 LLaMA 13B 环境</h4>
+
+<p>运行如下命令，生成文件 26.03GB 大小的 <code class="language-plaintext highlighter-rouge">ggml-model-f16.bin</code>：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@CVN % python convert-pth-to-ggml.py models/13B/ 1
+</code></pre></div></div>
+
+<p><img src="/img/src/2023/03/2023-03-12-llama-cpp-5.png" alt="" /></p>
+
+<p>再运行如下命令，生成文件 8.14GB 大小的 <code class="language-plaintext highlighter-rouge">./models/13B/ggml-model-q4_0.bin</code>：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@CVN % ./quantize ./models/13B/ggml-model-f16.bin   ./models/13B/ggml-model-q4_0.bin 2
+</code></pre></div></div>
+
+<p><img src="/img/src/2023/03/2023-03-12-llama-cpp-6.png" alt="" /></p>
+
+<h4 id="22运行-llama-13b-模型">2.2、运行 LLaMA 13B 模型</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkkecaptain@CVN % ./main <span class="se">\</span>
+  <span class="nt">-m</span> ./models/13B/ggml-model-q4_0.bin <span class="se">\</span>
+  <span class="nt">-t</span> 8 <span class="se">\</span>
+  <span class="nt">-n</span> 128 <span class="se">\</span>
+  <span class="nt">-p</span> <span class="s1">'Some good pun names for a coffee shop run by beavers:
+-'</span>
+</code></pre></div></div>
+
+<p><img src="/img/src/2023/03/2023-03-12-llama-cpp-7.png" alt="" /></p>
+
+<!-- ## 三、用 soulteary/llama-docker-playground 运行
+
+### 1、下载 llama-docker-playground 项目
+
+```shell
+mikecaptain@CVN % git clone https://github.com/soulteary/llama-docker-playground.git
+mikecaptain@CVN % cd llama-docker-playground
+```
+
+### 2、准备环境
+
+### 3、运行模型 -->
+
+<h2 id="参考">参考</h2>
+
+<ul>
+  <li><a href="https://til.simonwillison.net/llms/llama-7b-m2">Running LLaMA 7B and 13B on a 64GB M2 MacBook Pro with llama.cpp</a></li>
+  <li><a href="https://github.com/ggerganov/llama.cpp">ggerganov - llama.cpp</a></li>
+</ul>
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+	<span>
+		-<br/><br/>
+		船长还不会游泳 at 微信公众号/微博<br/>
+		@麦克船长 at 即刻/知乎/小宇宙/掘金/小红书/微信读书<br/>
+		@船长模玩 at Bilibili<br/>
+		Copyright © 2011-2023, MikeCaptain.com
+	</span>
+</footer>
+
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
