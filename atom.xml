@@ -4,12 +4,22 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-04-17T15:15:32+00:00</updated>
+ <updated>2023-04-19T08:47:15+00:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
    <email>zhongchao.ustc@gmail.com</email>
  </author>
+
+ 
+
+ <entry>
+   <title>麦克船长：理解和重塑 AI 时代的八个一切 / The Eight ALLs for Understanding and Shaping the AI Era</title>
+   <link href="https://www.mikecaptain.com/2023/04/19/eight-alls-for-understanding-and-shaping-the-ai-era/"/>
+   <id>https://www.mikecaptain.com/2023/04/19/eight-alls-for-understanding-and-shaping-the-ai-era</id>
+   <updated>2023-04-19T04:40:13+00:00</updated>
+   <content type="html">&lt;p&gt;I am Mike Captain, a product manager focusing on the AI field. We often find ourselves constrained by current product forms, making it difficult to think about truly AI-native products. While pondering on how to build AI-native products, I have summarized the following eight points. I hope sharing them with...</content>
+ </entry>
 
  
 
@@ -136,16 +146,6 @@ mikecaptain@CVN % ./chat
   &lt;li&gt;正视你的财富与地位。&lt;/li&gt;
 &lt;/ul&gt;
 </content>
- </entry>
-
- 
-
- <entry>
-   <title>Meta 推出开源 LLaMA，用 1/10 参数规模打败 GPT-3，群"模"乱舞的 2023 拉开序幕</title>
-   <link href="https://www.mikecaptain.com/2023/02/25/meta-llama/"/>
-   <id>https://www.mikecaptain.com/2023/02/25/meta-llama</id>
-   <updated>2023-02-25T05:54:13+00:00</updated>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2023/2023-02-25-meta-llama-29.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;北京时间 2023 年 2 月 25 日 Meta AI 在其官网公开发布了 LLaMA（Large Language Model Meta AI）大型语言模型，包括 70 亿、130 亿、330 亿、650 亿 4 种参数规模，旨在推动 LLM 领域的小型化、平民化研究。有趣的是，LLaMA 是羊驼的意思。&lt;/p&gt; &lt;p&gt;Guillaume Lample 在其 Twitter 上声称：LLaMA 130 亿参数版本的表现，在大多数测试上优于 OPT 和 GPT-3 1750 亿参数版，650 亿的版本表现基本可以比肩 Chinchilla 700 亿参数、PaLM 5400 亿参数这些大模型。&lt;/p&gt; &lt;p&gt;LLaMA 是由 Meta...</content>
  </entry>
 
  
