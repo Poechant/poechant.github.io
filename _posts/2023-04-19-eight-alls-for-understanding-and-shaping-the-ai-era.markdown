@@ -2,7 +2,7 @@
 layout: post
 title: 麦克船长：理解和重塑 AI 时代的八个一切 / The Eight ALLs for Understanding and Shaping the AI Era
 date:   2023-04-19 12:40:13 +0800
-categories: business
+categories: ai
 tags: [AI, 人工智能, 智能, AGI, 产品, 互联网, 移动互联网, PC, PC互联网, 产品经理, 消费, 消费互联网, 商业, 巨头, 创业, killer app, app, mobile, internet, social media, social networks, SNS, 本地生活, 远场, 近场]
 description: As a product manager focusing on the AI field, I often find ourselves constrained by current product forms, making it difficult to think about truly AI-native products. While pondering on how to build AI-native products, I have summarized the following eight points.
 excerpt: As a product manager focusing on the AI field, I often find ourselves constrained by current product forms, making it difficult to think about truly AI-native products. While pondering on how to build AI-native products, I have summarized the following eight points.
