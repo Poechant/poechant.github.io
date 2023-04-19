@@ -8,6 +8,7 @@ author:
   name: "Poechant"
   email: "zhongchao.ustc@gmail.com"
   url: "https://www.mikecaptian.com"
+timezone: Asia/Shanghai
 
 # Markdown and highlighter
 markdown: kramdown
