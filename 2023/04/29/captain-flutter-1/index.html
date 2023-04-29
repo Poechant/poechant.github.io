@@ -413,7 +413,7 @@
 
 			<article id="post-page">
 	<h2>麦克船长的全栈指南：Google Flutter 开发跨平台 APP（1/3）</h2>		
-	<time datetime="2023-04-29T16:10:13+08:00" class="by-line">29 Apr 2023, 杭州 | 麦克船长 | 总计 19455 字</time>
+	<time datetime="2023-04-29T16:10:13+08:00" class="by-line">29 Apr 2023, 杭州 | 麦克船长 | 总计 27217 字</time>
 	<div class="content">
 		<p><strong>本文目录</strong></p>
 <ul id="markdown-toc">
@@ -425,34 +425,50 @@
       <li><a href="#第-5-节--在-chrome-浏览器跑起第一个-app" id="markdown-toc-第-5-节--在-chrome-浏览器跑起第一个-app">第 5 节 · 在 Chrome 浏览器跑起第一个 App</a></li>
     </ul>
   </li>
-  <li><a href="#第二章--flutter-的开发理念" id="markdown-toc-第二章--flutter-的开发理念">第二章 · Flutter 的开发理念</a>    <ul>
+  <li><a href="#第二章--flutter-的开发理念与原理" id="markdown-toc-第二章--flutter-的开发理念与原理">第二章 · Flutter 的开发理念与原理</a>    <ul>
       <li><a href="#第-6-节--flutter-的开发框架和线程模型" id="markdown-toc-第-6-节--flutter-的开发框架和线程模型">第 6 节 · Flutter 的开发框架和线程模型</a></li>
       <li><a href="#第-7-节--flutter-的基础理念一切皆为-widgets" id="markdown-toc-第-7-节--flutter-的基础理念一切皆为-widgets">第 7 节 · Flutter 的基础理念：一切皆为 Widgets</a></li>
       <li><a href="#第-8-节--理解-flutter-的生命周期" id="markdown-toc-第-8-节--理解-flutter-的生命周期">第 8 节 · 理解 Flutter 的生命周期</a>        <ul>
           <li><a href="#81初始化阶段" id="markdown-toc-81初始化阶段">8.1、初始化阶段</a></li>
           <li><a href="#82组件创建阶段" id="markdown-toc-82组件创建阶段">8.2、组件创建阶段</a></li>
-          <li><a href="#83触发组件-build" id="markdown-toc-83触发组件-build">8.3、触发组件 build：</a></li>
+          <li><a href="#83触发组件-build" id="markdown-toc-83触发组件-build">8.3、触发组件 build</a></li>
           <li><a href="#84组件的销毁阶段" id="markdown-toc-84组件的销毁阶段">8.4、组件的销毁阶段</a></li>
+        </ul>
+      </li>
+      <li><a href="#第-9-节--platform-channel" id="markdown-toc-第-9-节--platform-channel">第 9 节 · Platform Channel</a></li>
+      <li><a href="#第-10-节--包管理" id="markdown-toc-第-10-节--包管理">第 10 节 · 包管理</a></li>
+      <li><a href="#第-11-节--flutter-渲染原理" id="markdown-toc-第-11-节--flutter-渲染原理">第 11 节 · Flutter 渲染原理</a>        <ul>
+          <li><a href="#111了解下-flutter-的三棵树" id="markdown-toc-111了解下-flutter-的三棵树">11.1、了解下 Flutter 的三棵树</a></li>
+          <li><a href="#112页面刷新时的操作流程" id="markdown-toc-112页面刷新时的操作流程">11.2、页面刷新时的操作流程</a></li>
         </ul>
       </li>
     </ul>
   </li>
   <li><a href="#第三章--flutter-组件介绍及应用" id="markdown-toc-第三章--flutter-组件介绍及应用">第三章 · Flutter 组件介绍及应用</a>    <ul>
-      <li><a href="#第-9-节--编写一个-news-app-练手" id="markdown-toc-第-9-节--编写一个-news-app-练手">第 9 节 · 编写一个 News App 练手</a>        <ul>
-          <li><a href="#91下载-vscode-并创建-flutter" id="markdown-toc-91下载-vscode-并创建-flutter">9.1、下载 VSCode 并创建 Flutter</a></li>
-          <li><a href="#92了解-dart-的一些基本语法" id="markdown-toc-92了解-dart-的一些基本语法">9.2、了解 Dart 的一些基本语法</a></li>
-          <li><a href="#93flutter-程序入口-maindart" id="markdown-toc-93flutter-程序入口-maindart">9.3、Flutter 程序入口 <code class="language-plaintext highlighter-rouge">main.dart</code></a></li>
-          <li><a href="#94app-获取-http-请求的服务" id="markdown-toc-94app-获取-http-请求的服务">9.4、App 获取 Http 请求的服务</a></li>
-          <li><a href="#95app-的列表页" id="markdown-toc-95app-的列表页">9.5、App 的列表页</a></li>
-          <li><a href="#96app-的二级页面实现" id="markdown-toc-96app-的二级页面实现">9.6、App 的二级页面实现</a></li>
-          <li><a href="#97对练手-app-的整体回顾" id="markdown-toc-97对练手-app-的整体回顾">9.7、对练手 App 的整体回顾</a></li>
+      <li><a href="#第-12-节--编写一个-news-app-练手" id="markdown-toc-第-12-节--编写一个-news-app-练手">第 12 节 · 编写一个 News App 练手</a>        <ul>
+          <li><a href="#121下载-vscode-并创建-flutter" id="markdown-toc-121下载-vscode-并创建-flutter">12.1、下载 VSCode 并创建 Flutter</a></li>
+          <li><a href="#122flutter-项目文件结构" id="markdown-toc-122flutter-项目文件结构">12.2、Flutter 项目文件结构</a></li>
+          <li><a href="#123了解-dart-的一些基本语法" id="markdown-toc-123了解-dart-的一些基本语法">12.3、了解 Dart 的一些基本语法</a></li>
+          <li><a href="#124flutter-程序入口-maindart" id="markdown-toc-124flutter-程序入口-maindart">12.4、Flutter 程序入口 <code class="language-plaintext highlighter-rouge">main.dart</code></a></li>
+          <li><a href="#125app-获取-http-请求的服务" id="markdown-toc-125app-获取-http-请求的服务">12.5、App 获取 Http 请求的服务</a></li>
+          <li><a href="#126app-的列表页" id="markdown-toc-126app-的列表页">12.6、App 的列表页</a></li>
+          <li><a href="#127app-的二级页面实现" id="markdown-toc-127app-的二级页面实现">12.7、App 的二级页面实现</a></li>
+          <li><a href="#128对练手-app-的整体回顾" id="markdown-toc-128对练手-app-的整体回顾">12.8、对练手 App 的整体回顾</a></li>
         </ul>
       </li>
-      <li><a href="#第-10-节--widget导航路由网络请求和项目发布" id="markdown-toc-第-10-节--widget导航路由网络请求和项目发布">第 10 节 · Widget、导航路由、网络请求和项目发布</a>        <ul>
-          <li><a href="#101常用-widget" id="markdown-toc-101常用-widget">10.1、常用 Widget</a></li>
-          <li><a href="#102导航路由" id="markdown-toc-102导航路由">10.2、导航路由</a></li>
-          <li><a href="#103网络请求" id="markdown-toc-103网络请求">10.3、网络请求</a></li>
-          <li><a href="#104项目发布" id="markdown-toc-104项目发布">10.4、项目发布</a></li>
+      <li><a href="#第-13-节--widget导航路由网络请求和项目发布" id="markdown-toc-第-13-节--widget导航路由网络请求和项目发布">第 13 节 · Widget、导航路由、网络请求和项目发布</a>        <ul>
+          <li><a href="#131常用-widget" id="markdown-toc-131常用-widget">13.1、常用 Widget</a></li>
+          <li><a href="#132导航路由" id="markdown-toc-132导航路由">13.2、导航路由</a></li>
+          <li><a href="#133网络请求" id="markdown-toc-133网络请求">13.3、网络请求</a></li>
+          <li><a href="#134项目发布" id="markdown-toc-134项目发布">13.4、项目发布</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#第四章--调试" id="markdown-toc-第四章--调试">第四章 · 调试</a>    <ul>
+      <li><a href="#第-14-节--启用-flutter-devtools" id="markdown-toc-第-14-节--启用-flutter-devtools">第 14 节 · 启用 Flutter DevTools</a>        <ul>
+          <li><a href="#141性能分析performance" id="markdown-toc-141性能分析performance">14.1、性能分析（Performance）</a></li>
+          <li><a href="#142性能优化常见关注点以及一个常见的性能优化案例" id="markdown-toc-142性能优化常见关注点以及一个常见的性能优化案例">14.2、性能优化常见关注点以及一个常见的性能优化案例</a></li>
         </ul>
       </li>
     </ul>
@@ -640,7 +656,7 @@ Waiting <span class="k">for </span>connection from debug service on Chrome...   
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@CVN % flutter create <span class="nt">--platforms</span> web <span class="nb">.</span>
 </code></pre></div></div>
 
-<h2 id="第二章--flutter-的开发理念">第二章 · Flutter 的开发理念</h2>
+<h2 id="第二章--flutter-的开发理念与原理">第二章 · Flutter 的开发理念与原理</h2>
 
 <h3 id="第-6-节--flutter-的开发框架和线程模型">第 6 节 · Flutter 的开发框架和线程模型</h3>
 
@@ -679,7 +695,7 @@ Waiting <span class="k">for </span>connection from debug service on Chrome...   
   <li><code class="language-plaintext highlighter-rouge">build</code> 主要是返回需要渲染的 Widget。<code class="language-plaintext highlighter-rouge">build</code> 会被调用多次，所以这里只能返回 <strong>widget 的相关逻辑</strong>，避免因为多次执行导致的状态异常。</li>
 </ul>
 
-<h4 id="83触发组件-build">8.3、触发组件 build：</h4>
+<h4 id="83触发组件-build">8.3、触发组件 build</h4>
 
 <p>触发组件 build 的方法有 <code class="language-plaintext highlighter-rouge">didChangeDependencies</code>、<code class="language-plaintext highlighter-rouge">setState</code>、<code class="language-plaintext highlighter-rouge">didUpdateWidget</code>。</p>
 
@@ -694,11 +710,451 @@ Waiting <span class="k">for </span>connection from debug service on Chrome...   
   <li><code class="language-plaintext highlighter-rouge">dispose</code> 是在一个组件被移除，并没有插入到其他节点时，会被调用，即永久删除，并释放组件资源。</li>
 </ul>
 
+<h3 id="第-9-节--platform-channel">第 9 节 · Platform Channel</h3>
+
+<p>Flutter 是一个跨平台的 UI 框架，Flutter 本身无法提供各种系统能力，比如蓝牙、相机、GPS 等等。用 Platform Channel 来与底层 OS 平台进行异步的消息通信，在发送给底层 OS 之前会编译成二进制消息，在接收到 Flutter 框架时则会解码成 Dart 可理解的值（所有解码器都只是空消息）。涉及到三种主要 Platform Channel：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">BasicMessageChannel</code>：传递数据的通道。</li>
+  <li><code class="language-plaintext highlighter-rouge">MethodChannel</code>：传递方法调用的通道。</li>
+  <li><code class="language-plaintext highlighter-rouge">EventChannel</code>：传递事件的通道。</li>
+</ul>
+
+<p>在 Flutter 与 iOS 或 Android 之间，通过调用 invokeMehotd 发起通信，接收方通过 MethodCallHandle 接收。</p>
+
+<h3 id="第-10-节--包管理">第 10 节 · 包管理</h3>
+
+<p>类似于以前在 Java 中会使用 Ant、Maven，在 Android 会使用 Gradle，在 iOS 中使用 Cocoapods，在 Node 中使用 npm（Node Package Management）等等，下面说说 Flutter 中的包管理。Flutter 的项目中用 <code class="language-plaintext highlighter-rouge">pubspec.yaml</code> 文件来管理依赖关系。类比来看的话：</p>
+
+<ul>
+  <li>Android 的 Gradle 用 <code class="language-plaintext highlighter-rouge">.gradle</code> 文件管理配置依赖关系。</li>
+  <li>iOS 的 Cocoapods 用 <code class="language-plaintext highlighter-rouge">Podfile</code> 文件管理配置依赖关系。</li>
+  <li>Flutter 的 Packages 用 <code class="language-plaintext highlighter-rouge">pubspec.yaml</code> 文件管理配置依赖关系。</li>
+</ul>
+
+<p>下面是一个典型的、简单的 <code class="language-plaintext highlighter-rouge">pubspec.yaml</code> 文件：</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">hello_world</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">A new Flutter project.</span>
+<span class="c1"># The following line prevents the package from being accidentally published to</span>
+<span class="c1"># pub.dev using `flutter pub publish`. This is preferred for private packages.</span>
+<span class="na">publish_to</span><span class="pi">:</span> <span class="s1">'</span><span class="s">none'</span> <span class="c1"># Remove this line if you wish to publish to pub.dev</span>
+
+<span class="na">version</span><span class="pi">:</span> <span class="s">1.0.0+1</span>
+
+<span class="na">environment</span><span class="pi">:</span>
+  <span class="na">sdk</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&gt;=2.19.6</span><span class="nv"> </span><span class="s">&lt;3.0.0'</span>
+
+<span class="na">dependencies</span><span class="pi">:</span>
+  <span class="na">flutter</span><span class="pi">:</span>
+    <span class="na">sdk</span><span class="pi">:</span> <span class="s">flutter</span>
+  <span class="na">http</span><span class="pi">:</span> <span class="s">^0.13.3</span>
+  <span class="na">timeago</span><span class="pi">:</span> <span class="s">^3.1.0</span>
+
+  <span class="c1"># The following adds the Cupertino Icons font to your application.</span>
+  <span class="c1"># Use with the CupertinoIcons class for iOS style icons.</span>
+  <span class="na">cupertino_icons</span><span class="pi">:</span> <span class="s">^1.0.2</span>
+  <span class="na">intl</span><span class="pi">:</span> <span class="s">^0.18.1</span>
+
+<span class="na">dev_dependencies</span><span class="pi">:</span>
+  <span class="na">flutter_test</span><span class="pi">:</span>
+    <span class="na">sdk</span><span class="pi">:</span> <span class="s">flutter</span>
+
+  <span class="na">flutter_lints</span><span class="pi">:</span> <span class="s">^2.0.0</span>
+
+<span class="c1"># The following section is specific to Flutter packages.</span>
+<span class="na">flutter</span><span class="pi">:</span>
+
+  <span class="c1"># The following line ensures that the Material Icons font is</span>
+  <span class="c1"># included with your application, so that you can use the icons in</span>
+  <span class="c1"># the material Icons class.</span>
+  <span class="na">uses-material-design</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<ul>
+  <li>首先是项目名字：<code class="language-plaintext highlighter-rouge">name: hello_world</code></li>
+  <li>应用的版本号：<code class="language-plaintext highlighter-rouge">version: 1.0.0+1</code></li>
+  <li>Flutter 环境：<code class="language-plaintext highlighter-rouge">environment:</code>
+    <ul>
+      <li>SDK 支持版本范围：<code class="language-plaintext highlighter-rouge">sdk: '&gt;=2.19.6 &lt;3.0.0'</code></li>
+    </ul>
+  </li>
+  <li>生产环境所有依赖：<code class="language-plaintext highlighter-rouge">dependencies:</code>，这里实例一些常用依赖。依赖包都会被编译到最终的包里。
+    <ul>
+      <li>HTTP 包：<code class="language-plaintext highlighter-rouge">http: ^0.13.3</code></li>
+      <li>一个用于时间描述表示的包：<code class="language-plaintext highlighter-rouge">timeago: ^3.1.0</code></li>
+      <li>CSS 定义颜色包：<code class="language-plaintext highlighter-rouge">css_colors: ^1.1.1</code></li>
+    </ul>
+  </li>
+  <li>开发环境额外依赖：<code class="language-plaintext highlighter-rouge">dev_dependencies</code> 是一些为了提高开发效率依赖的包，比如一些自动化测试工具之类的。</li>
+  <li><code class="language-plaintext highlighter-rouge">flutter</code> 是一些 Flutter 项目的相关配置，比如是否使用 material 设计样式、本地资源配置路径</li>
+</ul>
+
+<p>在 VSCode 的「终端」里输入 <code class="language-plaintext highlighter-rouge">flutter pub get</code> 即可以把所有依赖安装到项目中，每次更新 <code class="language-plaintext highlighter-rouge">pubspec.yaml</code> 后都要运行一下 <code class="language-plaintext highlighter-rouge">flutter pub get</code>。</p>
+
+<h3 id="第-11-节--flutter-渲染原理">第 11 节 · Flutter 渲染原理</h3>
+
+<h4 id="111了解下-flutter-的三棵树">11.1、了解下 Flutter 的三棵树</h4>
+
+<p>我们来具体看一段代码：</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Container</span><span class="o">(</span>
+  <span class="nl">color:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">blue</span><span class="o">,</span>
+  <span class="nl">child:</span> <span class="n">Row</span><span class="o">(</span>
+    <span class="nl">children:</span> <span class="o">&lt;</span><span class="n">Widget</span><span class="o">&gt;[</span>
+      <span class="n">Image</span><span class="o">.</span><span class="na">asset</span><span class="o">(</span>
+        <span class="s">'image'</span>
+      <span class="o">),</span> <span class="c1">// Image.asset</span>
+      <span class="n">Text</span><span class="o">(</span>
+        <span class="s">'text'</span>
+      <span class="o">)</span> <span class="c1">// Text</span>
+    <span class="o">],</span> <span class="c1">// &lt;Widget&gt;[]</span>
+  <span class="o">),</span> <span class="c1">// row</span>
+<span class="o">);</span> <span class="c1">// Container</span>
+</code></pre></div></div>
+
+<p>Flutter 视图包含了三棵树，渲染时间就是花费在了这三棵树上：Widget、Element、RenderObject。</p>
+
+<p>Widget Tree 是一个所有 Widget 的数据结构，创建过程是非常轻量的，因为并不涉及到 UI 渲染，只是树结构配置的生成。页面刷新时也随时会重建，Widget Tree 重建本身不涉及任何 UI 渲染。</p>
+
+<p><br /></p>
+
+<div style="text-align: center;">
+<div class="graphviz-wrapper">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg role="img" aria-label="graphviz-44eafea58a5d2bfef4bbf078bc005ada" width="248pt" height="332pt" viewBox="0.00 0.00 248.14 332.00">
+<title>graphviz-44eafea58a5d2bfef4bbf078bc005ada</title>
+<desc>
+digraph G {
+  rankdir=TB
+
+  {rank=same Image Text}
+  {rank=same RawImage RichText}
+
+  Container -&gt; DecoratedBox
+  DecoratedBox -&gt; Row
+  Row -&gt; Image
+  Image -&gt; RawImage
+  Row -&gt; Text
+  Text -&gt; RichText
+}
+</desc>
+
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 328)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-328 244.14,-328 244.14,4 -4,4" />
+<!-- Image -->
+<g id="node1" class="node">
+<title>Image</title>
+<ellipse fill="none" stroke="black" cx="79.79" cy="-90" rx="39.79" ry="18" />
+<text text-anchor="middle" x="79.79" y="-86.3" font-family="Times,serif" font-size="14.00">Image</text>
+</g>
+<!-- RawImage -->
+<g id="node3" class="node">
+<title>RawImage</title>
+<ellipse fill="none" stroke="black" cx="59.79" cy="-18" rx="59.59" ry="18" />
+<text text-anchor="middle" x="59.79" y="-14.3" font-family="Times,serif" font-size="14.00">RawImage</text>
+</g>
+<!-- Image&#45;&gt;RawImage -->
+<g id="edge4" class="edge">
+<title>Image&#45;&gt;RawImage</title>
+<path fill="none" stroke="black" d="M74.95,-72.05C72.73,-64.26 70.03,-54.82 67.53,-46.08" />
+<polygon fill="black" stroke="black" points="70.84,-44.93 64.73,-36.28 64.11,-46.85 70.84,-44.93" />
+</g>
+<!-- Text -->
+<g id="node2" class="node">
+<title>Text</title>
+<ellipse fill="none" stroke="black" cx="177.79" cy="-90" rx="30.59" ry="18" />
+<text text-anchor="middle" x="177.79" y="-86.3" font-family="Times,serif" font-size="14.00">Text</text>
+</g>
+<!-- RichText -->
+<g id="node4" class="node">
+<title>RichText</title>
+<ellipse fill="none" stroke="black" cx="188.79" cy="-18" rx="51.19" ry="18" />
+<text text-anchor="middle" x="188.79" y="-14.3" font-family="Times,serif" font-size="14.00">RichText</text>
+</g>
+<!-- Text&#45;&gt;RichText -->
+<g id="edge6" class="edge">
+<title>Text&#45;&gt;RichText</title>
+<path fill="none" stroke="black" d="M180.46,-72.05C181.67,-64.35 183.13,-55.03 184.49,-46.36" />
+<polygon fill="black" stroke="black" points="187.99,-46.7 186.08,-36.28 181.07,-45.61 187.99,-46.7" />
+</g>
+<!-- Container -->
+<g id="node5" class="node">
+<title>Container</title>
+<ellipse fill="none" stroke="black" cx="123.79" cy="-306" rx="56.59" ry="18" />
+<text text-anchor="middle" x="123.79" y="-302.3" font-family="Times,serif" font-size="14.00">Container</text>
+</g>
+<!-- DecoratedBox -->
+<g id="node6" class="node">
+<title>DecoratedBox</title>
+<ellipse fill="none" stroke="black" cx="123.79" cy="-234" rx="76.09" ry="18" />
+<text text-anchor="middle" x="123.79" y="-230.3" font-family="Times,serif" font-size="14.00">DecoratedBox</text>
+</g>
+<!-- Container&#45;&gt;DecoratedBox -->
+<g id="edge1" class="edge">
+<title>Container&#45;&gt;DecoratedBox</title>
+<path fill="none" stroke="black" d="M123.79,-287.7C123.79,-279.98 123.79,-270.71 123.79,-262.11" />
+<polygon fill="black" stroke="black" points="127.29,-262.1 123.79,-252.1 120.29,-262.1 127.29,-262.1" />
+</g>
+<!-- Row -->
+<g id="node7" class="node">
+<title>Row</title>
+<ellipse fill="none" stroke="black" cx="123.79" cy="-162" rx="30.59" ry="18" />
+<text text-anchor="middle" x="123.79" y="-158.3" font-family="Times,serif" font-size="14.00">Row</text>
+</g>
+<!-- DecoratedBox&#45;&gt;Row -->
+<g id="edge2" class="edge">
+<title>DecoratedBox&#45;&gt;Row</title>
+<path fill="none" stroke="black" d="M123.79,-215.7C123.79,-207.98 123.79,-198.71 123.79,-190.11" />
+<polygon fill="black" stroke="black" points="127.29,-190.1 123.79,-180.1 120.29,-190.1 127.29,-190.1" />
+</g>
+<!-- Row&#45;&gt;Image -->
+<g id="edge3" class="edge">
+<title>Row&#45;&gt;Image</title>
+<path fill="none" stroke="black" d="M113.59,-144.76C108.28,-136.32 101.67,-125.8 95.71,-116.31" />
+<polygon fill="black" stroke="black" points="98.53,-114.24 90.25,-107.63 92.61,-117.96 98.53,-114.24" />
+</g>
+<!-- Row&#45;&gt;Text -->
+<g id="edge5" class="edge">
+<title>Row&#45;&gt;Text</title>
+<path fill="none" stroke="black" d="M136.05,-145.12C142.95,-136.17 151.71,-124.81 159.42,-114.81" />
+<polygon fill="black" stroke="black" points="162.25,-116.88 165.59,-106.82 156.71,-112.6 162.25,-116.88" />
+</g>
+</g>
+</svg>
+</div>
+</div>
+
+<p><br /></p>
+
+<p>根据 Widget 会生成 Element，如下图。Element Tree 同时持有 Widget Tree 和 RenderObject Tree，Element Tree 存放上下文信息，通过 Element Tree 来遍历视图树，支撑 UI 结构。</p>
+
+<p><br /></p>
+
+<div style="text-align: center;">
+<div class="graphviz-wrapper">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg role="img" aria-label="graphviz-953641441c56d228f7ed818b2b44457e" width="480pt" height="332pt" viewBox="0.00 0.00 480.48 332.00">
+<title>graphviz-953641441c56d228f7ed818b2b44457e</title>
+<desc>
+digraph G {
+  rankdir=TB
+
+  ComponentElement1[label=&quot;ComponentElement&quot;]
+  ComponentElement2[label=&quot;ComponentElement&quot;]
+  RenderObjectElement2[label=&quot;RenderObjectElement&quot;]
+  RenderObjectElement3[label=&quot;RenderObjectElement&quot;]
+  RenderObjectElement4[label=&quot;RenderObjectElement&quot;]
+
+  {rank=same ComponentElement1 ComponentElement2}
+  {rank=same RenderObjectElement3 RenderObjectElement4}
+
+  ComponentElement -&gt; RenderObjectElement1
+  RenderObjectElement1 -&gt; RenderObjectElement2
+  RenderObjectElement2 -&gt; ComponentElement1
+  RenderObjectElement2 -&gt; ComponentElement2
+  ComponentElement1 -&gt; RenderObjectElement3
+  ComponentElement2 -&gt; RenderObjectElement4
+}
+</desc>
+
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 328)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-328 476.48,-328 476.48,4 -4,4" />
+<!-- ComponentElement1 -->
+<g id="node1" class="node">
+<title>ComponentElement1</title>
+<ellipse fill="none" stroke="black" cx="124.74" cy="-90" rx="102.88" ry="18" />
+<text text-anchor="middle" x="124.74" y="-86.3" font-family="Times,serif" font-size="14.00">ComponentElement</text>
+</g>
+<!-- RenderObjectElement3 -->
+<g id="node4" class="node">
+<title>RenderObjectElement3</title>
+<ellipse fill="none" stroke="black" cx="113.74" cy="-18" rx="113.98" ry="18" />
+<text text-anchor="middle" x="113.74" y="-14.3" font-family="Times,serif" font-size="14.00">RenderObjectElement</text>
+</g>
+<!-- ComponentElement1&#45;&gt;RenderObjectElement3 -->
+<g id="edge5" class="edge">
+<title>ComponentElement1&#45;&gt;RenderObjectElement3</title>
+<path fill="none" stroke="black" d="M122.02,-71.7C120.81,-63.98 119.35,-54.71 118,-46.11" />
+<polygon fill="black" stroke="black" points="121.44,-45.44 116.43,-36.1 114.52,-46.53 121.44,-45.44" />
+</g>
+<!-- ComponentElement2 -->
+<g id="node2" class="node">
+<title>ComponentElement2</title>
+<ellipse fill="none" stroke="black" cx="352.74" cy="-90" rx="102.88" ry="18" />
+<text text-anchor="middle" x="352.74" y="-86.3" font-family="Times,serif" font-size="14.00">ComponentElement</text>
+</g>
+<!-- RenderObjectElement4 -->
+<g id="node5" class="node">
+<title>RenderObjectElement4</title>
+<ellipse fill="none" stroke="black" cx="358.74" cy="-18" rx="113.98" ry="18" />
+<text text-anchor="middle" x="358.74" y="-14.3" font-family="Times,serif" font-size="14.00">RenderObjectElement</text>
+</g>
+<!-- ComponentElement2&#45;&gt;RenderObjectElement4 -->
+<g id="edge6" class="edge">
+<title>ComponentElement2&#45;&gt;RenderObjectElement4</title>
+<path fill="none" stroke="black" d="M354.22,-71.7C354.88,-63.98 355.68,-54.71 356.42,-46.11" />
+<polygon fill="black" stroke="black" points="359.91,-46.37 357.27,-36.1 352.93,-45.77 359.91,-46.37" />
+</g>
+<!-- RenderObjectElement2 -->
+<g id="node3" class="node">
+<title>RenderObjectElement2</title>
+<ellipse fill="none" stroke="black" cx="235.74" cy="-162" rx="113.98" ry="18" />
+<text text-anchor="middle" x="235.74" y="-158.3" font-family="Times,serif" font-size="14.00">RenderObjectElement</text>
+</g>
+<!-- RenderObjectElement2&#45;&gt;ComponentElement1 -->
+<g id="edge3" class="edge">
+<title>RenderObjectElement2&#45;&gt;ComponentElement1</title>
+<path fill="none" stroke="black" d="M209.43,-144.41C194.5,-135 175.64,-123.1 159.5,-112.92" />
+<polygon fill="black" stroke="black" points="161.18,-109.84 150.86,-107.47 157.45,-115.76 161.18,-109.84" />
+</g>
+<!-- RenderObjectElement2&#45;&gt;ComponentElement2 -->
+<g id="edge4" class="edge">
+<title>RenderObjectElement2&#45;&gt;ComponentElement2</title>
+<path fill="none" stroke="black" d="M263.47,-144.41C279.35,-134.91 299.46,-122.88 316.57,-112.64" />
+<polygon fill="black" stroke="black" points="318.43,-115.61 325.21,-107.47 314.83,-109.6 318.43,-115.61" />
+</g>
+<!-- ComponentElement -->
+<g id="node6" class="node">
+<title>ComponentElement</title>
+<ellipse fill="none" stroke="black" cx="235.74" cy="-306" rx="102.88" ry="18" />
+<text text-anchor="middle" x="235.74" y="-302.3" font-family="Times,serif" font-size="14.00">ComponentElement</text>
+</g>
+<!-- RenderObjectElement1 -->
+<g id="node7" class="node">
+<title>RenderObjectElement1</title>
+<ellipse fill="none" stroke="black" cx="235.74" cy="-234" rx="119.68" ry="18" />
+<text text-anchor="middle" x="235.74" y="-230.3" font-family="Times,serif" font-size="14.00">RenderObjectElement1</text>
+</g>
+<!-- ComponentElement&#45;&gt;RenderObjectElement1 -->
+<g id="edge1" class="edge">
+<title>ComponentElement&#45;&gt;RenderObjectElement1</title>
+<path fill="none" stroke="black" d="M235.74,-287.7C235.74,-279.98 235.74,-270.71 235.74,-262.11" />
+<polygon fill="black" stroke="black" points="239.24,-262.1 235.74,-252.1 232.24,-262.1 239.24,-262.1" />
+</g>
+<!-- RenderObjectElement1&#45;&gt;RenderObjectElement2 -->
+<g id="edge2" class="edge">
+<title>RenderObjectElement1&#45;&gt;RenderObjectElement2</title>
+<path fill="none" stroke="black" d="M235.74,-215.7C235.74,-207.98 235.74,-198.71 235.74,-190.11" />
+<polygon fill="black" stroke="black" points="239.24,-190.1 235.74,-180.1 232.24,-190.1 239.24,-190.1" />
+</g>
+</g>
+</svg>
+</div>
+</div>
+
+<p><br /></p>
+
+<p>RenderObject Tree 是真正负责渲染的，根据 Widget 的布局属性，进行布局、绘制。</p>
+
+<p><br /></p>
+
+<div style="text-align: center;">
+<div class="graphviz-wrapper">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: G Pages: 1 -->
+<svg role="img" aria-label="graphviz-ccc7c01c1dab928ec533c571f0bf9f59" width="358pt" height="188pt" viewBox="0.00 0.00 358.39 188.00">
+<title>graphviz-ccc7c01c1dab928ec533c571f0bf9f59</title>
+<desc>
+digraph G {
+  rankdir=TB
+
+  {rank=same RenderImage RenderParagraph}
+
+  RenderObjectBox -&gt; RenderFlex
+  RenderFlex -&gt; RenderImage
+  RenderFlex -&gt; RenderParagraph
+}
+</desc>
+
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 184)">
+<title>G</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-184 354.39,-184 354.39,4 -4,4" />
+<!-- RenderImage -->
+<g id="node1" class="node">
+<title>RenderImage</title>
+<ellipse fill="none" stroke="black" cx="73.44" cy="-18" rx="73.39" ry="18" />
+<text text-anchor="middle" x="73.44" y="-14.3" font-family="Times,serif" font-size="14.00">RenderImage</text>
+</g>
+<!-- RenderParagraph -->
+<g id="node2" class="node">
+<title>RenderParagraph</title>
+<ellipse fill="none" stroke="black" cx="257.44" cy="-18" rx="92.88" ry="18" />
+<text text-anchor="middle" x="257.44" y="-14.3" font-family="Times,serif" font-size="14.00">RenderParagraph</text>
+</g>
+<!-- RenderObjectBox -->
+<g id="node3" class="node">
+<title>RenderObjectBox</title>
+<ellipse fill="none" stroke="black" cx="165.44" cy="-162" rx="92.08" ry="18" />
+<text text-anchor="middle" x="165.44" y="-158.3" font-family="Times,serif" font-size="14.00">RenderObjectBox</text>
+</g>
+<!-- RenderFlex -->
+<g id="node4" class="node">
+<title>RenderFlex</title>
+<ellipse fill="none" stroke="black" cx="165.44" cy="-90" rx="64.19" ry="18" />
+<text text-anchor="middle" x="165.44" y="-86.3" font-family="Times,serif" font-size="14.00">RenderFlex</text>
+</g>
+<!-- RenderObjectBox&#45;&gt;RenderFlex -->
+<g id="edge1" class="edge">
+<title>RenderObjectBox&#45;&gt;RenderFlex</title>
+<path fill="none" stroke="black" d="M165.44,-143.7C165.44,-135.98 165.44,-126.71 165.44,-118.11" />
+<polygon fill="black" stroke="black" points="168.94,-118.1 165.44,-108.1 161.94,-118.1 168.94,-118.1" />
+</g>
+<!-- RenderFlex&#45;&gt;RenderImage -->
+<g id="edge2" class="edge">
+<title>RenderFlex&#45;&gt;RenderImage</title>
+<path fill="none" stroke="black" d="M144.11,-72.76C131.89,-63.47 116.37,-51.66 102.99,-41.48" />
+<polygon fill="black" stroke="black" points="105.06,-38.66 94.98,-35.39 100.82,-44.23 105.06,-38.66" />
+</g>
+<!-- RenderFlex&#45;&gt;RenderParagraph -->
+<g id="edge3" class="edge">
+<title>RenderFlex&#45;&gt;RenderParagraph</title>
+<path fill="none" stroke="black" d="M186.78,-72.76C198.91,-63.53 214.3,-51.83 227.61,-41.7" />
+<polygon fill="black" stroke="black" points="229.74,-44.47 235.58,-35.63 225.5,-38.9 229.74,-44.47" />
+</g>
+</g>
+</svg>
+</div>
+</div>
+
+<p><br /></p>
+
+<p>整个流程是，根据 Widget Tree 生成 Element Tree，然后创建 RenderObject Tree 并管理到 Element.renderObject 属性上，最后通过 RenderObject 来完成布局、绘制。</p>
+
+<h4 id="112页面刷新时的操作流程">11.2、页面刷新时的操作流程</h4>
+
+<p>在更新页面时，Framework 向下通知 Engine，Engine 会等到下一个 Vsync 信号到达时向上通知 Framework 进行 animate、build、layout 和 paint，最后生成 layer 向下交给 Engine。Engine 会把 layer 进行组合、生成纹理，最后通过底层的 OpenGL API 提交数据给 GPU，GPU 经过处理后在显示设备上显示，如下图（<a href="https://www.bilibili.com/video/BV11R4y1r7tL">来源</a>）。</p>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-19.png" alt="" width="480" /></p>
+
+<p>以 Text 或 Image 发生改变为例，会触发哪些操作呢？这一帧刷新开始：</p>
+
+<ul>
+  <li>首先 Widget 是不可改变的，所以会创建一颗新的树；</li>
+  <li>开始 <code class="language-plaintext highlighter-rouge">build</code>；</li>
+  <li>对上一帧的 Element 树进行遍历，调用 Element 的 updateChild 看子节点类型跟之前是不是一致。不一致的话：就扔掉子节点，并造一个新的。一致的话：1）只做内容上的更新（<code class="language-plaintext highlighter-rouge">updateRenderObject</code>）；2）再判断节点属性是否有改动，如果有则标记为 dirty，重新 layout、paint。</li>
+  <li>再生成新的 layer 交给 GPU。</li>
+</ul>
+
+<p>如下图（<a href="https://www.bilibili.com/video/BV11R4y1r7tL">来源</a>）。</p>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-20.png" alt="" width="240" /></p>
+
 <h2 id="第三章--flutter-组件介绍及应用">第三章 · Flutter 组件介绍及应用</h2>
 
-<h3 id="第-9-节--编写一个-news-app-练手">第 9 节 · 编写一个 News App 练手</h3>
+<h3 id="第-12-节--编写一个-news-app-练手">第 12 节 · 编写一个 News App 练手</h3>
 
-<h4 id="91下载-vscode-并创建-flutter">9.1、下载 VSCode 并创建 Flutter</h4>
+<h4 id="121下载-vscode-并创建-flutter">12.1、下载 VSCode 并创建 Flutter</h4>
 
 <p>我们这里选择用目前最主流的 IDE —— VSCode 来编写程序，首先在 <code class="language-plaintext highlighter-rouge">https://code.visualstudio.com/</code> 下载 VSCode，解压后就可以使用。</p>
 
@@ -732,7 +1188,29 @@ Resolving dependencies...
 Got dependencies!
 </code></pre></div></div>
 
-<h4 id="92了解-dart-的一些基本语法">9.2、了解 Dart 的一些基本语法</h4>
+<h4 id="122flutter-项目文件结构">12.2、Flutter 项目文件结构</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>android
+ios
+linux
+macos
+web
+windows
+build
+lib
+--- main.dart
+test
+--- widget_test.dart
+pubspec.lock
+pubspec.yaml
+README.md
+analysis_options.yaml
+hello_world.iml
+</code></pre></div></div>
+
+<p>各个平台的生成文件都有独立的目录，android、ios、web、windows、macos、linux 六大平台。</p>
+
+<h4 id="123了解-dart-的一些基本语法">12.3、了解 Dart 的一些基本语法</h4>
 
 <p>语法是一个很庞杂的事情，没必要专门去学完了再写程序。这里船长先提到的，都是你在你的第一个程序中会用到的。在 Dart 中引用一个文件很简单，只需要如下写法：</p>
 
@@ -749,7 +1227,7 @@ Got dependencies!
 
 <p>字符串用 <code class="language-plaintext highlighter-rouge">''</code> 而不是 <code class="language-plaintext highlighter-rouge">""</code>。</p>
 
-<h4 id="93flutter-程序入口-maindart">9.3、Flutter 程序入口 <code class="language-plaintext highlighter-rouge">main.dart</code></h4>
+<h4 id="124flutter-程序入口-maindart">12.4、Flutter 程序入口 <code class="language-plaintext highlighter-rouge">main.dart</code></h4>
 
 <p>其程序一般从 <code class="language-plaintext highlighter-rouge">lib/main.dart</code> 文件开始运行，默认调用 <code class="language-plaintext highlighter-rouge">void main() {}</code>，其中会有一句简单的启动 App 的语句：</p>
 
@@ -778,7 +1256,7 @@ Got dependencies!
 
 <p><code class="language-plaintext highlighter-rouge">MyApp</code> 继承自 <code class="language-plaintext highlighter-rouge">StatelessWidget</code> 使得 App 整体也是一个 Widget（还记得前面说的在 Flutter 中一切皆为 Widget。其实在 Flutter 中连一些操作属性的东西都是 Widget，比如 Layout、Alignment 等等。</p>
 
-<h4 id="94app-获取-http-请求的服务">9.4、App 获取 Http 请求的服务</h4>
+<h4 id="125app-获取-http-请求的服务">12.5、App 获取 Http 请求的服务</h4>
 
 <p>船长要创建一个首页获取 news list，首页中有 news list，其中每一项都可以点击进入到一个 news detail 页。这样我们就需要三个 dart 程序文件：</p>
 
@@ -816,7 +1294,7 @@ Got dependencies!
 <span class="o">}</span>
 </code></pre></div></div>
 
-<h4 id="95app-的列表页">9.5、App 的列表页</h4>
+<h4 id="126app-的列表页">12.6、App 的列表页</h4>
 
 <p>再看下 <code class="language-plaintext highlighter-rouge">news_list_page.dart</code>：</p>
 
@@ -897,7 +1375,7 @@ Got dependencies!
 
 <p>在 <code class="language-plaintext highlighter-rouge">_navigateToDetails</code> 函数中，调用了 <code class="language-plaintext highlighter-rouge">Navigator</code> 类的函数 <code class="language-plaintext highlighter-rouge">push</code>，其中传入的参数是 <code class="language-plaintext highlighter-rouge">context</code> 和<code class="language-plaintext highlighter-rouge">MaterialPageRoute</code> 实例。其中 <code class="language-plaintext highlighter-rouge">MaterialPageRoute</code> 创建实例的参数里有 <code class="language-plaintext highlighter-rouge">builder</code>，这里出现了 <code class="language-plaintext highlighter-rouge">NewsDetailsPage</code> 类。</p>
 
-<h4 id="96app-的二级页面实现">9.6、App 的二级页面实现</h4>
+<h4 id="127app-的二级页面实现">12.7、App 的二级页面实现</h4>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="s">'package:flutter/material.dart'</span><span class="o">;</span>
 
@@ -942,7 +1420,7 @@ Got dependencies!
 
 </code></pre></div></div>
 
-<h4 id="97对练手-app-的整体回顾">9.7、对练手 App 的整体回顾</h4>
+<h4 id="128对练手-app-的整体回顾">12.8、对练手 App 的整体回顾</h4>
 
 <p>一般 Flutter 应用程序是在 <code class="language-plaintext highlighter-rouge">main.dart</code> 文件中实现一个继承自 <code class="language-plaintext highlighter-rouge">StatelessWidget</code> 的类比如叫 <code class="language-plaintext highlighter-rouge">MyApp</code>，然后在 <code class="language-plaintext highlighter-rouge">main.dart</code> 文件中的 <code class="language-plaintext highlighter-rouge">main</code> 方法里实例化一个 <code class="language-plaintext highlighter-rouge">MyApp</code> 对象，作为 Flutter 应用的根组件。</p>
 
@@ -950,9 +1428,9 @@ Got dependencies!
 
 <p>继承自 <code class="language-plaintext highlighter-rouge">StatefulWidget</code> 的 <code class="language-plaintext highlighter-rouge">NewsListPage</code> 组件，通过 createState 创建了状态管理类。</p>
 
-<h3 id="第-10-节--widget导航路由网络请求和项目发布">第 10 节 · Widget、导航路由、网络请求和项目发布</h3>
+<h3 id="第-13-节--widget导航路由网络请求和项目发布">第 13 节 · Widget、导航路由、网络请求和项目发布</h3>
 
-<h4 id="101常用-widget">10.1、常用 Widget</h4>
+<h4 id="131常用-widget">13.1、常用 Widget</h4>
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">StatefulWidget</code>。</li>
@@ -979,11 +1457,11 @@ Got dependencies!
   </li>
 </ul>
 
-<h4 id="102导航路由">10.2、导航路由</h4>
+<h4 id="132导航路由">13.2、导航路由</h4>
 
 <p>iOS、Android 的页面导航管理都会维护一个路由栈，对应的方法是 <code class="language-plaintext highlighter-rouge">Navigator.push()</code> 和 <code class="language-plaintext highlighter-rouge">Navigator.pop()</code>，后者回退同时可以返回数据给主屏界面。<code class="language-plaintext highlighter-rouge">Navigator.pop()</code> 可以接受第二个参数（可选），数据通过 future 的方法传递返回值。</p>
 
-<h4 id="103网络请求">10.3、网络请求</h4>
+<h4 id="133网络请求">13.3、网络请求</h4>
 
 <div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">HttpClient</span> <span class="n">httpClient</span> <span class="o">=</span> <span class="n">HttpClient</span><span class="o">();</span>
 <span class="n">HttpClientRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="n">await</span> <span class="n">httpClient</span><span class="o">.</span><span class="na">getUrl</span><span class="o">(</span><span class="n">uri</span><span class="o">);</span>
@@ -993,7 +1471,7 @@ Got dependencies!
 <span class="n">json</span><span class="o">.</span><span class="na">decode</span><span class="o">(</span><span class="n">json</span><span class="o">);</span>
 </code></pre></div></div>
 
-<h4 id="104项目发布">10.4、项目发布</h4>
+<h4 id="134项目发布">13.4、项目发布</h4>
 
 <p>发布 Release 版本，以 web 端为例。</p>
 
@@ -1001,6 +1479,63 @@ Got dependencies!
 </code></pre></div></div>
 
 <p><img src="/img/src/2023/05/2023-05-01-captain-flutter-12.png" alt="" /></p>
+
+<h2 id="第四章--调试">第四章 · 调试</h2>
+
+<h3 id="第-14-节--启用-flutter-devtools">第 14 节 · 启用 Flutter DevTools</h3>
+
+<p>我们可以在 VSCode 中「Command + P」输入「&gt;Flutter: Open DevTools」，下图是使用 DevTools 中的 Widget Inspector：</p>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-16.png" alt="" /></p>
+
+<p>也可以在「Command + P」输入「&gt;Flutter: Open DevTools」选择「Open DevTools in Web Browser」在浏览器中打开。</p>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-17.png" alt="" /></p>
+
+<p>可以看到浏览器地址是 <code class="language-plaintext highlighter-rouge">http://127.0.0.1:9100/</code>，但是如果直接在浏览器打开看到的是下面的页面，需要输入所要连接的 App 的 URL：</p>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-18.png" alt="" /></p>
+
+<p>在 DevTools 我们可以看到各种开发调试工具：</p>
+
+<ul>
+  <li>Flutter Inspector：用于调试和分析应用的 UI 布局。开发者可以查看和编辑小部件树、查看布局边界、调整布局参数等，以便更好地理解和调试应用的 UI。</li>
+  <li>Performance：针对 UI 性能过低问题，比如滑动卡顿。</li>
+  <li>CPU Profiler：分析应用的 CPU 使用情况。它提供了一个时间轴视图，显示应用在一段时间内 CPU 的占用情况。</li>
+  <li>Memory：内存问题排查，可以帮助开发者查看应用的内存使用情况，并识别内存泄漏问题。</li>
+  <li>Debugger：调试工具。</li>
+  <li>Network：网络请求分析工具，可以帮助开发者查看应用发送和接收的网络请求，包括请求详情、请求时间线等。</li>
+  <li>Logging：帮助开发者查看应用的日志输出，包括调试信息、错误日志等。开发者可以根据关键字过滤日志，以便更快地定位和解决问题。</li>
+  <li>App Size：分析包大小。</li>
+</ul>
+
+<h4 id="141性能分析performance">14.1、性能分析（Performance）</h4>
+
+<p>只能在真机或 Profile 模式下运行。先看下 Performance Overlay，绿色线是展示当前帧的耗时，UI thread、GPU thread 分开显示。耗时超过 16.6 毫秒（对应低于 60 FPS，即会丢帧）。如果点开「Performance Overlay」即如下：</p>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-21.png" alt="" /></p>
+
+<p>当点开「Performance Overlay」，则在运行 App 后能看到如下 UI thread、GPU thread 性能图表（Raster 对应的就是 GPU），上面是 UI Task Runner 线程耗时，下面是 GPU Task Runner 线程耗时，如下图：</p>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-22.png" alt="" width="300" /></p>
+
+<p>UI Task Runer 是 Flutter Engine 执行 Dart isolate code 的耗时，GPU Task Runner 是被执行设备 GPU 的相关的调用。</p>
+
+<h4 id="142性能优化常见关注点以及一个常见的性能优化案例">14.2、性能优化常见关注点以及一个常见的性能优化案例</h4>
+
+<p>一般我们关注性能优化的点有：</p>
+
+<ul>
+  <li>提高 build 效率；</li>
+  <li>提高 paint 效率，经常通过 RepainBoundry 创建单独的 layer 减少重绘区域；</li>
+  <li>减少 build 中的逻辑处理：毕竟页面刷新时 Widget 的 build 会被频繁调用（每一帧都调用），所以 build 里应该只处理 UI 相关的逻辑；</li>
+  <li>减少 ClipPath、saveLayer 使用：saveLayer 会在 GPU 中分配一块新的绘图缓冲区，切换绘图目标，这个操作非常耗时；clipPath 会影响每个绘图指令，做一些相交操作，相交部分之外都会被剔除掉，也很耗时。</li>
+  <li>减少 Opacity Widget 的使用：尤其是在动画中，因为它会导致 Widget 每一帧都会被重建，可以使用 AnimatedOpcity 或 FadeInImage 进行代替。</li>
+</ul>
+
+<p>在一个构建的 Widget 树结构中，看看从上到下的 Widget，如果 setState 的修改是在一个比较上面的 Widget 的 setState 中发生的，而改变的是一个比较下面的节点，这其实是存在性能优化空间的。优化的方法，就是把变化放在树结构里比较下面那个 Widget 的 setState 里。</p>
+
+<p>总价一下，就是提高 build 的效率，让 setState 刷新数据尽量下发到比较底层（指树的底层）的节点。</p>
 
 <h2 id="附录">附录</h2>
 

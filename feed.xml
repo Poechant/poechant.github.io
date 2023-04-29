@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-04-29T23:48:35+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">麦克船长的全栈指南：Google Flutter 开发跨平台 APP（1/3）</title><link href="https://www.mikecaptain.com/2023/04/29/captain-flutter-1/" rel="alternate" type="text/html" title="麦克船长的全栈指南：Google Flutter 开发跨平台 APP（1/3）" /><published>2023-04-29T16:10:13+08:00</published><updated>2023-04-29T16:10:13+08:00</updated><id>https://www.mikecaptain.com/2023/04/29/captain-flutter-1</id><content type="html" xml:base="https://www.mikecaptain.com/2023/04/29/captain-flutter-1/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-04-30T01:55:15+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">麦克船长的全栈指南：Google Flutter 开发跨平台 APP（1/3）</title><link href="https://www.mikecaptain.com/2023/04/29/captain-flutter-1/" rel="alternate" type="text/html" title="麦克船长的全栈指南：Google Flutter 开发跨平台 APP（1/3）" /><published>2023-04-29T16:10:13+08:00</published><updated>2023-04-29T16:10:13+08:00</updated><id>https://www.mikecaptain.com/2023/04/29/captain-flutter-1</id><content type="html" xml:base="https://www.mikecaptain.com/2023/04/29/captain-flutter-1/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#第一章--准备与-first-step&quot; id=&quot;markdown-toc-第一章--准备与-first-step&quot;&gt;第一章 · 准备与 First Step&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#第-1-节--环境配置与-hello-world&quot; id=&quot;markdown-toc-第-1-节--环境配置与-hello-world&quot;&gt;第 1 节 · 环境配置与 Hello World&lt;/a&gt;&lt;/li&gt;
@@ -8,34 +8,50 @@
       &lt;li&gt;&lt;a href=&quot;#第-5-节--在-chrome-浏览器跑起第一个-app&quot; id=&quot;markdown-toc-第-5-节--在-chrome-浏览器跑起第一个-app&quot;&gt;第 5 节 · 在 Chrome 浏览器跑起第一个 App&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#第二章--flutter-的开发理念&quot; id=&quot;markdown-toc-第二章--flutter-的开发理念&quot;&gt;第二章 · Flutter 的开发理念&lt;/a&gt;    &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#第二章--flutter-的开发理念与原理&quot; id=&quot;markdown-toc-第二章--flutter-的开发理念与原理&quot;&gt;第二章 · Flutter 的开发理念与原理&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#第-6-节--flutter-的开发框架和线程模型&quot; id=&quot;markdown-toc-第-6-节--flutter-的开发框架和线程模型&quot;&gt;第 6 节 · Flutter 的开发框架和线程模型&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#第-7-节--flutter-的基础理念一切皆为-widgets&quot; id=&quot;markdown-toc-第-7-节--flutter-的基础理念一切皆为-widgets&quot;&gt;第 7 节 · Flutter 的基础理念：一切皆为 Widgets&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#第-8-节--理解-flutter-的生命周期&quot; id=&quot;markdown-toc-第-8-节--理解-flutter-的生命周期&quot;&gt;第 8 节 · 理解 Flutter 的生命周期&lt;/a&gt;        &lt;ul&gt;
           &lt;li&gt;&lt;a href=&quot;#81初始化阶段&quot; id=&quot;markdown-toc-81初始化阶段&quot;&gt;8.1、初始化阶段&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#82组件创建阶段&quot; id=&quot;markdown-toc-82组件创建阶段&quot;&gt;8.2、组件创建阶段&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#83触发组件-build&quot; id=&quot;markdown-toc-83触发组件-build&quot;&gt;8.3、触发组件 build：&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#83触发组件-build&quot; id=&quot;markdown-toc-83触发组件-build&quot;&gt;8.3、触发组件 build&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#84组件的销毁阶段&quot; id=&quot;markdown-toc-84组件的销毁阶段&quot;&gt;8.4、组件的销毁阶段&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#第-9-节--platform-channel&quot; id=&quot;markdown-toc-第-9-节--platform-channel&quot;&gt;第 9 节 · Platform Channel&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#第-10-节--包管理&quot; id=&quot;markdown-toc-第-10-节--包管理&quot;&gt;第 10 节 · 包管理&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#第-11-节--flutter-渲染原理&quot; id=&quot;markdown-toc-第-11-节--flutter-渲染原理&quot;&gt;第 11 节 · Flutter 渲染原理&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#111了解下-flutter-的三棵树&quot; id=&quot;markdown-toc-111了解下-flutter-的三棵树&quot;&gt;11.1、了解下 Flutter 的三棵树&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#112页面刷新时的操作流程&quot; id=&quot;markdown-toc-112页面刷新时的操作流程&quot;&gt;11.2、页面刷新时的操作流程&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#第三章--flutter-组件介绍及应用&quot; id=&quot;markdown-toc-第三章--flutter-组件介绍及应用&quot;&gt;第三章 · Flutter 组件介绍及应用&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#第-9-节--编写一个-news-app-练手&quot; id=&quot;markdown-toc-第-9-节--编写一个-news-app-练手&quot;&gt;第 9 节 · 编写一个 News App 练手&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#91下载-vscode-并创建-flutter&quot; id=&quot;markdown-toc-91下载-vscode-并创建-flutter&quot;&gt;9.1、下载 VSCode 并创建 Flutter&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#92了解-dart-的一些基本语法&quot; id=&quot;markdown-toc-92了解-dart-的一些基本语法&quot;&gt;9.2、了解 Dart 的一些基本语法&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#93flutter-程序入口-maindart&quot; id=&quot;markdown-toc-93flutter-程序入口-maindart&quot;&gt;9.3、Flutter 程序入口 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.dart&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#94app-获取-http-请求的服务&quot; id=&quot;markdown-toc-94app-获取-http-请求的服务&quot;&gt;9.4、App 获取 Http 请求的服务&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#95app-的列表页&quot; id=&quot;markdown-toc-95app-的列表页&quot;&gt;9.5、App 的列表页&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#96app-的二级页面实现&quot; id=&quot;markdown-toc-96app-的二级页面实现&quot;&gt;9.6、App 的二级页面实现&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#97对练手-app-的整体回顾&quot; id=&quot;markdown-toc-97对练手-app-的整体回顾&quot;&gt;9.7、对练手 App 的整体回顾&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#第-12-节--编写一个-news-app-练手&quot; id=&quot;markdown-toc-第-12-节--编写一个-news-app-练手&quot;&gt;第 12 节 · 编写一个 News App 练手&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#121下载-vscode-并创建-flutter&quot; id=&quot;markdown-toc-121下载-vscode-并创建-flutter&quot;&gt;12.1、下载 VSCode 并创建 Flutter&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#122flutter-项目文件结构&quot; id=&quot;markdown-toc-122flutter-项目文件结构&quot;&gt;12.2、Flutter 项目文件结构&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#123了解-dart-的一些基本语法&quot; id=&quot;markdown-toc-123了解-dart-的一些基本语法&quot;&gt;12.3、了解 Dart 的一些基本语法&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#124flutter-程序入口-maindart&quot; id=&quot;markdown-toc-124flutter-程序入口-maindart&quot;&gt;12.4、Flutter 程序入口 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.dart&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#125app-获取-http-请求的服务&quot; id=&quot;markdown-toc-125app-获取-http-请求的服务&quot;&gt;12.5、App 获取 Http 请求的服务&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#126app-的列表页&quot; id=&quot;markdown-toc-126app-的列表页&quot;&gt;12.6、App 的列表页&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#127app-的二级页面实现&quot; id=&quot;markdown-toc-127app-的二级页面实现&quot;&gt;12.7、App 的二级页面实现&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#128对练手-app-的整体回顾&quot; id=&quot;markdown-toc-128对练手-app-的整体回顾&quot;&gt;12.8、对练手 App 的整体回顾&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#第-10-节--widget导航路由网络请求和项目发布&quot; id=&quot;markdown-toc-第-10-节--widget导航路由网络请求和项目发布&quot;&gt;第 10 节 · Widget、导航路由、网络请求和项目发布&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#101常用-widget&quot; id=&quot;markdown-toc-101常用-widget&quot;&gt;10.1、常用 Widget&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#102导航路由&quot; id=&quot;markdown-toc-102导航路由&quot;&gt;10.2、导航路由&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#103网络请求&quot; id=&quot;markdown-toc-103网络请求&quot;&gt;10.3、网络请求&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#104项目发布&quot; id=&quot;markdown-toc-104项目发布&quot;&gt;10.4、项目发布&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#第-13-节--widget导航路由网络请求和项目发布&quot; id=&quot;markdown-toc-第-13-节--widget导航路由网络请求和项目发布&quot;&gt;第 13 节 · Widget、导航路由、网络请求和项目发布&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#131常用-widget&quot; id=&quot;markdown-toc-131常用-widget&quot;&gt;13.1、常用 Widget&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#132导航路由&quot; id=&quot;markdown-toc-132导航路由&quot;&gt;13.2、导航路由&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#133网络请求&quot; id=&quot;markdown-toc-133网络请求&quot;&gt;13.3、网络请求&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#134项目发布&quot; id=&quot;markdown-toc-134项目发布&quot;&gt;13.4、项目发布&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#第四章--调试&quot; id=&quot;markdown-toc-第四章--调试&quot;&gt;第四章 · 调试&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#第-14-节--启用-flutter-devtools&quot; id=&quot;markdown-toc-第-14-节--启用-flutter-devtools&quot;&gt;第 14 节 · 启用 Flutter DevTools&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#141性能分析performance&quot; id=&quot;markdown-toc-141性能分析performance&quot;&gt;14.1、性能分析（Performance）&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#142性能优化常见关注点以及一个常见的性能优化案例&quot; id=&quot;markdown-toc-142性能优化常见关注点以及一个常见的性能优化案例&quot;&gt;14.2、性能优化常见关注点以及一个常见的性能优化案例&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
@@ -223,7 +239,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;connection from debug s
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % flutter create &lt;span class=&quot;nt&quot;&gt;--platforms&lt;/span&gt; web &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;第二章--flutter-的开发理念&quot;&gt;第二章 · Flutter 的开发理念&lt;/h2&gt;
+&lt;h2 id=&quot;第二章--flutter-的开发理念与原理&quot;&gt;第二章 · Flutter 的开发理念与原理&lt;/h2&gt;
 
 &lt;h3 id=&quot;第-6-节--flutter-的开发框架和线程模型&quot;&gt;第 6 节 · Flutter 的开发框架和线程模型&lt;/h3&gt;
 
@@ -262,7 +278,7 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;connection from debug s
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build&lt;/code&gt; 主要是返回需要渲染的 Widget。&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build&lt;/code&gt; 会被调用多次，所以这里只能返回 &lt;strong&gt;widget 的相关逻辑&lt;/strong&gt;，避免因为多次执行导致的状态异常。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;83触发组件-build&quot;&gt;8.3、触发组件 build：&lt;/h4&gt;
+&lt;h4 id=&quot;83触发组件-build&quot;&gt;8.3、触发组件 build&lt;/h4&gt;
 
 &lt;p&gt;触发组件 build 的方法有 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;didChangeDependencies&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setState&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;didUpdateWidget&lt;/code&gt;。&lt;/p&gt;
 
@@ -277,11 +293,451 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;connection from debug s
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dispose&lt;/code&gt; 是在一个组件被移除，并没有插入到其他节点时，会被调用，即永久删除，并释放组件资源。&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h3 id=&quot;第-9-节--platform-channel&quot;&gt;第 9 节 · Platform Channel&lt;/h3&gt;
+
+&lt;p&gt;Flutter 是一个跨平台的 UI 框架，Flutter 本身无法提供各种系统能力，比如蓝牙、相机、GPS 等等。用 Platform Channel 来与底层 OS 平台进行异步的消息通信，在发送给底层 OS 之前会编译成二进制消息，在接收到 Flutter 框架时则会解码成 Dart 可理解的值（所有解码器都只是空消息）。涉及到三种主要 Platform Channel：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BasicMessageChannel&lt;/code&gt;：传递数据的通道。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MethodChannel&lt;/code&gt;：传递方法调用的通道。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EventChannel&lt;/code&gt;：传递事件的通道。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在 Flutter 与 iOS 或 Android 之间，通过调用 invokeMehotd 发起通信，接收方通过 MethodCallHandle 接收。&lt;/p&gt;
+
+&lt;h3 id=&quot;第-10-节--包管理&quot;&gt;第 10 节 · 包管理&lt;/h3&gt;
+
+&lt;p&gt;类似于以前在 Java 中会使用 Ant、Maven，在 Android 会使用 Gradle，在 iOS 中使用 Cocoapods，在 Node 中使用 npm（Node Package Management）等等，下面说说 Flutter 中的包管理。Flutter 的项目中用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pubspec.yaml&lt;/code&gt; 文件来管理依赖关系。类比来看的话：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Android 的 Gradle 用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.gradle&lt;/code&gt; 文件管理配置依赖关系。&lt;/li&gt;
+  &lt;li&gt;iOS 的 Cocoapods 用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Podfile&lt;/code&gt; 文件管理配置依赖关系。&lt;/li&gt;
+  &lt;li&gt;Flutter 的 Packages 用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pubspec.yaml&lt;/code&gt; 文件管理配置依赖关系。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;下面是一个典型的、简单的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pubspec.yaml&lt;/code&gt; 文件：&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;hello_world&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;A new Flutter project.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# The following line prevents the package from being accidentally published to&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# pub.dev using `flutter pub publish`. This is preferred for private packages.&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;publish_to&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;none&apos;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Remove this line if you wish to publish to pub.dev&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1.0.0+1&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;sdk&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;gt;=2.19.6&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;lt;3.0.0&apos;&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;dependencies&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;flutter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;sdk&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;flutter&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;^0.13.3&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;timeago&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;^3.1.0&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# The following adds the Cupertino Icons font to your application.&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# Use with the CupertinoIcons class for iOS style icons.&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;cupertino_icons&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;^1.0.2&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;intl&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;^0.18.1&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;dev_dependencies&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;flutter_test&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;sdk&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;flutter&lt;/span&gt;
+
+  &lt;span class=&quot;na&quot;&gt;flutter_lints&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;^2.0.0&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# The following section is specific to Flutter packages.&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;flutter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# The following line ensures that the Material Icons font is&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# included with your application, so that you can use the icons in&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# the material Icons class.&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;uses-material-design&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;首先是项目名字：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;name: hello_world&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;应用的版本号：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;version: 1.0.0+1&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Flutter 环境：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;environment:&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;SDK 支持版本范围：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sdk: &apos;&amp;gt;=2.19.6 &amp;lt;3.0.0&apos;&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;生产环境所有依赖：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dependencies:&lt;/code&gt;，这里实例一些常用依赖。依赖包都会被编译到最终的包里。
+    &lt;ul&gt;
+      &lt;li&gt;HTTP 包：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http: ^0.13.3&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;一个用于时间描述表示的包：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;timeago: ^3.1.0&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;CSS 定义颜色包：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;css_colors: ^1.1.1&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;开发环境额外依赖：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dev_dependencies&lt;/code&gt; 是一些为了提高开发效率依赖的包，比如一些自动化测试工具之类的。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flutter&lt;/code&gt; 是一些 Flutter 项目的相关配置，比如是否使用 material 设计样式、本地资源配置路径&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在 VSCode 的「终端」里输入 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flutter pub get&lt;/code&gt; 即可以把所有依赖安装到项目中，每次更新 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pubspec.yaml&lt;/code&gt; 后都要运行一下 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flutter pub get&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;第-11-节--flutter-渲染原理&quot;&gt;第 11 节 · Flutter 渲染原理&lt;/h3&gt;
+
+&lt;h4 id=&quot;111了解下-flutter-的三棵树&quot;&gt;11.1、了解下 Flutter 的三棵树&lt;/h4&gt;
+
+&lt;p&gt;我们来具体看一段代码：&lt;/p&gt;
+
+&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Container&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;color:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Colors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;blue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;child:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Row&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;children:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Widget&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;[&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;asset&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&apos;image&apos;&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Image.asset&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&apos;text&apos;&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Text&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &amp;lt;Widget&amp;gt;[]&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// row&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Container&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Flutter 视图包含了三棵树，渲染时间就是花费在了这三棵树上：Widget、Element、RenderObject。&lt;/p&gt;
+
+&lt;p&gt;Widget Tree 是一个所有 Widget 的数据结构，创建过程是非常轻量的，因为并不涉及到 UI 渲染，只是树结构配置的生成。页面刷新时也随时会重建，Widget Tree 重建本身不涉及任何 UI 渲染。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center;&quot;&gt;
+&lt;div class=&quot;graphviz-wrapper&quot;&gt;
+
+&lt;!-- Generated by graphviz version 2.43.0 (0)
+ --&gt;
+&lt;!-- Title: G Pages: 1 --&gt;
+&lt;svg role=&quot;img&quot; aria-label=&quot;graphviz-44eafea58a5d2bfef4bbf078bc005ada&quot; width=&quot;248pt&quot; height=&quot;332pt&quot; viewBox=&quot;0.00 0.00 248.14 332.00&quot;&gt;
+&lt;title&gt;graphviz-44eafea58a5d2bfef4bbf078bc005ada&lt;/title&gt;
+&lt;desc&gt;
+digraph G {
+  rankdir=TB
+
+  {rank=same Image Text}
+  {rank=same RawImage RichText}
+
+  Container -&amp;gt; DecoratedBox
+  DecoratedBox -&amp;gt; Row
+  Row -&amp;gt; Image
+  Image -&amp;gt; RawImage
+  Row -&amp;gt; Text
+  Text -&amp;gt; RichText
+}
+&lt;/desc&gt;
+
+&lt;g id=&quot;graph0&quot; class=&quot;graph&quot; transform=&quot;scale(1 1) rotate(0) translate(4 328)&quot;&gt;
+&lt;title&gt;G&lt;/title&gt;
+&lt;polygon fill=&quot;white&quot; stroke=&quot;transparent&quot; points=&quot;-4,4 -4,-328 244.14,-328 244.14,4 -4,4&quot; /&gt;
+&lt;!-- Image --&gt;
+&lt;g id=&quot;node1&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;Image&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;79.79&quot; cy=&quot;-90&quot; rx=&quot;39.79&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;79.79&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;Image&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- RawImage --&gt;
+&lt;g id=&quot;node3&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;RawImage&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;59.79&quot; cy=&quot;-18&quot; rx=&quot;59.59&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;59.79&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;RawImage&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- Image&amp;#45;&amp;gt;RawImage --&gt;
+&lt;g id=&quot;edge4&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;Image&amp;#45;&amp;gt;RawImage&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M74.95,-72.05C72.73,-64.26 70.03,-54.82 67.53,-46.08&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;70.84,-44.93 64.73,-36.28 64.11,-46.85 70.84,-44.93&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- Text --&gt;
+&lt;g id=&quot;node2&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;Text&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;177.79&quot; cy=&quot;-90&quot; rx=&quot;30.59&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;177.79&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;Text&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- RichText --&gt;
+&lt;g id=&quot;node4&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;RichText&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;188.79&quot; cy=&quot;-18&quot; rx=&quot;51.19&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;188.79&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;RichText&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- Text&amp;#45;&amp;gt;RichText --&gt;
+&lt;g id=&quot;edge6&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;Text&amp;#45;&amp;gt;RichText&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M180.46,-72.05C181.67,-64.35 183.13,-55.03 184.49,-46.36&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;187.99,-46.7 186.08,-36.28 181.07,-45.61 187.99,-46.7&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- Container --&gt;
+&lt;g id=&quot;node5&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;Container&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;123.79&quot; cy=&quot;-306&quot; rx=&quot;56.59&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;123.79&quot; y=&quot;-302.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;Container&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- DecoratedBox --&gt;
+&lt;g id=&quot;node6&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;DecoratedBox&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;123.79&quot; cy=&quot;-234&quot; rx=&quot;76.09&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;123.79&quot; y=&quot;-230.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;DecoratedBox&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- Container&amp;#45;&amp;gt;DecoratedBox --&gt;
+&lt;g id=&quot;edge1&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;Container&amp;#45;&amp;gt;DecoratedBox&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M123.79,-287.7C123.79,-279.98 123.79,-270.71 123.79,-262.11&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;127.29,-262.1 123.79,-252.1 120.29,-262.1 127.29,-262.1&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- Row --&gt;
+&lt;g id=&quot;node7&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;Row&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;123.79&quot; cy=&quot;-162&quot; rx=&quot;30.59&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;123.79&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;Row&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- DecoratedBox&amp;#45;&amp;gt;Row --&gt;
+&lt;g id=&quot;edge2&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;DecoratedBox&amp;#45;&amp;gt;Row&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M123.79,-215.7C123.79,-207.98 123.79,-198.71 123.79,-190.11&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;127.29,-190.1 123.79,-180.1 120.29,-190.1 127.29,-190.1&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- Row&amp;#45;&amp;gt;Image --&gt;
+&lt;g id=&quot;edge3&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;Row&amp;#45;&amp;gt;Image&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M113.59,-144.76C108.28,-136.32 101.67,-125.8 95.71,-116.31&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;98.53,-114.24 90.25,-107.63 92.61,-117.96 98.53,-114.24&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- Row&amp;#45;&amp;gt;Text --&gt;
+&lt;g id=&quot;edge5&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;Row&amp;#45;&amp;gt;Text&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M136.05,-145.12C142.95,-136.17 151.71,-124.81 159.42,-114.81&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;162.25,-116.88 165.59,-106.82 156.71,-112.6 162.25,-116.88&quot; /&gt;
+&lt;/g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;根据 Widget 会生成 Element，如下图。Element Tree 同时持有 Widget Tree 和 RenderObject Tree，Element Tree 存放上下文信息，通过 Element Tree 来遍历视图树，支撑 UI 结构。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center;&quot;&gt;
+&lt;div class=&quot;graphviz-wrapper&quot;&gt;
+
+&lt;!-- Generated by graphviz version 2.43.0 (0)
+ --&gt;
+&lt;!-- Title: G Pages: 1 --&gt;
+&lt;svg role=&quot;img&quot; aria-label=&quot;graphviz-953641441c56d228f7ed818b2b44457e&quot; width=&quot;480pt&quot; height=&quot;332pt&quot; viewBox=&quot;0.00 0.00 480.48 332.00&quot;&gt;
+&lt;title&gt;graphviz-953641441c56d228f7ed818b2b44457e&lt;/title&gt;
+&lt;desc&gt;
+digraph G {
+  rankdir=TB
+
+  ComponentElement1[label=&amp;quot;ComponentElement&amp;quot;]
+  ComponentElement2[label=&amp;quot;ComponentElement&amp;quot;]
+  RenderObjectElement2[label=&amp;quot;RenderObjectElement&amp;quot;]
+  RenderObjectElement3[label=&amp;quot;RenderObjectElement&amp;quot;]
+  RenderObjectElement4[label=&amp;quot;RenderObjectElement&amp;quot;]
+
+  {rank=same ComponentElement1 ComponentElement2}
+  {rank=same RenderObjectElement3 RenderObjectElement4}
+
+  ComponentElement -&amp;gt; RenderObjectElement1
+  RenderObjectElement1 -&amp;gt; RenderObjectElement2
+  RenderObjectElement2 -&amp;gt; ComponentElement1
+  RenderObjectElement2 -&amp;gt; ComponentElement2
+  ComponentElement1 -&amp;gt; RenderObjectElement3
+  ComponentElement2 -&amp;gt; RenderObjectElement4
+}
+&lt;/desc&gt;
+
+&lt;g id=&quot;graph0&quot; class=&quot;graph&quot; transform=&quot;scale(1 1) rotate(0) translate(4 328)&quot;&gt;
+&lt;title&gt;G&lt;/title&gt;
+&lt;polygon fill=&quot;white&quot; stroke=&quot;transparent&quot; points=&quot;-4,4 -4,-328 476.48,-328 476.48,4 -4,4&quot; /&gt;
+&lt;!-- ComponentElement1 --&gt;
+&lt;g id=&quot;node1&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;ComponentElement1&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;124.74&quot; cy=&quot;-90&quot; rx=&quot;102.88&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;124.74&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;ComponentElement&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- RenderObjectElement3 --&gt;
+&lt;g id=&quot;node4&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;RenderObjectElement3&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;113.74&quot; cy=&quot;-18&quot; rx=&quot;113.98&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;113.74&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;RenderObjectElement&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- ComponentElement1&amp;#45;&amp;gt;RenderObjectElement3 --&gt;
+&lt;g id=&quot;edge5&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;ComponentElement1&amp;#45;&amp;gt;RenderObjectElement3&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M122.02,-71.7C120.81,-63.98 119.35,-54.71 118,-46.11&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;121.44,-45.44 116.43,-36.1 114.52,-46.53 121.44,-45.44&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- ComponentElement2 --&gt;
+&lt;g id=&quot;node2&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;ComponentElement2&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;352.74&quot; cy=&quot;-90&quot; rx=&quot;102.88&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;352.74&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;ComponentElement&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- RenderObjectElement4 --&gt;
+&lt;g id=&quot;node5&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;RenderObjectElement4&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;358.74&quot; cy=&quot;-18&quot; rx=&quot;113.98&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;358.74&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;RenderObjectElement&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- ComponentElement2&amp;#45;&amp;gt;RenderObjectElement4 --&gt;
+&lt;g id=&quot;edge6&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;ComponentElement2&amp;#45;&amp;gt;RenderObjectElement4&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M354.22,-71.7C354.88,-63.98 355.68,-54.71 356.42,-46.11&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;359.91,-46.37 357.27,-36.1 352.93,-45.77 359.91,-46.37&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- RenderObjectElement2 --&gt;
+&lt;g id=&quot;node3&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;RenderObjectElement2&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;235.74&quot; cy=&quot;-162&quot; rx=&quot;113.98&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;235.74&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;RenderObjectElement&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- RenderObjectElement2&amp;#45;&amp;gt;ComponentElement1 --&gt;
+&lt;g id=&quot;edge3&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;RenderObjectElement2&amp;#45;&amp;gt;ComponentElement1&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M209.43,-144.41C194.5,-135 175.64,-123.1 159.5,-112.92&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;161.18,-109.84 150.86,-107.47 157.45,-115.76 161.18,-109.84&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- RenderObjectElement2&amp;#45;&amp;gt;ComponentElement2 --&gt;
+&lt;g id=&quot;edge4&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;RenderObjectElement2&amp;#45;&amp;gt;ComponentElement2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M263.47,-144.41C279.35,-134.91 299.46,-122.88 316.57,-112.64&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;318.43,-115.61 325.21,-107.47 314.83,-109.6 318.43,-115.61&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- ComponentElement --&gt;
+&lt;g id=&quot;node6&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;ComponentElement&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;235.74&quot; cy=&quot;-306&quot; rx=&quot;102.88&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;235.74&quot; y=&quot;-302.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;ComponentElement&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- RenderObjectElement1 --&gt;
+&lt;g id=&quot;node7&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;RenderObjectElement1&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;235.74&quot; cy=&quot;-234&quot; rx=&quot;119.68&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;235.74&quot; y=&quot;-230.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;RenderObjectElement1&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- ComponentElement&amp;#45;&amp;gt;RenderObjectElement1 --&gt;
+&lt;g id=&quot;edge1&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;ComponentElement&amp;#45;&amp;gt;RenderObjectElement1&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M235.74,-287.7C235.74,-279.98 235.74,-270.71 235.74,-262.11&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;239.24,-262.1 235.74,-252.1 232.24,-262.1 239.24,-262.1&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- RenderObjectElement1&amp;#45;&amp;gt;RenderObjectElement2 --&gt;
+&lt;g id=&quot;edge2&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;RenderObjectElement1&amp;#45;&amp;gt;RenderObjectElement2&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M235.74,-215.7C235.74,-207.98 235.74,-198.71 235.74,-190.11&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;239.24,-190.1 235.74,-180.1 232.24,-190.1 239.24,-190.1&quot; /&gt;
+&lt;/g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;RenderObject Tree 是真正负责渲染的，根据 Widget 的布局属性，进行布局、绘制。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center;&quot;&gt;
+&lt;div class=&quot;graphviz-wrapper&quot;&gt;
+
+&lt;!-- Generated by graphviz version 2.43.0 (0)
+ --&gt;
+&lt;!-- Title: G Pages: 1 --&gt;
+&lt;svg role=&quot;img&quot; aria-label=&quot;graphviz-ccc7c01c1dab928ec533c571f0bf9f59&quot; width=&quot;358pt&quot; height=&quot;188pt&quot; viewBox=&quot;0.00 0.00 358.39 188.00&quot;&gt;
+&lt;title&gt;graphviz-ccc7c01c1dab928ec533c571f0bf9f59&lt;/title&gt;
+&lt;desc&gt;
+digraph G {
+  rankdir=TB
+
+  {rank=same RenderImage RenderParagraph}
+
+  RenderObjectBox -&amp;gt; RenderFlex
+  RenderFlex -&amp;gt; RenderImage
+  RenderFlex -&amp;gt; RenderParagraph
+}
+&lt;/desc&gt;
+
+&lt;g id=&quot;graph0&quot; class=&quot;graph&quot; transform=&quot;scale(1 1) rotate(0) translate(4 184)&quot;&gt;
+&lt;title&gt;G&lt;/title&gt;
+&lt;polygon fill=&quot;white&quot; stroke=&quot;transparent&quot; points=&quot;-4,4 -4,-184 354.39,-184 354.39,4 -4,4&quot; /&gt;
+&lt;!-- RenderImage --&gt;
+&lt;g id=&quot;node1&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;RenderImage&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;73.44&quot; cy=&quot;-18&quot; rx=&quot;73.39&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;73.44&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;RenderImage&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- RenderParagraph --&gt;
+&lt;g id=&quot;node2&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;RenderParagraph&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;257.44&quot; cy=&quot;-18&quot; rx=&quot;92.88&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;257.44&quot; y=&quot;-14.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;RenderParagraph&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- RenderObjectBox --&gt;
+&lt;g id=&quot;node3&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;RenderObjectBox&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;165.44&quot; cy=&quot;-162&quot; rx=&quot;92.08&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;165.44&quot; y=&quot;-158.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;RenderObjectBox&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- RenderFlex --&gt;
+&lt;g id=&quot;node4&quot; class=&quot;node&quot;&gt;
+&lt;title&gt;RenderFlex&lt;/title&gt;
+&lt;ellipse fill=&quot;none&quot; stroke=&quot;black&quot; cx=&quot;165.44&quot; cy=&quot;-90&quot; rx=&quot;64.19&quot; ry=&quot;18&quot; /&gt;
+&lt;text text-anchor=&quot;middle&quot; x=&quot;165.44&quot; y=&quot;-86.3&quot; font-family=&quot;Times,serif&quot; font-size=&quot;14.00&quot;&gt;RenderFlex&lt;/text&gt;
+&lt;/g&gt;
+&lt;!-- RenderObjectBox&amp;#45;&amp;gt;RenderFlex --&gt;
+&lt;g id=&quot;edge1&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;RenderObjectBox&amp;#45;&amp;gt;RenderFlex&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M165.44,-143.7C165.44,-135.98 165.44,-126.71 165.44,-118.11&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;168.94,-118.1 165.44,-108.1 161.94,-118.1 168.94,-118.1&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- RenderFlex&amp;#45;&amp;gt;RenderImage --&gt;
+&lt;g id=&quot;edge2&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;RenderFlex&amp;#45;&amp;gt;RenderImage&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M144.11,-72.76C131.89,-63.47 116.37,-51.66 102.99,-41.48&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;105.06,-38.66 94.98,-35.39 100.82,-44.23 105.06,-38.66&quot; /&gt;
+&lt;/g&gt;
+&lt;!-- RenderFlex&amp;#45;&amp;gt;RenderParagraph --&gt;
+&lt;g id=&quot;edge3&quot; class=&quot;edge&quot;&gt;
+&lt;title&gt;RenderFlex&amp;#45;&amp;gt;RenderParagraph&lt;/title&gt;
+&lt;path fill=&quot;none&quot; stroke=&quot;black&quot; d=&quot;M186.78,-72.76C198.91,-63.53 214.3,-51.83 227.61,-41.7&quot; /&gt;
+&lt;polygon fill=&quot;black&quot; stroke=&quot;black&quot; points=&quot;229.74,-44.47 235.58,-35.63 225.5,-38.9 229.74,-44.47&quot; /&gt;
+&lt;/g&gt;
+&lt;/g&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;整个流程是，根据 Widget Tree 生成 Element Tree，然后创建 RenderObject Tree 并管理到 Element.renderObject 属性上，最后通过 RenderObject 来完成布局、绘制。&lt;/p&gt;
+
+&lt;h4 id=&quot;112页面刷新时的操作流程&quot;&gt;11.2、页面刷新时的操作流程&lt;/h4&gt;
+
+&lt;p&gt;在更新页面时，Framework 向下通知 Engine，Engine 会等到下一个 Vsync 信号到达时向上通知 Framework 进行 animate、build、layout 和 paint，最后生成 layer 向下交给 Engine。Engine 会把 layer 进行组合、生成纹理，最后通过底层的 OpenGL API 提交数据给 GPU，GPU 经过处理后在显示设备上显示，如下图（&lt;a href=&quot;https://www.bilibili.com/video/BV11R4y1r7tL&quot;&gt;来源&lt;/a&gt;）。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-19.png&quot; alt=&quot;&quot; width=&quot;480&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;以 Text 或 Image 发生改变为例，会触发哪些操作呢？这一帧刷新开始：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;首先 Widget 是不可改变的，所以会创建一颗新的树；&lt;/li&gt;
+  &lt;li&gt;开始 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build&lt;/code&gt;；&lt;/li&gt;
+  &lt;li&gt;对上一帧的 Element 树进行遍历，调用 Element 的 updateChild 看子节点类型跟之前是不是一致。不一致的话：就扔掉子节点，并造一个新的。一致的话：1）只做内容上的更新（&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;updateRenderObject&lt;/code&gt;）；2）再判断节点属性是否有改动，如果有则标记为 dirty，重新 layout、paint。&lt;/li&gt;
+  &lt;li&gt;再生成新的 layer 交给 GPU。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如下图（&lt;a href=&quot;https://www.bilibili.com/video/BV11R4y1r7tL&quot;&gt;来源&lt;/a&gt;）。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-20.png&quot; alt=&quot;&quot; width=&quot;240&quot; /&gt;&lt;/p&gt;
+
 &lt;h2 id=&quot;第三章--flutter-组件介绍及应用&quot;&gt;第三章 · Flutter 组件介绍及应用&lt;/h2&gt;
 
-&lt;h3 id=&quot;第-9-节--编写一个-news-app-练手&quot;&gt;第 9 节 · 编写一个 News App 练手&lt;/h3&gt;
+&lt;h3 id=&quot;第-12-节--编写一个-news-app-练手&quot;&gt;第 12 节 · 编写一个 News App 练手&lt;/h3&gt;
 
-&lt;h4 id=&quot;91下载-vscode-并创建-flutter&quot;&gt;9.1、下载 VSCode 并创建 Flutter&lt;/h4&gt;
+&lt;h4 id=&quot;121下载-vscode-并创建-flutter&quot;&gt;12.1、下载 VSCode 并创建 Flutter&lt;/h4&gt;
 
 &lt;p&gt;我们这里选择用目前最主流的 IDE —— VSCode 来编写程序，首先在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://code.visualstudio.com/&lt;/code&gt; 下载 VSCode，解压后就可以使用。&lt;/p&gt;
 
@@ -315,7 +771,29 @@ Resolving dependencies...
 Got dependencies!
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h4 id=&quot;92了解-dart-的一些基本语法&quot;&gt;9.2、了解 Dart 的一些基本语法&lt;/h4&gt;
+&lt;h4 id=&quot;122flutter-项目文件结构&quot;&gt;12.2、Flutter 项目文件结构&lt;/h4&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;android
+ios
+linux
+macos
+web
+windows
+build
+lib
+--- main.dart
+test
+--- widget_test.dart
+pubspec.lock
+pubspec.yaml
+README.md
+analysis_options.yaml
+hello_world.iml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;各个平台的生成文件都有独立的目录，android、ios、web、windows、macos、linux 六大平台。&lt;/p&gt;
+
+&lt;h4 id=&quot;123了解-dart-的一些基本语法&quot;&gt;12.3、了解 Dart 的一些基本语法&lt;/h4&gt;
 
 &lt;p&gt;语法是一个很庞杂的事情，没必要专门去学完了再写程序。这里船长先提到的，都是你在你的第一个程序中会用到的。在 Dart 中引用一个文件很简单，只需要如下写法：&lt;/p&gt;
 
@@ -332,7 +810,7 @@ Got dependencies!
 
 &lt;p&gt;字符串用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&apos;&apos;&lt;/code&gt; 而不是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;&quot;&lt;/code&gt;。&lt;/p&gt;
 
-&lt;h4 id=&quot;93flutter-程序入口-maindart&quot;&gt;9.3、Flutter 程序入口 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.dart&lt;/code&gt;&lt;/h4&gt;
+&lt;h4 id=&quot;124flutter-程序入口-maindart&quot;&gt;12.4、Flutter 程序入口 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.dart&lt;/code&gt;&lt;/h4&gt;
 
 &lt;p&gt;其程序一般从 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lib/main.dart&lt;/code&gt; 文件开始运行，默认调用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;void main() {}&lt;/code&gt;，其中会有一句简单的启动 App 的语句：&lt;/p&gt;
 
@@ -361,7 +839,7 @@ Got dependencies!
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MyApp&lt;/code&gt; 继承自 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StatelessWidget&lt;/code&gt; 使得 App 整体也是一个 Widget（还记得前面说的在 Flutter 中一切皆为 Widget。其实在 Flutter 中连一些操作属性的东西都是 Widget，比如 Layout、Alignment 等等。&lt;/p&gt;
 
-&lt;h4 id=&quot;94app-获取-http-请求的服务&quot;&gt;9.4、App 获取 Http 请求的服务&lt;/h4&gt;
+&lt;h4 id=&quot;125app-获取-http-请求的服务&quot;&gt;12.5、App 获取 Http 请求的服务&lt;/h4&gt;
 
 &lt;p&gt;船长要创建一个首页获取 news list，首页中有 news list，其中每一项都可以点击进入到一个 news detail 页。这样我们就需要三个 dart 程序文件：&lt;/p&gt;
 
@@ -399,7 +877,7 @@ Got dependencies!
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h4 id=&quot;95app-的列表页&quot;&gt;9.5、App 的列表页&lt;/h4&gt;
+&lt;h4 id=&quot;126app-的列表页&quot;&gt;12.6、App 的列表页&lt;/h4&gt;
 
 &lt;p&gt;再看下 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;news_list_page.dart&lt;/code&gt;：&lt;/p&gt;
 
@@ -480,7 +958,7 @@ Got dependencies!
 
 &lt;p&gt;在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_navigateToDetails&lt;/code&gt; 函数中，调用了 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Navigator&lt;/code&gt; 类的函数 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;push&lt;/code&gt;，其中传入的参数是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;context&lt;/code&gt; 和&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MaterialPageRoute&lt;/code&gt; 实例。其中 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MaterialPageRoute&lt;/code&gt; 创建实例的参数里有 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;builder&lt;/code&gt;，这里出现了 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NewsDetailsPage&lt;/code&gt; 类。&lt;/p&gt;
 
-&lt;h4 id=&quot;96app-的二级页面实现&quot;&gt;9.6、App 的二级页面实现&lt;/h4&gt;
+&lt;h4 id=&quot;127app-的二级页面实现&quot;&gt;12.7、App 的二级页面实现&lt;/h4&gt;
 
 &lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;package:flutter/material.dart&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
@@ -525,7 +1003,7 @@ Got dependencies!
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h4 id=&quot;97对练手-app-的整体回顾&quot;&gt;9.7、对练手 App 的整体回顾&lt;/h4&gt;
+&lt;h4 id=&quot;128对练手-app-的整体回顾&quot;&gt;12.8、对练手 App 的整体回顾&lt;/h4&gt;
 
 &lt;p&gt;一般 Flutter 应用程序是在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.dart&lt;/code&gt; 文件中实现一个继承自 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StatelessWidget&lt;/code&gt; 的类比如叫 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MyApp&lt;/code&gt;，然后在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.dart&lt;/code&gt; 文件中的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main&lt;/code&gt; 方法里实例化一个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MyApp&lt;/code&gt; 对象，作为 Flutter 应用的根组件。&lt;/p&gt;
 
@@ -533,9 +1011,9 @@ Got dependencies!
 
 &lt;p&gt;继承自 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StatefulWidget&lt;/code&gt; 的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NewsListPage&lt;/code&gt; 组件，通过 createState 创建了状态管理类。&lt;/p&gt;
 
-&lt;h3 id=&quot;第-10-节--widget导航路由网络请求和项目发布&quot;&gt;第 10 节 · Widget、导航路由、网络请求和项目发布&lt;/h3&gt;
+&lt;h3 id=&quot;第-13-节--widget导航路由网络请求和项目发布&quot;&gt;第 13 节 · Widget、导航路由、网络请求和项目发布&lt;/h3&gt;
 
-&lt;h4 id=&quot;101常用-widget&quot;&gt;10.1、常用 Widget&lt;/h4&gt;
+&lt;h4 id=&quot;131常用-widget&quot;&gt;13.1、常用 Widget&lt;/h4&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StatefulWidget&lt;/code&gt;。&lt;/li&gt;
@@ -562,11 +1040,11 @@ Got dependencies!
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;102导航路由&quot;&gt;10.2、导航路由&lt;/h4&gt;
+&lt;h4 id=&quot;132导航路由&quot;&gt;13.2、导航路由&lt;/h4&gt;
 
 &lt;p&gt;iOS、Android 的页面导航管理都会维护一个路由栈，对应的方法是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Navigator.push()&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Navigator.pop()&lt;/code&gt;，后者回退同时可以返回数据给主屏界面。&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Navigator.pop()&lt;/code&gt; 可以接受第二个参数（可选），数据通过 future 的方法传递返回值。&lt;/p&gt;
 
-&lt;h4 id=&quot;103网络请求&quot;&gt;10.3、网络请求&lt;/h4&gt;
+&lt;h4 id=&quot;133网络请求&quot;&gt;13.3、网络请求&lt;/h4&gt;
 
 &lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;HttpClient&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;httpClient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HttpClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;HttpClientRequest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;httpClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getUrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
@@ -576,7 +1054,7 @@ Got dependencies!
 &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;decode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h4 id=&quot;104项目发布&quot;&gt;10.4、项目发布&lt;/h4&gt;
+&lt;h4 id=&quot;134项目发布&quot;&gt;13.4、项目发布&lt;/h4&gt;
 
 &lt;p&gt;发布 Release 版本，以 web 端为例。&lt;/p&gt;
 
@@ -584,6 +1062,63 @@ Got dependencies!
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-12.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;第四章--调试&quot;&gt;第四章 · 调试&lt;/h2&gt;
+
+&lt;h3 id=&quot;第-14-节--启用-flutter-devtools&quot;&gt;第 14 节 · 启用 Flutter DevTools&lt;/h3&gt;
+
+&lt;p&gt;我们可以在 VSCode 中「Command + P」输入「&amp;gt;Flutter: Open DevTools」，下图是使用 DevTools 中的 Widget Inspector：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-16.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;也可以在「Command + P」输入「&amp;gt;Flutter: Open DevTools」选择「Open DevTools in Web Browser」在浏览器中打开。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-17.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可以看到浏览器地址是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://127.0.0.1:9100/&lt;/code&gt;，但是如果直接在浏览器打开看到的是下面的页面，需要输入所要连接的 App 的 URL：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-18.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在 DevTools 我们可以看到各种开发调试工具：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Flutter Inspector：用于调试和分析应用的 UI 布局。开发者可以查看和编辑小部件树、查看布局边界、调整布局参数等，以便更好地理解和调试应用的 UI。&lt;/li&gt;
+  &lt;li&gt;Performance：针对 UI 性能过低问题，比如滑动卡顿。&lt;/li&gt;
+  &lt;li&gt;CPU Profiler：分析应用的 CPU 使用情况。它提供了一个时间轴视图，显示应用在一段时间内 CPU 的占用情况。&lt;/li&gt;
+  &lt;li&gt;Memory：内存问题排查，可以帮助开发者查看应用的内存使用情况，并识别内存泄漏问题。&lt;/li&gt;
+  &lt;li&gt;Debugger：调试工具。&lt;/li&gt;
+  &lt;li&gt;Network：网络请求分析工具，可以帮助开发者查看应用发送和接收的网络请求，包括请求详情、请求时间线等。&lt;/li&gt;
+  &lt;li&gt;Logging：帮助开发者查看应用的日志输出，包括调试信息、错误日志等。开发者可以根据关键字过滤日志，以便更快地定位和解决问题。&lt;/li&gt;
+  &lt;li&gt;App Size：分析包大小。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;141性能分析performance&quot;&gt;14.1、性能分析（Performance）&lt;/h4&gt;
+
+&lt;p&gt;只能在真机或 Profile 模式下运行。先看下 Performance Overlay，绿色线是展示当前帧的耗时，UI thread、GPU thread 分开显示。耗时超过 16.6 毫秒（对应低于 60 FPS，即会丢帧）。如果点开「Performance Overlay」即如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-21.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;当点开「Performance Overlay」，则在运行 App 后能看到如下 UI thread、GPU thread 性能图表（Raster 对应的就是 GPU），上面是 UI Task Runner 线程耗时，下面是 GPU Task Runner 线程耗时，如下图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-22.png&quot; alt=&quot;&quot; width=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;UI Task Runer 是 Flutter Engine 执行 Dart isolate code 的耗时，GPU Task Runner 是被执行设备 GPU 的相关的调用。&lt;/p&gt;
+
+&lt;h4 id=&quot;142性能优化常见关注点以及一个常见的性能优化案例&quot;&gt;14.2、性能优化常见关注点以及一个常见的性能优化案例&lt;/h4&gt;
+
+&lt;p&gt;一般我们关注性能优化的点有：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;提高 build 效率；&lt;/li&gt;
+  &lt;li&gt;提高 paint 效率，经常通过 RepainBoundry 创建单独的 layer 减少重绘区域；&lt;/li&gt;
+  &lt;li&gt;减少 build 中的逻辑处理：毕竟页面刷新时 Widget 的 build 会被频繁调用（每一帧都调用），所以 build 里应该只处理 UI 相关的逻辑；&lt;/li&gt;
+  &lt;li&gt;减少 ClipPath、saveLayer 使用：saveLayer 会在 GPU 中分配一块新的绘图缓冲区，切换绘图目标，这个操作非常耗时；clipPath 会影响每个绘图指令，做一些相交操作，相交部分之外都会被剔除掉，也很耗时。&lt;/li&gt;
+  &lt;li&gt;减少 Opacity Widget 的使用：尤其是在动画中，因为它会导致 Widget 每一帧都会被重建，可以使用 AnimatedOpcity 或 FadeInImage 进行代替。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在一个构建的 Widget 树结构中，看看从上到下的 Widget，如果 setState 的修改是在一个比较上面的 Widget 的 setState 中发生的，而改变的是一个比较下面的节点，这其实是存在性能优化空间的。优化的方法，就是把变化放在树结构里比较下面那个 Widget 的 setState 里。&lt;/p&gt;
+
+&lt;p&gt;总价一下，就是提高 build 的效率，让 setState 刷新数据尽量下发到比较底层（指树的底层）的节点。&lt;/p&gt;
 
 &lt;h2 id=&quot;附录&quot;&gt;附录&lt;/h2&gt;
 
