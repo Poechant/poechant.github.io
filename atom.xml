@@ -4,7 +4,7 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-04-29T20:42:12+08:00</updated>
+ <updated>2023-04-29T23:48:35+08:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
@@ -18,7 +18,7 @@
    <link href="https://www.mikecaptain.com/2023/04/29/captain-flutter-1/"/>
    <id>https://www.mikecaptain.com/2023/04/29/captain-flutter-1</id>
    <updated>2023-04-29T16:10:13+08:00</updated>
-   <content type="html">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#第一章--准备与-first-step&quot; id=&quot;markdown-toc-第一章--准备与-first-step&quot;&gt;第一章 · 准备与 First Step&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#第-1-节--环境配置与-hello-world&quot; id=&quot;markdown-toc-第-1-节--环境配置与-hello-world&quot;&gt;第 1 节 · 环境配置与 Hello World&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第-2-节--first-step在-macos-平台跑第一个-app&quot; id=&quot;markdown-toc-第-2-节--first-step在-macos-平台跑第一个-app&quot;&gt;第 2 节 · First Step：在 macOS 平台跑第一个 App&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#第-3-节--在-ios-平台设备及模拟器上跑起第一个-app&quot; id=&quot;markdown-toc-第-3-节--在-ios-平台设备及模拟器上跑起第一个-app&quot;&gt;第 3 节 · 在 iOS 平台（设备及模拟器）上跑起第一个 App&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第-4-节--在-android-平台跑起第一个-app&quot; id=&quot;markdown-toc-第-4-节--在-android-平台跑起第一个-app&quot;&gt;第 4 节 ·...</content>
+   <content type="html">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#第一章--准备与-first-step&quot; id=&quot;markdown-toc-第一章--准备与-first-step&quot;&gt;第一章 · 准备与 First Step&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#第-1-节--环境配置与-hello-world&quot; id=&quot;markdown-toc-第-1-节--环境配置与-hello-world&quot;&gt;第 1 节 · 环境配置与 Hello World&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第-2-节--first-step在-macos-平台跑第一个-app&quot; id=&quot;markdown-toc-第-2-节--first-step在-macos-平台跑第一个-app&quot;&gt;第 2 节 · First Step：在 macOS 平台跑第一个 App&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第-3-节--在-ios-平台设备及模拟器上跑起第一个-app&quot; id=&quot;markdown-toc-第-3-节--在-ios-平台设备及模拟器上跑起第一个-app&quot;&gt;第 3 节 · 在 iOS 平台（设备及模拟器）上跑起第一个 App&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第-4-节--在-android-平台跑起第一个-app&quot; id=&quot;markdown-toc-第-4-节--在-android-平台跑起第一个-app&quot;&gt;第 4 节 · 在 Android 平台跑起第一个...</content>
  </entry>
 
  
