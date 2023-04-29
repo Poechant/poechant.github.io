@@ -4,12 +4,22 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-04-25T17:36:30+08:00</updated>
+ <updated>2023-04-29T09:50:49+08:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
    <email>zhongchao.ustc@gmail.com</email>
  </author>
+
+ 
+
+ <entry>
+   <title>【摘录】我国城乡二元结构的由来</title>
+   <link href="https://www.mikecaptain.com/2023/04/29/china-dual-economic-structure/"/>
+   <id>https://www.mikecaptain.com/2023/04/29/china-dual-economic-structure</id>
+   <updated>2023-04-29T08:40:13+08:00</updated>
+   <content type="html">&lt;p&gt;编者（麦克船长）按：美国作为互联网乃至科技行业的全球领导者，始终还是中国互联网及科技发展的关键参照物。两者相比，中国有很多独特的宏观因素导致无法使用 Time Machine 来照搬美国，同时目前前沿领域两者的时间差也已经非常小了（这非常不同于 PC 互联网浪潮），所以即便有 Time Machine 有效性也没那么充足了（尽管仍然有一定参考价值）。这其中有一个关键特征，就是中国的城乡二元经济结构，受此影响最显著的科技有公司比如拼多多。&lt;/p&gt; &lt;p&gt;以下是原文（原文链接在文末）。&lt;/p&gt; &lt;p&gt;我国在发展中出现的「城乡二元结构」和「三农问题」重大矛盾的由来已久，它们是历史长期发展过程中多种因素形成的。&lt;/p&gt; &lt;h2 id=&quot;一历史和传统因素&quot;&gt;一、历史和传统因素&lt;/h2&gt; &lt;h3 id=&quot;12000-多年的封建社会制度下的城乡结构&quot;&gt;1、2000 多年的封建社会制度下的城乡结构&lt;/h3&gt; &lt;p&gt;18 世纪初，我国清朝后期城市人口比重仅为 6%，解放后 1949 年城市人口也仅为 10.6%，当时全球城市化水平已达到 29%，欧美发达国家城市化水平早已超过 60%。在此之前，我国经历了 2000 多年漫长的封建主义和小农经济社会，农村土地制度极不合理，占农村人口 90% 的贫农、雇农、中农和其他人群仅占 20%-30% 的土地，而占农村人口不到 10% 的地主、富农却占有 70%-80% 的土地。形成「&lt;strong&gt;田主不知耕，耕者多无田&lt;/strong&gt;」的局面。正当此时，英国 18 世纪中叶兴起大规模圈地运动，经过半个世纪，众多的小农户转变为大农场，采用新农艺和新农具，刺激了农业技术和农艺学的发展；法国 18 世纪末农产品为工业品的 2.5 倍，农村占优势，法国商品经济的发展引进了英国式大农场的建立；美国经历了 1775―1781 年独立战争和 1861―1865 年南北战争后，没有经过封建社会直接跨进资本主义经济。&lt;strong&gt;中国 1840 年以前仍停滞在晚清封建社会，在农业中未见资本主义的萌芽&lt;/strong&gt;，加上中外反动势力不允许发展民族资本主义经济，以及资产阶级革命的软弱性和不彻底性，中国农业没有走上资本主义道路。&lt;/p&gt; &lt;p&gt;麦克船长的笔记：&lt;/p&gt; &lt;ul&gt; &lt;li&gt;为什么中国的资产阶级革命有软弱性和不彻底性的问题，西方世界呢？&lt;/li&gt; &lt;/ul&gt;...</content>
+ </entry>
 
  
 
@@ -115,37 +125,6 @@ mikecaptain@CVN % ./chat
    <id>https://www.mikecaptain.com/2023/03/02/chatgpt-api</id>
    <updated>2023-03-02T08:54:13+08:00</updated>
    <content type="html">&lt;p&gt;此前 GPT-3 也早已开放 API，我在麦克船长的博客 MikeCaptain.com 中已介绍过，当时在 NLP 方面能使用的 API 主要是 GPT-3，这是&lt;a href=&quot;http://www.mikecaptain.com/2023/01/24/openai-official-doc/&quot;&gt;原文链接&lt;/a&gt;。此前 OpenAI API 就已经有了不同功能和价位的多种模型，还提供了在基础模型上的 fine-tune 服务（当然 fine-tune 本身收费，且 fine-tune 后的模型调用费用比 base model 要贵得多）。本次更新，主要是增加了 GPT-3.5（用于 NLP）和 Whisper（用于 audio to text）的 API：&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/img/src/2023/03/captain-chatgpt-api-1.png&quot; alt=&quot;&quot; width=&quot;720&quot; /&gt;&lt;/p&gt; &lt;p&gt;ChatGPT 和 Whisper 模型现已在 OpenAI 的 API 上可用，通过一系列系统范围的优化，自去年 12 月以来，OpenAI 已将 ChatGPT 的成本降低了 90%；不仅仅是...</content>
- </entry>
-
- 
-
- <entry>
-   <title>千日酒：麦克船长在阿里巴巴的第 999 天</title>
-   <link href="https://www.mikecaptain.com/2023/02/27/captain-alibaba-999/"/>
-   <id>https://www.mikecaptain.com/2023/02/27/captain-alibaba-999</id>
-   <updated>2023-02-27T19:12:13+08:00</updated>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2023/captain-alibaba-999-1.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;千日酒&quot;&gt;千日酒&lt;/h3&gt;
-
-&lt;p&gt;[晋] 干宝&lt;/p&gt;
-
-&lt;p&gt;狄希，中山人也。能造「千日酒」，饮之千日醉。时有州人姓刘，名玄石，好饮酒，往求之。希曰：「我酒发来未定，不敢饮君。」石曰：「纵未熟，且与一杯，得否？」希闻此语，不免饮之。复索曰：「美哉！可更与之。」希曰：「且归，别日当来，只此一杯，可眠千日也。」石别，似有怍色。至家，醉死。家人不之疑，哭而葬之。&lt;/p&gt;
-
-&lt;p&gt;经三年，希曰：「玄石必应酒醒，宜往问之。」既往石家，语曰：「石在家否？」家人皆怪之，曰：「玄石亡来，服以阕矣。」希惊曰：「酒之美矣，而致醉眠千日，今合醒矣。」乃命其家人凿冢破棺看之。冢上汗气彻天，遂命发冢。方见开目张口，引声而言曰：「快哉，醉我也！」因问希曰：“「作何物也，令我一杯大醉，今日方醒？日高几许？」墓上人皆笑之，被石酒气冲入鼻中，亦各醉卧三月。&lt;/p&gt;
-
-&lt;p&gt;——《搜神记》&lt;/p&gt;
-
-&lt;h3 id=&quot;终为始&quot;&gt;终为始&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;目标驱动，以终为始，纵情向前。&lt;/li&gt;
-  &lt;li&gt;不要在虚假繁荣、自圆其说中虚度光阴。&lt;/li&gt;
-  &lt;li&gt;要追随大才之人。&lt;/li&gt;
-  &lt;li&gt;爱，财富与创造。&lt;/li&gt;
-  &lt;li&gt;正视你的财富与地位。&lt;/li&gt;
-&lt;/ul&gt;
-</content>
  </entry>
 
  

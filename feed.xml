@@ -1,4 +1,92 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-04-25T17:36:30+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">麦克船长：理解和重塑 AI 时代的八个一切 / The Eight ALLs for Understanding and Shaping the AI Era</title><link href="https://www.mikecaptain.com/2023/04/19/eight-alls-for-understanding-and-shaping-the-ai-era/" rel="alternate" type="text/html" title="麦克船长：理解和重塑 AI 时代的八个一切 / The Eight ALLs for Understanding and Shaping the AI Era" /><published>2023-04-19T12:40:13+08:00</published><updated>2023-04-19T12:40:13+08:00</updated><id>https://www.mikecaptain.com/2023/04/19/eight-alls-for-understanding-and-shaping-the-ai-era</id><content type="html" xml:base="https://www.mikecaptain.com/2023/04/19/eight-alls-for-understanding-and-shaping-the-ai-era/">&lt;p&gt;I am Mike Captain, a product manager focusing on the AI field. We often find ourselves constrained by current product forms, making it difficult to think about truly AI-native products. While pondering on how to build AI-native products, I have summarized the following eight points. I hope sharing them with you will be helpful:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-04-29T09:50:49+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">【摘录】我国城乡二元结构的由来</title><link href="https://www.mikecaptain.com/2023/04/29/china-dual-economic-structure/" rel="alternate" type="text/html" title="【摘录】我国城乡二元结构的由来" /><published>2023-04-29T08:40:13+08:00</published><updated>2023-04-29T08:40:13+08:00</updated><id>https://www.mikecaptain.com/2023/04/29/china-dual-economic-structure</id><content type="html" xml:base="https://www.mikecaptain.com/2023/04/29/china-dual-economic-structure/">&lt;p&gt;编者（麦克船长）按：美国作为互联网乃至科技行业的全球领导者，始终还是中国互联网及科技发展的关键参照物。两者相比，中国有很多独特的宏观因素导致无法使用 Time Machine 来照搬美国，同时目前前沿领域两者的时间差也已经非常小了（这非常不同于 PC 互联网浪潮），所以即便有 Time Machine 有效性也没那么充足了（尽管仍然有一定参考价值）。这其中有一个关键特征，就是中国的城乡二元经济结构，受此影响最显著的科技有公司比如拼多多。&lt;/p&gt;
+
+&lt;p&gt;以下是原文（原文链接在文末）。&lt;/p&gt;
+
+&lt;p&gt;我国在发展中出现的「城乡二元结构」和「三农问题」重大矛盾的由来已久，它们是历史长期发展过程中多种因素形成的。&lt;/p&gt;
+
+&lt;h2 id=&quot;一历史和传统因素&quot;&gt;一、历史和传统因素&lt;/h2&gt;
+
+&lt;h3 id=&quot;12000-多年的封建社会制度下的城乡结构&quot;&gt;1、2000 多年的封建社会制度下的城乡结构&lt;/h3&gt;
+
+&lt;p&gt;18 世纪初，我国清朝后期城市人口比重仅为 6%，解放后 1949 年城市人口也仅为 10.6%，当时全球城市化水平已达到 29%，欧美发达国家城市化水平早已超过 60%。在此之前，我国经历了 2000 多年漫长的封建主义和小农经济社会，农村土地制度极不合理，占农村人口 90% 的贫农、雇农、中农和其他人群仅占 20%-30% 的土地，而占农村人口不到 10% 的地主、富农却占有 70%-80% 的土地。形成「&lt;strong&gt;田主不知耕，耕者多无田&lt;/strong&gt;」的局面。正当此时，英国 18 世纪中叶兴起大规模圈地运动，经过半个世纪，众多的小农户转变为大农场，采用新农艺和新农具，刺激了农业技术和农艺学的发展；法国 18 世纪末农产品为工业品的 2.5 倍，农村占优势，法国商品经济的发展引进了英国式大农场的建立；美国经历了 1775―1781 年独立战争和 1861―1865 年南北战争后，没有经过封建社会直接跨进资本主义经济。&lt;strong&gt;中国 1840 年以前仍停滞在晚清封建社会，在农业中未见资本主义的萌芽&lt;/strong&gt;，加上中外反动势力不允许发展民族资本主义经济，以及资产阶级革命的软弱性和不彻底性，中国农业没有走上资本主义道路。&lt;/p&gt;
+
+&lt;p&gt;麦克船长的笔记：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;为什么中国的资产阶级革命有软弱性和不彻底性的问题，西方世界呢？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2半殖民地半封建社会制度下的城乡结构&quot;&gt;2、半殖民地半封建社会制度下的城乡结构&lt;/h3&gt;
+
+&lt;p&gt;1840-1949 年一百多年来，由于外强侵略、内政腐朽，长年战乱、灾荒不断和半封建土地制度的严重束缚，致使民不聊生，经济发展缓慢，与世界差距拉大。解放前 1930 年末，整个工业中现代工业仅占 10%，分散的手工业占 90%，产业工人只有 300 万，占全国人口的 0.6%。解放前工业最高年产量，钢为 92.3 万吨，原煤为 6188 万吨，电不到 60 亿度，而且大部分在日本侵占的东北。旧中国当权者还以「农业立国」而自慰，实际上当时中国变成了被帝国主义及其代理人压迫和剥削的落后的半殖民地半封建农业国，城市人口也仅占全国的1/10，与当时全球平均水平比较相差 20 个百分点。&lt;/p&gt;
+
+&lt;h2 id=&quot;二地理和交通因素&quot;&gt;二、地理和交通因素&lt;/h2&gt;
+
+&lt;h3 id=&quot;1地理环境和交通发达与否对经济发展和城市形成影响极大&quot;&gt;1、地理环境和交通发达与否对经济发展和城市形成影响极大。&lt;/h3&gt;
+
+&lt;p&gt;现代工业发展证明，地理环境与交通发达是城市形成的重要因素之一。我国唐朝商业往来多采取陆地交通，以车马驼运为主，如通向西域的丝绸之路；宋朝以后建港口开辟海疆运输，如福建的泉州港和郑和下西洋；1840 年以后航海业、造船业在沿江沿海商埠迅速发展起来；第二次大战后航空业与海运业平分秋色；上世纪八九十年代后我国高速公路迅猛崛起，构筑了我国物流与交通的铁路、公路、航空和水运四大动脉；近年由于科学技术的发达，更出现了地下管道运输与网络交易等便捷高速的信息工具。由于时代不同和经济发展水平不同，作为现代经济的城市化水平和交流工具也有不同。&lt;/p&gt;
+
+&lt;h3 id=&quot;2辛亥革命前&quot;&gt;2、辛亥革命前&lt;/h3&gt;
+
+&lt;p&gt;我国几千年来以农、牧和手工业为主，直到清朝后期城市人口达 2400 多万，占总人口比重仅为 6%，局部沿海地区略高一些，如 1781 年（乾隆《杭州府志》载乾隆四十九年）杭州地区除余杭县以外的九个县共有市民 26917 人，乡民 234656 人，市民占总人口的 10.26%。&lt;/p&gt;
+
+&lt;p&gt;麦克船长笔记：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;很有意思的数字，对比杭州目前是 2000 万量级的人口。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3解放前&quot;&gt;3、解放前&lt;/h3&gt;
+
+&lt;p&gt;1950年以前150年间世界城市人口从 4000 万增加到 7 亿，增长了 16 倍，同期中国人口也存在向城市缓慢集中的趋势，但到全国解放时城市人口从 2400 万仅增为 5700 万，增长了 1.4 倍。由于帝国主义列强的操纵，主要工业建设在沿海少数大中城市，形成东重西轻格局，全国 70% 以上的工业集中在占国土不到 12% 的沿海地区，面积占 68% 的内地工业生产总值占全国仅为 9%。&lt;/p&gt;
+
+&lt;p&gt;麦克船长笔记：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;如何理解这个「帝国主义列强的操纵」？对比其他国家发展，不是集中在少数大中城市吗？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;4城市化对经济发展的作用&quot;&gt;4、城市化对经济发展的作用&lt;/h3&gt;
+
+&lt;p&gt;我国人口密度（人/平方公里）到上世纪末全国为 168 人，东部为 389 人，中部为 168 人，西部仅为 53 人。2001 年全国 662 个城市中各占比重，东部为 41.3%，中部为 34.3%，西部为 24.3%。而东部在大中城市中比重较大，如：400 万人口以上的 8 个城市中占 63%，200 至 400 万人口的 17 城市中占 65%；100 至 200 万人口 141 个城市中占 52%，50 至 100 万人口 279 个城市中占 47%；相反西部 12 个省区在中小城市中占的比重较大，如 20 至 50 万人口 180 个城市中占 31%，20 万人口以下 37 个城市中占 70%。全国省会及计划单列市是各地的政治经济文化中心，其有关数据占全国的比重也说明城市的重要性，如其人口仅占全国 16.72%，而其 GDP 占 40.2%，其城镇居民储蓄存款余额占 38.8%。再以我国改革开放新发展起业的沿海开放城市为例，2001 年其国土面积占全国仅为 1.46%，其人口占 7.32%，其就业人员高达 16.3%，其 GDP 占 19.74%，其实际利用外资占 34.36%，其年末居民储蓄存款余额占 17%。&lt;/p&gt;
+
+&lt;p&gt;概括的说，一是从地区看，我国人口密集于东南，特别是长江、黄河、珠江、辽河下游和沿海地区，而西部的内蒙、新疆、青海和西藏四省区面积约占全国的一半，其人口占不到 4%。二是从地势看，全国 60% 的人口居住在海拔400米以下的平原、河谷、盆地和浅丘陵，30% 居住在 400 米至 800 米之间的山地，10% 居住在 800 米以上的高山地区。三是从交通条件看，在公路、铁路、沿海、内河航道及其他交通要道经济发达地区两侧人口较密，离交通线越远经济欠发达地区的人口越稀，按 2001 年数据，西部 12 个省区市国土面积占全国的 70%，而其交通运输线路长度占全国的比重，铁路营业里程只有 36%，公路只有 41%，内河仅有 19%。四是从大中城市的规模效益看，大中城市聚集效益好发展速度快，全国解放后 1953 年我国仅有城市 157 个，1982 年有 236 个（其中 100 万人口以上的城市只有 37 个占 16%），到了 2001 年有 662 个城市（其中 100 万以上人口的城市就有 166 个占 25%）。&lt;/p&gt;
+
+&lt;h2 id=&quot;三思维和决策因素&quot;&gt;三、思维和决策因素&lt;/h2&gt;
+
+&lt;p&gt;我国城市化走了一个漫长而弯曲的道路，1949 年城市化水平仅为 10.6%，1960 年上升为 19.8%，每年提升 0.84 个百分点，由于历史原因 1978 年反而下降为 17.92%。改革开放之后，我国城市化重新踏上了正常发展轨道。虽然 2001 年达到 37.66%，18 年平均每年提升 1.1 个百分点，但至今我国城市化滞后工业化水平和同等国家城市化水平约 15 个百分点左右，其深层次思维和决策原因有二。&lt;/p&gt;
+
+&lt;h3 id=&quot;1农村现代化道路问题一直没有得到解决&quot;&gt;1、农村现代化道路问题一直没有得到解决&lt;/h3&gt;
+
+&lt;p&gt;全国解放前后，广大农村实行土地改革，充分满足广大农民群众「耕者有其田」的要求，调动了农民群众劳动生产的积极性，为了使广大农民克服个体经济和小规模生产的局限性，提倡农民群众组织起来，成立互助组、土地入股的初级合作社和完全按劳分配的高级合作社，这在当时是有利于生产力的发展和大得民心的方针。由于当时思维和决策上出现了「左」的倾向，由「大跃进」和「人民公社化」以及后来的「以阶级斗争为纲」的「文化大革命」，对待农民群众的思维和决策上发生了突变，由原来的工人阶级领导的工农联盟的团结教育对象，突变为把农民看成时时刻刻在滋生资本主义的小生产者，视为社会主义的改造对象，有的地方对于农民种好自留地和养口母猪也要割「资本主义的尾巴」，对有一定技术和经验的农民进城作点小生意或者搞点第三产业当成为「盲流」加以歧视与排斥，这些「左」的思维和决策因素一直延续到 1978 年末党的十一届三中全会才有了新的转折。后来兴起的以经济建设为中心和家庭联产承包责任制，冲破了绝对平均主义的「大锅饭」，解放了生产力。&lt;/p&gt;
+
+&lt;h3 id=&quot;2农业发展道路上始终存在着如何解决农业规模经营问题&quot;&gt;2、农业发展道路上始终存在着如何解决农业规模经营问题&lt;/h3&gt;
+
+&lt;p&gt;也就是小农如何转变成大农的历史性课题，土地改革后农民必然走组织起来的道路，前苏联走的是集体农庄道路，我国走的是互助合作道路，这是第一次机遇和摸索，由于当时思维和决策上存在着「一大二公」的错误，把互助组合作社拔高为「人民公社」的统一核算单位，脱离了马克思列宁主义的生产关系一定要适应生产力的规律，也脱离了广大农民群众意愿，加上自然灾害农业减产农民减收，导致发生严重的三年困难，为了纠正上述失误，曾经制定了「60 条」主要是调整缩小核算单位，改为以生产队为核算单位，由于当时「左」的大气候未变。实际上仍然未能解决吃「大锅饭」问题。十一届三中全会以后，虽然实行了家庭联产承包责任制，激励了广大群众的生产积极性，但是，又出现了过度集中到过度分散经营的新矛盾。我国半个世纪以来和国外 200 多年来的经验教训告诉我们，农业必须走产业化、集约化、现代化大农业的道路，现在国家对农民土地的承包权和使用权有了法律规定，既保证农民的承包权不得随意侵犯，又允许农民有偿出租与转让土地使用权。经过多年摸索与发展之后，形成现阶段提倡的公司加农户、订单农业和龙头加合同制农户，或者新的农业股份合作制经济等模式，这是第二次机遇和摸索，将使我国小农最终转变为大农。这样一方面在世界市场上具有一定的竞争力；另一方面可以比较顺利地将农村2亿多剩余劳动力转移到第二、三产业上去，转移到城镇里去，完成中国城市化发展水平；第三可以实现农村现代化，提高农业经济效益，增加农民收入，使广大农民群众全面达到小康水平。&lt;/p&gt;
+
+&lt;h2 id=&quot;四制度和管理因素&quot;&gt;四、制度和管理因素&lt;/h2&gt;
+
+&lt;p&gt;我国在计划经济体制时期，在制度和管理上把城市与农村截然分开，形成社会经济「城乡二元结构」分治格局。改革开放以来，随着市场经济体制的建立与完善，逐渐打破城乡分割局面，但现实生活中仍存在着「城乡二元结构」种种现象，有待我们去冲破和改革。产生城乡「两张皮」制度和管理因素大体上有三:&lt;/p&gt;
+
+&lt;h3 id=&quot;1户籍制度和管理体制&quot;&gt;1、户籍制度和管理体制。&lt;/h3&gt;
+
+&lt;p&gt;（1）历史与现状。新中国成立后，户籍政策采取农业户口与非农业户口两种制度与管理体制。在计划经济体制下，把城市人口与农村人口截然分开，人为地立了一堵墙，使我国城市化走了一个弯路。当时「农转非」是特别困难的事情，一般是通过上大学、参军、招工指标才能实现。&lt;/p&gt;
+
+&lt;p&gt;解放后城市人口时多时少，有 4 次大变动。第一次是 1958-1960 年的「大跃进」时期，组织 1960 万农民进城，使 1960 年城市人口比重上升为 16.84%，由于自然灾害和决策失误经济受到严重损失，1962 年又动员 2000 万城镇人口返乡；第二次是 1968-1975 年全国动员 1000 万知识青年上山下乡，还不包括大批干部下放农村和「五七干校」接受再教育，1972 年后通过招工、招生、参军以及通过病残、「顶替」、「招工」和「落实政策」等途径与方式使知识青年和干部基本上全部返回城市，城市人口比重再次上升；第三次是由于乡镇企业兴起约有 1.5 亿多农民「离土离乡」进入乡镇企业劳动就业，使我国小城镇数量由猛降到猛增，从 1952 年 5402 个下降为 1982 年 2644 个，又在 2001 年猛增为 19555 个；第四次是由于沿海开放城市的崛起，如广东深圳特区等建设工业园区和新技术开发区以及外资企业发展的需要，来自四川、安徽、江西、河南和两湖等省 1.2 亿农民工进入城市作「打工仔」和「打工妹」，虽然他们是暂住城市，但是，客观上是城市长期固定的建设者与维护者，这些人如果计入城市人口，比重就会自然而然的上升为 47% 的水平，达到目前世界平均水平。&lt;/p&gt;
+
+&lt;p&gt;（2）从当前公安部户籍管理制度改革要点也能看出当初「左」的思维和决策的消极因素。&lt;/p&gt;
+
+&lt;p&gt;户籍改革正争取尽快打破农业、非农业户口管理二元结构，废除由此衍生的「农转非」计划指标管理政策以及蓝印户口等户口形式，建立全国城乡统一的户口登记管理制度；逐步放宽户口迁移的限制，已具有合法固定住所、稳定的职业或生活来源为基本落户条件、调整户口迁移政策，根据经济、社会发展的客观需要和社会的综合承受能力、最终实现户口自由迁徙；逐步剥离有关部门附加在户口管理上的诸多行政管理职能，还户口管理的本来面目。争取有关部门的支持、尽快出台《户籍法》。现在广东和江苏已经按照中央精神把全省的“农业户口簿与非农业户口簿”改革为统一的「居民户口籍」，受到人民的拥护。&lt;/p&gt;
+
+&lt;h3 id=&quot;2对于城乡基础设施包括水电路电讯等分别建设与管理&quot;&gt;2、对于城乡基础设施（包括水、电、路、电讯等）分别建设与管理。&lt;/h3&gt;
+
+&lt;p&gt;在计划经济体制下，城市基础建设由国家全包，农村则基本上是由农民自筹解决，农村生产与生活急缺的中小型基础设施投资，实际上主要依靠农民自己集资投劳举办，而国家财政用于农业的支出与农业在国民经济中的地位不相对称，有关数据显示，历年用于农业支出占全国支出的比重还呈现递减的趋势，分别是 1978 年为 13.4%，1990 年下降为 9.98%，1995 年为 8.42%，2000 年为 7.75%。2001 年地方支援农村生产支出和农业综合开发支出 358.56 亿元占全国地方财政支出也仅为 2.73%。在一定程度上致使近年来农村基层干部进行大量集资集劳，修路、造桥、建校、改水等工程。在农村税费改革前向农民征收的主要费用项目简称是「三提留」、「五统筹」。「三提留」是指由村一级组织收取的公积金、公益金和集体管理费；「五统筹」是指由乡一级政府收取的计划生育、优抚、民兵训练、乡村道路建设和民办教育方面的费用。近年开展的费改税具体内容是「三个取消、两个调整、一个逐步取消」，即取消生猪屠宰税，取消乡统筹，取消农村教育集资等专门向农民征收的行政事业性收费和政府性基金、集资；调整农业税政策和调整农业特产税征收办法；在几年内逐步取消统一规定的劳动积累工和义务工。举办集体生产和公共事业所需资金，实行「一事一议」，由村民大会或村民代表大会讨论决定。农村税费改革一般可以减轻农民负担1/3左右，相应地增加了农民收入。2003年中央决定取消每年征收的122亿元农业特产税，将对鼓励经济发展和增加农民收入起到直接作用。&lt;/p&gt;
+
+&lt;h3 id=&quot;3在义务教育和公共服务方面也存在城乡不同的待遇&quot;&gt;3、在义务教育和公共服务方面也存在城乡不同的待遇。&lt;/h3&gt;
+
+&lt;p&gt;全国农村有 1.33 亿应受九年义务教育的学生，按照政府公共职能的要求，中央和省政府应当让农村像对待城市 6000 万在受九年义务教育的学生一样享受义务教育制度的实惠，但是，实际上还有不少差距。有关数据显示：我国教育经费占全国财政支出的比重还呈现逐年缩小趋势，如 1996 年为 28.5%，1997-2000 年分别为 27.42%，27.31%，25.39%，24.22%。2000 年小学在校生每人平均预算内经费，城镇为 658 元，农村仅为 479 元，只相当于城镇的 72%。而且农村初中和小学义务教育经费只有 60%-70% 由财政预算内解决，其余 30%-40% 由社会团体、个人办学、社会捐资、公民集资办学、学费杂费和其他来源解决，结果还是增加了乡镇政府和农民群众的负担。此外，城市居民和职工一般享受公费医疗与养老保障等待遇，而农村居民医疗则基本上属于自理和传统的家庭养老制度。另外，在商品供销方面，过去城市居民吃、穿、用都是计划定量供应，而农村居民是生产者，留下种子与自用的和交够「统购任务」后才可以上市出售，不足时还要吃「返销粮」。现在虽然都是市场经济体制，但我国城乡这种分割的「二元结构」现象，还经常出现在现实生活与生产领域当中。如目前一些大中城市为了保证城市居民就业，限制农民进入城市较好的行业和工种。一些地方变相收取种种费用，如对农民工的子女上中小学收取高额「赞助费」。因此，实现城市化必需清除对农村劳动力进城不合理的限制，加快户籍制度的改革，彻底解决城乡居民的两种身份和两种就业待遇的不平等问题。&lt;/p&gt;
+
+&lt;p&gt;来源：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://politics.people.com.cn/n/2013/1114/c70731-23542867.html&lt;/code&gt;。&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="thinking" /><category term="China" /><category term="中国" /><category term="城市" /><category term="乡镇" /><category term="二元" /><category term="经济" /><category term="结构" /><category term="城乡二元经济结构" /><category term="二元经济结构" /><category term="城乡二元结构" /><category term="dual economic structure" /><category term="dualism" /><category term="urban-rural" /><summary type="html">美国作为互联网乃至科技行业的全球领导者，始终还是中国互联网及科技发展的关键参照物。两者相比，中国有很多独特的宏观因素导致无法使用 Time Machine 来照搬美国，同时目前前沿领域两者的时间差也已经非常小了（这非常不同于 PC 互联网浪潮），所以即便有 Time Machine 有效性也没那么充足了（尽管仍然有一定参考价值）。这其中有一个关键特征，就是中国的城乡二元经济结构，受此影响最显著的科技有公司比如拼多多</summary></entry><entry><title type="html">麦克船长：理解和重塑 AI 时代的八个一切 / The Eight ALLs for Understanding and Shaping the AI Era</title><link href="https://www.mikecaptain.com/2023/04/19/eight-alls-for-understanding-and-shaping-the-ai-era/" rel="alternate" type="text/html" title="麦克船长：理解和重塑 AI 时代的八个一切 / The Eight ALLs for Understanding and Shaping the AI Era" /><published>2023-04-19T12:40:13+08:00</published><updated>2023-04-19T12:40:13+08:00</updated><id>https://www.mikecaptain.com/2023/04/19/eight-alls-for-understanding-and-shaping-the-ai-era</id><content type="html" xml:base="https://www.mikecaptain.com/2023/04/19/eight-alls-for-understanding-and-shaping-the-ai-era/">&lt;p&gt;I am Mike Captain, a product manager focusing on the AI field. We often find ourselves constrained by current product forms, making it difficult to think about truly AI-native products. While pondering on how to build AI-native products, I have summarized the following eight points. I hope sharing them with you will be helpful:&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;All social interactions can be non-human communication&lt;/li&gt;
@@ -4915,24 +5003,4 @@ Get the current value of a Bitcoin in US dollars using the bitcoincharts api
   &lt;li&gt;https://developer.aliyun.com/article/933516&lt;/li&gt;
   &lt;li&gt;http://www.mikecaptain.com/2023/03/02/chatgpt-api/&lt;/li&gt;
   &lt;li&gt;http://www.mikecaptain.com/2023/01/24/openai-official-doc/&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><summary type="html">开发人员现在可以通过 API 将 ChatGPT 和 Whisper 模型集成到他们的应用程序和产品中。</summary></entry><entry><title type="html">千日酒：麦克船长在阿里巴巴的第 999 天</title><link href="https://www.mikecaptain.com/2023/02/27/captain-alibaba-999/" rel="alternate" type="text/html" title="千日酒：麦克船长在阿里巴巴的第 999 天" /><published>2023-02-27T19:12:13+08:00</published><updated>2023-02-27T19:12:13+08:00</updated><id>https://www.mikecaptain.com/2023/02/27/captain-alibaba-999</id><content type="html" xml:base="https://www.mikecaptain.com/2023/02/27/captain-alibaba-999/">&lt;p&gt;&lt;img src=&quot;/img/src/2023/captain-alibaba-999-1.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;千日酒&quot;&gt;千日酒&lt;/h3&gt;
-
-&lt;p&gt;[晋] 干宝&lt;/p&gt;
-
-&lt;p&gt;狄希，中山人也。能造「千日酒」，饮之千日醉。时有州人姓刘，名玄石，好饮酒，往求之。希曰：「我酒发来未定，不敢饮君。」石曰：「纵未熟，且与一杯，得否？」希闻此语，不免饮之。复索曰：「美哉！可更与之。」希曰：「且归，别日当来，只此一杯，可眠千日也。」石别，似有怍色。至家，醉死。家人不之疑，哭而葬之。&lt;/p&gt;
-
-&lt;p&gt;经三年，希曰：「玄石必应酒醒，宜往问之。」既往石家，语曰：「石在家否？」家人皆怪之，曰：「玄石亡来，服以阕矣。」希惊曰：「酒之美矣，而致醉眠千日，今合醒矣。」乃命其家人凿冢破棺看之。冢上汗气彻天，遂命发冢。方见开目张口，引声而言曰：「快哉，醉我也！」因问希曰：“「作何物也，令我一杯大醉，今日方醒？日高几许？」墓上人皆笑之，被石酒气冲入鼻中，亦各醉卧三月。&lt;/p&gt;
-
-&lt;p&gt;——《搜神记》&lt;/p&gt;
-
-&lt;h3 id=&quot;终为始&quot;&gt;终为始&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;目标驱动，以终为始，纵情向前。&lt;/li&gt;
-  &lt;li&gt;不要在虚假繁荣、自圆其说中虚度光阴。&lt;/li&gt;
-  &lt;li&gt;要追随大才之人。&lt;/li&gt;
-  &lt;li&gt;爱，财富与创造。&lt;/li&gt;
-  &lt;li&gt;正视你的财富与地位。&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="thinking" /><category term="船长" /><category term="船涨" /><category term="麦克船长" /><category term="阿里巴巴" /><summary type="html">玄石饮酒，一醉千日。酒之美矣，而致醉眠千日，今合醒矣。正视自己的财富与地位，不在虚假繁荣、自圆其说中虚度光阴目标驱动，以终为始，纵情向前。</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><summary type="html">开发人员现在可以通过 API 将 ChatGPT 和 Whisper 模型集成到他们的应用程序和产品中。</summary></entry></feed>
