@@ -4,8 +4,8 @@ title: 麦克船长的全栈指南：Google Flutter 开发跨平台 APP（1/3）
 date:   2023-04-29 16:10:13 +0800
 categories: web
 tags: [前端, 开发, web, app, 客户端, 前端, android, ios, html5, 小程序, 应用]
-description: 产品、运营还是工程，最好都要会一些前端，这样方便自己做一点东西便于提高日常的生产力。今天介绍的是 2018 年开始的 Google Flutter 跨多平台终端的技术，支持 iOS、Android、Web、macOS、Linux、Windows ……
-excerpt: 产品、运营还是工程，最好都要会一些前端，这样方便自己做一点东西便于提高日常的生产力。今天介绍的是 2018 年开始的 Google Flutter 跨多平台终端的技术，支持 iOS、Android、Web、macOS、Linux、Windows ……
+description: 在一个人就是一支队伍的时代里（在 AI 急速发展的推动下，未来会越来越趋于《未来简史》所描述的「半神」），产品、运营还是工程，最好都要会一些前端，这样方便自己做一点东西便于提高日常的生产力。今天介绍的是 2018 年开始的 Google Flutter 跨多平台终端的技术，支持 iOS、Android、Web、macOS、Linux、Windows ……
+excerpt: 在一个人就是一支队伍的时代里（在 AI 急速发展的推动下，未来会越来越趋于《未来简史》所描述的「半神」），产品、运营还是工程，最好都要会一些前端，这样方便自己做一点东西便于提高日常的生产力。今天介绍的是 2018 年开始的 Google Flutter 跨多平台终端的技术，支持 iOS、Android、Web、macOS、Linux、Windows ……
 katex: True
 location: 杭州
 author: 麦克船长
@@ -60,7 +60,7 @@ Doctor summary (to see all details, run flutter doctor -v):
 
 详细的安装指南请看 Flutter 官网，例如 macOS 上的安装 `https://flutter.cn/docs/get-started/install/macos`。
 
-## 第 2 节 · First Step：在 macOS 平台跑第一个 App
+### 第 2 节 · First Step：在 macOS 平台跑第一个 App
 
 ```bash
 mikecaptain@CVN % flutter create hello_world
