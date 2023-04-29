@@ -190,7 +190,7 @@ Waiting for connection from debug service on Chrome...                 ⣾
 mikecaptain@CVN % flutter create --platforms web .
 ```
 
-## 第二章 · Flutter 的开发理念
+## 第二章 · Flutter 的开发理念与原理
 
 ### 第 6 节 · Flutter 的开发框架和线程模型
 
@@ -223,7 +223,7 @@ Flutter 生命周期就是 StatefulWidget 的生命周期，从 `createState` �
 * `didChangeDependencies`：当 State 发生变化时会调用。
 * `build` 主要是返回需要渲染的 Widget。`build` 会被调用多次，所以这里只能返回 **widget 的相关逻辑**，避免因为多次执行导致的状态异常。
 
-#### 8.3、触发组件 build：
+#### 8.3、触发组件 build
 
 触发组件 build 的方法有 `didChangeDependencies`、`setState`、`didUpdateWidget`。
 
@@ -234,11 +234,199 @@ Flutter 生命周期就是 StatefulWidget 的生命周期，从 `createState` �
 * `deactivate` 在组件被移除节点后会被调用。
 * `dispose` 是在一个组件被移除，并没有插入到其他节点时，会被调用，即永久删除，并释放组件资源。
 
+### 第 9 节 · Platform Channel
+
+Flutter 是一个跨平台的 UI 框架，Flutter 本身无法提供各种系统能力，比如蓝牙、相机、GPS 等等。用 Platform Channel 来与底层 OS 平台进行异步的消息通信，在发送给底层 OS 之前会编译成二进制消息，在接收到 Flutter 框架时则会解码成 Dart 可理解的值（所有解码器都只是空消息）。涉及到三种主要 Platform Channel：
+
+* `BasicMessageChannel`：传递数据的通道。
+* `MethodChannel`：传递方法调用的通道。
+* `EventChannel`：传递事件的通道。
+
+在 Flutter 与 iOS 或 Android 之间，通过调用 invokeMehotd 发起通信，接收方通过 MethodCallHandle 接收。
+
+### 第 10 节 · 包管理
+
+类似于以前在 Java 中会使用 Ant、Maven，在 Android 会使用 Gradle，在 iOS 中使用 Cocoapods，在 Node 中使用 npm（Node Package Management）等等，下面说说 Flutter 中的包管理。Flutter 的项目中用 `pubspec.yaml` 文件来管理依赖关系。类比来看的话：
+
+* Android 的 Gradle 用 `.gradle` 文件管理配置依赖关系。
+* iOS 的 Cocoapods 用 `Podfile` 文件管理配置依赖关系。
+* Flutter 的 Packages 用 `pubspec.yaml` 文件管理配置依赖关系。
+
+下面是一个典型的、简单的 `pubspec.yaml` 文件：
+
+```yaml
+name: hello_world
+description: A new Flutter project.
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^0.13.3
+  timeago: ^3.1.0
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+  intl: ^0.18.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+```
+
+* 首先是项目名字：`name: hello_world`
+* 应用的版本号：`version: 1.0.0+1`
+* Flutter 环境：`environment:`
+  * SDK 支持版本范围：`sdk: '>=2.19.6 <3.0.0'`
+* 生产环境所有依赖：`dependencies:`，这里实例一些常用依赖。依赖包都会被编译到最终的包里。
+  * HTTP 包：`http: ^0.13.3`
+  * 一个用于时间描述表示的包：`timeago: ^3.1.0`
+  * CSS 定义颜色包：`css_colors: ^1.1.1`
+* 开发环境额外依赖：`dev_dependencies` 是一些为了提高开发效率依赖的包，比如一些自动化测试工具之类的。
+* `flutter` 是一些 Flutter 项目的相关配置，比如是否使用 material 设计样式、本地资源配置路径
+
+在 VSCode 的「终端」里输入 `flutter pub get` 即可以把所有依赖安装到项目中，每次更新 `pubspec.yaml` 后都要运行一下 `flutter pub get`。
+
+### 第 11 节 · Flutter 渲染原理
+
+#### 11.1、了解下 Flutter 的三棵树
+
+我们来具体看一段代码：
+
+```dart
+Container(
+  color: Colors.blue,
+  child: Row(
+    children: <Widget>[
+      Image.asset(
+        'image'
+      ), // Image.asset
+      Text(
+        'text'
+      ) // Text
+    ], // <Widget>[]
+  ), // row
+); // Container
+```
+
+Flutter 视图包含了三棵树，渲染时间就是花费在了这三棵树上：Widget、Element、RenderObject。
+
+Widget Tree 是一个所有 Widget 的数据结构，创建过程是非常轻量的，因为并不涉及到 UI 渲染，只是树结构配置的生成。页面刷新时也随时会重建，Widget Tree 重建本身不涉及任何 UI 渲染。
+
+<br/>
+
+<div style="text-align: center;">
+{% graphviz %}
+digraph G {
+  rankdir=TB
+
+  {rank=same Image Text}
+  {rank=same RawImage RichText}
+
+  Container -> DecoratedBox
+  DecoratedBox -> Row
+  Row -> Image
+  Image -> RawImage
+  Row -> Text
+  Text -> RichText
+}
+{% endgraphviz %}
+</div>
+
+<br/>
+
+根据 Widget 会生成 Element，如下图。Element Tree 同时持有 Widget Tree 和 RenderObject Tree，Element Tree 存放上下文信息，通过 Element Tree 来遍历视图树，支撑 UI 结构。
+
+<br/>
+
+<div style="text-align: center;">
+{% graphviz %}
+digraph G {
+  rankdir=TB
+
+  ComponentElement1[label="ComponentElement"]
+  ComponentElement2[label="ComponentElement"]
+  RenderObjectElement2[label="RenderObjectElement"]
+  RenderObjectElement3[label="RenderObjectElement"]
+  RenderObjectElement4[label="RenderObjectElement"]
+
+  {rank=same ComponentElement1 ComponentElement2}
+  {rank=same RenderObjectElement3 RenderObjectElement4}
+
+  ComponentElement -> RenderObjectElement1
+  RenderObjectElement1 -> RenderObjectElement2
+  RenderObjectElement2 -> ComponentElement1
+  RenderObjectElement2 -> ComponentElement2
+  ComponentElement1 -> RenderObjectElement3
+  ComponentElement2 -> RenderObjectElement4
+}
+{% endgraphviz %}
+</div>
+
+<br/>
+
+RenderObject Tree 是真正负责渲染的，根据 Widget 的布局属性，进行布局、绘制。
+
+<br/>
+
+<div style="text-align: center;">
+{% graphviz %}
+digraph G {
+  rankdir=TB
+
+  {rank=same RenderImage RenderParagraph}
+
+  RenderObjectBox -> RenderFlex
+  RenderFlex -> RenderImage
+  RenderFlex -> RenderParagraph
+}
+{% endgraphviz %}
+</div>
+
+<br/>
+
+整个流程是，根据 Widget Tree 生成 Element Tree，然后创建 RenderObject Tree 并管理到 Element.renderObject 属性上，最后通过 RenderObject 来完成布局、绘制。
+
+#### 11.2、页面刷新时的操作流程
+
+在更新页面时，Framework 向下通知 Engine，Engine 会等到下一个 Vsync 信号到达时向上通知 Framework 进行 animate、build、layout 和 paint，最后生成 layer 向下交给 Engine。Engine 会把 layer 进行组合、生成纹理，最后通过底层的 OpenGL API 提交数据给 GPU，GPU 经过处理后在显示设备上显示，如下图（[来源](https://www.bilibili.com/video/BV11R4y1r7tL)）。
+
+![](/img/src/2023/05/2023-05-01-captain-flutter-19.png){: width="480"}
+
+以 Text 或 Image 发生改变为例，会触发哪些操作呢？这一帧刷新开始：
+
+* 首先 Widget 是不可改变的，所以会创建一颗新的树；
+* 开始 `build`；
+* 对上一帧的 Element 树进行遍历，调用 Element 的 updateChild 看子节点类型跟之前是不是一致。不一致的话：就扔掉子节点，并造一个新的。一致的话：1）只做内容上的更新（`updateRenderObject`）；2）再判断节点属性是否有改动，如果有则标记为 dirty，重新 layout、paint。
+* 再生成新的 layer 交给 GPU。
+
+如下图（[来源](https://www.bilibili.com/video/BV11R4y1r7tL)）。
+
+![](/img/src/2023/05/2023-05-01-captain-flutter-20.png){: width="240"}
+
 ## 第三章 · Flutter 组件介绍及应用
 
-### 第 9 节 · 编写一个 News App 练手
+### 第 12 节 · 编写一个 News App 练手
 
-#### 9.1、下载 VSCode 并创建 Flutter
+#### 12.1、下载 VSCode 并创建 Flutter
 
 我们这里选择用目前最主流的 IDE —— VSCode 来编写程序，首先在 `https://code.visualstudio.com/` 下载 VSCode，解压后就可以使用。
 
@@ -274,7 +462,30 @@ Resolving dependencies...
 Got dependencies!
 ```
 
-#### 9.2、了解 Dart 的一些基本语法
+#### 12.2、Flutter 项目文件结构
+
+```
+android
+ios
+linux
+macos
+web
+windows
+build
+lib
+--- main.dart
+test
+--- widget_test.dart
+pubspec.lock
+pubspec.yaml
+README.md
+analysis_options.yaml
+hello_world.iml
+```
+
+各个平台的生成文件都有独立的目录，android、ios、web、windows、macos、linux 六大平台。
+
+#### 12.3、了解 Dart 的一些基本语法
 
 语法是一个很庞杂的事情，没必要专门去学完了再写程序。这里船长先提到的，都是你在你的第一个程序中会用到的。在 Dart 中引用一个文件很简单，只需要如下写法：
 
@@ -292,7 +503,7 @@ Dart 语法中也有 `final`，其含义与 Java 中的 `final` 类似。
 
 字符串用 `''` 而不是 `""`。
 
-#### 9.3、Flutter 程序入口 `main.dart`
+#### 12.4、Flutter 程序入口 `main.dart`
 
 其程序一般从 `lib/main.dart` 文件开始运行，默认调用 `void main() {}`，其中会有一句简单的启动 App 的语句：
 
@@ -323,7 +534,7 @@ class MyApp extends StatelessWidget {
 
 `MyApp` 继承自 `StatelessWidget` 使得 App 整体也是一个 Widget（还记得前面说的在 Flutter 中一切皆为 Widget。其实在 Flutter 中连一些操作属性的东西都是 Widget，比如 Layout、Alignment 等等。
 
-#### 9.4、App 获取 Http 请求的服务
+#### 12.5、App 获取 Http 请求的服务
 
 船长要创建一个首页获取 news list，首页中有 news list，其中每一项都可以点击进入到一个 news detail 页。这样我们就需要三个 dart 程序文件：
 
@@ -360,7 +571,7 @@ class NewsService {
 }
 ```
 
-#### 9.5、App 的列表页
+#### 12.6、App 的列表页
 
 再看下 `news_list_page.dart`：
 
@@ -437,7 +648,7 @@ class _NewsListPageState extends State<NewsListPage> {
 
 在 `_navigateToDetails` 函数中，调用了 `Navigator` 类的函数 `push`，其中传入的参数是 `context` 和`MaterialPageRoute` 实例。其中 `MaterialPageRoute` 创建实例的参数里有 `builder`，这里出现了 `NewsDetailsPage` 类。
 
-#### 9.6、App 的二级页面实现
+#### 12.7、App 的二级页面实现
 
 ```dart
 import 'package:flutter/material.dart';
@@ -483,7 +694,7 @@ class NewsDetailsPage extends StatelessWidget {
 
 ```
 
-#### 9.7、对练手 App 的整体回顾
+#### 12.8、对练手 App 的整体回顾
 
 一般 Flutter 应用程序是在 `main.dart` 文件中实现一个继承自 `StatelessWidget` 的类比如叫 `MyApp`，然后在 `main.dart` 文件中的 `main` 方法里实例化一个 `MyApp` 对象，作为 Flutter 应用的根组件。
 
@@ -491,9 +702,9 @@ Flutter 在构建页面时，会调用继承自 `StatelessWidget` 的 `MyApp` �
 
 继承自 `StatefulWidget` 的 `NewsListPage` 组件，通过 createState 创建了状态管理类。
 
-### 第 10 节 · Widget、导航路由、网络请求和项目发布
+### 第 13 节 · Widget、导航路由、网络请求和项目发布
 
-#### 10.1、常用 Widget
+#### 13.1、常用 Widget
 
 * `StatefulWidget`。
 * `State`：通过 `setState` 方法告诉框架，某个 UI 发生了变化，Flutter 框架就会重新运行 State 实例的 `build` 方法来刷新 UI 的显示。
@@ -509,11 +720,11 @@ Flutter 在构建页面时，会调用继承自 `StatelessWidget` 的 `MyApp` �
 * 滚动 Widget：ListView、GridView、CustomScrollView 组件。
 	* ListView 跟 iOS、Android 类似组件都是滚动到了才创建，性能上更有优势。
 
-#### 10.2、导航路由
+#### 13.2、导航路由
 
 iOS、Android 的页面导航管理都会维护一个路由栈，对应的方法是 `Navigator.push()` 和 `Navigator.pop()`，后者回退同时可以返回数据给主屏界面。`Navigator.pop()` 可以接受第二个参数（可选），数据通过 future 的方法传递返回值。
 
-#### 10.3、网络请求
+#### 13.3、网络请求
 
 ```dart
 HttpClient httpClient = HttpClient();
@@ -524,7 +735,7 @@ httpClient.close();
 json.decode(json);
 ```
 
-#### 10.4、项目发布
+#### 13.4、项目发布
 
 发布 Release 版本，以 web 端为例。
 
@@ -533,6 +744,59 @@ mikecaptain@CVN % flutter build web
 ```
 
 ![](/img/src/2023/05/2023-05-01-captain-flutter-12.png)
+
+## 第四章 · 调试
+
+### 第 14 节 · 启用 Flutter DevTools
+
+我们可以在 VSCode 中「Command + P」输入「>Flutter: Open DevTools」，下图是使用 DevTools 中的 Widget Inspector：
+
+![](/img/src/2023/05/2023-05-01-captain-flutter-16.png)
+
+也可以在「Command + P」输入「>Flutter: Open DevTools」选择「Open DevTools in Web Browser」在浏览器中打开。
+
+![](/img/src/2023/05/2023-05-01-captain-flutter-17.png)
+
+可以看到浏览器地址是 `http://127.0.0.1:9100/`，但是如果直接在浏览器打开看到的是下面的页面，需要输入所要连接的 App 的 URL：
+
+![](/img/src/2023/05/2023-05-01-captain-flutter-18.png)
+
+在 DevTools 我们可以看到各种开发调试工具：
+
+* Flutter Inspector：用于调试和分析应用的 UI 布局。开发者可以查看和编辑小部件树、查看布局边界、调整布局参数等，以便更好地理解和调试应用的 UI。
+* Performance：针对 UI 性能过低问题，比如滑动卡顿。
+* CPU Profiler：分析应用的 CPU 使用情况。它提供了一个时间轴视图，显示应用在一段时间内 CPU 的占用情况。
+* Memory：内存问题排查，可以帮助开发者查看应用的内存使用情况，并识别内存泄漏问题。
+* Debugger：调试工具。
+* Network：网络请求分析工具，可以帮助开发者查看应用发送和接收的网络请求，包括请求详情、请求时间线等。
+* Logging：帮助开发者查看应用的日志输出，包括调试信息、错误日志等。开发者可以根据关键字过滤日志，以便更快地定位和解决问题。
+* App Size：分析包大小。
+
+#### 14.1、性能分析（Performance）
+
+只能在真机或 Profile 模式下运行。先看下 Performance Overlay，绿色线是展示当前帧的耗时，UI thread、GPU thread 分开显示。耗时超过 16.6 毫秒（对应低于 60 FPS，即会丢帧）。如果点开「Performance Overlay」即如下：
+
+![](/img/src/2023/05/2023-05-01-captain-flutter-21.png)
+
+当点开「Performance Overlay」，则在运行 App 后能看到如下 UI thread、GPU thread 性能图表（Raster 对应的就是 GPU），上面是 UI Task Runner 线程耗时，下面是 GPU Task Runner 线程耗时，如下图：
+
+![](/img/src/2023/05/2023-05-01-captain-flutter-22.png){: width="300"}
+
+UI Task Runer 是 Flutter Engine 执行 Dart isolate code 的耗时，GPU Task Runner 是被执行设备 GPU 的相关的调用。
+
+#### 14.2、性能优化常见关注点以及一个常见的性能优化案例
+
+一般我们关注性能优化的点有：
+
+* 提高 build 效率；
+* 提高 paint 效率，经常通过 RepainBoundry 创建单独的 layer 减少重绘区域；
+* 减少 build 中的逻辑处理：毕竟页面刷新时 Widget 的 build 会被频繁调用（每一帧都调用），所以 build 里应该只处理 UI 相关的逻辑；
+* 减少 ClipPath、saveLayer 使用：saveLayer 会在 GPU 中分配一块新的绘图缓冲区，切换绘图目标，这个操作非常耗时；clipPath 会影响每个绘图指令，做一些相交操作，相交部分之外都会被剔除掉，也很耗时。
+* 减少 Opacity Widget 的使用：尤其是在动画中，因为它会导致 Widget 每一帧都会被重建，可以使用 AnimatedOpcity 或 FadeInImage 进行代替。
+
+在一个构建的 Widget 树结构中，看看从上到下的 Widget，如果 setState 的修改是在一个比较上面的 Widget 的 setState 中发生的，而改变的是一个比较下面的节点，这其实是存在性能优化空间的。优化的方法，就是把变化放在树结构里比较下面那个 Widget 的 setState 里。
+
+总价一下，就是提高 build 的效率，让 setState 刷新数据尽量下发到比较底层（指树的底层）的节点。
 
 ## 附录
 
