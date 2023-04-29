@@ -1,4 +1,713 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-04-29T09:50:49+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">【摘录】我国城乡二元结构的由来</title><link href="https://www.mikecaptain.com/2023/04/29/china-dual-economic-structure/" rel="alternate" type="text/html" title="【摘录】我国城乡二元结构的由来" /><published>2023-04-29T08:40:13+08:00</published><updated>2023-04-29T08:40:13+08:00</updated><id>https://www.mikecaptain.com/2023/04/29/china-dual-economic-structure</id><content type="html" xml:base="https://www.mikecaptain.com/2023/04/29/china-dual-economic-structure/">&lt;p&gt;编者（麦克船长）按：美国作为互联网乃至科技行业的全球领导者，始终还是中国互联网及科技发展的关键参照物。两者相比，中国有很多独特的宏观因素导致无法使用 Time Machine 来照搬美国，同时目前前沿领域两者的时间差也已经非常小了（这非常不同于 PC 互联网浪潮），所以即便有 Time Machine 有效性也没那么充足了（尽管仍然有一定参考价值）。这其中有一个关键特征，就是中国的城乡二元经济结构，受此影响最显著的科技有公司比如拼多多。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-04-29T16:27:17+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">麦克船长的全栈指南：Google Flutter 开发跨平台 APP（1/3）</title><link href="https://www.mikecaptain.com/2023/04/29/captain-flutter/" rel="alternate" type="text/html" title="麦克船长的全栈指南：Google Flutter 开发跨平台 APP（1/3）" /><published>2023-04-29T16:10:13+08:00</published><updated>2023-04-29T16:10:13+08:00</updated><id>https://www.mikecaptain.com/2023/04/29/captain-flutter</id><content type="html" xml:base="https://www.mikecaptain.com/2023/04/29/captain-flutter/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#第一章--准备与-first-step&quot; id=&quot;markdown-toc-第一章--准备与-first-step&quot;&gt;第一章 · 准备与 First Step&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#第-1-节--环境配置与-hello-world&quot; id=&quot;markdown-toc-第-1-节--环境配置与-hello-world&quot;&gt;第 1 节 · 环境配置与 Hello World&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#第-2-节--first-step在-macos-平台跑第一个-app&quot; id=&quot;markdown-toc-第-2-节--first-step在-macos-平台跑第一个-app&quot;&gt;第 2 节 · First Step：在 macOS 平台跑第一个 App&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#第-3-节--在-ios-平台设备及模拟器上跑起第一个-app&quot; id=&quot;markdown-toc-第-3-节--在-ios-平台设备及模拟器上跑起第一个-app&quot;&gt;第 3 节 · 在 iOS 平台（设备及模拟器）上跑起第一个 App&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#第-4-节--在-android-平台跑起第一个-app&quot; id=&quot;markdown-toc-第-4-节--在-android-平台跑起第一个-app&quot;&gt;第 4 节 · 在 Android 平台跑起第一个 App&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#第-5-节--在-chrome-浏览器跑起第一个-app&quot; id=&quot;markdown-toc-第-5-节--在-chrome-浏览器跑起第一个-app&quot;&gt;第 5 节 · 在 Chrome 浏览器跑起第一个 App&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#第二章--flutter-的开发理念&quot; id=&quot;markdown-toc-第二章--flutter-的开发理念&quot;&gt;第二章 · Flutter 的开发理念&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#第-6-节--flutter-的开发框架和线程模型&quot; id=&quot;markdown-toc-第-6-节--flutter-的开发框架和线程模型&quot;&gt;第 6 节 · Flutter 的开发框架和线程模型&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#第-7-节--flutter-的基础理念一切皆为-widgets&quot; id=&quot;markdown-toc-第-7-节--flutter-的基础理念一切皆为-widgets&quot;&gt;第 7 节 · Flutter 的基础理念：一切皆为 Widgets&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#第-8-节--理解-flutter-的生命周期&quot; id=&quot;markdown-toc-第-8-节--理解-flutter-的生命周期&quot;&gt;第 8 节 · 理解 Flutter 的生命周期&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#81初始化阶段&quot; id=&quot;markdown-toc-81初始化阶段&quot;&gt;8.1、初始化阶段&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#82组件创建阶段&quot; id=&quot;markdown-toc-82组件创建阶段&quot;&gt;8.2、组件创建阶段&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#83触发组件-build&quot; id=&quot;markdown-toc-83触发组件-build&quot;&gt;8.3、触发组件 build：&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#84组件的销毁阶段&quot; id=&quot;markdown-toc-84组件的销毁阶段&quot;&gt;8.4、组件的销毁阶段&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#第三章--flutter-组件介绍及应用&quot; id=&quot;markdown-toc-第三章--flutter-组件介绍及应用&quot;&gt;第三章 · Flutter 组件介绍及应用&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#第-9-节--编写一个-news-app-练手&quot; id=&quot;markdown-toc-第-9-节--编写一个-news-app-练手&quot;&gt;第 9 节 · 编写一个 News App 练手&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#91下载-vscode-并创建-flutter&quot; id=&quot;markdown-toc-91下载-vscode-并创建-flutter&quot;&gt;9.1、下载 VSCode 并创建 Flutter&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#92了解-dart-的一些基本语法&quot; id=&quot;markdown-toc-92了解-dart-的一些基本语法&quot;&gt;9.2、了解 Dart 的一些基本语法&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#93flutter-程序入口-maindart&quot; id=&quot;markdown-toc-93flutter-程序入口-maindart&quot;&gt;9.3、Flutter 程序入口 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.dart&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#94app-获取-http-请求的服务&quot; id=&quot;markdown-toc-94app-获取-http-请求的服务&quot;&gt;9.4、App 获取 Http 请求的服务&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#95app-的列表页&quot; id=&quot;markdown-toc-95app-的列表页&quot;&gt;9.5、App 的列表页&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#96app-的二级页面实现&quot; id=&quot;markdown-toc-96app-的二级页面实现&quot;&gt;9.6、App 的二级页面实现&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#97对练手-app-的整体回顾&quot; id=&quot;markdown-toc-97对练手-app-的整体回顾&quot;&gt;9.7、对练手 App 的整体回顾&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#第-10-节--widget导航路由网络请求和项目发布&quot; id=&quot;markdown-toc-第-10-节--widget导航路由网络请求和项目发布&quot;&gt;第 10 节 · Widget、导航路由、网络请求和项目发布&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#101常用-widget&quot; id=&quot;markdown-toc-101常用-widget&quot;&gt;10.1、常用 Widget&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#102导航路由&quot; id=&quot;markdown-toc-102导航路由&quot;&gt;10.2、导航路由&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#103网络请求&quot; id=&quot;markdown-toc-103网络请求&quot;&gt;10.3、网络请求&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#104项目发布&quot; id=&quot;markdown-toc-104项目发布&quot;&gt;10.4、项目发布&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#附录&quot; id=&quot;markdown-toc-附录&quot;&gt;附录&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#flutter-doctor&quot; id=&quot;markdown-toc-flutter-doctor&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flutter doctor&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#flutter-create-hello_world-创建项目&quot; id=&quot;markdown-toc-flutter-create-hello_world-创建项目&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flutter create hello_world&lt;/code&gt; 创建项目&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#flutter-run-运行项目&quot; id=&quot;markdown-toc-flutter-run-运行项目&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flutter run&lt;/code&gt; 运行项目&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#flutter-devices&quot; id=&quot;markdown-toc-flutter-devices&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flutter devices&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#flutter-pub-get&quot; id=&quot;markdown-toc-flutter-pub-get&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flutter pub get&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#其他&quot; id=&quot;markdown-toc-其他&quot;&gt;其他&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#参考&quot; id=&quot;markdown-toc-参考&quot;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;第一章--准备与-first-step&quot;&gt;第一章 · 准备与 First Step&lt;/h2&gt;
+
+&lt;h3 id=&quot;第-1-节--环境配置与-hello-world&quot;&gt;第 1 节 · 环境配置与 Hello World&lt;/h3&gt;
+
+&lt;p&gt;Flutter 是 Google 推出的一套跨平台的终端开发框架，有中文社区及官方网站支持 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://flutter.cn/&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Flutter 是为跨端而生，那么就要和船长一起了解下跨端这件事儿的演进历史。最早在万维网（World Wide Web，简称 WWW）出现后，第一个端就是 Web，其基础编程语言是 HTML。但是 HTML 不是一个图灵完备的语言，只是一个标记语言，就像它的名字一样（Hypter Text Mark Language）。为了展现不同的样式，配套出现了 CSS 用于控制 Web 的展现样式，其含义是 Cascading Style Sheets（层叠样式表）。而让 Web 活起来，不是死气沉沉的一对按钮、文字、段落 …… 则需要一款图灵完备的语言，可以随意控制 Web 上显示的各种组建，以及控制状态、数据，还有掌控逻辑流程等等，就配套地出现了 JavaScript。因此第一个阶段我们可以称其为 HTML 时代，始于 1993 年，其编程语言是 HTML+CSS+JS。这个阶段还只有桌面端，主要就是适配浏览器。&lt;/p&gt;
+
+&lt;p&gt;第二阶段，是从移动互联网开始，大概在 2009 年前后，Android/iOS 平台出现，最初都是每个平台要维护一套代码的。但是很快，业界就在推动从原生开发到逐渐过渡到 Hybrid 混合模式（半原生半 Web），由原生提供一套统一 API 供 JavaScript 调用。因此核心的代码逻辑都是在 HTML+JS 中实现的，然后展示在 WebView 中（你可以理解为浏览器，iOS 和 Android 中都有 WebView）。这时候已经从为 iOS、Android 写多套代码过渡成一套代码维护了，虽然实现了跨平台，但是整体性能比较差。&lt;/p&gt;
+
+&lt;p&gt;第三阶段，Facebook 推出 React Native，理念是「Learn Once, Write Anywhere」，用 JavaScript 语言、React 的设计模式、原生的界面渲染/动画/网络请求。开发者编写的 JS 代码通过 React Native 中间层转换为各平台原生代码，实现原生控件和操作。&lt;/p&gt;
+
+&lt;p&gt;第四阶段，阿里巴巴在 2016 年推出 Weex，理念是「Write One, Run Anywhere」，也是用 JavaScript 语言，基于 Vue 的设计模式支持 Web、Android、iOS。&lt;/p&gt;
+
+&lt;p&gt;第五阶段，Google 在 2018 年推出 Flutter，支持 AOT 编译（Ahead Of Time，即运行前编译）从而实现机器码，也支持 JIT 编译（Just In Time，即时编译）热重载，用 Dart 语言开发。目前国内大厂基本都是用了 Flutter，包括阿里巴巴、腾讯、百度、美团、字节跳动、京东等。&lt;/p&gt;
+
+&lt;p&gt;好了就说这么多，首先下载 Flutter &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://flutter.cn/docs/get-started/install&lt;/code&gt;，然后：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % unzip ~/Downloads/flutter_macos_3.7.12-stable.zip
+mikecaptain@CVN % &lt;span class=&quot;nb&quot;&gt;mv&lt;/span&gt; ~/Downloads/flutter_macos_3.7.12-stable ~/workspace/flutter
+mikecaptain@CVN % &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/workspace/flutter
+mikecaptain@CVN % &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/flutter/bin&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;一般前端开发者都安装过 XCode、Android Studio、Chrome 等，所以配置 Flutter 也都会比较顺利，这里船长就不赘述了，安装成功后用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flutter doctor&lt;/code&gt; 测试应该有如下提示：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;base&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; mikecaptain@CVN ~ % flutter doctor                   
+Doctor summary &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;to see all details, run flutter doctor &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;✓] Flutter &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Channel stable, 3.7.12, on macOS 13.2.1 22D68 darwin-arm64, locale zh-Hans-CN&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;✓] Android toolchain - develop &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;Android devices &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Android SDK version 33.0.2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;✓] Xcode - develop &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;iOS and macOS &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Xcode 14.3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;✓] Chrome - develop &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;the web
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;✓] Android Studio &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;version 2022.1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;✓] Connected device &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;✓] HTTP Host Availability
+
+• No issues found!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;详细的安装指南请看 Flutter 官网，例如 macOS 上的安装 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://flutter.cn/docs/get-started/install/macos&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;第-2-节--first-step在-macos-平台跑第一个-app&quot;&gt;第 2 节 · First Step：在 macOS 平台跑第一个 App&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % flutter create hello_world
+mikecaptain@CVN % &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;hello_world
+mikecaptain@CVN % flutter run
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;正常的话这样会看到运行成功的提示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如果选择 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[1]: macOS(macos)&lt;/code&gt;，会弹出一个 macOS 的应用程序窗口：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-3.png&quot; alt=&quot;&quot; width=&quot;720&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;第-3-节--在-ios-平台设备及模拟器上跑起第一个-app&quot;&gt;第 3 节 · 在 iOS 平台（设备及模拟器）上跑起第一个 App&lt;/h3&gt;
+
+&lt;p&gt;将你的 iPhone 连接到 macOS 设备上，在 iPhone 的设置 - 隐私与安全性 - 开发者模式 - 打开 - 重启 iPhone - 重启后输入密码进入设备 - 在弹窗上同意开启开发者模式。此时在 XCode - Windows - Devices and Simulators 中选择你的 iPhone 后会看到如下类似页面：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-4.png&quot; alt=&quot;&quot; width=&quot;720&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;设置结束后，会看到如下窗口页面：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-5.png&quot; alt=&quot;&quot; width=&quot;720&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在 Xcode 中打开该 Flutter 项目命令如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % open ios/Runner.xcworkspace
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;则会看到如下 XCode 项目窗口：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-6.png&quot; alt=&quot;&quot; width=&quot;720&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如果有类似如下提示：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.../hello_world/ios/Runner.xcodeproj Signing &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Runner&quot;&lt;/span&gt; requires a development team. Select a development team &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;the Signing &amp;amp; Capabilities editor.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这个提示是因为你还没有设置项目的开发者团队。要解决这个问题，请按照以下步骤进行操作：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在 Xcode 中打开 Runner.xcworkspace 文件。&lt;/li&gt;
+  &lt;li&gt;在左侧导航栏中选择 Runner。&lt;/li&gt;
+  &lt;li&gt;在中间面板中选择 “Signing &amp;amp; Capabilities”。&lt;/li&gt;
+  &lt;li&gt;在 “Signing &amp;amp; Capabilities” 下的 “Team” 中选择你的开发者团队。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;如果提示如下错误：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Failed to register bundle identifier
+The app identifier &lt;span class=&quot;s2&quot;&gt;&quot;com.example.helloWorld&quot;&lt;/span&gt; cannot be registered to your development team because it is not available. Change your bundle identifier to a unique string to try again.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;这个错误信息是因为你的 Bundle Identifier 在开发者中心已经被其他开发者使用了。你需要在你的项目中使用一个唯一的 Bundle Identifier。你可以按照以下步骤修改项目的 Bundle Identifier：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在 Xcode 中打开你的项目。&lt;/li&gt;
+  &lt;li&gt;选择你的项目在左侧导航栏中的顶层项。&lt;/li&gt;
+  &lt;li&gt;在 “General” 选项卡中，找到 “Identity” 部分。&lt;/li&gt;
+  &lt;li&gt;在 “Bundle Identifier” 中输入一个唯一的标识符，例如 “com.yourcompany.yourapp”。&lt;/li&gt;
+  &lt;li&gt;保存并重新编译你的项目。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;正常到这里应该就没有什么错误了，可以运行一下程序，可能会有如下提示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-7.jpg&quot; alt=&quot;&quot; width=&quot;240&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这个问题通常是因为你的开发者账号没有被信任。解决这个问题的步骤如下：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在你的 iPhone 上打开 “设置” 应用程序。&lt;/li&gt;
+  &lt;li&gt;滚动到 “通用” &amp;gt; “设备管理”。&lt;/li&gt;
+  &lt;li&gt;找到你的开发者账号并点击它。&lt;/li&gt;
+  &lt;li&gt;点击 “信任”。&lt;/li&gt;
+  &lt;li&gt;重启你的 iPhone，然后再次尝试运行你的应用程序。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-8.png&quot; alt=&quot;&quot; width=&quot;320&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;再次运行就成功了。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-9.png&quot; alt=&quot;&quot; width=&quot;320&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;同样尝试一下在 Simulator 上运行试试：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-10.png&quot; alt=&quot;&quot; width=&quot;360&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;第-4-节--在-android-平台跑起第一个-app&quot;&gt;第 4 节 · 在 Android 平台跑起第一个 App&lt;/h3&gt;
+
+&lt;p&gt;在 Android 的 Tools - Device Manager - 右侧「Create device」，比如创建一个「Pixel 6」设备，点击「Next」。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-14.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;第-5-节--在-chrome-浏览器跑起第一个-app&quot;&gt;第 5 节 · 在 Chrome 浏览器跑起第一个 App&lt;/h3&gt;
+
+&lt;p&gt;更新最新版本的 Flutter：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % flutter channel stable
+mikecaptain@CVN % flutter upgrade
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;查看 flutter 目前可以连接的设备：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;base&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; mikecaptain@CVN testspace % flutter devices
+3 connected devices:
+
+iPhone 14 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;mobile&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; • D89CD348-58C2-4F3B-B07D-54E2A72AB1BA • ios            • com.apple.CoreSimulator.SimRuntime.iOS-16-4 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;simulator&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+macOS &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;desktop&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;    • macos                                • darwin-arm64   • macOS 13.2.1 22D68 darwin-arm64
+Chrome &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;web&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;       • chrome                               • web-javascript • Google Chrome 112.0.5615.137
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;使用 Chrome 运行刚刚的 Hello World 程序：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;base&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; mikecaptain@CVN hello_world % flutter run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; chrome
+Launching lib/main.dart on Chrome &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;debug mode...
+Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;connection from debug service on Chrome...                 ⣾
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;浏览器会打开 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:56049/#/&lt;/code&gt; 链接：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-11.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如果项目在创建时没有支持 Web，可以运行下面命令支持 Web：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % flutter create &lt;span class=&quot;nt&quot;&gt;--platforms&lt;/span&gt; web &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;第二章--flutter-的开发理念&quot;&gt;第二章 · Flutter 的开发理念&lt;/h2&gt;
+
+&lt;h3 id=&quot;第-6-节--flutter-的开发框架和线程模型&quot;&gt;第 6 节 · Flutter 的开发框架和线程模型&lt;/h3&gt;
+
+&lt;p&gt;Flutter 包括三层：框架层 Framework（Dart 编写）、引擎层 Engine（C/C++）、嵌入层 Embedder（Platform Specific）。&lt;/p&gt;
+
+&lt;p&gt;再来跟着船长理解下 Flutter 的线程模型。Embedder 进行线程的创建和管理，提供四种 Task Runner 给 Engine，包括 Platform Task Runner（主线程）、UI Task Runner（渲染和处理 Vsync 信号并将 Widget 转换成 Layer Tree）、GPU Task Runner、IO Task Runner（文件读写与资源加载）。&lt;/p&gt;
+
+&lt;p&gt;Engine 启动时，会分别创建一个 UI Task Runner、一个 GPU Task Runner、一个 IO Task Runner。所有 Engine 共享一个 Platform Task Runner。&lt;/p&gt;
+
+&lt;h3 id=&quot;第-7-节--flutter-的基础理念一切皆为-widgets&quot;&gt;第 7 节 · Flutter 的基础理念：一切皆为 Widgets&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Widget 的主要工作是提供一个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build()&lt;/code&gt; 方法来描述如何用 Widget 树状结构下自己的叶子 Widget 们如何组织起来显示自己。&lt;/li&gt;
+  &lt;li&gt;Material 是一种标准的移动端和 web 端的视觉设计语言。 Flutter 提供了一套丰富的 Material widgets。&lt;/li&gt;
+  &lt;li&gt;你可以把 Widget 理解为一个配置文件，描述了 UI 界面的展示。Widget 状态变化时会重新绘制 UI，Flutter 框架会对比状态变化前后的区别来重新渲染 UI。&lt;/li&gt;
+  &lt;li&gt;Flutter 中一般说的生命周期，指的是 StatefulWidget 的生命周期。生命周期涉及到一系列的方法，下面会讲到。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;第-8-节--理解-flutter-的生命周期&quot;&gt;第 8 节 · 理解 Flutter 的生命周期&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-15.png&quot; alt=&quot;&quot; width=&quot;480&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Flutter 生命周期就是 StatefulWidget 的生命周期，从 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;createState&lt;/code&gt; 方法开始。&lt;/p&gt;
+
+&lt;h4 id=&quot;81初始化阶段&quot;&gt;8.1、初始化阶段&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;createState&lt;/code&gt;：当 StatefulWidget 被调用时会立即执行 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;createState&lt;/code&gt; 方法，然后是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;initState&lt;/code&gt;。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;initState&lt;/code&gt;：一般会在这里进行各个变量的初始赋值，与服务端进行最初的交互。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;82组件创建阶段&quot;&gt;8.2、组件创建阶段&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;didChangeDependencies&lt;/code&gt;：当 State 发生变化时会调用。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build&lt;/code&gt; 主要是返回需要渲染的 Widget。&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build&lt;/code&gt; 会被调用多次，所以这里只能返回 &lt;strong&gt;widget 的相关逻辑&lt;/strong&gt;，避免因为多次执行导致的状态异常。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;83触发组件-build&quot;&gt;8.3、触发组件 build：&lt;/h4&gt;
+
+&lt;p&gt;触发组件 build 的方法有 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;didChangeDependencies&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setState&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;didUpdateWidget&lt;/code&gt;。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;didUpdateWidget&lt;/code&gt;：在 Widget 重新构建时，Flutter Framework 会调用 Widget.canUpdate 来检测 Widget Tree 中同一位置的新旧节点，然后决定是否需要更新，如果得到的是 True 就会调用这个回调方法 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;didUpdateWiedget&lt;/code&gt;。另外父亲 Widget 的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build&lt;/code&gt; 时，孩子 Widget 的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;didUpdateWidget&lt;/code&gt; 也会被调用。这个方法调用后，一定会再次调用孩子的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;84组件的销毁阶段&quot;&gt;8.4、组件的销毁阶段&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;deactivate&lt;/code&gt; 在组件被移除节点后会被调用。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dispose&lt;/code&gt; 是在一个组件被移除，并没有插入到其他节点时，会被调用，即永久删除，并释放组件资源。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;第三章--flutter-组件介绍及应用&quot;&gt;第三章 · Flutter 组件介绍及应用&lt;/h2&gt;
+
+&lt;h3 id=&quot;第-9-节--编写一个-news-app-练手&quot;&gt;第 9 节 · 编写一个 News App 练手&lt;/h3&gt;
+
+&lt;h4 id=&quot;91下载-vscode-并创建-flutter&quot;&gt;9.1、下载 VSCode 并创建 Flutter&lt;/h4&gt;
+
+&lt;p&gt;我们这里选择用目前最主流的 IDE —— VSCode 来编写程序，首先在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://code.visualstudio.com/&lt;/code&gt; 下载 VSCode，解压后就可以使用。&lt;/p&gt;
+
+&lt;p&gt;然后通过 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cmd + shift + p&lt;/code&gt; 打开 VSCode 的控制台，输入 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Flutter: New Project&lt;/code&gt; 然后选择 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Application&lt;/code&gt;，就创建成功一个 VSCode 下的 Flutter 项目了。这个过程创建出来的整个目录结构与在 CLI 下输入 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flutter create hello_world&lt;/code&gt; 效果是一样的。目录结构如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-13.png&quot; alt=&quot;&quot; width=&quot;240&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;所有依赖库都在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pubspec.yaml&lt;/code&gt; 文件里管理，我们可以为其添加一个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http&lt;/code&gt; 依赖库：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dependencies:
+  flutter:
+    sdk: flutter
+  http: ^0.13.3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后运行 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flutter pub get&lt;/code&gt; 命令完成依赖的获取。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;base&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; mikecaptain@CVN yongxian_news % flutter pub get            
+Running &lt;span class=&quot;s2&quot;&gt;&quot;flutter pub get&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;yongxian_news...
+Resolving dependencies... 
+  async 2.10.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2.11.0 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  characters 1.2.1 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1.3.0 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  collection 1.17.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1.17.1 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  js 0.6.5 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.6.7 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  matcher 0.12.13 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.12.15 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  material_color_utilities 0.2.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.3.0 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  meta 1.8.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1.9.1 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  path 1.8.2 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1.8.3 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  source_span 1.9.1 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1.10.0 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  test_api 0.4.16 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.5.2 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Got dependencies!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;92了解-dart-的一些基本语法&quot;&gt;9.2、了解 Dart 的一些基本语法&lt;/h4&gt;
+
+&lt;p&gt;语法是一个很庞杂的事情，没必要专门去学完了再写程序。这里船长先提到的，都是你在你的第一个程序中会用到的。在 Dart 中引用一个文件很简单，只需要如下写法：&lt;/p&gt;
+
+&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;package:project_name/.../xxx.dart&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;注意 Dart 中每一句最后都需要 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;;&lt;/code&gt;，这一点与 java、c++ 类似。&lt;/p&gt;
+
+&lt;p&gt;Dart 也是面向对象语言，其面向对象的类写法也与 java 类似，是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;class&lt;/code&gt;，并且如果是从一个类扩展而来的，就会用到与 java 类似的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;extends&lt;/code&gt; 关键字。&lt;/p&gt;
+
+&lt;p&gt;Dart 语法中也有 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;final&lt;/code&gt;，其含义与 Java 中的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;final&lt;/code&gt; 类似。&lt;/p&gt;
+
+&lt;p&gt;一个函数带有多个参数，那么每个参数之间都用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;,&lt;/code&gt; 隔开，而最后一个参数后面加不加 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;,&lt;/code&gt;，Dart 都不会报错。&lt;/p&gt;
+
+&lt;p&gt;字符串用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&apos;&apos;&lt;/code&gt; 而不是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;&quot;&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h4 id=&quot;93flutter-程序入口-maindart&quot;&gt;9.3、Flutter 程序入口 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.dart&lt;/code&gt;&lt;/h4&gt;
+
+&lt;p&gt;其程序一般从 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lib/main.dart&lt;/code&gt; 文件开始运行，默认调用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;void main() {}&lt;/code&gt;，其中会有一句简单的启动 App 的语句：&lt;/p&gt;
+
+&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;runApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main&lt;/code&gt; 函数也可以写成 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;void main() =&amp;gt; runApp(MyApp());&lt;/code&gt; 的单行函数写法。&lt;/p&gt;
+
+&lt;p&gt;如果你命名的默认 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.dart&lt;/code&gt; 中的类名为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MyApp&lt;/code&gt; 的话，则需要在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.dart&lt;/code&gt; 文件中定义一下 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MyApp&lt;/code&gt;，大致的结构如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyApp&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StatelessWidget&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
+
+	&lt;span class=&quot;nd&quot;&gt;@override&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;Widget&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BuildContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MaterialApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+			&lt;span class=&quot;nl&quot;&gt;title:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;Flutter Demo&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+			&lt;span class=&quot;nl&quot;&gt;theme:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ThemeData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+				&lt;span class=&quot;nl&quot;&gt;primarySwatch:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Colors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;blue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+			&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+			&lt;span class=&quot;nl&quot;&gt;home:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NewsListPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(),&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MyApp&lt;/code&gt; 继承自 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StatelessWidget&lt;/code&gt; 使得 App 整体也是一个 Widget（还记得前面说的在 Flutter 中一切皆为 Widget。其实在 Flutter 中连一些操作属性的东西都是 Widget，比如 Layout、Alignment 等等。&lt;/p&gt;
+
+&lt;h4 id=&quot;94app-获取-http-请求的服务&quot;&gt;9.4、App 获取 Http 请求的服务&lt;/h4&gt;
+
+&lt;p&gt;船长要创建一个首页获取 news list，首页中有 news list，其中每一项都可以点击进入到一个 news detail 页。这样我们就需要三个 dart 程序文件：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;news_service.dart&lt;/code&gt; 发送 news list 请求；&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;news_list_page.dart&lt;/code&gt; 展示 news list；&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;news_details_page.dart&lt;/code&gt; 展示 news detail；&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;和船长一起来看下 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;news_service.dart&lt;/code&gt; 文件：&lt;/p&gt;
+
+&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;dart:convert&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 注意这里的 as http 写法&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;package:http/http.dart&apos;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NewsService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;apiUrl&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;&quot;https://newsapi.org/v2/top-headlines?country=cn&amp;amp;apiKey=&amp;lt;YOUR_API_KEY&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// 定义个 fetchNews 函数，这里注意返回值写法 Future&amp;lt;List&amp;lt;dynamic&amp;gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// 注意这里的 async 可以异步反馈，否则同步就会阻塞&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;Future&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;dynamic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fetchNews&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+  	&lt;span class=&quot;c1&quot;&gt;// 注意这里 response 是可以不定义类型的，与 Java 就很不同了&lt;/span&gt;
+  	&lt;span class=&quot;c1&quot;&gt;// 用 String 类型的 apiUrl 作为 Uri.parse() 函数的参数&lt;/span&gt;
+  	&lt;span class=&quot;c1&quot;&gt;// http.get() 函数用 await 关键词修饰，则可以等待返回。但因为函数 async，因此不会阻塞&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Uri&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;apiUrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;statusCode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jsonDecode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;articles&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;Failed to load news&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;95app-的列表页&quot;&gt;9.5、App 的列表页&lt;/h4&gt;
+
+&lt;p&gt;再看下 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;news_list_page.dart&lt;/code&gt;：&lt;/p&gt;
+
+&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;package:flutter/material.dart&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;package:yongxian_news/services/news_service.dart&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;package:yongxian_news/pages/news_details_page.dart&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NewsListPage&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StatefulWidget&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nd&quot;&gt;@override&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;_NewsListPageState&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;createState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_NewsListPageState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;_NewsListPageState&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;State&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NewsListPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;Future&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;dynamic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_newsList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;nd&quot;&gt;@override&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;initState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;initState&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;_newsList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NewsService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;fetchNews&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;nd&quot;&gt;@override&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;Widget&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BuildContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+  	&lt;span class=&quot;c1&quot;&gt;// 这里用到了脚手架 Scaffold，也是 Material Library 的一个 Widget，它提供默认的导航栏、标题、包含主屏幕 Widget 树状结构的 body 属性。&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Scaffold&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;nl&quot;&gt;appBar:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AppBar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;title:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;Flutter Demo App&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)),&lt;/span&gt;
+      &lt;span class=&quot;nl&quot;&gt;body:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FutureBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;dynamic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;(&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;future:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_newsList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;??&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Future&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;([]),&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;builder:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;snapshot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;snapshot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hasData&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ListView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+              &lt;span class=&quot;nl&quot;&gt;itemCount:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;snapshot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;?.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;??&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+              &lt;span class=&quot;nl&quot;&gt;itemBuilder:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ListTile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+                  &lt;span class=&quot;nl&quot;&gt;title:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;snapshot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;?[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;title&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;??&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+                  &lt;span class=&quot;nl&quot;&gt;subtitle:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;snapshot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;?[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;source&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;name&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;??&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+                  &lt;span class=&quot;nl&quot;&gt;onTap:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_navigateToDetails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;snapshot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;?[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]),&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+              &lt;span class=&quot;o&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+          &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;snapshot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hasError&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;Error: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${snapshot.error}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+          &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+          &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CircularProgressIndicator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;},&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_navigateToDetails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;dynamic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;article&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Navigator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;MaterialPageRoute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;builder:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NewsDetailsPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;article:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;article&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NewsListPage&lt;/code&gt; 可以看到与 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.dart&lt;/code&gt; 文件中的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MyApp&lt;/code&gt; 的定义形成对比，前者扩展自 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StatefulWidget&lt;/code&gt;，后者扩展自 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StatelessWidget&lt;/code&gt;。可以逐渐看到这是 Dart 程序的一个特点，就是每一个类都搭配一个 State 类，除了扩展自 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StatelessWidget&lt;/code&gt; 类没有 State。&lt;/p&gt;
+
+&lt;p&gt;所以这里就是成对儿的，一个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NewsListPage&lt;/code&gt; 类，和一个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_NewsListPageState&lt;/code&gt; 类。在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_NewsListPageState&lt;/code&gt; 类中创建一个刚刚船长自己写的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Service&lt;/code&gt; 实例，并在其中的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;initState()&lt;/code&gt; 函数中调用我们写的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fetchNews&lt;/code&gt; 函数。&lt;/p&gt;
+
+&lt;p&gt;然后在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build&lt;/code&gt; 函数中创建脚手架 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Scaffold&lt;/code&gt;，其中定义了：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;appBar&lt;/code&gt;：直接创建一个带有 title 的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AppBar(title: Text(&apos;涌现 AI 资讯&apos;))&lt;/code&gt;。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;body&lt;/code&gt;：这里可以和船长一起看到，你想要定义的页面的样式，就在这层层嵌套的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ListView&lt;/code&gt; 实例中，这个写法确实不太优雅。
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ListView&lt;/code&gt; 的参数里传递了 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;itemBuilder&lt;/code&gt;，你想定义的关于 item 的内容也就在其中的了。&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ListTitle&lt;/code&gt; 的参数里，我们可以看到 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;title&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;subtitle&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;onTap&lt;/code&gt; 点击后的动作函数，这里定义了一个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_navigateToDetails&lt;/code&gt;。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_navigateToDetails&lt;/code&gt; 函数中，调用了 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Navigator&lt;/code&gt; 类的函数 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;push&lt;/code&gt;，其中传入的参数是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;context&lt;/code&gt; 和&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MaterialPageRoute&lt;/code&gt; 实例。其中 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MaterialPageRoute&lt;/code&gt; 创建实例的参数里有 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;builder&lt;/code&gt;，这里出现了 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NewsDetailsPage&lt;/code&gt; 类。&lt;/p&gt;
+
+&lt;h4 id=&quot;96app-的二级页面实现&quot;&gt;9.6、App 的二级页面实现&lt;/h4&gt;
+
+&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;package:flutter/material.dart&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NewsDetailsPage&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StatelessWidget&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;dynamic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;article&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;NewsDetailsPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;required&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;article&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
+
+  &lt;span class=&quot;nd&quot;&gt;@override&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;Widget&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BuildContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Scaffold&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;nl&quot;&gt;appBar:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AppBar&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;title:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;涌现 AI 资讯详情&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)),&lt;/span&gt;
+      &lt;span class=&quot;nl&quot;&gt;body:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SingleChildScrollView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;nl&quot;&gt;child:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+          &lt;span class=&quot;nl&quot;&gt;children:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;article&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;urlToImage&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;network&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;article&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;urlToImage&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Container&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;SizedBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;height:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+              &lt;span class=&quot;n&quot;&gt;article&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;title&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;],&lt;/span&gt;
+              &lt;span class=&quot;nl&quot;&gt;style:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TextStyle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;fontSize:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;fontWeight:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FontWeight&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;bold&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;SizedBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;height:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+              &lt;span class=&quot;n&quot;&gt;article&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;description&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;??&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+              &lt;span class=&quot;nl&quot;&gt;style:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TextStyle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;fontSize:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;SizedBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;height:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+              &lt;span class=&quot;s&quot;&gt;&apos;Source: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${article[&apos;source&apos;][&apos;name&apos;]}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+              &lt;span class=&quot;nl&quot;&gt;style:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TextStyle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;fontSize:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;fontStyle:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FontStyle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;italic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;SizedBox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;height:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+              &lt;span class=&quot;s&quot;&gt;&apos;Published at: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${article[&apos;publishedAt&apos;]}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+              &lt;span class=&quot;nl&quot;&gt;style:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TextStyle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;fontSize:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;fontStyle:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FontStyle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;italic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+          &lt;span class=&quot;o&quot;&gt;],&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;97对练手-app-的整体回顾&quot;&gt;9.7、对练手 App 的整体回顾&lt;/h4&gt;
+
+&lt;p&gt;一般 Flutter 应用程序是在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.dart&lt;/code&gt; 文件中实现一个继承自 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StatelessWidget&lt;/code&gt; 的类比如叫 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MyApp&lt;/code&gt;，然后在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main.dart&lt;/code&gt; 文件中的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main&lt;/code&gt; 方法里实例化一个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MyApp&lt;/code&gt; 对象，作为 Flutter 应用的根组件。&lt;/p&gt;
+
+&lt;p&gt;Flutter 在构建页面时，会调用继承自 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StatelessWidget&lt;/code&gt; 的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MyApp&lt;/code&gt; 类实例的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build&lt;/code&gt; 方法。&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build&lt;/code&gt; 方法一般会提供一个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MaterialApp&lt;/code&gt;（也是一个 Widget）的 Widget 来描述这个 UI 界面。在这个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MaterialApp&lt;/code&gt; 里用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;title&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;theme&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;home&lt;/code&gt; 三个组件。其中 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;home&lt;/code&gt; 就是一个继承自 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StatefulWidget&lt;/code&gt; 的类，比如船长这里可以叫 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NewsListPage&lt;/code&gt; 类，它是应用的首页 Widget 的，有状态的。&lt;/p&gt;
+
+&lt;p&gt;继承自 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StatefulWidget&lt;/code&gt; 的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NewsListPage&lt;/code&gt; 组件，通过 createState 创建了状态管理类。&lt;/p&gt;
+
+&lt;h3 id=&quot;第-10-节--widget导航路由网络请求和项目发布&quot;&gt;第 10 节 · Widget、导航路由、网络请求和项目发布&lt;/h3&gt;
+
+&lt;h4 id=&quot;101常用-widget&quot;&gt;10.1、常用 Widget&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StatefulWidget&lt;/code&gt;。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;State&lt;/code&gt;：通过 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setState&lt;/code&gt; 方法告诉框架，某个 UI 发生了变化，Flutter 框架就会重新运行 State 实例的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;build&lt;/code&gt; 方法来刷新 UI 的显示。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StatelessWidget&lt;/code&gt;。&lt;/li&gt;
+  &lt;li&gt;基础 Widget：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Text&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Image&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Button&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TextField&lt;/code&gt; 等组件。
+    &lt;ul&gt;
+      &lt;li&gt;Text：显示文本，有 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;textAlign&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;maxLines&lt;/code&gt; 最大行数、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;overflow&lt;/code&gt; 文本截断的方式、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;style&lt;/code&gt; 文本样式（对应 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TextStyle&lt;/code&gt; 有很多属性，比如 color、fontSize、height、fontFamily、backgroundColor、下划线等 decoration 等等）等属性。&lt;/li&gt;
+      &lt;li&gt;Button：比如 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FloatingActionButton&lt;/code&gt; 悬浮按钮，其 onPressed 属性一般是一个回调函数。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;布局 Widget：线性布局组件 Row、Column，弹性布局组件 Flex，Stack 组件。
+    &lt;ul&gt;
+      &lt;li&gt;要了解主轴的概念，它与你是 Row 还是 Column 有关系，两种情况的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mainAxisAlignment&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;crossAxisAlignment&lt;/code&gt; 是相反的。&lt;/li&gt;
+      &lt;li&gt;其实 Row 和 Column 都是继承自 Flex 弹性布局的。Flex 里面支持 Expanded 孩子（只能在 Flex 里），Expanded 有一个 flex 属性控制怎么分割主轴上的全部空闲空间。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;容器 Widget：Container、Padding、Center、DecoratedBox 组件。&lt;/li&gt;
+  &lt;li&gt;交互 Widget：GestureDetector 组件。&lt;/li&gt;
+  &lt;li&gt;滚动 Widget：ListView、GridView、CustomScrollView 组件。
+    &lt;ul&gt;
+      &lt;li&gt;ListView 跟 iOS、Android 类似组件都是滚动到了才创建，性能上更有优势。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;102导航路由&quot;&gt;10.2、导航路由&lt;/h4&gt;
+
+&lt;p&gt;iOS、Android 的页面导航管理都会维护一个路由栈，对应的方法是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Navigator.push()&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Navigator.pop()&lt;/code&gt;，后者回退同时可以返回数据给主屏界面。&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Navigator.pop()&lt;/code&gt; 可以接受第二个参数（可选），数据通过 future 的方法传递返回值。&lt;/p&gt;
+
+&lt;h4 id=&quot;103网络请求&quot;&gt;10.3、网络请求&lt;/h4&gt;
+
+&lt;div class=&quot;language-dart highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;HttpClient&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;httpClient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HttpClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;HttpClientRequest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;httpClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getUrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;HttpClientResponse&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;responseBody&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;utf8&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;decoder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;httpClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;decode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;104项目发布&quot;&gt;10.4、项目发布&lt;/h4&gt;
+
+&lt;p&gt;发布 Release 版本，以 web 端为例。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % flutter build web
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src/2023/05/2023-05-01-captain-flutter-12.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;附录&quot;&gt;附录&lt;/h2&gt;
+
+&lt;h3 id=&quot;flutter-doctor&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flutter doctor&lt;/code&gt;&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;base&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; mikecaptain@CVN ~ % flutter doctor                   
+Doctor summary &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;to see all details, run flutter doctor &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;✓] Flutter &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Channel stable, 3.7.12, on macOS 13.2.1 22D68 darwin-arm64, locale zh-Hans-CN&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;✓] Android toolchain - develop &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;Android devices &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Android SDK version 33.0.2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;✓] Xcode - develop &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;iOS and macOS &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Xcode 14.3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;✓] Chrome - develop &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;the web
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;✓] Android Studio &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;version 2022.1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;✓] Connected device &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;✓] HTTP Host Availability
+
+• No issues found!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;flutter-create-hello_world-创建项目&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flutter create hello_world&lt;/code&gt; 创建项目&lt;/h3&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;base&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; mikecaptain@CVN codespace % flutter create hello_world
+Signing iOS app &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;device deployment using developer identity: &lt;span class=&quot;s2&quot;&gt;&quot;Apple Development: zhongchao.ustc@gmail.com (U4H338U5TW)&quot;&lt;/span&gt;
+Creating project captain_flutter...
+Running &lt;span class=&quot;s2&quot;&gt;&quot;flutter pub get&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;captain_flutter...
+Resolving dependencies &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;captain_flutter... &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1.3s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
++ async 2.10.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2.11.0 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
++ boolean_selector 2.1.1
++ characters 1.2.1 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1.3.0 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
++ clock 1.1.1
++ collection 1.17.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1.17.1 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
++ cupertino_icons 1.0.5
++ fake_async 1.3.1
++ flutter 0.0.0 from sdk flutter
++ flutter_lints 2.0.1
++ flutter_test 0.0.0 from sdk flutter
++ js 0.6.5 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.6.7 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
++ lints 2.0.1 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2.1.0 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
++ matcher 0.12.13 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.12.15 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
++ material_color_utilities 0.2.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.3.0 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
++ meta 1.8.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1.9.1 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
++ path 1.8.2 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1.8.3 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
++ sky_engine 0.0.99 from sdk flutter
++ source_span 1.9.1 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1.10.0 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
++ stack_trace 1.11.0
++ stream_channel 2.1.1
++ string_scanner 1.2.0
++ term_glyph 1.2.1
++ test_api 0.4.16 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.5.2 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
++ vector_math 2.1.4
+Changed 24 dependencies &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;hello_world!
+Wrote 127 files.
+
+All &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;
+You can find general documentation &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;Flutter at: https://docs.flutter.dev/
+Detailed API documentation is available at: https://api.flutter.dev/
+If you prefer video documentation, consider: https://www.youtube.com/c/flutterdev
+
+In order to run your application, &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;:
+
+  &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;hello_world
+  &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;flutter run
+
+Your application code is &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;hello_world/lib/main.dart.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;flutter-run-运行项目&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flutter run&lt;/code&gt; 运行项目&lt;/h3&gt;
+
+&lt;p&gt;在 Chrome 中运行命令如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;base&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; mikecaptain@CVN hello_world % flutter run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; chrome
+Launching lib/main.dart on Chrome &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;debug mode...
+Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;connection from debug service on Chrome...                 ⣾
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;默认情况下，浏览器会打开 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://localhost:56049/#/&lt;/code&gt; 链接。&lt;/p&gt;
+
+&lt;h3 id=&quot;flutter-devices&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flutter devices&lt;/code&gt;&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;base&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; mikecaptain@CVN testspace % flutter devices
+3 connected devices:
+
+iPhone 14 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;mobile&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; • D89CD348-58C2-4F3B-B07D-54E2A72AB1BA • ios            • com.apple.CoreSimulator.SimRuntime.iOS-16-4 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;simulator&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+macOS &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;desktop&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;    • macos                                • darwin-arm64   • macOS 13.2.1 22D68 darwin-arm64
+Chrome &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;web&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;       • chrome                               • web-javascript • Google Chrome 112.0.5615.137
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;flutter-pub-get&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flutter pub get&lt;/code&gt;&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;base&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; mikecaptain@CVN yongxian_news % flutter pub get            
+Running &lt;span class=&quot;s2&quot;&gt;&quot;flutter pub get&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;yongxian_news...
+Resolving dependencies... 
+  async 2.10.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2.11.0 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  characters 1.2.1 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1.3.0 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  collection 1.17.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1.17.1 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  js 0.6.5 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.6.7 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  matcher 0.12.13 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.12.15 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  material_color_utilities 0.2.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.3.0 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  meta 1.8.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1.9.1 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  path 1.8.2 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1.8.3 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  source_span 1.9.1 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1.10.0 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  test_api 0.4.16 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.5.2 available&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Got dependencies!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;其他&quot;&gt;其他&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flutter build web&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flutter channel stable&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flutter upgrade&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;https://flutter.cn/docs/get-started/install&lt;/li&gt;
+  &lt;li&gt;https://flutter.cn/&lt;/li&gt;
+  &lt;li&gt;https://flutter.cn/docs/get-started/web&lt;/li&gt;
+  &lt;li&gt;https://community.jiguang.cn/article/464286&lt;/li&gt;
+  &lt;li&gt;https://www.bilibili.com/video/BV1p14y1T79R/&lt;/li&gt;
+  &lt;li&gt;https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html&lt;/li&gt;
+  &lt;li&gt;https://blog.logrocket.com/building-news-app-flutter/&lt;/li&gt;
+  &lt;li&gt;https://flutterawesome.com/flutter-news-app-using-newsapi/&lt;/li&gt;
+  &lt;li&gt;https://flutter.cn/docs/development/ui/widgets-intro&lt;/li&gt;
+  &lt;li&gt;https://flutter.cn/docs/get-started/flutter-for/uikit-devs&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="web" /><category term="前端" /><category term="开发" /><category term="web" /><category term="app" /><category term="客户端" /><category term="前端" /><category term="android" /><category term="ios" /><category term="html5" /><category term="小程序" /><category term="应用" /><summary type="html">产品、运营还是工程，最好都要会一些前端，这样方便自己做一点东西便于提高日常的生产力。今天介绍的是 2018 年开始的 Google Flutter 跨多平台终端的技术，支持 iOS、Android、Web、macOS、Linux、Windows ……</summary></entry><entry><title type="html">【摘录】我国城乡二元结构的由来</title><link href="https://www.mikecaptain.com/2023/04/29/china-dual-economic-structure/" rel="alternate" type="text/html" title="【摘录】我国城乡二元结构的由来" /><published>2023-04-29T08:40:13+08:00</published><updated>2023-04-29T08:40:13+08:00</updated><id>https://www.mikecaptain.com/2023/04/29/china-dual-economic-structure</id><content type="html" xml:base="https://www.mikecaptain.com/2023/04/29/china-dual-economic-structure/">&lt;p&gt;编者（麦克船长）按：美国作为互联网乃至科技行业的全球领导者，始终还是中国互联网及科技发展的关键参照物。两者相比，中国有很多独特的宏观因素导致无法使用 Time Machine 来照搬美国，同时目前前沿领域两者的时间差也已经非常小了（这非常不同于 PC 互联网浪潮），所以即便有 Time Machine 有效性也没那么充足了（尽管仍然有一定参考价值）。这其中有一个关键特征，就是中国的城乡二元经济结构，受此影响最显著的科技有公司比如拼多多。&lt;/p&gt;
 
 &lt;p&gt;以下是原文（原文链接在文末）。&lt;/p&gt;
 
@@ -4329,678 +5038,4 @@ AI: Alright, I can help you write that. Here&apos;s what I suggest... (and so on
   &lt;li&gt;http://pretrain.nlpedia.ai&lt;/li&gt;
   &lt;li&gt;https://lifearchitect.ai/whats-in-my-ai/&lt;/li&gt;
   &lt;li&gt;https://zhuanlan.zhihu.com/p/611403556&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><summary type="html">人类创造城市，又把它虚拟化；创造机器，又希望机器习得创造。人工智能似乎要来到觉醒的那一刻了。过去数十年，数据科学家研发出了一个又一个 AI 模型，似乎总在重复造轮子。能否通过更便捷有效的方式，真正让机器去统一吸收文本、语音、图片等不同类型的数据和知识并创造出不同的内容呢？多模态预训练大模型打通了模态之间的关系，模型逐步标准化。下一步，则是建立统一的、跨场景、多任务的多模态基础模型。机器从未像今天这般吸收、理解、创造，一个崭新的 AI 大时代即将开启。生成式 AI 显然是机器中的佼佼者。不久前爆火的 ChatGPT，学会了从人类的反馈中强化学习，能你来我往多轮聊天。会对话，也会作画，是基于 diffusion 模型的 AI 绘画，，从最初的拼贴已经进化到三维动画、建模贴图的 next level，甚至 AI 还会自我编码，在 codeforces 举办的编程竞赛中 AlphaCode 超过了 47% 的人类工程师。未来三年，生成式 AI 不但会有越来越多的产品，它的内容创造能力将达到人类水平。</summary></entry><entry><title type="html">AI 应用第一次大爆发来了：一文入门 ChatGPT 官方 API 文档解读</title><link href="https://www.mikecaptain.com/2023/03/02/chatgpt-api/" rel="alternate" type="text/html" title="AI 应用第一次大爆发来了：一文入门 ChatGPT 官方 API 文档解读" /><published>2023-03-02T08:54:13+08:00</published><updated>2023-03-02T08:54:13+08:00</updated><id>https://www.mikecaptain.com/2023/03/02/chatgpt-api</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/02/chatgpt-api/">&lt;p&gt;此前 GPT-3 也早已开放 API，我在麦克船长的博客 MikeCaptain.com 中已介绍过，当时在 NLP 方面能使用的 API 主要是 GPT-3，这是&lt;a href=&quot;http://www.mikecaptain.com/2023/01/24/openai-official-doc/&quot;&gt;原文链接&lt;/a&gt;。此前 OpenAI API 就已经有了不同功能和价位的多种模型，还提供了在基础模型上的 fine-tune 服务（当然 fine-tune 本身收费，且 fine-tune 后的模型调用费用比 base model 要贵得多）。本次更新，主要是增加了 GPT-3.5（用于 NLP）和 Whisper（用于 audio to text）的 API：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/captain-chatgpt-api-1.png&quot; alt=&quot;&quot; width=&quot;720&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;ChatGPT 和 Whisper 模型现已在 OpenAI 的 API 上可用，通过一系列系统范围的优化，自去年 12 月以来，OpenAI 已将 ChatGPT 的成本降低了 90%；不仅仅是 GPT-3.5，开发人员现在可以在 API 中使用 OpenAI 的开源 Whisper large-v2 模型。&lt;/p&gt;
-
-&lt;h2 id=&quot;一这次开放-chatgpt-和-whisper-的-api-都有什么基本看点&quot;&gt;一、这次开放 ChatGPT 和 Whisper 的 API 都有什么基本看点&lt;/h2&gt;
-
-&lt;h3 id=&quot;1openai-开放模型库里新增-gpt-35-模型&quot;&gt;1、OpenAI 开放模型库里新增 GPT-3.5 模型&lt;/h3&gt;
-
-&lt;p&gt;GPT-3.5 模型可以理解并生成自然语言或代码，其最强大的是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-3.5-turbo&lt;/code&gt;，这可是之前的库里没有的。它针对聊天进行了优化，但也适用于传统的完成任务。GPT 开放模型里原本只有 GPT-3 系列，包括如下系列模型：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/captain-chatgpt-api-3.png&quot; alt=&quot;&quot; width=&quot;720&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;而这次更新后，增加了 GPT-3.5 系列，包括 5 款模型：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/captain-chatgpt-api-2.png&quot; alt=&quot;&quot; width=&quot;720&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;OpenAI 建议在试验时使用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-3.5-turbo&lt;/code&gt;，因为它会产生最佳结果。一旦跑起来都一切正常，可以尝试其他模型，看看是否能以更低的延迟或成本获得相同的结果，这才更划算。&lt;/p&gt;
-
-&lt;p&gt;可能此前的 GPT-3 期间开放的 API 大部分人也还没来得及了解，下面补充一些基本概念。&lt;/p&gt;
-
-&lt;h3 id=&quot;2openai-api-的一些基础概念&quot;&gt;2、OpenAI API 的一些基础概念&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;关于 prompt 和 completion&lt;/strong&gt;：OpenAI 提到一个理念：「设计提示语，就相当于在用一些指令和少量例子给模型编程」。另外 OpenAI 还强调了在目标任务上的区别，就是 OpenAI 的 NLP 模型与其他 NLP 模型很大的一个区别是，它不是设计用来解决单一类型任务的，而是可以解决几乎各种类型的 NLP 任务，包括但不限于文本生成（content generation）、代码生成（code generation）、总结（summarization）、扩写（expansion）、对话（conversation）、创意写作（creative wrting）、风格转换（style transfer）等。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;关于 token&lt;/strong&gt;：我们理解和处理文本，是把文本先打碎成 token。以英文文本为例，token 可以是单词，也可以词根（一些字母组合），比如单词「hamburger」可能会被打碎成「ham」、「bur」、「ger」这几个 tokens。再比如「pear」这个单词，可能就会单独作为一个 token 不再打碎了。还有些 token 可能会以「空格」开头，比如「 hello」、「 bye」。一个大概的经验是，通常英文文本里 1 token 有 4 个字母或者 0.75 个单词。使用时的一个限制是，最好你的提示（prompt）或生成内容，不要超过 2048 个 tokens，大概相当于 1500 个单词。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;关于 model&lt;/strong&gt;：目前 OpenAI 有基于 GPT-3.5 的基础模型 Turbo 和这些基于 GPT-3 的基础模型 Davinci、Curie、Babbage、Ada 开放 API，另外 Codex 系列是 GPT-3 的后代，是用「自然语言 + 代码」训练的。&lt;/p&gt;
-
-&lt;p&gt;虽然新的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-3.5-turbo&lt;/code&gt; 模型针对聊天进行了优化，但它也非常适合传统的完成任务。原始 GPT-3.5 模型针对原来就开放的 API 文本补全（text completion）也进行了优化。我们用于 create embeddings 和 edit text 的 API 都使用了它们各自针对性的模型。&lt;/p&gt;
-
-&lt;h3 id=&quot;3模型&quot;&gt;3、模型&lt;/h3&gt;
-
-&lt;p&gt;OpenAI 今天发布的 ChatGPT 模型系列 GPT-3.5-turbo 与 ChatGPT 产品中使用的模型相同。它的价格为每 1k tokens 0.002 美元，比 OpenAI 现有的 GPT-3 模型便宜 10 倍。即使对于许多非聊天用例，它也是 OpenAI 的最佳模型 —— 如果你之前就用了 text-davinci-003，那么迁移到 gpt-3.5-turbo 时只需要对他们的提示进行少量调整。&lt;/p&gt;
-
-&lt;h4 id=&quot;31turbo&quot;&gt;3.1、Turbo&lt;/h4&gt;
-
-&lt;p&gt;Turbo 与支持 ChatGPT 的模型系列相同，它针对对话式聊天输入和输出进行了优化，但与 Davinci 模型系列相比，它在完成方面同样出色。在 ChatGPT 中可以很好地完成的任何用例都应该在 API 中与 Turbo 模型系列一起很好地执行。Turbo 模型家族也是第一个像 ChatGPT 一样接收定期模型更新的模型。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;适合：对话、文本生成&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;h4 id=&quot;32davinci&quot;&gt;3.2、Davinci&lt;/h4&gt;
-
-&lt;p&gt;Davinci 在 GPT-3 中就已经存在，是最有能力的模型系列，可以执行其他模型（Ada、Curie 和 Babbage）可以执行的任何任务，而且通常只需要很少的 instruction。 对于需要对内容有大量理解的应用程序，例如针对特定受众的 summarization 和创意内容生成，Davinci 将产生最佳结果。 这些增加的功能需要更多的计算资源，因此 Davinci 每次 API 调用更贵，并且不如其他模型那么快。&lt;/p&gt;
-
-&lt;p&gt;Davinci 的另一个亮点是理解文本的意图。Davinci 擅长解决多种逻辑问题和解释人物的动机。 达芬奇已经能够解决一些涉及因果关系的最具挑战性的人工智能问题。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;适合：复杂的意图、因果分析、Summarization for Audience&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;h4 id=&quot;33curie&quot;&gt;3.3、Curie&lt;/h4&gt;
-
-&lt;p&gt;Curie 在 GPT-3 中就已经存在，也非常强大，速度也比较快。 虽然 Davinci 在分析复杂文本方面更强大，但 Curie 能够胜任许多细微的任务，例如情感分类和摘要。 Curie 还非常擅长回答问题和执行问答以及作为通用服务聊天机器人。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;适合：机器翻译、复杂分类任务、情感分析、Summarization&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;h4 id=&quot;34babbage&quot;&gt;3.4、Babbage&lt;/h4&gt;
-
-&lt;p&gt;同样是 GPT-3 里就存在的。Babbage 可以执行简单的任务，例如简单的分类。在语义搜索方面，它也非常有能力对文档与搜索查询的匹配程度进行排名。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;适合：适度分类、语义搜索分类&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;h4 id=&quot;35ada&quot;&gt;3.5、Ada&lt;/h4&gt;
-
-&lt;p&gt;也是 GPT-3 时期就有的。Ada 通常是最快的模型，可以执行解析文本、地址更正和不需要太多细微差别的某些分类任务等任务。 Ada 的性能通常可以通过提供更多上下文来提高。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;适合：解析文本、简单分类、地址修正、关键词&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;需要注意的是：由像 Ada 这样更快的模型执行的任何任务都可以由像 Curie 或 Davinci 这样更强大的模型执行。&lt;/p&gt;
-
-&lt;h3 id=&quot;4具体模型按-gpt-35-还是-gpt-3-划分看下&quot;&gt;4、具体模型：按 GPT-3.5 还是 GPT-3 划分看下&lt;/h3&gt;
-
-&lt;h4 id=&quot;41关于-gpt-35&quot;&gt;4.1、关于 GPT-3.5&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-3.5-turbo&lt;/code&gt;：功能最强大的 GPT-3.5 模型并针对聊天进行了优化，成本仅为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-davinci-003&lt;/code&gt; 的 1/10。将使用我们最新的模型迭代进行更新。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-3.5-turbo-0301&lt;/code&gt;：2023 年 3 月 1 日的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-3.5-turbo&lt;/code&gt; 快照。与 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-3.5-turbo&lt;/code&gt; 不同，此模型不会收到更新，并且仅在 2023 年 6 月 1 日结束的三个月内提供支持。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-davinci-003&lt;/code&gt;：此前 GPT-3 期间就有的 Davinci 模型，这次直接升级到了 GPT-3.5，与 GPT-3 阶段一样，仍然是最大请求 4000 tokens，同样训练数据 up to 2021 年 6 月，能做几乎所有 NLP 任务。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-davinci-002&lt;/code&gt;：与 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-davinci-003&lt;/code&gt; 类似情况，这次直接升级到了 GPT-3.5，专门为了代码生成任务优化的模型。与 GPT-3 阶段一样，仍然是最大请求 4000 tokens；训练数据也没有变，依然是 up to 2021 年 6 月。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;42关于-gpt-3&quot;&gt;4.2、关于 GPT-3&lt;/h4&gt;
-
-&lt;p&gt;以下模型不再由 GPT-3 提供支持：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-davinci-003&lt;/code&gt;：此前在 GPT-3 接口中存在，本次更新后由 GPT-3.5 支持提供了，见上一段。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;GPT-3 目前可用的模型包括下面这些，与 InstructGPT 背后的模型是一样的，它们的最大请求都是 2048 tokens，训练数据也都是 up to 2019 年 10 月：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-curie-001&lt;/code&gt;：比 davinci 要弱一点，但是速度更快、更便宜。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-babbage-001&lt;/code&gt;：一些比较直接的任务（straightforward tasks），比 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-curie-001&lt;/code&gt; 更快、更便宜。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-ada-001&lt;/code&gt;：一些非常简单的任务，这些模型里最快、最便宜的。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;davinci&lt;/code&gt;：目前最强的 GPT-3 模型，任何其他模型能做的任务，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;davinci&lt;/code&gt; 都可以做。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curie&lt;/code&gt;：就是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-curie-001&lt;/code&gt;。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;babbage&lt;/code&gt;：就是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-babbage-001&lt;/code&gt;。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ada&lt;/code&gt;：就是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-ada-001&lt;/code&gt;。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;5定价&quot;&gt;5、定价&lt;/h3&gt;
-
-&lt;p&gt;这些模型根据输入的 token 数量做的如下定价，前四个是 GPT-3 阶段就存在的，也并未因本次 GPT-3.5 API 发布而调价：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;基础模型使用 0.000&lt;strong&gt;4&lt;/strong&gt; USD/1K tokens，Ada&lt;/li&gt;
-  &lt;li&gt;基础模型使用 0.000&lt;strong&gt;5&lt;/strong&gt; USD/1K tokens，Babbage&lt;/li&gt;
-  &lt;li&gt;基础模型使用 0.00&lt;strong&gt;20&lt;/strong&gt; USD/1K tokens，Curie&lt;/li&gt;
-  &lt;li&gt;基础模型使用 0.0&lt;strong&gt;200&lt;/strong&gt; USD/1K tokens，Davinci&lt;/li&gt;
-  &lt;li&gt;基础模型使用 0.00&lt;strong&gt;20&lt;/strong&gt; USD/1K tokens，Turbo，支持 Chat API&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;从定价上看，Ada 和 Babbage 基本没有差多少。另外命名上，可以看出 OpenAI 有意地给他们取了 ABCD 开头的名字。另外你也可以 finetune 你自己的模型，对于 fine-tuned models 如下收费，并未因本次发布而调价：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Finetune 训练费 0.000&lt;strong&gt;4&lt;/strong&gt; USD/1K tokens，使用费 0.00&lt;strong&gt;16&lt;/strong&gt; USD/1K tokens，Ada&lt;/li&gt;
-  &lt;li&gt;Finetune 训练费 0.000&lt;strong&gt;6&lt;/strong&gt; USD/1K tokens，使用费 0.00&lt;strong&gt;24&lt;/strong&gt; USD/1K tokens，Babbage&lt;/li&gt;
-  &lt;li&gt;Finetune 训练费 0.00&lt;strong&gt;30&lt;/strong&gt; USD/1K tokens，使用费 0.0&lt;strong&gt;120&lt;/strong&gt; USD/1K tokens，Curie&lt;/li&gt;
-  &lt;li&gt;Finetune 训练费 0.0&lt;strong&gt;300&lt;/strong&gt; USD/1K tokens，使用费 0.&lt;strong&gt;1200&lt;/strong&gt; USD/1K tokens，Davinci&lt;/li&gt;
-  &lt;li&gt;暂未提供 Turbo 的 finetune。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;GPT-3.5 的效果，大家应该都在 ChatGPT 上试用过了，这里我也在放一下链接可能有一些 late massive 朋友还没有用过：&lt;a href=&quot;https://chat.openai.com/chat&quot;&gt;https://chat.openai.com/chat&lt;/a&gt; 。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/captain-chatgpt-api-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;在 OpenAI 的基于 GPT-3 的 PlayGround 你可以试试：&lt;a href=&quot;https://platform.openai.com/playground/p/default-chat&quot;&gt;https://platform.openai.com/playground/p/default-chat&lt;/a&gt; 。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/2023-01-24-openai-api.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;6专用实例&quot;&gt;6、专用实例&lt;/h3&gt;
-
-&lt;p&gt;说的就是之前爆出消息的 Foundry，也都是跑在微软的 Azure 上的。OpenAI 现在还为希望更深入控制特定型号版本和系统性能的用户提供专用实例。 默认情况下，开放的 API 都是在所有客户共享的基础设施上的模型中跑的，如果有额外需求得额外付费。
-开发人员可以完全控制实例的负载（更高的负载会提高吞吐量，当然这也会让对每个 request 的处理慢下来）、启用更长 context 限制等功能选项，以及保存模型快照的能力。&lt;/p&gt;
-
-&lt;p&gt;对于每天要跑 4.5 亿以上 tokens 的开发者来说，用专用实例更划算。并且针对专用实例，开发者可以自己决定用什么硬件配置，这个就属于 OpenAI 的中大客户销售策略了，具体可以看 &lt;a href=&quot;https://openai.com/contact-sales/&quot;&gt;OpenAI 官网的销售联系页面&lt;/a&gt;。&lt;/p&gt;
-
-&lt;h3 id=&quot;7whisper每分钟-06-美分-的语音识别翻译服务-api&quot;&gt;7、Whisper：每分钟 0.6 美分 的语音识别/翻译服务 API&lt;/h3&gt;
-
-&lt;p&gt;Whisper 是 OpenAI 于 2022 年 9 月开源的语音转文本模型，开发者社区反馈还不错，但也挺麻烦的。今天开始，OpenAI 现在已经通过 OpenAI 的 API 提供了 large-v2 模型，它提供了方便的按需访问，价格为 &lt;strong&gt;0.006 美元/分钟&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;Whisper API 可通过 OpenAI 的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;transcriptions&lt;/code&gt;（以源语言转录）或 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;translations&lt;/code&gt;（转录成英语）端点使用，并接受多种格式（m4a、mp3、mp4、mpeg、mpga、wav、webm）。&lt;/p&gt;
-
-&lt;h3 id=&quot;8开发者可能关注的几个问题&quot;&gt;8、开发者可能关注的几个问题&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;Q1：之前的模型都提供了 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fine-tune&lt;/code&gt;，这次开放的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-3.5-turbo&lt;/code&gt; 可以 fine-tune 吗？&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;A1：还不行，到目前为止，你还只能 fine-tune GPT-3 模型。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Q2：OpenAI 会把开发者调用 API 时发送的数据存下来吗？&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;从 2023 年 3 月 1 日开始，OpenAI 会把开发者调用 API 时发送的数据保留 30 天，但 OpenAI 声称不会使用开发者通过 API 发送的数据来改进模型（Who knows）。具体的政策，可以从 OpenAI 官网了解更多，这里是他们的数据使用&lt;a href=&quot;https://platform.openai.com/docs/data-usage-policies&quot;&gt;政策链接&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;二主要-api-介绍及代码示例&quot;&gt;二、主要 API 介绍及代码示例&lt;/h2&gt;
-
-&lt;p&gt;安装 OpenAI 的 python 库，参考 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://anaconda.org/conda-forge/openai&lt;/code&gt;：&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@local &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; conda-forge openai
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://platform.openai.com/account/api-keys&lt;/code&gt; 创建自己的 API。完成这两步后就可以编写代码尝试一下：&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;openai&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;openai&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;api_key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getenv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;OPENAI_API_KEY&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;openai&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;会打印出 OpenAI 的各个 models 的一些信息、权限等等。&lt;/p&gt;
-
-&lt;h3 id=&quot;1一起看看-chat-的-api&quot;&gt;1、一起看看 Chat 的 API&lt;/h3&gt;
-
-&lt;h4 id=&quot;11chat-的-rest-api&quot;&gt;1.1、Chat 的 REST API&lt;/h4&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl https://api.openai.com/v1/chat/completions
-  &lt;span class=&quot;nt&quot;&gt;-H&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Authorization: Bearer &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$OPENAI_API_KEY&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;-H&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Content-Type: application/json&quot;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;{
-  &quot;model&quot;: &quot;gpt-3.5-turbo&quot;,
-  &quot;messages&quot;: [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;What is the OpenAI mission?&quot;}]
-}&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;相应的返回结果：&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;chatcmpl-6p5FEv1JHictSSnDZsGU4KvbuBsbu&quot;&lt;/span&gt;,
-  &lt;span class=&quot;s2&quot;&gt;&quot;object&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;messages&quot;&lt;/span&gt;,
-  &lt;span class=&quot;s2&quot;&gt;&quot;created&quot;&lt;/span&gt;: 1677693600,
-  &lt;span class=&quot;s2&quot;&gt;&quot;model&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;gpt-3.5-turbo&quot;&lt;/span&gt;,
-  &lt;span class=&quot;s2&quot;&gt;&quot;choices&quot;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;s2&quot;&gt;&quot;index&quot;&lt;/span&gt;: 0,
-      &lt;span class=&quot;s2&quot;&gt;&quot;finish_reason&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;stop&quot;&lt;/span&gt;,
-      &lt;span class=&quot;s2&quot;&gt;&quot;messages&quot;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-          &lt;span class=&quot;s2&quot;&gt;&quot;role&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;assistant&quot;&lt;/span&gt;,
-          &lt;span class=&quot;s2&quot;&gt;&quot;content&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;OpenAI&apos;s mission is to ensure that artificial general intelligence benefits all of humanity.&quot;&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;,
-  &lt;span class=&quot;s2&quot;&gt;&quot;usage&quot;&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;prompt_tokens&quot;&lt;/span&gt;: 20,
-    &lt;span class=&quot;s2&quot;&gt;&quot;completion_tokens&quot;&lt;/span&gt;: 18,
-    &lt;span class=&quot;s2&quot;&gt;&quot;total_tokens&quot;&lt;/span&gt;: 38
-  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;12chat-的-python-api&quot;&gt;1.2、Chat 的 Python API&lt;/h4&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;openai&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;completion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;openai&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ChatCompletion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;gpt-3.5-turbo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-  &lt;span class=&quot;n&quot;&gt;messages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;role&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;user&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;content&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Tell the world about the ChatGPT API in the style of a pirate.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;completion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;2whisper-api&quot;&gt;2、Whisper API&lt;/h3&gt;
-
-&lt;h3 id=&quot;21whisper-的-rest-api&quot;&gt;2.1、Whisper 的 REST API&lt;/h3&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl https://api.openai.com/v1/audio/transcriptions &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;-H&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Authorization: Bearer &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$OPENAI_API_KEY&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;-H&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Content-Type: multipart/form-data&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;whisper-1&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;-F&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@/path/to/file/openai.mp3&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;Imagine the wildest idea that you&apos;ve ever had, and you&apos;re curious about how it might scale to something that&apos;s a 100, a 1,000 times bigger...&quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;22whisper-的-python-api&quot;&gt;2.2、Whisper 的 Python API&lt;/h4&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;openai&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/path/to/file/openai.mp3&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;rb&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;transcription&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;openai&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Audio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transcribe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;whisper-1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transcription&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;3text-completion-任务&quot;&gt;3、Text Completion 任务&lt;/h3&gt;
-
-&lt;p&gt;下面这个例子会简单调用一下 completion，并打印出结果，用了一句需要你自己编写的 prompt：&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;openai&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;openai&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;api_key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getenv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;OPENAI_API_KEY&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;text_prompt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;In a shocking turn of events, scientists have discovered that &quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;completion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;openai&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Completion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text-davinci-002&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text_prompt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;max_tokens&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;stop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;temperature&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;generated_text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;completion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;choices&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generated_text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这里用到了最重要的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;openai.Completion&lt;/code&gt;，其 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;create&lt;/code&gt; 函数的参数解释如下：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;model&lt;/code&gt;：之前 OpenAI 把它叫「engine」，后来给 deprecated 了，现在都是用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;model&lt;/code&gt;，所有的可用 models 可以通过 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;open.Model.list()&lt;/code&gt; 来查看。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;prompt&lt;/code&gt;：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;string&lt;/code&gt; 类型，就是输入数据。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;suffix&lt;/code&gt;：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;string&lt;/code&gt; 类型，生成文本的结束符。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;max_tokens&lt;/code&gt;：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;integer&lt;/code&gt; 类型，生成文本的最大 tokens 数。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n&lt;/code&gt;：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;integer&lt;/code&gt; 类型，表示你要产生几个不同的输出结果。比如设置 3 就会得到 3 个不同的结果，以便您可以从中选择最合适的一个。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;stop&lt;/code&gt;：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;string&lt;/code&gt; 类型，用于指定模型何时应该停止生成文本。当模型在生成的文本中遇到 stop 字符串时，它将停止生成文本。ChatGPT 推出后迭代过一版增加了「stop generating」就是用的这个参数。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;temperature&lt;/code&gt;：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;number&lt;/code&gt; 类型，这是 NLP 模型里常见的一个超参数。这个参数，来自于统计热力学的概念，温度越高表示系统的熵越高、混乱度越高、随机性越强，这里的 temperature 也是值越高输出结果的随机性也越高。这样如果 temperature 设置得很低，生成的结果可能更正确，但没有多少创造性和随机性。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;4text-edit-任务&quot;&gt;4、Text Edit 任务&lt;/h3&gt;
-
-&lt;p&gt;Completion 类任务，通俗点理解的话，完形填空、句子补齐、写作文、翻译 …… 都算 Completion，就是无中生有。而对于已经有的内容，做修改，就是 OpenAI 的 API 里的「Edit」类的任务了。&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;openai&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;openai&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;api_key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getenv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;OPENAI_API_KEY&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;openai&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Edit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text-davinci-edit-001&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;The qick brown fox jumps over the layz dog.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;instruction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Fix the spelling mistakes&quot;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;调用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;openai.Edit.create&lt;/code&gt;，用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;text-davinci-edit-001&lt;/code&gt; 模型，输入一句有拼写错误的英文「The qick brown fox jumps over the layz dog.」，并提供一句指令 instruction「Fix the spelling mistakes」。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;instruction&lt;/code&gt;：要告诉模型如何修改，&lt;strong&gt;其实这句话就是新时代的「programming」了&lt;/strong&gt;。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;temperature&lt;/code&gt;：默认是 0，对于纠正拼写类的任务，我们用默认 0 就可以了，不需要什么创造性和随机性。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;5顺便提一下基于-dalle-的-image-生成&quot;&gt;5、顺便提一下基于 DALL·E 的 Image 生成&lt;/h3&gt;
-
-&lt;p&gt;这里也提一下 text2image 的 API，这与文本生成用的 GPT 是不同的，基于 DALL·E 的模型，但是很多开发者可能也是文本、图像、对话混合使用的，所以这里也提一下。&lt;/p&gt;
-
-&lt;h4 id=&quot;51image-create-任务beta&quot;&gt;5.1、Image Create 任务（Beta）&lt;/h4&gt;
-
-&lt;p&gt;截止 2023 年年初 1 月份，这个 API 还是 beta，我们看个例子：&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;openai&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;openai&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;api_key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getenv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;OPENAI_API_KEY&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;openai&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;A cute baby sea otter&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1024x1024&quot;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这也是一个 OpenAI 官网的例子。大家可能看到这里，船长没有指定 model，但是可以想到一定用的是 DALL·E，因为它没有像 GPT-3 一样提供很多版本的选择，所以就不需要传参数了。这个程序就是生成一个 1024x1024 的图片。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;prompt&lt;/code&gt;：就是输入的提示语，返回的数据里，会告诉你生成的图片的 URL.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;n&lt;/code&gt;：是图片结果数量，最多 10，默认 1.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;52image-edit-任务&quot;&gt;5.2、Image Edit 任务&lt;/h4&gt;
-
-&lt;p&gt;给定一个图片，OpenAI 也可以来修改指定区域：&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;openai&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;openai&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;api_key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getenv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;OPENAI_API_KEY&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;openai&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create_edit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;otter.png&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;rb&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;mask&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mask.png&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;rb&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;A cute baby sea otter wearing a beret&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1024x1024&quot;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;image&lt;/code&gt;：这里对输入图片有要求，必须是正方形的！另外不能超过 4MB，还得是 PNG。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mask&lt;/code&gt;：还可以提供掩码图片（叫什么比较合适，掩图？哈哈）。如果不提供的话，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;image&lt;/code&gt; 里就必须有透明的部分（必须全透明，即 alpha = 0），那个透明部分就是被用来 Edit 的。如果有 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mask&lt;/code&gt; 则透明部分用来做「掩图」来改 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;image&lt;/code&gt;。&lt;/li&gt;
-  &lt;li&gt;同样地，结果图片的 URL 会返回给你。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;6code-生成&quot;&gt;6、Code 生成&lt;/h3&gt;
-
-&lt;p&gt;这里也提一下 Code 生成，也是此前就有的能力，用的是 Codex 的模型。有个沙河可以感受下 JS 代码生成，你可以在这里试用一下：&lt;a href=&quot;https://platform.openai.com/codex-javascript-sandbox&quot;&gt;https://platform.openai.com/codex-javascript-sandbox&lt;/a&gt; 。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/captain-chatgpt-api-5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;7审查moderation&quot;&gt;7、审查（Moderation）&lt;/h3&gt;
-
-&lt;p&gt;也不是随本次 GPT-3.5 发布的，我们也大致浏览一下。Moderation 用来审查内容是否符合 OpenAI 的内容政策，快速使用的方式如下：&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;openai&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Moderation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Sample text goes here&quot;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;results&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;API 官网给出我们如下的返回结果示例：&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;modr-XXXXX&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;&quot;model&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;text-moderation-001&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;&quot;results&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;s&quot;&gt;&quot;categories&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;hate&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;hate/threatening&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;self-harm&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;sexual&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;sexual/minors&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;violence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;violence/graphic&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;false&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-      &lt;span class=&quot;s&quot;&gt;&quot;category_scores&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;hate&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.18805529177188873&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;hate/threatening&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0001250059431185946&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;self-harm&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0003706029092427343&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;sexual&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0008735615410842001&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;sexual/minors&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0007470346172340214&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;violence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0041268812492489815&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;&quot;violence/graphic&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.00023186142789199948&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-      &lt;span class=&quot;s&quot;&gt;&quot;flagged&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;false&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;输入参数很简单，关键看返回的输出结果。OpenAI 对于包含哪类不适内容，做了比较详尽的分类，比如对于色情内容，也分成了未成年色情和易引起性兴奋的内容。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hate&lt;/code&gt;：是否包含基于种族、性别、民族、宗教、国籍、性取向、残疾状况或种姓表达、煽动或促进仇恨的内容，如果没有则是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt;，否则为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;true&lt;/code&gt;。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hate/threatening&lt;/code&gt;：是否包含仇恨内容还包括对目标群体的暴力或严重伤害，没有则 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt;，包含则值为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;true&lt;/code&gt;。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;self-harm&lt;/code&gt;：是否包含提倡、鼓励或描述自残行为（例如自杀、割伤和饮食失调）的内容，没有则 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt;，否则 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;true&lt;/code&gt;。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sexual&lt;/code&gt;：是否包含意在引起性兴奋的内容，例如对性活动的描述，或宣传性服务（不包括性教育和健康）的内容，没有则 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt;，否则 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;true&lt;/code&gt;。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sexual/minors&lt;/code&gt;：是否包含包含 18 岁以下个人的色情内容，没有则 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt;，否则 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;true&lt;/code&gt;。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;violence&lt;/code&gt;：是否包含宣扬或美化暴力或颂扬他人的痛苦或屈辱的内容，没有为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt;，否则 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;true&lt;/code&gt;。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;violence/graphic&lt;/code&gt;：是否包含以极端的画面细节描绘死亡、暴力或严重身体伤害的暴力内容，没有 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt;，否则 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;true&lt;/code&gt;。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;显然，对于使用 OpenAI 生成内容的场景下如果需要用到 Moderation，则是免费调用的。如果你不是对 OpenAI 的输入 &amp;amp; 生成场景，而是自己的其他内容想白嫖 Moderation API 是不可能的。但是我们也注意到，这里其实没有整治敏感的分类，因为 OpenAI 没有考虑具体的使用者所处的政体或政治环境，而且这些尺度是比较容易变化的，并且有一些可能并不是普适性的理念，因此某些国家的使用者要额外配套自己的内容审查能力。&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;三一些-openai-目前开放的-api-使用示例&quot;&gt;三、一些 OpenAI 目前开放的 API 使用示例&lt;/h2&gt;
-
-&lt;p&gt;在 OpenAI 的 API 官方首页的大标题写着的是「用 OpenAI 的强力模型构建下一代应用（Build next-gen apps with OpenAI’s powerful models）」，并直接点出了自己最拿得出手的三个商业化产品 GPT-3、Codex、DALL·E。&lt;/p&gt;
-
-&lt;p&gt;并提到自己的 API 调用非常简单：&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;openai&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;openai&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Completion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;engine&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;davinci&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Make a list of astronomical observatories:&quot;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;引入 OpenAI 的 python 依赖库后，调用时指定用哪个引擎、提示词是什么即可。轻松一些，我们先来看一些示例吧。&lt;/p&gt;
-
-&lt;h3 id=&quot;1执行各种自然语言任务的一些使用案例&quot;&gt;1、执行各种自然语言任务的一些使用案例&lt;/h3&gt;
-
-&lt;p&gt;GPT-3.5 已经在一些应用上跑起来了，OpenAI 列举了一些 ChatGPT 和 Whisper API 的早期客户：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Snapchat（snap.com）&lt;/strong&gt;的创建者 Snap Inc. 本周推出了适用于 Snapchat+ 的 My AI。 实验性功能在 ChatGPT API 上运行。 My AI 为 Snapchatter 提供了一个友好的、可定制的聊天机器人，可以在他们指尖提供建议，甚至可以在几秒钟内为朋友写一句俳句。 Snapchat 是日常交流和消息传递的场所，每月有 7.5 亿 Snapchatter。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Quizlet（quizlet.com/labs/qchat）&lt;/strong&gt;是一个全球学习平台，有超过 6000 万学生使用它来学习、练习和掌握他们正在学习的任何内容。 Quizlet 在过去三年中一直与 OpenAI 合作，在多个用例中利用 GPT-3，包括词汇学习和练习测试。 随着 ChatGPT API 的推出，Quizlet 推出了 Q-Chat，这是一种完全自适应的 AI 导师，可让学生根据通过有趣的聊天体验提供的相关学习材料提出自适应问题。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Instacart（instacart.com）&lt;/strong&gt;正在增强 Instacart 应用程序，使客户能够询问食物并获得鼓舞人心的、可购买的答案。这使用 ChatGPT 以及 Instacart 自己的 AI 和来自其 75,000 多家零售合作伙伴商店位置的产品数据来帮助客户发现开放式购物目标的想法，例如「我如何制作美味的鱼炸玉米饼？」或「对我的孩子来说，什么是健康的午餐？」Instacart 计划在今年晚些时候推出「Ask Instacart」。&lt;/li&gt;
-  &lt;li&gt;Shopify 的消费者应用程序 &lt;strong&gt;Shop（shop.app）&lt;/strong&gt;被 1 亿购物者用来寻找和参与他们喜爱的产品和品牌。 ChatGPT API 用于为 Shop 的新购物助手提供动力。 当购物者搜索商品时，导购会根据他们的需求进行个性化推荐。 Shop 的新人工智能购物助手将通过扫描数百万种产品来简化应用程序内购物，以快速找到买家正在寻找的东西，或者帮助他们发现新东西。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Speak（speak.com）&lt;/strong&gt;是一款人工智能语言学习应用程序，专注于打造流利口语的最佳途径。 他们是韩国发展最快的英语应用程序，并且已经在使用 Whisper API 来支持新的 AI 语音伴侣产品，并迅速将其推向全球其他地区。 Whisper 为各个级别的语言学习者提供了人类水平的准确性，解锁了真正的开放式会话练习和高度准确的反馈。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;2一些更详细的示例&quot;&gt;2、一些更详细的示例&lt;/h3&gt;
-
-&lt;p&gt;API 还能实现什么功能？这里列举一些 GPT-3 API 期间就有的功能，调用的效果如何。&lt;/p&gt;
-
-&lt;h4 id=&quot;21写作-copywriting&quot;&gt;2.1、写作 Copywriting&lt;/h4&gt;
-
-&lt;p&gt;人类输入：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Create promo copy for the FamilyTime mobile application. It allows unlimited uploading, special filters and makes it easy to create albums of photos and videos. It runs on iOS and Android:
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;下面是 GPT-3 的输出：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;FamilyTime is the perfect app to share and create memories with your family. FamilyTime is a free, unlimited photo and video editor that allows you to create albums of your memories. It has a special filter for the perfect summer look and is so simple to use.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;22摘要-summarization&quot;&gt;2.2、摘要 Summarization&lt;/h4&gt;
-
-&lt;p&gt;人类输入：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Summarize this email into a single sentence:
-
-Dear Olivia,
-
-The solar energy conference went great. New Horizon Manufacturing wants to meet with us to talk about our photovoltaic window system we’re about to launch.
-I think it would be great to talk this Tuesday.
-
-Best,
-Allison
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;下面是 GPT-3 输出：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Allison is excited to meet with New Horizon Manufacturing to discuss their photovoltaic window system.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;23分析无结构文本-parsing-unstructured-text&quot;&gt;2.3、分析无结构文本 Parsing Unstructured Text&lt;/h4&gt;
-
-&lt;p&gt;人类输入：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Answer the following questions about this customer email:
-
-I’m wondering if you could provide me with information about your cloud services for companies. I’m CTO for Moon Door, a movie production company and want to know if it can help us manage our different projects that are in production.
-
-Questions:
-1. What industry is the company
-2. What is the name of the company
-3. What are they interested in
-4. What is the customer’s position
-
-Answers:
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;下面是 GPT-3 输出：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. The company is in the movie production industry.
-2. The company is Moon Door.
-3. The customer is interested in cloud services for companies.
-4. The customer is the CTO.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;24分类-classification&quot;&gt;2.4、分类 Classification&lt;/h4&gt;
-
-&lt;p&gt;人类输入：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Choose a genre category for each book 1. The Hunger Games, 2. The Kite Runner 3. A Wrinkle in Time (“fiction”, “young adult”, “science fiction”, “fantasy”, “other”) and make a list of the book and its genre:
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;下面是 GPT-3 输出：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. The Hunger Games: young adult, fiction
-2. The Kite Runner: fiction, young adult
-3. A Wrinkle in Time: science fiction, fantasy, other
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;25翻译-translation&quot;&gt;2.5、翻译 Translation&lt;/h4&gt;
-
-&lt;p&gt;人类输入：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Translate this into French: Where can I find a bookstore?
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;下面是 GPT-3 输出：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Où puis-je trouver un magasin de livres?
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;3将自然语言翻译成代码的-codex&quot;&gt;3、将自然语言翻译成代码的 Codex&lt;/h3&gt;
-
-&lt;h4 id=&quot;31用自然语言写-sql&quot;&gt;3.1、用自然语言写 SQL&lt;/h4&gt;
-
-&lt;p&gt;人类输入：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Table customers, columns = [CustomerId, FirstName, LastName, Company, Address, City, State, Country, PostalCode, Phone, Fax, Email, SupportRepId, TotalSpend]
-
-Create a MySQL query for all customers in Texas who have spent over five thousand dollars.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;下面是 Codex 输出：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;query = &quot;SELECT * FROM customers WHERE State = &apos;TX&apos; AND TotalSpend &amp;gt; 5000&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;32用自然语言调用一个-api&quot;&gt;3.2、用自然语言调用一个 API&lt;/h4&gt;
-
-&lt;p&gt;人类输入：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Python 3
-Get the current value of a Bitcoin in US dollars using the bitcoincharts api
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Codex 输出：&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;requests&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;json&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_bitcoin_price&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;http://api.bitcoincharts.com/v1/weighted_prices.json&apos;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loads&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;USD&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;7d&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;__main__&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_bitcoin_price&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;33用自然语言续写代码&quot;&gt;3.3、用自然语言续写代码&lt;/h4&gt;
-
-&lt;p&gt;人类输入：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Extract all the html from the string and replace the tags with &apos;&apos;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Codex 输出：&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def extract_html(text):
-    return re.sub(&apos;&amp;amp;lt;[^&amp;amp;lt;]+?&amp;amp;gt;&apos;, &apos;&apos;, text)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;四微调fine-tuning&quot;&gt;四、微调（Fine-tuning）&lt;/h2&gt;
-
-&lt;p&gt;上面也提到了，暂时未开放对 Turbo（也就是 ChatGPT 背后的 GPT-3.5）的 finetune，但是开放后的使用方式也会是与 GPT-3 的 finetune 类似的。我们来看看目前 OpenAI 是如何让开发者来 finetune 他们的基础模型的。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Few-shot learning 是什么？&lt;/strong&gt;：GPT-3 用了互联网上的海量文本数据训练，所以当你给少量示例（a promopt with just a few examples）时，GPT-3 会从「直觉上」知道你大概是想要解决什么任务，然后给出一些大概齐的反馈内容作为 completion，这通常就被叫做「few-shot learning」或者「few-shot prompting」。&lt;/p&gt;
-
-&lt;p&gt;而如果你提供一些针对目标任务的训练数据，很可能可以实现没有 examples 也可以执行任务，也就是使用时连「few-shot learning」都免了。OpenAI 也提供了让用户自己 fine-tune 模型的接口，自己 fine-tune 的好处是：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;高质量&lt;/strong&gt;：这是显然的，比「设计提示（prompt design）」得到的结果质量更高。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;相当于批量 prompt&lt;/strong&gt;：可以比 prompt 给模型更多的 examples，比如用一个文件，里面包含大量用于 fine-tuning 的输入数据。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;更省&lt;/strong&gt;：可以更省 tokens，也就更省钱。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;更快&lt;/strong&gt;：更低的延迟的请求响应。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;步骤和价格&lt;/strong&gt;方面，Fine-tune 一共三步：上传用于 fine-tune 的数据、用数据 fine-tune 模型、使用属于你自己的 fine-tune 过的模型。从定价上我们看到 Fine-tune 后的模型使用费用基本翻了 4~6 倍，可以说相比基本模型的使用，是非常贵了。&lt;/p&gt;
-
-&lt;p&gt;另外 OpenAI 也支持你对一个 fine-tune 过的模型继续 fine-tune，而不用从头开始。目前 davinci、curie、babbage、ada 都支持 fine-tuning。训练数据的格式也很简单，就是一组 prompt-completion 的 JSONL 文件，just like this：&lt;/p&gt;
-
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;prompt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;prompt text&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;completion&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;ideal generated text&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;prompt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;prompt text&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;completion&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;ideal generated text&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;prompt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;prompt text&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;completion&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;ideal generated text&amp;gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Fine-tune 的 example 与 few-shot learning 的最大区别：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;few-shot learning 要给出详尽的 instruction 来描述任务&lt;/li&gt;
-  &lt;li&gt;few-shot learning 的一个 prompt 是在使用时给出的，所以一个 prompt 大概率会带多个 examples（相对详细）；而 fine-tune 的 example 都是一些简单直接的 prompt 以及直接对应的 completion。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;OpenAI 建议 fine-tune 的 examples 数量至少几百（a couple hundred）。另外 fine-tune 也符合 scaling law，基本上 fine-tune 的数据集成倍上翻的话，效果是线性增长的。&lt;/p&gt;
-
-&lt;h3 id=&quot;1创建一个-fine-tune-模型&quot;&gt;1、创建一个 fine-tune 模型&lt;/h3&gt;
-
-&lt;p&gt;CLI 下运行如下命令，其中 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;TRAIN_FILE_ID_OR_PATH&amp;gt;&lt;/code&gt; 是你的训练数据文件，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;BASE_MODEL&amp;gt;&lt;/code&gt; 是你要用的模型，具体的参数可以用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ada&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;babbage&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curie&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;davinci&lt;/code&gt;。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@local &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;openai api fine_tunes.create &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; &amp;lt;TRAIN_FILE_ID_OR_PATH&amp;gt; &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &amp;lt;BASE_MODEL&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;这句命令让 OpenAI 不仅基于 base model 创建了一个模型，而且开始运行训练任务。训练任务可能会花费几分钟、几小时甚至根据，取决于你的训练集和模型选择。训练任务可能会被 OpenAI 排队，不一定马上开始运行。如果过程中被打断了，可以如下继续：&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@local &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;openai api fine_tunes.follow &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &amp;lt;YOUR_FINE_TUNE_JOB_ID&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;保存一个 fine-tune job 的命令如下：&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@local &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;openai api fine_tunes.get &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &amp;lt;YOUR_FINE_TUNE_JOB_ID&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;取消一个 fine-tune job 的命令如下：&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@local &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;openai api fine_tunes.cancel &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &amp;lt;YOUR_FINE_TUNE_JOB_ID&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;2使用-fine-tuned-模型&quot;&gt;2、使用 fine-tuned 模型&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;openai&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;openai&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Completion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FINE_TUNED_MODEL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;YOUR_PROMPT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;3删掉一个-fine-tuned-模型&quot;&gt;3、删掉一个 fine-tuned 模型&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;openai&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;openai&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FINE_TUNED_MODEL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;4一个-fine-tuned-模型之上继续-fine-tune&quot;&gt;4、一个 fine-tuned 模型之上继续 fine-tune&lt;/h3&gt;
-
-&lt;p&gt;如果你微调了一个模型，现在又有为的训练数据想要合并进来，可以基于已 fine-tuned 模型继续微调，无需从头再全部训练一遍。唯一要做的，就是在创建新的 fine-tune job 时传入已 fine-tune 的模型名称，替代&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;BASE_MODEL&amp;gt;&lt;/code&gt;（例如 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-m curie:ft-&amp;lt;org&amp;gt;-&amp;lt;date&amp;gt;&lt;/code&gt;），不必更改其他训练参数。&lt;/p&gt;
-
-&lt;p&gt;有一个要注意的，如果新增的训练数据比以前的训练数据规模小得多，那最好把 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;learning_rate_multiplier&lt;/code&gt; 减少 2 到 4 倍，否则很可能跳过了最优解。&lt;/p&gt;
-
-&lt;h4 id=&quot;本文参考&quot;&gt;本文参考&lt;/h4&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;https://openai.com/blog/introducing-chatgpt-and-whisper-apis&lt;/li&gt;
-  &lt;li&gt;https://openai.com/pricing&lt;/li&gt;
-  &lt;li&gt;https://platform.openai.com/docs/guides/chat/chat-vs-completions&lt;/li&gt;
-  &lt;li&gt;https://platform.openai.com/docs/usage-policies&lt;/li&gt;
-  &lt;li&gt;https://platform.openai.com/docs/models/gpt-3-5&lt;/li&gt;
-  &lt;li&gt;https://openai.com/api/&lt;/li&gt;
-  &lt;li&gt;https://developer.aliyun.com/article/933516&lt;/li&gt;
-  &lt;li&gt;http://www.mikecaptain.com/2023/03/02/chatgpt-api/&lt;/li&gt;
-  &lt;li&gt;http://www.mikecaptain.com/2023/01/24/openai-official-doc/&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><summary type="html">开发人员现在可以通过 API 将 ChatGPT 和 Whisper 模型集成到他们的应用程序和产品中。</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><summary type="html">人类创造城市，又把它虚拟化；创造机器，又希望机器习得创造。人工智能似乎要来到觉醒的那一刻了。过去数十年，数据科学家研发出了一个又一个 AI 模型，似乎总在重复造轮子。能否通过更便捷有效的方式，真正让机器去统一吸收文本、语音、图片等不同类型的数据和知识并创造出不同的内容呢？多模态预训练大模型打通了模态之间的关系，模型逐步标准化。下一步，则是建立统一的、跨场景、多任务的多模态基础模型。机器从未像今天这般吸收、理解、创造，一个崭新的 AI 大时代即将开启。生成式 AI 显然是机器中的佼佼者。不久前爆火的 ChatGPT，学会了从人类的反馈中强化学习，能你来我往多轮聊天。会对话，也会作画，是基于 diffusion 模型的 AI 绘画，，从最初的拼贴已经进化到三维动画、建模贴图的 next level，甚至 AI 还会自我编码，在 codeforces 举办的编程竞赛中 AlphaCode 超过了 47% 的人类工程师。未来三年，生成式 AI 不但会有越来越多的产品，它的内容创造能力将达到人类水平。</summary></entry></feed>

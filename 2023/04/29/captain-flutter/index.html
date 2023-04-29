@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>麦克船长的全栈指南：Google Flutter 开发跨平台 APP（1/3）</title>
+  	<meta name="description" content="产品、运营还是工程，最好都要会一些前端，这样方便自己做一点东西便于提高日常的生产力。今天介绍的是 2018 年开始的 Google Flutter 跨多平台终端的技术，支持 iOS、Android、Web、macOS、Linux、Windows ……">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+  	<!-- KaTeX -->
+  	<link rel="stylesheet" href="/assets/plugins/katex.0.11.1/katex.min.css">
+  	
+
+  	
+  		<script async src="https://www.googletagmanager.com/gtag/js?id=G-CH4708X4R5"></script>
+  		<script>
+    		window.dataLayer = window.dataLayer || [];
+    		function gtag(){dataLayer.push(arguments);}
+    		gtag('js', new Date());
+
+    		gtag('config', 'G-CH4708X4R5');
+  		</script>
+	
+
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/booklist/" title="读书行路">读书行路</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>麦克船长的全栈指南：Google Flutter 开发跨平台 APP（1/3）</h2>		
+	<time datetime="2023-04-29T16:10:13+08:00" class="by-line">29 Apr 2023, 杭州 | 麦克船长 | 总计 19461 字</time>
+	<div class="content">
+		<p><strong>本文目录</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#第一章--准备与-first-step" id="markdown-toc-第一章--准备与-first-step">第一章 · 准备与 First Step</a>    <ul>
+      <li><a href="#第-1-节--环境配置与-hello-world" id="markdown-toc-第-1-节--环境配置与-hello-world">第 1 节 · 环境配置与 Hello World</a></li>
+    </ul>
+  </li>
+  <li><a href="#第-2-节--first-step在-macos-平台跑第一个-app" id="markdown-toc-第-2-节--first-step在-macos-平台跑第一个-app">第 2 节 · First Step：在 macOS 平台跑第一个 App</a>    <ul>
+      <li><a href="#第-3-节--在-ios-平台设备及模拟器上跑起第一个-app" id="markdown-toc-第-3-节--在-ios-平台设备及模拟器上跑起第一个-app">第 3 节 · 在 iOS 平台（设备及模拟器）上跑起第一个 App</a></li>
+      <li><a href="#第-4-节--在-android-平台跑起第一个-app" id="markdown-toc-第-4-节--在-android-平台跑起第一个-app">第 4 节 · 在 Android 平台跑起第一个 App</a></li>
+      <li><a href="#第-5-节--在-chrome-浏览器跑起第一个-app" id="markdown-toc-第-5-节--在-chrome-浏览器跑起第一个-app">第 5 节 · 在 Chrome 浏览器跑起第一个 App</a></li>
+    </ul>
+  </li>
+  <li><a href="#第二章--flutter-的开发理念" id="markdown-toc-第二章--flutter-的开发理念">第二章 · Flutter 的开发理念</a>    <ul>
+      <li><a href="#第-6-节--flutter-的开发框架和线程模型" id="markdown-toc-第-6-节--flutter-的开发框架和线程模型">第 6 节 · Flutter 的开发框架和线程模型</a></li>
+      <li><a href="#第-7-节--flutter-的基础理念一切皆为-widgets" id="markdown-toc-第-7-节--flutter-的基础理念一切皆为-widgets">第 7 节 · Flutter 的基础理念：一切皆为 Widgets</a></li>
+      <li><a href="#第-8-节--理解-flutter-的生命周期" id="markdown-toc-第-8-节--理解-flutter-的生命周期">第 8 节 · 理解 Flutter 的生命周期</a>        <ul>
+          <li><a href="#81初始化阶段" id="markdown-toc-81初始化阶段">8.1、初始化阶段</a></li>
+          <li><a href="#82组件创建阶段" id="markdown-toc-82组件创建阶段">8.2、组件创建阶段</a></li>
+          <li><a href="#83触发组件-build" id="markdown-toc-83触发组件-build">8.3、触发组件 build：</a></li>
+          <li><a href="#84组件的销毁阶段" id="markdown-toc-84组件的销毁阶段">8.4、组件的销毁阶段</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#第三章--flutter-组件介绍及应用" id="markdown-toc-第三章--flutter-组件介绍及应用">第三章 · Flutter 组件介绍及应用</a>    <ul>
+      <li><a href="#第-9-节--编写一个-news-app-练手" id="markdown-toc-第-9-节--编写一个-news-app-练手">第 9 节 · 编写一个 News App 练手</a>        <ul>
+          <li><a href="#91下载-vscode-并创建-flutter" id="markdown-toc-91下载-vscode-并创建-flutter">9.1、下载 VSCode 并创建 Flutter</a></li>
+          <li><a href="#92了解-dart-的一些基本语法" id="markdown-toc-92了解-dart-的一些基本语法">9.2、了解 Dart 的一些基本语法</a></li>
+          <li><a href="#93flutter-程序入口-maindart" id="markdown-toc-93flutter-程序入口-maindart">9.3、Flutter 程序入口 <code class="language-plaintext highlighter-rouge">main.dart</code></a></li>
+          <li><a href="#94app-获取-http-请求的服务" id="markdown-toc-94app-获取-http-请求的服务">9.4、App 获取 Http 请求的服务</a></li>
+          <li><a href="#95app-的列表页" id="markdown-toc-95app-的列表页">9.5、App 的列表页</a></li>
+          <li><a href="#96app-的二级页面实现" id="markdown-toc-96app-的二级页面实现">9.6、App 的二级页面实现</a></li>
+          <li><a href="#97对练手-app-的整体回顾" id="markdown-toc-97对练手-app-的整体回顾">9.7、对练手 App 的整体回顾</a></li>
+        </ul>
+      </li>
+      <li><a href="#第-10-节--widget导航路由网络请求和项目发布" id="markdown-toc-第-10-节--widget导航路由网络请求和项目发布">第 10 节 · Widget、导航路由、网络请求和项目发布</a>        <ul>
+          <li><a href="#101常用-widget" id="markdown-toc-101常用-widget">10.1、常用 Widget</a></li>
+          <li><a href="#102导航路由" id="markdown-toc-102导航路由">10.2、导航路由</a></li>
+          <li><a href="#103网络请求" id="markdown-toc-103网络请求">10.3、网络请求</a></li>
+          <li><a href="#104项目发布" id="markdown-toc-104项目发布">10.4、项目发布</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#附录" id="markdown-toc-附录">附录</a>    <ul>
+      <li><a href="#flutter-doctor" id="markdown-toc-flutter-doctor"><code class="language-plaintext highlighter-rouge">flutter doctor</code></a></li>
+      <li><a href="#flutter-create-hello_world-创建项目" id="markdown-toc-flutter-create-hello_world-创建项目"><code class="language-plaintext highlighter-rouge">flutter create hello_world</code> 创建项目</a></li>
+      <li><a href="#flutter-run-运行项目" id="markdown-toc-flutter-run-运行项目"><code class="language-plaintext highlighter-rouge">flutter run</code> 运行项目</a></li>
+      <li><a href="#flutter-devices" id="markdown-toc-flutter-devices"><code class="language-plaintext highlighter-rouge">flutter devices</code></a></li>
+      <li><a href="#flutter-pub-get" id="markdown-toc-flutter-pub-get"><code class="language-plaintext highlighter-rouge">flutter pub get</code></a></li>
+      <li><a href="#其他" id="markdown-toc-其他">其他</a></li>
+    </ul>
+  </li>
+  <li><a href="#参考" id="markdown-toc-参考">参考</a></li>
+</ul>
+
+<h2 id="第一章--准备与-first-step">第一章 · 准备与 First Step</h2>
+
+<h3 id="第-1-节--环境配置与-hello-world">第 1 节 · 环境配置与 Hello World</h3>
+
+<p>Flutter 是 Google 推出的一套跨平台的终端开发框架，有中文社区及官方网站支持 <code class="language-plaintext highlighter-rouge">https://flutter.cn/</code>。</p>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-1.png" alt="" /></p>
+
+<p>Flutter 是为跨端而生，那么就要和船长一起了解下跨端这件事儿的演进历史。最早在万维网（World Wide Web，简称 WWW）出现后，第一个端就是 Web，其基础编程语言是 HTML。但是 HTML 不是一个图灵完备的语言，只是一个标记语言，就像它的名字一样（Hypter Text Mark Language）。为了展现不同的样式，配套出现了 CSS 用于控制 Web 的展现样式，其含义是 Cascading Style Sheets（层叠样式表）。而让 Web 活起来，不是死气沉沉的一对按钮、文字、段落 …… 则需要一款图灵完备的语言，可以随意控制 Web 上显示的各种组建，以及控制状态、数据，还有掌控逻辑流程等等，就配套地出现了 JavaScript。因此第一个阶段我们可以称其为 HTML 时代，始于 1993 年，其编程语言是 HTML+CSS+JS。这个阶段还只有桌面端，主要就是适配浏览器。</p>
+
+<p>第二阶段，是从移动互联网开始，大概在 2009 年前后，Android/iOS 平台出现，最初都是每个平台要维护一套代码的。但是很快，业界就在推动从原生开发到逐渐过渡到 Hybrid 混合模式（半原生半 Web），由原生提供一套统一 API 供 JavaScript 调用。因此核心的代码逻辑都是在 HTML+JS 中实现的，然后展示在 WebView 中（你可以理解为浏览器，iOS 和 Android 中都有 WebView）。这时候已经从为 iOS、Android 写多套代码过渡成一套代码维护了，虽然实现了跨平台，但是整体性能比较差。</p>
+
+<p>第三阶段，Facebook 推出 React Native，理念是「Learn Once, Write Anywhere」，用 JavaScript 语言、React 的设计模式、原生的界面渲染/动画/网络请求。开发者编写的 JS 代码通过 React Native 中间层转换为各平台原生代码，实现原生控件和操作。</p>
+
+<p>第四阶段，阿里巴巴在 2016 年推出 Weex，理念是「Write One, Run Anywhere」，也是用 JavaScript 语言，基于 Vue 的设计模式支持 Web、Android、iOS。</p>
+
+<p>第五阶段，Google 在 2018 年推出 Flutter，支持 AOT 编译（Ahead Of Time，即运行前编译）从而实现机器码，也支持 JIT 编译（Just In Time，即时编译）热重载，用 Dart 语言开发。目前国内大厂基本都是用了 Flutter，包括阿里巴巴、腾讯、百度、美团、字节跳动、京东等。</p>
+
+<p>好了就说这么多，首先下载 Flutter <code class="language-plaintext highlighter-rouge">https://flutter.cn/docs/get-started/install</code>，然后：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@CVN % unzip ~/Downloads/flutter_macos_3.7.12-stable.zip
+mikecaptain@CVN % <span class="nb">mv</span> ~/Downloads/flutter_macos_3.7.12-stable ~/workspace/flutter
+mikecaptain@CVN % <span class="nb">cd</span> ~/workspace/flutter
+mikecaptain@CVN % <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PATH</span><span class="s2">:</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span><span class="s2">/flutter/bin"</span>
+</code></pre></div></div>
+
+<p>一般前端开发者都安装过 XCode、Android Studio、Chrome 等，所以配置 Flutter 也都会比较顺利，这里船长就不赘述了，安装成功后用 <code class="language-plaintext highlighter-rouge">flutter doctor</code> 测试应该有如下提示：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>base<span class="o">)</span> mikecaptain@CVN ~ % flutter doctor                   
+Doctor summary <span class="o">(</span>to see all details, run flutter doctor <span class="nt">-v</span><span class="o">)</span>:
+<span class="o">[</span>✓] Flutter <span class="o">(</span>Channel stable, 3.7.12, on macOS 13.2.1 22D68 darwin-arm64, locale zh-Hans-CN<span class="o">)</span>
+<span class="o">[</span>✓] Android toolchain - develop <span class="k">for </span>Android devices <span class="o">(</span>Android SDK version 33.0.2<span class="o">)</span>
+<span class="o">[</span>✓] Xcode - develop <span class="k">for </span>iOS and macOS <span class="o">(</span>Xcode 14.3<span class="o">)</span>
+<span class="o">[</span>✓] Chrome - develop <span class="k">for </span>the web
+<span class="o">[</span>✓] Android Studio <span class="o">(</span>version 2022.1<span class="o">)</span>
+<span class="o">[</span>✓] Connected device <span class="o">(</span>2 available<span class="o">)</span>
+<span class="o">[</span>✓] HTTP Host Availability
+
+• No issues found!
+</code></pre></div></div>
+
+<p>详细的安装指南请看 Flutter 官网，例如 macOS 上的安装 <code class="language-plaintext highlighter-rouge">https://flutter.cn/docs/get-started/install/macos</code>。</p>
+
+<h2 id="第-2-节--first-step在-macos-平台跑第一个-app">第 2 节 · First Step：在 macOS 平台跑第一个 App</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@CVN % flutter create hello_world
+mikecaptain@CVN % <span class="nb">cd </span>hello_world
+mikecaptain@CVN % flutter run
+</code></pre></div></div>
+
+<p>正常的话这样会看到运行成功的提示：</p>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-2.png" alt="" /></p>
+
+<p>如果选择 <code class="language-plaintext highlighter-rouge">[1]: macOS(macos)</code>，会弹出一个 macOS 的应用程序窗口：</p>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-3.png" alt="" width="720" /></p>
+
+<h3 id="第-3-节--在-ios-平台设备及模拟器上跑起第一个-app">第 3 节 · 在 iOS 平台（设备及模拟器）上跑起第一个 App</h3>
+
+<p>将你的 iPhone 连接到 macOS 设备上，在 iPhone 的设置 - 隐私与安全性 - 开发者模式 - 打开 - 重启 iPhone - 重启后输入密码进入设备 - 在弹窗上同意开启开发者模式。此时在 XCode - Windows - Devices and Simulators 中选择你的 iPhone 后会看到如下类似页面：</p>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-4.png" alt="" width="720" /></p>
+
+<p>设置结束后，会看到如下窗口页面：</p>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-5.png" alt="" width="720" /></p>
+
+<p>在 Xcode 中打开该 Flutter 项目命令如下：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@CVN % open ios/Runner.xcworkspace
+</code></pre></div></div>
+
+<p>则会看到如下 XCode 项目窗口：</p>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-6.png" alt="" width="720" /></p>
+
+<p>如果有类似如下提示：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.../hello_world/ios/Runner.xcodeproj Signing <span class="k">for</span> <span class="s2">"Runner"</span> requires a development team. Select a development team <span class="k">in </span>the Signing &amp; Capabilities editor.
+</code></pre></div></div>
+
+<p>这个提示是因为你还没有设置项目的开发者团队。要解决这个问题，请按照以下步骤进行操作：</p>
+
+<ol>
+  <li>在 Xcode 中打开 Runner.xcworkspace 文件。</li>
+  <li>在左侧导航栏中选择 Runner。</li>
+  <li>在中间面板中选择 “Signing &amp; Capabilities”。</li>
+  <li>在 “Signing &amp; Capabilities” 下的 “Team” 中选择你的开发者团队。</li>
+</ol>
+
+<p>如果提示如下错误：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Failed to register bundle identifier
+The app identifier <span class="s2">"com.example.helloWorld"</span> cannot be registered to your development team because it is not available. Change your bundle identifier to a unique string to try again.
+</code></pre></div></div>
+
+<p>这个错误信息是因为你的 Bundle Identifier 在开发者中心已经被其他开发者使用了。你需要在你的项目中使用一个唯一的 Bundle Identifier。你可以按照以下步骤修改项目的 Bundle Identifier：</p>
+
+<ol>
+  <li>在 Xcode 中打开你的项目。</li>
+  <li>选择你的项目在左侧导航栏中的顶层项。</li>
+  <li>在 “General” 选项卡中，找到 “Identity” 部分。</li>
+  <li>在 “Bundle Identifier” 中输入一个唯一的标识符，例如 “com.yourcompany.yourapp”。</li>
+  <li>保存并重新编译你的项目。</li>
+</ol>
+
+<p>正常到这里应该就没有什么错误了，可以运行一下程序，可能会有如下提示：</p>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-7.jpg" alt="" width="240" /></p>
+
+<p>这个问题通常是因为你的开发者账号没有被信任。解决这个问题的步骤如下：</p>
+
+<ol>
+  <li>在你的 iPhone 上打开 “设置” 应用程序。</li>
+  <li>滚动到 “通用” &gt; “设备管理”。</li>
+  <li>找到你的开发者账号并点击它。</li>
+  <li>点击 “信任”。</li>
+  <li>重启你的 iPhone，然后再次尝试运行你的应用程序。</li>
+</ol>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-8.png" alt="" width="320" /></p>
+
+<p>再次运行就成功了。</p>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-9.png" alt="" width="320" /></p>
+
+<p>同样尝试一下在 Simulator 上运行试试：</p>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-10.png" alt="" width="360" /></p>
+
+<h3 id="第-4-节--在-android-平台跑起第一个-app">第 4 节 · 在 Android 平台跑起第一个 App</h3>
+
+<p>在 Android 的 Tools - Device Manager - 右侧「Create device」，比如创建一个「Pixel 6」设备，点击「Next」。</p>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-14.png" alt="" /></p>
+
+<h3 id="第-5-节--在-chrome-浏览器跑起第一个-app">第 5 节 · 在 Chrome 浏览器跑起第一个 App</h3>
+
+<p>更新最新版本的 Flutter：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@CVN % flutter channel stable
+mikecaptain@CVN % flutter upgrade
+</code></pre></div></div>
+
+<p>查看 flutter 目前可以连接的设备：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>base<span class="o">)</span> mikecaptain@CVN testspace % flutter devices
+3 connected devices:
+
+iPhone 14 <span class="o">(</span>mobile<span class="o">)</span> • D89CD348-58C2-4F3B-B07D-54E2A72AB1BA • ios            • com.apple.CoreSimulator.SimRuntime.iOS-16-4 <span class="o">(</span>simulator<span class="o">)</span>
+macOS <span class="o">(</span>desktop<span class="o">)</span>    • macos                                • darwin-arm64   • macOS 13.2.1 22D68 darwin-arm64
+Chrome <span class="o">(</span>web<span class="o">)</span>       • chrome                               • web-javascript • Google Chrome 112.0.5615.137
+</code></pre></div></div>
+
+<p>使用 Chrome 运行刚刚的 Hello World 程序：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>base<span class="o">)</span> mikecaptain@CVN hello_world % flutter run <span class="nt">-d</span> chrome
+Launching lib/main.dart on Chrome <span class="k">in </span>debug mode...
+Waiting <span class="k">for </span>connection from debug service on Chrome...                 ⣾
+</code></pre></div></div>
+
+<p>浏览器会打开 <code class="language-plaintext highlighter-rouge">http://localhost:56049/#/</code> 链接：</p>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-11.png" alt="" /></p>
+
+<p>如果项目在创建时没有支持 Web，可以运行下面命令支持 Web：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@CVN % flutter create <span class="nt">--platforms</span> web <span class="nb">.</span>
+</code></pre></div></div>
+
+<h2 id="第二章--flutter-的开发理念">第二章 · Flutter 的开发理念</h2>
+
+<h3 id="第-6-节--flutter-的开发框架和线程模型">第 6 节 · Flutter 的开发框架和线程模型</h3>
+
+<p>Flutter 包括三层：框架层 Framework（Dart 编写）、引擎层 Engine（C/C++）、嵌入层 Embedder（Platform Specific）。</p>
+
+<p>再来跟着船长理解下 Flutter 的线程模型。Embedder 进行线程的创建和管理，提供四种 Task Runner 给 Engine，包括 Platform Task Runner（主线程）、UI Task Runner（渲染和处理 Vsync 信号并将 Widget 转换成 Layer Tree）、GPU Task Runner、IO Task Runner（文件读写与资源加载）。</p>
+
+<p>Engine 启动时，会分别创建一个 UI Task Runner、一个 GPU Task Runner、一个 IO Task Runner。所有 Engine 共享一个 Platform Task Runner。</p>
+
+<h3 id="第-7-节--flutter-的基础理念一切皆为-widgets">第 7 节 · Flutter 的基础理念：一切皆为 Widgets</h3>
+
+<ul>
+  <li>Widget 的主要工作是提供一个 <code class="language-plaintext highlighter-rouge">build()</code> 方法来描述如何用 Widget 树状结构下自己的叶子 Widget 们如何组织起来显示自己。</li>
+  <li>Material 是一种标准的移动端和 web 端的视觉设计语言。 Flutter 提供了一套丰富的 Material widgets。</li>
+  <li>你可以把 Widget 理解为一个配置文件，描述了 UI 界面的展示。Widget 状态变化时会重新绘制 UI，Flutter 框架会对比状态变化前后的区别来重新渲染 UI。</li>
+  <li>Flutter 中一般说的生命周期，指的是 StatefulWidget 的生命周期。生命周期涉及到一系列的方法，下面会讲到。</li>
+</ul>
+
+<h3 id="第-8-节--理解-flutter-的生命周期">第 8 节 · 理解 Flutter 的生命周期</h3>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-15.png" alt="" width="480" /></p>
+
+<p>Flutter 生命周期就是 StatefulWidget 的生命周期，从 <code class="language-plaintext highlighter-rouge">createState</code> 方法开始。</p>
+
+<h4 id="81初始化阶段">8.1、初始化阶段</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">createState</code>：当 StatefulWidget 被调用时会立即执行 <code class="language-plaintext highlighter-rouge">createState</code> 方法，然后是 <code class="language-plaintext highlighter-rouge">initState</code>。</li>
+  <li><code class="language-plaintext highlighter-rouge">initState</code>：一般会在这里进行各个变量的初始赋值，与服务端进行最初的交互。</li>
+</ul>
+
+<h4 id="82组件创建阶段">8.2、组件创建阶段</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">didChangeDependencies</code>：当 State 发生变化时会调用。</li>
+  <li><code class="language-plaintext highlighter-rouge">build</code> 主要是返回需要渲染的 Widget。<code class="language-plaintext highlighter-rouge">build</code> 会被调用多次，所以这里只能返回 <strong>widget 的相关逻辑</strong>，避免因为多次执行导致的状态异常。</li>
+</ul>
+
+<h4 id="83触发组件-build">8.3、触发组件 build：</h4>
+
+<p>触发组件 build 的方法有 <code class="language-plaintext highlighter-rouge">didChangeDependencies</code>、<code class="language-plaintext highlighter-rouge">setState</code>、<code class="language-plaintext highlighter-rouge">didUpdateWidget</code>。</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">didUpdateWidget</code>：在 Widget 重新构建时，Flutter Framework 会调用 Widget.canUpdate 来检测 Widget Tree 中同一位置的新旧节点，然后决定是否需要更新，如果得到的是 True 就会调用这个回调方法 <code class="language-plaintext highlighter-rouge">didUpdateWiedget</code>。另外父亲 Widget 的 <code class="language-plaintext highlighter-rouge">build</code> 时，孩子 Widget 的 <code class="language-plaintext highlighter-rouge">didUpdateWidget</code> 也会被调用。这个方法调用后，一定会再次调用孩子的 <code class="language-plaintext highlighter-rouge">build</code>。</li>
+</ul>
+
+<h4 id="84组件的销毁阶段">8.4、组件的销毁阶段</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">deactivate</code> 在组件被移除节点后会被调用。</li>
+  <li><code class="language-plaintext highlighter-rouge">dispose</code> 是在一个组件被移除，并没有插入到其他节点时，会被调用，即永久删除，并释放组件资源。</li>
+</ul>
+
+<h2 id="第三章--flutter-组件介绍及应用">第三章 · Flutter 组件介绍及应用</h2>
+
+<h3 id="第-9-节--编写一个-news-app-练手">第 9 节 · 编写一个 News App 练手</h3>
+
+<h4 id="91下载-vscode-并创建-flutter">9.1、下载 VSCode 并创建 Flutter</h4>
+
+<p>我们这里选择用目前最主流的 IDE —— VSCode 来编写程序，首先在 <code class="language-plaintext highlighter-rouge">https://code.visualstudio.com/</code> 下载 VSCode，解压后就可以使用。</p>
+
+<p>然后通过 <code class="language-plaintext highlighter-rouge">cmd + shift + p</code> 打开 VSCode 的控制台，输入 <code class="language-plaintext highlighter-rouge">Flutter: New Project</code> 然后选择 <code class="language-plaintext highlighter-rouge">Application</code>，就创建成功一个 VSCode 下的 Flutter 项目了。这个过程创建出来的整个目录结构与在 CLI 下输入 <code class="language-plaintext highlighter-rouge">flutter create hello_world</code> 效果是一样的。目录结构如下：</p>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-13.png" alt="" width="240" /></p>
+
+<p>所有依赖库都在 <code class="language-plaintext highlighter-rouge">pubspec.yaml</code> 文件里管理，我们可以为其添加一个 <code class="language-plaintext highlighter-rouge">http</code> 依赖库：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dependencies:
+  flutter:
+    sdk: flutter
+  http: ^0.13.3
+</code></pre></div></div>
+
+<p>然后运行 <code class="language-plaintext highlighter-rouge">flutter pub get</code> 命令完成依赖的获取。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>base<span class="o">)</span> mikecaptain@CVN yongxian_news % flutter pub get            
+Running <span class="s2">"flutter pub get"</span> <span class="k">in </span>yongxian_news...
+Resolving dependencies... 
+  async 2.10.0 <span class="o">(</span>2.11.0 available<span class="o">)</span>
+  characters 1.2.1 <span class="o">(</span>1.3.0 available<span class="o">)</span>
+  collection 1.17.0 <span class="o">(</span>1.17.1 available<span class="o">)</span>
+  js 0.6.5 <span class="o">(</span>0.6.7 available<span class="o">)</span>
+  matcher 0.12.13 <span class="o">(</span>0.12.15 available<span class="o">)</span>
+  material_color_utilities 0.2.0 <span class="o">(</span>0.3.0 available<span class="o">)</span>
+  meta 1.8.0 <span class="o">(</span>1.9.1 available<span class="o">)</span>
+  path 1.8.2 <span class="o">(</span>1.8.3 available<span class="o">)</span>
+  source_span 1.9.1 <span class="o">(</span>1.10.0 available<span class="o">)</span>
+  test_api 0.4.16 <span class="o">(</span>0.5.2 available<span class="o">)</span>
+Got dependencies!
+</code></pre></div></div>
+
+<h4 id="92了解-dart-的一些基本语法">9.2、了解 Dart 的一些基本语法</h4>
+
+<p>语法是一个很庞杂的事情，没必要专门去学完了再写程序。这里船长先提到的，都是你在你的第一个程序中会用到的。在 Dart 中引用一个文件很简单，只需要如下写法：</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="s">'package:project_name/.../xxx.dart'</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>注意 Dart 中每一句最后都需要 <code class="language-plaintext highlighter-rouge">;</code>，这一点与 java、c++ 类似。</p>
+
+<p>Dart 也是面向对象语言，其面向对象的类写法也与 java 类似，是 <code class="language-plaintext highlighter-rouge">class</code>，并且如果是从一个类扩展而来的，就会用到与 java 类似的 <code class="language-plaintext highlighter-rouge">extends</code> 关键字。</p>
+
+<p>Dart 语法中也有 <code class="language-plaintext highlighter-rouge">final</code>，其含义与 Java 中的 <code class="language-plaintext highlighter-rouge">final</code> 类似。</p>
+
+<p>一个函数带有多个参数，那么每个参数之间都用 <code class="language-plaintext highlighter-rouge">,</code> 隔开，而最后一个参数后面加不加 <code class="language-plaintext highlighter-rouge">,</code>，Dart 都不会报错。</p>
+
+<p>字符串用 <code class="language-plaintext highlighter-rouge">''</code> 而不是 <code class="language-plaintext highlighter-rouge">""</code>。</p>
+
+<h4 id="93flutter-程序入口-maindart">9.3、Flutter 程序入口 <code class="language-plaintext highlighter-rouge">main.dart</code></h4>
+
+<p>其程序一般从 <code class="language-plaintext highlighter-rouge">lib/main.dart</code> 文件开始运行，默认调用 <code class="language-plaintext highlighter-rouge">void main() {}</code>，其中会有一句简单的启动 App 的语句：</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">runApp</span><span class="o">(</span><span class="kd">const</span> <span class="n">MyApp</span><span class="o">());</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">main</code> 函数也可以写成 <code class="language-plaintext highlighter-rouge">void main() =&gt; runApp(MyApp());</code> 的单行函数写法。</p>
+
+<p>如果你命名的默认 <code class="language-plaintext highlighter-rouge">main.dart</code> 中的类名为 <code class="language-plaintext highlighter-rouge">MyApp</code> 的话，则需要在 <code class="language-plaintext highlighter-rouge">main.dart</code> 文件中定义一下 <code class="language-plaintext highlighter-rouge">MyApp</code>，大致的结构如下：</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">MyApp</span> <span class="kd">extends</span> <span class="n">StatelessWidget</span> <span class="o">{</span>
+	<span class="kd">const</span> <span class="n">MyApp</span><span class="o">({</span><span class="k">super</span><span class="o">.</span><span class="na">key</span><span class="o">});</span>
+
+	<span class="nd">@override</span>
+	<span class="n">Widget</span> <span class="n">build</span><span class="o">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">MaterialApp</span><span class="o">(</span>
+			<span class="nl">title:</span> <span class="s">'Flutter Demo'</span><span class="o">,</span>
+			<span class="nl">theme:</span> <span class="n">ThemeData</span><span class="o">(</span>
+				<span class="nl">primarySwatch:</span> <span class="n">Colors</span><span class="o">.</span><span class="na">blue</span><span class="o">,</span>
+			<span class="o">),</span>
+			<span class="nl">home:</span> <span class="n">NewsListPage</span><span class="o">(),</span>
+		<span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">MyApp</code> 继承自 <code class="language-plaintext highlighter-rouge">StatelessWidget</code> 使得 App 整体也是一个 Widget（还记得前面说的在 Flutter 中一切皆为 Widget。其实在 Flutter 中连一些操作属性的东西都是 Widget，比如 Layout、Alignment 等等。</p>
+
+<h4 id="94app-获取-http-请求的服务">9.4、App 获取 Http 请求的服务</h4>
+
+<p>船长要创建一个首页获取 news list，首页中有 news list，其中每一项都可以点击进入到一个 news detail 页。这样我们就需要三个 dart 程序文件：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">news_service.dart</code> 发送 news list 请求；</li>
+  <li><code class="language-plaintext highlighter-rouge">news_list_page.dart</code> 展示 news list；</li>
+  <li><code class="language-plaintext highlighter-rouge">news_details_page.dart</code> 展示 news detail；</li>
+</ul>
+
+<p>和船长一起来看下 <code class="language-plaintext highlighter-rouge">news_service.dart</code> 文件：</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="s">'dart:convert'</span><span class="o">;</span>
+<span class="c1">// 注意这里的 as http 写法</span>
+<span class="kn">import</span> <span class="s">'package:http/http.dart'</span> <span class="k">as</span> <span class="n">http</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">NewsService</span> <span class="o">{</span>
+  <span class="kd">final</span> <span class="kt">String</span> <span class="n">apiUrl</span> <span class="o">=</span>
+      <span class="s">"https://newsapi.org/v2/top-headlines?country=cn&amp;apiKey=&lt;YOUR_API_KEY&gt;"</span><span class="o">;</span>
+
+  <span class="c1">// 定义个 fetchNews 函数，这里注意返回值写法 Future&lt;List&lt;dynamic&gt;&gt;</span>
+  <span class="c1">// 注意这里的 async 可以异步反馈，否则同步就会阻塞</span>
+  <span class="n">Future</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="kd">dynamic</span><span class="o">&gt;&gt;</span> <span class="n">fetchNews</span><span class="o">()</span> <span class="n">async</span> <span class="o">{</span>
+
+  	<span class="c1">// 注意这里 response 是可以不定义类型的，与 Java 就很不同了</span>
+  	<span class="c1">// 用 String 类型的 apiUrl 作为 Uri.parse() 函数的参数</span>
+  	<span class="c1">// http.get() 函数用 await 关键词修饰，则可以等待返回。但因为函数 async，因此不会阻塞</span>
+    <span class="kd">final</span> <span class="n">response</span> <span class="o">=</span> <span class="n">await</span> <span class="n">http</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">Uri</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">apiUrl</span><span class="o">));</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">statusCode</span> <span class="o">==</span> <span class="mi">200</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">jsonDecode</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">body</span><span class="o">)[</span><span class="s">'articles'</span><span class="o">];</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+      <span class="k">throw</span> <span class="n">Exception</span><span class="o">(</span><span class="s">'Failed to load news'</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="95app-的列表页">9.5、App 的列表页</h4>
+
+<p>再看下 <code class="language-plaintext highlighter-rouge">news_list_page.dart</code>：</p>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="s">'package:flutter/material.dart'</span><span class="o">;</span>
+<span class="kn">import</span> <span class="s">'package:yongxian_news/services/news_service.dart'</span><span class="o">;</span>
+<span class="kn">import</span> <span class="s">'package:yongxian_news/pages/news_details_page.dart'</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">NewsListPage</span> <span class="kd">extends</span> <span class="n">StatefulWidget</span> <span class="o">{</span>
+  <span class="nd">@override</span>
+  <span class="n">_NewsListPageState</span> <span class="n">createState</span><span class="o">()</span> <span class="o">=&gt;</span> <span class="n">_NewsListPageState</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">_NewsListPageState</span> <span class="kd">extends</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">NewsListPage</span><span class="o">&gt;</span> <span class="o">{</span>
+  <span class="n">Future</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="kd">dynamic</span><span class="o">&gt;&gt;?</span> <span class="n">_newsList</span><span class="o">;</span>
+
+  <span class="nd">@override</span>
+  <span class="kt">void</span> <span class="n">initState</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">super</span><span class="o">.</span><span class="na">initState</span><span class="o">();</span>
+    <span class="n">_newsList</span> <span class="o">=</span> <span class="n">NewsService</span><span class="o">().</span><span class="na">fetchNews</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="o">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+
+  	<span class="c1">// 这里用到了脚手架 Scaffold，也是 Material Library 的一个 Widget，它提供默认的导航栏、标题、包含主屏幕 Widget 树状结构的 body 属性。</span>
+    <span class="k">return</span> <span class="n">Scaffold</span><span class="o">(</span>
+      <span class="nl">appBar:</span> <span class="n">AppBar</span><span class="o">(</span><span class="nl">title:</span> <span class="n">Text</span><span class="o">(</span><span class="s">'Flutter Demo App'</span><span class="o">)),</span>
+      <span class="nl">body:</span> <span class="n">FutureBuilder</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="kd">dynamic</span><span class="o">&gt;&gt;(</span>
+        <span class="nl">future:</span> <span class="n">_newsList</span> <span class="o">??</span> <span class="n">Future</span><span class="o">.</span><span class="na">value</span><span class="o">([]),</span>
+        <span class="nl">builder:</span> <span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">snapshot</span><span class="o">)</span> <span class="o">{</span>
+          <span class="k">if</span> <span class="o">(</span><span class="n">snapshot</span><span class="o">.</span><span class="na">hasData</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">ListView</span><span class="o">.</span><span class="na">builder</span><span class="o">(</span>
+              <span class="nl">itemCount:</span> <span class="n">snapshot</span><span class="o">.</span><span class="na">data</span><span class="o">?.</span><span class="na">length</span> <span class="o">??</span> <span class="mi">0</span><span class="o">,</span>
+              <span class="nl">itemBuilder:</span> <span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">index</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="n">ListTile</span><span class="o">(</span>
+                  <span class="nl">title:</span> <span class="n">Text</span><span class="o">(</span><span class="n">snapshot</span><span class="o">.</span><span class="na">data</span><span class="o">?[</span><span class="n">index</span><span class="o">][</span><span class="s">'title'</span><span class="o">]</span> <span class="o">??</span> <span class="s">''</span><span class="o">),</span>
+                  <span class="nl">subtitle:</span> <span class="n">Text</span><span class="o">(</span><span class="n">snapshot</span><span class="o">.</span><span class="na">data</span><span class="o">?[</span><span class="n">index</span><span class="o">][</span><span class="s">'source'</span><span class="o">][</span><span class="s">'name'</span><span class="o">]</span> <span class="o">??</span> <span class="s">''</span><span class="o">),</span>
+                  <span class="nl">onTap:</span> <span class="o">()</span> <span class="o">=&gt;</span> <span class="n">_navigateToDetails</span><span class="o">(</span><span class="n">snapshot</span><span class="o">.</span><span class="na">data</span><span class="o">?[</span><span class="n">index</span><span class="o">]),</span>
+                <span class="o">);</span>
+              <span class="o">},</span>
+            <span class="o">);</span>
+          <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">snapshot</span><span class="o">.</span><span class="na">hasError</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">Text</span><span class="o">(</span><span class="s">'Error: </span><span class="si">${snapshot.error}</span><span class="s">'</span><span class="o">);</span>
+          <span class="o">}</span>
+          <span class="k">return</span> <span class="n">CircularProgressIndicator</span><span class="o">();</span>
+        <span class="o">},</span>
+      <span class="o">),</span>
+    <span class="o">);</span>
+  <span class="o">}</span>
+
+  <span class="kt">void</span> <span class="n">_navigateToDetails</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">,</span> <span class="kd">dynamic</span><span class="o">&gt;</span> <span class="n">article</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">Navigator</span><span class="o">.</span><span class="na">push</span><span class="o">(</span>
+      <span class="n">context</span><span class="o">,</span>
+      <span class="n">MaterialPageRoute</span><span class="o">(</span>
+        <span class="nl">builder:</span> <span class="o">(</span><span class="n">context</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="n">NewsDetailsPage</span><span class="o">(</span><span class="nl">article:</span> <span class="n">article</span><span class="o">),</span>
+      <span class="o">),</span>
+    <span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">NewsListPage</code> 可以看到与 <code class="language-plaintext highlighter-rouge">main.dart</code> 文件中的 <code class="language-plaintext highlighter-rouge">MyApp</code> 的定义形成对比，前者扩展自 <code class="language-plaintext highlighter-rouge">StatefulWidget</code>，后者扩展自 <code class="language-plaintext highlighter-rouge">StatelessWidget</code>。可以逐渐看到这是 Dart 程序的一个特点，就是每一个类都搭配一个 State 类，除了扩展自 <code class="language-plaintext highlighter-rouge">StatelessWidget</code> 类没有 State。</p>
+
+<p>所以这里就是成对儿的，一个 <code class="language-plaintext highlighter-rouge">NewsListPage</code> 类，和一个 <code class="language-plaintext highlighter-rouge">_NewsListPageState</code> 类。在 <code class="language-plaintext highlighter-rouge">_NewsListPageState</code> 类中创建一个刚刚船长自己写的 <code class="language-plaintext highlighter-rouge">Service</code> 实例，并在其中的 <code class="language-plaintext highlighter-rouge">initState()</code> 函数中调用我们写的 <code class="language-plaintext highlighter-rouge">fetchNews</code> 函数。</p>
+
+<p>然后在 <code class="language-plaintext highlighter-rouge">build</code> 函数中创建脚手架 <code class="language-plaintext highlighter-rouge">Scaffold</code>，其中定义了：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">appBar</code>：直接创建一个带有 title 的 <code class="language-plaintext highlighter-rouge">AppBar(title: Text('涌现 AI 资讯'))</code>。</li>
+  <li><code class="language-plaintext highlighter-rouge">body</code>：这里可以和船长一起看到，你想要定义的页面的样式，就在这层层嵌套的 <code class="language-plaintext highlighter-rouge">ListView</code> 实例中，这个写法确实不太优雅。
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">ListView</code> 的参数里传递了 <code class="language-plaintext highlighter-rouge">itemBuilder</code>，你想定义的关于 item 的内容也就在其中的了。</li>
+      <li><code class="language-plaintext highlighter-rouge">ListTitle</code> 的参数里，我们可以看到 <code class="language-plaintext highlighter-rouge">title</code>、<code class="language-plaintext highlighter-rouge">subtitle</code>、<code class="language-plaintext highlighter-rouge">onTap</code> 点击后的动作函数，这里定义了一个 <code class="language-plaintext highlighter-rouge">_navigateToDetails</code>。</li>
+    </ul>
+  </li>
+</ul>
+
+<p>在 <code class="language-plaintext highlighter-rouge">_navigateToDetails</code> 函数中，调用了 <code class="language-plaintext highlighter-rouge">Navigator</code> 类的函数 <code class="language-plaintext highlighter-rouge">push</code>，其中传入的参数是 <code class="language-plaintext highlighter-rouge">context</code> 和<code class="language-plaintext highlighter-rouge">MaterialPageRoute</code> 实例。其中 <code class="language-plaintext highlighter-rouge">MaterialPageRoute</code> 创建实例的参数里有 <code class="language-plaintext highlighter-rouge">builder</code>，这里出现了 <code class="language-plaintext highlighter-rouge">NewsDetailsPage</code> 类。</p>
+
+<h4 id="96app-的二级页面实现">9.6、App 的二级页面实现</h4>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="s">'package:flutter/material.dart'</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">NewsDetailsPage</span> <span class="kd">extends</span> <span class="n">StatelessWidget</span> <span class="o">{</span>
+  <span class="kd">final</span> <span class="n">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">,</span> <span class="kd">dynamic</span><span class="o">&gt;</span> <span class="n">article</span><span class="o">;</span>
+
+  <span class="n">NewsDetailsPage</span><span class="o">({</span><span class="n">required</span> <span class="k">this</span><span class="o">.</span><span class="na">article</span><span class="o">});</span>
+
+  <span class="nd">@override</span>
+  <span class="n">Widget</span> <span class="n">build</span><span class="o">(</span><span class="n">BuildContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+
+    <span class="k">return</span> <span class="n">Scaffold</span><span class="o">(</span>
+      <span class="nl">appBar:</span> <span class="n">AppBar</span><span class="o">(</span><span class="nl">title:</span> <span class="n">Text</span><span class="o">(</span><span class="s">'涌现 AI 资讯详情'</span><span class="o">)),</span>
+      <span class="nl">body:</span> <span class="n">SingleChildScrollView</span><span class="o">(</span>
+        <span class="nl">child:</span> <span class="n">Column</span><span class="o">(</span>
+          <span class="nl">children:</span> <span class="o">[</span>
+            <span class="n">article</span><span class="o">[</span><span class="s">'urlToImage'</span><span class="o">]</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="n">Image</span><span class="o">.</span><span class="na">network</span><span class="o">(</span><span class="n">article</span><span class="o">[</span><span class="s">'urlToImage'</span><span class="o">])</span> <span class="o">:</span> <span class="n">Container</span><span class="o">(),</span>
+            <span class="n">SizedBox</span><span class="o">(</span><span class="nl">height:</span> <span class="mi">8</span><span class="o">),</span>
+            <span class="n">Text</span><span class="o">(</span>
+              <span class="n">article</span><span class="o">[</span><span class="s">'title'</span><span class="o">],</span>
+              <span class="nl">style:</span> <span class="n">TextStyle</span><span class="o">(</span><span class="nl">fontSize:</span> <span class="mi">24</span><span class="o">,</span> <span class="nl">fontWeight:</span> <span class="n">FontWeight</span><span class="o">.</span><span class="na">bold</span><span class="o">),),</span>
+            <span class="n">SizedBox</span><span class="o">(</span><span class="nl">height:</span> <span class="mi">8</span><span class="o">),</span>
+            <span class="n">Text</span><span class="o">(</span>
+              <span class="n">article</span><span class="o">[</span><span class="s">'description'</span><span class="o">]</span> <span class="o">??</span> <span class="s">''</span><span class="o">,</span>
+              <span class="nl">style:</span> <span class="n">TextStyle</span><span class="o">(</span><span class="nl">fontSize:</span> <span class="mi">18</span><span class="o">),),</span>
+            <span class="n">SizedBox</span><span class="o">(</span><span class="nl">height:</span> <span class="mi">8</span><span class="o">),</span>
+            <span class="n">Text</span><span class="o">(</span>
+              <span class="s">'Source: </span><span class="si">${article['source']['name']}</span><span class="s">'</span><span class="o">,</span>
+              <span class="nl">style:</span> <span class="n">TextStyle</span><span class="o">(</span><span class="nl">fontSize:</span> <span class="mi">14</span><span class="o">,</span> <span class="nl">fontStyle:</span> <span class="n">FontStyle</span><span class="o">.</span><span class="na">italic</span><span class="o">),</span>
+            <span class="o">),</span>
+            <span class="n">SizedBox</span><span class="o">(</span><span class="nl">height:</span> <span class="mi">8</span><span class="o">),</span>
+            <span class="n">Text</span><span class="o">(</span>
+              <span class="s">'Published at: </span><span class="si">${article['publishedAt']}</span><span class="s">'</span><span class="o">,</span>
+              <span class="nl">style:</span> <span class="n">TextStyle</span><span class="o">(</span><span class="nl">fontSize:</span> <span class="mi">14</span><span class="o">,</span> <span class="nl">fontStyle:</span> <span class="n">FontStyle</span><span class="o">.</span><span class="na">italic</span><span class="o">),</span>
+            <span class="o">),</span>
+          <span class="o">],</span>
+        <span class="o">),</span>
+      <span class="o">),</span>
+    <span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h4 id="97对练手-app-的整体回顾">9.7、对练手 App 的整体回顾</h4>
+
+<p>一般 Flutter 应用程序是在 <code class="language-plaintext highlighter-rouge">main.dart</code> 文件中实现一个继承自 <code class="language-plaintext highlighter-rouge">StatelessWidget</code> 的类比如叫 <code class="language-plaintext highlighter-rouge">MyApp</code>，然后在 <code class="language-plaintext highlighter-rouge">main.dart</code> 文件中的 <code class="language-plaintext highlighter-rouge">main</code> 方法里实例化一个 <code class="language-plaintext highlighter-rouge">MyApp</code> 对象，作为 Flutter 应用的根组件。</p>
+
+<p>Flutter 在构建页面时，会调用继承自 <code class="language-plaintext highlighter-rouge">StatelessWidget</code> 的 <code class="language-plaintext highlighter-rouge">MyApp</code> 类实例的 <code class="language-plaintext highlighter-rouge">build</code> 方法。<code class="language-plaintext highlighter-rouge">build</code> 方法一般会提供一个 <code class="language-plaintext highlighter-rouge">MaterialApp</code>（也是一个 Widget）的 Widget 来描述这个 UI 界面。在这个 <code class="language-plaintext highlighter-rouge">MaterialApp</code> 里用 <code class="language-plaintext highlighter-rouge">title</code>、<code class="language-plaintext highlighter-rouge">theme</code> 和 <code class="language-plaintext highlighter-rouge">home</code> 三个组件。其中 <code class="language-plaintext highlighter-rouge">home</code> 就是一个继承自 <code class="language-plaintext highlighter-rouge">StatefulWidget</code> 的类，比如船长这里可以叫 <code class="language-plaintext highlighter-rouge">NewsListPage</code> 类，它是应用的首页 Widget 的，有状态的。</p>
+
+<p>继承自 <code class="language-plaintext highlighter-rouge">StatefulWidget</code> 的 <code class="language-plaintext highlighter-rouge">NewsListPage</code> 组件，通过 createState 创建了状态管理类。</p>
+
+<h3 id="第-10-节--widget导航路由网络请求和项目发布">第 10 节 · Widget、导航路由、网络请求和项目发布</h3>
+
+<h4 id="101常用-widget">10.1、常用 Widget</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">StatefulWidget</code>。</li>
+  <li><code class="language-plaintext highlighter-rouge">State</code>：通过 <code class="language-plaintext highlighter-rouge">setState</code> 方法告诉框架，某个 UI 发生了变化，Flutter 框架就会重新运行 State 实例的 <code class="language-plaintext highlighter-rouge">build</code> 方法来刷新 UI 的显示。</li>
+  <li><code class="language-plaintext highlighter-rouge">StatelessWidget</code>。</li>
+  <li>基础 Widget：<code class="language-plaintext highlighter-rouge">Text</code>、<code class="language-plaintext highlighter-rouge">Image</code>、<code class="language-plaintext highlighter-rouge">Button</code>、<code class="language-plaintext highlighter-rouge">TextField</code> 等组件。
+    <ul>
+      <li>Text：显示文本，有 <code class="language-plaintext highlighter-rouge">textAlign</code>、<code class="language-plaintext highlighter-rouge">maxLines</code> 最大行数、<code class="language-plaintext highlighter-rouge">overflow</code> 文本截断的方式、<code class="language-plaintext highlighter-rouge">style</code> 文本样式（对应 <code class="language-plaintext highlighter-rouge">TextStyle</code> 有很多属性，比如 color、fontSize、height、fontFamily、backgroundColor、下划线等 decoration 等等）等属性。</li>
+      <li>Button：比如 <code class="language-plaintext highlighter-rouge">FloatingActionButton</code> 悬浮按钮，其 onPressed 属性一般是一个回调函数。</li>
+    </ul>
+  </li>
+  <li>布局 Widget：线性布局组件 Row、Column，弹性布局组件 Flex，Stack 组件。
+    <ul>
+      <li>要了解主轴的概念，它与你是 Row 还是 Column 有关系，两种情况的 <code class="language-plaintext highlighter-rouge">mainAxisAlignment</code> 和 <code class="language-plaintext highlighter-rouge">crossAxisAlignment</code> 是相反的。</li>
+      <li>其实 Row 和 Column 都是继承自 Flex 弹性布局的。Flex 里面支持 Expanded 孩子（只能在 Flex 里），Expanded 有一个 flex 属性控制怎么分割主轴上的全部空闲空间。</li>
+    </ul>
+  </li>
+  <li>容器 Widget：Container、Padding、Center、DecoratedBox 组件。</li>
+  <li>交互 Widget：GestureDetector 组件。</li>
+  <li>滚动 Widget：ListView、GridView、CustomScrollView 组件。
+    <ul>
+      <li>ListView 跟 iOS、Android 类似组件都是滚动到了才创建，性能上更有优势。</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="102导航路由">10.2、导航路由</h4>
+
+<p>iOS、Android 的页面导航管理都会维护一个路由栈，对应的方法是 <code class="language-plaintext highlighter-rouge">Navigator.push()</code> 和 <code class="language-plaintext highlighter-rouge">Navigator.pop()</code>，后者回退同时可以返回数据给主屏界面。<code class="language-plaintext highlighter-rouge">Navigator.pop()</code> 可以接受第二个参数（可选），数据通过 future 的方法传递返回值。</p>
+
+<h4 id="103网络请求">10.3、网络请求</h4>
+
+<div class="language-dart highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">HttpClient</span> <span class="n">httpClient</span> <span class="o">=</span> <span class="n">HttpClient</span><span class="o">();</span>
+<span class="n">HttpClientRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="n">await</span> <span class="n">httpClient</span><span class="o">.</span><span class="na">getUrl</span><span class="o">(</span><span class="n">uri</span><span class="o">);</span>
+<span class="n">HttpClientResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">await</span> <span class="n">request</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="kt">String</span> <span class="n">responseBody</span> <span class="o">=</span> <span class="n">await</span> <span class="n">response</span><span class="o">.</span><span class="na">transform</span><span class="o">(</span><span class="n">utf8</span><span class="o">.</span><span class="na">decoder</span><span class="o">).</span><span class="na">join</span><span class="o">();</span>
+<span class="n">httpClient</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="n">json</span><span class="o">.</span><span class="na">decode</span><span class="o">(</span><span class="n">json</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h4 id="104项目发布">10.4、项目发布</h4>
+
+<p>发布 Release 版本，以 web 端为例。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@CVN % flutter build web
+</code></pre></div></div>
+
+<p><img src="/img/src/2023/05/2023-05-01-captain-flutter-12.png" alt="" /></p>
+
+<h2 id="附录">附录</h2>
+
+<h3 id="flutter-doctor"><code class="language-plaintext highlighter-rouge">flutter doctor</code></h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>base<span class="o">)</span> mikecaptain@CVN ~ % flutter doctor                   
+Doctor summary <span class="o">(</span>to see all details, run flutter doctor <span class="nt">-v</span><span class="o">)</span>:
+<span class="o">[</span>✓] Flutter <span class="o">(</span>Channel stable, 3.7.12, on macOS 13.2.1 22D68 darwin-arm64, locale zh-Hans-CN<span class="o">)</span>
+<span class="o">[</span>✓] Android toolchain - develop <span class="k">for </span>Android devices <span class="o">(</span>Android SDK version 33.0.2<span class="o">)</span>
+<span class="o">[</span>✓] Xcode - develop <span class="k">for </span>iOS and macOS <span class="o">(</span>Xcode 14.3<span class="o">)</span>
+<span class="o">[</span>✓] Chrome - develop <span class="k">for </span>the web
+<span class="o">[</span>✓] Android Studio <span class="o">(</span>version 2022.1<span class="o">)</span>
+<span class="o">[</span>✓] Connected device <span class="o">(</span>2 available<span class="o">)</span>
+<span class="o">[</span>✓] HTTP Host Availability
+
+• No issues found!
+</code></pre></div></div>
+
+<h3 id="flutter-create-hello_world-创建项目"><code class="language-plaintext highlighter-rouge">flutter create hello_world</code> 创建项目</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>base<span class="o">)</span> mikecaptain@CVN codespace % flutter create hello_world
+Signing iOS app <span class="k">for </span>device deployment using developer identity: <span class="s2">"Apple Development: zhongchao.ustc@gmail.com (U4H338U5TW)"</span>
+Creating project captain_flutter...
+Running <span class="s2">"flutter pub get"</span> <span class="k">in </span>captain_flutter...
+Resolving dependencies <span class="k">in </span>captain_flutter... <span class="o">(</span>1.3s<span class="o">)</span>
++ async 2.10.0 <span class="o">(</span>2.11.0 available<span class="o">)</span>
++ boolean_selector 2.1.1
++ characters 1.2.1 <span class="o">(</span>1.3.0 available<span class="o">)</span>
++ clock 1.1.1
++ collection 1.17.0 <span class="o">(</span>1.17.1 available<span class="o">)</span>
++ cupertino_icons 1.0.5
++ fake_async 1.3.1
++ flutter 0.0.0 from sdk flutter
++ flutter_lints 2.0.1
++ flutter_test 0.0.0 from sdk flutter
++ js 0.6.5 <span class="o">(</span>0.6.7 available<span class="o">)</span>
++ lints 2.0.1 <span class="o">(</span>2.1.0 available<span class="o">)</span>
++ matcher 0.12.13 <span class="o">(</span>0.12.15 available<span class="o">)</span>
++ material_color_utilities 0.2.0 <span class="o">(</span>0.3.0 available<span class="o">)</span>
++ meta 1.8.0 <span class="o">(</span>1.9.1 available<span class="o">)</span>
++ path 1.8.2 <span class="o">(</span>1.8.3 available<span class="o">)</span>
++ sky_engine 0.0.99 from sdk flutter
++ source_span 1.9.1 <span class="o">(</span>1.10.0 available<span class="o">)</span>
++ stack_trace 1.11.0
++ stream_channel 2.1.1
++ string_scanner 1.2.0
++ term_glyph 1.2.1
++ test_api 0.4.16 <span class="o">(</span>0.5.2 available<span class="o">)</span>
++ vector_math 2.1.4
+Changed 24 dependencies <span class="k">in </span>hello_world!
+Wrote 127 files.
+
+All <span class="k">done</span><span class="o">!</span>
+You can find general documentation <span class="k">for </span>Flutter at: https://docs.flutter.dev/
+Detailed API documentation is available at: https://api.flutter.dev/
+If you prefer video documentation, consider: https://www.youtube.com/c/flutterdev
+
+In order to run your application, <span class="nb">type</span>:
+
+  <span class="nv">$ </span><span class="nb">cd </span>hello_world
+  <span class="nv">$ </span>flutter run
+
+Your application code is <span class="k">in </span>hello_world/lib/main.dart.
+</code></pre></div></div>
+
+<h3 id="flutter-run-运行项目"><code class="language-plaintext highlighter-rouge">flutter run</code> 运行项目</h3>
+
+<p>在 Chrome 中运行命令如下：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>base<span class="o">)</span> mikecaptain@CVN hello_world % flutter run <span class="nt">-d</span> chrome
+Launching lib/main.dart on Chrome <span class="k">in </span>debug mode...
+Waiting <span class="k">for </span>connection from debug service on Chrome...                 ⣾
+</code></pre></div></div>
+
+<p>默认情况下，浏览器会打开 <code class="language-plaintext highlighter-rouge">http://localhost:56049/#/</code> 链接。</p>
+
+<h3 id="flutter-devices"><code class="language-plaintext highlighter-rouge">flutter devices</code></h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>base<span class="o">)</span> mikecaptain@CVN testspace % flutter devices
+3 connected devices:
+
+iPhone 14 <span class="o">(</span>mobile<span class="o">)</span> • D89CD348-58C2-4F3B-B07D-54E2A72AB1BA • ios            • com.apple.CoreSimulator.SimRuntime.iOS-16-4 <span class="o">(</span>simulator<span class="o">)</span>
+macOS <span class="o">(</span>desktop<span class="o">)</span>    • macos                                • darwin-arm64   • macOS 13.2.1 22D68 darwin-arm64
+Chrome <span class="o">(</span>web<span class="o">)</span>       • chrome                               • web-javascript • Google Chrome 112.0.5615.137
+</code></pre></div></div>
+
+<h3 id="flutter-pub-get"><code class="language-plaintext highlighter-rouge">flutter pub get</code></h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span>base<span class="o">)</span> mikecaptain@CVN yongxian_news % flutter pub get            
+Running <span class="s2">"flutter pub get"</span> <span class="k">in </span>yongxian_news...
+Resolving dependencies... 
+  async 2.10.0 <span class="o">(</span>2.11.0 available<span class="o">)</span>
+  characters 1.2.1 <span class="o">(</span>1.3.0 available<span class="o">)</span>
+  collection 1.17.0 <span class="o">(</span>1.17.1 available<span class="o">)</span>
+  js 0.6.5 <span class="o">(</span>0.6.7 available<span class="o">)</span>
+  matcher 0.12.13 <span class="o">(</span>0.12.15 available<span class="o">)</span>
+  material_color_utilities 0.2.0 <span class="o">(</span>0.3.0 available<span class="o">)</span>
+  meta 1.8.0 <span class="o">(</span>1.9.1 available<span class="o">)</span>
+  path 1.8.2 <span class="o">(</span>1.8.3 available<span class="o">)</span>
+  source_span 1.9.1 <span class="o">(</span>1.10.0 available<span class="o">)</span>
+  test_api 0.4.16 <span class="o">(</span>0.5.2 available<span class="o">)</span>
+Got dependencies!
+</code></pre></div></div>
+
+<h3 id="其他">其他</h3>
+
+<p><code class="language-plaintext highlighter-rouge">flutter build web</code>、<code class="language-plaintext highlighter-rouge">flutter channel stable</code>、<code class="language-plaintext highlighter-rouge">flutter upgrade</code>。</p>
+
+<h2 id="参考">参考</h2>
+
+<ul>
+  <li>https://flutter.cn/docs/get-started/install</li>
+  <li>https://flutter.cn/</li>
+  <li>https://flutter.cn/docs/get-started/web</li>
+  <li>https://community.jiguang.cn/article/464286</li>
+  <li>https://www.bilibili.com/video/BV1p14y1T79R/</li>
+  <li>https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html</li>
+  <li>https://blog.logrocket.com/building-news-app-flutter/</li>
+  <li>https://flutterawesome.com/flutter-news-app-using-newsapi/</li>
+  <li>https://flutter.cn/docs/development/ui/widgets-intro</li>
+  <li>https://flutter.cn/docs/get-started/flutter-for/uikit-devs</li>
+</ul>
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+	<span>
+		-<br/><br/>
+		船长还不会游泳 at 微信公众号/微博<br/>
+		@麦克船长 at 即刻/知乎/小宇宙/掘金/小红书/微信读书<br/>
+		@船长模玩 at Bilibili<br/>
+		Copyright © 2011-2023, MikeCaptain.com
+	</span>
+</footer>
+
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
