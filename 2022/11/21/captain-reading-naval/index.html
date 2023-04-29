@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>麦克船长的读书笔记：《纳瓦尔宝典》纳瓦尔著</title>
+  	<meta name="description" content="麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+  	<!-- KaTeX -->
+  	<link rel="stylesheet" href="/assets/plugins/katex.0.11.1/katex.min.css">
+  	
+
+  	
+  		<script async src="https://www.googletagmanager.com/gtag/js?id=G-CH4708X4R5"></script>
+  		<script>
+    		window.dataLayer = window.dataLayer || [];
+    		function gtag(){dataLayer.push(arguments);}
+    		gtag('js', new Date());
+
+    		gtag('config', 'G-CH4708X4R5');
+  		</script>
+	
+
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/booklist/" title="读书行路">读书行路</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/server" title="服务端">服务端</a>
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="人工智能">人工智能</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="实时技术">实时技术</a>
+
+
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/server" title="服务端">服务端</a>
+
+
+
+  <a href="/category/thinking" title="思考与生活">思考与生活</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+		  
+		<main>
+
+			<article id="post-page">
+	<h2>麦克船长的读书笔记：《纳瓦尔宝典》纳瓦尔著</h2>		
+	<time datetime="2022-11-21T08:04:13+08:00" class="by-line">21 Nov 2022, 杭州 | 麦克船长 | 总计 5360 字</time>
+	<div class="content">
+		<p>《纳瓦尔宝典》
+埃里克·乔根森
+81个笔记</p>
+
+<p>◆  纳瓦尔亲述</p>
+
+<blockquote>
+  <blockquote>
+    <p>在一无所有的人生中，如果至少还有一个人无条件地爱着你，你的自尊心就会得到极大的保护</p>
+  </blockquote>
+</blockquote>
+
+<p>2022/9/12 发表想法
+这一点是无与伦比的，基于健康自尊发展而来的内心世界，是始终有源的，也是不容易被外部因素发生变化而影响的。</p>
+<blockquote>
+  <blockquote>
+    <p>在一无所有的人生中，如果至少还有一个人无条件地爱着你，你的自尊心就会得到极大的保护</p>
+  </blockquote>
+</blockquote>
+
+<p>◆  第一部分 财富</p>
+
+<blockquote>
+  <blockquote>
+    <p>追求财富，而不是金钱或地位。财富是指在你睡觉时仍能为你赚钱的资产。金钱是我们转换时间和财富的方式。地位是你在社会等级体系中所处的位置。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>创造财富和坚持道德标准是可以兼得的。如果你内心鄙视财富，财富就会对你避而远之。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>依靠出租时间是不可能致富的。你必须拥有股权（企业的部分所有权），才能实现财务自由。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>培养迭代思维。生活中所有的回报，无论是财富、人际关系，还是知识，都来自复利。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>选择聪明过人、精力充沛的商业伙伴，但更重要的是，他们要正直诚信。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>不要跟愤世嫉俗和消极悲观的人合作。他们的预言会自我实现。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>要想获得财富，就必须充分利用杠杆效应。商业杠杆来自资本、劳动力和复制边际成本为零的产品（代码和媒体）。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>没有所谓的“商业”技能。不要把时间浪费在商业杂志和商业课程上。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>学习微观经济学、博弈论、心理学、说服术、伦理学、数学和计算机。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>读比听快，做比看快。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>设定一个大胆的个人时薪，并严格执行。如果解决一个问题节省的成本低于时薪，那就忽略问题；如果外包一项任务的成本低于时薪，那就选择外包。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>把自己产品化。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>如果我做好了本职工作，为社会创造了价值，社会就会对我说：“谢谢你，因为你在过去所做的工作，我们在未来欠你一些东西。这是一张欠条，我们可以把这个叫作钱。”</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>财富的定义是在睡觉时也能带来收入的企业和资产。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>科技就是一套尚未完全发挥作用的东西（更正，是丹尼尔·希利斯所说）。某种东西一旦得到广泛应用，它就不再是科技了。社会总是需要新事物。如果想变得富有，你就要弄清楚你能为社会提供哪些其有需求但无从获得的东西，而提供这些东西对你来说又是轻松自然的事情，在你的技术和能力范围内。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>想要找准适合自己的专长，可以回想一下在孩提时代或青少年时期，有哪些事情是你几乎不费吹灰之力就可以完成的。有时候，即使你自己不觉得那是一门技能，身边的人也会留意到。你的母亲或者你成长过程中最好的朋友会知道你有什么特别之处。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>在“成为自己”这件事情上，没有人能比得过你。其实，人生大部分时间都是在寻找，寻找那些最需要你的人，寻找那些最需要你的事情。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>社会、商业和金钱是技术的下游产物，而技术本身又是科学的下游产物。应用科学是推动人类社会发展的引擎。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>应用科学家是世界上最有权威的人。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>我发现我做得更多的都是围绕着赚钱，与技术打交道，与人打交道，推销产品，谈经论道，兜售理念。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>在创意领域，复利效应非常明显，杠杆效应也非常明显。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>只要在网上进行独特的自我表达，你就有机会传播快乐，累积财富，打造产品，创立企业。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>最好的工作与委任或学位无关。最好的工作是终身学习者在自由市场中的创造性表达。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>致富最重要的技能是成为终身学习者，无论想学什么，你都得找到途径和方法。以前的赚钱模式是读4年大学，拿到学位，在某个专业领域干上30年。现在不一样了，时代的发展日新月异，必须在9个月内掌握一门新专业，而这门专业在4年后就过时了。但在专业存在的这3年里，你可以变得非常富有。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>出发点并不重要，行为本身才重要。因此，遵守道德标准并非易事。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>社会上还有哪些尚未得到满足的需求，而你怎样才能成为第一个提供相关产品或服务的人，并将其规模化。这才是赚钱真正的挑战。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>每个出色的软件开发者现在都有一大群机器人在为其工作。写好代码后，这些机器人就开始工作，在开发者睡觉的时候也在为其赚钱。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>人类在不断进化。曾几何时，人类社会是不存在杠杆的。如果我帮你砍柴打水，那8个小时的劳动所产出的就只是8个小时的成果，投入与产出是相等的。后来人类发明了杠杆，发明了资本、合作、科技、生产力等各种手段，人类社会进入杠杆时代。在这样的时代，作为一名劳动者，只有最大化地发挥杠杆效应，才能利用有限的时间和体力产生巨大的影响力。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>对利用杠杆的劳动者而言，判断力的重要性远超投入时间的长短和工作的努力程度。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>如果你通过提供绝佳的解决方案给企业带来了神奇的转机，那么你必将得到金钱的回报。特别是，如果别人根本不知道你是如何做到的，他们就必须不断地付钱给你，让你继续提供这种产品或服务。而你之所以能够做到这一点，就是因为你的痴迷、技能或天赋。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>你不需要为开会而开会，不需要努力表现自己，也不需要通过汇报材料体现你的工作量——你只要关注工作本身就可以了。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>知识劳动者的时间安排与运动员如出一辙，有训练和冲刺的时间，也有休息和重新评估的时间。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>世界上的工作本质上分为两种：存在杠杆的工作和不存在杠杆的工作。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>投入和产出之所以脱节，是因为工具和杠杆的存在。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>想加入一家伟大的科技公司，销售技能和构建技能必备其一。如果二者都不具备，那就去学习。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>开发商需要做什么呢？他们需要做的就是承担重大责任。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>房地产基金经理拥有巨大的资本杠杆。他们与许许多多开发商打交道，囤积了大量房屋。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>随着层级不断向上，杠杆效应愈加明显，责任愈加重大，需要的专长也越来越多。在劳动力杠杆的基础上增加资本杠杆，在劳动力杠杆和资本杠杆的基础上增加代码杠杆，通过这种方式，创业规模越来越大，也越来越接近拥有所有上行潜力，实现价值极值，而不再仅仅是领取薪水那么简单。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>不要孤注一掷、铤而走险。相反，要把赌注押在那些胜算较大、能带来巨大利益的事情上</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>我也做了一些蠢事，比如跟电工吵架，要求退还坏掉的扬声器，等等。我根本不应该做这些浪费时间的事情，虽然朋友们浪费时间的次数比我多得多。我应该直接把东西扔掉或捐掉，而不是退换货；我应该找人帮我修理，而不是自己修。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>这世上的游戏不外乎两种。第一种是金钱游戏。金钱不能解决所有问题，但可以解决所有和金钱有关的问题。大家都明白这一点，所以每个人都想赚钱。但与此同时，许多人内心深处觉得自己是赚不到钱的，所以，他们不喜欢看到创造财富的故事。他们会攻击整个商业体系，宣称“赚钱是邪恶的，不应该赚钱”。但其实他们在玩第二种游戏，这种游戏叫地位游戏。他们之所以说“我不需要钱，我不想要钱”，是因为他们想占领高地，让别人高看一眼。地位就是一个人在社会等级中的位置</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>在人类进化史上，财富创造是近代才出现的活动，是一个正和游戏。而地位之争自古有之，是一个零和游戏。那些攻击财富创造的人往往只是为了追求地位。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>人生早期有三个重大决定：在哪里生活，和谁在一起，从事什么职业。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>找到自己擅长的领域，然后用自己的技能去帮助他人：提供免费的产品或服务，主动向世界传递善意。好人终有好报。只要始终如一，假以时日，付出就一定能获得相应的回报。但不要计较自己付出了多少——一旦开始计较，耐心就会被消耗殆尽。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>曾有上司告诫我：“你永远发不了大财。因为你的聪明显而易见、有目共睹，所以一直会有人给你提供‘刚刚好’的工作机会，让你觉得弃之可惜。”</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>由于互联网的诞生和发展，现代社会越来越回归到每个人为自己劳动的时代。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>地球上有70亿人。我希望有一天也会有70亿家公司。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>退休就是不再为了想象中的明天而牺牲今天。当你能活在当下，内心充盈地度过每一天时，你就达到了退休的状态。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>试想一下，生活中有哪些事情能像艺术创作那样只是以其本身为目的，而没有任何其他目的？我可以想到三个例子：毫无保留地爱，随心所欲地创造，无忧无虑地玩耍。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>摆脱金钱贪念最好的办法就是，赚了钱之后不要升级自己的生活方式。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>任何游戏的赢家都是那些沉迷于游戏的人，即使获胜的边际效用越来越少，他们也会继续玩下去。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>如果年轻时没有在职务上有所突破，职业生涯后期就很难后来居上。所以，在小公司创立之初就加入是一个不错的选择，因为此时没有那么多阻碍提前晋升的硬性条件。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>赚钱很关键的一点就是知名度和信誉度</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>在一个长线游戏中，似乎每个人都在让彼此变得富有。而在一个短线游戏中，似乎每个人都在让自己变得富有。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>长线游戏是正和游戏，我们在一起做蛋糕，把蛋糕越做越大。而短线游戏只是在分蛋糕。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>在经营业务之前先试图建立业务关系完全是在浪费时间。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>如果一个人大谈特谈自己有多诚实，那么他很可能是不诚实的。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>当一个人不断宣扬自己的价值观，或者自我吹嘘时，那就意味着他在掩饰什么。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>如果你有太多道德缺陷，你就不会尊重自己。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>我脑子里有这样一句话：“你越想接近我，你的价值观就必须越正确。”</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>真正聪明的人是思路清晰的思考者。他们把基础知识和基础层面了解得非常透彻。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>相较于背诵各种复杂的概念，我更愿意吃透基础知识。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>痛苦时刻的一个定义是：当你看到事物的真面目不是你本来想要的样子时，你是痛苦的。举个例子，一直以来，你都确信自己的生意做得很好，但实际上，这是由于你无视生意不好的迹象而产生的错觉。结果，生意失败了，你痛苦万分。之所以如此，是因为你迟迟没有面对现实，一直在自欺欺人。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>只有实事求是，才能不断改进，不断前行。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>对美好现实的渴求蒙蔽了对真实世界的认知。所谓痛苦，就是无法继续无视事实。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>越是渴望以某种特定的方式解决问题，我就越不可能看清事实。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>尤其是在涉及公司事务时，如果某件事进展不顺利，我就会尽力公开承认存在的问题，对合伙人、朋友和同事开诚布公。这样一来，我对任何人都不会有任何隐瞒。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>非常聪明的人往往都是特立独行的，他们坚持独立思考、亲力亲为，以厘清事情的来龙去脉。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>反对一切是墨守成规的另一种表现。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>玩世不恭很容易，随波逐流也很容易。
+成为逆向投资的乐观主义者才最难得。</p>
+  </blockquote>
+</blockquote>
+
+<blockquote>
+  <blockquote>
+    <p>跟大多数人相比，我的习惯性没有那么强。我不喜欢对日常生活进行规划。我也有一些习惯，但这些习惯都是我刻意培养的，而不是在成长过程中无意形成的。</p>
+  </blockquote>
+</blockquote>
+
+<p>◆  第二部分 幸福</p>
+
+<blockquote>
+  <blockquote>
+    <p>如果想获得内心的平和，你就必须超越对万事万物的善恶评判。</p>
+  </blockquote>
+</blockquote>
+
+<p>◆  找到如玩耍般的工作</p>
+
+<p>2022/9/13 发表想法
+能控制欲望，是最高等级的自由。人们常说真正的自由不是想做什么就做什么，而是不想做什么就不做什么，说的也是同样的意思。最难拒绝的，变是会难填的欲壑。</p>
+<blockquote>
+  <blockquote>
+    <p>摆脱金钱贪念最好的办法就是，赚了钱之后不要升级自己的生活方式。</p>
+  </blockquote>
+</blockquote>
+
+<p>◆  如何清晰地思考？</p>
+
+<p>2022/9/18 发表想法
+输出牵引输入，真正聪明的人一定能深入浅出。无法把复杂事物抽丝剥茧讲清楚的人，其实并没有真正理解这个事物，只是浮于表面。要避免浅尝辄止，必须深入思考。</p>
+<blockquote>
+  <blockquote>
+    <p>真正聪明的人是思路清晰的思考者。他们把基础知识和基础层面了解得非常透彻。</p>
+  </blockquote>
+</blockquote>
+
+<p>2022/9/18 发表想法
+实事授人以渔，虚事授人以鱼。</p>
+<blockquote>
+  <blockquote>
+    <p>相较于背诵各种复杂的概念，我更愿意吃透基础知识。</p>
+  </blockquote>
+</blockquote>
+
+<p>2022/11/20 发表想法
+要坚持敢于如此透明地面对整体的挑战，总是想要暂时的蒙蔽，带来的并不是稳定与凝聚。</p>
+<blockquote>
+  <blockquote>
+    <p>尤其是在涉及公司事务时，如果某件事进展不顺利，我就会尽力公开承认存在的问题，对合伙人、朋友和同事开诚布公。这样一来，我对任何人都不会有任何隐瞒。</p>
+  </blockquote>
+</blockquote>
+
+<p>2022/11/20 发表想法
+亦步亦趋，反而会迷失自己。</p>
+<blockquote>
+  <blockquote>
+    <p>非常聪明的人往往都是特立独行的，他们坚持独立思考、亲力亲为，以厘清事情的来龙去脉。</p>
+  </blockquote>
+</blockquote>
+
+<p>2022/11/20 发表想法
+通过逆向（不同于常人、常理，保持独立思考）的方式带来收益（投资资本、劳动力、时间、技术、媒体）才是最不容易、最能得到高额回报的。</p>
+<blockquote>
+  <blockquote>
+    <p>玩世不恭很容易，随波逐流也很容易。
+成为逆向投资的乐观主义者才最难得。</p>
+  </blockquote>
+</blockquote>
+
+<p>◆  摆脱自我束缚，认清世界真相</p>
+
+<p>2022/11/20 发表想法
+相信刻意练习的价值</p>
+<blockquote>
+  <blockquote>
+    <p>跟大多数人相比，我的习惯性没有那么强。我不喜欢对日常生活进行规划。我也有一些习惯，但这些习惯都是我刻意培养的，而不是在成长过程中无意形成的。</p>
+  </blockquote>
+</blockquote>
+
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+	<span>
+		-<br/><br/>
+		船长还不会游泳 at 微信公众号/微博<br/>
+		@麦克船长 at 即刻/知乎/小宇宙/掘金/小红书/微信读书<br/>
+		@船长模玩 at Bilibili<br/>
+		Copyright © 2011-2023, MikeCaptain.com
+	</span>
+</footer>
+
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
