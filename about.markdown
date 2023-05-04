@@ -44,7 +44,6 @@ permalink: /about/
 * 游戏：Hitman 系列、荣誉勋章系列、极品飞车系列、LIMBO、Plague Inc.、Warlight、王者荣耀（10 个赛季王者、前省级第一高渐离）、街机三国战纪、红色警戒、CS。
 * 我的书单：[麦克船长的书单](/booklist/)
 * 变形金刚手办收藏
-* 喜欢吃：东北菜、西北菜、朝鲜族美食、涮羊肉、Brunch、烤猪鼻筋、白汤锅羊蝎子、合肥芙蓉蛋卷、芒果、丑梨、冰激凌泡芙。
 
 ![image](/img/about/photo_10.jpg)
 ![image](/img/about/photo_2.jpg)
