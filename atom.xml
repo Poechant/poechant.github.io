@@ -4,12 +4,22 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-05-27T22:16:03+08:00</updated>
+ <updated>2023-05-28T02:20:17+08:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
    <email>zhongchao.ustc@gmail.com</email>
  </author>
+
+ 
+
+ <entry>
+   <title>麦克船长解读 LIMA 的表面对齐假设：少量多样性、高质量数据即可实现更好的对齐</title>
+   <link href="https://www.mikecaptain.com/2023/05/26/captain-lima/"/>
+   <id>https://www.mikecaptain.com/2023/05/26/captain-lima</id>
+   <updated>2023-05-26T15:40:13+08:00</updated>
+   <content type="html">&lt;p&gt;5 月 22 日 LeCun 发推 称：&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;LIMA: LLaMA 65B + 1000 supervised samples = {GPT4, Bard} level performance. From @MetaAI&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;这是来自 Meta AI、卡耐基梅隆大学、南加州大学和特拉维夫大学的研究人员近期发表的一篇论文，他们通过训练 LLaMA 的 650 亿参数版本得到的 LIMA（Less Is More for Alignment）来衡量这两个阶段的相对重要性，比较 LIMA 和其他模型（DaVinci003、BARD、Claude、GPT-4）的结果来评价模型表现，评价方式一是通过人工，二是通过 GPT-4。从结果来看，LIMA 展现了强大的性能。研究人员提出了「表面对齐假设（Superfacial Alignment Hypothesis）」，&lt;strong&gt;这些实验结果强烈地表明，大型语言模型中几乎所有的知识都是在预训练阶段学到的，只需要有限的指令微调数据，就可以教会模型产生高质量的输出&lt;/strong&gt;。&lt;/p&gt; &lt;h2 id=&quot;一大语言模型的两个训练阶段&quot;&gt;一、大语言模型的两个训练阶段&lt;/h2&gt; &lt;p&gt;麦克船长在 2023 年 3 月初的&lt;a href=&quot;https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/&quot;&gt;《人工智能 LLM...</content>
+ </entry>
 
  
 
@@ -115,16 +125,6 @@ mikecaptain@CVN % ./chat
    <id>https://www.mikecaptain.com/2023/03/12/captain-run-llama-cpp</id>
    <updated>2023-03-12T00:40:13+08:00</updated>
    <content type="html">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#一llama-预训练模型下载&quot; id=&quot;markdown-toc-一llama-预训练模型下载&quot;&gt;一、LLaMA 预训练模型下载&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#二用-ggerganovllamacpp-运行&quot; id=&quot;markdown-toc-二用-ggerganovllamacpp-运行&quot;&gt;二、用 ggerganov/llama.cpp 运行&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#1llama-7b-版本&quot; id=&quot;markdown-toc-1llama-7b-版本&quot;&gt;1、LLaMA 7B 版本&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#11下载-llamacpp-项目&quot; id=&quot;markdown-toc-11下载-llamacpp-项目&quot;&gt;1.1、下载 LLaMA.cpp 项目&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#12准备-llama-7b-环境&quot; id=&quot;markdown-toc-12准备-llama-7b-环境&quot;&gt;1.2、准备 llama 7B 环境&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#13运行-llama-7b-模型&quot; id=&quot;markdown-toc-13运行-llama-7b-模型&quot;&gt;1.3、运行 LLaMA 7B 模型&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#2llama-13b-版本&quot; id=&quot;markdown-toc-2llama-13b-版本&quot;&gt;2、LLaMA 13B 版本&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#21准备-llama-13b-环境&quot; id=&quot;markdown-toc-21准备-llama-13b-环境&quot;&gt;2.1、准备 LLaMA 13B 环境&lt;/a&gt;&lt;/li&gt;...</content>
- </entry>
-
- 
-
- <entry>
-   <title>人工智能 LLM 革命破晓：一文读懂当下超大语言模型发展现状</title>
-   <link href="https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/"/>
-   <id>https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm</id>
-   <updated>2023-03-06T14:54:13+08:00</updated>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/mikecaptain-llm-revolution-2.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#前言&quot; id=&quot;markdown-toc-前言&quot;&gt;前言&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第一章--初步了解自然语言处理的任务方法和模型&quot; id=&quot;markdown-toc-第一章--初步了解自然语言处理的任务方法和模型&quot;&gt;第一章 · 初步了解自然语言处理的任务、方法和模型&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#第-1-节--我们要解决什么问题nlp-任务&quot; id=&quot;markdown-toc-第-1-节--我们要解决什么问题nlp-任务&quot;&gt;第 1 节 · 我们要解决什么问题：NLP 任务&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#11相当长时间里nlp-领域都有大量细分任务&quot; id=&quot;markdown-toc-11相当长时间里nlp-领域都有大量细分任务&quot;&gt;1.1、相当长时间里，NLP 领域都有大量细分任务&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#12我们始终在追求简洁优雅的技术路线技术理论&quot; id=&quot;markdown-toc-12我们始终在追求简洁优雅的技术路线技术理论&quot;&gt;1.2、我们始终在追求简洁优雅的技术路线/技术理论&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第-2-节--解决问题的思路之方法神经网络模型学习方法的三个范式阶段&quot; id=&quot;markdown-toc-第-2-节--解决问题的思路之方法神经网络模型学习方法的三个范式阶段&quot;&gt;第 2 节 · 解决问题的思路之方法：神经网络模型学习方法的三个范式阶段&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#21第一阶段完全监督学习fully-supervised-learning范式&quot; id=&quot;markdown-toc-21第一阶段完全监督学习fully-supervised-learning范式&quot;&gt;2.1、第一阶段：完全监督学习（Fully Supervised Learning）范式&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#22第二阶段预训练pre-train范式--为了更好的泛化性generalization&quot; id=&quot;markdown-toc-22第二阶段预训练pre-train范式--为了更好的泛化性generalization&quot;&gt;2.2、第二阶段：预训练（Pre-train）范式...</content>
  </entry>
 
  
