@@ -5,20 +5,39 @@ layout: default
 <!-- Posts -->
 <ul id="posts">
 
-	{% for post in paginator.posts %}
+	<!-- 处理置顶的文章 -->
+  	{% for post in site.posts %}
+    	{% if post.pinned %}
+      		<li class="post">
+        		<h2>
+	  				<a href="{% if site.baseurl == "/" %}{{ post.url }}{% else %}{{ post.url | prepend: site.baseurl }}{% endif %}">
+	  					{%if post.header %}{{ post.header }}{% else %}{{ post.title }}{% endif %}
+	  				</a>
+	  			</h2>
+	  			<time datetime="{{ post.date | date_to_xmlschema }}" class="by-line">
+	  				{{ "【置顶｜麦克船长 LLM 革命系列文章】" }}{{ post.date | date_to_string | append: ", " | append: post.location | append: " | " | append: post.author | append: " | 总计 " }}{{ post.content | strip_html | strip_newlines | split: "" | size | append: " 字"}}
+	  			</time>
+	  			<p>{{ post.excerpt | strip_html | truncatewords:50 }}</p>
+      		</li>
+    	{% endif %}
+  	{% endfor %}
 
-	  <li class="post">
-	  	<h2>
-	  		<a href="{% if site.baseurl == "/" %}{{ post.url }}{% else %}{{ post.url | prepend: site.baseurl }}{% endif %}">
-	  			{%if post.header %}{{ post.header }}{% else %}{{ post.title }}{% endif %}
-	  		</a>
-	  	</h2>
-	  	<time datetime="{{ post.date | date_to_xmlschema }}" class="by-line">
-	  		{{ post.date | date_to_string | append: ", " | append: post.location | append: " | " | append: post.author | append: " | 总计 " }}{{ post.content | strip_html | strip_newlines | split: "" | size | append: " 字"}}
-	  	</time>
-	  	<p>{{ post.excerpt | strip_html | truncatewords:50 }}</p>
-	  </li>
+	<!-- 处理非置顶的文章 -->
+  	{% for post in paginator.posts %}
+    	{% unless post.pinned %}
 
+	  		<li class="post">
+	  			<h2>
+	  				<a href="{% if site.baseurl == "/" %}{{ post.url }}{% else %}{{ post.url | prepend: site.baseurl }}{% endif %}">
+	  					{%if post.header %}{{ post.header }}{% else %}{{ post.title }}{% endif %}
+	  				</a>
+	  			</h2>
+	  			<time datetime="{{ post.date | date_to_xmlschema }}" class="by-line">
+	  				{{ post.date | date_to_string | append: ", " | append: post.location | append: " | " | append: post.author | append: " | 总计 " }}{{ post.content | strip_html | strip_newlines | split: "" | size | append: " 字"}}
+	  			</time>
+	  			<p>{{ post.excerpt | strip_html | truncatewords:50 }}</p>
+	  		</li>
+	  	{% endunless %}
     {% endfor %}
 
 </ul>
