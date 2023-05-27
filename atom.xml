@@ -4,7 +4,7 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-05-04T20:08:40+08:00</updated>
+ <updated>2023-05-27T10:42:06+08:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
@@ -14,7 +14,7 @@
  
 
  <entry>
-   <title>麦克船长的全栈指南：Google Flutter 开发跨平台 APP（1/3）</title>
+   <title>麦克船长的全栈指南：Google Flutter 开发跨平台 APP</title>
    <link href="https://www.mikecaptain.com/2023/04/29/captain-flutter-1/"/>
    <id>https://www.mikecaptain.com/2023/04/29/captain-flutter-1</id>
    <updated>2023-04-29T16:10:13+08:00</updated>
