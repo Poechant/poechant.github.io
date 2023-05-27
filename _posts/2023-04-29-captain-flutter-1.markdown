@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 麦克船长的全栈指南：Google Flutter 开发跨平台 APP（1/3）
+title: 麦克船长的全栈指南：Google Flutter 开发跨平台 APP
 date:   2023-04-29 16:10:13 +0800
 categories: web
 tags: [前端, 开发, web, app, 客户端, 前端, android, ios, html5, 小程序, 应用]
