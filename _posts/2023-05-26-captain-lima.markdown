@@ -91,3 +91,9 @@ LIMA 的训练方法主要包括以下步骤：
 ### 5、结论
 
 作者提出了一个「表面对齐假设（Superfacial Alignment Hypothesis）」，即只需要少量精心挑选的示例就能实现对齐，而不需要大量的数据或复杂的方法。也就是说，即使只使用少量的训练数据，也能达到与使用大量数据的模型相当的性能。
+
+## 参考
+
+* https://twitter.com/ylecun
+* https://arxiv.org/abs/2305.11206
+* https://arxiv.org/abs/2204.07705
