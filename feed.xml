@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-06-02T10:15:34+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">麦克船长解读 LIMA 的表面对齐假设：少量多样性、高质量数据即可实现更好的对齐</title><link href="https://www.mikecaptain.com/2023/05/26/captain-lima/" rel="alternate" type="text/html" title="麦克船长解读 LIMA 的表面对齐假设：少量多样性、高质量数据即可实现更好的对齐" /><published>2023-05-26T15:40:13+08:00</published><updated>2023-05-26T15:40:13+08:00</updated><id>https://www.mikecaptain.com/2023/05/26/captain-lima</id><content type="html" xml:base="https://www.mikecaptain.com/2023/05/26/captain-lima/">&lt;p&gt;5 月 22 日 LeCun 发推	称：&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-06-08T23:32:07+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">麦克船长解读 LIMA 的表面对齐假设：少量多样性、高质量数据即可实现更好的对齐</title><link href="https://www.mikecaptain.com/2023/05/26/captain-lima/" rel="alternate" type="text/html" title="麦克船长解读 LIMA 的表面对齐假设：少量多样性、高质量数据即可实现更好的对齐" /><published>2023-05-26T15:40:13+08:00</published><updated>2023-05-26T15:40:13+08:00</updated><id>https://www.mikecaptain.com/2023/05/26/captain-lima</id><content type="html" xml:base="https://www.mikecaptain.com/2023/05/26/captain-lima/">&lt;p&gt;5 月 22 日 LeCun 发推	称：&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;LIMA: LLaMA 65B + 1000 supervised samples = {GPT4, Bard} level performance. From @MetaAI&lt;/p&gt;
@@ -2542,171 +2542,226 @@ mikecaptain@CVN % ./chat
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://openai.com/product/gpt-4&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://www.mikecaptain.com/2023/03/02/chatgpt-api/&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><summary type="html">北京时间 2023 年 3 月 15 日，OpenAI 正式发布 GPT-4 —— 大型多模态模型（Large Multimodal Model），输入支持文本和图像，输出支持文本。OpenAI 花了半年时间用对抗测试程序和 ChatGPT 来迭代对齐 GPT-4，结果上 GPT-4 尽管还有很多能力不及人类，但有些场景已经非常炸裂、拉齐人类水准，比如事实性（Factuality）、可控性（Steerability）、拒绝越界（Refusing to Go Outside of Guardrails）。举例来说，GPT-4 在模拟律师考试中获得了 Top 10% 的成绩（对比 GPT-3.5 是 Bottom 10%）。而船长的一个朋友在和他认识的律师围绕 GPT-3.5 和 GPT-4 的法律案例分析效果对比时，律师给出了极高的评价 ……</summary></entry><entry><title type="html">上船跑模型之 MacBook 上运行 LLaMA 7B 和 13B 原始模型</title><link href="https://www.mikecaptain.com/2023/03/12/captain-run-llama-cpp/" rel="alternate" type="text/html" title="上船跑模型之 MacBook 上运行 LLaMA 7B 和 13B 原始模型" /><published>2023-03-12T00:40:13+08:00</published><updated>2023-03-12T00:40:13+08:00</updated><id>https://www.mikecaptain.com/2023/03/12/captain-run-llama-cpp</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/12/captain-run-llama-cpp/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+&lt;/ol&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><summary type="html">北京时间 2023 年 3 月 15 日，OpenAI 正式发布 GPT-4 —— 大型多模态模型（Large Multimodal Model），输入支持文本和图像，输出支持文本。OpenAI 花了半年时间用对抗测试程序和 ChatGPT 来迭代对齐 GPT-4，结果上 GPT-4 尽管还有很多能力不及人类，但有些场景已经非常炸裂、拉齐人类水准，比如事实性（Factuality）、可控性（Steerability）、拒绝越界（Refusing to Go Outside of Guardrails）。举例来说，GPT-4 在模拟律师考试中获得了 Top 10% 的成绩（对比 GPT-3.5 是 Bottom 10%）。而船长的一个朋友在和他认识的律师围绕 GPT-3.5 和 GPT-4 的法律案例分析效果对比时，律师给出了极高的评价 ……</summary></entry><entry><title type="html">Stanford 研究团队发布基于 LLaMA 微调的 Alpaca 模型，仅花费不到 500 美元</title><link href="https://www.mikecaptain.com/2023/03/14/captain-alpaca/" rel="alternate" type="text/html" title="Stanford 研究团队发布基于 LLaMA 微调的 Alpaca 模型，仅花费不到 500 美元" /><published>2023-03-14T12:40:13+08:00</published><updated>2023-03-14T12:40:13+08:00</updated><id>https://www.mikecaptain.com/2023/03/14/captain-alpaca</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/14/captain-alpaca/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#一llama-预训练模型下载&quot; id=&quot;markdown-toc-一llama-预训练模型下载&quot;&gt;一、LLaMA 预训练模型下载&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#二用-ggerganovllamacpp-运行&quot; id=&quot;markdown-toc-二用-ggerganovllamacpp-运行&quot;&gt;二、用 ggerganov/llama.cpp 运行&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#1llama-7b-版本&quot; id=&quot;markdown-toc-1llama-7b-版本&quot;&gt;1、LLaMA 7B 版本&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#11下载-llamacpp-项目&quot; id=&quot;markdown-toc-11下载-llamacpp-项目&quot;&gt;1.1、下载 LLaMA.cpp 项目&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#12准备-llama-7b-环境&quot; id=&quot;markdown-toc-12准备-llama-7b-环境&quot;&gt;1.2、准备 llama 7B 环境&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#13运行-llama-7b-模型&quot; id=&quot;markdown-toc-13运行-llama-7b-模型&quot;&gt;1.3、运行 LLaMA 7B 模型&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1为什么做-alpaca&quot; id=&quot;markdown-toc-1为什么做-alpaca&quot;&gt;1、为什么做 Alpaca？&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#2self-instruct&quot; id=&quot;markdown-toc-2self-instruct&quot;&gt;2、Self-Instruct&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#21数据集的生成&quot; id=&quot;markdown-toc-21数据集的生成&quot;&gt;2.1、数据集的生成&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#22数据集的多样性&quot; id=&quot;markdown-toc-22数据集的多样性&quot;&gt;2.2、数据集的多样性&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#23数据集的有效性&quot; id=&quot;markdown-toc-23数据集的有效性&quot;&gt;2.3、数据集的有效性&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#24效果评估实验&quot; id=&quot;markdown-toc-24效果评估实验&quot;&gt;2.4、效果评估实验&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#241superni-benchmark-上评估&quot; id=&quot;markdown-toc-241superni-benchmark-上评估&quot;&gt;2.4.1、SUPERNI benchmark 上评估&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#2llama-13b-版本&quot; id=&quot;markdown-toc-2llama-13b-版本&quot;&gt;2、LLaMA 13B 版本&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#21准备-llama-13b-环境&quot; id=&quot;markdown-toc-21准备-llama-13b-环境&quot;&gt;2.1、准备 LLaMA 13B 环境&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#22运行-llama-13b-模型&quot; id=&quot;markdown-toc-22运行-llama-13b-模型&quot;&gt;2.2、运行 LLaMA 13B 模型&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#242对新任务上面向用户的指令的泛化能力&quot; id=&quot;markdown-toc-242对新任务上面向用户的指令的泛化能力&quot;&gt;2.4.2、对新任务上面向用户的指令的泛化能力&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#25self-instruct-的局限性&quot; id=&quot;markdown-toc-25self-instruct-的局限性&quot;&gt;2.5、Self-Instruct 的局限性&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#3用的什么数据微调&quot; id=&quot;markdown-toc-3用的什么数据微调&quot;&gt;3、用的什么数据微调？&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#4alpaca-的算力开销及微调&quot; id=&quot;markdown-toc-4alpaca-的算力开销及微调&quot;&gt;4、Alpaca 的算力开销及微调&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#5alpaca-性能评估&quot; id=&quot;markdown-toc-5alpaca-性能评估&quot;&gt;5、Alpaca 性能评估&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#6alpaca-的局限性&quot; id=&quot;markdown-toc-6alpaca-的局限性&quot;&gt;6、Alpaca 的局限性&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#7alpaca-带来的启发及优化空间&quot; id=&quot;markdown-toc-7alpaca-带来的启发及优化空间&quot;&gt;7、Alpaca 带来的启发及优化空间&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#8alpacacpp-发布&quot; id=&quot;markdown-toc-8alpacacpp-发布&quot;&gt;8、Alpaca.cpp 发布&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#参考&quot; id=&quot;markdown-toc-参考&quot;&gt;参考&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;一llama-预训练模型下载&quot;&gt;一、LLaMA 预训练模型下载&lt;/h2&gt;
+&lt;p&gt;Meta 的 LLaMA 模型发布后不久，在 2023 年 3 月 13 日，一个叫 Alpaca 的模型被发布。Alpaca 是一个在 LLaMA-7B 基础上用 5.2 万条的「instruction-following」微调得到的 LLM，由 Stanford 大学的基础模型研究中心（Center for Research on Foundation Models，CRFM）团队发布，训练总花费约不到 600 美元。&lt;/p&gt;
 
-&lt;p&gt;LLaMA 是什么？关于 LLaMA 的介绍，看这篇&lt;a href=&quot;https://www.mikecaptain.com/2023/02/25/meta-llama/&quot;&gt;《Meta 推出开源 LLaMA，用 1/10 参数规模打败 GPT-3，群”模”乱舞的 2023 拉开序幕》&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;为啥名字叫 Alpaca？LLaMA 是来自缩写（当然也是硬拗的），而 Alapaca 就纯粹是因为羊驼家族的名字了。作为羊驼家族的成员，llama 和 alpaca 都是来自南美。在南美有四类羊驼，分别是 llama（Lama glama）、alpaca（Vicugna pacos）、vicuña（Vicugna vicugna）、guanaco（或者叫 huanaco，Lama guanicoe）。从外形上，llama 和 alpaca 其实是长得有点像的，区别的方法一般是通过耳朵。耳朵比较长的，还有点弯弯的，是 llama；耳朵是直的，短一些的是 alpaca。&lt;/p&gt;
 
-&lt;p&gt;聊了 LLaMA 后，接下来，下载 LLaMA 模型文件，这里略去下载地址（网上很多，但普遍地址有效生命周期不长）。&lt;/p&gt;
+&lt;p&gt;OK，不扯远了，如何分别各种草泥马的事情，还是交给搞动物学的朋友们，我们继续聊人工智能。Stanford CRFM 团队在其官方主页上发布了相关文章介绍 Alpaca，官方的一些相关参考资料如下：&lt;/p&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;─ models
- ├── 7B
- │   ├── checklist.chk
- │   ├── consolidated.00.pth
- │   └── params.json
- ├── 13B
- │   ├── checklist.chk
- │   ├── consolidated.00.pth
- │   ├── consolidated.01.pth
- │   └── params.json
- ├── 30B
- │   ├── checklist.chk
- │   ├── consolidated.00.pth
- │   ├── consolidated.01.pth
- │   ├── consolidated.02.pth
- │   ├── consolidated.03.pth
- │   └── params.json
- ├── 65B
- │   ├── checklist.chk
- │   ├── consolidated.00.pth
- │   ├── consolidated.01.pth
- │   ├── consolidated.02.pth
- │   ├── consolidated.03.pth
- │   ├── consolidated.04.pth
- │   ├── consolidated.05.pth
- │   ├── consolidated.06.pth
- │   ├── consolidated.07.pth
- │   └── params.json
- └── tokenizer.model
+&lt;ul&gt;
+  &lt;li&gt;Blog：&lt;a href=&quot;https://crfm.stanford.edu/2023/03/13/alpaca.html&quot;&gt;《Alpaca: A Strong, Replicable Instruction-Following Model》&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;DEMO：https://crfm.stanford.edu/alpaca/&lt;/li&gt;
+  &lt;li&gt;Code：&lt;a href=&quot;https://github.com/tatsu-lab/stanford_alpaca&quot;&gt;GitHub - Stanford Alpaca&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;1为什么做-alpaca&quot;&gt;1、为什么做 Alpaca？&lt;/h2&gt;
+
+&lt;p&gt;尽管像 ChatGPT、Claude、New Bing 的 Chatbot 这些已经很厉害了，但是 CRFM 团队认为这些模型依然存在许多不足之处，尤其是它们可能生成虚假信息、传播社会刻板印象、产生有害语言等等。为了在这方面的研究上取得一些推进，学术界的参与至关重要。但不幸的是，在学术界进行关于指令跟随模型的研究一直很困难，因为没有一个容易获取且能够与 GPT-3.5 等闭源模型相媲美的模型。&lt;/p&gt;
+
+&lt;p&gt;刚好 Meta 发布了 LLaMA，CRFM 团队就基于 LLaMA-7B 微调了除了 Alpaca。&lt;/p&gt;
+
+&lt;p&gt;那么用什么数据来微调呢？我们先要介绍一下 Self-Instruct 再来聊 Alpaca，而且 Self-Instruct 才是重点。&lt;/p&gt;
+
+&lt;h2 id=&quot;2self-instruct&quot;&gt;2、Self-Instruct&lt;/h2&gt;
+
+&lt;p&gt;2022 年 12 月底，在 ChatGPT 发布后不到一个月，Yizhong Wang 等几位学者共同发布了论文《SELF-INSTRUCT: Aligning Language Models with Self-Generated Instructions》。这篇论文主要是指出「可以用现成的、强大的大语言模型，来自动生成微调所需要的数据」，这样的好处，是大量地省去了人工编写 Instruction-Following 数据的工作量，因为这种数据通常在数量、多样性和创造性方面受到人工编写规模的限制，很难搞出非常多，这也就间接地限制了继续推进 LLM 的泛化能力拓展。这篇论文的作者引入 Self-Instruct，是一个用 LLM 来造数据用于微调的框架。整个流程从 LLM 生成指令、输入和输出样本，然后在使用它们对目标模型进行 finetune 之前，过滤无效或相似的样本。&lt;/p&gt;
+
+&lt;p&gt;论文作者将这个方法应用于原始的 GPT-3，性能测试结果显示在 Super-NaturalInstructions 任务上相对于原始模型实现了 33% 的绝对改进，与使用私有的用户数据和人工注释进行训练的 InstructGPT-001 的性能相当。为了进一步评估，论文作者还搞了一组专家编写的用于新任务的指令，并通过人工评估，结果显示使用 Self-Instruct 对 GPT-3 进行调优明显优于使用现有的公共指令数据集，而且作者自称是运用 Self-Instruct 框架的结果仅与 InstructGPT-001 相差 5% 的绝对差距。Self-Instruct 提供了一种几乎无需人工标注的方法，可以使预训练语言模型与指令对齐。&lt;/p&gt;
+
+&lt;p&gt;该篇论文的研究团队还公开了他们的合成数据集 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://github.com/yizhongw/self-instruct&lt;/code&gt;（截止本文编写时，GitHub 上已有 2.5K 的 stars 了）。&lt;/p&gt;
+
+&lt;h3 id=&quot;21数据集的生成&quot;&gt;2.1、数据集的生成&lt;/h3&gt;
+
+&lt;p&gt;这里讲的还是太粗糙了，我们根据 Self-Instruct 论文里的介绍可以看到是如下流程：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/src2/2023/06/04/2.jpg&quot; alt=&quot;&quot; width=&quot;720&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这里可以分为基本的四个步骤。&lt;/p&gt;
+
+&lt;p&gt;首先，CRFM 团队使用种子集作为提示，让 OpenAI 的 text-davinci-003 生成指令。&lt;/p&gt;
+
+&lt;p&gt;启次，来判断是否这个任务是一个分类任务。这里判断使用语言模型来实现的，而不是人工判断。&lt;/p&gt;
+
+&lt;p&gt;第三步，生成 instances，根据是否是分类任务，分为两类。分类也是用语言模型实现的，而不是人工判断。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;如果是分类任务，则包括 instruction、input、output（即 class label）三部分，则先生成 output（即 class label），即 output-first。比如的判断一个句子是否有语法错误时，最好是让 AI 生成一个有语法错误的 output。&lt;/li&gt;
+  &lt;li&gt;如果不是分类任务，则包括 instruction、input、output 三部分，则先生成 input，即 input-first。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;比如以下这个属于分类任务，所以要 output-first：&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Given the classification task definition and the class labels, generate an input that
+corresponds to each of the class labels. If the task doesn’t require input, just generate the
+correct class label.
+
+Task: Classify the sentiment of the sentence into positive, negative, or mixed.
+
+Output(Class label): mixed
+Input(Sentence): I enjoy the flavor of the restaurant but their service is too slow.
+
+Output(Class label): Positive
+Input(Sentence): I had a great day today. The weather was beautiful and I spent time with friends.
+
+Output(Class label): Negative
+Input(Sentence): I was really disappointed by the latest superhero movie. I would not recommend it.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;因为文件太大，估计会出现多次断点续传，所以一定要校验下文件是否正确，正确与否与 checklist.chk 文件对比。比如：&lt;/p&gt;
+&lt;p&gt;以下则不是一个分类任务，所以要 input-first：&lt;/p&gt;
 
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % &lt;span class=&quot;nb&quot;&gt;md5sum &lt;/span&gt;7B/consolidated.00.pth
-6efc8dab194ab59e49cd24be5574d85e
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Instruction: Given an address and city, come up
+with the zip code.
+Input:
+Address: 123 Main Street, City: San Francisco
+Output: 94105
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;二用-ggerganovllamacpp-运行&quot;&gt;二、用 ggerganov/llama.cpp 运行&lt;/h2&gt;
+&lt;p&gt;CRFM 团队使用 self-instruct 种子集中的 175 个人工编写的「instruction-following」输出对。CRFM 团队还放出了这 175 个种子数据（&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://github.com/yizhongw/self-instruct/blob/main/data/seed_tasks.jsonl&lt;/code&gt;），大家可以浏览下大致格式，与上面船长说的也是对应的：&lt;/p&gt;
 
-&lt;h3 id=&quot;1llama-7b-版本&quot;&gt;1、LLaMA 7B 版本&lt;/h3&gt;
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;seed_task_0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;breakfast_suggestion&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;instruction&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Is there anything I can eat for a breakfast that doesn&apos;t include eggs, yet includes protein, and has roughly 700-1000 calories?&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;instances&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;input&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;output&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Yes, you can have 1 oatmeal banana protein shake and 4 strips of bacon. The oatmeal banana protein shake may contain 1/2 cup oatmeal, 60 grams whey protein powder, 1/2 medium banana, 1tbsp flaxseed oil and 1/2 cup watter, totalling about 550 calories. The 4 strips of bacon contains about 200 calories.&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;is_classification&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h4 id=&quot;11下载-llamacpp-项目&quot;&gt;1.1、下载 LLaMA.cpp 项目&lt;/h4&gt;
+&lt;p&gt;最后一步，对于生成的结果，经过数据过滤再放到任务池（Task Pool）里。&lt;/p&gt;
 
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % git clone git@github.com:ggerganov/llama.cpp.git
-mikecaptain@CVN % &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;llama.cpp
-mikecaptain@CVN % make
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;22数据集的多样性&quot;&gt;2.2、数据集的多样性&lt;/h3&gt;
 
-&lt;h4 id=&quot;12准备-llama-7b-环境&quot;&gt;1.2、准备 llama 7B 环境&lt;/h4&gt;
+&lt;p&gt;这些数据的分布多样性如下（下图内圈是动词，外圈是这个动词所作用在的名次，两者组合就能看出这是一个什么任务）：&lt;/p&gt;
 
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % conda &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;pytorch numpy sentencepiece 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/img/src2/2023/06/08/1.png&quot; alt=&quot;&quot; width=&quot;400&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;The first script converts the model to “ggml FP16 format”:&lt;/p&gt;
+&lt;h3 id=&quot;23数据集的有效性&quot;&gt;2.3、数据集的有效性&lt;/h3&gt;
 
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % python convert-pth-to-ggml.py models/7B/ 1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/img/src2/2023/06/08/2.png&quot; alt=&quot;&quot; width=&quot;320&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-12-llama-cpp-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;如上图，在 52k 的数据中随机选择 200 个，每个 instruction 随机选一个 instance 来给人评估。&lt;/p&gt;
 
-&lt;p&gt;这样会得到一个 13GB 的文件 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;models/7B/ggml-model-f16.bin&lt;/code&gt;，然后再运行脚本 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;quantize&lt;/code&gt; 用来把 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;models/7B/ggml-model-f16.bin&lt;/code&gt; 转为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;4-bits&lt;/code&gt; 版本：&lt;/p&gt;
+&lt;p&gt;这里对于 instruction、input、output 分别进行一个判断。整体判断下来，按照抽样的内容看有效率是 54%，也就是一半左右的数据是有效的。&lt;/p&gt;
 
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % ./quantize ./models/7B/ggml-model-f16.bin ./models/7B/ggml-model-q4_0.bin 2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;24效果评估实验&quot;&gt;2.4、效果评估实验&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-12-llama-cpp-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h4 id=&quot;241superni-benchmark-上评估&quot;&gt;2.4.1、SUPERNI benchmark 上评估&lt;/h4&gt;
 
-&lt;p&gt;这样会生成一个 3.9GB 的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;models/7B/ggml-model-q4_0.bin&lt;/code&gt; 文件。&lt;/p&gt;
+&lt;p&gt;CRFM 团队在 SUPERNI benchmark 上做实验，它包括 119 个任务，每个任务包括 100 个句子，表现如下：&lt;/p&gt;
 
-&lt;h4 id=&quot;13运行-llama-7b-模型&quot;&gt;1.3、运行 LLaMA 7B 模型&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&quot;/img/src2/2023/06/08/3.png&quot; alt=&quot;&quot; width=&quot;420&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;脚本 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main&lt;/code&gt; 用于启动，使用刚得到的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;models/7B/ggml-model-q4_0.bin&lt;/code&gt; 模型文件。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;GPT-3 和 GPT-3-self-instruct 版本比较：这里解释一下，OpenAI 为 GPT-3 提供了 finetune 的 API（收费很贵），用这个 API 基于 CRFM 团队自己用 Self-Instruct 造的数据的到了一个 fintuned GPT-3，这里我们暂且叫它是 GPT-3-self-instruct。这里两者对比，可以看到前者仅有 6.8 的分数，而后者是 39.9 的分数，可见 self-instruct 效果非常明显。&lt;/li&gt;
+  &lt;li&gt;GPT-3-self-instruct 和 InstructGPT-001 比较：两者分数差不多，但是要知道前者仅用了机器自动生成的数据 + 人工提供的少量数据，而后者开始大量人工采实现的。&lt;/li&gt;
+  &lt;li&gt;GPT-3 + SUPERNI Training vs. GPT-3-self-instruct + SUPERNI Training。在 SUPERNI benchmark 上做一下微调，对比两者发现，后者仍然是分数高一些的。&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % ./main &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; ./models/7B/ggml-model-q4_0.bin &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; 8 &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 128 &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;The first man on the moon was &apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;242对新任务上面向用户的指令的泛化能力&quot;&gt;2.4.2、对新任务上面向用户的指令的泛化能力&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-12-llama-cpp-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Self-Instruct 的作者们认为，尽管 SUPERNI 在收集现有的自然语言处理任务方面非常全面，但其中大部分任务都是为了研究目的而提出的，并且倾向于分类任务。为了更好地评估指令跟随模型的实际价值，作者的一个子集策划了一组新的指令，这些指令是基于用户导向的应用而产生的。我们首先对大型语言模型可能有用的各个领域进行头脑风暴（例如，电子邮件写作、社交媒体、生产工具、娱乐、编程），然后编写与每个领域相关的指令以及一个输入-输出示例（再次强调，输入是可选的）。作者们旨在多样化这些任务的风格和格式（例如，指令可能长或短；输入/输出可以采用项目符号、表格、代码、方程等形式）。总共，作者们创建了 252 个指令，每个指令有 1 个实例。作者们认为这可以作为一个测试平台，用于评估基于指令的模型如何处理多样且不熟悉的指令。&lt;/p&gt;
 
-&lt;p&gt;可以看到续写的内容是：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/src2/2023/06/08/4.png&quot; alt=&quot;&quot; width=&quot;640&quot; /&gt;&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;The first man on the moon was 38-years old.
-Astronaut Neil Armstrong, at age 24, became a naval aviator flying fighter jets in World War II. He later flew for Pan American Airlines as a test pilot and flight engineer before he joined NASA’s Mercury space program.
-“Houston, Tranquillity Base here. The Eagle has landed.” Armstrong spoke those words on July 20, 1969, as the United States beat Russia in the Cold War race to put a man on the moon. [end of text]&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;A 表示最好的，ABCD 依次，D 是表现最差的。我们可以看到，GPT-3-self-instruct 和 InstructGPT-001 已经差不多了。&lt;/p&gt;
 
-&lt;p&gt;可以用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./main --help&lt;/code&gt; 来查看多有哪些参数可以设置。&lt;/p&gt;
+&lt;h3 id=&quot;25self-instruct-的局限性&quot;&gt;2.5、Self-Instruct 的局限性&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-12-llama-cpp-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Dependence on Large Models：Self-Instruct 的局限性最明显的一点，是需要依赖更强的大模型来作为老师辅助生成数据。&lt;/li&gt;
+  &lt;li&gt;尾部现象（Tail Phenomena）：SELF-INSTRUCT 依赖于语言模型，它将继承随着语言模型传递而来的所有限制。语言模型的最大收益对应于语言的频繁使用（语言使用分布的头部），在低频环境中可能只有最小的收益。同样，在这项工作的背景下，如果 SELF-INSTRUCT 的大部分收益偏向于在预训练语料库中更频繁出现的任务或指令，那也就不足为奇了。因此，这种方法在处理不常见和创造性的指令时可能会显示脆弱性。&lt;/li&gt;
+  &lt;li&gt;原来语言模型中隐藏的问题也会被放大，即 Reinforcing LM bias。&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h3 id=&quot;2llama-13b-版本&quot;&gt;2、LLaMA 13B 版本&lt;/h3&gt;
+&lt;h2 id=&quot;3用的什么数据微调&quot;&gt;3、用的什么数据微调？&lt;/h2&gt;
 
-&lt;h4 id=&quot;21准备-llama-13b-环境&quot;&gt;2.1、准备 LLaMA 13B 环境&lt;/h4&gt;
+&lt;p&gt;了解了 Self-Instruct 之后，你就知道了，Alpaca 用的微调数据其实就是用这个框架来生成的。CRFM 团队自己花钱使用了 OpenAI 的 text-davinci-003 模型 API 生成了 52,000 条 Self-Instruct 的数据（对应 82k instances，关于具体 instance 是什么看下面 Self-Instruct 部分），然后用这些数据对 Alpaca 进行 Finetune。&lt;/p&gt;
 
-&lt;p&gt;运行如下命令，生成文件 26.03GB 大小的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ggml-model-f16.bin&lt;/code&gt;：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;训练数据：5.2 万条的「instruction-following」。&lt;/li&gt;
+  &lt;li&gt;关于训练数据：发布在 https://github.com/tatsu-lab/stanford_alpaca#data-release&lt;/li&gt;
+  &lt;li&gt;数据生成过程 https://github.com/tatsu-lab/stanford_alpaca#data-generation-process&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % python convert-pth-to-ggml.py models/13B/ 1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;这里用到了 Self-Instruct 框架来生成微调所需的数据，具体方法我们看下一小节。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-12-llama-cpp-5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;4alpaca-的算力开销及微调&quot;&gt;4、Alpaca 的算力开销及微调&lt;/h2&gt;
 
-&lt;p&gt;再运行如下命令，生成文件 8.14GB 大小的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./models/13B/ggml-model-q4_0.bin&lt;/code&gt;：&lt;/p&gt;
+&lt;p&gt;Alpaca 的微调总花费约不到 600 美元，具体是在 8 个 80GB 的 A100 上微调 3 个小时。其大致的微调流程如下：&lt;/p&gt;
 
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % ./quantize ./models/13B/ggml-model-f16.bin   ./models/13B/ggml-model-q4_0.bin 2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;/img/src2/2023/06/04/1.jpg&quot; alt=&quot;&quot; width=&quot;720&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-12-llama-cpp-6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;整体上，用 Self-Instruct 框架大幅地简化了生成流程（详细信息请参阅 GitHub），大大降低了成本。数据生成过程产生了 52k 个唯一指令及其对应的输出，使用 OpenAI API 的成本不到 500 美元。&lt;/p&gt;
 
-&lt;h4 id=&quot;22运行-llama-13b-模型&quot;&gt;2.2、运行 LLaMA 13B 模型&lt;/h4&gt;
+&lt;h2 id=&quot;5alpaca-性能评估&quot;&gt;5、Alpaca 性能评估&lt;/h2&gt;
 
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkkecaptain@CVN % ./main &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; ./models/13B/ggml-model-q4_0.bin &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; 8 &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; 128 &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;Some good pun names for a coffee shop run by beavers:
--&apos;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;效果性能评估后，CRFM 团队声称 Alpaca 展现了许多与 OpenAI 的 text-davinci-003 相接近的表现，但 Alpaca 的规模要比 text-davinci-003 小太多了，而且微调的话费仅仅是不到 600 美元，所有人都可以低成本的复现。当然实际效果后来大家也都知道，并没有 CRFM 王婆卖瓜所说的那么好，但是这已经是一个不小的启发了。尽管大家知道微调的成本是远低于预训练的，但是 CRFM 团队直接给出了一个具体量化的结果，而且这个流程可实操落地，未来可优化的空间就自然很大。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-12-llama-cpp-7.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;6alpaca-的局限性&quot;&gt;6、Alpaca 的局限性&lt;/h2&gt;
 
-&lt;!-- ## 三、用 soulteary/llama-docker-playground 运行
+&lt;p&gt;CRFM 团队在其官方文章中特别强调「Alpaca 仅用于学术研究，任何商业用途都是被禁止的」，并解释其原因有三个因素：&lt;/p&gt;
 
-### 1、下载 llama-docker-playground 项目
+&lt;ol&gt;
+  &lt;li&gt;Alpaca 基于 Meta AI 发布的 LLaMA 项目，因此也就继承了其非商用的特点。&lt;/li&gt;
+  &lt;li&gt;用于微调的数据，是基于 OpenAI 的 text-davinci-003 模型生成的，其使用条款是禁止其生成的数据用于开发与 OpenAI 竞争的模型。&lt;/li&gt;
+  &lt;li&gt;CRFM 团队没有设计足够的安全措施（safety measures），因此 Alpaca 无法应对通用型的使用场景，只适合拿来做研究。&lt;/li&gt;
+&lt;/ol&gt;
 
-```shell
-mikecaptain@CVN % git clone https://github.com/soulteary/llama-docker-playground.git
-mikecaptain@CVN % cd llama-docker-playground
-```
+&lt;h2 id=&quot;7alpaca-带来的启发及优化空间&quot;&gt;7、Alpaca 带来的启发及优化空间&lt;/h2&gt;
 
-### 2、准备环境
+&lt;p&gt;Alpaca 是被公开放出的第一个基于 LLaMA 的微调，吹响了 LLaMA 生态被开源社区添砖加瓦繁荣起来的号角。Alpaca 虽然性能一般，但是按照同样的范式，可以有大量的优化研究可做：&lt;/p&gt;
 
-### 3、运行模型 --&gt;
+&lt;ol&gt;
+  &lt;li&gt;Self-Instruct 造数据的启发，以及探索如何批量制造出更好的数据。&lt;/li&gt;
+  &lt;li&gt;使用更好的数据来 finetune。&lt;/li&gt;
+  &lt;li&gt;训练的方法存在的优化空间也很大。&lt;/li&gt;
+  &lt;li&gt;除了 LLaMA-7B 模型，还有 13B、33B、65B 的潜力等待挖掘。&lt;/li&gt;
+  &lt;li&gt;引发了数据有效性的讨论。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;8alpacacpp-发布&quot;&gt;8、Alpaca.cpp 发布&lt;/h2&gt;
+
+&lt;p&gt;Stanford CRFM 团队的 Alpaca 发布后的四天，一个在多种个人计算设备上就能跑起来的 Alpaca.cpp 被发布，由加州的 Kevin Kwok 将 LLaMA.cpp 与 Alpaca 做了整合。&lt;/p&gt;
+
+&lt;p&gt;Alpaca.cpp 的项目地址为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://github.com/antimatter15/alpaca.cpp&lt;/code&gt;。&lt;/p&gt;
 
 &lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://til.simonwillison.net/llms/llama-7b-m2&quot;&gt;Running LLaMA 7B and 13B on a 64GB M2 MacBook Pro with llama.cpp&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/ggerganov/llama.cpp&quot;&gt;ggerganov - llama.cpp&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><category term="LLaMA" /><category term="Meta" /><category term="GPT" /><category term="本地" /><category term="MacBook" /><category term="ChatGPT" /><category term="平替" /><category term="OpenAI" /><category term="开源" /><category term="免费" /><category term="推理" /><category term="模型" /><summary type="html">Meta 推出的 LLaMA 被「开源」了 …… 基于 LLaMA 更高参数利用效率的基础上，我们可以用 ggerganov/llama.cpp 来实现 MacBook 上简单几步，就能运行 LLaMA 7B 和 13B，甚至可以运行在智能手机上 ……</summary></entry></feed>
+  &lt;li&gt;https://crfm.stanford.edu/2023/03/13/alpaca.html&lt;/li&gt;
+  &lt;li&gt;https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform&lt;/li&gt;
+  &lt;li&gt;https://pujols.pixnet.net/blog/post/23619904&lt;/li&gt;
+  &lt;li&gt;https://arxiv.org/abs/2212.10560&lt;/li&gt;
+  &lt;li&gt;https://github.com/yizhongw/self-instruct&lt;/li&gt;
+  &lt;li&gt;https://www.bilibili.com/video/BV1jM411M7Ls/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=4555ef51cf600ab2c791b34a0933a76d&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><category term="LLaMA" /><category term="Alpaca" /><category term="Stanford" /><category term="斯坦福" /><category term="大学" /><category term="微调" /><category term="finetune" /><category term="Model" /><category term="Lanaguage Model" /><summary type="html">本文目录</summary></entry></feed>

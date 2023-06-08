@@ -4,7 +4,7 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-06-02T10:15:34+08:00</updated>
+ <updated>2023-06-08T23:32:07+08:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
@@ -120,11 +120,11 @@ mikecaptain@CVN % ./chat
  
 
  <entry>
-   <title>上船跑模型之 MacBook 上运行 LLaMA 7B 和 13B 原始模型</title>
-   <link href="https://www.mikecaptain.com/2023/03/12/captain-run-llama-cpp/"/>
-   <id>https://www.mikecaptain.com/2023/03/12/captain-run-llama-cpp</id>
-   <updated>2023-03-12T00:40:13+08:00</updated>
-   <content type="html">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#一llama-预训练模型下载&quot; id=&quot;markdown-toc-一llama-预训练模型下载&quot;&gt;一、LLaMA 预训练模型下载&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#二用-ggerganovllamacpp-运行&quot; id=&quot;markdown-toc-二用-ggerganovllamacpp-运行&quot;&gt;二、用 ggerganov/llama.cpp 运行&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#1llama-7b-版本&quot; id=&quot;markdown-toc-1llama-7b-版本&quot;&gt;1、LLaMA 7B 版本&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#11下载-llamacpp-项目&quot; id=&quot;markdown-toc-11下载-llamacpp-项目&quot;&gt;1.1、下载 LLaMA.cpp 项目&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#12准备-llama-7b-环境&quot; id=&quot;markdown-toc-12准备-llama-7b-环境&quot;&gt;1.2、准备 llama 7B 环境&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#13运行-llama-7b-模型&quot; id=&quot;markdown-toc-13运行-llama-7b-模型&quot;&gt;1.3、运行 LLaMA 7B 模型&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#2llama-13b-版本&quot; id=&quot;markdown-toc-2llama-13b-版本&quot;&gt;2、LLaMA 13B 版本&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#21准备-llama-13b-环境&quot; id=&quot;markdown-toc-21准备-llama-13b-环境&quot;&gt;2.1、准备 LLaMA 13B 环境&lt;/a&gt;&lt;/li&gt;...</content>
+   <title>Stanford 研究团队发布基于 LLaMA 微调的 Alpaca 模型，仅花费不到 500 美元</title>
+   <link href="https://www.mikecaptain.com/2023/03/14/captain-alpaca/"/>
+   <id>https://www.mikecaptain.com/2023/03/14/captain-alpaca</id>
+   <updated>2023-03-14T12:40:13+08:00</updated>
+   <content type="html">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#1为什么做-alpaca&quot; id=&quot;markdown-toc-1为什么做-alpaca&quot;&gt;1、为什么做 Alpaca？&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#2self-instruct&quot; id=&quot;markdown-toc-2self-instruct&quot;&gt;2、Self-Instruct&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#21数据集的生成&quot; id=&quot;markdown-toc-21数据集的生成&quot;&gt;2.1、数据集的生成&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#22数据集的多样性&quot; id=&quot;markdown-toc-22数据集的多样性&quot;&gt;2.2、数据集的多样性&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#23数据集的有效性&quot; id=&quot;markdown-toc-23数据集的有效性&quot;&gt;2.3、数据集的有效性&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#24效果评估实验&quot; id=&quot;markdown-toc-24效果评估实验&quot;&gt;2.4、效果评估实验&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#241superni-benchmark-上评估&quot; id=&quot;markdown-toc-241superni-benchmark-上评估&quot;&gt;2.4.1、SUPERNI benchmark 上评估&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#242对新任务上面向用户的指令的泛化能力&quot; id=&quot;markdown-toc-242对新任务上面向用户的指令的泛化能力&quot;&gt;2.4.2、对新任务上面向用户的指令的泛化能力&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#25self-instruct-的局限性&quot; id=&quot;markdown-toc-25self-instruct-的局限性&quot;&gt;2.5、Self-Instruct 的局限性&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#3用的什么数据微调&quot; id=&quot;markdown-toc-3用的什么数据微调&quot;&gt;3、用的什么数据微调？&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#4alpaca-的算力开销及微调&quot; id=&quot;markdown-toc-4alpaca-的算力开销及微调&quot;&gt;4、Alpaca 的算力开销及微调&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#5alpaca-性能评估&quot; id=&quot;markdown-toc-5alpaca-性能评估&quot;&gt;5、Alpaca...</content>
  </entry>
 
  
