@@ -90,6 +90,9 @@ permalink: /booklist/
 
 #### 7、LLM 革命前夜与破晓
 
+* Tree of Thoughts，[《Tree of Thoughts: Deliberate Problem Solving
+with Large Language Models》](/resources/pdf/2305.10601_Tree_of_Thoughts.pdf)
+* LIMA，
 * GPT-4 技术报告，[《GPT-4 Technical Report》](https://arxiv.org/abs/2303.08774)
 * LLaMA 论文，[《LLaMA: Open and Efficient Foundation Language Models》](/resources/pdf/LLaMA.pdf)
 * PET 论文，[《Exploiting Cloze Questions for Few Shot Text Classification and Natural Language Inference》](/resources/pdf/PET.pdf)
