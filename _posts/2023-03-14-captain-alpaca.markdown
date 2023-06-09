@@ -17,7 +17,9 @@ author: 麦克船长
 
 Meta 的 LLaMA 模型发布后不久，在 2023 年 3 月 13 日，一个叫 Alpaca 的模型被发布。Alpaca 是一个在 LLaMA-7B 基础上用 5.2 万条的「instruction-following」微调得到的 LLM，由 Stanford 大学的基础模型研究中心（Center for Research on Foundation Models，CRFM）团队发布，训练总花费约不到 600 美元。
 
-为啥名字叫 Alpaca？LLaMA 是来自缩写（当然也是硬拗的），而 Alapaca 就纯粹是因为羊驼家族的名字了。作为羊驼家族的成员，llama 和 alpaca 都是来自南美。在南美有四类羊驼，分别是 llama（Lama glama）、alpaca（Vicugna pacos）、vicuña（Vicugna vicugna）、guanaco（或者叫 huanaco，Lama guanicoe）。从外形上，llama 和 alpaca 其实是长得有点像的，区别的方法一般是通过耳朵。耳朵比较长的，还有点弯弯的，是 llama；耳朵是直的，短一些的是 alpaca。
+为啥名字叫 Alpaca？LLaMA 是来自缩写（当然也是硬拗的），而 Alapaca 就纯粹是因为羊驼家族的名字了。作为羊驼家族的成员，llama 和 alpaca 都是来自南美。在南美有四类羊驼，分别是 llama（Lama glama）、alpaca（Vicugna pacos）、vicuña（Vicugna vicugna）、guanaco（或者叫 huanaco，Lama guanicoe）。从外形上，llama 和 alpaca 其实是长得有点像的，区别的方法一般是通过耳朵。耳朵比较长的，还有点弯弯的，是 llama；耳朵是直的，短一些的是 alpaca。值得一提的是，有人说秘鲁的国旗上有羊驼，其实秘鲁的国旗（下图左侧）是没有羊驼的，而秘鲁的政府旗、军旗上有的也不是羊驼，而是秘鲁的国宝 —— 骆马（vicuña）。
+
+![](/img/src2/2023/06/08/5.png)
 
 OK，不扯远了，如何分别各种草泥马的事情，还是交给搞动物学的朋友们，我们继续聊人工智能。Stanford CRFM 团队在其官方主页上发布了相关文章介绍 Alpaca，官方的一些相关参考资料如下：
 
@@ -237,7 +239,24 @@ Alpaca 是被公开放出的第一个基于 LLaMA 的微调，吹响了 LLaMA �
 
 Stanford CRFM 团队的 Alpaca 发布后的四天，一个在多种个人计算设备上就能跑起来的 Alpaca.cpp 被发布，由加州的 Kevin Kwok 将 LLaMA.cpp 与 Alpaca 做了整合。
 
-Alpaca.cpp 的项目地址为 `https://github.com/antimatter15/alpaca.cpp`。 
+Alpaca.cpp 的项目地址为 `https://github.com/antimatter15/alpaca.cpp`。 如果想在本地设备上运行推理，也非常简单，以船长在 macOS 下为例，首先 clone 项目到本地：
+
+```shell
+mikecaptain@CVN % git clone https://github.com/antimatter15/alpaca.cpp
+mikecaptain@CVN % cd alpaca.cpp
+```
+
+然后下载训练好的模型权重文件，然后编译，运行推理。
+
+```shell
+mikecaptain@CVN % wget -O ggml-alpaca-7b-q4.bin -c https://gateway.estuary.tech/gw/ipfs/QmQ1bf2BTnYxq73MFJWu1B7bQ2UD6qG7D7YDCxhTndVkPC
+mikecaptain@CVN % make chat
+mikecaptain@CVN % ./chat
+```
+
+运行推理效果演示如下：
+
+![](/img/src2/2023/06/08/6.gif)
 
 ## 参考
 
@@ -247,3 +266,4 @@ Alpaca.cpp 的项目地址为 `https://github.com/antimatter15/alpaca.cpp`。
 * https://arxiv.org/abs/2212.10560
 * https://github.com/yizhongw/self-instruct
 * https://www.bilibili.com/video/BV1jM411M7Ls/?spm_id_from=333.337.search-card.all.click&vd_source=4555ef51cf600ab2c791b34a0933a76d
+* https://github.com/antimatter15/alpaca.cpp

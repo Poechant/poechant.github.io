@@ -18,7 +18,7 @@ mikecaptain@CVN % git clone https://github.com/antimatter15/alpaca.cpp
 mikecaptain@CVN % cd alpaca.cpp
 ```
 
-下载训练好的数据集：
+下载训练好的模型权重：
 
 ```shell
 mikecaptain@CVN % wget -O ggml-alpaca-7b-q4.bin -c https://gateway.estuary.tech/gw/ipfs/QmQ1bf2BTnYxq73MFJWu1B7bQ2UD6qG7D7YDCxhTndVkPC
