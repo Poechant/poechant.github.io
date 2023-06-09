@@ -4,7 +4,7 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-06-08T23:32:07+08:00</updated>
+ <updated>2023-06-09T22:39:28+08:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
@@ -94,7 +94,7 @@
 mikecaptain@CVN % &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;alpaca.cpp
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;下载训练好的数据集：&lt;/p&gt;
+&lt;p&gt;下载训练好的模型权重：&lt;/p&gt;
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mikecaptain@CVN % wget &lt;span class=&quot;nt&quot;&gt;-O&lt;/span&gt; ggml-alpaca-7b-q4.bin &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; https://gateway.estuary.tech/gw/ipfs/QmQ1bf2BTnYxq73MFJWu1B7bQ2UD6qG7D7YDCxhTndVkPC
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;

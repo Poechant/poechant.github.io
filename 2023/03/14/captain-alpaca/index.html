@@ -431,7 +431,7 @@
 
 			<article id="post-page">
 	<h2>Stanford 研究团队发布基于 LLaMA 微调的 Alpaca 模型，仅花费不到 500 美元</h2>		
-	<time datetime="2023-03-14T12:40:13+08:00" class="by-line">14 Mar 2023, 杭州 | 麦克船长 | 总计 7983 字</time>
+	<time datetime="2023-03-14T12:40:13+08:00" class="by-line">14 Mar 2023, 杭州 | 麦克船长 | 总计 8481 字</time>
 	<div class="content">
 		<p><strong>本文目录</strong></p>
 <ul id="markdown-toc">
@@ -459,7 +459,9 @@
 
 <p>Meta 的 LLaMA 模型发布后不久，在 2023 年 3 月 13 日，一个叫 Alpaca 的模型被发布。Alpaca 是一个在 LLaMA-7B 基础上用 5.2 万条的「instruction-following」微调得到的 LLM，由 Stanford 大学的基础模型研究中心（Center for Research on Foundation Models，CRFM）团队发布，训练总花费约不到 600 美元。</p>
 
-<p>为啥名字叫 Alpaca？LLaMA 是来自缩写（当然也是硬拗的），而 Alapaca 就纯粹是因为羊驼家族的名字了。作为羊驼家族的成员，llama 和 alpaca 都是来自南美。在南美有四类羊驼，分别是 llama（Lama glama）、alpaca（Vicugna pacos）、vicuña（Vicugna vicugna）、guanaco（或者叫 huanaco，Lama guanicoe）。从外形上，llama 和 alpaca 其实是长得有点像的，区别的方法一般是通过耳朵。耳朵比较长的，还有点弯弯的，是 llama；耳朵是直的，短一些的是 alpaca。</p>
+<p>为啥名字叫 Alpaca？LLaMA 是来自缩写（当然也是硬拗的），而 Alapaca 就纯粹是因为羊驼家族的名字了。作为羊驼家族的成员，llama 和 alpaca 都是来自南美。在南美有四类羊驼，分别是 llama（Lama glama）、alpaca（Vicugna pacos）、vicuña（Vicugna vicugna）、guanaco（或者叫 huanaco，Lama guanicoe）。从外形上，llama 和 alpaca 其实是长得有点像的，区别的方法一般是通过耳朵。耳朵比较长的，还有点弯弯的，是 llama；耳朵是直的，短一些的是 alpaca。值得一提的是，有人说秘鲁的国旗上有羊驼，其实秘鲁的国旗（下图左侧）是没有羊驼的，而秘鲁的政府旗、军旗上有的也不是羊驼，而是秘鲁的国宝 —— 骆马（vicuña）。</p>
+
+<p><img src="/img/src2/2023/06/08/5.png" alt="" /></p>
 
 <p>OK，不扯远了，如何分别各种草泥马的事情，还是交给搞动物学的朋友们，我们继续聊人工智能。Stanford CRFM 团队在其官方主页上发布了相关文章介绍 Alpaca，官方的一些相关参考资料如下：</p>
 
@@ -644,7 +646,22 @@ Output: 94105
 
 <p>Stanford CRFM 团队的 Alpaca 发布后的四天，一个在多种个人计算设备上就能跑起来的 Alpaca.cpp 被发布，由加州的 Kevin Kwok 将 LLaMA.cpp 与 Alpaca 做了整合。</p>
 
-<p>Alpaca.cpp 的项目地址为 <code class="language-plaintext highlighter-rouge">https://github.com/antimatter15/alpaca.cpp</code>。</p>
+<p>Alpaca.cpp 的项目地址为 <code class="language-plaintext highlighter-rouge">https://github.com/antimatter15/alpaca.cpp</code>。 如果想在本地设备上运行推理，也非常简单，以船长在 macOS 下为例，首先 clone 项目到本地：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@CVN % git clone https://github.com/antimatter15/alpaca.cpp
+mikecaptain@CVN % <span class="nb">cd </span>alpaca.cpp
+</code></pre></div></div>
+
+<p>然后下载训练好的模型权重文件，然后编译，运行推理。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mikecaptain@CVN % wget <span class="nt">-O</span> ggml-alpaca-7b-q4.bin <span class="nt">-c</span> https://gateway.estuary.tech/gw/ipfs/QmQ1bf2BTnYxq73MFJWu1B7bQ2UD6qG7D7YDCxhTndVkPC
+mikecaptain@CVN % make chat
+mikecaptain@CVN % ./chat
+</code></pre></div></div>
+
+<p>运行推理效果演示如下：</p>
+
+<p><img src="/img/src2/2023/06/08/6.gif" alt="" /></p>
 
 <h2 id="参考">参考</h2>
 
@@ -655,6 +672,7 @@ Output: 94105
   <li>https://arxiv.org/abs/2212.10560</li>
   <li>https://github.com/yizhongw/self-instruct</li>
   <li>https://www.bilibili.com/video/BV1jM411M7Ls/?spm_id_from=333.337.search-card.all.click&amp;vd_source=4555ef51cf600ab2c791b34a0933a76d</li>
+  <li>https://github.com/antimatter15/alpaca.cpp</li>
 </ul>
 
 	</div>
