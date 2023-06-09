@@ -36,6 +36,10 @@ permalink: /about/
 * [《人工智能 LLM 革命破晓：一文读懂当下超大语言模型发展现状》](https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/)
 	* 文章字数：9 万 7 千字
 	* 收藏量：累计超过 2000 收藏量（知乎 + 微信公众号 + 阿里集团内部技术社区 ATA + 其他平台）
+* LLM 解读
+	* GPT-4：[《通往 AGI 的阿波罗时刻：极速浏览 GPT-4 技术梗概》](https://www.mikecaptain.com/2023/03/15/mike-captain-gpt-4/)
+	* Alpaca：[《Stanford 研究团队发布基于 LLaMA 微调的 Alpaca 模型，仅花费不到 500 美元》](https://www.mikecaptain.com/2023/03/14/captain-alpaca/)
+	* LLaMA：[《Meta 推出开源 LLaMA，用 1/10 参数规模打败 GPT-3，群"模"乱舞的 2023 拉开序幕》](https://www.mikecaptain.com/2023/02/25/meta-llama/)
 
 #### 我的爱好
 

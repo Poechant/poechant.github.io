@@ -266,4 +266,4 @@ mikecaptain@CVN % ./chat
 * https://arxiv.org/abs/2212.10560
 * https://github.com/yizhongw/self-instruct
 * https://www.bilibili.com/video/BV1jM411M7Ls/?spm_id_from=333.337.search-card.all.click&vd_source=4555ef51cf600ab2c791b34a0933a76d
-* https://github.com/antimatter15/alpaca.cpp
+* https://github.com/antimatter15/alpaca.cpp4
