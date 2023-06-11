@@ -4,8 +4,8 @@ title: Stanford 研究团队发布基于 LLaMA 微调的 Alpaca 模型，仅花�
 date:   2023-03-14 12:40:13 +0800
 categories: ai
 tags: [AI, 人工智能, NLP, 自然语言处理, 神经网络, LLM, 大型语言模型, 语言模型, 大模型, LLaMA, Alpaca, Stanford, 斯坦福, 大学, 微调, finetune, Model, Lanaguage Model]
-description: 
-excerpt: 
+description: Meta 的 LLaMA 模型发布后不久，在 2023 年 3 月 13 日，一个叫 Alpaca 的模型被发布。Alpaca 是一个在 LLaMA-7B 基础上用 5.2 万条的「instruction-following」微调得到的 LLM，由 Stanford 大学的基础模型研究中心（Center for Research on Foundation Models，CRFM）团队发布，训练总花费约不到 600 美元。
+excerpt: Meta 的 LLaMA 模型发布后不久，在 2023 年 3 月 13 日，一个叫 Alpaca 的模型被发布。Alpaca 是一个在 LLaMA-7B 基础上用 5.2 万条的「instruction-following」微调得到的 LLM，由 Stanford 大学的基础模型研究中心（Center for Research on Foundation Models，CRFM）团队发布，训练总花费约不到 600 美元。
 katex: True
 location: 杭州
 author: 麦克船长
