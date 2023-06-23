@@ -47,6 +47,7 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-graphviz
+  - jekyll-img-check
 
 # Set Graphviz
 graphviz:

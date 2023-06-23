@@ -118,7 +118,7 @@ with Large Language Models》](/resources/pdf/2305.10601_Tree_of_Thoughts.pdf)
 * [《王慧文的清华产品课》](/resources/pdf/2021_thu_product_huiwen_wang.pdf)
 * 《俞军产品方法论》
 
-### 我的足迹
+### Michael & Greta's Footprints
 
 * 2023：浙江·杭州，上海，江苏·盐城，广东·深圳，香港，澳门，江苏·南通，北京，海南·三亚，安徽·合肥 // 台湾·台北，甘肃·兰州
 * 2022：山东·威海，浙江·杭州，上海，吉林·长春，吉林·通化，湖南·长沙，浙江·湖州，山东·青岛，浙江·宁波，安徽·合肥，广东·揭阳，广东·汕头，云南·丽江，云南·西双版纳，贵州·遵义，重庆，浙江·绍兴，江西·上饶·婺源，福建·福州·平潭，浙江·义乌，辽宁·沈阳
@@ -133,3 +133,29 @@ with Large Language Models》](/resources/pdf/2305.10601_Tree_of_Thoughts.pdf)
 河北、河南、宁夏、台湾、天津
 内蒙、陕西、湖北、龙江、吉林
 四川、广西
+
+### Michael & Greta's Movies
+
+<div style="display: flex; flex-wrap: wrap;">
+	{% for file in site.static_files %}
+		{% if file.path contains '/img/movies/' %}
+    		<img src="{{ file.path }}" style="width: 20%; margin: 0;">
+  		{% endif %}
+	{% endfor %}
+</div>
+
+<br/>
+
+### Michael & Greta's Outdoors
+
+* 2023：杭州云栖竹径 // 杭州吴山游步道、杭州萧富古道
+
+### My Movies
+
+<div style="display: flex; flex-wrap: wrap;">
+	{% for file in site.static_files %}
+		{% if file.path contains '/img/top250/' %}
+    		<img src="{{ file.path }}" style="width: 10%; margin: 0;">
+  		{% endif %}
+	{% endfor %}
+</div>
