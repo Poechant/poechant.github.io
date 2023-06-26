@@ -107,10 +107,21 @@ with Large Language Models》](/resources/pdf/2305.10601_Tree_of_Thoughts.pdf)
 * ELMo 论文，[《Deep contextualized word representations》](/resources/pdf/ELMo.pdf)
 * Transformer 论文，[《Attention is All You Need》](/resouces/pdf/2017_1706.03762_Transformer.pdf)
 
-### 三、推荐博客
+### 三、推荐的博客与播客
+
+#### 3.1、人工智能
 
 * https://soulteary.com
 * https://lilianweng.github.io/
+
+#### 3.2、卖房与买房
+
+* [E76 对话远川杨天楠：我真希望！我在买房前知道这些房地产常识｜房产万事屋 01](https://www.xiaoyuzhoufm.com/episode/63f04025e99bdef7d3f867b3)
+
+#### 3.3、量化投资
+
+* [投资初学·6：股市赚钱的基本原理](https://www.xiaoyuzhoufm.com/episode/63e3bf7b0d7e8eaa7233af7e)
+* [投资初学·7：冷兵器与核武器之战 —— 技术分析 vs. 量化投资](https://www.xiaoyuzhoufm.com/episode/63f04025e99bdef7d3f867b3)
 
 ### 学习资料：互联网产品
 
