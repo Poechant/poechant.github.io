@@ -4,12 +4,22 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-06-27T00:35:47+08:00</updated>
+ <updated>2023-06-27T00:55:06+08:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
    <email>zhongchao.ustc@gmail.com</email>
  </author>
+
+ 
+
+ <entry>
+   <title>当下 AI 在 To B 领域的核心能力是预测和自主 by 麦克船长</title>
+   <link href="https://www.mikecaptain.com/2023/06/25/autonomous-ai/"/>
+   <id>https://www.mikecaptain.com/2023/06/25/autonomous-ai</id>
+   <updated>2023-06-25T12:00:13+08:00</updated>
+   <content type="html">&lt;p&gt;最近对于本轮生成式 AI 浪潮的讨论，进入了一个新阶段，大家从模糊地认为是巨大变革，逐渐开始探讨具体的变革机会点。我想讲讲自己对于本轮技术变革，在 to B 领域的一些基本观点。这些基本观点，是有争议的、非共识的，但我想有必要输出，以换来更多朋友与我的交流碰撞。&lt;/p&gt; &lt;p&gt;为什么聊 to B 领域？当下阶段的生成式 AI 技术在 to C 和 to B 领域的应用差异是非常大的。理解这件事情，我们要宏观看下大时间尺度上，我们过去、当下、未来经历什么技术演进。陆奇博士提过将数字化应用的发展分为三个阶段 information → model → action，受此启发我在今年 4 月份时按照横轴是时间线、纵轴是 AI 能力发展、上是 to B、下是 to C 画了如下这张整体理解数字化应用的演进图：&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/img/src2/2023/06/26/19.png&quot; alt=&quot;&quot; width=&quot;800&quot; /&gt;&lt;/p&gt; &lt;p&gt;这张图我会在后续的文章中反复提起，也欢迎大家留言与我探讨，下面解释一下。&lt;/p&gt; &lt;p&gt;首先，我们把人类对于数字化应用的需求结构分为这三个阶段 information → model → action。在商业需求推动下，每个阶段 B 端发展都比 C 端应用早一大步。&lt;/p&gt; &lt;p&gt;第一阶段从 PC...</content>
+ </entry>
 
  
 
@@ -115,16 +125,6 @@ mikecaptain@CVN % &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;alpaca.cpp
 mikecaptain@CVN % ./chat
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </content>
- </entry>
-
- 
-
- <entry>
-   <title>通往 AGI 的阿波罗时刻：极速浏览 GPT-4 技术梗概</title>
-   <link href="https://www.mikecaptain.com/2023/03/15/mike-captain-gpt-4/"/>
-   <id>https://www.mikecaptain.com/2023/03/15/mike-captain-gpt-4</id>
-   <updated>2023-03-15T00:40:13+08:00</updated>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-15-mike-captain-gpt-4-p26.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;北京时间 2023 年 3 月 15 日，OpenAI 正式发布 GPT-4 —— 大型多模态模型（Large Multimodal Model），输入支持文本和图像，输出支持文本。OpenAI 花了半年时间用对抗测试程序和 ChatGPT 来迭代对齐 GPT-4，结果上 GPT-4 尽管还有很多能力不及人类，但有些场景已经非常炸裂、拉齐人类水准，比如事实性（Factuality）、可控性（Steerability）、拒绝越界（Refusing to Go Outside of Guardrails）。举例来说，GPT-4 在模拟律师考试中获得了 Top 10% 的成绩（对比 GPT-3.5 是 Bottom 10%）。而船长的一个朋友在和他认识的律师围绕 GPT-3.5 和 GPT-4 的法律案例分析效果对比时，律师给出了极高的评价：&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;感觉 3.5 的智商是 8 岁孩子，4.0 的智商已经有 20 岁以上了。&lt;/p&gt; &lt;/blockquote&gt;...</content>
  </entry>
 
  
