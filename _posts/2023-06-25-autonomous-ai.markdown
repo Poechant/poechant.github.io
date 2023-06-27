@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 当下 AI 在 To B 领域的核心能力是预测和自主 by 麦克船长
+title: Copilot as a Service 在千行百业打造超级个体 by 麦克船长
 date: 2023-06-25 12:00:13 +0800
 categories: ai
 tags: []
@@ -11,7 +11,19 @@ location: 杭州
 author: 麦克船长
 ---
 
+![](/img/src2/2023/06/26/23.jpg)
+
 最近对于本轮生成式 AI 浪潮的讨论，进入了一个新阶段，大家从模糊地认为是巨大变革，逐渐开始探讨具体的变革机会点。我想讲讲自己对于本轮技术变革，在 to B 领域的一些基本观点。这些基本观点，是有争议的、非共识的，但我想有必要输出，以换来更多朋友与我的交流碰撞。
+
+因此本文围绕本轮生成式 AI 在 To B 领域的应用落地，分五部分探讨：
+
+* **数字化应用演进曲线（包括 To B 和 To C）**
+* **初步探讨 To B 领域当下用到的 AI 核心能力是什么**
+* **关于预测（Prediction）**
+* **关于自主（Autonomy）**
+* **什么样的团队会把握住这次机遇？最佳切入点是什么？**
+
+## 一、麦克船长：数字化应用演进曲线
 
 为什么聊 to B 领域？当下阶段的生成式 AI 技术在 to C 和 to B 领域的应用差异是非常大的。理解这件事情，我们要宏观看下大时间尺度上，我们过去、当下、未来经历什么技术演进。陆奇博士提过将数字化应用的发展分为三个阶段 information → model → action，受此启发我在今年 4 月份时按照横轴是时间线、纵轴是 AI 能力发展、上是 to B、下是 to C 画了如下这张整体理解数字化应用的演进图：
 
@@ -27,9 +39,13 @@ author: 麦克船长
 
 第三阶段是 information → model → action，即 AI 从能低延迟多模态 I/O，到对世界全息实时感知（超体）。此时 AI 与世界 I/O 全面对齐并逐步超越人类，B 端 Deliver Agents 为企业制定策略并实施（Strategize + Implement），像优秀的搭档；C 端 Deliver Guardians 忠诚守护、服务人类，并与人高效舒适地合作（Guard + Collaborate）。
 
+数字化应用从仅能提供收集与分析，到可以成为人类的 AI 搭档，到对齐甚至超越人类后可以与人类重组生产关系，**<u>B 端沿着重塑生产要素发展，information 阶段重塑生产资料，model 阶段重塑生产力，action 阶段重塑生产关系</u>**。
+
+根据 2019 年国家统计局对中国人日常使用时间的分布数据，休闲时间（自由活动）约 205 分钟，生产时间（工作学习）约 291 分钟，琐事时间（事务处理）约 193 分钟。数字化应用在 **<u>C 端沿着渗透用户时间发展，information 阶段渗透休闲时间，model 阶段渗透生产时间，action 阶段渗透琐事时间</u>**。
+
 本文暂时不讨论 to C 的话题，我们围绕 to B 展开聊聊。
 
-## 一、To B 领域：当下 AI 的核心能力是预测和自主
+## 二、To B 领域：当下 AI 的核心能力是预测和自主
 
 前段时间和一个做投资的朋友聊天时，聊到似乎生成式 AI 在中美 Startups 圈子的区别，是中国的公司都关注多模态，美国的公司都在关注 Autonomy（自主化，比如 Auto-GPT、BabyAGI、HuggingFace Transformers Agent 等）。我的体感上确实也如此，但并没有严格统计。那为什么是这两点呢？因为当下生成式 AI 的核心能力是预测和自主。
 
@@ -43,21 +59,26 @@ author: 麦克船长
 
 ![](/img/src2/2023/06/26/18.png)
 
-## 二、关于预测（Prediction）
+当下国内看到的大多数 AI 项目都是在多模态维度上强化「预测」能力，相关的讨论较多，本文只小篇幅来让大家理解什么是预测。后文将重点聊下「自主」，
+
+## 三、关于预测（Prediction）
 
 首先看下从模型层面的理解。关于 LLM 的学习范式，可以看[《麦克船长 LLM 革命 2：破晓》](https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/)一文。如果您对 LLM 如何学习训练已经基本有概念的话，您一定知道目前基于 Transformer 架构的各种 LLM，甚至基于 ViT（Vision Transformer）的各种视觉模型，都是通过「预测」来实现生成的。这个预测，是大模型基于训练数据学习到的，在输入 prompt 的前提下最大概率对应的输出内容，是对于用户在给定输入内容情况下想要输出内容的预测。
 
-再看下从应用层面的理解。如何理解预测？这里的预测，是指对目标用户认为所生成内容是否可用的预测（Predictions on the perceived usability of generated content for the target users）。反过来看，就是要求目标用户对于 TA 对生成内容具有判断力，也就是目标用户要自己在「判断」方面是这个领域的行家。例如 AI 生成的蒸汽朋克风格游戏素材，使用者不一定自己会画出这样的游戏素材，但是 TA 必须能够判断这个内容在应用场景里的可用性。如同一艘船长大多数时间里开船的是舵手，但是舵手要听船长的指挥。Gen-AI 以预测的方式生成内容的应用场景里，用户是 Pilot 是用户，AI 搭档只是 Copilot。
+再看下从应用层面的理解。如何理解预测？这里的预测，是指对目标用户认为所生成内容是否可用的预测（Predictions on the perceived usability of generated content for the target users）。反过来看，就是要求目标用户对于 TA 对生成内容具有判断力，也就是目标用户要自己在「判断」方面是这个领域的行家。例如 AI 生成的蒸汽朋克风格游戏素材，使用者不一定自己会画出这样的游戏素材，但是 TA 必须能够判断这个内容在应用场景里的可用性。如同一艘船长大多数时间里开船的是舵手，但是舵手要听船长的指挥。Gen-AI 以预测的方式生成内容的应用场景里，用户是 Pilot，AI 搭档只是 Copilot。
 
-> Copilot 替代 Pilot 原本的劳动，Copilot 预测 Pilot 想要的结果。
+![](/img/src2/2023/06/26/20.png)
+
+当下 AI 能力就是尽可能做好一个合格甚至优秀打工人，有人类为其兜底。所以才会演化出 Prompt Engineer（提示工程师）、Alignment Engineer（对齐工程师）等等操作优化 AI 的岗位。而未来对齐甚至超越人类的 Agent 阶段，AI 将会以 Strategize 能力替代 Predict 能力。
 
 预测的技术拓展，要么是在某个模态上做到预测能力更强，要么是在新的模态上开发能力。模态远比大多数人想象的要广，不只是文本、图片、音频、视频，更具体地：
 
 * 视频、图片、音乐、地图、3D、代码、手势、人声、动漫、动画、人像、游戏素材、虹膜指纹、面部表情、肢体语言，甚至各种物理量（速度/加速度、位置信息、光照、温湿度、重量）等等都是多模态研究的前沿领域，只是有些模态更关注识别与理解，有些模态更关注生成。
-* 数字人，是典型的多模态领域探索的落地场景，是人声、人像、手势、面部表情、肢体语言等等多模态的集成。
-* 数字场景，即匠人置身于虚拟环境，这比较依赖 AR/VR/MR 设备的发展，当下 Vision Pro 的出现是一个契机。
-* 商用目的的图片生成，比如游戏、消费品、本地生活等领域。
-* 商用目的的视频生成，比如电影、动漫、广告、教育、内容娱乐等领域。
+* **数字人，是典型的多模态领域探索的落地场景**，是人声、人像、手势、面部表情、肢体语言等等多模态的集成。
+* **数字场景，即将人置身于虚拟环境**，这比较依赖 AR/VR/MR 设备的发展，当下 Vision Pro 的出现是一个契机。
+* **创意设计策划**，在所有需要人类灵感、脑暴作为源头的领域，AI 将成为灵感创意引擎，而且不仅仅是启发，可以直接产出半成品甚至成品方案。而因为产出方案的边际成本大幅降低，会反过来影响相关行业的经营流程被重塑，这是一个船长今后会深入与大家探讨的议题。
+* **商用目的的图片生成**，比如游戏、消费品、本地生活等领域。
+* **商用目的的视频生成**，比如电影、动漫、广告、教育、内容娱乐等领域。
 * ……
 
 围绕 Prediction 的探讨不作为本文重点，今后再探讨。
@@ -80,7 +101,7 @@ author: 麦克船长
 
 
 
-## 三、关于自主（Autonomy）
+## 四、关于自主（Autonomy）
 
 ### 1、技术演进背景
 
@@ -126,8 +147,6 @@ author: 麦克船长
 
 4 月 9 日，AgentGPT 发布，为 Auto-GPT 加上了 Web UI，使得其使用门槛进一步降低，并公开在 GitHub 上（`https://github.com/reworkd/AgentGPT`），AgentGPT 允许配置和部署自主的 AI 代理、定制 AI 名字、指定目标，然后 AgentGPT 会通过思考要完成的任务、执行它们并从结果中学习，试图实现目标。
 
-4 月 12 日，TeenagerAGI 发布。
-
 5 月 11 日，HuggingFace 推出 API —— Transformers Agent，与 HuggingGPT 类似，Transformers Agent 连接 LLM 和 HuggingFace 社区里的各个模型，好似一个老板与一群员工组成了一个帮你完成任务的团队。可以在 `https://huggingface.co/docs/transformers/transformers_agents` 查看 Transformers Agent 的 API 文档。Transformers Agent 可以控制 HuggingFace 上 10 万多个模型，可以处理文本、图片、视频、音频、文档等，是一个多模态的 Agent。
 
 ![](/img/src2/2023/06/26/15.png)
@@ -136,7 +155,7 @@ Transformers Agent 内置了多个组件，包括 Prompt、Tools、Agents、Pyth
 
 ……
 
-前沿研究在 AI 自主（Autonomy）方向极速狂奔。在 to B 领域，越自主（Autonomous）就意味着人类的管理颗粒度越粗，而人类在历次工业革命中被从工作与生活的脏累和琐碎中解脱出来，恰恰就是人类需要做的事情颗粒度越来越粗。比如 500 年前的人如果冬天想洗一个热水澡，则需要上山砍柴、背柴回家、劈柴、挑水、生火、烧水、兑水 …… 等等这么多环节以及对应的人力。但是现在的人们，只需要打开热水器的开关。
+这过程中还有无数 Autonomous AI 的项目出现，前沿研究在 AI 自主（Autonomy）方向极速狂奔。在 to B 领域，越自主（Autonomous）就意味着人类的管理颗粒度越粗，而人类在历次工业革命中被从工作与生活的脏累和琐碎中解脱出来，恰恰就是人类需要做的事情颗粒度越来越粗。比如 500 年前的人如果冬天想洗一个热水澡，则需要上山砍柴、背柴回家、劈柴、挑水、生火、烧水、兑水 …… 等等这么多环节以及对应的人力。但是现在的人们，只需要打开热水器的开关。
 
 因此在当下 to B 场景里，我们可以思考的问题是，你想要做的领域里，如何打造这个领域的热水器？
 
@@ -207,18 +226,47 @@ RPA 工具就是信息时代的「自动化」工具典型代表，而 RPA 产�
 
 而且这个价值最厚，还需要兼具可以形成数据飞轮的可能性，否则就会被通用大模型的泛化能力威胁到。因此，垂直领域 + 切入价值最厚环节 + 适当加粗领域颗粒度。而逐渐能够让颗粒度更粗、人类被更加解放，则需要循序渐进把握好这个颗粒度，这不是科学，而是与对目标客户的洞察有关。
 
-### 5、机器自主化加持下的人类 —— 超级个体
+## 五、谁会把握住？最佳切入点是什么？（To B 领域）
+
+### 1、To B 领域生成式 AI 创业团队的五大能力维度要求
+
+对一个垂直行业，能够在某个价值厚的单点的预测能力上深入，并能够用商业自主化的理念串联多个环节为一条线，是本次 Gen-AI 对 Startups 的技术壁垒、商业落地的要求。这通常需要相应团队具备如下 5+1 的能力：
+
+![](/img/src2/2023/06/26/21.png)
+
+* 深入垂直行业的 Know-How：非常了解过往服务目标客户的生态。
+* 深入客户经营的 Know-How：非常了解客户是怎么做他的生意的。
+* 相应行业的 to B 应用技术栈能力。
+* 目标场景所需要的 AI 研发能力。
+* 产品、技术、业务三者的整合能力。
+* 可选能力：在信息时代参与过目标行业的数字化应用，踩过坑。
+
+### 2、Copilot as a Service 在千行百业打造超级个体
 
 在一个垂直领域，一旦 AI 应用能够切入价值最厚环节，能充当好 Pilot 角色的部分人类，就能在 Copilot 的加持下，伴随 AI 技术发展逐渐进化为「超级个体」。
+
+![](/img/src2/2023/06/26/22.png)
 
 而每一个能够帮助人类进化为超级个体的数字化应用，都有价值。但群雄逐鹿，最终走出来的一定是切入价值最厚环节，并伴随技术边界的拓展，不断发展能力边界（吃到技术红利）的数字化应用。
 
 ## 参考
 
+* `https://www.mikecaptain.com/2023/04/19/eight-alls-for-understanding-and-shaping-the-ai-era/`
+* `https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/`
 * `https://yoheinakajima.com/task-driven-autonomous-agent-utilizing-gpt-4-pinecone-and-langchain-for-diverse-applications/`
 * `https://mp.weixin.qq.com/s/haf_mB2Fr0d2Xa3Ra2geyg`
 * `https://arxiv.org/abs/2304.03442`
+* `https://www.mikecaptain.com/2023/03/24/chatgpt-plugin/`
 * `https://github.com/Significant-Gravitas/Auto-GPT`
 * `https://github.com/reworkd/AgentGPT`
 * `https://arxiv.org/abs/2303.17580`
 * `https://mp.weixin.qq.com/s/tjPEFApzdLjn2Y7iz8O77A`
+* `http://www.gov.cn/xinwen/2019-01/25/content_5361065.htm`
+* `https://github.com/seanpixel/Teenage-AGI`
+* `https://huggingface.co/docs/transformers/transformers_agents`
+* `https://mp.weixin.qq.com/s/nHTXdzdDfPQ4Tv6rTIqDJg`
+* `https://github.com/Significant-Gravitas/Auto-GPT)`
+* `https://github.com/microsoft/JARVIS`
+* `https://huggingface.co/spaces/microsoft/HuggingGPT`
+* `https://github.com/yoheinakajima/babyagi`
+* `https://www.forbes.com/sites/lanceeliot/2023/04/04/using-chatgpt-to-control-and-leverage-other-ai-apps-such-as-hugging-face-gets-you-hugginggpt-prompting-eyebrow-raising-by-ai-ethics-and-ai-law/?sh=788ad875a6f7`
