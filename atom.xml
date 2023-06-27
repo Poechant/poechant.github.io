@@ -4,7 +4,7 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2023-06-27T01:10:06+08:00</updated>
+ <updated>2023-06-27T11:20:21+08:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
@@ -14,11 +14,11 @@
  
 
  <entry>
-   <title>当下 AI 在 To B 领域的核心能力是预测和自主 by 麦克船长</title>
+   <title>Copilot as a Service 在千行百业打造超级个体 by 麦克船长</title>
    <link href="https://www.mikecaptain.com/2023/06/25/autonomous-ai/"/>
    <id>https://www.mikecaptain.com/2023/06/25/autonomous-ai</id>
    <updated>2023-06-25T12:00:13+08:00</updated>
-   <content type="html">&lt;p&gt;最近对于本轮生成式 AI 浪潮的讨论，进入了一个新阶段，大家从模糊地认为是巨大变革，逐渐开始探讨具体的变革机会点。我想讲讲自己对于本轮技术变革，在 to B 领域的一些基本观点。这些基本观点，是有争议的、非共识的，但我想有必要输出，以换来更多朋友与我的交流碰撞。&lt;/p&gt; &lt;p&gt;为什么聊 to B 领域？当下阶段的生成式 AI 技术在 to C 和 to B 领域的应用差异是非常大的。理解这件事情，我们要宏观看下大时间尺度上，我们过去、当下、未来经历什么技术演进。陆奇博士提过将数字化应用的发展分为三个阶段 information → model → action，受此启发我在今年 4 月份时按照横轴是时间线、纵轴是 AI 能力发展、上是 to B、下是 to C 画了如下这张整体理解数字化应用的演进图：&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/img/src2/2023/06/26/19.png&quot; alt=&quot;&quot; width=&quot;800&quot; /&gt;&lt;/p&gt; &lt;p&gt;这张图我会在后续的文章中反复提起，也欢迎大家留言与我探讨，下面解释一下。&lt;/p&gt; &lt;p&gt;首先，我们把人类对于数字化应用的需求结构分为这三个阶段 information → model → action。在商业需求推动下，每个阶段 B 端发展都比 C 端应用早一大步。&lt;/p&gt; &lt;p&gt;第一阶段从 PC...</content>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src2/2023/06/26/23.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;最近对于本轮生成式 AI 浪潮的讨论，进入了一个新阶段，大家从模糊地认为是巨大变革，逐渐开始探讨具体的变革机会点。我想讲讲自己对于本轮技术变革，在 to B 领域的一些基本观点。这些基本观点，是有争议的、非共识的，但我想有必要输出，以换来更多朋友与我的交流碰撞。&lt;/p&gt; &lt;p&gt;因此本文围绕本轮生成式 AI 在 To B 领域的应用落地，分五部分探讨：&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;数字化应用演进曲线（包括 To B 和 To C）&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;初步探讨 To B 领域当下用到的 AI 核心能力是什么&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;关于预测（Prediction）&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;关于自主（Autonomy）&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;什么样的团队会把握住这次机遇？最佳切入点是什么？&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h2 id=&quot;一麦克船长数字化应用演进曲线&quot;&gt;一、麦克船长：数字化应用演进曲线&lt;/h2&gt; &lt;p&gt;为什么聊 to B 领域？当下阶段的生成式 AI 技术在 to C 和 to B 领域的应用差异是非常大的。理解这件事情，我们要宏观看下大时间尺度上，我们过去、当下、未来经历什么技术演进。陆奇博士提过将数字化应用的发展分为三个阶段 information → model...</content>
  </entry>
 
  
