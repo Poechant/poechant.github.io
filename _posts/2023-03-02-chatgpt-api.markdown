@@ -11,6 +11,8 @@ location: 杭州
 author: 麦克船长
 ---
 
+![](/img/src2/2023/03/02/1.jpg)
+
 此前 GPT-3 也早已开放 API，我在麦克船长的博客 MikeCaptain.com 中已介绍过，当时在 NLP 方面能使用的 API 主要是 GPT-3，这是[原文链接](http://www.mikecaptain.com/2023/01/24/openai-official-doc/)。此前 OpenAI API 就已经有了不同功能和价位的多种模型，还提供了在基础模型上的 fine-tune 服务（当然 fine-tune 本身收费，且 fine-tune 后的模型调用费用比 base model 要贵得多）。本次更新，主要是增加了 GPT-3.5（用于 NLP）和 Whisper（用于 audio to text）的 API：
 
 ![](/img/src/2023/03/captain-chatgpt-api-1.png){: width="720"}
