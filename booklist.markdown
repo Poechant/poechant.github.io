@@ -6,6 +6,22 @@ permalink: /booklist/
 
 麦克船长是谁？[这里有个简单的介绍方便了解我](/about/)。
 
+### 〇、麦克船长 2023 年文集
+
+<div style="display: flex; flex-wrap: wrap;">
+	<img src="/img/src2/2023/06/26/23.jpg" style="width: 50%; margin: 0;">
+	<img src="/img/src/2023/03/mikecaptain-llm-revolution-2.jpg" style="width: 50%; margin: 0;">
+	<img src="/img/src/2023/2023-01-23-aigc-llm-1-transformer-cover.jpg" style="width: 50%; margin: 0;">
+	<img src="/img/src2/2023/06/26/23.jpg" style="width: 50%; margin: 0;">
+	<img src="/img/src2/2023/06/26/23.jpg" style="width: 50%; margin: 0;">
+	<img src="/img/src2/2023/06/26/23.jpg" style="width: 50%; margin: 0;">
+	<img src="/img/src2/2023/06/26/23.jpg" style="width: 50%; margin: 0;">
+	<img src="/img/src2/2023/06/26/23.jpg" style="width: 50%; margin: 0;">
+	<img src="/img/src2/2023/06/26/23.jpg" style="width: 50%; margin: 0;">
+	<img src="/img/src2/2023/06/26/23.jpg" style="width: 50%; margin: 0;">
+	<img src="/img/src2/2023/06/26/23.jpg" style="width: 50%; margin: 0;">
+</div>
+
 ### 一、麦克船长的 2022-2023 书单
 
 重点关注：1）人工智能的技术、商业书籍；2）组织行为学；3）电商、零售与供应链管理；4）互联网产品、商业模式；5）Crypto 及 Web3；6）经济学、策略及博弈。
