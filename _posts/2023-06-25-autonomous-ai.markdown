@@ -3,9 +3,9 @@ layout: post
 title: Copilot as a Service 将打造无数超级个体，核心能力是预测与自主 by 麦克船长
 date: 2023-06-25 12:00:13 +0800
 categories: ai
-tags: []
-description: 
-excerpt: 
+tags: [ai, copilot, captain, 麦克船长, 船长, Copilot as a Service, 超级个体, to b, llm, 大模型, Auto-GPT, model, EntrepreneurGPT, AgentGPT, 预测, Autonomous AI, Autonomy, hallucination, knowledge cutoff, GPT-4, GPT, ChatGPT, OpenAI, BabyAGI, Baby AGI]
+description: 最近对于本轮生成式 AI 浪潮的讨论，进入了一个新阶段，大家从模糊地认为是巨大变革，逐渐开始探讨具体的变革机会点。我想讲讲自己对于本轮技术变革，在 to B 领域的一些基本观点。这些基本观点，是有争议的、非共识的，但我想有必要输出，以换来更多朋友与我的交流碰撞。
+excerpt: 最近对于本轮生成式 AI 浪潮的讨论，进入了一个新阶段，大家从模糊地认为是巨大变革，逐渐开始探讨具体的变革机会点。我想讲讲自己对于本轮技术变革，在 to B 领域的一些基本观点。这些基本观点，是有争议的、非共识的，但我想有必要输出，以换来更多朋友与我的交流碰撞。
 katex: True
 location: 杭州
 author: 麦克船长

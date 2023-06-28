@@ -11,6 +11,8 @@ location: 合肥
 author: 麦克船长
 ---
 
+![](/img/src2/2023/05/26/3.png)
+
 5 月 22 日 LeCun 发推	称：
 
 > LIMA: LLaMA 65B + 1000 supervised samples = {GPT4, Bard} level performance. From @MetaAI
