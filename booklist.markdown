@@ -39,14 +39,27 @@ permalink: /booklist/
   		通往 AGI 的阿波罗时刻：极速浏览 GPT-4 技术梗概,
   		人工智能 LLM 革命破晓：一文读懂当下超大语言模型发展现状,
   		AI 应用第一次大爆发来了：一文入门 ChatGPT 官方 API 文档解读,
-  		麦克船长：国家网信办《互联网信息服务深度合成管理规定》解读,
-  		麦克船长的 OpenAI 模型 API 官方文档入门解读"
+  		开源 LLM 革命之 1：Meta 推出开源 LLaMA，用 1/10 参数规模打败 GPT-3，群"模"乱舞的 2023 拉开序幕,
+  		人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型
+  		"
   		| split: "," %}
+  	{% assign urls = "
+  		https://www.mikecaptain.com/2023/06/25/autonomous-ai/,
+  		https://www.mikecaptain.com/2023/05/26/captain-lima/,
+  		https://www.mikecaptain.com/2023/04/11/gen-ai-cac/,
+  		https://www.mikecaptain.com/2023/03/24/chatgpt-plugin/,
+  		https://www.mikecaptain.com/2023/03/15/mike-captain-gpt-4/,
+  		https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/,
+  		https://www.mikecaptain.com/2023/03/02/chatgpt-api/,
+  		https://www.mikecaptain.com/2023/02/25/meta-llama/,
+  		https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/
+  		"%}
 	{% for index in (0..imageSources.size) %}
 		{% assign timeString = timeStrings[index] | strip %}
 		{% assign src = imageSources[index] | strip %}
 		{% assign text = imageTexts[index] | strip %}
-    	<img src="{{ src }}" style="width: 50%; margin: 0; border: 2px solid white;">
+		{% assign url = urls[index] | strip %}
+    	<img src="{{ src }}" onclick="window.open('{{ url }}')" style="width: 50%; margin: 0; border: 2px solid white;">
 		<div style="
 			width: 40%;
 			border: 5px solid white;
@@ -59,7 +72,7 @@ permalink: /booklist/
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;">
-			{{ text }}
+			<a href="{{ url }}">{{ text }}</a>
 		</div>
 		<div style="
 			width: 10%;

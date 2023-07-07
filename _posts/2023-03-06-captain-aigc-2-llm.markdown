@@ -1458,7 +1458,7 @@ LLM 为什么具备 ICL 能力这方面有一些研究蛮有意思的，下面�
 {% raw %}
 $$
 \begin{aligned}
-P_{priori} = P_{posteriori} \cdot L
+P_{posteriori} = P_{priori} \cdot L
 \end{aligned}
 $$
 {% endraw %}
