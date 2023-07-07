@@ -2526,7 +2526,7 @@ f(x) &amp;\rightarrow y\text{, then output }g(y)
 <p>这是不是让你想起了「贝叶斯推理（Bayesian Inference）」？对于不熟悉的朋友，这里简单介绍下贝叶斯推理。起初，贝叶斯是为了解决「概率预测」问题而提出的「贝叶斯定理/贝叶斯公式」，可以表示为：</p>
 
 \[\begin{aligned}
-P_{priori} = P_{posteriori} \cdot L
+P_{posteriori} = P_{priori} \cdot L
 \end{aligned}\]
 
 <p>\(P_{priori}\) 为先验概率，是对事情的主观判断、过去经验的总结规律等。\(L\) 为「似然度（Likelihood）」，而 \(P_{posteriori}\) 是后验概率。贝叶斯定理影响了概率理论的发展，在所有需要对概率进行预测的情况里你都能看到它的身影，而它也成为了机器学习的一个核心方法。这里对于 LLM 具备 ICL 这种魔法能力的事实，有学者给出了相对令人信服的基于贝叶斯推理的数学解读，我们一起来看看。</p>
