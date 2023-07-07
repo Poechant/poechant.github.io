@@ -72,7 +72,7 @@ permalink: /booklist/
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;">
-			<a href="{{ url }}">{{ text }}</a>
+			<a href="{{ url }}">{{ text }}</a> 
 		</div>
 		<div style="
 			width: 10%;
