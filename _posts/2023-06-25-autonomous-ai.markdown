@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Copilot as a Service 将打造无数超级个体，核心能力是预测与自主 by 麦克船长
+title: 人工智能 LLM 革命黎明：Copilot as a Service 将打造无数超级个体，核心能力是预测与自主 by 麦克船长
 date: 2023-06-25 12:00:13 +0800
 categories: ai
 tags: [ai, copilot, captain, 麦克船长, 船长, Copilot as a Service, 超级个体, to b, llm, 大模型, Auto-GPT, model, EntrepreneurGPT, AgentGPT, 预测, Autonomous AI, Autonomy, hallucination, knowledge cutoff, GPT-4, GPT, ChatGPT, OpenAI, BabyAGI, Baby AGI]

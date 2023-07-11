@@ -39,9 +39,8 @@ permalink: /booklist/
   		通往 AGI 的阿波罗时刻：极速浏览 GPT-4 技术梗概,
   		人工智能 LLM 革命破晓：一文读懂当下超大语言模型发展现状,
   		AI 应用第一次大爆发来了：一文入门 ChatGPT 官方 API 文档解读,
-  		开源 LLM 革命之 1：Meta 推出开源 LLaMA，用 1/10 参数规模打败 GPT-3，群"模"乱舞的 2023 拉开序幕,
-  		人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型
-  		"
+  		开源 LLM 革命之 1：Meta 推出开源 LLaMA，用 1/10 参数规模打败 GPT-3，群「模」乱舞的 2023 拉开序幕,
+  		人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型"
   		| split: "," %}
   	{% assign urls = "
   		https://www.mikecaptain.com/2023/06/25/autonomous-ai/,
@@ -52,9 +51,10 @@ permalink: /booklist/
   		https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/,
   		https://www.mikecaptain.com/2023/03/02/chatgpt-api/,
   		https://www.mikecaptain.com/2023/02/25/meta-llama/,
-  		https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/
-  		"%}
-	{% for index in (0..imageSources.size) %}
+  		https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/"
+  		| split: "," %}
+  	{% assign imgSrcSize = imageSources.size | minus: 1 %}
+	{% for index in (0..imgSrcSize) %}
 		{% assign timeString = timeStrings[index] | strip %}
 		{% assign src = imageSources[index] | strip %}
 		{% assign text = imageTexts[index] | strip %}
@@ -98,26 +98,7 @@ permalink: /booklist/
 
 
 
-<!-- <div style="display: flex; flex-wrap: wrap;">
-	<img src="/img/src2/2023/06/26/23.jpg" style="width: 50%; margin: 0; border: 2px solid white;">
-	<div style="width: 50%; border: 2px solid white; font-weight: bold; padding: 10px; box-sizing: border-box; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">Copilot as a Service 将打造无数超级个体，核心能力是预测与自主 by 麦克船长   |  25 Jun 2023, 杭州</div>
-	<img src="/img/src2/2023/05/26/3.png" style="width: 50%; margin: 0; border: 2px solid white;">
-	<div style="width: 50%; border: 2px solid white; font-weight: bold; padding: 10px; box-sizing: border-box; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">麦克船长解读 LIMA 的表面对齐假设：少量多样性、高质量数据即可实现更好的对齐   |  26 May 2023, 合肥</div>
-	<img src="/img/src/2023/04/2023-04-11-gen-ai-cac.jpg" style="width: 50%; margin: 0; border: 2px solid white;">
-	<div style="width: 50%; border: 2px solid white; font-weight: bold; padding: 10px; box-sizing: border-box; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">对比解读半年两次 AI 监管条例 10 点变化：从强调自律到鼓励创新，支持发展定调！   |  11 Apr 2023, 杭州</div>
-	<img src="/img/src2/2023/03/24/1.jpg" style="width: 50%; margin: 0; border: 2px solid white;">
-	<div style="width: 50%; border: 2px solid white; font-weight: bold; padding: 10px; box-sizing: border-box; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">Image 1 Title</div>
-	<img src="/img/src/2023/03/2023-03-15-mike-captain-gpt-4-p26.jpg" style="width: 50%; margin: 0; border: 2px solid white;">
-	<div style="width: 50%; border: 2px solid white; font-weight: bold; padding: 10px; box-sizing: border-box; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">Image 1 Title</div>
-	<img src="/img/src/2023/03/mikecaptain-llm-revolution-2.jpg" style="width: 50%; margin: 0; border: 2px solid white;">
-	<div style="width: 50%; border: 2px solid white; font-weight: bold; padding: 10px; box-sizing: border-box; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">Image 1 Title</div>
-	<img src="/img/src2/2023/03/02/1.jpg" style="width: 50%; margin: 0; border: 2px solid white;">
-	<div style="width: 50%; border: 2px solid white; font-weight: bold; padding: 10px; box-sizing: border-box; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">Image 1 Title</div>
-	<img src="/img/src/2023/2023-02-25-meta-llama-29.jpg" style="width: 50%; margin: 0; border: 2px solid white;">
-	<div style="width: 50%; border: 2px solid white; font-weight: bold; padding: 10px; box-sizing: border-box; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">Image 1 Title</div>
-	<img src="/img/src/2023/2023-01-23-aigc-llm-1-transformer-cover.jpg" style="width: 50%; margin: 0; border: 2px solid white;">
-	<div style="width: 50%; border: 2px solid white; font-weight: bold; padding: 10px; box-sizing: border-box; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">Image 1 Title</div>
-</div> -->
+
 
 <br/>
 
@@ -267,7 +248,7 @@ with Large Language Models》](/resources/pdf/2305.10601_Tree_of_Thoughts.pdf)
 		{% if file.path contains '/img/movies/' %}
     		<img src="{{ file.path }}" style="width: 20%; margin: 0;">
   		{% endif %}
-	{% endfor %}
+	{% endfor %} 
 </div>
 
 <br/>
