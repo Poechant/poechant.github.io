@@ -9,6 +9,7 @@ excerpt: 最近对于本轮生成式 AI 浪潮的讨论，进入了一个新阶�
 katex: True
 location: 杭州
 author: 麦克船长
+pinned: yes
 ---
 
 ![](/img/src2/2023/06/26/23.jpg)
