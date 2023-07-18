@@ -32,7 +32,7 @@ permalink: /booklist/
   		/img/src/2023/2023-01-23-aigc-llm-1-transformer-cover.jpg"
   		| split: "," %}
 	{% assign imageTexts = "
-  		Copilot as a Service 将打造无数超级个体，核心能力是预测与自主,
+  		人工智能 LLM 革命黎明：Copilot as a Service 将打造无数超级个体，核心能力是预测与自主,
   		麦克船长解读 LIMA 的表面对齐假设：少量多样性、高质量数据即可实现更好的对齐,
   		对比解读半年两次 AI 监管条例 10 点变化：从强调自律到鼓励创新，支持发展定调！,
   		ChatGPT 插件的十大关注点：OpenAI 定义大模型消费级平台,
