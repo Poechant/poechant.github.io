@@ -41,7 +41,7 @@ permalink: /booklist/
   		AI 应用第一次大爆发来了：一文入门 ChatGPT 官方 API 文档解读,
   		开源 LLM 革命之 1：Meta 推出开源 LLaMA，用 1/10 参数规模打败 GPT-3，群「模」乱舞的 2023 拉开序幕,
   		人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型"
-  		| split: "," %}
+  		| split: "," %} 
   	{% assign urls = "
   		https://www.mikecaptain.com/2023/06/25/autonomous-ai/,
   		https://www.mikecaptain.com/2023/05/26/captain-lima/,
@@ -163,17 +163,17 @@ permalink: /booklist/
 
 * [LangChain](https://langchain.com/)
 
-#### Autonomous
+#### 4、Autonomous
 
 * [Fixie](https://fixie.ai/)
 * [BabyAGI](https://github.com/yoheinakajima/babyagi)
 * [AutoGPT: An Autonomous GPT-4 Experiment](https://github.com/Significant-Gravitas/Auto-GPT)
 
-#### 4、Infra for training/finetuning/inference
+#### 5、Infra for training/finetuning/inference
 
 * [Lamini.ai](https://lamini.ai)
 
-#### 5、报告
+#### 6、报告
 
 * 腾讯研究院，2023 年 01 月 01 日，[《AIGC 发展趋势报告 2023》](/sources/pdf/2023_genai_tencent_academy.pdf)
 * 中信建投证券，2023 年 01 月 29 日，[《从 ChatGPT 到生成式 AI（Generative AI）：人工智能新范式，重新定义生产力》](/sources/pdf/2023_01_29_genai_china_securities.pdf)
