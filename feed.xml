@@ -1,4 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-08-29T06:40:19+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">【摘录】投资的道路上不存在捷径，但如果向成功的投资大师学习，可以少走很多弯路。</title><link href="https://www.mikecaptain.com/2023/07/30/investment-learnt-from-masters/" rel="alternate" type="text/html" title="【摘录】投资的道路上不存在捷径，但如果向成功的投资大师学习，可以少走很多弯路。" /><published>2023-07-30T12:00:13+08:00</published><updated>2023-07-30T12:00:13+08:00</updated><id>https://www.mikecaptain.com/2023/07/30/investment-learnt-from-masters</id><content type="html" xml:base="https://www.mikecaptain.com/2023/07/30/investment-learnt-from-masters/">&lt;p&gt;原文链接：https://mp.weixin.qq.com/s/U8YsBlMOtj98LeTxXOPigQ?global_content=%7B%22promote_id%22%3A13766%2C%22sub_promote_id%22%3A4%7D&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-09-19T09:02:52+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">上市公司发行可转债有什么影响（持续更新）</title><link href="https://www.mikecaptain.com/2023/09/19/cb-impact/" rel="alternate" type="text/html" title="上市公司发行可转债有什么影响（持续更新）" /><published>2023-09-19T08:00:13+08:00</published><updated>2023-09-19T08:00:13+08:00</updated><id>https://www.mikecaptain.com/2023/09/19/cb-impact</id><content type="html" xml:base="https://www.mikecaptain.com/2023/09/19/cb-impact/">&lt;p&gt;可转债（Convertible Bond，简称 CB），即可转换债券（或可换股债券），可按一定规则转换为债券发行公司的股票。其转换价格、转换时间段会在发行前确定。&lt;/p&gt;
+
+&lt;p&gt;北京时间 2023 年 9 月 19 日清晨（美东时间 2023 年 9 月 18 日），蔚来（NIO.US）宣布拟发行本金总额 5 亿美元的、到期时间为 2029 年的可转债，以及本金总额 5 亿美元、到期时间为 2030 年的可转债。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/quant/2023/09/23/3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;那么一家企业如果宣布发行可转债，对股东是利好还是利空呢。通常来讲，增发股票都是利空的，可转债是一种在指定时间可转换为股票的债券，所以也是类似的。但是这与公司基本面出现利空不同，相比来讲期影响是相对短期的，也就是迅速按照股本稀释股价到一定比例就差不多了。但是发行可转债通常说明这家公司的现金流不够健康，需要融资，一家有现金源源不断、充足、健康进入的企业，通常来说是不需要发行可转债的。&lt;/p&gt;
+
+&lt;p&gt;下面是一些近几年美股的上市公司发行可转债后短期股价的变化实例收集。&lt;/p&gt;
+
+&lt;p&gt;2023 年 5 月 26 日，美股大麻板块的 Tilray Brands 公司宣布将发行 1.5 亿美元的 2028 年到期的高级无担保可转债，票息 5.2%。公司还授予承销商 30 天的期权，允许额外购买不超过 2,250 万美元的债券。当日股价暴跌收盘 -21.19%（盘中最大跌幅 -22.88%），并在后续两个交易日里继续下跌 -1.61%、-8.74%；&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/quant/2023/09/23/1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2022 年 11 月 16 日，嘉年华邮轮（CCL）通过私募募资发行本金规模达 10 亿美元的优先级可转换债券，当日股价暴跌收盘 -13.71%（盘中最大跌幅 -14.96%），并在后续三个交易日内连续下跌 -1.25%、-0.42%、-1.58%；&lt;/p&gt;
+
+&lt;p&gt;2022 年 6 月 28 日，美股上市公司 Aspen Aerogels（ASPN.US）宣布公开发行普通股和 2027 年到期的绿色高级可转债，次日股价暴跌 -42.69% 收盘；又过一日，该公司宣布取消此前的决定，原因是公司评估认为在目前的市场条件下，发行新股和可转债不利于股东最佳利益。当月 30 日股价又暴涨 +17.20% 收盘，但未能涨回到此前的价位。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/quant/2023/09/23/2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2020 年 3 月 5 日（周四），蔚来汽车在其投资者关系网站发布公告，宣布再次完成 2.35 亿美元可转债融资项目，此时距离上次融资不到一个月。宣布可转债的前一日股价下跌 -4.68%，宣布的当日股价下跌收盘 -3.88%（盘中最大跌幅 -4.91%），并在后续几个交易日内连续下跌 -4.57%、-7.32%；&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/quant/2023/09/23/4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2020 年 2 月 14 日（周五），蔚来汽车发布公告，称公司与两个非关联的亚洲基金签署明确协议，蔚来汽车将向后者发行价值达 1 亿美元的可转换债，当日股价下跌收盘 -6.45%（盘中最大跌幅 -6.95%）；&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/quant/2023/09/23/5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2020 年 2 月 6 日（周四），蔚来汽车宣布分别发行价值 7000 万美元和 3000 万美元的两笔可转换债，投资方为两家非关联的亚洲投资基金，当日股价大跌收盘 -7.06%（盘中最大跌幅 -7.74%），次日继续暴跌 -6.62%；&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/quant/2023/09/23/6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="quant" /><category term="美股" /><category term="可转债" /><category term="NIO" /><category term="蔚来汽车" /><category term="TLRY" /><category term="CCL" /><category term="股票" /><category term="CB" /><category term="Convertible Bond" /><category term="投资" /><summary type="html">可转债（Convertible Bond，简称 CB），即可转换债券（或可换股债券），可按一定规则转换为债券发行公司的股票。其转换价格、转换时间段会在发行前确定。</summary></entry><entry><title type="html">【摘录】投资的道路上不存在捷径，但如果向成功的投资大师学习，可以少走很多弯路。</title><link href="https://www.mikecaptain.com/2023/07/30/investment-learnt-from-masters/" rel="alternate" type="text/html" title="【摘录】投资的道路上不存在捷径，但如果向成功的投资大师学习，可以少走很多弯路。" /><published>2023-07-30T12:00:13+08:00</published><updated>2023-07-30T12:00:13+08:00</updated><id>https://www.mikecaptain.com/2023/07/30/investment-learnt-from-masters</id><content type="html" xml:base="https://www.mikecaptain.com/2023/07/30/investment-learnt-from-masters/">&lt;p&gt;原文链接：https://mp.weixin.qq.com/s/U8YsBlMOtj98LeTxXOPigQ?global_content=%7B%22promote_id%22%3A13766%2C%22sub_promote_id%22%3A4%7D&lt;/p&gt;
 
 &lt;p&gt;投资的道路上不存在捷径，但如果向成功的投资大师学习，可以少走很多弯路。&lt;/p&gt;
 
@@ -2453,248 +2483,4 @@ fschat             0.2.1       /Users/mikecaptain/workspace/fastchat-0.2.1
   &lt;li&gt;https://zhuanlan.zhihu.com/p/619551575&lt;/li&gt;
   &lt;li&gt;https://github.com/lm-sys/FastChat/issues/411&lt;/li&gt;
   &lt;li&gt;https://huggingface.co/docs/transformers/main/model_doc/llama&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="llama" /><category term="vicuna" /><category term="ai" /><category term="aigc" /><category term="chatgpt" /><category term="gpt" /><category term="meta" /><category term="open source" /><category term="开源" /><summary type="html">Vicuna 是一个基于 LLaMA 微调的大语言模型。Vicuna-13B 是一个使用 ShareGPT 收集的用户对话数据进行训练的开源 ChatBot。Vicuna 使用 GPT-4 进行评估，其在质量方面已经达到了超过 90% 的 OpenAI ChatGPT 和 Google Bard，同时在超过 90% 的情况下表现优于 LLaMA、Stanford Alpaca。今天跟着船长一起，在你的 MacBook 上把 Vicuna 跑起来！</summary></entry><entry><title type="html">ChatGPT 插件的十大关注点：OpenAI 定义大模型消费级平台</title><link href="https://www.mikecaptain.com/2023/03/24/chatgpt-plugin/" rel="alternate" type="text/html" title="ChatGPT 插件的十大关注点：OpenAI 定义大模型消费级平台" /><published>2023-03-24T12:40:13+08:00</published><updated>2023-03-24T12:40:13+08:00</updated><id>https://www.mikecaptain.com/2023/03/24/chatgpt-plugin</id><content type="html" xml:base="https://www.mikecaptain.com/2023/03/24/chatgpt-plugin/">&lt;p&gt;北京时间 3 月 24 日凌晨，OpenAI 官方发布了重磅的「ChatGPT plugins」，这将开启大模型作为平台的模式定义、商业化模式定义、插件产品开发热潮、全新的大模型优化（LMO）等等。本文共分三个部分：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;第一部分先速览几个重要的关注点，尤其是&lt;strong&gt;本次插件发布带来的行业影响&lt;/strong&gt;；&lt;/li&gt;
-  &lt;li&gt;第二部分针对本次 OpenAI 官方推出的插件做介绍；&lt;/li&gt;
-  &lt;li&gt;第三部分是开发者最关心的第三方插件的支持能力做简述。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;跟船长出发吧，坐稳了：&lt;/p&gt;
-
-&lt;h2 id=&quot;第一部分速览-chatgpt-插件并聚焦本次变化带来的几大核心关注点&quot;&gt;第一部分：速览 ChatGPT 插件，并聚焦本次变化带来的几大核心关注点&lt;/h2&gt;
-
-&lt;h3 id=&quot;1快速了解-chatgpt-插件是什么&quot;&gt;1、快速了解 ChatGPT 插件是什么&lt;/h3&gt;
-
-&lt;p&gt;首先要知道 ChatGPT 插件是什么，我们来看下官方视频一睹为快：&lt;/p&gt;
-
-&lt;div style=&quot;text-align:center&quot;&gt;
-	&lt;video width=&quot;720&quot; controls=&quot;&quot;&gt;
-  		&lt;source src=&quot;/img/src/2023/03/2023-03-24-chatgpt-plugin-10.mov&quot; type=&quot;video/mp4&quot; /&gt;你的浏览器不支持视频标签。
-	&lt;/video&gt;
-&lt;/div&gt;
-
-&lt;p&gt;以下这些公司产品已经接入 ChatGPT 插件：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-24-chatgpt-plugin-9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;2插件能做什么&quot;&gt;2、插件能做什么？&lt;/h3&gt;
-
-&lt;p&gt;OpenAI 插件可以连接 ChatGPT 与第三方应用，通过接入你的应用做什么呢？举一些例子：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;实时检索信息，例如足球赛事的实时比分情况、港股股票价格、最新资讯等。&lt;/li&gt;
-  &lt;li&gt;检索知识库信息，例如针对你个的人电脑、针对公司的文档知识库等等，进行更智能地检索、调用、对话。&lt;/li&gt;
-  &lt;li&gt;代替用户执行操作（船长一直说的对现实世界的「智能调度」）：例如买机票酒旅、网购、订外卖等等。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;目前 ChatGPT 的插件处于 limited alpha 阶段，需要申请加入 waitinglist（&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://openai.com/waitlist/plugins&lt;/code&gt;）&lt;/p&gt;
-
-&lt;h3 id=&quot;3chatgpt-插件发布带来的行业重大变化本文核心&quot;&gt;3、ChatGPT 插件发布带来的行业重大变化（本文核心）&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;对话 + 插件：定义大模型的 to C 平台商业模式&lt;/strong&gt;：此前大家一直认为大模型，或者当下更主要的大语言模型，其主要范式可能会成为个人助理，但是都在拭目以待 ChatGPT 的商业模式。本次 plugin 发布，已经展现了作为平台，如何连接开发者（通过插件连接），如何连接用户（通过对话连接）。这里的收费也变得很自然，开发者以插件方式接入大模型，并给平台相应的费用。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;从 SEO 到 LMO&lt;/strong&gt;：从 SEO（Search Engine Optimization，搜索引擎优化）到 LMO（Large Model Optimization），所有开发者为了获得大模型的流量，尤其是在红利期（用户流量远大于开发者供给）的阶段，都会开启 LMO 投入进行引流。而 ChatGPT 已经将「引流模式」定义好了。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;支持 robots.txt&lt;/strong&gt;：ChatGPT 的官方插件 Browsing 完全支持各个网站对于搜索引擎的 robots.txt 文件协议，各网站也可以针对 ChatGPT 进行优化，开启大模型引流时代。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;定义「大模型-应用」的开放 API 标准&lt;/strong&gt;：本次 ChatGPT 对于「大模型-应用」的 API 定义，将会成为行业的事实标准，各主动接入 ChatGPT 的应用，都会迎合该 API 定义，进而使得后续跟进的大模型，都将 follow ChatGPT 的标准定义。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;未来应用内又可反向嵌入 ChatGPT，互通互联的大模型世界&lt;/strong&gt;：当下主要还是基于 ChatGPT 到各应用的分发，OpenAI 未来几个月内，会允许开发者在自己的应用程序内继承 ChatGPT 插件，从而使用 ChatGPT 的能力，这样就有海量的应用可以为 OpenAI 带去数据价值、流量价值，及先进生产力提升时真实世界里其他产品上用户会如何使用。这样各个应用与 ChatGPT 的打通所产生的化学反应，就不止在 ChatGPT 内体验到了，其他各种产品也能让用户体验到。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;大家期待的实时数据来了&lt;/strong&gt;：通过插件接入其他应用，最直接解决的问题，就是数据不及时（之前 OpenAI 的自然语言模型，最新的数据也就是采用 2021 年 9 月之前的）。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;知识更新问题被解决：分布式知识存储与更新维护&lt;/strong&gt;：此前大家都会觉得大模型在某个时间切片上，将大量数据训练出一个大模型，后续如果知识更新了（比如大家喜欢举的例子：英国首相几个月换一个）大模型还是陈旧数据。ChatGPT 定义了插件范式，数据可以从第三方应用那里来，这将大家对于大模型的知识获取期待，转化为整个生态（大模型+应用）分布式维护知识体系。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;很大程度解决「一本正经地胡说八道」的准确性问题&lt;/strong&gt;：解决用户过渡依赖 ChatGPT 所产生的风险（之前 OpenAI 在 GPT-4 的 System Card 中探讨过），打通插件的数据后，用户有机会核对数据的准确性，应用也会及时更新。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;应用价值还单薄吗？&lt;/strong&gt;比原来好不少，船长此前经常说的「技术资产私有问题」这里可以小篇幅地探讨一下。在大模型处于封闭状态，无法对外引流时，大模型需要全知全能，就像一个可以解决任何问题的神。但是一旦它变成路由器，就不同了，它具备了「平台」的基本素质 —— 繁荣应用层所需的「技术资产私有」问题。但是目前只是从「流量模式」上解决了「技术资产私有价值」问题，从深度学习的角度，大模型依然有拿走应用层知识进而侵犯技术资产私有价值的风险，比如某天 ChatGPT 觉得某个大应用是个好生意，应该并入成为官方的第四个应用，但是 ChatGPT 有权限选择自己直接抄一个（扒光该应用的所有知识），而不是继续引流或者收购该应用，这对开发者是一个风险，而且大模型读取的深度越深，这种风险越大，因为换个角度这可以类比把内容直接暴露在搜索结果的搜索引擎，下游站点可能价值会被大幅削弱。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;最基础的三大应用，已经被 OpenAI 官方做了&lt;/strong&gt;：浏览插件、代码解释器、知识检索。这部分，大家看本文《ChatGPT plugins 发布：OpenAI 教你怎么做平台》第二部分就可以了。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;目前第一批插件由如下这些产品所属的公司（当然看不到中国公司）创建，我们可以看到大家耳熟能详的在线旅游网站 Expedia、电商 SaaS 平台 Shopify 等等：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-24-chatgpt-plugin-1.png&quot; alt=&quot;&quot; width=&quot;720&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;OpenAI 官方也搞了两个插件给大家试试手：浏览器（Web Browser）和代码解释器（Code Interpreter）。有了浏览器之后，大家一致诟病的数据不够新的问题就没有了。但是 Browser 是否出现，是交给 LLM 鹰嘴豆。&lt;/p&gt;
-
-&lt;p&gt;OpenAI 还开源了 ChatGPT Retrieval Plugin（&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://github.com/openai/chatgpt-retrieval-plugin&lt;/code&gt;），这样就可以用开发者生态来帮助 ChatGPT 完成知识的时效更快、覆盖更高。我们在第二部分来逐一看下。&lt;/p&gt;
-
-&lt;h2 id=&quot;第二部分官方三大插件浏览插件代码解释器知识检索&quot;&gt;第二部分：官方三大插件（浏览插件、代码解释器、知识检索）&lt;/h2&gt;
-
-&lt;p&gt;这三大插件是非常核心的三个基于 LLM 的功能，因此 OpenAI 官方直接做掉了，不给别人机会 —— 因为他们确实非常核心。&lt;/p&gt;
-
-&lt;h3 id=&quot;1官方插件browsing浏览器&quot;&gt;1、官方插件：Browsing（浏览器）&lt;/h3&gt;
-
-&lt;p&gt;通过结合 OpenAI 在对齐（alignment）方面的研究（&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://openai.com/blog/our-approach-to-alignment-research&lt;/code&gt;），以及大家一直希望解决的 ChatGPT 数据更新及时性的问题，推出了 Browsing 插件：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-24-chatgpt-plugin-12.png&quot; alt=&quot;&quot; width=&quot;640&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;我们来看看 OpenAI 官方给出的视频介绍：&lt;/p&gt;
-
-&lt;div style=&quot;text-align:center&quot;&gt;
-	&lt;video width=&quot;720&quot; controls=&quot;&quot;&gt;
-  		&lt;source src=&quot;/img/src/2023/03/2023-03-24-chatgpt-plugin-11.mov&quot; type=&quot;video/mp4&quot; /&gt;你的浏览器不支持视频标签。
-	&lt;/video&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ChatGPT 的 Browsing 插件，只会发出 get 请求，这样比较安全。但是该插件不会做提交表单等具有较大安全问题的操作。&lt;/li&gt;
-  &lt;li&gt;Browsing 插件使用微软 Bing 的搜索 API，因此具有：1）信息来源可靠性、真实性；2）相当于运行在浏览器的安全模式，阻止了不合适的内容。&lt;/li&gt;
-  &lt;li&gt;从安全角度考虑，Browsing 插件独立运行，与 ChatGPT 的其他基础设施分开。&lt;/li&gt;
-  &lt;li&gt;ChatGPT 的 Browsing 插件作为浏览器读取网站信息时，User-Agent 字段设置的是 ChatGPT-User。因此任何网站如果想组织 ChatGPT Browsing 插件爬取内容，可以通过网站的  robots.txt 完全控制。ChatGPT Browsing 也完全遵守 robots.txt。当受限时，你会看到如下内容：&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-24-chatgpt-plugin-2.png&quot; alt=&quot;&quot; width=&quot;640&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ChatGPT Browsing 只会通过 ChatGPT-User 来获取网站信息，而不会用其他爬虫技术来获取。&lt;/li&gt;
-  &lt;li&gt;OpenAI 也发布了 IP 的出口范围。&lt;/li&gt;
-  &lt;li&gt;OpenAI 已经实施了速率限制措施，以避免向网站发送过多的流量。&lt;/li&gt;
-  &lt;li&gt;Browsing 插件会显示访问过的网站，并在 ChatGPT 的回复中引用来源。这样既能够回馈内容提供者，也能有助于信息的透明度。&lt;/li&gt;
-  &lt;li&gt;OpenAI 认为这是一种新的与网络互动的方式，因此希望收集所有使用者的各种反馈和意见，尤其是有关如何增加流量、提升信息来源的健康发展等方面的建议。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;2官方插件code-interpreter代码解释器插件-alpha-版支持-python&quot;&gt;2、官方插件：Code Interpreter（代码解释器插件 Alpha 版），支持 Python&lt;/h3&gt;
-
-&lt;p&gt;OpenAI 官方提供了一个环境隔离的的 Python 代码解释器，并且有临时的磁盘空间、对话中保持活跃（有上限时间控制）。解释器插件运行的代码会在一个持久会话中进行评估，该会话在聊天会话的持续时间内保持活动状态（具有上限超时），并且随后的调用可以在之前的基础上进行构建。支持将文件上传到当前的对话工作区，并下载结果。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-24-chatgpt-plugin-3.png&quot; alt=&quot;&quot; width=&quot;640&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;该解释器所具备的编程能力，可以参阅论文《Evaluating Large Language Models Trained on Code》（&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://arxiv.org/abs/2107.03374&lt;/code&gt;），大概相当于一个非常勤奋的初级程序员，和人类敲代码的速度差不多（但是不需要休息、思考迅速）。OpenAI 认为以下使用方向，用他们的代码解释器特别有用：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;处理数学问题，包括定量、定性的问题。&lt;/li&gt;
-  &lt;li&gt;数据分析和可视化。&lt;/li&gt;
-  &lt;li&gt;文件不同格式的转换。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div style=&quot;text-align:center&quot;&gt;
-	&lt;video width=&quot;720&quot; controls=&quot;&quot;&gt;
-  		&lt;source src=&quot;/img/src/2023/03/2023-03-24-chatgpt-plugin-4.mov&quot; type=&quot;video/mp4&quot; /&gt;你的浏览器不支持视频标签。
-	&lt;/video&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;安全考虑&lt;/strong&gt;，ChatGPT 连接 Code Interpreter 主要考虑问题，是运行环境的隔离，这样 AI 生成的代码就不会直接影响真实世界。主要包括三点：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;严格的网络控制。&lt;/li&gt;
-  &lt;li&gt;禁止生成的代码执行时访问外部互联网。&lt;/li&gt;
-  &lt;li&gt;每个 session 都做了沙箱的资源限制。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;3官方插件retrieval知识检索插件&quot;&gt;3、官方插件：Retrieval（知识检索插件）&lt;/h3&gt;
-
-&lt;p&gt;知识检索（Retrieval）插件使得 ChatGPT 在授权允许的情况下，通过自然语言的方式，就可以访问个人或组织的信息资源（如文件、emails 或公共文档等等）。&lt;/p&gt;
-
-&lt;p&gt;而且 Retrieval 插件完全开源，因此每个开发者都可以部署自己的插件版本，然后再注册到 ChatGPT。该插件利用 OpenAI Embeddings（&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://platform.openai.com/docs/guides/embeddings&lt;/code&gt;）并支持开发者用矢量数据库（Milvus、Pinecone、Qdrant、Redis、Weaviate 或 Zilliz）来索引、搜索文档。信息资源（这些文档、emails 等）可以用 Webhooks 与数据库同步。&lt;/p&gt;
-
-&lt;p&gt;开源代码在这里 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://github.com/openai/chatgpt-retrieval-plugin&lt;/code&gt;。&lt;/p&gt;
-
-&lt;div style=&quot;text-align:center&quot;&gt;
-	&lt;video width=&quot;720&quot; controls=&quot;&quot;&gt;
-  		&lt;source src=&quot;/img/src/2023/03/2023-03-24-chatgpt-plugin-5.mov&quot; type=&quot;video/mp4&quot; /&gt;你的浏览器不支持视频标签。
-	&lt;/video&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;安全考虑&lt;/strong&gt;：知识检索插件搜索内容矢量数据库后，将最佳结果加到 ChatGPT 对话中，不使用任何其他外部内容，因此关于这个插件的主要风险就知识数据授权和隐私问题。这里就完全交由各个开发者来自行控制了，比如假设某酒店的系统接入了 ChatGPT 的知识检索插件，但是没有很好地尊重隐私，那么 ChatGPT 的对话结果中就会出现通过该酒店平台获取到的用户个人隐私信息，因此这其实是完全由知识检索插件使用者来自省决定的，与目前的互联网产品风险是一致的。&lt;/p&gt;
-
-&lt;h2 id=&quot;第三部分开发者最关心的第三方插件目前还是-alpha-版&quot;&gt;第三部分：开发者最关心的第三方插件（目前还是 Alpha 版）&lt;/h2&gt;
-
-&lt;h3 id=&quot;1速览&quot;&gt;1、速览&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/src/2023/03/2023-03-24-chatgpt-plugin-6.png&quot; alt=&quot;&quot; width=&quot;720&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;第三方插件由一个 manifest 的清单文件描述，详细内容可以查阅 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://platform.openai.com/docs/plugins/getting-started/writing-descriptions&lt;/code&gt;，如下：&lt;/p&gt;
-
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;schema_version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;v1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name_for_human&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;TODO Manager&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;name_for_model&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;todo_manager&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description_for_human&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Manages your TODOs!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;description_for_model&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;An app for managing a user&apos;s TODOs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;api&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;url&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/openapi.json&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;auth&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;none&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;logo_url&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://example.com/logo.png&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;legal_info_url&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://example.com&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;contact_email&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;hello@example.com&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;开发插件的步骤：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;构建一个 API，包含你想要语言模型调用的端点（可以是新的API、现有API或专门设计用于LLM的现有API的包装器）。&lt;/li&gt;
-  &lt;li&gt;创建一个 OpenAPI 规范文件，记录 API，以及一个包含一些插件特定元数据的清单文件，链接到OpenAPI规范文件。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chat.openai.com&lt;/code&gt; 上开始对话时，用户可以选择启用哪些第三方插件。已启用插件的文档会显示在对话上下文中，让模型能够在需要时调用适当的插件 API 来满足用户意图。目前，插件设计用于调用后端 API，但 OpenAI 也在探索能够调用客户端API的插件。&lt;/p&gt;
-
-&lt;div style=&quot;text-align:center&quot;&gt;
-	&lt;video width=&quot;720&quot; controls=&quot;&quot;&gt;
-  		&lt;source src=&quot;/img/src/2023/03/2023-03-24-chatgpt-plugin-7.mov&quot; type=&quot;video/mp4&quot; /&gt;你的浏览器不支持视频标签。
-	&lt;/video&gt;
-&lt;/div&gt;
-
-&lt;div style=&quot;text-align:center&quot;&gt;
-	&lt;video width=&quot;720&quot; controls=&quot;&quot;&gt;
-  		&lt;source src=&quot;/img/src/2023/03/2023-03-24-chatgpt-plugin-8.mov&quot; type=&quot;video/mp4&quot; /&gt;你的浏览器不支持视频标签。
-	&lt;/video&gt;
-&lt;/div&gt;
-
-&lt;p&gt;详细的开发第三方插件的流程，可以参考文档 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://platform.openai.com/docs/plugins/introduction&lt;/code&gt;，这里船长做个简单的流程介绍，大家可以关注我的公众账号，follow 后续更新。&lt;/p&gt;
-
-&lt;h3 id=&quot;2插件流程&quot;&gt;2、插件流程&lt;/h3&gt;
-
-&lt;p&gt;要构建插件，了解端到端流程很重要。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;创建清单文件并将其托管在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yourdomain.com/.well-known/ai-plugin.json&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;该文件包括有关插件的元数据（名称、徽标等）、所需的身份验证详细信息（身份验证类型、OAuth URL 等）和要公开的端点的 OpenAPI 规范。&lt;/li&gt;
-  &lt;li&gt;模型将看到 OpenAPI 描述字段，这些字段可用于为不同字段提供自然语言描述。&lt;/li&gt;
-  &lt;li&gt;OpenAI 建议在开始时只公开 1-2 个端点，并使用最少数量的参数，以最小化文本长度。插件说明、API 请求和 API 响应都插入到 ChatGPT 的对话中。这算作模型的上下文限制。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;在 ChatGPT UI 中注册你的插件&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;从顶部下拉菜单中选择插件模型，然后选择「Plugins」、「Plugin Store」，最后选择「Install an unverified plugin」或「Develop your own plugin」。&lt;/li&gt;
-  &lt;li&gt;如果需要身份验证，则提供 OAuth 2 客户端 ID 和客户端密钥或 API 密钥。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;用户激活你的插件&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;用户必须在 ChatGPT UI 中手动激活你的插件，ChatGPT 不会默认使用你的插件。&lt;/li&gt;
-  &lt;li&gt;在 alpha 版本中，插件开发人员将能够与其他 15 个用户共享他们的插件（目前仅其他开发人员可以安装未经验证的插件）。未来，OpenAI 将推出一种提交插件进行审核以向 ChatGPT 的所有用户公开展示的方法。&lt;/li&gt;
-  &lt;li&gt;如果需要身份验证，用户将通过 OAuth 被重定向到你的插件；你还可以选择在此创建新帐户。&lt;/li&gt;
-  &lt;li&gt;未来，OpenAI 希望构建功能，以帮助用户发现有用和流行的插件。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;用户开始对话&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;OpenAI 将在发送给 ChatGPT 的消息中注入你的插件的简洁描述，对终端用户不可见。这将包括插件描述、端点和示例。&lt;/li&gt;
-  &lt;li&gt;当用户提出相关问题时，如果它似乎相关，模型可能会选择从你的插件调用 API；对于 POST 请求，OpenAI 要求开发人员构建一个用户确认流程。&lt;/li&gt;
-  &lt;li&gt;模型将把 API 结果合并到其向用户的响应中。&lt;/li&gt;
-  &lt;li&gt;模型可能会在其响应中包括从 API 调用返回的链接。这些将被显示为富预览（使用 OpenGraph 协议，其中 OpenAI 提取 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;site_name&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;title&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;description&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;image&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;url&lt;/code&gt; 字段）。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;目前，OpenAI 将在插件对话 head 中发送用户的所在国家、地区（例如，如果你在美国加利福尼亚州，那么 head 看起来就像 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{&quot;openai-subdivision-1-iso-code&quot;: &quot;US-CA&quot;}&lt;/code&gt;）。对于进一步的数据源，用户必须通过同意屏幕选择加入。这对于购物、餐厅、天气等非常有用。你可以在 OpenAI 开发者使用条款中阅读更多信息。&lt;/p&gt;
-
-&lt;h2 id=&quot;结尾&quot;&gt;结尾&lt;/h2&gt;
-
-&lt;p&gt;更进一步对插件应用、插件开发的探讨，船长将放在后续的文章中，大家可以关注「船长还不会游泳」的公众账号获取第一时间的重大消息解读。&lt;/p&gt;
-
-&lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://openai.com/blog/chatgpt-plugins&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://arxiv.org/abs/2107.03374&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://platform.openai.com/docs/plugins/getting-started&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://github.com/openai/chatgpt-retrieval-plugin&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://platform.openai.com/docs/plugins/introduction&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="NLP" /><category term="自然语言处理" /><category term="神经网络" /><category term="LLM" /><category term="大型语言模型" /><category term="语言模型" /><category term="大模型" /><summary type="html">北京时间 3 月 24 日凌晨，OpenAI 官方发布了重磅的「ChatGPT plugins」，这将开启大模型作为平台的模式定义、商业化模式定义、插件产品开发热潮、全新的大模型优化（LMO）等等。本文共分三个部分：第一部分先速览几个重要的关注点，尤其是本次插件发布带来的行业影响；第二部分针对本次 OpenAI 官方推出的插件做介绍；第三部分是开发者最关心的第三方插件的支持能力做简述。跟船长出发吧，坐稳了！</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="llama" /><category term="vicuna" /><category term="ai" /><category term="aigc" /><category term="chatgpt" /><category term="gpt" /><category term="meta" /><category term="open source" /><category term="开源" /><summary type="html">Vicuna 是一个基于 LLaMA 微调的大语言模型。Vicuna-13B 是一个使用 ShareGPT 收集的用户对话数据进行训练的开源 ChatBot。Vicuna 使用 GPT-4 进行评估，其在质量方面已经达到了超过 90% 的 OpenAI ChatGPT 和 Google Bard，同时在超过 90% 的情况下表现优于 LLaMA、Stanford Alpaca。今天跟着船长一起，在你的 MacBook 上把 Vicuna 跑起来！</summary></entry></feed>
