@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-09-19T09:02:52+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">上市公司发行可转债有什么影响（持续更新）</title><link href="https://www.mikecaptain.com/2023/09/19/cb-impact/" rel="alternate" type="text/html" title="上市公司发行可转债有什么影响（持续更新）" /><published>2023-09-19T08:00:13+08:00</published><updated>2023-09-19T08:00:13+08:00</updated><id>https://www.mikecaptain.com/2023/09/19/cb-impact</id><content type="html" xml:base="https://www.mikecaptain.com/2023/09/19/cb-impact/">&lt;p&gt;可转债（Convertible Bond，简称 CB），即可转换债券（或可换股债券），可按一定规则转换为债券发行公司的股票。其转换价格、转换时间段会在发行前确定。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-09-21T05:48:35+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">上市公司发行可转债有什么影响（持续更新）</title><link href="https://www.mikecaptain.com/2023/09/19/cb-impact/" rel="alternate" type="text/html" title="上市公司发行可转债有什么影响（持续更新）" /><published>2023-09-19T08:00:13+08:00</published><updated>2023-09-19T08:00:13+08:00</updated><id>https://www.mikecaptain.com/2023/09/19/cb-impact</id><content type="html" xml:base="https://www.mikecaptain.com/2023/09/19/cb-impact/">&lt;p&gt;可转债（Convertible Bond，简称 CB），即可转换债券（或可换股债券），可按一定规则转换为债券发行公司的股票。其转换价格、转换时间段会在发行前确定。&lt;/p&gt;
 
 &lt;p&gt;北京时间 2023 年 9 月 19 日清晨（美东时间 2023 年 9 月 18 日），蔚来（NIO.US）宣布拟发行本金总额 5 亿美元的、到期时间为 2029 年的可转债，以及本金总额 5 亿美元、到期时间为 2030 年的可转债。&lt;/p&gt;
 
@@ -8,27 +8,33 @@
 
 &lt;p&gt;下面是一些近几年美股的上市公司发行可转债后短期股价的变化实例收集。&lt;/p&gt;
 
-&lt;p&gt;2023 年 5 月 26 日，美股大麻板块的 Tilray Brands 公司宣布将发行 1.5 亿美元的 2028 年到期的高级无担保可转债，票息 5.2%。公司还授予承销商 30 天的期权，允许额外购买不超过 2,250 万美元的债券。当日股价暴跌收盘 -21.19%（盘中最大跌幅 -22.88%），并在后续两个交易日里继续下跌 -1.61%、-8.74%；&lt;/p&gt;
+&lt;p&gt;2023 年 5 月 26 日，美股大麻板块的 Tilray Brands 公司宣布将发行 1.5 亿美元的 2028 年到期的高级无担保可转债，票息 5.2%。公司还授予承销商 30 天的期权，允许额外购买不超过 2,250 万美元的债券。当日股价暴跌收盘 -21.19%（盘中最大跌幅 -22.88%），并在后续两个交易日里继续下跌 -1.61%、-8.74%，三日累计约 -30%；&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/quant/2023/09/23/1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;2022 年 11 月 16 日，嘉年华邮轮（CCL）通过私募募资发行本金规模达 10 亿美元的优先级可转换债券，当日股价暴跌收盘 -13.71%（盘中最大跌幅 -14.96%），并在后续三个交易日内连续下跌 -1.25%、-0.42%、-1.58%；&lt;/p&gt;
+&lt;p&gt;2022 年 11 月 16 日，嘉年华邮轮（CCL）通过私募募资发行本金规模达 10 亿美元的优先级可转换债券，当日股价暴跌收盘 -13.71%（盘中最大跌幅 -14.96%），并在后续三个交易日内连续下跌 -1.25%、-0.42%、-1.58%，四日累计约 -23%；&lt;/p&gt;
 
 &lt;p&gt;2022 年 6 月 28 日，美股上市公司 Aspen Aerogels（ASPN.US）宣布公开发行普通股和 2027 年到期的绿色高级可转债，次日股价暴跌 -42.69% 收盘；又过一日，该公司宣布取消此前的决定，原因是公司评估认为在目前的市场条件下，发行新股和可转债不利于股东最佳利益。当月 30 日股价又暴涨 +17.20% 收盘，但未能涨回到此前的价位。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/quant/2023/09/23/2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;2020 年 3 月 5 日（周四），蔚来汽车在其投资者关系网站发布公告，宣布再次完成 2.35 亿美元可转债融资项目，此时距离上次融资不到一个月。宣布可转债的前一日股价下跌 -4.68%，宣布的当日股价下跌收盘 -3.88%（盘中最大跌幅 -4.91%），并在后续几个交易日内连续下跌 -4.57%、-7.32%；&lt;/p&gt;
+&lt;p&gt;2020 年 3 月 5 日（周四），蔚来汽车在其投资者关系网站发布公告，宣布再次完成 2.35 亿美元可转债融资项目，此时距离上次融资不到一个月。宣布可转债的前一日股价下跌 -4.68%，宣布的当日股价下跌收盘 -3.88%（盘中最大跌幅 -4.91%），并在后续几个交易日内连续下跌 -4.57%、-7.32%，三日累计下跌约 -15%；&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/quant/2023/09/23/4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;2020 年 2 月 14 日（周五），蔚来汽车发布公告，称公司与两个非关联的亚洲基金签署明确协议，蔚来汽车将向后者发行价值达 1 亿美元的可转换债，当日股价下跌收盘 -6.45%（盘中最大跌幅 -6.95%）；&lt;/p&gt;
+&lt;p&gt;2020 年 2 月 14 日（周五），蔚来汽车发布公告，称公司与两个非关联的亚洲基金签署明确协议，蔚来汽车将向后者发行价值达 1 亿美元的可转换债，当日股价下跌收盘 -6.45%（盘中最大跌幅 -6.95%）。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/img/quant/2023/09/23/5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;2020 年 2 月 6 日（周四），蔚来汽车宣布分别发行价值 7000 万美元和 3000 万美元的两笔可转换债，投资方为两家非关联的亚洲投资基金，当日股价大跌收盘 -7.06%（盘中最大跌幅 -7.74%），次日继续暴跌 -6.62%；&lt;/p&gt;
+&lt;p&gt;2020 年 2 月 6 日（周四），蔚来汽车宣布分别发行价值 7000 万美元和 3000 万美元的两笔可转换债，投资方为两家非关联的亚洲投资基金，当日股价大跌收盘 -7.06%（盘中最大跌幅 -7.74%），次日继续暴跌 -6.62%，两日累计 -13% 跌幅。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/quant/2023/09/23/6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="quant" /><category term="美股" /><category term="可转债" /><category term="NIO" /><category term="蔚来汽车" /><category term="TLRY" /><category term="CCL" /><category term="股票" /><category term="CB" /><category term="Convertible Bond" /><category term="投资" /><summary type="html">可转债（Convertible Bond，简称 CB），即可转换债券（或可换股债券），可按一定规则转换为债券发行公司的股票。其转换价格、转换时间段会在发行前确定。</summary></entry><entry><title type="html">【摘录】投资的道路上不存在捷径，但如果向成功的投资大师学习，可以少走很多弯路。</title><link href="https://www.mikecaptain.com/2023/07/30/investment-learnt-from-masters/" rel="alternate" type="text/html" title="【摘录】投资的道路上不存在捷径，但如果向成功的投资大师学习，可以少走很多弯路。" /><published>2023-07-30T12:00:13+08:00</published><updated>2023-07-30T12:00:13+08:00</updated><id>https://www.mikecaptain.com/2023/07/30/investment-learnt-from-masters</id><content type="html" xml:base="https://www.mikecaptain.com/2023/07/30/investment-learnt-from-masters/">&lt;p&gt;原文链接：https://mp.weixin.qq.com/s/U8YsBlMOtj98LeTxXOPigQ?global_content=%7B%22promote_id%22%3A13766%2C%22sub_promote_id%22%3A4%7D&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/quant/2023/09/23/6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;后记&quot;&gt;后记&lt;/h4&gt;
+
+&lt;p&gt;2023 年 9 月 19 日，NIO 大跌 -17.07%（盘中最大跌幅 -18.43%）。&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="quant" /><category term="美股" /><category term="可转债" /><category term="NIO" /><category term="蔚来汽车" /><category term="TLRY" /><category term="CCL" /><category term="股票" /><category term="CB" /><category term="Convertible Bond" /><category term="投资" /><summary type="html">可转债（Convertible Bond，简称 CB），即可转换债券（或可换股债券），可按一定规则转换为债券发行公司的股票。其转换价格、转换时间段会在发行前确定。</summary></entry><entry><title type="html">【摘录】投资的道路上不存在捷径，但如果向成功的投资大师学习，可以少走很多弯路。</title><link href="https://www.mikecaptain.com/2023/07/30/investment-learnt-from-masters/" rel="alternate" type="text/html" title="【摘录】投资的道路上不存在捷径，但如果向成功的投资大师学习，可以少走很多弯路。" /><published>2023-07-30T12:00:13+08:00</published><updated>2023-07-30T12:00:13+08:00</updated><id>https://www.mikecaptain.com/2023/07/30/investment-learnt-from-masters</id><content type="html" xml:base="https://www.mikecaptain.com/2023/07/30/investment-learnt-from-masters/">&lt;p&gt;原文链接：https://mp.weixin.qq.com/s/U8YsBlMOtj98LeTxXOPigQ?global_content=%7B%22promote_id%22%3A13766%2C%22sub_promote_id%22%3A4%7D&lt;/p&gt;
 
 &lt;p&gt;投资的道路上不存在捷径，但如果向成功的投资大师学习，可以少走很多弯路。&lt;/p&gt;
 
