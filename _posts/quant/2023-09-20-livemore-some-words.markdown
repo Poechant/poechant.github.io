@@ -3,7 +3,7 @@ layout: post
 title: 【摘录】Livemore：华尔街不会改变，人性不会改变
 date: 2023-09-19 08:00:13 +0800
 categories: quant
-tags: [美股, 可转债, NIO, 蔚来汽车, TLRY, CCL, 股票, CB, Convertible Bond, 投资]
+tags: [美股, 股票, 投资, 投机, invest, investment, speculation, wall street, 美国, livemore, 利弗莫尔, 股票大作手, 大作手, 操盘, 基金, 止损]
 description: 
 excerpt: 
 katex: True
@@ -15,7 +15,6 @@ pinned: no
 杰西·劳里斯顿·李佛摩（Jesse Lauriston Livermore），1877 年 7 月 26 日 — 1940 年 11 月 28 日，华尔街著名金融家，被《时代》杂志形容为「最活跃的美国股市投机客（the most fabulous living U.S. stock trader）」。以下是他的言论摘录。
 
 ### 01、华尔街不会改变，人性不会改变
-
 
 市场是有规律的，市场的规律性缘因于不变的人性！
 
