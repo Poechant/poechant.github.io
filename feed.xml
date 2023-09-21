@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-09-21T06:52:52+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">上市公司发行可转债有什么影响（持续更新）</title><link href="https://www.mikecaptain.com/2023/09/19/cb-impact/" rel="alternate" type="text/html" title="上市公司发行可转债有什么影响（持续更新）" /><published>2023-09-19T08:00:13+08:00</published><updated>2023-09-19T08:00:13+08:00</updated><id>https://www.mikecaptain.com/2023/09/19/cb-impact</id><content type="html" xml:base="https://www.mikecaptain.com/2023/09/19/cb-impact/">&lt;p&gt;可转债（Convertible Bond，简称 CB），即可转换债券（或可换股债券），可按一定规则转换为债券发行公司的股票。其转换价格、转换时间段会在发行前确定。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2023-09-21T09:04:55+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">趋势量化之 Event-Driven 1：上市公司发行可转债有什么影响（持续更新）</title><link href="https://www.mikecaptain.com/2023/09/19/cb-impact/" rel="alternate" type="text/html" title="趋势量化之 Event-Driven 1：上市公司发行可转债有什么影响（持续更新）" /><published>2023-09-19T08:00:13+08:00</published><updated>2023-09-19T08:00:13+08:00</updated><id>https://www.mikecaptain.com/2023/09/19/cb-impact</id><content type="html" xml:base="https://www.mikecaptain.com/2023/09/19/cb-impact/">&lt;p&gt;可转债（Convertible Bond，简称 CB），即可转换债券（或可换股债券），可按一定规则转换为债券发行公司的股票。其转换价格、转换时间段会在发行前确定。&lt;/p&gt;
 
 &lt;p&gt;北京时间 2023 年 9 月 19 日清晨（美东时间 2023 年 9 月 18 日），蔚来（NIO.US）宣布拟发行本金总额 5 亿美元的、到期时间为 2029 年的可转债，以及本金总额 5 亿美元、到期时间为 2030 年的可转债。&lt;/p&gt;
 
@@ -30,7 +30,13 @@
 
 &lt;p&gt;&lt;img src=&quot;/img/quant/2023/09/23/6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
+&lt;p&gt;基于以上分析，由于可转债资讯发布于盘后时间，所以最稳妥保守的决策是在盘后即卖出正股进行做空。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
 &lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;后记&quot;&gt;后记&lt;/h4&gt;
 
