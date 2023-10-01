@@ -445,7 +445,7 @@
 
 			<article id="post-page">
 	<h2>趋势量化基础（持续更新）</h2>		
-	<time datetime="2023-09-19T08:00:13+08:00" class="by-line">19 Sep 2023, 杭州 | 麦克船长 | 总计 2775 字</time>
+	<time datetime="2023-09-19T08:00:13+08:00" class="by-line">19 Sep 2023, 杭州 | 麦克船长 | 总计 2746 字</time>
 	<div class="content">
 		<h4 id="get-historical-data-of-specific-option">Get historical data of specific option</h4>
 
@@ -454,30 +454,28 @@
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">import</span> <span class="nn">pytz</span>
 
-<span class="c1"># 连接到IB TWS或Gateway
-</span><span class="n">util</span><span class="p">.</span><span class="n">startLoop</span><span class="p">()</span>
+<span class="n">util</span><span class="p">.</span><span class="n">startLoop</span><span class="p">()</span>
 <span class="n">ib</span> <span class="o">=</span> <span class="n">IB</span><span class="p">()</span>
-<span class="n">ib</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="s">"127.0.0.1"</span><span class="p">,</span> <span class="mi">7496</span><span class="p">,</span> <span class="n">clientId</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 请根据你的设置进行连接
-</span>
+<span class="n">ib</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="s">"127.0.0.1"</span><span class="p">,</span> <span class="mi">7496</span><span class="p">,</span> <span class="n">clientId</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
 <span class="n">contract</span> <span class="o">=</span> <span class="n">Option</span><span class="p">(</span>
     <span class="n">symbol</span><span class="o">=</span><span class="s">'QQQ'</span><span class="p">,</span> <span class="n">lastTradeDateOrContractMonth</span><span class="o">=</span><span class="s">'20231004'</span><span class="p">,</span>
     <span class="n">strike</span><span class="o">=</span><span class="mi">360</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s">'C'</span><span class="p">,</span> <span class="n">exchange</span><span class="o">=</span><span class="s">'CBOE'</span><span class="p">,</span>
     <span class="n">multiplier</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">currency</span><span class="o">=</span><span class="s">'USD'</span><span class="p">)</span>
 
-<span class="c1"># 使用 pytz 库来定义美国东部时区
+<span class="c1"># Use pytz library to define timezone
 </span><span class="n">est</span> <span class="o">=</span> <span class="n">pytz</span><span class="p">.</span><span class="n">timezone</span><span class="p">(</span><span class="s">'America/New_York'</span><span class="p">)</span>
 
-<span class="c1"># 将结束日期时间转换为美国东部时区
-</span><span class="n">endDateTime</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">est</span><span class="p">)</span>
+<span class="n">endDateTime</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2023</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="n">est</span><span class="p">)</span>
 
 <span class="n">bars</span> <span class="o">=</span> <span class="n">ib</span><span class="p">.</span><span class="n">reqHistoricalData</span><span class="p">(</span>
             <span class="n">contract</span><span class="o">=</span><span class="n">contract</span><span class="p">,</span> <span class="n">endDateTime</span><span class="o">=</span><span class="n">endDateTime</span><span class="p">,</span> <span class="n">durationStr</span><span class="o">=</span><span class="s">'1 D'</span><span class="p">,</span> <span class="n">barSizeSetting</span><span class="o">=</span><span class="s">'1 min'</span><span class="p">,</span>
             <span class="n">whatToShow</span><span class="o">=</span><span class="s">'TRADES'</span><span class="p">,</span> <span class="n">useRTH</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
-<span class="c1"># 将数据转换为DataFrame格式
+<span class="c1"># transform data to DataFrame
 </span><span class="n">df</span> <span class="o">=</span> <span class="n">util</span><span class="p">.</span><span class="n">df</span><span class="p">(</span><span class="n">bars</span><span class="p">)</span>
 
-<span class="c1"># 打印DataFrame，每分钟数据一行
+<span class="c1"># print DataFrame
 </span><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </code></pre></div></div>
 
