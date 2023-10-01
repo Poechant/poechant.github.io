@@ -20,30 +20,28 @@ import pandas as pd
 from datetime import datetime
 import pytz
 
-# 连接到IB TWS或Gateway
 util.startLoop()
 ib = IB()
-ib.connect("127.0.0.1", 7496, clientId=1)  # 请根据你的设置进行连接
+ib.connect("127.0.0.1", 7496, clientId=1)
 
 contract = Option(
     symbol='QQQ', lastTradeDateOrContractMonth='20231004',
     strike=360, right='C', exchange='CBOE',
     multiplier=100, currency='USD')
 
-# 使用 pytz 库来定义美国东部时区
+# Use pytz library to define timezone
 est = pytz.timezone('America/New_York')
 
-# 将结束日期时间转换为美国东部时区
 endDateTime = datetime(2023, 9, 29, 16, 0, 0, tzinfo=est)
 
 bars = ib.reqHistoricalData(
             contract=contract, endDateTime=endDateTime, durationStr='1 D', barSizeSetting='1 min',
             whatToShow='TRADES', useRTH=True)
 
-# 将数据转换为DataFrame格式
+# transform data to DataFrame
 df = util.df(bars)
 
-# 打印DataFrame，每分钟数据一行
+# print DataFrame
 print(df)
 ```
 
