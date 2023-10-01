@@ -52,3 +52,21 @@ The `pytz` library is a Python library for handling timezones, and it also utili
 Next, a variable `est` is created to represent the Eastern Standard Time (EST) timezone. Another variable is set for the desired end time of the data retrieval, which, in this case, is the closing time on 2023-09-29 at 4:00 PM. The timezone information is specified using `tzinfo=est`.
 
 The `ib.reqHistoricalData` function is then used to retrieve the data with a duration of one day (`durationStr='1 D'`) and a time interval of one minute (`barSizeSetting='1 min'`). Finally, the obtained data is printed using `util.df(bars)`.
+
+```shell
+(vnpy) mikecaptain@CVN testspace % python ib_get_option_data_3.py
+                         date  open  high   low  close  volume  average  barCount
+0   2023-09-29 08:47:00-05:00  4.13  4.13  4.13   4.13     1.0     4.13         1
+1   2023-09-29 08:48:00-05:00  4.13  4.13  4.13   4.13     0.0     4.13         0
+2   2023-09-29 08:49:00-05:00  4.13  4.13  4.13   4.13     0.0     4.13         0
+3   2023-09-29 08:50:00-05:00  4.13  4.13  4.13   4.13     0.0     4.13         0
+4   2023-09-29 08:51:00-05:00  4.13  4.13  4.13   4.13     0.0     4.13         0
+..                        ...   ...   ...   ...    ...     ...      ...       ...
+383 2023-09-29 15:10:00-05:00  2.49  2.49  2.49   2.49     0.0     2.49         0
+384 2023-09-29 15:11:00-05:00  2.49  2.49  2.49   2.49     0.0     2.49         0
+385 2023-09-29 15:12:00-05:00  2.49  2.49  2.49   2.49     0.0     2.49         0
+386 2023-09-29 15:13:00-05:00  2.49  2.49  2.49   2.49     0.0     2.49         0
+387 2023-09-29 15:14:00-05:00  2.49  2.49  2.49   2.49     0.0     2.49         0
+
+[388 rows x 8 columns]
+```
