@@ -445,7 +445,7 @@
 
 			<article id="post-page">
 	<h2>趋势量化基础（持续更新）</h2>		
-	<time datetime="2023-09-19T08:00:13+08:00" class="by-line">19 Sep 2023, 杭州 | 麦克船长 | 总计 2746 字</time>
+	<time datetime="2023-09-19T08:00:13+08:00" class="by-line">19 Sep 2023, 杭州 | 麦克船长 | 总计 3362 字</time>
 	<div class="content">
 		<h4 id="get-historical-data-of-specific-option">Get historical data of specific option</h4>
 
@@ -500,6 +500,35 @@
 387 2023-09-29 15:14:00-05:00  2.49  2.49  2.49   2.49     0.0     2.49         0
 
 <span class="o">[</span>388 rows x 8 columns]
+</code></pre></div></div>
+
+<h4 id="get-historical-data-of-specific-stock-and-output-it-to-a-file">Get historical data of specific stock and output it to a file</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">ib_insync</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">import</span> <span class="nn">pytz</span>
+
+<span class="n">util</span><span class="p">.</span><span class="n">startLoop</span><span class="p">()</span>
+<span class="n">ib</span> <span class="o">=</span> <span class="n">IB</span><span class="p">()</span>
+<span class="n">ib</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="s">"127.0.0.1"</span><span class="p">,</span> <span class="mi">7496</span><span class="p">,</span> <span class="n">clientId</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 定义GOOG的股票合约
+</span><span class="n">contract</span> <span class="o">=</span> <span class="n">Stock</span><span class="p">(</span><span class="s">'GOOG'</span><span class="p">,</span> <span class="s">'SMART'</span><span class="p">,</span> <span class="s">'USD'</span><span class="p">)</span>
+
+<span class="c1"># 使用pytz库来定义美国东部时区
+</span><span class="n">est</span> <span class="o">=</span> <span class="n">pytz</span><span class="p">.</span><span class="n">timezone</span><span class="p">(</span><span class="s">'America/New_York'</span><span class="p">)</span>
+
+<span class="c1"># 获取当前日期
+</span><span class="n">endDateTime</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">(</span><span class="n">est</span><span class="p">)</span>
+
+<span class="c1"># 计算5年前的日期
+</span><span class="n">startDateTime</span> <span class="o">=</span> <span class="n">endDateTime</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="mi">365</span><span class="p">)</span>
+
+<span class="n">bars</span> <span class="o">=</span> <span class="n">ib</span><span class="p">.</span><span class="n">reqHistoricalData</span><span class="p">(</span>
+            <span class="n">contract</span><span class="o">=</span><span class="n">contract</span><span class="p">,</span> <span class="n">endDateTime</span><span class="o">=</span><span class="n">endDateTime</span><span class="p">,</span> <span class="n">durationStr</span><span class="o">=</span><span class="s">'5 Y'</span><span class="p">,</span> <span class="n">barSizeSetting</span><span class="o">=</span><span class="s">'1 day'</span><span class="p">,</span>
+            <span class="n">whatToShow</span><span class="o">=</span><span class="s">'TRADES'</span><span class="p">,</span> <span class="n">useRTH</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">formatDate</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">util</span><span class="p">.</span><span class="n">df</span><span class="p">(</span><span class="n">bars</span><span class="p">))</span>
 </code></pre></div></div>
 
 	</div>
