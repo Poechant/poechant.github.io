@@ -68,3 +68,33 @@ The `ib.reqHistoricalData` function is then used to retrieve the data with a dur
 
 [388 rows x 8 columns]
 ```
+
+#### Get historical data of specific stock and output it to a file
+
+```python
+from ib_insync import *
+from datetime import datetime, timedelta
+import pytz
+
+util.startLoop()
+ib = IB()
+ib.connect("127.0.0.1", 7496, clientId=1)
+
+# 定义GOOG的股票合约
+contract = Stock('GOOG', 'SMART', 'USD')
+
+# 使用pytz库来定义美国东部时区
+est = pytz.timezone('America/New_York')
+
+# 获取当前日期
+endDateTime = datetime.now(est)
+
+# 计算5年前的日期
+startDateTime = endDateTime - timedelta(days=5*365)
+
+bars = ib.reqHistoricalData(
+            contract=contract, endDateTime=endDateTime, durationStr='5 Y', barSizeSetting='1 day',
+            whatToShow='TRADES', useRTH=True, formatDate=2)
+
+print(util.df(bars))
+```
