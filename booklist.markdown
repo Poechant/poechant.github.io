@@ -102,7 +102,7 @@ permalink: /booklist/
 
 <br/>
 
-### 一、麦克船长的 2022-2023 书单
+### 一、麦克船长的 2022-2024 书单
 
 重点关注：1）人工智能的技术、商业书籍；2）组织行为学；3）电商、零售与供应链管理；4）互联网产品、商业模式；5）Crypto 及 Web3；6）经济学、策略及博弈。
 
@@ -120,13 +120,9 @@ permalink: /booklist/
 
 #### 2、商业、思考与成长
 
-* 《货币金融学》米什金
-* 《固定收益证券手册》法伯齐
-* 《专业投机原理》斯波朗迪
-* 《证券分析》格雷厄姆
-* 《期权、期货及其他衍生产品》赫尔
-* 《聪明的投资者》格雷厄姆
-* 《佛畏系统》
+* 《Elon Musk》
+* 《历史选择了毛泽东》
+* 《佛畏系统》万维钢
 * 《巨人的工具》
 * 《科学之路》杨立昆
 * 《虚拟人》玛蒂娜·罗斯布拉特
@@ -147,6 +143,36 @@ permalink: /booklist/
 * 《权力：为什么只有某些人所拥有》杰弗瑞·菲佛
 * 《制造消费者：消费主义全球史》
 * 《区块链启示录》
+
+#### 3、金融与投资
+
+* 《货币金融学》米什金
+* 《固定收益证券手册》法伯齐
+* 《证券分析》格雷厄姆
+* 《期权、期货及其他衍生产品》赫尔
+* 《聪明的投资者》格雷厄姆
+* 《Think and Trade Like a Champion》Mark Minervini
+* 《Trade Like a Stock Market》Mark Minervini
+* 《Mindset Secrets for Winning》Mark Minervini
+* 《Stock Trading Wisdom》Jiangting Chen
+* 《巴菲特致股东的信》
+* 《通向财务自由之路 I》Van K. Tharp
+* 《通向财务自由之路 II》Van K. Tharp
+* 《专业投机原理》Victor Sperandeo
+* 《How to Trade in Stocks》Jesse Livemore
+* 《Option Volatility and Pricing: Advanced Trading Strategies and Techniques》Sheldon Natenberg
+* 《Volatility Trading》Euan Sinclair
+* 《金融怪杰》Jack D. Schwager
+* 《不为人知的金融怪杰》Jack D. Schwager
+* 《段永平投资问答录》
+* 《走进我的交易室》
+* 《如果巴西下雨就买星巴克股票》
+* 《走出幻觉，走向成熟 I》金融帝国
+* 《走出幻觉，走向成熟 II》金融帝国
+* 《海龟交易法则》
+* 《以交易为生 I》
+* 《以交易为生 II》
+* 《宽客人生》
 
 ### 二、学习资料：人工智能
 
