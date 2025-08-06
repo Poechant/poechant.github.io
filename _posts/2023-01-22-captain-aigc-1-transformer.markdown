@@ -9,7 +9,7 @@ excerpt: 基于 RNN 的 Encoder-Decoder 模型存在无法处理过长文本、�
 katex: True
 location: 香港
 author: 麦克船长
-pinned: yes
+pinned: no
 ---
 
 ![](/img/src/2023/2023-01-23-aigc-llm-1-transformer-cover.jpg)

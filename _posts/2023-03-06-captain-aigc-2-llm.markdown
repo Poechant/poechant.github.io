@@ -9,7 +9,7 @@ excerpt: 人类创造城市，又把它虚拟化；创造机器，又希望机�
 katex: True
 location: 杭州
 author: 麦克船长
-pinned: yes
+pinned: no
 ---
 
 ![](/img/src/2023/03/mikecaptain-llm-revolution-2.jpg)

@@ -9,6 +9,7 @@ excerpt: As a product manager focusing on the AI field, I often find ourselves c
 katex: True
 location: 杭州
 author: 麦克船长
+pinned: no
 ---
 
 I am Mike Captain, a product manager focusing on the AI field. We often find ourselves constrained by current product forms, making it difficult to think about truly AI-native products. While pondering on how to build AI-native products, I have summarized the following eight points. I hope sharing them with you will be helpful:

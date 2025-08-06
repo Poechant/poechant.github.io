@@ -9,6 +9,7 @@ excerpt: 在一个人就是一支队伍的时代里（在 AI 急速发展的推�
 katex: True
 location: 杭州
 author: 麦克船长
+pinned: no
 ---
 
 **本文目录**
