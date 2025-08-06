@@ -18,7 +18,7 @@ Google DeepMind 于北京时间 2025 年 8 月 6 日凌晨正式推出了其新�
 
 <div style="text-align:center">
 	<video width="720" controls="" poster="/resources/2025/08/06/unnamed.webp">
-  		<source src="/resources/2025/08/06/ChatGPT-XMind.mp4" type="video/mp4">你的浏览器不支持视频标签。
+  		<source src="/resources/2025/08/06/genie-3.mp4" type="video/mp4">你的浏览器不支持视频标签。
 	</video>
 </div>
 
