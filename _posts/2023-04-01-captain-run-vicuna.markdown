@@ -9,6 +9,7 @@ excerpt: Vicuna 是一个基于 LLaMA 微调的大语言模型。Vicuna-13B 是�
 katex: True
 location: 杭州
 author: 麦克船长
+pinned: no
 ---
 
 ## 1、Vicuna 是什么？

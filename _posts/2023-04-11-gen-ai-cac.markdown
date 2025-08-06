@@ -9,6 +9,7 @@ excerpt: 近日一条通知引起了 AI 圈子的广泛关注《国家互联网�
 katex: True
 location: 杭州
 author: 麦克船长
+pinned: no
 ---
 
 ![](/img/src/2023/04/2023-04-11-gen-ai-cac.jpg)
