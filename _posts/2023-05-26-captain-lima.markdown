@@ -9,6 +9,7 @@ excerpt: 在这篇论文中，作者使用这个测试数据集来评估他们�
 katex: True
 location: 合肥
 author: 麦克船长
+pinned: no
 ---
 
 ![](/img/src2/2023/05/26/3.png)

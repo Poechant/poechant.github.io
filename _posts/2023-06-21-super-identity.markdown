@@ -9,6 +9,7 @@ excerpt: 从第一篇经典的 投资中的信号与噪声 以来，绿洲资本
 katex: True
 location: 杭州
 author: 张津剑
+pinned: no
 ---
 
 * 本文作者：张津剑
