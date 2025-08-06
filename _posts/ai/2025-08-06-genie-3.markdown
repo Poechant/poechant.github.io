@@ -4,8 +4,8 @@ title: 从生成影像到「生成世界」—— Google DeepMind Genie 3 打开
 date: 2025-08-06 08:01:13 +0800
 categories: ai
 tags: [AI, 人工智能, AGI, Agent, 大模型, Google, DeepMind, Genie 3, Genie-3, Genie, Google AI, 多模态, 视频生成, 世界模型, world model, 交互, 基础模型, 模型]
-description: 
-excerpt: 
+description: Google DeepMind 于北京时间 2025 年 8 月 6 日凌晨正式推出了其新一代通用世界模型 `Genie 3`，该模型能够基于文本提示实时生成交互式虚拟环境，并以每秒 24 帧、720p 分辨率的速度保持数分钟的一致性和高保真度。作为世界模型研究的最新里程碑，`Genie 3` 不仅在生成环境的一致性和逼真度上大幅提升，更首次支持了实时人机交互，为通向通用人工智能（AGI）奠定了坚实基础。
+excerpt: Google DeepMind 于北京时间 2025 年 8 月 6 日凌晨正式推出了其新一代通用世界模型 `Genie 3`，该模型能够基于文本提示实时生成交互式虚拟环境，并以每秒 24 帧、720p 分辨率的速度保持数分钟的一致性和高保真度。作为世界模型研究的最新里程碑，`Genie 3` 不仅在生成环境的一致性和逼真度上大幅提升，更首次支持了实时人机交互，为通向通用人工智能（AGI）奠定了坚实基础。
 katex: True
 location: 杭州
 author: 麦克船长

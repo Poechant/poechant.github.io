@@ -4,8 +4,8 @@ title: 解读 Claude Opus 4.1：混合推理的前沿跃迁
 date: 2025-08-06 08:01:12 +0800
 categories: ai
 tags: [AI, 人工智能, AGI, Agent, 大模型, 基础模型, 模型, Anthropic, Claude, Opus, Claude Code, Coding Agent, coding, code]
-description: 
-excerpt: 
+description: 北京时间 8 月 6 日凌晨，Anthropic 悄然上线新版旗舰模型 ``Claude Opus 4.1``，并同步更新 API、Bedrock、Vertex AI 三大平台与 Claude Code。虽然官方在博客中将其定位为 「``Opus 4`` 的渐进式升级」，但从多维基准与系统卡细节来看，这次版本号仅「加 0.1」的更新，实则在编码、长程代理任务与安全调优上完成了多项关键突破，为 2025 年下半年大模型竞技赛再添变量。
+excerpt: 北京时间 8 月 6 日凌晨，Anthropic 悄然上线新版旗舰模型 ``Claude Opus 4.1``，并同步更新 API、Bedrock、Vertex AI 三大平台与 Claude Code。虽然官方在博客中将其定位为 「``Opus 4`` 的渐进式升级」，但从多维基准与系统卡细节来看，这次版本号仅「加 0.1」的更新，实则在编码、长程代理任务与安全调优上完成了多项关键突破，为 2025 年下半年大模型竞技赛再添变量。
 katex: True
 location: 杭州
 author: 麦克船长
