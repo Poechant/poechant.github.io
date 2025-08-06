@@ -1,0 +1,93 @@
+---
+layout: post
+title: 从生成影像到「生成世界」—— Google DeepMind Genie 3 打开世界模型的交互时代
+date: 2025-08-06 08:01:13 +0800
+categories: ai
+tags: [AI, 人工智能, AGI, Agent, 大模型, Google, DeepMind, Genie 3, Genie-3, Genie, Google AI, 多模态, 视频生成, 世界模型, world model, 交互, 基础模型, 模型]
+description: 
+excerpt: 
+katex: True
+location: 杭州
+author: 麦克船长
+pinned: no
+---
+
+![](/resources/2025/08/06/89bbafe0-3df1-473e-90e4-f3668c4e205f.jpg)
+
+Google DeepMind 于北京时间 2025 年 8 月 6 日凌晨正式推出了其新一代通用世界模型 `Genie 3`，该模型能够基于文本提示实时生成交互式虚拟环境，并以每秒 24 帧、720p 分辨率的速度保持数分钟的一致性和高保真度。作为世界模型研究的最新里程碑，`Genie 3` 不仅在生成环境的一致性和逼真度上大幅提升，更首次支持了实时人机交互，为通向通用人工智能（AGI）奠定了坚实基础。
+
+<div style="text-align:center">
+	<video width="720" controls="" preload="none" poster="/resources/video/ChatGPT-XMind.jpg">
+  		<source src="/resources/video/ChatGPT-XMind.mp4" type="video/mp4">你的浏览器不支持视频标签。
+	</video>
+</div>
+
+## 背景：世界模型的发展
+
+在过去十多年中，DeepMind 在模拟环境研究领域持续发力，从训练智能体在实时战略游戏（RTS）中制胜，到为开放式学习和机器人控制构建高保真模拟环境，世界模型始终是关键技术路径之一。世界模型让 AI 能够在虚拟场景里预测环境演化及其对智能体行动的反馈，从而实现无界限的训练课程与更高效的策略优化，这对于 AGI 的长期发展至关重要。
+
+![](/resources/2025/08/06/3eef6978-e7b7-4bdb-9d8d-13fa7cfccb6c.png)
+
+`Genie 3` 可以在更长的地平线上产生具有一致性且可互动的世界，如下是 `Genie 2` 和 `Genie 3` 的对比。
+
+<div style="text-align:center">
+	<video width="720" controls="" preload="none" poster="/resources/video/ChatGPT-XMind.jpg">
+  		<source src="/resources/video/ChatGPT-XMind.mp4" type="video/mp4">你的浏览器不支持视频标签。
+	</video>
+</div>
+
+<div style="text-align:center">
+	<video width="720" controls="" preload="none" poster="/resources/video/ChatGPT-XMind.jpg">
+  		<source src="/resources/video/ChatGPT-XMind.mp4" type="video/mp4">你的浏览器不支持视频标签。
+	</video>
+</div>
+
+2024 年，DeepMind 相继发布了 `Genie 1` 和 `Genie 2` 两代基础世界模型，能够自动生成全新场景供智能体探索，推动了智能体在逼真模拟中的自我强化学习；与此同时，DeepMind 的 `Veo` 系列视频生成模型（`Veo 2`、`Veo 3`）也在物理直觉和场景连贯性方面取得了突破，为模拟环境的可视化奠定了坚实基础。
+
+## Genie 3 的核心能力
+
+* **实时交互**：`Genie 3` 是首个支持用户与生成环境实时交互的世界模型，用户可在 24 FPS、720p 分辨率的场景中自由移动与观察，模型在多分钟尺度上保持场景一致性和实时响应。
+* **物理属性建模**：模型充分学习并再现了诸如流动水体、光照变化及复杂地形交互等物理现象，使得生成的环境不仅视觉逼真，还能呈现自然规律下的动态变化。
+* **多样化生态**：从火山熔岩地带到海岸飓风场景，乃至冰川湖泊与热带雨林，`Genie 3` 能生成多种自然生态系统，植被、动物行为与气象条件都展现出极高的细节还原度。
+* **动画与虚构场景**：除现实世界模拟外，模型同样擅长创造奇幻动画场景与角色，如在想象中的森林中操控萤火虫，或在彩虹桥上追逐可爱生物，充分激发创意潜能。
+
+## 实验演示与应用场景
+
+DeepMind 官方展示了一系列实时交互演示视频，包括在火山地形中驾驶机器人、暴风雨中沿海公路行走、深海水下拍摄、森林徒步与瀑布观光等多种复杂场景，这些演示凸显了模型在不同环境下的鲁棒性和互操作性。此外，团队还演示了生成幻想风格的 3D 生物、日式禅院花园及神秘森林等虚构世界，表明 `Genie 3` 在游戏开发、影视特效和虚拟现实（VR/AR）应用领域具有巨大潜力。在本文开头的视频里，我们能看到如下各种交互方式下的高保真生成：
+
+* 世界物理特性建模
+* 自然世界模拟
+* 动画和虚构内容建模
+* 地理与历史探索
+* 实时能力的前沿拓展
+* 长时互动情况下的环境一致性
+* 即时生效的世界事件
+* 助力具身智能研究（仿真）
+
+![](/resources/2025/08/06/3eef6978-e7b7-4bdb-9d8d-13fa7cfccb6c.png)
+
+## 应用前景与行业影响
+
+`Genie 3` 的发布或将引领智能仿真与数字孪生技术的新潮流，为以下领域带来深远影响：
+
+* **游戏与娱乐**：实时生成可交互的开放世界，降低关卡设计成本，加速游戏原型迭代。
+* **机器人训练**：通过高度逼真的模拟环境，无需昂贵硬件即可训练并验证机器人控制策略。
+* **虚拟现实**：在 VR/AR 场景中提供更丰富多变的内容，提升用户沉浸式体验。
+* **科研模拟**：用于环境科学、灾害预测与可视化实验，加速跨学科研究进程。
+
+## 安全考量及未来展望
+
+DeepMind 同时公布了 `Genie 3` 的已知局限和安全与道德考量，包括对特定物理现象的细节还原仍有提升空间，以及可能出现的偏差或不一致场景；团队强调需要持续开展公平性评估、风险监控与滥用防范工作，以保障技术安全可靠地惠及各行各业。
+
+展望未来，DeepMind 计划将 `Genie 3` 与更大规模的智能体训练管道相结合，探索基于世界模型的无限课程学习，并进一步提升模型对复杂物理规则的理解与推演能力。此外，与多模态系统（如语言、视觉和动作一体化模型）的深度融合，也将是下一步研究重点，以加速 AGI 时代的到来。
+
+## 最后
+
+作为世界模型研究的新前沿，`Genie 3` 在实时交互、多样化场景与物理一致性方面取得了突破性进展，为 AI 在仿真、训练与创意生成等领域开启了新篇章。未来，随着模型能力的不断增强与安全责任的持续完善，基于 `Genie 3` 的智能仿真生态有望为科研、工业和娱乐带来全新机遇。
+
+## 参考
+
+* ``https://deepmind.google/discover/blog/genie-3-a-new-frontier-for-world-models/``
+* ``https://deepmind.google/discover/blog/genie-2-a-large-scale-foundation-world-model/``
+* ``https://deepmind.google/research/publications/60474/``
+* ``https://www.youtube.com/watch?v=PDKhUknuQDg``
