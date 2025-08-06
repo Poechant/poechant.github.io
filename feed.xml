@@ -1,4 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2025-07-10T17:16:40+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">趋势量化之 Event-Driven 1：上市公司发行可转债有什么影响（持续更新）</title><link href="https://www.mikecaptain.com/2023/09/19/cb-impact/" rel="alternate" type="text/html" title="趋势量化之 Event-Driven 1：上市公司发行可转债有什么影响（持续更新）" /><published>2023-09-19T08:00:13+08:00</published><updated>2023-09-19T08:00:13+08:00</updated><id>https://www.mikecaptain.com/2023/09/19/cb-impact</id><content type="html" xml:base="https://www.mikecaptain.com/2023/09/19/cb-impact/">&lt;p&gt;可转债（Convertible Bond，简称 CB），即可转换债券（或可换股债券），可按一定规则转换为债券发行公司的股票。其转换价格、转换时间段会在发行前确定。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2025-08-06T15:16:31+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">从生成影像到「生成世界」—— Google DeepMind Genie 3 打开世界模型的交互时代</title><link href="https://www.mikecaptain.com/2025/08/06/genie-3/" rel="alternate" type="text/html" title="从生成影像到「生成世界」—— Google DeepMind Genie 3 打开世界模型的交互时代" /><published>2025-08-06T08:01:13+08:00</published><updated>2025-08-06T08:01:13+08:00</updated><id>https://www.mikecaptain.com/2025/08/06/genie-3</id><content type="html" xml:base="https://www.mikecaptain.com/2025/08/06/genie-3/">&lt;p&gt;&lt;img src=&quot;/resources/2025/08/06/89bbafe0-3df1-473e-90e4-f3668c4e205f.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Google DeepMind 于北京时间 2025 年 8 月 6 日凌晨正式推出了其新一代通用世界模型 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Genie 3&lt;/code&gt;，该模型能够基于文本提示实时生成交互式虚拟环境，并以每秒 24 帧、720p 分辨率的速度保持数分钟的一致性和高保真度。作为世界模型研究的最新里程碑，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Genie 3&lt;/code&gt; 不仅在生成环境的一致性和逼真度上大幅提升，更首次支持了实时人机交互，为通向通用人工智能（AGI）奠定了坚实基础。&lt;/p&gt;
+
+&lt;div style=&quot;text-align:center&quot;&gt;
+	&lt;video width=&quot;720&quot; controls=&quot;&quot; preload=&quot;none&quot; poster=&quot;/resources/video/ChatGPT-XMind.jpg&quot;&gt;
+  		&lt;source src=&quot;/resources/video/ChatGPT-XMind.mp4&quot; type=&quot;video/mp4&quot; /&gt;你的浏览器不支持视频标签。
+	&lt;/video&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;背景世界模型的发展&quot;&gt;背景：世界模型的发展&lt;/h2&gt;
+
+&lt;p&gt;在过去十多年中，DeepMind 在模拟环境研究领域持续发力，从训练智能体在实时战略游戏（RTS）中制胜，到为开放式学习和机器人控制构建高保真模拟环境，世界模型始终是关键技术路径之一。世界模型让 AI 能够在虚拟场景里预测环境演化及其对智能体行动的反馈，从而实现无界限的训练课程与更高效的策略优化，这对于 AGI 的长期发展至关重要。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/resources/2025/08/06/3eef6978-e7b7-4bdb-9d8d-13fa7cfccb6c.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Genie 3&lt;/code&gt; 可以在更长的地平线上产生具有一致性且可互动的世界，如下是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Genie 2&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Genie 3&lt;/code&gt; 的对比。&lt;/p&gt;
+
+&lt;div style=&quot;text-align:center&quot;&gt;
+	&lt;video width=&quot;720&quot; controls=&quot;&quot; preload=&quot;none&quot; poster=&quot;/resources/video/ChatGPT-XMind.jpg&quot;&gt;
+  		&lt;source src=&quot;/resources/video/ChatGPT-XMind.mp4&quot; type=&quot;video/mp4&quot; /&gt;你的浏览器不支持视频标签。
+	&lt;/video&gt;
+&lt;/div&gt;
+
+&lt;div style=&quot;text-align:center&quot;&gt;
+	&lt;video width=&quot;720&quot; controls=&quot;&quot; preload=&quot;none&quot; poster=&quot;/resources/video/ChatGPT-XMind.jpg&quot;&gt;
+  		&lt;source src=&quot;/resources/video/ChatGPT-XMind.mp4&quot; type=&quot;video/mp4&quot; /&gt;你的浏览器不支持视频标签。
+	&lt;/video&gt;
+&lt;/div&gt;
+
+&lt;p&gt;2024 年，DeepMind 相继发布了 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Genie 1&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Genie 2&lt;/code&gt; 两代基础世界模型，能够自动生成全新场景供智能体探索，推动了智能体在逼真模拟中的自我强化学习；与此同时，DeepMind 的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Veo&lt;/code&gt; 系列视频生成模型（&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Veo 2&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Veo 3&lt;/code&gt;）也在物理直觉和场景连贯性方面取得了突破，为模拟环境的可视化奠定了坚实基础。&lt;/p&gt;
+
+&lt;h2 id=&quot;genie-3-的核心能力&quot;&gt;Genie 3 的核心能力&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;实时交互&lt;/strong&gt;：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Genie 3&lt;/code&gt; 是首个支持用户与生成环境实时交互的世界模型，用户可在 24 FPS、720p 分辨率的场景中自由移动与观察，模型在多分钟尺度上保持场景一致性和实时响应。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;物理属性建模&lt;/strong&gt;：模型充分学习并再现了诸如流动水体、光照变化及复杂地形交互等物理现象，使得生成的环境不仅视觉逼真，还能呈现自然规律下的动态变化。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;多样化生态&lt;/strong&gt;：从火山熔岩地带到海岸飓风场景，乃至冰川湖泊与热带雨林，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Genie 3&lt;/code&gt; 能生成多种自然生态系统，植被、动物行为与气象条件都展现出极高的细节还原度。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;动画与虚构场景&lt;/strong&gt;：除现实世界模拟外，模型同样擅长创造奇幻动画场景与角色，如在想象中的森林中操控萤火虫，或在彩虹桥上追逐可爱生物，充分激发创意潜能。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;实验演示与应用场景&quot;&gt;实验演示与应用场景&lt;/h2&gt;
+
+&lt;p&gt;DeepMind 官方展示了一系列实时交互演示视频，包括在火山地形中驾驶机器人、暴风雨中沿海公路行走、深海水下拍摄、森林徒步与瀑布观光等多种复杂场景，这些演示凸显了模型在不同环境下的鲁棒性和互操作性。此外，团队还演示了生成幻想风格的 3D 生物、日式禅院花园及神秘森林等虚构世界，表明 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Genie 3&lt;/code&gt; 在游戏开发、影视特效和虚拟现实（VR/AR）应用领域具有巨大潜力。在本文开头的视频里，我们能看到如下各种交互方式下的高保真生成：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;世界物理特性建模&lt;/li&gt;
+  &lt;li&gt;自然世界模拟&lt;/li&gt;
+  &lt;li&gt;动画和虚构内容建模&lt;/li&gt;
+  &lt;li&gt;地理与历史探索&lt;/li&gt;
+  &lt;li&gt;实时能力的前沿拓展&lt;/li&gt;
+  &lt;li&gt;长时互动情况下的环境一致性&lt;/li&gt;
+  &lt;li&gt;即时生效的世界事件&lt;/li&gt;
+  &lt;li&gt;助力具身智能研究（仿真）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/resources/2025/08/06/3eef6978-e7b7-4bdb-9d8d-13fa7cfccb6c.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;应用前景与行业影响&quot;&gt;应用前景与行业影响&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Genie 3&lt;/code&gt; 的发布或将引领智能仿真与数字孪生技术的新潮流，为以下领域带来深远影响：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;游戏与娱乐&lt;/strong&gt;：实时生成可交互的开放世界，降低关卡设计成本，加速游戏原型迭代。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;机器人训练&lt;/strong&gt;：通过高度逼真的模拟环境，无需昂贵硬件即可训练并验证机器人控制策略。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;虚拟现实&lt;/strong&gt;：在 VR/AR 场景中提供更丰富多变的内容，提升用户沉浸式体验。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;科研模拟&lt;/strong&gt;：用于环境科学、灾害预测与可视化实验，加速跨学科研究进程。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;安全考量及未来展望&quot;&gt;安全考量及未来展望&lt;/h2&gt;
+
+&lt;p&gt;DeepMind 同时公布了 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Genie 3&lt;/code&gt; 的已知局限和安全与道德考量，包括对特定物理现象的细节还原仍有提升空间，以及可能出现的偏差或不一致场景；团队强调需要持续开展公平性评估、风险监控与滥用防范工作，以保障技术安全可靠地惠及各行各业。&lt;/p&gt;
+
+&lt;p&gt;展望未来，DeepMind 计划将 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Genie 3&lt;/code&gt; 与更大规模的智能体训练管道相结合，探索基于世界模型的无限课程学习，并进一步提升模型对复杂物理规则的理解与推演能力。此外，与多模态系统（如语言、视觉和动作一体化模型）的深度融合，也将是下一步研究重点，以加速 AGI 时代的到来。&lt;/p&gt;
+
+&lt;h2 id=&quot;最后&quot;&gt;最后&lt;/h2&gt;
+
+&lt;p&gt;作为世界模型研究的新前沿，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Genie 3&lt;/code&gt; 在实时交互、多样化场景与物理一致性方面取得了突破性进展，为 AI 在仿真、训练与创意生成等领域开启了新篇章。未来，随着模型能力的不断增强与安全责任的持续完善，基于 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Genie 3&lt;/code&gt; 的智能仿真生态有望为科研、工业和娱乐带来全新机遇。&lt;/p&gt;
+
+&lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://deepmind.google/discover/blog/genie-3-a-new-frontier-for-world-models/&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://deepmind.google/discover/blog/genie-2-a-large-scale-foundation-world-model/&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://deepmind.google/research/publications/60474/&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://www.youtube.com/watch?v=PDKhUknuQDg&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="AGI" /><category term="Agent" /><category term="大模型" /><category term="Google" /><category term="DeepMind" /><category term="Genie 3" /><category term="Genie-3" /><category term="Genie" /><category term="Google AI" /><category term="多模态" /><category term="视频生成" /><category term="世界模型" /><category term="world model" /><category term="交互" /><category term="基础模型" /><category term="模型" /><summary type="html"></summary></entry><entry><title type="html">趋势量化之 Event-Driven 1：上市公司发行可转债有什么影响（持续更新）</title><link href="https://www.mikecaptain.com/2023/09/19/cb-impact/" rel="alternate" type="text/html" title="趋势量化之 Event-Driven 1：上市公司发行可转债有什么影响（持续更新）" /><published>2023-09-19T08:00:13+08:00</published><updated>2023-09-19T08:00:13+08:00</updated><id>https://www.mikecaptain.com/2023/09/19/cb-impact</id><content type="html" xml:base="https://www.mikecaptain.com/2023/09/19/cb-impact/">&lt;p&gt;可转债（Convertible Bond，简称 CB），即可转换债券（或可换股债券），可按一定规则转换为债券发行公司的股票。其转换价格、转换时间段会在发行前确定。&lt;/p&gt;
 
 &lt;p&gt;北京时间 2023 年 9 月 19 日清晨（美东时间 2023 年 9 月 18 日），蔚来（NIO.US）宣布拟发行本金总额 5 亿美元的、到期时间为 2029 年的可转债，以及本金总额 5 亿美元、到期时间为 2030 年的可转债。&lt;/p&gt;
 
@@ -2162,30 +2248,4 @@ Got dependencies!
 
 &lt;p&gt;全国农村有 1.33 亿应受九年义务教育的学生，按照政府公共职能的要求，中央和省政府应当让农村像对待城市 6000 万在受九年义务教育的学生一样享受义务教育制度的实惠，但是，实际上还有不少差距。有关数据显示：我国教育经费占全国财政支出的比重还呈现逐年缩小趋势，如 1996 年为 28.5%，1997-2000 年分别为 27.42%，27.31%，25.39%，24.22%。2000 年小学在校生每人平均预算内经费，城镇为 658 元，农村仅为 479 元，只相当于城镇的 72%。而且农村初中和小学义务教育经费只有 60%-70% 由财政预算内解决，其余 30%-40% 由社会团体、个人办学、社会捐资、公民集资办学、学费杂费和其他来源解决，结果还是增加了乡镇政府和农民群众的负担。此外，城市居民和职工一般享受公费医疗与养老保障等待遇，而农村居民医疗则基本上属于自理和传统的家庭养老制度。另外，在商品供销方面，过去城市居民吃、穿、用都是计划定量供应，而农村居民是生产者，留下种子与自用的和交够「统购任务」后才可以上市出售，不足时还要吃「返销粮」。现在虽然都是市场经济体制，但我国城乡这种分割的「二元结构」现象，还经常出现在现实生活与生产领域当中。如目前一些大中城市为了保证城市居民就业，限制农民进入城市较好的行业和工种。一些地方变相收取种种费用，如对农民工的子女上中小学收取高额「赞助费」。因此，实现城市化必需清除对农村劳动力进城不合理的限制，加快户籍制度的改革，彻底解决城乡居民的两种身份和两种就业待遇的不平等问题。&lt;/p&gt;
 
-&lt;p&gt;来源：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://politics.people.com.cn/n/2013/1114/c70731-23542867.html&lt;/code&gt;。&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="thinking" /><category term="China" /><category term="中国" /><category term="城市" /><category term="乡镇" /><category term="二元" /><category term="经济" /><category term="结构" /><category term="城乡二元经济结构" /><category term="二元经济结构" /><category term="城乡二元结构" /><category term="dual economic structure" /><category term="dualism" /><category term="urban-rural" /><summary type="html">美国作为互联网乃至科技行业的全球领导者，始终还是中国互联网及科技发展的关键参照物。两者相比，中国有很多独特的宏观因素导致无法使用 Time Machine 来照搬美国，同时目前前沿领域两者的时间差也已经非常小了（这非常不同于 PC 互联网浪潮），所以即便有 Time Machine 有效性也没那么充足了（尽管仍然有一定参考价值）。这其中有一个关键特征，就是中国的城乡二元经济结构，受此影响最显著的科技有公司比如拼多多</summary></entry><entry><title type="html">麦克船长：理解和重塑 AI 时代的八个一切 / The Eight ALLs for Understanding and Shaping the AI Era</title><link href="https://www.mikecaptain.com/2023/04/19/eight-alls-for-understanding-and-shaping-the-ai-era/" rel="alternate" type="text/html" title="麦克船长：理解和重塑 AI 时代的八个一切 / The Eight ALLs for Understanding and Shaping the AI Era" /><published>2023-04-19T12:40:13+08:00</published><updated>2023-04-19T12:40:13+08:00</updated><id>https://www.mikecaptain.com/2023/04/19/eight-alls-for-understanding-and-shaping-the-ai-era</id><content type="html" xml:base="https://www.mikecaptain.com/2023/04/19/eight-alls-for-understanding-and-shaping-the-ai-era/">&lt;p&gt;I am Mike Captain, a product manager focusing on the AI field. We often find ourselves constrained by current product forms, making it difficult to think about truly AI-native products. While pondering on how to build AI-native products, I have summarized the following eight points. I hope sharing them with you will be helpful:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;All social interactions can be non-human communication&lt;/li&gt;
-  &lt;li&gt;All content can be created by machines.&lt;/li&gt;
-  &lt;li&gt;All interfaces can be displayed with personalization.&lt;/li&gt;
-  &lt;li&gt;All interactions can be through natural language.&lt;/li&gt;
-  &lt;li&gt;All tasks can be delegated to machines.&lt;/li&gt;
-  &lt;li&gt;All true selves can be represented by digital avatars.&lt;/li&gt;
-  &lt;li&gt;All employees can be artificial intelligence.&lt;/li&gt;
-  &lt;li&gt;All tools can be intelligently reshaped.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;I welcome everyone to discuss AI-related products, technology, and business thoughts with me.&lt;/p&gt;
-
-&lt;p&gt;麦克船长：人工智能的八个一切（The 8 ALLs for AI）&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;一切社交都可以非人交流&lt;/li&gt;
-  &lt;li&gt;一切内容都可以机器创作&lt;/li&gt;
-  &lt;li&gt;一切界面都可以个性展现&lt;/li&gt;
-  &lt;li&gt;一切交互都可以自然语言&lt;/li&gt;
-  &lt;li&gt;一切事务都可以机器代劳&lt;/li&gt;
-  &lt;li&gt;一切真身都可以数字分身&lt;/li&gt;
-  &lt;li&gt;一切员工都可以人工智能&lt;/li&gt;
-  &lt;li&gt;一切工具都可以智能重塑&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="智能" /><category term="AGI" /><category term="产品" /><category term="互联网" /><category term="移动互联网" /><category term="PC" /><category term="PC互联网" /><category term="产品经理" /><category term="消费" /><category term="消费互联网" /><category term="商业" /><category term="巨头" /><category term="创业" /><category term="killer app" /><category term="app" /><category term="mobile" /><category term="internet" /><category term="social media" /><category term="social networks" /><category term="SNS" /><category term="本地生活" /><category term="远场" /><category term="近场" /><summary type="html">As a product manager focusing on the AI field, I often find ourselves constrained by current product forms, making it difficult to think about truly AI-native products. While pondering on how to build AI-native products, I have summarized the following eight points.</summary></entry></feed>
+&lt;p&gt;来源：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://politics.people.com.cn/n/2013/1114/c70731-23542867.html&lt;/code&gt;。&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="thinking" /><category term="China" /><category term="中国" /><category term="城市" /><category term="乡镇" /><category term="二元" /><category term="经济" /><category term="结构" /><category term="城乡二元经济结构" /><category term="二元经济结构" /><category term="城乡二元结构" /><category term="dual economic structure" /><category term="dualism" /><category term="urban-rural" /><summary type="html">美国作为互联网乃至科技行业的全球领导者，始终还是中国互联网及科技发展的关键参照物。两者相比，中国有很多独特的宏观因素导致无法使用 Time Machine 来照搬美国，同时目前前沿领域两者的时间差也已经非常小了（这非常不同于 PC 互联网浪潮），所以即便有 Time Machine 有效性也没那么充足了（尽管仍然有一定参考价值）。这其中有一个关键特征，就是中国的城乡二元经济结构，受此影响最显著的科技有公司比如拼多多</summary></entry></feed>
