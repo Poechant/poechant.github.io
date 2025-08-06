@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>时隔六年再开源，OpenAI 发布两款语言模型，主打端侧场景</title>
+  	<meta name="description" content="距离 OpenAI 上一次开源语言模型已经过去了 6 年 —— 北京时间 2025 年 8 月 6 日凌晨 00:22，美国人工智能公司 OpenAI 在官网发文，声称发布两款开放权重推理模型 ``gpt-oss-120b`` 和 ``gpt-oss-20b``，也是 ``GPT-2`` 之后的第一个开放权重语言模型。">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+  	<!-- KaTeX -->
+  	<link rel="stylesheet" href="/assets/plugins/katex.0.11.1/katex.min.css">
+  	
+
+  	
+  		<script async src="https://www.googletagmanager.com/gtag/js?id=G-CH4708X4R5"></script>
+  		<script>
+    		window.dataLayer = window.dataLayer || [];
+    		function gtag(){dataLayer.push(arguments);}
+    		gtag('js', new Date());
+
+    		gtag('config', 'G-CH4708X4R5');
+  		</script>
+	
+
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/booklist/" title="读书行路">读书行路</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="AI">AI</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="RT">RT</a>
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/quant" title="投资">投资</a>
+
+
+
+
+
+  <a href="/category/thinking" title="思考">思考</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="AI">AI</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="RT">RT</a>
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/quant" title="投资">投资</a>
+
+
+
+
+
+  <a href="/category/thinking" title="思考">思考</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+
+		<main>
+
+			<article id="post-page">
+	<h2>时隔六年再开源，OpenAI 发布两款语言模型，主打端侧场景</h2>		
+	<time datetime="2025-08-06T08:01:10+08:00" class="by-line">06 Aug 2025, 杭州 | 麦克船长 | 总计 2566 字</time>
+	<div class="content">
+		<p><img src="/resources/2025/08/06/3.jpg" alt="" /></p>
+
+<p>距离 OpenAI 上一次开源语言模型已经过去了 6 年 —— 北京时间 2025 年 8 月 6 日凌晨 00:22，美国人工智能公司 OpenAI 在官网发文，声称发布两款开放权重推理模型 <code class="language-plaintext highlighter-rouge">gpt-oss-120b</code> 和 <code class="language-plaintext highlighter-rouge">gpt-oss-20b</code>，也是 <code class="language-plaintext highlighter-rouge">GPT-2</code> 之后的第一个开放权重语言模型。</p>
+
+<h4 id="先看看开源了啥">先看看开源了啥？</h4>
+
+<ul>
+  <li>模型权重：<code class="language-plaintext highlighter-rouge">gpt-oss-120b</code>、<code class="language-plaintext highlighter-rouge">gpt-oss-20b</code>（含 MXFP4 量化版），许可证 <code class="language-plaintext highlighter-rouge">Apache-2.0</code>；</li>
+  <li>推理脚本：官方 PyTorch 版 + Apple Metal 优化版；</li>
+  <li>开发组件：Python/Rust 版 Harmony renderer；</li>
+  <li>分词器：<code class="language-plaintext highlighter-rouge">o200k_harmony</code>（≈20 万词），与 <code class="language-plaintext highlighter-rouge">gpt-o4-mini</code> / <code class="language-plaintext highlighter-rouge">gpt-4o</code> 系列同源，用于长上下文与工具调用。</li>
+</ul>
+
+<h4 id="两款模型概览120b-参数和-20b-参数128k-上下文长度">两款模型概览：120b 参数和 20b 参数、128k 上下文长度</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">gpt-oss-120b</code>：36 层 Transformer + MoE，总参数 116.8b，每个 token 激活 5.1b 参数；单张 80 GB GPU 即可推理。</li>
+  <li><code class="language-plaintext highlighter-rouge">gpt-oss-20b</code>：24 层，总参数 20.9b，每个 token 激活 3.6b 参数；只需 16 GB 内存即可运行。</li>
+  <li>二者均支持最长 128k 上下文窗口，采用旋转位置编码（RoPE）与分组多查询注意力（group size = 8）。</li>
+  <li>所有权重以 <code class="language-plaintext highlighter-rouge">Apache-2.0</code> 许可证发布，并已在 Hugging Face 上线。官方同时给出了 <code class="language-plaintext highlighter-rouge">MXFP4</code> 量化版（4.25 bit），分别缩减至 60.8 GB 与 12.8 GB，方便单机部署。</li>
+</ul>
+
+<h4 id="性能20b-即追平-o3-mini120b-挑战-o4-mini">性能：20b 即追平 o3-mini，120b 挑战 o4-mini</h4>
+
+<p>官方基准测试显示，<code class="language-plaintext highlighter-rouge">gpt-oss-120b</code> 在 Codeforces、MMLU、HLE 等推理评测上可与 OpenAI 自家商用模型 <code class="language-plaintext highlighter-rouge">gpt-o4-mini</code>「打成平手」，并在 AIME 竞赛数学、HealthBench 医疗问答上反超。体量仅为其六分之一的 <code class="language-plaintext highlighter-rouge">gpt-oss-20b</code> 亦与 <code class="language-plaintext highlighter-rouge">gpt-o3-mini</code> 水平相当，在部分数学与医疗任务中甚至略胜一筹。</p>
+
+<p>更值得关注的是工具使用与代理式推理：在 Tau-Bench 评测套件中，两款模型都展示了强大的浏览器、Python 代码和函数调用能力，为未来本地化 Agent 场景奠定了基础。</p>
+
+<h4 id="架构与训练细节transformer-moe--三档推理力度">架构与训练细节：Transformer-MoE + 三档推理力度</h4>
+
+<ul>
+  <li>MoE 设计：120b 含 128 个专家、20b 含 32 个专家，每 token 仅激活 4 个专家，有效降低计算开销。</li>
+  <li>训练数据：以英文为主，偏重 STEM 与代码语料；使用全新的 <code class="language-plaintext highlighter-rouge">o200k_harmony</code> 分词器（同步开源）。</li>
+  <li>后训练：沿用 <code class="language-plaintext highlighter-rouge">gpt-o4-mini</code> 的「监督 SFT + 高算力 RL」流程，并额外加入「可变推理力度」训练，使模型能在低、中、高三档模式间切换，开发者仅需一行 system 指令即可指定 latency / accuracy 取舍。</li>
+  <li>Harmony Chat Format：模型默认支持 OpenAI 最新的提示层级体系与结构化输出，便于与 Responses API 及外部 Agent 框架衔接。</li>
+</ul>
+
+<h4 id="安全评估首次公开恶意微调极限测试">安全评估：首次公开「恶意微调」极限测试</h4>
+
+<p>伴随模型发布，OpenAI 同步发出 30 来页的《Estimating Worst-Case Frontier Risks of Open-Weight LLMs》。论文提出「Malicious Fine-Tuning（MFT）」方法：</p>
+
+<ul>
+  <li>先利用 RL 将模型的拒绝策略完全「拆除」；</li>
+  <li>再在生物、网络安全两个高风险域内，通过浏览器、终端等工具环境进行能力最大化训练。</li>
+</ul>
+
+<p>结果显示，即便在 OpenAI 自研顶级训练栈下，MFT 后的 <code class="language-plaintext highlighter-rouge">gpt-oss-120b</code> 仍低于 Preparedness Framework 的 「High」 能力阈值，综合实力落后于闭源模型 o3。这一结论为「可公开发布」提供了直接佐证。</p>
+
+<p>此外，OpenAI 宣布设立 50 万美元「Red Teaming Challenge」奖金池，邀请全球研究者挖掘新型安全问题，并将在赛后开源评测集与报告。</p>
+
+<h4 id="生态与部署从桌面到云端的全链路打通">生态与部署：从桌面到云端的「全链路打通」</h4>
+
+<ul>
+  <li>合作伙伴覆盖云（Azure、AWS、Databricks 等）、推理框架（vLLM、llama.cpp、Ollama、LM Studio）、CDN/Edge（Cloudflare、Vercel）以及硬件厂商（NVIDIA、AMD、Cerebras、Groq）。</li>
+  <li>微软同步在 Windows 端上线 gpt-oss-20b 的 ONNX Runtime 版本，VS Code AI Toolkit 内可一键本地推理。</li>
+</ul>
+
+<h4 id="结语">结语</h4>
+
+<p>从性能、成本到安全规范，<code class="language-plaintext highlighter-rouge">gpt-oss</code> 的发布无疑是 2025 年开源大模型领域最重磅的事件之一。它不仅象征着 OpenAI 重启「权重公开」路线，更向业界展示了「高能力 + 高安全」并非零和。随着更多社区开发者与企业加入测试与精调，<code class="language-plaintext highlighter-rouge">gpt-oss</code> 能否像当年的 <code class="language-plaintext highlighter-rouge">GPT-2</code> 那样掀起新一轮创新浪潮，值得持续关注。</p>
+
+<h4 id="参考">参考</h4>
+<ul>
+  <li>Blog：<code class="language-plaintext highlighter-rouge">https://openai.com/index/introducing-gpt-oss/</code></li>
+  <li>Paper：<code class="language-plaintext highlighter-rouge">https://cdn.openai.com/pdf/231bf018-659a-494d-976c-2efdfc72b652/oai_gpt-oss_Model_Safety.pdf</code></li>
+  <li>Model Card：<code class="language-plaintext highlighter-rouge">https://cdn.openai.com/pdf/419b6906-9da6-406c-a19d-1bb078ac7637/oai_gpt-oss_model_card.pdf</code></li>
+  <li>Red Teaming Challenge：<code class="language-plaintext highlighter-rouge">https://www.kaggle.com/competitions/openai-gpt-oss-20b-red-teaming/</code></li>
+  <li>HuggingFace：<code class="language-plaintext highlighter-rouge">https://huggingface.co/openai/gpt-oss-120b</code></li>
+</ul>
+
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+	<span>
+		-<br/><br/>
+		船长还不会游泳 at 微信公众号/微博<br/>
+		@麦克船长 at 即刻/知乎/小宇宙/掘金/小红书/微信读书<br/>
+		@船长模玩 at Bilibili<br/>
+		Copyright © 2011-2023, MikeCaptain.com
+	</span>
+</footer>
+
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
