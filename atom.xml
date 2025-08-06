@@ -4,7 +4,7 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2025-08-06T17:04:38+08:00</updated>
+ <updated>2025-08-06T17:20:43+08:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
@@ -18,7 +18,7 @@
    <link href="https://www.mikecaptain.com/2025/08/06/genie-3/"/>
    <id>https://www.mikecaptain.com/2025/08/06/genie-3</id>
    <updated>2025-08-06T08:01:13+08:00</updated>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;/resources/2025/08/06/unnamed.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;Google DeepMind 于北京时间 2025 年 8 月 6 日凌晨正式推出了其新一代通用世界模型 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Genie 3&lt;/code&gt;，该模型能够基于文本提示实时生成交互式虚拟环境，并以每秒 24 帧、720p 分辨率的速度保持数分钟的一致性和高保真度。作为世界模型研究的最新里程碑，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Genie 3&lt;/code&gt; 不仅在生成环境的一致性和逼真度上大幅提升，更首次支持了实时人机交互，为通向通用人工智能（AGI）奠定了坚实基础。&lt;/p&gt; &lt;div style=&quot;text-align:center&quot;&gt; &lt;video width=&quot;720&quot; controls=&quot;&quot; preload=&quot;none&quot; poster=&quot;/resources/2025/08/06/unnamed.webp&quot;&gt; &lt;source src=&quot;/resources/2025/08/06/ChatGPT-XMind.mp4&quot; type=&quot;video/mp4&quot; /&gt;你的浏览器不支持视频标签。 &lt;/video&gt; &lt;/div&gt; &lt;h2 id=&quot;背景世界模型的发展&quot;&gt;背景：世界模型的发展&lt;/h2&gt; &lt;p&gt;在过去十多年中，DeepMind 在模拟环境研究领域持续发力，从训练智能体在实时战略游戏（RTS）中制胜，到为开放式学习和机器人控制构建高保真模拟环境，世界模型始终是关键技术路径之一。世界模型让 AI 能够在虚拟场景里预测环境演化及其对智能体行动的反馈，从而实现无界限的训练课程与更高效的策略优化，这对于 AGI 的长期发展至关重要。&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/resources/2025/08/06/unnamed2.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;&lt;code...</content>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/resources/2025/08/06/unnamed.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;Google DeepMind 于北京时间 2025 年 8 月 6 日凌晨正式推出了其新一代通用世界模型 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Genie 3&lt;/code&gt;，该模型能够基于文本提示实时生成交互式虚拟环境，并以每秒 24 帧、720p 分辨率的速度保持数分钟的一致性和高保真度。作为世界模型研究的最新里程碑，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Genie 3&lt;/code&gt; 不仅在生成环境的一致性和逼真度上大幅提升，更首次支持了实时人机交互，为通向通用人工智能（AGI）奠定了坚实基础。&lt;/p&gt; &lt;div style=&quot;text-align:center&quot;&gt; &lt;video width=&quot;720&quot; controls=&quot;&quot; poster=&quot;/resources/2025/08/06/unnamed.webp&quot;&gt; &lt;source src=&quot;/resources/2025/08/06/ChatGPT-XMind.mp4&quot; type=&quot;video/mp4&quot; /&gt;你的浏览器不支持视频标签。 &lt;/video&gt; &lt;/div&gt; &lt;h2 id=&quot;背景世界模型的发展&quot;&gt;背景：世界模型的发展&lt;/h2&gt; &lt;p&gt;在过去十多年中，DeepMind 在模拟环境研究领域持续发力，从训练智能体在实时战略游戏（RTS）中制胜，到为开放式学习和机器人控制构建高保真模拟环境，世界模型始终是关键技术路径之一。世界模型让 AI 能够在虚拟场景里预测环境演化及其对智能体行动的反馈，从而实现无界限的训练课程与更高效的策略优化，这对于 AGI 的长期发展至关重要。&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/resources/2025/08/06/unnamed2.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;&lt;code class=&quot;language-plaintext...</content>
  </entry>
 
  
