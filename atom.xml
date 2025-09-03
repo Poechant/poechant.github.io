@@ -4,12 +4,29 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2025-08-06T17:52:04+08:00</updated>
+ <updated>2025-09-03T15:37:45+08:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
    <email>zhongchao.ustc@gmail.com</email>
  </author>
+
+ 
+
+ <entry>
+   <title>要做 Human-AI Cocreation，而不是一键/一句话 XXX</title>
+   <link href="https://www.mikecaptain.com/2025/08/30/human-ai-cocreation/"/>
+   <id>https://www.mikecaptain.com/2025/08/30/human-ai-cocreation</id>
+   <updated>2025-08-30T12:00:13+08:00</updated>
+   <content type="html">&lt;p&gt;在创作生产力领域，做 Human-AI Cocreation 产品的价值，远远大于一键/一句话 XXX 类产品。&lt;/p&gt;
+
+&lt;p&gt;当各种生产力工具产品发展越来越强，大众整体的创作水平水涨船高，那么注意力/流量流向哪里呢？还是只能流向人类创意差异化领先的那部分创作，这个格局只会不断洗牌但结构不会改变，人依然是核心变量、最高价值。Human-AI Cocreation 形式的 Agent 是创作生产力领域 AI Agent 的核心形态，人的参与比重可能会变少，但不会消失。各类“一键XXX”“一句话XXX”类产品的时间窗口期都很短 ，因为同质化创作与注意力争夺。&lt;/p&gt;
+
+&lt;p&gt;而“先做一键/一句话再演化”这个路线更难走通，也是因为前者迅速进入同质化增长乏力后，还要面对这两个用户群体完全不同、产品/技术栈不同、营销增长不同、上下游工具链完全不同领域的问题。&lt;/p&gt;
+
+&lt;p&gt;但这里有一个极大的难点，就是 GenAI 不会改变的是，真正主流的生产力工具一定也出自这个领域的重度深度用户之手（这样背景的产研团队），而非外来的和尚会念经 —— Cursor 四位创始人最初做的是 CAD 的 AI 产品，后来发现自己完全不懂，还是搞自己最熟悉的 Code 吧。而且具备开发上一代生产力工具（GenAI 之前的时代）的经验，和你是这个领域的深度重度用户又是两码事，这个展开说就多了，以后再聊。&lt;/p&gt;
+</content>
+ </entry>
 
  
 
@@ -99,16 +116,6 @@
    <id>https://www.mikecaptain.com/2023/05/26/captain-lima</id>
    <updated>2023-05-26T15:40:13+08:00</updated>
    <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src2/2023/05/26/3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;5 月 22 日 LeCun 发推 称：&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;LIMA: LLaMA 65B + 1000 supervised samples = {GPT4, Bard} level performance. From @MetaAI&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;这是来自 Meta AI、卡耐基梅隆大学、南加州大学和特拉维夫大学的研究人员近期发表的一篇论文，他们通过训练 LLaMA 的 650 亿参数版本得到的 LIMA（Less Is More for Alignment）来衡量这两个阶段的相对重要性，比较 LIMA 和其他模型（DaVinci003、BARD、Claude、GPT-4）的结果来评价模型表现，评价方式一是通过人工，二是通过 GPT-4。从结果来看，LIMA 展现了强大的性能。研究人员提出了「表面对齐假设（Superfacial Alignment Hypothesis）」，&lt;strong&gt;这些实验结果强烈地表明，大型语言模型中几乎所有的知识都是在预训练阶段学到的，只需要有限的指令微调数据，就可以教会模型产生高质量的输出&lt;/strong&gt;。&lt;/p&gt; &lt;h2 id=&quot;一大语言模型的两个训练阶段&quot;&gt;一、大语言模型的两个训练阶段&lt;/h2&gt; &lt;p&gt;麦克船长在 2023 年...</content>
- </entry>
-
- 
-
- <entry>
-   <title>麦克船长的全栈指南：Google Flutter 开发跨平台 APP</title>
-   <link href="https://www.mikecaptain.com/2023/04/29/captain-flutter-1/"/>
-   <id>https://www.mikecaptain.com/2023/04/29/captain-flutter-1</id>
-   <updated>2023-04-29T16:10:13+08:00</updated>
-   <content type="html">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#第一章--准备与-first-step&quot; id=&quot;markdown-toc-第一章--准备与-first-step&quot;&gt;第一章 · 准备与 First Step&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#第-1-节--环境配置与-hello-world&quot; id=&quot;markdown-toc-第-1-节--环境配置与-hello-world&quot;&gt;第 1 节 · 环境配置与 Hello World&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第-2-节--first-step在-macos-平台跑第一个-app&quot; id=&quot;markdown-toc-第-2-节--first-step在-macos-平台跑第一个-app&quot;&gt;第 2 节 · First Step：在 macOS 平台跑第一个 App&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第-3-节--在-ios-平台设备及模拟器上跑起第一个-app&quot; id=&quot;markdown-toc-第-3-节--在-ios-平台设备及模拟器上跑起第一个-app&quot;&gt;第 3 节 · 在 iOS 平台（设备及模拟器）上跑起第一个 App&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第-4-节--在-android-平台跑起第一个-app&quot; id=&quot;markdown-toc-第-4-节--在-android-平台跑起第一个-app&quot;&gt;第 4 节 · 在 Android 平台跑起第一个...</content>
  </entry>
 
  
