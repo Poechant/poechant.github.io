@@ -4,10 +4,10 @@ title: 先进生产力与创造价值的衡量原则
 date: 2026-01-11 12:00:13 +0800
 categories: ai
 tags: [AI, 人工智能, 先进生产力, 先进文化, 创造, 价值观, 三个代表, 模型红利, Human-AI Cocreation]
-description: 
-excerpt: 
+description: 探讨如何衡量创造价值：从"皆平等"到识别先进生产力与先进文化。通过 ChatGPT、DeepSeek、黑神话悟空等案例，分析模型红利、Human-AI Cocreation 等 GenAI 时代的先进生产力实践，提出追随、开拓甚至引领先进方向是衡量创造价值的基本原则。
+excerpt: 创造有很高的优先级，但"创造"的价值和方向应该怎么衡量和判断呢？从 ChatGPT、黑神话悟空、电动汽车等发展来看，先进生产力的发展方向、先进文化的发展方向就应该是优先考虑的方向。追随、开拓甚至引领这样的方向，就是衡量创造价值的基本原则。 
 katex: True
-location: 
+location: 杭州
 author: 麦克船长
 pinned: no
 ---
