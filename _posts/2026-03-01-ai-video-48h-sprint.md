@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  除夕前的 48 小时极限：在一个“僵尸号”上用 AI 拿到了 3K+ 赞，并总结出未来四层视频创作模式
+title:  除夕前的 48 小时极限：在“僵尸号”上用 AI 拿到了 3K+ 赞，并总结出未来四层视频创作模式
 date:   2026-03-01 03:20:00 +0800
 categories: ai
 tags: [AI视频, 视频创作, 变形金刚, 即梦, Seedance, Nano Banana, Gemini, Claude Code, Video-editing Agent, 生产力革命, 麦克船长, 科技复盘, 冷启动, B站爆款, 视频号, 自动化后期]
