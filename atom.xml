@@ -4,12 +4,22 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2026-01-12T00:28:28+08:00</updated>
+ <updated>2026-03-01T03:41:10+08:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
    <email>zhongchao.ustc@gmail.com</email>
  </author>
+
+ 
+
+ <entry>
+   <title>大年三十前的 48 小时极限：在一个“僵尸号”上用 AI 拿到了 3K+ 赞</title>
+   <link href="https://www.mikecaptain.com/2026/03/01/ai-video-48h-sprint/"/>
+   <id>https://www.mikecaptain.com/2026/03/01/ai-video-48h-sprint</id>
+   <updated>2026-03-01T03:20:00+08:00</updated>
+   <content type="html">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#大年三十前的-48-小时极限在一个僵尸号上用-ai-拿到了-3k-赞&quot; id=&quot;markdown-toc-大年三十前的-48-小时极限在一个僵尸号上用-ai-拿到了-3k-赞&quot;&gt;大年三十前的 48 小时极限：在一个“僵尸号”上用 AI 拿到了 3K+ 赞&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#1-为什么选在年关将近时开工&quot; id=&quot;markdown-toc-1-为什么选在年关将近时开工&quot;&gt;1. 为什么选在年关将近时开工？&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#2-创作的四层模型重新定义工作流&quot; id=&quot;markdown-toc-2-创作的四层模型重新定义工作流&quot;&gt;2. 创作的“四层模型”：重新定义工作流&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#第一层逻辑层-scripting&quot; id=&quot;markdown-toc-第一层逻辑层-scripting&quot;&gt;第一层：逻辑层 (Scripting)&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第二层资产层-configuring&quot; id=&quot;markdown-toc-第二层资产层-configuring&quot;&gt;第二层：资产层 (Configuring)&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第三层编排层-orchestrating&quot; id=&quot;markdown-toc-第三层编排层-orchestrating&quot;&gt;第三层：编排层 (Orchestrating)&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第四层表现层-packaging&quot; id=&quot;markdown-toc-第四层表现层-packaging&quot;&gt;第四层：表现层 (Packaging)&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#3-抓狂的-48-小时与video-editing-agent的思考&quot; id=&quot;markdown-toc-3-抓狂的-48-小时与video-editing-agent的思考&quot;&gt;3. 抓狂的 48 小时与“Video-editing Agent”的思考&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#4-观众到底在看什么&quot; id=&quot;markdown-toc-4-观众到底在看什么&quot;&gt;4....</content>
+ </entry>
 
  
 
@@ -106,16 +116,6 @@
    <id>https://www.mikecaptain.com/2023/06/25/autonomous-ai</id>
    <updated>2023-06-25T12:00:13+08:00</updated>
    <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src2/2023/06/26/23.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;最近对于本轮生成式 AI 浪潮的讨论，进入了一个新阶段，大家从模糊地认为是巨大变革，逐渐开始探讨具体的变革机会点。我想讲讲自己对于本轮技术变革，在 to B 领域的一些基本观点。这些基本观点，是有争议的、非共识的，但我想有必要输出，以换来更多朋友与我的交流碰撞。&lt;/p&gt; &lt;p&gt;因此本文围绕本轮生成式 AI 在 To B 领域的应用落地，分五部分探讨：&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;数字化应用演进曲线（包括 To B 和 To C）&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;初步探讨 To B 领域当下用到的 AI 核心能力是什么&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;关于预测（Prediction）&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;关于自主（Autonomy）&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;什么样的团队会把握住这次机遇？最佳切入点是什么？&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h2 id=&quot;一麦克船长数字化应用演进曲线&quot;&gt;一、麦克船长：数字化应用演进曲线&lt;/h2&gt; &lt;p&gt;为什么聊 to B 领域？当下阶段的生成式 AI 技术在 to C 和 to B 领域的应用差异是非常大的。理解这件事情，我们要宏观看下大时间尺度上，我们过去、当下、未来经历什么技术演进。陆奇博士提过将数字化应用的发展分为三个阶段 information → model...</content>
- </entry>
-
- 
-
- <entry>
-   <title>【摘录】投资中的节奏与结构 | 42章经</title>
-   <link href="https://www.mikecaptain.com/2023/06/21/super-identity/"/>
-   <id>https://www.mikecaptain.com/2023/06/21/super-identity</id>
-   <updated>2023-06-21T12:00:13+08:00</updated>
-   <content type="html">&lt;ul&gt; &lt;li&gt;本文作者：张津剑&lt;/li&gt; &lt;li&gt;文章摘自：&lt;a href=&quot;https://mp.weixin.qq.com/s/1bwTtJBi4vF5DEsLWFkAKw&quot;&gt;微信公众号「42 章经」《投资中的节奏与结构 42章经》&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;img src=&quot;/img/src2/2023/06/21/640.jpeg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;从第一篇经典的 投资中的信号与噪声 以来，绿洲资本合伙人张津剑已陆续在 42章经 发表了三篇原创文章（其余两篇为 投资决策中的信噪比 和 投资中的周期与载波）。这三篇文章从 2018 年至今，可谓是横跨了周期，也启发了很多投资行业的从业者。&lt;/p&gt; &lt;p&gt;这几年来一级市场经历了很多波峰和波谷，在市场中剔除噪声寻找信号也变得越来越难，而在很长时间的沉寂后，AI 是否能带来市场的复苏，大模型和应用层等未来到底会有多大的机会，我们如何再用信号处理的视角来判断当下的市场呢？&lt;/p&gt; &lt;p&gt;这些都能在本文，亦即本系列的第四篇文章中找到答案，相信这系列文章的回归，也能带给更多老朋友们大展拳脚的信心。&lt;/p&gt; &lt;p&gt;熟悉我（以下指张津剑）的朋友都知道，2012 年以前我修过 7 年的雷达，专注在信息工程领域，研究信号与噪音的处理。2012 年之后，我加入挚信资本学习投资，7 年之后创办绿洲，前后加在一起 11 年了。&lt;/p&gt; &lt;p&gt;在这 11 年的投资过程中，我遇到过很多问题，回头来看，这些问题都可以归为两类，一类是节奏性问题，一类是结构性问题。这两类问题的区别在于驱动问题的是随机性的外因，还是结构性的内因。&lt;/p&gt; &lt;p&gt;我举个例子：有个创始人，和合伙人三天一小吵、五天一大吵。最开始找我咨询与合伙人交流的经验，后来竟然去上了一个补习班，学习如何高效沟通。在他看来，每次吵架的原因都是不一样的，有的因为投放策略，有的因为招人，看上去都是随机性外因。其实在我来看，本质是他与合伙人之间价值观不同、目标不一致导致的结构性内因。他不需要学习沟通技巧，而是需要和合伙人坦诚沟通，面对价值观和目标差异的现实和真相。&lt;/p&gt; &lt;p&gt;再比如有个创始人做了款产品，市场前景光明，需求明确，但市场低迷，政策监管不清晰，于是他认为这是产业的结构性内因，问投资人：是否应该换方向？但这个问题可能不是结构性问题，而是随机性外因造成的节奏性问题。&lt;/p&gt; &lt;p&gt;所以生活中的诸多烦恼，很多是因为我们误判了问题的节奏性和结构性，进而做出错误的行为：该面对的时候没有面对，该坚持的时候没有坚持。&lt;/p&gt; &lt;p&gt;回到大家最关注的 AI 领域。在过去半年多的时间里，绿洲是这个领域最积极、出手最频繁的基金之一，我们投资了不少 AI 公司，也感受到不少焦虑：算力限制下，中国大模型行不行？头部公司很多，Open AI 都亲自下场，创业公司还有没有机会？诸如此类。那么这些问题是节奏性还是结构性？我们应该直面真相，还是坚守初心?&lt;/p&gt; &lt;p&gt;&lt;strong&gt;这让我想起德鲁克说过的观点，大概意思是企业家的核心能力就是将外部变化转换为内部机遇&lt;/strong&gt;。所以忽略节奏性问题，抓住结构性变化就是核心。那我们应该如何做呢？&lt;/p&gt; &lt;p&gt;我们先换个视角来看这个问题。过去提到工业革命，教科书里有一句话——瓦特改良蒸汽机。读起来，感觉就像他晚上刷了一晚上小红书，早上起来就改良了。当然不可能，但是我们作为人思考问题，总是喜欢将注意力集中在变化最大的地方，就是我们日常说的高光时刻：浪子回头，英雄救美，立地成佛，我们期待某种“大绝招”式的发展。&lt;/p&gt; &lt;p&gt;然而世界从来不是戏剧性的「大绝招」，而是结构性的「日拱一卒」。&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/img/src2/2023/06/21/640-1.png&quot;...</content>
  </entry>
 
  

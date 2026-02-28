@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>大年三十前的 48 小时极限：在一个“僵尸号”上用 AI 拿到了 3K+ 赞</title>
+  	<meta name="description" content="本文是麦克船长关于 AI 视频创作的实战复盘。记录了大年二十八、二十九这两天，如何利用 Gemini、Claude Code、Nano Banana 和 Seedance 等 AI 工具链进行 48 小时极限创作，并在大年初一实现账号冷启动爆发，全网累积获得超过 3000 赞的经历。文中详细拆解了“逻辑-资产-编排-表现”四层模型，并提出了视频工业应用层核心在于 Video-editing Agent 的深刻洞察。">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+
+  	
+  		<script async src="https://www.googletagmanager.com/gtag/js?id=G-CH4708X4R5"></script>
+  		<script>
+    		window.dataLayer = window.dataLayer || [];
+    		function gtag(){dataLayer.push(arguments);}
+    		gtag('js', new Date());
+
+    		gtag('config', 'G-CH4708X4R5');
+  		</script>
+	
+
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/booklist/" title="读书行路">读书行路</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="AI">AI</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="RT">RT</a>
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/quant" title="投资">投资</a>
+
+
+
+
+
+  <a href="/category/thinking" title="思考">思考</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="AI">AI</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="RT">RT</a>
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/quant" title="投资">投资</a>
+
+
+
+
+
+  <a href="/category/thinking" title="思考">思考</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+
+		<main>
+
+			<article id="post-page">
+	<h2>大年三十前的 48 小时极限：在一个“僵尸号”上用 AI 拿到了 3K+ 赞</h2>		
+	<time datetime="2026-03-01T03:20:00+08:00" class="by-line">01 Mar 2026, 杭州 | 麦克船长 | 总计 2940 字</time>
+	<div class="content">
+		<p><strong>本文目录</strong></p>
+<ul id="markdown-toc">
+  <li><a href="#大年三十前的-48-小时极限在一个僵尸号上用-ai-拿到了-3k-赞" id="markdown-toc-大年三十前的-48-小时极限在一个僵尸号上用-ai-拿到了-3k-赞">大年三十前的 48 小时极限：在一个“僵尸号”上用 AI 拿到了 3K+ 赞</a>    <ul>
+      <li><a href="#1-为什么选在年关将近时开工" id="markdown-toc-1-为什么选在年关将近时开工">1. 为什么选在年关将近时开工？</a></li>
+      <li><a href="#2-创作的四层模型重新定义工作流" id="markdown-toc-2-创作的四层模型重新定义工作流">2. 创作的“四层模型”：重新定义工作流</a>        <ul>
+          <li><a href="#第一层逻辑层-scripting" id="markdown-toc-第一层逻辑层-scripting">第一层：逻辑层 (Scripting)</a></li>
+          <li><a href="#第二层资产层-configuring" id="markdown-toc-第二层资产层-configuring">第二层：资产层 (Configuring)</a></li>
+          <li><a href="#第三层编排层-orchestrating" id="markdown-toc-第三层编排层-orchestrating">第三层：编排层 (Orchestrating)</a></li>
+          <li><a href="#第四层表现层-packaging" id="markdown-toc-第四层表现层-packaging">第四层：表现层 (Packaging)</a></li>
+        </ul>
+      </li>
+      <li><a href="#3-抓狂的-48-小时与video-editing-agent的思考" id="markdown-toc-3-抓狂的-48-小时与video-editing-agent的思考">3. 抓狂的 48 小时与“Video-editing Agent”的思考</a></li>
+      <li><a href="#4-观众到底在看什么" id="markdown-toc-4-观众到底在看什么">4. 观众到底在看什么？</a></li>
+      <li><a href="#5-给创作者的忠告别死磕生成学会编排" id="markdown-toc-5-给创作者的忠告别死磕生成学会编排">5. 给创作者的忠告：别死磕生成，学会编排</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="大年三十前的-48-小时极限在一个僵尸号上用-ai-拿到了-3k-赞">大年三十前的 48 小时极限：在一个“僵尸号”上用 AI 拿到了 3K+ 赞</h1>
+
+<p>大年初一那天，我发布的一段关于“变形金刚”的 AI 视频，在 B 站和视频号等平台迅速累积突破了 3000 赞。</p>
+
+<p>说实话，跟动辄万赞、百万播放的爆款相比，这个数据在自媒体圈可能只是“小儿科”。但对我个人而言，它背后的意义远超数字本身：<strong>我是一个几个平台加起来粉丝总共才几百人的博主，而且更新频率极低，基本处于“几年发一条”的僵尸状态。</strong> 在一个几乎零权重的账号上，靠着大年二十八、二十九这两天的“自虐式”极限制作，拿到了一个近乎冷启动的爆发性反馈，这让我真切地感受到，AI 正在如何重塑个体创作的“天花板”。</p>
+
+<h2 id="1-为什么选在年关将近时开工">1. 为什么选在年关将近时开工？</h2>
+
+<p>很多人问我，为什么非得在大年二十八、二十九这两天死磕。</p>
+
+<p>其实最初这只是一个春节前的技术手痒测试。我花了约 300 元人民币订阅了即梦（Seedance）的会员，拿到了 15,000 积分，本来打算慢悠悠地折腾。但当我把即梦和 Nano Banana 这些工具组合起来玩深了之后，我突然意识到 AI 视频生成已经到了一个“临界点”——<strong>一个人、两台电脑，在不依赖传统繁琐拍摄和庞大团队的情况下，能否在 48 小时内交付出具备“电影感”的高质量内容？</strong></p>
+
+<p>与其说这是一次有预谋的更新，不如说是一次为了验证“生产力极限”的自我挑战。这种极限状态下的创作，反倒成了我送给自己的一份新年礼物：用科技手段，去“复活”儿时记忆里那些逐渐模糊的钢铁英雄。</p>
+
+<h2 id="2-创作的四层模型重新定义工作流">2. 创作的“四层模型”：重新定义工作流</h2>
+
+<p>在这次极限制作中，我反复磨合出了一套四层创作模型。我觉得这不仅仅是我的经验，更是未来 AI 视频创作的核心范式：</p>
+
+<h3 id="第一层逻辑层-scripting">第一层：逻辑层 (Scripting)</h3>
+<p>这是整个视频的大脑。我不再是自己死磕剧本，而是使用了 <strong>Gemini</strong> 进行最初的创意碰撞和剧本构思。然后，我会配合 <strong>Claude Code</strong> 这种 Agent 级的工具来编写和缩减 Prompt。</p>
+
+<p>现在的 AI 模型有个特点，比如 Seedance 单次 Prompt 有字数限制，这时候我就得让 Claude 把我那几千字的宏大叙事压缩成模型能听懂的“咒语”。在这个阶段，AI 不是被动的执行者，它是在帮我理顺逻辑。</p>
+
+<h3 id="第二层资产层-configuring">第二层：资产层 (Configuring)</h3>
+<p>这是这次提效最让我感到“降维打击”的一环。以往做视频，你得找素材、找场景、拍人。现在，我利用 <strong>Nano Banana</strong> 生成了像“沙暴”和“通天晓”这类角色的多角度规格表。只要给够几张多角度的静帧，AI 就能在后续的视频生成中保持角色的一致性。</p>
+
+<p>当然，这里有个“避坑实录”：版权敏感词是红线。在 Prompt 里直接写 Transformer、擎天柱、大黄蜂是会被屏蔽的。但我发现了一个聪明的办法——<strong>不再死磕文本，改用图片去“喂”AI。</strong> AI 虽然不能让你提那些名字，但它能从你给的参考图中领悟到那些经典的机械结构和配色细节，从而精准还原。</p>
+
+<h3 id="第三层编排层-orchestrating">第三层：编排层 (Orchestrating)</h3>
+<p>这是最考验心力的一层，也是目前最让创作者抓狂的地方。我发现，<strong>“先定死分镜再生成”是目前最大的坑。</strong> 因为 AI 生成的内容往往是不可控的，如果你非要它严丝合缝地对上你的脑洞，你可能会死在重跑任务的路上。</p>
+
+<p>我总结的心得是：<strong>线性创作</strong>。生成一段，看效果，根据效果再去调下一段的脚本和分镜。这种创作方式更像是和 AI 在玩一场即兴表演，它吐出的意外惊喜（或者惊吓）会不断修正你的航向。</p>
+
+<h3 id="第四层表现层-packaging">第四层：表现层 (Packaging)</h3>
+<p>这是最后的收尾。加音效、加转场，把那些零碎的 AI 素材缝合起来。对于影视类这种“封闭式叙事”，这一层要做的就是加固“第四面墙”，让观众完全相信那个时空是真的。</p>
+
+<h2 id="3-抓狂的-48-小时与video-editing-agent的思考">3. 抓狂的 48 小时与“Video-editing Agent”的思考</h2>
+
+<p>虽然数据还算亮眼，但过程一点也不优雅。</p>
+
+<p>最抓狂的时候，生成的口播人物竟然长出了“三只胳膊”，或者背景里碎片的掉落速度快得像是在另一个星球。为了对齐口播的声场，我无数次重录和调试。最终，我在 48 小时里消耗了 6,000 积分，换来了两个视频的成果。</p>
+
+<p>这种体验让我想到了最近大火的 <strong>DeepSeek R1</strong>。它证明了低成本、高性价比的路径同样能通往顶尖性能。</p>
+
+<p>在这次创作中，我还尝试了一个“蛇年 AI 变化回顾”的口播视频。我先把一小段发在了朋友圈，很有意思的是，很多之前不太相熟的朋友居然完全没看出来那是 AI 生成的。我在朋友圈提出了一个观点：<strong>就像软件工业现在需要的是 Code-editing Agent（比如 Cursor）而不是单纯的 ChatGPT 一样，视频工业的应用层里，真正有价值的是专注后期制作的 Video-editing Agent，而不是整天跟模型抢 Generating 的活儿。</strong></p>
+
+<p>模型吐出什么是随机的，但如何把这些随机的“珍珠”串成项链，那是应用层、是 Agent、更是人的审美要解决的问题。</p>
+
+<h2 id="4-观众到底在看什么">4. 观众到底在看什么？</h2>
+
+<p>在大年初一看到点赞迅速过 3K 时，我一直在刷评论区。</p>
+
+<p>最让我感动的不是技术层面的夸奖。虽然这次我展示了 Seedance 的巨大能量，但粉丝们其实是在讨论“那个沙暴太硬核了”、“这才是我想看到的通天晓”。</p>
+
+<p>这验证了我的一个核心观点：<strong>对于影视类内容，观众并不关心幕后是哪台显卡在跳动，也不关心你用了几个模型。只要你的 Orchestrating（编排）做得足够稳，你的情感传达足够真诚，观众就会沉浸在那个时空里。</strong></p>
+
+<p>我做完那个影视向的视频后，甚至有一种“空虚感”，因为我预感到未来电影的制作成本会低到令人发指。</p>
+
+<h2 id="5-给创作者的忠告别死磕生成学会编排">5. 给创作者的忠告：别死磕生成，学会编排</h2>
+
+<p>如果你也想在 2026 年尝试这条路，我想把我的这句心得送给你：<strong>“别死磕生成，学会编排。”</strong></p>
+
+<p>当前的 AI 模型依然有很多短板和“智障”时刻，去纠结它的完美度是极其低效的。你应该发挥人类最宝贵的长处——<strong>审美和逻辑</strong>。用审美去筛选 AI 吐出来的资产，用逻辑去进行全期的编排。</p>
+
+<p>与其去补模型的短板，不如去接模型的长板。未来，视频制作将不再是局部 AI 辅助，而是真正步入“全期 AI 制作”时代。那个冷启动也能爆火的机会，可能就藏在你下一个 48 小时的极限尝试里。</p>
+
+<hr />
+<p><em>交付于：~/workspace/poechant/poechant.github.io/_posts/2026-03-01-ai-video-48h-sprint.md</em></p>
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+	<span>
+		-<br/><br/>
+		船长还不会游泳 at 微信公众号/微博<br/>
+		@麦克船长 at 即刻/知乎/小宇宙/掘金/小红书/微信读书<br/>
+		@船长模玩 at Bilibili<br/>
+		Copyright © 2011-2023, MikeCaptain.com
+	</span>
+</footer>
+
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
