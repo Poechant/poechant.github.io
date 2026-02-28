@@ -14,8 +14,6 @@ author: 麦克船长
 * TOC
 {:toc}
 
-# 大年三十前的 48 小时极限：在一个“僵尸号”上用 AI 拿到了 3K+ 赞
-
 > **写在前面：**
 > 如果你还没看过这次复盘中提到的视频，可以先去这里一睹为快：
 > *   **B 站视频**：[https://www.bilibili.com/video/BV183Z3BoEHw/](https://www.bilibili.com/video/BV183Z3BoEHw/)
