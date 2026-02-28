@@ -16,7 +16,9 @@ author: 麦克船长
 
 > **写在前面：**
 > 如果你还没看过这次复盘中提到的视频，可以先去这里一睹为快：
-> *   **B 站视频**：[https://www.bilibili.com/video/BV183Z3BoEHw/](https://www.bilibili.com/video/BV183Z3BoEHw/)
+> <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=116081221967451&bvid=BV183Z3BoEHw&cid=36109487362&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100%; height: 500px; max-width: 800px; margin: 20px 0;"></iframe>
+
+*   **B 站视频**：[https://www.bilibili.com/video/BV183Z3BoEHw/](https://www.bilibili.com/video/BV183Z3BoEHw/)
 > *   **视频号**：微信内搜索「**麦克船长MikeCaptain**」即可看到。
 
 大年初一那天，我发布的一段关于「变形金刚」的 AI 视频，在 B 站和视频号等平台迅速累积突破了 3000 赞。
