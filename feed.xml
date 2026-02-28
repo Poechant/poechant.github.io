@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2026-03-01T03:50:03+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">大年三十前的 48 小时极限：在一个“僵尸号”上用 AI 拿到了 3K+ 赞</title><link href="https://www.mikecaptain.com/2026/03/01/ai-video-48h-sprint/" rel="alternate" type="text/html" title="大年三十前的 48 小时极限：在一个“僵尸号”上用 AI 拿到了 3K+ 赞" /><published>2026-03-01T03:20:00+08:00</published><updated>2026-03-01T03:20:00+08:00</updated><id>https://www.mikecaptain.com/2026/03/01/ai-video-48h-sprint</id><content type="html" xml:base="https://www.mikecaptain.com/2026/03/01/ai-video-48h-sprint/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2026-03-01T03:51:16+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">大年三十前的 48 小时极限：在一个“僵尸号”上用 AI 拿到了 3K+ 赞</title><link href="https://www.mikecaptain.com/2026/03/01/ai-video-48h-sprint/" rel="alternate" type="text/html" title="大年三十前的 48 小时极限：在一个“僵尸号”上用 AI 拿到了 3K+ 赞" /><published>2026-03-01T03:20:00+08:00</published><updated>2026-03-01T03:20:00+08:00</updated><id>https://www.mikecaptain.com/2026/03/01/ai-video-48h-sprint</id><content type="html" xml:base="https://www.mikecaptain.com/2026/03/01/ai-video-48h-sprint/">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#大年三十前的-48-小时极限在一个僵尸号上用-ai-拿到了-3k-赞&quot; id=&quot;markdown-toc-大年三十前的-48-小时极限在一个僵尸号上用-ai-拿到了-3k-赞&quot;&gt;大年三十前的 48 小时极限：在一个“僵尸号”上用 AI 拿到了 3K+ 赞&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#1-为什么选在年关将近时开工&quot; id=&quot;markdown-toc-1-为什么选在年关将近时开工&quot;&gt;1. 为什么选在年关将近时开工？&lt;/a&gt;&lt;/li&gt;
@@ -11,7 +11,7 @@
       &lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#3-抓狂的-48-小时与video-editing-agent的思考&quot; id=&quot;markdown-toc-3-抓狂的-48-小时与video-editing-agent的思考&quot;&gt;3. 抓狂的 48 小时与“Video-editing Agent”的思考&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#4-观众到底在看什么&quot; id=&quot;markdown-toc-4-观众到底在看什么&quot;&gt;4. 观众到底在看什么？&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#5-给创作者的忠告别死磕生成学会编排&quot; id=&quot;markdown-toc-5-给创作者的忠告别死磕生成学会编排&quot;&gt;5. 给创作者的忠告：别死磕生成，学会编排&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#5-站在-2026我们真正需要什么样的-ai-视频工具&quot; id=&quot;markdown-toc-5-站在-2026我们真正需要什么样的-ai-视频工具&quot;&gt;5. 站在 2026：我们真正需要什么样的 AI 视频工具？&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -83,16 +83,17 @@
 
 &lt;p&gt;我做完那个影视向的视频后，甚至有一种“空虚感”，因为我预感到未来电影的制作成本会低到令人发指。&lt;/p&gt;
 
-&lt;h2 id=&quot;5-给创作者的忠告别死磕生成学会编排&quot;&gt;5. 给创作者的忠告：别死磕生成，学会编排&lt;/h2&gt;
+&lt;h2 id=&quot;5-站在-2026我们真正需要什么样的-ai-视频工具&quot;&gt;5. 站在 2026：我们真正需要什么样的 AI 视频工具？&lt;/h2&gt;
 
-&lt;p&gt;如果你也想在 2026 年尝试这条路，我想把我的这句心得送给你：&lt;strong&gt;“别死磕生成，学会编排。”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这次折腾完，我最大的感受是：AI 视频领域目前并不缺能生成的模型，缺的是能“干活”的应用。&lt;/p&gt;
 
-&lt;p&gt;当前的 AI 模型依然有很多短板和“智障”时刻，去纠结它的完美度是极其低效的。你应该发挥人类最宝贵的长处——&lt;strong&gt;审美和逻辑&lt;/strong&gt;。用审美去筛选 AI 吐出来的资产，用逻辑去进行全期的编排。&lt;/p&gt;
+&lt;p&gt;目前的 AI 模型依然有很多短板和不稳定时刻，去死磕 Generating 的完美度其实是极其低效的。人类创作者真正的壁垒在于&lt;strong&gt;审美和逻辑&lt;/strong&gt;。我们需要的是能够帮人类完成审美筛选、逻辑缝合和全期编排的工具。&lt;/p&gt;
 
-&lt;p&gt;与其去补模型的短板，不如去接模型的长板。未来，视频制作将不再是局部 AI 辅助，而是真正步入“全期 AI 制作”时代。那个冷启动也能爆火的机会，可能就藏在你下一个 48 小时的极限尝试里。&lt;/p&gt;
+&lt;p&gt;所以，AI 视频应用层的下一个爆发点，一定不是单纯的 Video-Generating Agent，而是真正懂后期、懂叙事、懂编排的 &lt;strong&gt;Video-Editing Agent&lt;/strong&gt;。&lt;/p&gt;
 
-&lt;hr /&gt;
-&lt;p&gt;&lt;em&gt;交付于：~/workspace/poechant/poechant.github.io/_posts/2026-03-01-ai-video-48h-sprint.md&lt;/em&gt;&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI视频" /><category term="视频创作" /><category term="变形金刚" /><category term="即梦" /><category term="Seedance" /><category term="Nano Banana" /><category term="Gemini" /><category term="Claude Code" /><category term="Video-editing Agent" /><category term="生产力革命" /><category term="麦克船长" /><category term="科技复盘" /><category term="冷启动" /><category term="B站爆款" /><category term="视频号" /><category term="自动化后期" /><summary type="html">本文是麦克船长关于 AI 视频创作的实战复盘。记录了大年二十八、二十九这两天，如何利用 Gemini、Claude Code、Nano Banana 和 Seedance 等 AI 工具链进行 48 小时极限创作，并在大年初一实现账号冷启动爆发，全网累积获得超过 3000 赞的经历 ……</summary></entry><entry><title type="html">先进生产力与创造价值的衡量原则</title><link href="https://www.mikecaptain.com/2026/01/11/advanced-productivity/" rel="alternate" type="text/html" title="先进生产力与创造价值的衡量原则" /><published>2026-01-11T12:00:13+08:00</published><updated>2026-01-11T12:00:13+08:00</updated><id>https://www.mikecaptain.com/2026/01/11/advanced-productivity</id><content type="html" xml:base="https://www.mikecaptain.com/2026/01/11/advanced-productivity/">&lt;p&gt;创造有很高的优先级，但”创造”的价值和方向应该怎么衡量和判断呢？这里面有三六九等么？我以前认为没有，皆平等，但我后来不这么认为了。尤其是这两年 ChatGPT、电影哪吒、DeepSeek、黑神话悟空、电动汽车等等这些发展，让我开始思考先进文化、先进生产力，和非先进文化、非先进生产力之间是什么关系？为什么应该前者？从普世价值观的角度应该怎么看待他们？&lt;/p&gt;
+&lt;p&gt;与其指望模型一次性吐出神作，不如把那些随机的“长板素材”接过来，用人的逻辑完成最后的拼图。那个冷启动也能爆火的机会，并不在模型生成的概率里，而是在你对素材的编排与掌控之中。&lt;/p&gt;
+
+&lt;hr /&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI视频" /><category term="视频创作" /><category term="变形金刚" /><category term="即梦" /><category term="Seedance" /><category term="Nano Banana" /><category term="Gemini" /><category term="Claude Code" /><category term="Video-editing Agent" /><category term="生产力革命" /><category term="麦克船长" /><category term="科技复盘" /><category term="冷启动" /><category term="B站爆款" /><category term="视频号" /><category term="自动化后期" /><summary type="html">本文是麦克船长关于 AI 视频创作的实战复盘。记录了大年二十八、二十九这两天，如何利用 Gemini、Claude Code、Nano Banana 和 Seedance 等 AI 工具链进行 48 小时极限创作，并在大年初一实现账号冷启动爆发，全网累积获得超过 3000 赞的经历 ……</summary></entry><entry><title type="html">先进生产力与创造价值的衡量原则</title><link href="https://www.mikecaptain.com/2026/01/11/advanced-productivity/" rel="alternate" type="text/html" title="先进生产力与创造价值的衡量原则" /><published>2026-01-11T12:00:13+08:00</published><updated>2026-01-11T12:00:13+08:00</updated><id>https://www.mikecaptain.com/2026/01/11/advanced-productivity</id><content type="html" xml:base="https://www.mikecaptain.com/2026/01/11/advanced-productivity/">&lt;p&gt;创造有很高的优先级，但”创造”的价值和方向应该怎么衡量和判断呢？这里面有三六九等么？我以前认为没有，皆平等，但我后来不这么认为了。尤其是这两年 ChatGPT、电影哪吒、DeepSeek、黑神话悟空、电动汽车等等这些发展，让我开始思考先进文化、先进生产力，和非先进文化、非先进生产力之间是什么关系？为什么应该前者？从普世价值观的角度应该怎么看待他们？&lt;/p&gt;
 
 &lt;p&gt;后来我在我党提出的三个代表里面找到了答案 😂 先进生产力的发展方向、先进文化的发展方向就应该是优先考虑的方向，而这些所谓的”先进”是人类社会自然自发形成的，追随、开拓甚至引领这样的方向，就是衡量创造价值的基本原则。&lt;/p&gt;
 
