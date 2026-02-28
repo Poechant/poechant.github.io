@@ -4,7 +4,7 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2026-03-01T04:00:17+08:00</updated>
+ <updated>2026-03-01T04:02:09+08:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
@@ -18,7 +18,7 @@
    <link href="https://www.mikecaptain.com/2026/03/01/ai-video-48h-sprint/"/>
    <id>https://www.mikecaptain.com/2026/03/01/ai-video-48h-sprint</id>
    <updated>2026-03-01T03:20:00+08:00</updated>
-   <content type="html">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#大年三十前的-48-小时极限在一个僵尸号上用-ai-拿到了-3k-赞&quot; id=&quot;markdown-toc-大年三十前的-48-小时极限在一个僵尸号上用-ai-拿到了-3k-赞&quot;&gt;大年三十前的 48 小时极限：在一个“僵尸号”上用 AI 拿到了 3K+ 赞&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#1-为什么选在年关将近时开工&quot; id=&quot;markdown-toc-1-为什么选在年关将近时开工&quot;&gt;1. 为什么选在年关将近时开工？&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#2-创作的四层模型重新定义工作流&quot; id=&quot;markdown-toc-2-创作的四层模型重新定义工作流&quot;&gt;2. 创作的“四层模型”：重新定义工作流&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#第一层逻辑层-scripting&quot; id=&quot;markdown-toc-第一层逻辑层-scripting&quot;&gt;第一层：逻辑层 (Scripting)&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第二层资产层-configuring&quot; id=&quot;markdown-toc-第二层资产层-configuring&quot;&gt;第二层：资产层 (Configuring)&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第三层编排层-orchestrating&quot; id=&quot;markdown-toc-第三层编排层-orchestrating&quot;&gt;第三层：编排层 (Orchestrating)&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第四层表现层-packaging&quot; id=&quot;markdown-toc-第四层表现层-packaging&quot;&gt;第四层：表现层 (Packaging)&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#3-抓狂的-48-小时与video-editing-agent的思考&quot; id=&quot;markdown-toc-3-抓狂的-48-小时与video-editing-agent的思考&quot;&gt;3. 抓狂的 48 小时与“Video-editing Agent”的思考&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#4-真实的反馈观众在看什么&quot; id=&quot;markdown-toc-4-真实的反馈观众在看什么&quot;&gt;4....</content>
+   <content type="html">&lt;p&gt;&lt;strong&gt;本文目录&lt;/strong&gt;&lt;/p&gt; &lt;ul id=&quot;markdown-toc&quot;&gt; &lt;li&gt;&lt;a href=&quot;#1-为什么选在年关将近时开工&quot; id=&quot;markdown-toc-1-为什么选在年关将近时开工&quot;&gt;1. 为什么选在年关将近时开工？&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#2-创作的四层模型重新定义工作流&quot; id=&quot;markdown-toc-2-创作的四层模型重新定义工作流&quot;&gt;2. 创作的“四层模型”：重新定义工作流&lt;/a&gt; &lt;ul&gt; &lt;li&gt;&lt;a href=&quot;#第一层逻辑层-scripting&quot; id=&quot;markdown-toc-第一层逻辑层-scripting&quot;&gt;第一层：逻辑层 (Scripting)&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第二层资产层-configuring&quot; id=&quot;markdown-toc-第二层资产层-configuring&quot;&gt;第二层：资产层 (Configuring)&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第三层编排层-orchestrating&quot; id=&quot;markdown-toc-第三层编排层-orchestrating&quot;&gt;第三层：编排层 (Orchestrating)&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#第四层表现层-packaging&quot; id=&quot;markdown-toc-第四层表现层-packaging&quot;&gt;第四层：表现层 (Packaging)&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#3-抓狂的-48-小时与video-editing-agent的思考&quot; id=&quot;markdown-toc-3-抓狂的-48-小时与video-editing-agent的思考&quot;&gt;3. 抓狂的 48 小时与“Video-editing Agent”的思考&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#4-真实的反馈观众在看什么&quot; id=&quot;markdown-toc-4-真实的反馈观众在看什么&quot;&gt;4. 真实的反馈：观众在看什么？&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href=&quot;#5-站在-2026我们真正需要什么样的-ai-视频工具&quot; id=&quot;markdown-toc-5-站在-2026我们真正需要什么样的-ai-视频工具&quot;&gt;5. 站在 2026：我们真正需要什么样的 AI 视频工具？&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;blockquote&gt;...</content>
  </entry>
 
  
