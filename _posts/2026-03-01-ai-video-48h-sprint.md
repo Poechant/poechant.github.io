@@ -86,4 +86,3 @@ author: 麦克船长
 与其去补模型的短板，不如去接模型的长板。未来，视频制作将不再是局部 AI 辅助，而是真正步入“全期 AI 制作”时代。那个冷启动也能爆火的机会，可能就藏在你下一个 48 小时的极限尝试里。
 
 ---
-*交付于：~/workspace/poechant/poechant.github.io/_posts/2026-03-01-ai-video-48h-sprint.md*
