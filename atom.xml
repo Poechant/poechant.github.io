@@ -4,12 +4,22 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2026-03-01T06:11:58+08:00</updated>
+ <updated>2026-03-01T15:13:34+08:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
    <email>zhongchao.ustc@gmail.com</email>
  </author>
+
+ 
+
+ <entry>
+   <title>「Vattention 获数百万美元种子轮融资」：开启视频后期的 Video-Editing Agent 时代</title>
+   <link href="https://www.mikecaptain.com/2026/03/01/vattention-seed-round/"/>
+   <id>https://www.mikecaptain.com/2026/03/01/vattention-seed-round</id>
+   <updated>2026-03-01T15:00:00+08:00</updated>
+   <content type="html">&lt;p&gt;当 Cursor、Claude Code、Windsurf 等 AI 原生工具在编程领域掀起 Agent 革命时，视频后期制作这片更广阔的创作者市场，正迎来同样的范式转变。&lt;/p&gt; &lt;p&gt;据悉，专注视频后期 AI Agent 的 &lt;strong&gt;Vattention（时空注力）&lt;/strong&gt; 已完成数百万美元种子轮融资，由青锐资本、百度风投、常垒资本联合投资。本轮融资将主要用于核心团队组建与技术研发，推动其三大核心引擎（MACE、ACE、PACE）的产品化落地。&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;「我们对标的不是剪映、CapCut，而是 Claude Code、Codex、Cursor、Windsurf 在编程领域做的事情。」船长表示。&lt;/p&gt; &lt;/blockquote&gt; &lt;h3 id=&quot;从指令驱动到预测执行&quot;&gt;从指令驱动到预测执行&lt;/h3&gt; &lt;p&gt;值得关注的是，在 AI 视频赛道大多聚焦于「一键/一句话生成」的当下，Vattention 选择了一条更具挑战性但却真正具备视频工业应用层核心价值的路径 —— 构建理解创作者意图、支持预测到自主执行的 AI Agent。&lt;/p&gt; &lt;p&gt;船长认为，视频内容最终都会统一走向 &lt;strong&gt;Scripting + Configuring + Compositing + Packaging&lt;/strong&gt; 的新生产范式。这个被创始团队称为「PostPro 3.0」的愿景，正试图通过 &lt;strong&gt;Human-AI Cocreation&lt;/strong&gt; 的理念，重新定义视频后期制作的效率天花板。&lt;/p&gt; &lt;h3 id=&quot;三大核心引擎&quot;&gt;三大核心引擎&lt;/h3&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;MACE (Meta Action Classification...</content>
+ </entry>
 
  
 
@@ -106,16 +116,6 @@
    <id>https://www.mikecaptain.com/2023/07/30/investment-learnt-from-masters</id>
    <updated>2023-07-30T12:00:13+08:00</updated>
    <content type="html">&lt;p&gt;原文链接：https://mp.weixin.qq.com/s/U8YsBlMOtj98LeTxXOPigQ?global_content=%7B%22promote_id%22%3A13766%2C%22sub_promote_id%22%3A4%7D&lt;/p&gt; &lt;p&gt;投资的道路上不存在捷径，但如果向成功的投资大师学习，可以少走很多弯路。&lt;/p&gt; &lt;p&gt;成功的投资大师需要满足多个条件，比如长期非凡的投资收益、巨额的财富、可重复的投资逻辑，其投资智慧在股市得到「证悟」。他们将自身的经验凝练为几条重要的原则，当这些原则内化为投资者的噪音过滤器时，就会极大降低犯错的概率。&lt;/p&gt; &lt;p&gt;如巴菲特在过去 58 年创造了 3.8 万倍的投资收益，身家接近 1000 亿美元；格雷厄姆在 1936 年～1956 年动荡频发的美国资本市场中仍取得了年化不低于 14.7% 的收益率；段永平在网易上赚取了百倍收益，后又在贵州茅台和苹果上各赚取了10倍的收益；张尧在 1999 年～2018 年期间在A股和港股赚取了2000倍的收益，2018年至今张尧重仓的煤炭股涨幅在1倍以上，25 年约有 4000 倍收益。&lt;/p&gt; &lt;p&gt;张尧说「投资没有捷径。但大概率的正确的投资路径，是从学习成功的投资大师开始。学习投资大师可以少走弯路。首先是认同，然后学习模仿，归纳总结，活学活用，不同程度受益，然后再学习再体会，重复这个过程。」&lt;/p&gt; &lt;p&gt;美国股市具有200年的历史，聪明投资者智慧的代际传播加上个人的超凡悟性造就了格雷厄姆、巴菲特、费雪等殿堂级人物；中国资本市场仅有30多年的历史，但段永平和张尧等人的价值投资实践也证明了，价值投资的原则在A股不仅适用，而且威力巨大。&lt;/p&gt; &lt;h2 id=&quot;格雷厄姆的投资原则安全边际和不要受市场先生摆布&quot;&gt;格雷厄姆的投资原则：安全边际和不要受「市场先生」摆布&lt;/h2&gt; &lt;p&gt;巴菲特说「50 年前，我在哥伦比亚大学开始学习格雷厄姆教授的证券分析课程。在此之前的 10 年里，我一直盲目地热衷于分析、买进、卖出股票，但是我的投资业绩却非常一般。从 1951 年起，我的投资业绩开始明显上升，但这并非由于我改变饮食习惯或者开始运动，我唯一添加的新的营养成分是格雷厄姆的投资理念。原因非常简单，在大师门下学习几个小时的效果，远远胜过我自己在过去10年里自以为是的天真思考的结果。」&lt;/p&gt; &lt;p&gt;格雷厄姆的《证券分析》和《聪明的投资者》能够准确和清晰地提供投资知识体系，但情绪的约束需要投资者自己必须做到。格雷厄姆建立了一套自己的核心原则，这一原则尽管历经了资本市场80年风雨，但至今依然适用。这些原则包括：&lt;/p&gt; &lt;ul&gt; &lt;li&gt;一是股票并非仅仅是一个交易代码或电子信号，而是表明拥有一个实实在在的企业所有权；企业的内在价值并不依赖于其股票价格。&lt;/li&gt; &lt;li&gt;二是市场就像一只钟摆，永远在短命的乐观（它使得股票过于昂贵）和不合理的悲观（它使得股票过于廉价）之间摆动。聪明的投资者是现实主义者，他们向乐观主义者卖出股票，并从悲观主义者手中买进股票。&lt;/li&gt; &lt;li&gt;三是每一笔投资的未来价值是其现在价格的函数，你付出的价格越高，你的回报就越少。&lt;/li&gt; &lt;li&gt;四是无论如何谨慎，每个投资者都免不了会犯错误，只有坚持“安全性”原则，你才能使犯错误纪律最小化。&lt;/li&gt; &lt;li&gt;五是投资的秘诀在于你的内心。如果你在思考问题时持批判态度，不相信华尔街的所谓“事实”，并且以持久的信心进行投资，你就会获得稳定的收益，即便是在熊市亦如此。通过培养自己的约束力和勇气，你就不会让他人的情绪左右你的投资目标。&lt;/li&gt; &lt;/ul&gt; &lt;h2 id=&quot;费雪的投资哲学寻找少数出类拔萃的公司&quot;&gt;费雪的投资哲学：寻找少数出类拔萃的公司&lt;/h2&gt; &lt;p&gt;巴菲特曾说过「我的投资哲学 85% 来自格雷厄姆，15% 来自菲利普·费雪。」&lt;/p&gt; &lt;p&gt;费雪的投资哲学包括：&lt;/p&gt; &lt;ul&gt; &lt;li&gt;一是投资的成功依赖于找到一家未来几年销售额和利润高于行业整体水平的公司，当找到这样的公司时，最好在很长一段时间内持有，「既幸运又有能力」的公司和「因为能力而幸运」的公司都有望在数十年内实现超过平均水平。&lt;/li&gt; &lt;li&gt;二是卓越的管理是取得优异市场业绩的关键，很多公司之所以拥有良好的增长前景，是因为它们的现有产品或服务线可以维持若干年，少数公司会有政策确保10年～20年增长。&lt;/li&gt; &lt;li&gt;三是宁愿拥有少数出类拔萃的公司，也不要投给大批平庸的公司，三四家公司的市值可以占到总仓位的...</content>
- </entry>
-
- 
-
- <entry>
-   <title>人工智能 LLM 革命黎明：Copilot as a Service 将打造无数超级个体，核心能力是预测与自主 by 麦克船长</title>
-   <link href="https://www.mikecaptain.com/2023/06/25/autonomous-ai/"/>
-   <id>https://www.mikecaptain.com/2023/06/25/autonomous-ai</id>
-   <updated>2023-06-25T12:00:13+08:00</updated>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src2/2023/06/26/23.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;最近对于本轮生成式 AI 浪潮的讨论，进入了一个新阶段，大家从模糊地认为是巨大变革，逐渐开始探讨具体的变革机会点。我想讲讲自己对于本轮技术变革，在 to B 领域的一些基本观点。这些基本观点，是有争议的、非共识的，但我想有必要输出，以换来更多朋友与我的交流碰撞。&lt;/p&gt; &lt;p&gt;因此本文围绕本轮生成式 AI 在 To B 领域的应用落地，分五部分探讨：&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;数字化应用演进曲线（包括 To B 和 To C）&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;初步探讨 To B 领域当下用到的 AI 核心能力是什么&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;关于预测（Prediction）&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;关于自主（Autonomy）&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;什么样的团队会把握住这次机遇？最佳切入点是什么？&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h2 id=&quot;一麦克船长数字化应用演进曲线&quot;&gt;一、麦克船长：数字化应用演进曲线&lt;/h2&gt; &lt;p&gt;为什么聊 to B 领域？当下阶段的生成式 AI 技术在 to C 和 to B 领域的应用差异是非常大的。理解这件事情，我们要宏观看下大时间尺度上，我们过去、当下、未来经历什么技术演进。陆奇博士提过将数字化应用的发展分为三个阶段 information → model...</content>
  </entry>
 
  
