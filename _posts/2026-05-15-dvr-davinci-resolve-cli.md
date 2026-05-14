@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  dvr：写给人和 AI Agent 用的 DaVinci Resolve 命令行
-date:   2026-05-15 21:00:00 +0800
+date:   2026-05-15 09:00:00 +0800
 categories: ai
 tags: [dvr, DaVinci Resolve, CLI, Python, AI Agent, Video Editing Automation, SKILL.md, MCP, 命令行工具, 麦克船长]
 description: dvr 是我最近开源的一个 DaVinci Resolve 18+ 的 Python 命令行工具，五个命令域（doctor / project / media / render / timeline）覆盖剪辑流水线里大量重复操作；更重要的是它被刻意做成一个 Agent-first CLI——JSON-first 输出、稳定的 errorCode 枚举、异步 jobId 状态机、自带 SKILL.md 打包发布。本文是 dvr 的介绍、上手实战，以及几个 Agent-first 设计决定的随手记。
