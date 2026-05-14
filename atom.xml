@@ -4,7 +4,7 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2026-05-14T21:03:29+08:00</updated>
+ <updated>2026-05-15T00:18:59+08:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
@@ -14,11 +14,11 @@
  
 
  <entry>
-   <title>从《文明》到《星际》：AI 产品形态正在经历的范式迁移</title>
+   <title>从《文明》的回合到《星际》的实时：AI 产品形态正在经历的范式迁移</title>
    <link href="https://www.mikecaptain.com/2026/05/13/pace-engine-interaction-model/"/>
    <id>https://www.mikecaptain.com/2026/05/13/pace-engine-interaction-model</id>
    <updated>2026-05-13T22:30:00+08:00</updated>
-   <content type="html">&lt;h1 id=&quot;从文明到星际ai-产品形态正在经历的范式迁移&quot;&gt;从《文明》到《星际》：AI 产品形态正在经历的范式迁移&lt;/h1&gt; &lt;p&gt;&lt;img src=&quot;/img/src2/2026/05/2026-05-13-pace-engine-interaction-model-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt; &lt;h2 id=&quot;1-30-多年前游戏行业走过的一段路&quot;&gt;1. 30 多年前，游戏行业走过的一段路&lt;/h2&gt; &lt;p&gt;先讲一段游戏史。&lt;/p&gt; &lt;p&gt;&lt;strong&gt;1991 年&lt;/strong&gt;，Sid Meier 发布《Civilization》（文明），把回合制策略游戏（TBS）推到了一个长寿至今的巅峰。深度、复杂、耐玩——玩家在每个回合里慢慢思考、规划、决策，下一步，再下一步。&lt;/p&gt; &lt;p&gt;&lt;strong&gt;仅仅一年后的 1992 年&lt;/strong&gt;，Westwood Studios 推出《Dune II: Battle for Arrakis》（沙丘魔堡 2），确立了 RTS（实时策略）的全部基础范式：资源采集、基地建设、科技树、战争迷雾、鼠标驱动的实时操控。它销量不算炸，但&lt;strong&gt;所有后来的 RTS 都是踩在它的设计模板上的&lt;/strong&gt;。&lt;/p&gt; &lt;p&gt;&lt;strong&gt;又过了 3 年，1995 年&lt;/strong&gt;，Westwood 用《Command &amp;amp; Conquer》（命令与征服）让 RTS 第一次成为全球性的商业大爆款——多人对战、电影感叙事、流畅操控，RTS 第一次从极客圈层破壁进入主流玩家视野。&lt;/p&gt; &lt;p&gt;&lt;strong&gt;再过 3 年，1998 年&lt;/strong&gt;，Blizzard 的《StarCraft》（星际争霸）登顶，把 RTS 推向竞技神坛，影响延续二十多年。&lt;/p&gt; &lt;p&gt;从《文明》到《星际》，整整 7 年，策略游戏完成了一次彻底的范式迁移——从「我下一步、系统下一步」的回合制，到「手不离鼠标、眼不离战场」的实时制。&lt;strong&gt;核心变化不是游戏变得更复杂，而是玩家的手不再等系统结算回合&lt;/strong&gt;。&lt;/p&gt; &lt;p&gt;但再往深一层想，这并不只是「游戏行业的偶然演变」。游戏本身是&lt;strong&gt;一个独立、简化构建的小世界&lt;/strong&gt;——人最初被强制以回合制参与，不是因为回合制更好玩，而是因为&lt;strong&gt;当时的技术承载不了实时&lt;/strong&gt;。一旦算力、输入设备、引擎技术发展上来，参与模式就开始从回合制滑向实时制。所以在这个简化的小世界里，其实已经能看到从回合制到实时制演变的&lt;strong&gt;必然性&lt;/strong&gt;：&lt;/p&gt;...</content>
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/img/src2/2026/05/2026-05-13-pace-engine-interaction-model-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt; &lt;h2 id=&quot;1-30-多年前游戏行业走过的一段路&quot;&gt;1. 30 多年前，游戏行业走过的一段路&lt;/h2&gt; &lt;p&gt;先讲一段游戏史。&lt;/p&gt; &lt;p&gt;&lt;strong&gt;1991 年&lt;/strong&gt;，Sid Meier 发布《Civilization》（文明），把回合制策略游戏（TBS）推到了一个长寿至今的巅峰。深度、复杂、耐玩——玩家在每个回合里慢慢思考、规划、决策，下一步，再下一步。&lt;/p&gt; &lt;p&gt;&lt;strong&gt;仅仅一年后的 1992 年&lt;/strong&gt;，Westwood Studios 推出《Dune II: Battle for Arrakis》（沙丘魔堡 2），确立了 RTS（实时策略）的全部基础范式：资源采集、基地建设、科技树、战争迷雾、鼠标驱动的实时操控。它销量不算炸，但&lt;strong&gt;所有后来的 RTS 都是踩在它的设计模板上的&lt;/strong&gt;。&lt;/p&gt; &lt;p&gt;&lt;strong&gt;又过了 3 年，1995 年&lt;/strong&gt;，Westwood 用《Command &amp;amp; Conquer》（命令与征服）让 RTS 第一次成为全球性的商业大爆款——多人对战、电影感叙事、流畅操控，RTS 第一次从极客圈层破壁进入主流玩家视野。&lt;/p&gt; &lt;p&gt;&lt;strong&gt;再过 3 年，1998 年&lt;/strong&gt;，Blizzard 的《StarCraft》（星际争霸）登顶，把 RTS 推向竞技神坛，影响延续二十多年。&lt;/p&gt; &lt;p&gt;从《文明》到《星际》，整整 7 年，策略游戏完成了一次彻底的范式迁移——从「我下一步、系统下一步」的回合制，到「手不离鼠标、眼不离战场」的实时制。&lt;strong&gt;核心变化不是游戏变得更复杂，而是玩家的手不再等系统结算回合&lt;/strong&gt;。&lt;/p&gt; &lt;p&gt;但再往深一层想，这并不只是「游戏行业的偶然演变」。游戏本身是&lt;strong&gt;一个独立、简化构建的小世界&lt;/strong&gt;——人最初被强制以回合制参与，不是因为回合制更好玩，而是因为&lt;strong&gt;当时的技术承载不了实时&lt;/strong&gt;。一旦算力、输入设备、引擎技术发展上来，参与模式就开始从回合制滑向实时制。所以在这个简化的小世界里，其实已经能看到从回合制到实时制演变的&lt;strong&gt;必然性&lt;/strong&gt;：&lt;/p&gt; &lt;ol&gt; &lt;li&gt;&lt;strong&gt;回合制&lt;/strong&gt;：是对现实世界&lt;strong&gt;离散抽象、离散化&lt;/strong&gt;之后的产物——把连续的时间切成一段段可以慢慢处理的「回合」&lt;/li&gt; &lt;li&gt;&lt;strong&gt;现实世界&lt;/strong&gt;：所有交互本来就是以&lt;strong&gt;极高频实时&lt;/strong&gt;的状态发生的——物理世界里没有谁在「等系统结算回合」&lt;/li&gt;...</content>
  </entry>
 
  
