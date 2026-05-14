@@ -27,7 +27,7 @@ permalink: /about/
 #### 我的社交媒体
 
 * 微信：**sinosuperman**（添加请注明「学校/单位/公司」、「职位」和「来意」才能通过，多谢理解！）
-* Bilibili：[<u>船长模玩</u>](https://space.bilibili.com/482553760){:target="_blank"} —— 打小喜欢变形金刚，成年后补偿性消费收藏变形金刚手办😂
+* Bilibili：[<u>船长还不会游泳</u>](https://space.bilibili.com/3546876706032565){:target="_blank"}
 * 新浪微博：[<u>@船长还不会游泳</u>](http://weibo.com/lauginhom){:target="_blank"}
 * 知乎：[<u>船长还不会游泳</u>](https://www.zhihu.com/people/poechant){:target="_blank"}
 
@@ -35,7 +35,7 @@ permalink: /about/
 
 * 麦克船长被收藏最多的文章：[《人工智能 LLM 革命前夜：一文读懂横扫自然语言处理的 Transformer 模型》](https://www.mikecaptain.com/2023/01/22/captain-aigc-1-transformer/)
 	* 文章字数：8 万 2 千字
-	* 收藏量：累计超过 10000 收藏量（知乎 + 微信公众号 + 阿里集团内部技术社区 ATA + 其他平台）
+	* 收藏量：累计超过 100,000 收藏量（知乎 + 微信公众号 + 阿里集团内部技术社区 ATA + 其他平台）
 * [《人工智能 LLM 革命破晓：一文读懂当下超大语言模型发展现状》](https://www.mikecaptain.com/2023/03/06/captain-aigc-2-llm/)
 	* 文章字数：9 万 7 千字
 	* 收藏量：累计超过 2000 收藏量（知乎 + 微信公众号 + 阿里集团内部技术社区 ATA + 其他平台）
