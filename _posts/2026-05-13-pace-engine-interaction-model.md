@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  从《文明》到《星际》：AI 产品形态正在经历的范式迁移
+title:  从《文明》的回合到《星际》的实时：AI 产品形态正在经历的范式迁移
 date:   2026-05-13 22:30:00 +0800
 categories: ai
 tags: [AI, PACE, Interaction Model, System 1/2, Thinking Machines, π0, Moshi, RTS, Dune II, Command & Conquer, StarCraft, Civilization, Video-editing Agent, 实时交互, 人机协作, 麦克船长]
@@ -9,8 +9,6 @@ excerpt: 30 多年前，策略游戏从《文明》走到《星际》，完成�
 location: 杭州
 author: 麦克船长
 ---
-
-# 从《文明》到《星际》：AI 产品形态正在经历的范式迁移
 
 ![image](/img/src2/2026/05/2026-05-13-pace-engine-interaction-model-1.png)
 
