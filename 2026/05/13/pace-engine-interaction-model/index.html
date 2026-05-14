@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>从《文明》到《星际》：AI 产品形态正在经历的范式迁移</title>
+  	<meta name="description" content="30 多年前，策略游戏从《文明》走到《星际》，完成了一次从回合制到实时制的彻底范式迁移。今天，AI 行业正在重走这条路——从 TBM（Turn-based Model，轮次模型）走向 RTM（Real-time Model，实时模型）。从 GPT、Claude 这一代聊天 LLM，到 Moshi、π0、Thinking Machines 的 Interaction Model，再到我们正在做的 PACE 引擎，本文记录我看到的这条暗线，以及我们「模应一体」做 RTM 的判断。">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+
+  	
+  		<script async src="https://www.googletagmanager.com/gtag/js?id=G-CH4708X4R5"></script>
+  		<script>
+    		window.dataLayer = window.dataLayer || [];
+    		function gtag(){dataLayer.push(arguments);}
+    		gtag('js', new Date());
+
+    		gtag('config', 'G-CH4708X4R5');
+  		</script>
+	
+
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/booklist/" title="读书行路">读书行路</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="AI">AI</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="音视频">音视频</a>
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/quant" title="投资">投资</a>
+
+
+
+
+
+  <a href="/category/thinking" title="思考">思考</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="AI">AI</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="音视频">音视频</a>
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/quant" title="投资">投资</a>
+
+
+
+
+
+  <a href="/category/thinking" title="思考">思考</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+
+		<main>
+
+			<article id="post-page">
+	<h2>从《文明》到《星际》：AI 产品形态正在经历的范式迁移</h2>		
+	<time datetime="2026-05-13T22:30:00+08:00" class="by-line">13 May 2026, 杭州 | 麦克船长 | 总计 4891 字</time>
+	<div class="content">
+		<h1 id="从文明到星际ai-产品形态正在经历的范式迁移">从《文明》到《星际》：AI 产品形态正在经历的范式迁移</h1>
+
+<p><img src="/img/src2/2026/05/2026-05-13-pace-engine-interaction-model-1.png" alt="image" /></p>
+
+<h2 id="1-30-多年前游戏行业走过的一段路">1. 30 多年前，游戏行业走过的一段路</h2>
+
+<p>先讲一段游戏史。</p>
+
+<p><strong>1991 年</strong>，Sid Meier 发布《Civilization》（文明），把回合制策略游戏（TBS）推到了一个长寿至今的巅峰。深度、复杂、耐玩——玩家在每个回合里慢慢思考、规划、决策，下一步，再下一步。</p>
+
+<p><strong>仅仅一年后的 1992 年</strong>，Westwood Studios 推出《Dune II: Battle for Arrakis》（沙丘魔堡 2），确立了 RTS（实时策略）的全部基础范式：资源采集、基地建设、科技树、战争迷雾、鼠标驱动的实时操控。它销量不算炸，但<strong>所有后来的 RTS 都是踩在它的设计模板上的</strong>。</p>
+
+<p><strong>又过了 3 年，1995 年</strong>，Westwood 用《Command &amp; Conquer》（命令与征服）让 RTS 第一次成为全球性的商业大爆款——多人对战、电影感叙事、流畅操控，RTS 第一次从极客圈层破壁进入主流玩家视野。</p>
+
+<p><strong>再过 3 年，1998 年</strong>，Blizzard 的《StarCraft》（星际争霸）登顶，把 RTS 推向竞技神坛，影响延续二十多年。</p>
+
+<p>从《文明》到《星际》，整整 7 年，策略游戏完成了一次彻底的范式迁移——从「我下一步、系统下一步」的回合制，到「手不离鼠标、眼不离战场」的实时制。<strong>核心变化不是游戏变得更复杂，而是玩家的手不再等系统结算回合</strong>。</p>
+
+<p>但再往深一层想，这并不只是「游戏行业的偶然演变」。游戏本身是<strong>一个独立、简化构建的小世界</strong>——人最初被强制以回合制参与，不是因为回合制更好玩，而是因为<strong>当时的技术承载不了实时</strong>。一旦算力、输入设备、引擎技术发展上来，参与模式就开始从回合制滑向实时制。所以在这个简化的小世界里，其实已经能看到从回合制到实时制演变的<strong>必然性</strong>：</p>
+
+<ol>
+  <li><strong>回合制</strong>：是对现实世界<strong>离散抽象、离散化</strong>之后的产物——把连续的时间切成一段段可以慢慢处理的「回合」</li>
+  <li><strong>现实世界</strong>：所有交互本来就是以<strong>极高频实时</strong>的状态发生的——物理世界里没有谁在「等系统结算回合」</li>
+</ol>
+
+<p>再往深一层说，<strong>实时制本质上只是一个更高频的回合制——micro-turn based</strong>。这一点在工程实践里早就被验证过：早年做 RTC（Real-time Communication，实时语音通讯）的时候，最小单元就是一个个「最小语音包」，把连续的声音流切成毫秒级的小包传输再拼起来；今天 RTM（Real-time Model）走的是同一条路——「continuous input and output streams split into micro-turns」，把输入输出流拆成一个个极小的「轮」。<strong>所谓「实时」，归根到底就是「足够小的回合」</strong>。</p>
+
+<p>再深一层说就有点哲学意味了，类似计算机里的浮点数与整数、物理学里的量子与连续。但落回这一篇的语境，结论只有一句：<strong>回合制是粗粒度的离散化，实时制是细粒度的离散化——是向真实世界连续性的逼近，但本质上仍然是离散</strong>。</p>
+
+<p>游戏从回合制走到实时制，从来不是一个「风格选择」，而是<strong>当技术允许之后，人和系统的参与模式必然向真实世界的本来面貌回归</strong>。</p>
+
+<p>这条路，<strong>今天 AI 行业正在重走一遍</strong>。</p>
+
+<h2 id="2-ai-也在走这条路从-tbm-到-rtm">2. AI 也在走这条路：从 TBM 到 RTM</h2>
+
+<p>游戏行业从 <strong>Turn-Based</strong> 走到 <strong>Real-Time</strong>，所有实时交互的游戏才得以大发展，比如 FPS、RTS、MOBA、STG 等等；AI 行业正在从 <strong>TBM</strong> 走到 <strong>RTM</strong>——这是这一篇要立下的核心二分：</p>
+
+<ul>
+  <li><strong>Turn-Based Model（TBM，轮次模型）</strong>：按「轮」工作。你说一段，模型等你说完，冻结一切感知去生成，生成完了你接着说。一段一段、一来一回，<strong>像写信</strong>。</li>
+  <li><strong>Real-Time Model（RTM，实时模型）</strong>：按「流」工作。输入和输出同时进出，模型跟着用户的节奏一起推进——在对话里是「听-说-答」的同步，在创作/编辑里是「动手-构思-接上」的同步，在具身动作里是「感知-决策-执行」的同步。<strong>RTM 涵盖的远不只是「听说」这种浅层应用——更深层、也更广阔的战场，是创作、编辑、动作这一类需要「一起做」的场景</strong>。</li>
+</ul>
+
+<p><strong>这是两种本质不同的范式，不是一个连续光谱上的快与慢</strong>。TBM 再快也是 TBM，RTM 再慢也是 RTM——两者的差别不在响应延迟，而在「模型与时间的关系」。</p>
+
+<p>过去几年大家熟悉的 AI——GPT、Claude、Gemini 这一代聊天 LLM——本质上<strong>都是 TBM</strong>。整个 LLM 行业已经把 TBM 这条路打磨到了非常高的水准。</p>
+
+<p>但在用户<strong>操作密集、意图连续、容不下等待</strong>的场景里，TBM 彻底失效了。这种场景里要的不是更聪明的 TBM，而是 <strong>RTM</strong>——按流工作、永远在场、和用户的时间轴同步推进的模型。</p>
+
+<p>视频编辑就是 RTM 的天然战场：</p>
+
+<ul>
+  <li><strong>操作密集</strong>：一个剪辑师每分钟几十次交互——拉时间轴、切片段、加转场、调音量</li>
+  <li><strong>意图连续</strong>：上一个动作的尾部，往往就埋着下一个动作的开头。加完一个 J-cut，他马上要处理转场；调完一段 BGM，他下一步十有八九要压人声。意图是一条<strong>链</strong>，不是一颗一颗的孤立请求</li>
+  <li><strong>等待反人性</strong>：创作流是脆弱的。一个 loading 圈、一次「思考中…」，灵感就断了</li>
+</ul>
+
+<p>TBM 在这里做不到的事——「问 AI 一下、等它想 3 秒、给你建议」——正是 RTM 必须能做的：<strong>「我做你接」</strong>，在我手刚动的瞬间，把下一步的可能性铺到我面前。</p>
+
+<h2 id="3-我们在做的事pace">3. 我们在做的事：PACE</h2>
+
+<p>我们最近在做的一条核心技术线，内部叫 <strong>PACE——Predictive Action Chain Engine</strong>，预测式动作链引擎，在 Z Potential 三月份对我们的报道中我们也提到过。<strong>它本质上是一个为视频编辑场景而生的 RTM</strong>——解决的问题不是「AI 怎么更聪明」，而是 <strong>「AI 怎么真正在场」</strong>：在用户操作的每一个瞬间和下一个瞬间之间，提前把可能性铺好。</p>
+
+<p>三句话讲清楚 PACE 在做什么：</p>
+
+<ul>
+  <li><strong>基于上下文实时预测创作意图</strong></li>
+  <li><strong>智能操作引导，做 Agent 产品的「预测大脑」</strong></li>
+  <li><strong>低延迟响应剪辑动作链</strong></li>
+</ul>
+
+<p>而我们做 PACE 的方式，不是「先训一个通用模型、再套到剪辑产品上」，而是 <strong>「模应一体」</strong>——模型和应用从第一天就一起设计、一起迭代。产品里的每一类动作、每一种时序约束、每一个用户停顿，都直接喂回模型的训练目标；反过来，模型的能力边界又直接决定了产品形态里能放多少「预测式」交互。<strong>这不是「一个模型 + 一个壳」，是一个完整的、为创作场景而生的实时系统</strong>。「模应一体」是我们这套引擎能跑起来的根本前提，也是我们和「拿通用 LLM 包一层 UI」这种路线最大的分野。</p>
+
+<p>之所以挑 editing 作为「实时 AI」的落点，是因为这里是 AI 时代少数几个<strong>真正的创作场域</strong>之一——用户不是来「让 AI 替他干活」的，是来<strong>和 AI 一起创作</strong>的。剪辑、写作、设计这一类工作的核心快感，本就在于「我有想法、我把它做出来」。AI 在这种场景里如果走「替代」路线，反而会摧毁创作本身的乐趣；它真正该做的，是 <strong>human-AI cocreation——成为创作者手边那个永远在线、永远懂上下文、永远比你快半步的搭档</strong>。所以 editing 几乎注定是 real-time model 最重大的应用方向之一——因为它对「实时」和「协作」这两件事的要求，都被推到了极致。</p>
+
+<p>我在上一篇 <a href="/2026/03/01/ai-video-48h-sprint/">《除夕前的 48 小时极限》</a> 里讲过 Video-editing Agent 这个判断，PACE 就是这个判断在引擎层的具体回答——一个为 cocreation 而生的实时引擎。</p>
+
+<h2 id="4-这条路上不止我们一家">4. 这条路上不止我们一家</h2>
+
+<p>把视野放大一点会发现，朝 RTM 这个方向走的，远不止我们。</p>
+
+<p><strong>音频领域</strong>最早趟通了 RTM 这条路——Moshi、PersonaPlex、Nemotron VoiceChat 这一批全双工对话 RTM，过去一两年已经实现了输入流和输出流的同时进出。为什么音频先做？因为音频本来就是时间流，<strong>没法回合制</strong>——TBM 在音频里一旦「等用户说完再答」，对话体感就崩了，人和人之间的对话从来不是这么发生的。</p>
+
+<p><strong>具身智能领域</strong>走得也很坚决。Physical Intelligence 的 π0——一个面向机器人控制的 RTM——用一套明确的双层架构来应对实时性要求：前台一个永远在转的快策略负责接住每一个感知-动作循环，后台一个慢推理负责拆解长程目标和复杂规划。对话慢一拍只是体验糟，机器人慢一拍是要撞东西的——具身智能对实时性的极致要求，逼出了这套架构。</p>
+
+<p><strong>通用多模态对话</strong>这边，最近 Thinking Machines 发了一篇 <a href="https://thinkingmachines.ai/blog/interaction-models/">《Interaction Models》</a>，给 RTM 这个范式做了一次很完整的命名和论述（他们用的词是 「Interaction Model」，本质和 RTM 是同一件事）。文章里讲的「交互性必须是模型的一部分」「时间对齐的微转轮」等等，本质上和音频领域、具身智能那套是同一脉。</p>
+
+<p>所以你会发现：<strong>音频、具身、通用对话、视频编辑——四个不同模态、不同团队、不同地点的 RTM 探索，正在向同一个范式收敛</strong>。这件事让我们对 PACE 的方向更笃定了一些——不是孤注一掷，而是和这个时代的暗线同向而行。</p>
+
+<h2 id="5-共同的底层system-1--system-2">5. 共同的底层：System 1 / System 2</h2>
+
+<p>这些看似不相干的探索，背后有一个<strong>共同的理论框架在做地基——System 1 与 System 2</strong>。</p>
+
+<p>这个框架最早由心理学家 Keith Stanovich 和 Richard West 在双系统理论（Dual-process theory）的研究中正式提出，后来被行为经济学之父、诺贝尔奖得主 Daniel Kahneman 引用到他的著作《思考，快与慢》里，才被心理学圈以外的人广泛知道。它讲了一件挺朴素的事：人脑里有两套系统在协作——S1 是不假思索的直觉反应，快、廉价、永远在线；S2 是慢思考、推理、规划，贵、稀缺、需要被唤起。</p>
+
+<p>有意思的是，<strong>这个心理学框架真真切切启发了这一代工程师的设计直觉</strong>。不管是音频领域的全双工模型，还是具身智能的 π0，还是 Thinking Machines 的 Interaction Model，背后的研究者都在带着 S1/S2 的视角想问题——什么任务该交给永远在线的快脑、什么任务该让慢脑异步去啃。一个心理学的认知模型，被工程师们当作架构图来用了。</p>
+
+<p>PACE 也是这套范式在视频编辑场景的实例：快脑负责把每一刻的「下一步」实时铺出来，慢脑负责把更复杂的长程判断流式地补进来。</p>
+
+<h2 id="6-一个判断">6. 一个判断</h2>
+
+<p>把这条线一口气拉完：</p>
+
+<blockquote>
+  <p>Moshi 是音频对话的 RTM。
+π0 是具身智能的 RTM。
+Thinking Machines 是基础型多模态 RTM。
+PACE 是创作领域的 RTM。</p>
+</blockquote>
+
+<p>不同模态、不同团队、不同地点，殊途同归到 <strong>RTM（底层是 System 1/2 + Realtime Micro-Turn）</strong> 这同一个范式。这不是巧合，是 AI 产品形态演进到现阶段的必然指向。</p>
+
+<p>前几年大家忙着比拼模型有多聪明、参数有多大、能写多长——那些都是 TBM 内部的竞争。但到了应用层真要解决问题的时候，会发现「聪明」只是必要条件——<strong>「在场」才是关键</strong>。模型必须和用户在同一条时间轴上、在同一段操作链里、在同一个意图序列中。不是回答得多漂亮，而是反应得多及时、衔接得多自然。</p>
+
+<p>PACE 是我们对这件事的回答——一个用「模应一体」方式做出来的 RTM。</p>
+
+<p>下一个五年的 AI 主战场不再是 TBM 内部的卷王之争，而是 RTM——真正能和人<strong>实时协作（Human-AI Collaboration）/ 实时共创（Human-AI Cocreation）</strong>的 Agent，在你的工作流里、在你的操作链中、在你的意图还没完全成形之前。<strong>它不是来替代你的，是来和你一起协作/创作的</strong>。</p>
+
+<p>新范式从被立起来，到真正定义出一个品类，往往要走好几年。我们这一波 AI 大概率也跑不掉相似的节奏——<strong>这不是 FOMO 的时刻，是把活做扎实的窗口期</strong>。</p>
+
+<p>我们正走在这条路上。</p>
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+	<span>
+		-<br/><br/>
+		船长还不会游泳 at 微信公众号/微博<br/>
+		@麦克船长 at 即刻/知乎/小宇宙/掘金/小红书/微信读书<br/>
+		@船长模玩 at Bilibili<br/>
+		Copyright © 2011-2023, MikeCaptain.com
+	</span>
+</footer>
+
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
