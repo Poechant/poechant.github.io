@@ -10,6 +10,8 @@ location: 杭州
 author: 麦克船长
 ---
 
+![image](/img/src2/2026/05/2026-05-15-davinci-resolve-cli.png)
+
 ## 1. 一句话讲清楚
 
 `dvr` 是我最近开源的一个 Python 命令行小工具，干的事很直白——**在命令行里操作 DaVinci Resolve 18+**。
