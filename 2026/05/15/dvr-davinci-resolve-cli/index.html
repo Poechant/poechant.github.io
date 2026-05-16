@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>dvr：写给人和 AI Agent 用的 DaVinci Resolve 命令行</title>
+  	<meta name="description" content="dvr 是我最近开源的一个 DaVinci Resolve 18+ 的 Python 命令行工具，五个命令域（doctor / project / media / render / timeline）覆盖剪辑流水线里大量重复操作；更重要的是它被刻意做成一个 Agent-first CLI——JSON-first 输出、稳定的 errorCode 枚举、异步 jobId 状态机、自带 SKILL.md 打包发布。本文是 dvr 的介绍、上手实战，以及几个 Agent-first 设计决定的随手记。">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+
+  	
+  		<script async src="https://www.googletagmanager.com/gtag/js?id=G-CH4708X4R5"></script>
+  		<script>
+    		window.dataLayer = window.dataLayer || [];
+    		function gtag(){dataLayer.push(arguments);}
+    		gtag('js', new Date());
+
+    		gtag('config', 'G-CH4708X4R5');
+  		</script>
+	
+
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/booklist/" title="读书行路">读书行路</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/CLAUDE" title="Repository-specific rules">Repository-specific rules</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="AI">AI</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="音视频">音视频</a>
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/quant" title="投资">投资</a>
+
+
+
+
+
+  <a href="/category/thinking" title="思考">思考</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="/CLAUDE" title="Repository-specific rules">Repository-specific rules</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="AI">AI</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="音视频">音视频</a>
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/quant" title="投资">投资</a>
+
+
+
+
+
+  <a href="/category/thinking" title="思考">思考</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="/CLAUDE" title="Repository-specific rules">Repository-specific rules</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+
+		<main>
+
+			<article id="post-page">
+	<h2>dvr：写给人和 AI Agent 用的 DaVinci Resolve 命令行</h2>		
+	<time datetime="2026-05-15T09:00:00+08:00" class="by-line">15 May 2026, 杭州 | 麦克船长 | 总计 5579 字</time>
+	<div class="content">
+		<p><img src="/img/src2/2026/05/2026-05-15-davinci-resolve-cli.png" alt="image" /></p>
+
+<h2 id="1-一句话讲清楚">1. 一句话讲清楚</h2>
+
+<p><code class="language-plaintext highlighter-rouge">dvr</code> 是我最近开源的一个 Python 命令行小工具，干的事很直白——<strong>在命令行里操作 DaVinci Resolve 18+</strong>。</p>
+
+<p>为啥写它？说白了两点：</p>
+
+<ul>
+  <li><strong>给人用</strong>：剪辑这活儿，太多操作可以脚本化了——批量导素材、给 clip 打 flag、跑渲染、加 marker，这些重复劳动谁也不想手动点</li>
+  <li><strong>给 AI Agent 用</strong>：传统 GUI 软件 + 自由文本输出，agent 基本没法稳定地用。dvr 默认吐 JSON、错误用 <code class="language-plaintext highlighter-rouge">errorCode</code> 枚举、长任务用 <code class="language-plaintext highlighter-rouge">jobId</code> 状态机管起来——它是个<strong>地地道道的 Agent-first CLI</strong></li>
+</ul>
+
+<p>包名叫 <code class="language-plaintext highlighter-rouge">davinci-resolve-cli</code>（装的时候敲这个），命令是短一点的 <code class="language-plaintext highlighter-rouge">dvr</code>（日常敲这个）。现在 0.1 alpha，五个命令域（<code class="language-plaintext highlighter-rouge">doctor</code> / <code class="language-plaintext highlighter-rouge">project</code> / <code class="language-plaintext highlighter-rouge">media</code> / <code class="language-plaintext highlighter-rouge">render</code> / <code class="language-plaintext highlighter-rouge">timeline</code>）都已经跑通了——<strong>能用了，欢迎来试</strong>。</p>
+
+<h2 id="2-30-秒上手">2. 30 秒上手</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pipx <span class="nb">install </span>davinci-resolve-cli
+</code></pre></div></div>
+
+<p>前提是你本机已经装好了 DaVinci Resolve 18+（推荐 Studio 版）。装完先跑一个体检：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dvr doctor
+</code></pre></div></div>
+
+<p>正常情况下，Resolve 路径、版本、bridge 状态、API 端点会一路全绿。要是哪里不对，dvr 不会含糊——<strong>具体哪一步坏了它都明明白白告诉你</strong>：Resolve 没启动？External Scripting 那个开关没在 Preferences → System → General 里打开？版本太老？返回的 JSON 里都会带一个 <code class="language-plaintext highlighter-rouge">hint</code> 字段，照着改就行。</p>
+
+<h2 id="3-五个命令域">3. 五个命令域</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>域</th>
+      <th>干啥</th>
+      <th>主要子命令</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">doctor</code></td>
+      <td>环境体检</td>
+      <td><code class="language-plaintext highlighter-rouge">dvr doctor</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">project</code></td>
+      <td>项目操作</td>
+      <td><code class="language-plaintext highlighter-rouge">list / open / new / close / save / export / import / current</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">media</code></td>
+      <td>媒体管理</td>
+      <td><code class="language-plaintext highlighter-rouge">import / list / tag</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">render</code></td>
+      <td>渲染（异步）</td>
+      <td><code class="language-plaintext highlighter-rouge">presets / submit / status / list / wait / cancel</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">timeline</code></td>
+      <td>时间轴</td>
+      <td><code class="language-plaintext highlighter-rouge">list / current / open / new / clips / marker add/delete/list</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>所有命令都吃 <code class="language-plaintext highlighter-rouge">--format json|yaml|table</code>；凡是会改 timeline 的命令，全部带 <code class="language-plaintext highlighter-rouge">--dry-run</code>——动手前可以先看看到底要改成啥样。</p>
+
+<h2 id="4-实战四例">4. 实战四例</h2>
+
+<h3 id="例一批量导素材">例一：批量导素材</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dvr media import ~/Footage/Day1 <span class="nt">--recursive</span> <span class="nt">--bin</span> <span class="s2">"Day1"</span>
+</code></pre></div></div>
+
+<p>把 <code class="language-plaintext highlighter-rouge">~/Footage/Day1/</code> 整个目录递归扫一遍导进来，全扔到 master bin 下的 <code class="language-plaintext highlighter-rouge">Day1</code> 文件夹里。导完之后 bin 会自动切回你原来打开的那个——<strong>不会动你 GUI 里当前的状态</strong>，挺友好。</p>
+
+<h3 id="例二异步渲染--等结果">例二：异步渲染 + 等结果</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 提交任务，立刻拿到 jobId</span>
+<span class="nv">JOB</span><span class="o">=</span><span class="si">$(</span>dvr render submit <span class="se">\</span>
+  <span class="nt">--preset</span> <span class="s2">"H.264 Master"</span> <span class="se">\</span>
+  <span class="nt">--timeline</span> cur <span class="se">\</span>
+  <span class="nt">--output</span> ~/out.mp4 <span class="se">\</span>
+  <span class="nt">--start</span> <span class="se">\</span>
+  <span class="nt">--format</span> json | jq <span class="nt">-r</span> .jobId<span class="si">)</span>
+
+<span class="c"># 等任务完成（每 2 秒 poll 一次，进度打在 stderr）</span>
+dvr render <span class="nb">wait</span> <span class="s2">"</span><span class="nv">$JOB</span><span class="s2">"</span> <span class="nt">--interval</span> 2 <span class="nt">--format</span> json
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">render submit</code> 一秒就返回，任务状态写到 <code class="language-plaintext highlighter-rouge">~/.dvr/jobs.json</code> 里——你关掉终端、重启 Resolve 都不要紧，下次 <code class="language-plaintext highlighter-rouge">dvr render status $JOB</code> 一样查得到。</p>
+
+<h3 id="例三批量打-flag-color">例三：批量打 flag color</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 把 Day1 bin 里所有还没标 Green 的 clip 都标成 Green</span>
+<span class="nv">IDS</span><span class="o">=</span><span class="si">$(</span>dvr media list <span class="nt">--bin</span> <span class="s2">"Day1"</span> <span class="nt">--format</span> json <span class="se">\</span>
+  | jq <span class="nt">-r</span> <span class="s1">'.[] | select(.flags | index("Green") | not) | .id'</span><span class="si">)</span>
+
+dvr media tag <span class="nv">$IDS</span> <span class="nt">--color</span> Green <span class="nt">--format</span> json
+</code></pre></div></div>
+
+<p>DaVinci Resolve 自己那 16 种 flag color，全都能用。哪个 clip 打不上，会落到返回 JSON 的 <code class="language-plaintext highlighter-rouge">failed[]</code> 数组里——<strong>不会全部回滚、也不会假装成功</strong>，该报错就老实报错。</p>
+
+<h3 id="例四脚本化加-marker含-dry-run">例四：脚本化加 marker（含 dry-run）</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 先 dry-run 看一眼会发生什么</span>
+dvr timeline marker add <span class="nt">--at</span> 01:00:05:00 <span class="nt">--note</span> <span class="s2">"review"</span> <span class="nt">--dry-run</span>
+
+<span class="c"># 真做</span>
+dvr timeline marker add <span class="nt">--at</span> 01:00:05:00 <span class="nt">--note</span> <span class="s2">"review"</span> <span class="nt">--color</span> Blue
+</code></pre></div></div>
+
+<p>AI agent 处理这类会改东西的操作，比较稳的姿势是：先 <code class="language-plaintext highlighter-rouge">--dry-run</code>，把返回的 <code class="language-plaintext highlighter-rouge">planned[]</code> 给用户瞅一眼——「我准备这么改，你看行不行？」——确认了再真做。</p>
+
+<h2 id="5-几个-agent-first-的设计决定">5. 几个 Agent-first 的设计决定</h2>
+
+<p>写个 CLI 本身不难。难的是让 LLM agent <strong>不靠太多 prompt 工程，就能稳稳地用</strong>。下面这几个设计决定，给打算做类似 CLI 的同学参考。</p>
+
+<h3 id="51-双-mode-输出tty--tablepipe--json">5.1 双 mode 输出：TTY → table，pipe → JSON</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dvr media list           <span class="c"># 终端里跑，出 rich 表格</span>
+dvr media list | jq ...  <span class="c"># 接了 pipe，自动切 JSON</span>
+</code></pre></div></div>
+
+<p>判断逻辑就一行 <code class="language-plaintext highlighter-rouge">sys.stdout.isatty()</code>。当然你也可以用 <code class="language-plaintext highlighter-rouge">--format json|yaml|table</code> 强制指定，或者环境变量 <code class="language-plaintext highlighter-rouge">DVR_OUTPUT=yaml</code> 一把全局覆盖。</p>
+
+<p>这事儿为啥要这么做？因为 agent 调 CLI 永远是非 TTY 的——它要的是稳定能解析的结构化输出。但人类敲同一条命令的时候，没人想看一坨 JSON 满屏滚。<strong>一条命令、两类用户、两套最佳形态</strong>，dvr 自己识别，不用你操心。</p>
+
+<h3 id="52-errorcode-枚举--stderr-json">5.2 errorCode 枚举 + stderr JSON</h3>
+
+<p>所有错误都以 JSON 的形式打到 stderr：</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="nl">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"resolve_not_running"</span><span class="p">,</span><span class="w"> </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w"> </span><span class="nl">"hint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">errorCode</code> 是一个<strong>稳定枚举</strong>——<code class="language-plaintext highlighter-rouge">resolve_not_running</code> / <code class="language-plaintext highlighter-rouge">version_unsupported</code> / <code class="language-plaintext highlighter-rouge">api_unavailable</code> / <code class="language-plaintext highlighter-rouge">validation_error</code> / <code class="language-plaintext highlighter-rouge">not_found</code> / <code class="language-plaintext highlighter-rouge">api_call_failed</code> / <code class="language-plaintext highlighter-rouge">internal_error</code>——不会因为我哪天心情好就改文案。agent 拿 <code class="language-plaintext highlighter-rouge">errorCode</code> 做分支判断，不用从自由文本里 grep 关键字猜意思。</p>
+
+<p>退出码走 sysexits 那一套：<code class="language-plaintext highlighter-rouge">0</code> 成功 / <code class="language-plaintext highlighter-rouge">1</code> 用户用错了 / <code class="language-plaintext highlighter-rouge">2</code> Resolve 没起来 / <code class="language-plaintext highlighter-rouge">3</code> Resolve API 自己出问题。和 errorCode 是互补关系——shell 脚本看退出码，agent 看 JSON。</p>
+
+<h3 id="53-长任务用-jobid-状态机">5.3 长任务用 jobId 状态机</h3>
+
+<p><code class="language-plaintext highlighter-rouge">render</code> 是会跑挺久的操作。同步等 agent 会被卡死在那儿啥也干不了。所以 <code class="language-plaintext highlighter-rouge">render submit</code> 一调就立刻返回 <code class="language-plaintext highlighter-rouge">jobId</code>，状态写到 <code class="language-plaintext highlighter-rouge">~/.dvr/jobs.json</code>：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dvr render submit ... → 立刻返回 jobId
+dvr render status JOB → 查状态
+dvr render <span class="nb">wait </span>JOB   → 想等就阻塞等完
+dvr render list       → 看所有 job
+dvr render cancel JOB → 取消
+</code></pre></div></div>
+
+<p>agent 比较合理的姿势是：<strong><code class="language-plaintext highlighter-rouge">submit</code> → 该干啥干啥 → 适时 <code class="language-plaintext highlighter-rouge">wait</code> 或 <code class="language-plaintext highlighter-rouge">status</code> 看一眼</strong>，别把整段对话同步阻塞掉。</p>
+
+<h3 id="54-skillmd-是发布物的一部分">5.4 SKILL.md 是发布物的一部分</h3>
+
+<p>包里直接塞了一份 <a href="https://github.com/poechant/davinci-resolve-cli/blob/master/SKILL.md"><code class="language-plaintext highlighter-rouge">SKILL.md</code></a>——Anthropic 那种 agent skill 系统能直接读的 markdown 格式，里头有五个工作示例（render / list media / batch tag / wait on job / preflight）。</p>
+
+<p><code class="language-plaintext highlighter-rouge">pyproject.toml</code> 用 <code class="language-plaintext highlighter-rouge">shared-data</code> 把它装到 <code class="language-plaintext highlighter-rouge">share/dvr/SKILL.md</code>：</p>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[tool.hatch.build.targets.wheel.shared-data]</span>
+<span class="py">"SKILL.md"</span> <span class="p">=</span> <span class="s">"share/dvr/SKILL.md"</span>
+</code></pre></div></div>
+
+<p><strong>把 agent skill 文件作为发布物的一部分塞进去</strong>——这样 agent 系统装上 CLI 就能「开箱即发现、立马上手」——是我觉得 2026 年的 CLI 都应该开始养成的一个新习惯。</p>
+
+<h2 id="6-工程上的几个克制">6. 工程上的几个克制</h2>
+
+<p><strong>140 个单测，CI 完全不依赖 Resolve</strong>。DaVinci Resolve 是闭源 GUI 软件，没法在 CI 里跑——这点挺麻烦。所以我写了一个 <code class="language-plaintext highlighter-rouge">FakeResolve</code>，本质就是一个内存状态机——把所有命令域的状态用 Python dict 模拟出来，单测全部打 FakeResolve。Integration test 单独打 <code class="language-plaintext highlighter-rouge">pytest -m integration</code> 标记，要本机 Resolve 真在跑才会执行。开发循环 &lt; 1 秒，PR 也不用专门拉个 mac 同学帮跑。</p>
+
+<p><strong>有些命令暂时没做</strong>。比如 <code class="language-plaintext highlighter-rouge">timeline cut</code> 和 <code class="language-plaintext highlighter-rouge">timeline move</code>，看着很直观、用户也想要——但 DaVinciResolveScript 压根没暴露这俩 API，要硬做就得走 Workflow Integrations 桥接，工作量直接翻倍。所以 v0.1 干脆不做，明明白白写在 CHANGELOG 的 “Deferred to v0.2” 段里。<strong>说不做就是不做、不硬做、不偷偷骗用户</strong>——这是开源工具最基本的诚信。</p>
+
+<p><strong>全文档我没敢写「production-ready」这种词</strong>。它就是 0.1 alpha——能跑通五个命令域、能让前期试用者帮我验证设计、但还有不少坑等着踩。v0.2 路线图：<code class="language-plaintext highlighter-rouge">timeline cut/move</code>、Windows / Linux 一类支持、MCP server 打包。</p>
+
+<h2 id="7-但-dvr-不是终极方案更远的目标是-proactive-video-editing">7. 但 dvr 不是终极方案：更远的目标是 Proactive Video Editing</h2>
+
+<p>写到这儿得讲一句心里话——</p>
+
+<p><strong>我其实并不觉得 dvr 这种「在 GUI 软件外面套一层 CLI、再让 agent 调用」的形态，是 AI 做 Video Editing 的终极答案</strong>。它更像一座<strong>过渡桥</strong>：当下还有一大堆朋友在用 DaVinci Resolve，那就先把它装进命令行、让 agent 也能用上——先把眼下的问题解了再说。</p>
+
+<p>但真正有价值的、Prosumer 真正该用的<strong>专业级 Video Editor AI 产品</strong>，<strong>形态不应该是这样</strong>。它应该在另一个方向，我把这个方向叫做 <strong>Proactive Video Editing</strong>。</p>
+
+<p>为啥？因为对 Prosumer 来说，真正有价值的内容创作<strong>离不开人在回路</strong>。AI 不可能、也不应该把人从创作链路里拿掉——那样剩下的就是流水线，不是创作了。但 AI 可以做一件传统软件做不到的事——<strong>主动</strong>：主动预判下一步、主动给出选项、在你意图还没完全成形的那一刻，已经把可能性铺到你面前。</p>
+
+<p>这种「<strong>人在回路 + AI 主动协同</strong>」的形态，我管它叫 <strong>Proactivation</strong>——既不是 AI 替你干活、也不是你手动驱动 AI，而是两边<strong>主动咬合</strong>。我觉得只有走到这一层，Video Editing 这种创作场域里，效率和效果才可能同时往上抬一个台阶。</p>
+
+<p><strong>而这件事，其实正是我们团队在做的产品</strong>——一款面向 Prosumer 的、专业级的 Proactive Video Editor AI 产品。具体长什么样、什么时候放出来，以后会有专门的博客来聊；这里就先点一下，不展开。</p>
+
+<p>所以现在的局面挺清楚的：<strong>dvr 是当下能交付的过渡桥，Proactive Video Editing 是更远但更值得做的事</strong>。两件事不冲突——很多创作者眼下还在 Resolve 里，那就先把 Resolve 这一段接好。</p>
+
+<h2 id="8-试用入口">8. 试用入口</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pipx <span class="nb">install </span>davinci-resolve-cli
+dvr doctor
+</code></pre></div></div>
+
+<p>如果你也在做剪辑流水线的自动化、或者在给 DaVinci Resolve 写 agent skill，欢迎来试用、提 issue、拍 PR：</p>
+
+<ul>
+  <li>GitHub：<a href="https://github.com/poechant/davinci-resolve-cli">github.com/poechant/davinci-resolve-cli</a></li>
+  <li>PyPI：<code class="language-plaintext highlighter-rouge">pipx install davinci-resolve-cli</code></li>
+</ul>
+
+<hr />
+
+<p>写 CLI 这事儿听起来不性感，但<strong>给 agent 写 CLI</strong> 这件事，正在变成 2026 年开发者工具栈里越来越重要的一块拼图。</p>
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+	<span>
+		-<br/><br/>
+		船长还不会游泳 at 微信公众号/微博<br/>
+		@麦克船长 at 即刻/知乎/小宇宙/掘金/小红书/微信读书<br/>
+		@船长模玩 at Bilibili<br/>
+		Copyright © 2011-2023, MikeCaptain.com
+	</span>
+</footer>
+
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>

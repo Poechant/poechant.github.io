@@ -1,4 +1,208 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2026-05-15T04:14:33+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">从《文明》的回合到《星际》的实时：AI 产品形态正在经历的范式迁移</title><link href="https://www.mikecaptain.com/2026/05/13/pace-engine-interaction-model/" rel="alternate" type="text/html" title="从《文明》的回合到《星际》的实时：AI 产品形态正在经历的范式迁移" /><published>2026-05-13T22:30:00+08:00</published><updated>2026-05-13T22:30:00+08:00</updated><id>https://www.mikecaptain.com/2026/05/13/pace-engine-interaction-model</id><content type="html" xml:base="https://www.mikecaptain.com/2026/05/13/pace-engine-interaction-model/">&lt;p&gt;&lt;img src=&quot;/img/src2/2026/05/2026-05-13-pace-engine-interaction-model-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2026-05-16T15:26:33+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">dvr：写给人和 AI Agent 用的 DaVinci Resolve 命令行</title><link href="https://www.mikecaptain.com/2026/05/15/dvr-davinci-resolve-cli/" rel="alternate" type="text/html" title="dvr：写给人和 AI Agent 用的 DaVinci Resolve 命令行" /><published>2026-05-15T09:00:00+08:00</published><updated>2026-05-15T09:00:00+08:00</updated><id>https://www.mikecaptain.com/2026/05/15/dvr-davinci-resolve-cli</id><content type="html" xml:base="https://www.mikecaptain.com/2026/05/15/dvr-davinci-resolve-cli/">&lt;p&gt;&lt;img src=&quot;/img/src2/2026/05/2026-05-15-davinci-resolve-cli.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;1-一句话讲清楚&quot;&gt;1. 一句话讲清楚&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dvr&lt;/code&gt; 是我最近开源的一个 Python 命令行小工具，干的事很直白——&lt;strong&gt;在命令行里操作 DaVinci Resolve 18+&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;为啥写它？说白了两点：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;给人用&lt;/strong&gt;：剪辑这活儿，太多操作可以脚本化了——批量导素材、给 clip 打 flag、跑渲染、加 marker，这些重复劳动谁也不想手动点&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;给 AI Agent 用&lt;/strong&gt;：传统 GUI 软件 + 自由文本输出，agent 基本没法稳定地用。dvr 默认吐 JSON、错误用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;errorCode&lt;/code&gt; 枚举、长任务用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jobId&lt;/code&gt; 状态机管起来——它是个&lt;strong&gt;地地道道的 Agent-first CLI&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;包名叫 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;davinci-resolve-cli&lt;/code&gt;（装的时候敲这个），命令是短一点的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dvr&lt;/code&gt;（日常敲这个）。现在 0.1 alpha，五个命令域（&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;doctor&lt;/code&gt; / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;project&lt;/code&gt; / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;media&lt;/code&gt; / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;render&lt;/code&gt; / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;timeline&lt;/code&gt;）都已经跑通了——&lt;strong&gt;能用了，欢迎来试&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;2-30-秒上手&quot;&gt;2. 30 秒上手&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pipx &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;davinci-resolve-cli
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;前提是你本机已经装好了 DaVinci Resolve 18+（推荐 Studio 版）。装完先跑一个体检：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dvr doctor
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;正常情况下，Resolve 路径、版本、bridge 状态、API 端点会一路全绿。要是哪里不对，dvr 不会含糊——&lt;strong&gt;具体哪一步坏了它都明明白白告诉你&lt;/strong&gt;：Resolve 没启动？External Scripting 那个开关没在 Preferences → System → General 里打开？版本太老？返回的 JSON 里都会带一个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hint&lt;/code&gt; 字段，照着改就行。&lt;/p&gt;
+
+&lt;h2 id=&quot;3-五个命令域&quot;&gt;3. 五个命令域&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;域&lt;/th&gt;
+      &lt;th&gt;干啥&lt;/th&gt;
+      &lt;th&gt;主要子命令&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;doctor&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;环境体检&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dvr doctor&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;project&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;项目操作&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list / open / new / close / save / export / import / current&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;media&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;媒体管理&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;import / list / tag&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;render&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;渲染（异步）&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;presets / submit / status / list / wait / cancel&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;timeline&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;时间轴&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list / current / open / new / clips / marker add/delete/list&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;所有命令都吃 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--format json|yaml|table&lt;/code&gt;；凡是会改 timeline 的命令，全部带 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--dry-run&lt;/code&gt;——动手前可以先看看到底要改成啥样。&lt;/p&gt;
+
+&lt;h2 id=&quot;4-实战四例&quot;&gt;4. 实战四例&lt;/h2&gt;
+
+&lt;h3 id=&quot;例一批量导素材&quot;&gt;例一：批量导素材&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dvr media import ~/Footage/Day1 &lt;span class=&quot;nt&quot;&gt;--recursive&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--bin&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Day1&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;把 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/Footage/Day1/&lt;/code&gt; 整个目录递归扫一遍导进来，全扔到 master bin 下的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Day1&lt;/code&gt; 文件夹里。导完之后 bin 会自动切回你原来打开的那个——&lt;strong&gt;不会动你 GUI 里当前的状态&lt;/strong&gt;，挺友好。&lt;/p&gt;
+
+&lt;h3 id=&quot;例二异步渲染--等结果&quot;&gt;例二：异步渲染 + 等结果&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 提交任务，立刻拿到 jobId&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;JOB&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;dvr render submit &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--preset&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;H.264 Master&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--timeline&lt;/span&gt; cur &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--output&lt;/span&gt; ~/out.mp4 &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--start&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--format&lt;/span&gt; json | jq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; .jobId&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 等任务完成（每 2 秒 poll 一次，进度打在 stderr）&lt;/span&gt;
+dvr render &lt;span class=&quot;nb&quot;&gt;wait&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$JOB&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--interval&lt;/span&gt; 2 &lt;span class=&quot;nt&quot;&gt;--format&lt;/span&gt; json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;render submit&lt;/code&gt; 一秒就返回，任务状态写到 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.dvr/jobs.json&lt;/code&gt; 里——你关掉终端、重启 Resolve 都不要紧，下次 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dvr render status $JOB&lt;/code&gt; 一样查得到。&lt;/p&gt;
+
+&lt;h3 id=&quot;例三批量打-flag-color&quot;&gt;例三：批量打 flag color&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 把 Day1 bin 里所有还没标 Green 的 clip 都标成 Green&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;IDS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;dvr media list &lt;span class=&quot;nt&quot;&gt;--bin&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Day1&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--format&lt;/span&gt; json &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  | jq &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;.[] | select(.flags | index(&quot;Green&quot;) | not) | .id&apos;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+
+dvr media tag &lt;span class=&quot;nv&quot;&gt;$IDS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--color&lt;/span&gt; Green &lt;span class=&quot;nt&quot;&gt;--format&lt;/span&gt; json
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;DaVinci Resolve 自己那 16 种 flag color，全都能用。哪个 clip 打不上，会落到返回 JSON 的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;failed[]&lt;/code&gt; 数组里——&lt;strong&gt;不会全部回滚、也不会假装成功&lt;/strong&gt;，该报错就老实报错。&lt;/p&gt;
+
+&lt;h3 id=&quot;例四脚本化加-marker含-dry-run&quot;&gt;例四：脚本化加 marker（含 dry-run）&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 先 dry-run 看一眼会发生什么&lt;/span&gt;
+dvr timeline marker add &lt;span class=&quot;nt&quot;&gt;--at&lt;/span&gt; 01:00:05:00 &lt;span class=&quot;nt&quot;&gt;--note&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;review&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--dry-run&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 真做&lt;/span&gt;
+dvr timeline marker add &lt;span class=&quot;nt&quot;&gt;--at&lt;/span&gt; 01:00:05:00 &lt;span class=&quot;nt&quot;&gt;--note&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;review&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--color&lt;/span&gt; Blue
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;AI agent 处理这类会改东西的操作，比较稳的姿势是：先 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--dry-run&lt;/code&gt;，把返回的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;planned[]&lt;/code&gt; 给用户瞅一眼——「我准备这么改，你看行不行？」——确认了再真做。&lt;/p&gt;
+
+&lt;h2 id=&quot;5-几个-agent-first-的设计决定&quot;&gt;5. 几个 Agent-first 的设计决定&lt;/h2&gt;
+
+&lt;p&gt;写个 CLI 本身不难。难的是让 LLM agent &lt;strong&gt;不靠太多 prompt 工程，就能稳稳地用&lt;/strong&gt;。下面这几个设计决定，给打算做类似 CLI 的同学参考。&lt;/p&gt;
+
+&lt;h3 id=&quot;51-双-mode-输出tty--tablepipe--json&quot;&gt;5.1 双 mode 输出：TTY → table，pipe → JSON&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dvr media list           &lt;span class=&quot;c&quot;&gt;# 终端里跑，出 rich 表格&lt;/span&gt;
+dvr media list | jq ...  &lt;span class=&quot;c&quot;&gt;# 接了 pipe，自动切 JSON&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;判断逻辑就一行 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sys.stdout.isatty()&lt;/code&gt;。当然你也可以用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--format json|yaml|table&lt;/code&gt; 强制指定，或者环境变量 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DVR_OUTPUT=yaml&lt;/code&gt; 一把全局覆盖。&lt;/p&gt;
+
+&lt;p&gt;这事儿为啥要这么做？因为 agent 调 CLI 永远是非 TTY 的——它要的是稳定能解析的结构化输出。但人类敲同一条命令的时候，没人想看一坨 JSON 满屏滚。&lt;strong&gt;一条命令、两类用户、两套最佳形态&lt;/strong&gt;，dvr 自己识别，不用你操心。&lt;/p&gt;
+
+&lt;h3 id=&quot;52-errorcode-枚举--stderr-json&quot;&gt;5.2 errorCode 枚举 + stderr JSON&lt;/h3&gt;
+
+&lt;p&gt;所有错误都以 JSON 的形式打到 stderr：&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;errorCode&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;resolve_not_running&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;message&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;...&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;hint&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;...&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;errorCode&lt;/code&gt; 是一个&lt;strong&gt;稳定枚举&lt;/strong&gt;——&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;resolve_not_running&lt;/code&gt; / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;version_unsupported&lt;/code&gt; / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;api_unavailable&lt;/code&gt; / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;validation_error&lt;/code&gt; / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;not_found&lt;/code&gt; / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;api_call_failed&lt;/code&gt; / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;internal_error&lt;/code&gt;——不会因为我哪天心情好就改文案。agent 拿 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;errorCode&lt;/code&gt; 做分支判断，不用从自由文本里 grep 关键字猜意思。&lt;/p&gt;
+
+&lt;p&gt;退出码走 sysexits 那一套：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0&lt;/code&gt; 成功 / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&lt;/code&gt; 用户用错了 / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2&lt;/code&gt; Resolve 没起来 / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;3&lt;/code&gt; Resolve API 自己出问题。和 errorCode 是互补关系——shell 脚本看退出码，agent 看 JSON。&lt;/p&gt;
+
+&lt;h3 id=&quot;53-长任务用-jobid-状态机&quot;&gt;5.3 长任务用 jobId 状态机&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;render&lt;/code&gt; 是会跑挺久的操作。同步等 agent 会被卡死在那儿啥也干不了。所以 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;render submit&lt;/code&gt; 一调就立刻返回 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jobId&lt;/code&gt;，状态写到 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.dvr/jobs.json&lt;/code&gt;：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dvr render submit ... → 立刻返回 jobId
+dvr render status JOB → 查状态
+dvr render &lt;span class=&quot;nb&quot;&gt;wait &lt;/span&gt;JOB   → 想等就阻塞等完
+dvr render list       → 看所有 job
+dvr render cancel JOB → 取消
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;agent 比较合理的姿势是：&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;submit&lt;/code&gt; → 该干啥干啥 → 适时 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wait&lt;/code&gt; 或 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;status&lt;/code&gt; 看一眼&lt;/strong&gt;，别把整段对话同步阻塞掉。&lt;/p&gt;
+
+&lt;h3 id=&quot;54-skillmd-是发布物的一部分&quot;&gt;5.4 SKILL.md 是发布物的一部分&lt;/h3&gt;
+
+&lt;p&gt;包里直接塞了一份 &lt;a href=&quot;https://github.com/poechant/davinci-resolve-cli/blob/master/SKILL.md&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SKILL.md&lt;/code&gt;&lt;/a&gt;——Anthropic 那种 agent skill 系统能直接读的 markdown 格式，里头有五个工作示例（render / list media / batch tag / wait on job / preflight）。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pyproject.toml&lt;/code&gt; 用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shared-data&lt;/code&gt; 把它装到 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;share/dvr/SKILL.md&lt;/code&gt;：&lt;/p&gt;
+
+&lt;div class=&quot;language-toml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[tool.hatch.build.targets.wheel.shared-data]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;&quot;SKILL.md&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;share/dvr/SKILL.md&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;把 agent skill 文件作为发布物的一部分塞进去&lt;/strong&gt;——这样 agent 系统装上 CLI 就能「开箱即发现、立马上手」——是我觉得 2026 年的 CLI 都应该开始养成的一个新习惯。&lt;/p&gt;
+
+&lt;h2 id=&quot;6-工程上的几个克制&quot;&gt;6. 工程上的几个克制&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;140 个单测，CI 完全不依赖 Resolve&lt;/strong&gt;。DaVinci Resolve 是闭源 GUI 软件，没法在 CI 里跑——这点挺麻烦。所以我写了一个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FakeResolve&lt;/code&gt;，本质就是一个内存状态机——把所有命令域的状态用 Python dict 模拟出来，单测全部打 FakeResolve。Integration test 单独打 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pytest -m integration&lt;/code&gt; 标记，要本机 Resolve 真在跑才会执行。开发循环 &amp;lt; 1 秒，PR 也不用专门拉个 mac 同学帮跑。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;有些命令暂时没做&lt;/strong&gt;。比如 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;timeline cut&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;timeline move&lt;/code&gt;，看着很直观、用户也想要——但 DaVinciResolveScript 压根没暴露这俩 API，要硬做就得走 Workflow Integrations 桥接，工作量直接翻倍。所以 v0.1 干脆不做，明明白白写在 CHANGELOG 的 “Deferred to v0.2” 段里。&lt;strong&gt;说不做就是不做、不硬做、不偷偷骗用户&lt;/strong&gt;——这是开源工具最基本的诚信。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;全文档我没敢写「production-ready」这种词&lt;/strong&gt;。它就是 0.1 alpha——能跑通五个命令域、能让前期试用者帮我验证设计、但还有不少坑等着踩。v0.2 路线图：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;timeline cut/move&lt;/code&gt;、Windows / Linux 一类支持、MCP server 打包。&lt;/p&gt;
+
+&lt;h2 id=&quot;7-但-dvr-不是终极方案更远的目标是-proactive-video-editing&quot;&gt;7. 但 dvr 不是终极方案：更远的目标是 Proactive Video Editing&lt;/h2&gt;
+
+&lt;p&gt;写到这儿得讲一句心里话——&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;我其实并不觉得 dvr 这种「在 GUI 软件外面套一层 CLI、再让 agent 调用」的形态，是 AI 做 Video Editing 的终极答案&lt;/strong&gt;。它更像一座&lt;strong&gt;过渡桥&lt;/strong&gt;：当下还有一大堆朋友在用 DaVinci Resolve，那就先把它装进命令行、让 agent 也能用上——先把眼下的问题解了再说。&lt;/p&gt;
+
+&lt;p&gt;但真正有价值的、Prosumer 真正该用的&lt;strong&gt;专业级 Video Editor AI 产品&lt;/strong&gt;，&lt;strong&gt;形态不应该是这样&lt;/strong&gt;。它应该在另一个方向，我把这个方向叫做 &lt;strong&gt;Proactive Video Editing&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;为啥？因为对 Prosumer 来说，真正有价值的内容创作&lt;strong&gt;离不开人在回路&lt;/strong&gt;。AI 不可能、也不应该把人从创作链路里拿掉——那样剩下的就是流水线，不是创作了。但 AI 可以做一件传统软件做不到的事——&lt;strong&gt;主动&lt;/strong&gt;：主动预判下一步、主动给出选项、在你意图还没完全成形的那一刻，已经把可能性铺到你面前。&lt;/p&gt;
+
+&lt;p&gt;这种「&lt;strong&gt;人在回路 + AI 主动协同&lt;/strong&gt;」的形态，我管它叫 &lt;strong&gt;Proactivation&lt;/strong&gt;——既不是 AI 替你干活、也不是你手动驱动 AI，而是两边&lt;strong&gt;主动咬合&lt;/strong&gt;。我觉得只有走到这一层，Video Editing 这种创作场域里，效率和效果才可能同时往上抬一个台阶。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;而这件事，其实正是我们团队在做的产品&lt;/strong&gt;——一款面向 Prosumer 的、专业级的 Proactive Video Editor AI 产品。具体长什么样、什么时候放出来，以后会有专门的博客来聊；这里就先点一下，不展开。&lt;/p&gt;
+
+&lt;p&gt;所以现在的局面挺清楚的：&lt;strong&gt;dvr 是当下能交付的过渡桥，Proactive Video Editing 是更远但更值得做的事&lt;/strong&gt;。两件事不冲突——很多创作者眼下还在 Resolve 里，那就先把 Resolve 这一段接好。&lt;/p&gt;
+
+&lt;h2 id=&quot;8-试用入口&quot;&gt;8. 试用入口&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pipx &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;davinci-resolve-cli
+dvr doctor
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;如果你也在做剪辑流水线的自动化、或者在给 DaVinci Resolve 写 agent skill，欢迎来试用、提 issue、拍 PR：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;GitHub：&lt;a href=&quot;https://github.com/poechant/davinci-resolve-cli&quot;&gt;github.com/poechant/davinci-resolve-cli&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;PyPI：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pipx install davinci-resolve-cli&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;写 CLI 这事儿听起来不性感，但&lt;strong&gt;给 agent 写 CLI&lt;/strong&gt; 这件事，正在变成 2026 年开发者工具栈里越来越重要的一块拼图。&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="dvr" /><category term="DaVinci Resolve" /><category term="CLI" /><category term="Python" /><category term="AI Agent" /><category term="Video Editing Automation" /><category term="SKILL.md" /><category term="MCP" /><category term="命令行工具" /><category term="麦克船长" /><summary type="html">dvr 是我给 DaVinci Resolve 18+ 写的一个开源 Python 命令行——既给人用，也给 AI Agent 用。本文带你 5 分钟上手，并讲讲几个 Agent-first 的设计决定……</summary></entry><entry><title type="html">从《文明》的回合到《星际》的实时：AI 产品形态正在经历的范式迁移</title><link href="https://www.mikecaptain.com/2026/05/13/pace-engine-interaction-model/" rel="alternate" type="text/html" title="从《文明》的回合到《星际》的实时：AI 产品形态正在经历的范式迁移" /><published>2026-05-13T22:30:00+08:00</published><updated>2026-05-13T22:30:00+08:00</updated><id>https://www.mikecaptain.com/2026/05/13/pace-engine-interaction-model</id><content type="html" xml:base="https://www.mikecaptain.com/2026/05/13/pace-engine-interaction-model/">&lt;p&gt;&lt;img src=&quot;/img/src2/2026/05/2026-05-13-pace-engine-interaction-model-1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;1-30-多年前游戏行业走过的一段路&quot;&gt;1. 30 多年前，游戏行业走过的一段路&lt;/h2&gt;
 
@@ -747,86 +951,4 @@ Agentic Coding 恶意用例的顺从度下降 25%，但仍保持与 &lt;code cla
 
 &lt;p&gt;这两档是世界上最昂贵的东西。总计起来这两档让股友耗费了千百万美元，多到足以建筑一条横贯美洲大陆的水泥公路。&lt;/p&gt;
 
-&lt;p&gt;一个人如果对自己的判断没有信心，在这种游戏中就走不了多远。这些大概是我学到的一切—研究整体状况，承接仓位，并且坚持下去。&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="quant" /><category term="美股" /><category term="股票" /><category term="投资" /><category term="投机" /><category term="invest" /><category term="investment" /><category term="speculation" /><category term="wall street" /><category term="美国" /><category term="livemore" /><category term="利弗莫尔" /><category term="股票大作手" /><category term="大作手" /><category term="操盘" /><category term="基金" /><category term="止损" /><summary type="html">杰西·劳里斯顿·李佛摩（Jesse Lauriston Livermore），1877 年 7 月 26 日 — 1940 年 11 月 28 日，华尔街著名金融家，被《时代》杂志形容为「最活跃的美国股市投机客（the most fabulous living U.S. stock trader）」。以下是他的言论摘录。</summary></entry><entry><title type="html">【摘录】投资的道路上不存在捷径，但如果向成功的投资大师学习，可以少走很多弯路。</title><link href="https://www.mikecaptain.com/2023/07/30/investment-learnt-from-masters/" rel="alternate" type="text/html" title="【摘录】投资的道路上不存在捷径，但如果向成功的投资大师学习，可以少走很多弯路。" /><published>2023-07-30T12:00:13+08:00</published><updated>2023-07-30T12:00:13+08:00</updated><id>https://www.mikecaptain.com/2023/07/30/investment-learnt-from-masters</id><content type="html" xml:base="https://www.mikecaptain.com/2023/07/30/investment-learnt-from-masters/">&lt;p&gt;原文链接：https://mp.weixin.qq.com/s/U8YsBlMOtj98LeTxXOPigQ?global_content=%7B%22promote_id%22%3A13766%2C%22sub_promote_id%22%3A4%7D&lt;/p&gt;
-
-&lt;p&gt;投资的道路上不存在捷径，但如果向成功的投资大师学习，可以少走很多弯路。&lt;/p&gt;
-
-&lt;p&gt;成功的投资大师需要满足多个条件，比如长期非凡的投资收益、巨额的财富、可重复的投资逻辑，其投资智慧在股市得到「证悟」。他们将自身的经验凝练为几条重要的原则，当这些原则内化为投资者的噪音过滤器时，就会极大降低犯错的概率。&lt;/p&gt;
-
-&lt;p&gt;如巴菲特在过去 58 年创造了 3.8 万倍的投资收益，身家接近 1000 亿美元；格雷厄姆在 1936 年～1956 年动荡频发的美国资本市场中仍取得了年化不低于 14.7% 的收益率；段永平在网易上赚取了百倍收益，后又在贵州茅台和苹果上各赚取了10倍的收益；张尧在 1999 年～2018 年期间在A股和港股赚取了2000倍的收益，2018年至今张尧重仓的煤炭股涨幅在1倍以上，25 年约有 4000 倍收益。&lt;/p&gt;
-
-&lt;p&gt;张尧说「投资没有捷径。但大概率的正确的投资路径，是从学习成功的投资大师开始。学习投资大师可以少走弯路。首先是认同，然后学习模仿，归纳总结，活学活用，不同程度受益，然后再学习再体会，重复这个过程。」&lt;/p&gt;
-
-&lt;p&gt;美国股市具有200年的历史，聪明投资者智慧的代际传播加上个人的超凡悟性造就了格雷厄姆、巴菲特、费雪等殿堂级人物；中国资本市场仅有30多年的历史，但段永平和张尧等人的价值投资实践也证明了，价值投资的原则在A股不仅适用，而且威力巨大。&lt;/p&gt;
-
-&lt;h2 id=&quot;格雷厄姆的投资原则安全边际和不要受市场先生摆布&quot;&gt;格雷厄姆的投资原则：安全边际和不要受「市场先生」摆布&lt;/h2&gt;
-
-&lt;p&gt;巴菲特说「50 年前，我在哥伦比亚大学开始学习格雷厄姆教授的证券分析课程。在此之前的 10 年里，我一直盲目地热衷于分析、买进、卖出股票，但是我的投资业绩却非常一般。从 1951 年起，我的投资业绩开始明显上升，但这并非由于我改变饮食习惯或者开始运动，我唯一添加的新的营养成分是格雷厄姆的投资理念。原因非常简单，在大师门下学习几个小时的效果，远远胜过我自己在过去10年里自以为是的天真思考的结果。」&lt;/p&gt;
-
-&lt;p&gt;格雷厄姆的《证券分析》和《聪明的投资者》能够准确和清晰地提供投资知识体系，但情绪的约束需要投资者自己必须做到。格雷厄姆建立了一套自己的核心原则，这一原则尽管历经了资本市场80年风雨，但至今依然适用。这些原则包括：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;一是股票并非仅仅是一个交易代码或电子信号，而是表明拥有一个实实在在的企业所有权；企业的内在价值并不依赖于其股票价格。&lt;/li&gt;
-  &lt;li&gt;二是市场就像一只钟摆，永远在短命的乐观（它使得股票过于昂贵）和不合理的悲观（它使得股票过于廉价）之间摆动。聪明的投资者是现实主义者，他们向乐观主义者卖出股票，并从悲观主义者手中买进股票。&lt;/li&gt;
-  &lt;li&gt;三是每一笔投资的未来价值是其现在价格的函数，你付出的价格越高，你的回报就越少。&lt;/li&gt;
-  &lt;li&gt;四是无论如何谨慎，每个投资者都免不了会犯错误，只有坚持“安全性”原则，你才能使犯错误纪律最小化。&lt;/li&gt;
-  &lt;li&gt;五是投资的秘诀在于你的内心。如果你在思考问题时持批判态度，不相信华尔街的所谓“事实”，并且以持久的信心进行投资，你就会获得稳定的收益，即便是在熊市亦如此。通过培养自己的约束力和勇气，你就不会让他人的情绪左右你的投资目标。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;费雪的投资哲学寻找少数出类拔萃的公司&quot;&gt;费雪的投资哲学：寻找少数出类拔萃的公司&lt;/h2&gt;
-
-&lt;p&gt;巴菲特曾说过「我的投资哲学 85% 来自格雷厄姆，15% 来自菲利普·费雪。」&lt;/p&gt;
-
-&lt;p&gt;费雪的投资哲学包括：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;一是投资的成功依赖于找到一家未来几年销售额和利润高于行业整体水平的公司，当找到这样的公司时，最好在很长一段时间内持有，「既幸运又有能力」的公司和「因为能力而幸运」的公司都有望在数十年内实现超过平均水平。&lt;/li&gt;
-  &lt;li&gt;二是卓越的管理是取得优异市场业绩的关键，很多公司之所以拥有良好的增长前景，是因为它们的现有产品或服务线可以维持若干年，少数公司会有政策确保10年～20年增长。&lt;/li&gt;
-  &lt;li&gt;三是宁愿拥有少数出类拔萃的公司，也不要投给大批平庸的公司，三四家公司的市值可以占到总仓位的 75%，要想取得投资的成功，必须在能力圈内投资，超越能力圈投资是投资失误的主要原因。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;芒格的投资哲学用合理的价格买入伟大的公司&quot;&gt;芒格的投资哲学：用合理的价格买入伟大的公司&lt;/h2&gt;
-
-&lt;p&gt;巴菲特说「芒格绝对是独一无二的，他用思想的力量，拓宽了我的视野，这让我以非同寻常的速度从猩猩进化为人类，否则我会比现在贫穷得多。」&lt;/p&gt;
-
-&lt;p&gt;芒格的投资哲学包括：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;一是寻找拥有高水平现金收入和低水平资本支出要求的公司，有两类企业，第一类是每年赚12%，你到年底可以把利润拿走；第二类是每年赚 12%，但所有的现金必须进行再投资——它总是没有分红。&lt;/li&gt;
-  &lt;li&gt;二是为一家优秀的公司付出公平的价格，总比为一家平庸的公司付出高昂的价格要好得多。有些东西值得花钱买，比如优秀的企业和优质的人。真正好的投资机会不会常有，也不会持续很长时间，所以你必须做好行动的准备，要有随时行动的思想准备。
-芒格认为，吸取其他人的宝贵经验教训是明智之举，闭目塞听不能梦想成真。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;巴菲特的投资原则用合理的价格买入有杰出经济特征的公司&quot;&gt;巴菲特的投资原则：用合理的价格买入有杰出经济特征的公司&lt;/h2&gt;
-
-&lt;p&gt;巴菲特的投资哲学受到三位殿堂级人物的影响，他们分别是本杰明·格雷厄姆、菲利普·费雪和查理·芒格。巴菲特的投资哲学包含了买股票就是买公司；正确对待市场先生、能力圈、安全边际等原则。而一旦找到符合买入标准的公司，巴菲特倾向于集中投资，比如苹果公司一只股票就可以占到伯克希尔仓位的四成以上。&lt;/p&gt;
-
-&lt;p&gt;巴菲特寻找目标公司的标准：&lt;/p&gt;
-
-&lt;p&gt;一是规模足够大、具有杰出的经济特征。&lt;/p&gt;
-
-&lt;p&gt;二是具有被验证了的持续盈利能力（对于那些未来做出的预测，我们毫无兴趣；对于所谓的「困境反转」型公司，我们也没兴趣）。&lt;/p&gt;
-
-&lt;p&gt;三是在负债极少或没有负债的情况下，公司具有良好的净资产回报率。&lt;/p&gt;
-
-&lt;p&gt;四是具备管理层。&lt;/p&gt;
-
-&lt;p&gt;五是业务简明（如果有太多的科技成分，我们可能搞不明白）。&lt;/p&gt;
-
-&lt;p&gt;六是价格合理。&lt;/p&gt;
-
-&lt;h2 id=&quot;a股价值投资集大成者普通投资者学习巴菲特就好了&quot;&gt;A股价值投资集大成者：普通投资者学习巴菲特就好了&lt;/h2&gt;
-
-&lt;p&gt;A 股的价值投资集大成者，都是巴菲特思想的追随者。&lt;/p&gt;
-
-&lt;p&gt;段永平说「和巴菲特聊一聊，给我非常大的帮助，至少给我带来几千倍午饭的价值。以前我对商业模式是没有那么重视的，只是众多考虑之一。认识老巴以后，我买的苹果、茅台，包括腾讯，都有老巴的影响在里面，尤其是一直拿着这点，和老巴绝对密不可分。」&lt;/p&gt;
-
-&lt;p&gt;段永平还说「从那以后，市场对我的影响逐渐下降到几乎没有。如果能够重来的话，那我肯定会更早地去赢取那个机会。」&lt;/p&gt;
-
-&lt;p&gt;张尧的投资原则是「集中投资于能形成大量自由现金流、简单易懂的好公司，定量上的极低估值使得投资很难亏损。」&lt;/p&gt;
-
-&lt;p&gt;张尧曾说过，从定性上来说，就是买入经营上有竞争优势的好公司，好公司就是其商业模式可以形成大量自由现金流，估值上也要有绝对优势，最常用的标准是 3～5 年现金流回本法，即 3～5 倍 PE。&lt;/p&gt;
-
-&lt;p&gt;定性上的好公司外加充足的“安全边际”让张尧的投资很难亏损。在过去20年间，他曾重仓过的12家公司中，10 家盈利、1 家持平、1 家亏损。&lt;/p&gt;
-
-&lt;p&gt;在投资中，模仿胜过创新，投资思想是否原创并不重要，关键是接受并认同成功投资大师的理念，并认真执行它。往简单处想，往认真处行，威力巨大。&lt;/p&gt;</content><author><name>屈红燕</name></author><category term="quant" /><category term="格雷厄姆" /><category term="巴菲特" /><category term="股票" /><category term="投资" /><category term="价值投资" /><category term="费雪" /><category term="段永平" /><category term="证券分析" /><category term="聪明的投资者" /><summary type="html">原文链接：https://mp.weixin.qq.com/s/U8YsBlMOtj98LeTxXOPigQ?global_content=%7B%22promote_id%22%3A13766%2C%22sub_promote_id%22%3A4%7D</summary></entry></feed>
+&lt;p&gt;一个人如果对自己的判断没有信心，在这种游戏中就走不了多远。这些大概是我学到的一切—研究整体状况，承接仓位，并且坚持下去。&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="quant" /><category term="美股" /><category term="股票" /><category term="投资" /><category term="投机" /><category term="invest" /><category term="investment" /><category term="speculation" /><category term="wall street" /><category term="美国" /><category term="livemore" /><category term="利弗莫尔" /><category term="股票大作手" /><category term="大作手" /><category term="操盘" /><category term="基金" /><category term="止损" /><summary type="html">杰西·劳里斯顿·李佛摩（Jesse Lauriston Livermore），1877 年 7 月 26 日 — 1940 年 11 月 28 日，华尔街著名金融家，被《时代》杂志形容为「最活跃的美国股市投机客（the most fabulous living U.S. stock trader）」。以下是他的言论摘录。</summary></entry></feed>
