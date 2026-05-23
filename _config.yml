@@ -63,6 +63,7 @@ custom_nav_footer: false
 reverse: false
 
 include: ['_categories']
+exclude: ['CLAUDE.md', '.claude', 'README.md']
 # permalink: /category/:name/
 
 # https://github.com/limjh16/jekyll-action-ts
