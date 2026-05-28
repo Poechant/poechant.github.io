@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>fcp：写给人和 AI Agent 用的 Final Cut Pro 命令行</title>
+  	<meta name="description" content="final-cut-pro-cli 是我最近开源的一个 Apple Final Cut Pro 命令行工具。它面向剪辑准备阶段，把 Library、Event、Project、Media 和 Clip 操作做成可组合的 CLI 与 MCP 工具；更重要的是，它从第一天就按 Agent-friendly 的方式设计：JSON 输出、稳定 errorCode、FCPXML-first、不碰 UI scripting，并和 davinci-resolve-cli 保持命令面一致。">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+
+  	
+  		<script async src="https://www.googletagmanager.com/gtag/js?id=G-CH4708X4R5"></script>
+  		<script>
+    		window.dataLayer = window.dataLayer || [];
+    		function gtag(){dataLayer.push(arguments);}
+    		gtag('js', new Date());
+
+    		gtag('config', 'G-CH4708X4R5');
+  		</script>
+	
+
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/booklist/" title="读书行路">读书行路</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="AI">AI</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="音视频">音视频</a>
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/quant" title="投资">投资</a>
+
+
+
+
+
+  <a href="/category/thinking" title="思考">思考</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="AI">AI</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="音视频">音视频</a>
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/quant" title="投资">投资</a>
+
+
+
+
+
+  <a href="/category/thinking" title="思考">思考</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+
+		<main>
+
+			<article id="post-page">
+	<h2>fcp：写给人和 AI Agent 用的 Final Cut Pro 命令行</h2>		
+	<time datetime="2026-05-28T09:00:00+08:00" class="by-line">28 May 2026, 杭州 | 麦克船长 | 总计 6957 字</time>
+	<div class="content">
+		<h2 id="1-一句话讲清楚">1. 一句话讲清楚</h2>
+
+<p><code class="language-plaintext highlighter-rouge">final-cut-pro-cli</code> 是我最近开源的一个 Python 命令行工具，命令叫 <code class="language-plaintext highlighter-rouge">fcp</code>，干的事很明确：</p>
+
+<p><strong>把 Apple Final Cut Pro 的剪辑准备流程，变成命令行和 AI Agent 都能稳定调用的操作面。</strong></p>
+
+<p>这里的关键词不是“替代 Final Cut Pro”，而是“剪辑准备”。专业剪辑软件的 GUI 很强，但很多前置工作其实并不需要人一下一下点：</p>
+
+<ul>
+  <li>创建 Library / Event / Project</li>
+  <li>批量导入素材</li>
+  <li>把素材追加到时间线</li>
+  <li>做基础 cut / move / trim / delete</li>
+  <li>生成可以被 Final Cut Pro 打开的 Library</li>
+  <li>把同一套能力暴露给 MCP，让 Agent 也能调用</li>
+</ul>
+
+<p>这些事放在命令行里，价值就出来了：人可以写脚本，Agent 可以按步骤执行，团队可以把粗剪准备变成可复现的流程。</p>
+
+<p>包名叫 <code class="language-plaintext highlighter-rouge">final-cut-pro-cli</code>，命令是短一点的 <code class="language-plaintext highlighter-rouge">fcp</code>。现在是 <code class="language-plaintext highlighter-rouge">0.1.0</code>，定位很克制：<strong>面向 rough-cut preparation 的 MVP</strong>。</p>
+
+<h2 id="2-为什么要给-final-cut-pro-写-cli">2. 为什么要给 Final Cut Pro 写 CLI？</h2>
+
+<p>我之前写过一个 <a href="https://github.com/poechant/davinci-resolve-cli"><code class="language-plaintext highlighter-rouge">davinci-resolve-cli</code></a>，命令叫 <code class="language-plaintext highlighter-rouge">dvr</code>，主要是把 DaVinci Resolve 的一部分能力暴露给命令行和 Agent。</p>
+
+<p>那为什么还要再写一个 Final Cut Pro 版？</p>
+
+<p>因为视频编辑生态里，Final Cut Pro 和 DaVinci Resolve 是两类非常重要、但模型不同的专业工具。Resolve 更像是 Project / Timeline 这一套模型，而 Final Cut Pro 有它自己的 Library / Event / Project 层级：</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Final Cut Pro:
+Library
+└── Event
+    └── Project
+        └── Timeline / Clips
+</code></pre></div></div>
+
+<p>这套模型如果硬塞进一个通用视频 CLI，会很别扭。<code class="language-plaintext highlighter-rouge">fcp</code> 的设计思路是：<strong>诚实暴露 Final Cut Pro 自己的领域模型，同时在 Project 层以下尽量和 <code class="language-plaintext highlighter-rouge">dvr</code> 对齐。</strong></p>
+
+<p>也就是说，Agent 学会了：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dvr media import ...
+dvr clip <span class="nb">cut</span> ...
+dvr <span class="nb">export</span> ...
+</code></pre></div></div>
+
+<p>迁移到 FCP 时，只需要理解多出来的 <code class="language-plaintext highlighter-rouge">--library</code> 和 <code class="language-plaintext highlighter-rouge">--event</code> 作用域：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fcp media import ... <span class="nt">--library</span> MyLib <span class="nt">--event</span> <span class="s2">"拍摄"</span>
+fcp clip <span class="nb">cut</span> <span class="nt">--library</span> MyLib <span class="nt">--event</span> <span class="s2">"拍摄"</span> <span class="nt">--project</span> <span class="s2">"Vlog-001"</span> <span class="nt">--at</span> 00:00:05
+</code></pre></div></div>
+
+<p>这件事对 Agent 很重要。人可以读文档、慢慢理解差异；Agent 更需要稳定、可迁移、可枚举的命令面。</p>
+
+<h2 id="3-30-秒上手">3. 30 秒上手</h2>
+
+<p>安装：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>final-cut-pro-cli
+</code></pre></div></div>
+
+<p>环境要求也很明确：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>项</th>
+      <th>要求</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>操作系统</td>
+      <td>macOS</td>
+    </tr>
+    <tr>
+      <td>Final Cut Pro</td>
+      <td>10.7+</td>
+    </tr>
+    <tr>
+      <td>FCPXML</td>
+      <td>1.11+</td>
+    </tr>
+    <tr>
+      <td>Python</td>
+      <td>3.10+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>装好后先跑体检：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fcp <span class="nt">--json</span> doctor
+</code></pre></div></div>
+
+<p>如果环境不满足，<code class="language-plaintext highlighter-rouge">fcp</code> 会给出结构化错误，比如：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">platform_unsupported</code>：不是 macOS</li>
+  <li><code class="language-plaintext highlighter-rouge">fcp_not_installed</code>：没找到 Final Cut Pro</li>
+  <li><code class="language-plaintext highlighter-rouge">fcp_version_too_old</code>：FCP 版本太老</li>
+</ul>
+
+<p>这也是 Agent-friendly CLI 的基本功：不要让调用方从一段自由文本里猜“到底哪里坏了”，而是直接给稳定的 <code class="language-plaintext highlighter-rouge">errorCode</code>。</p>
+
+<h2 id="4-v01-的命令面">4. v0.1 的命令面</h2>
+
+<p><code class="language-plaintext highlighter-rouge">fcp</code> v0.1 主要覆盖六组命令。</p>
+
+<h3 id="library">Library</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fcp library new &lt;name&gt; <span class="o">[</span><span class="nt">--path</span> &lt;<span class="nb">dir</span><span class="o">&gt;]</span>
+fcp library list
+fcp library open &lt;name|path&gt;
+</code></pre></div></div>
+
+<p>Final Cut Pro 的 Library 是 <code class="language-plaintext highlighter-rouge">.fcpbundle</code>，这是 FCP 和 Resolve 最大的模型差异之一。所以 <code class="language-plaintext highlighter-rouge">library</code> 是 <code class="language-plaintext highlighter-rouge">fcp</code> 独有的命令组，不强行和 <code class="language-plaintext highlighter-rouge">dvr</code> 对齐。</p>
+
+<h3 id="event">Event</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fcp event new &lt;name&gt; <span class="nt">--library</span> &lt;ref&gt;
+fcp event list <span class="nt">--library</span> &lt;ref&gt;
+</code></pre></div></div>
+
+<p>Event 也是 FCP 特有概念。它很适合承载“拍摄日”“素材批次”“节目期数”这类分组。</p>
+
+<h3 id="project">Project</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fcp project new &lt;name&gt; <span class="nt">--library</span> &lt;ref&gt; <span class="nt">--event</span> &lt;ref&gt; <span class="o">[</span><span class="nt">--resolution</span> 1920x1080] <span class="o">[</span><span class="nt">--fps</span> 30]
+fcp project list <span class="nt">--library</span> &lt;ref&gt; <span class="o">[</span><span class="nt">--event</span> &lt;ref&gt;]
+fcp project info &lt;name&gt; <span class="nt">--library</span> &lt;ref&gt; <span class="nt">--event</span> &lt;ref&gt;
+</code></pre></div></div>
+
+<p>Project 层开始，<code class="language-plaintext highlighter-rouge">fcp</code> 就尽量和 <code class="language-plaintext highlighter-rouge">dvr</code> 保持同一种思路：新建、列表、信息读取，都用明确参数，不依赖 GUI 当前选中了什么。</p>
+
+<h3 id="media">Media</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fcp media import &lt;video&gt;... <span class="nt">--library</span> &lt;ref&gt; <span class="nt">--event</span> &lt;ref&gt;
+</code></pre></div></div>
+
+<p>v0.1 的 <code class="language-plaintext highlighter-rouge">media import</code> 会写入 FCPXML asset 引用，为后续时间线操作准备素材。</p>
+
+<h3 id="clip">Clip</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fcp clip add <span class="nt">--library</span> &lt;ref&gt; <span class="nt">--event</span> &lt;ref&gt; <span class="nt">--project</span> &lt;name&gt; <span class="nt">--asset</span> &lt;asset-id&gt; <span class="o">[</span><span class="nt">--duration</span> &lt;dur&gt;]
+fcp clip <span class="nb">cut</span> <span class="nt">--library</span> &lt;ref&gt; <span class="nt">--event</span> &lt;ref&gt; <span class="nt">--project</span> &lt;name&gt; <span class="nt">--at</span> &lt;timecode&gt;
+fcp clip move <span class="nt">--library</span> &lt;ref&gt; <span class="nt">--event</span> &lt;ref&gt; <span class="nt">--project</span> &lt;name&gt; <span class="nt">--clip</span> &lt;index&gt; <span class="nt">--to</span> &lt;timecode&gt;
+fcp clip trim <span class="nt">--library</span> &lt;ref&gt; <span class="nt">--event</span> &lt;ref&gt; <span class="nt">--project</span> &lt;name&gt; <span class="nt">--clip</span> &lt;index&gt; <span class="nt">--start</span> &lt;tc&gt; <span class="nt">--end</span> &lt;tc&gt;
+fcp clip delete <span class="nt">--library</span> &lt;ref&gt; <span class="nt">--event</span> &lt;ref&gt; <span class="nt">--project</span> &lt;name&gt; <span class="nt">--clip</span> &lt;index&gt;
+</code></pre></div></div>
+
+<p>这组命令是 rough cut 最核心的部分：把素材放进来、切开、移动、修剪、删除。它们的参数名尽量和 <code class="language-plaintext highlighter-rouge">davinci-resolve-cli</code> 对齐，降低 Agent 迁移成本。</p>
+
+<h3 id="mcp">MCP</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fcp mcp serve
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">fcp</code> 也可以直接以 MCP stdio server 的方式跑起来，给 Cursor、Claude Desktop、Claude Code 这类 Agent 客户端调用。MCP tool 名会是类似 <code class="language-plaintext highlighter-rouge">library.new</code>、<code class="language-plaintext highlighter-rouge">event.list</code>、<code class="language-plaintext highlighter-rouge">project.info</code>、<code class="language-plaintext highlighter-rouge">clip.cut</code>、<code class="language-plaintext highlighter-rouge">export.submit</code> 这样的 dotted name。</p>
+
+<h2 id="5-一条-rough-cut-链路">5. 一条 rough-cut 链路</h2>
+
+<p>假设我们要做一期 Vlog 的粗剪准备，可以从命令行跑这样一串：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fcp <span class="nt">--json</span> library new VlogE2E <span class="nt">--path</span> /tmp/fcp-test
+fcp <span class="nt">--json</span> event new <span class="s2">"拍摄"</span> <span class="nt">--library</span> VlogE2E
+fcp <span class="nt">--json</span> project new <span class="s2">"Vlog-001"</span> <span class="nt">--library</span> VlogE2E <span class="nt">--event</span> <span class="s2">"拍摄"</span> <span class="nt">--resolution</span> 1920x1080 <span class="nt">--fps</span> 30
+fcp <span class="nt">--json</span> media import /tmp/test-assets/clip1.mov /tmp/test-assets/clip2.mov <span class="nt">--library</span> VlogE2E <span class="nt">--event</span> <span class="s2">"拍摄"</span>
+fcp <span class="nt">--json</span> clip add <span class="nt">--library</span> VlogE2E <span class="nt">--event</span> <span class="s2">"拍摄"</span> <span class="nt">--project</span> <span class="s2">"Vlog-001"</span> <span class="nt">--asset</span> r2 <span class="nt">--duration</span> 60s
+fcp <span class="nt">--json</span> clip <span class="nb">cut</span> <span class="nt">--library</span> VlogE2E <span class="nt">--event</span> <span class="s2">"拍摄"</span> <span class="nt">--project</span> <span class="s2">"Vlog-001"</span> <span class="nt">--at</span> 00:00:05
+fcp <span class="nt">--json</span> library open VlogE2E
+</code></pre></div></div>
+
+<p>这条链路的目标不是“全自动剪出大片”，而是把一堆机械的准备工作可靠地跑完：</p>
+
+<ul>
+  <li>Library 建好</li>
+  <li>Event 建好</li>
+  <li>Project 建好</li>
+  <li>素材引用写进去</li>
+  <li>Clip 放到时间线上</li>
+  <li>基础 cut 做完</li>
+  <li>最后打开到 Final Cut Pro，交给人继续精修</li>
+</ul>
+
+<p>这正是我对这类工具的定位：<strong>CLI 和 Agent 负责结构化、重复性、可验证的部分；最终创作判断仍然留给人。</strong></p>
+
+<h2 id="6-几个-agent-friendly-的设计决定">6. 几个 Agent-friendly 的设计决定</h2>
+
+<p>写一个能被人敲的 CLI 不难；写一个 Agent 能稳定调用的 CLI，难点不一样。</p>
+
+<h3 id="61-默认支持-json">6.1 默认支持 JSON</h3>
+
+<p>Agent 不应该解析彩色表格，也不应该从自然语言里抠字段。<code class="language-plaintext highlighter-rouge">fcp</code> 所有命令都支持：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fcp <span class="nt">--json</span> ...
+</code></pre></div></div>
+
+<p>成功输出走 JSON，错误也走结构化 JSON。这样 Agent 可以用字段做判断，而不是靠 prompt 猜。</p>
+
+<h3 id="62-稳定-errorcode">6.2 稳定 errorCode</h3>
+
+<p>错误码按语义分段：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>范围</th>
+      <th>含义</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1-19</td>
+      <td>用户输入错误</td>
+    </tr>
+    <tr>
+      <td>20-39</td>
+      <td>FCP 状态错误</td>
+    </tr>
+    <tr>
+      <td>40-59</td>
+      <td>长时操作错误</td>
+    </tr>
+    <tr>
+      <td>60+</td>
+      <td>内部错误</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>比如 <code class="language-plaintext highlighter-rouge">library_not_found</code>、<code class="language-plaintext highlighter-rouge">event_not_found</code>、<code class="language-plaintext highlighter-rouge">invalid_timecode</code>、<code class="language-plaintext highlighter-rouge">export_unavailable</code> 这些错误，对 Agent 来说就是控制流的一部分。</p>
+
+<p><code class="language-plaintext highlighter-rouge">library_not_found</code> 不是一段“看起来像找不到”的文案，而是一个可以稳定匹配的状态。</p>
+
+<h3 id="63-fcpxml-first">6.3 FCPXML-first</h3>
+
+<p><code class="language-plaintext highlighter-rouge">fcp</code> 的主要编辑路径是 FCPXML：Library、Event、Project、Media、Clip 这些内容改动，尽量通过 FCPXML 文件操作完成。</p>
+
+<p>这带来一个很重要的好处：<strong>大部分剪辑准备操作不要求 Final Cut Pro 正在运行。</strong></p>
+
+<p>Final Cut Pro 只在需要打开 Library 或做运行时检查时参与。v0.1 里 AppleScript 主要用在 <code class="language-plaintext highlighter-rouge">library open</code> 这种 runtime trigger 上。</p>
+
+<h3 id="64-不用-ui-scripting">6.4 不用 UI scripting</h3>
+
+<p>这是我很坚持的一点：<code class="language-plaintext highlighter-rouge">fcp</code> 不用 System Events，不模拟坐标点击，不发 key code，不靠 keystroke 硬怼 GUI。</p>
+
+<p>为什么？</p>
+
+<p>因为这类自动化对 Agent 来说太脆了。窗口位置、系统语言、菜单状态、焦点、权限弹窗，任何一个小变化都会让流程失控。</p>
+
+<p>所以 v0.1 宁可明确告诉用户“这个能力还不能稳定自动化”，也不做看起来能跑、实则靠运气的 UI scripting。</p>
+
+<h3 id="65-skillmd-是发布物的一部分">6.5 SKILL.md 是发布物的一部分</h3>
+
+<p>项目里有一份 <code class="language-plaintext highlighter-rouge">SKILL.md</code>，描述了 Agent 该怎么用 <code class="language-plaintext highlighter-rouge">fcp</code>：先 <code class="language-plaintext highlighter-rouge">doctor</code>，再按 Library / Event / Project / Media / Clip 的顺序组织粗剪流程，调用时默认加 <code class="language-plaintext highlighter-rouge">--json</code>。</p>
+
+<p>这件事我在 <code class="language-plaintext highlighter-rouge">dvr</code> 里也做了。2026 年写 CLI，如果它面向 Agent，那最好别只给人类 README，也要给 Agent 一份“操作手册”。</p>
+
+<h2 id="7-一个必须讲清楚的限制导出">7. 一个必须讲清楚的限制：导出</h2>
+
+<p>Final Cut Pro 11.1.1 的 scripting dictionary 里，没有暴露稳定的 <code class="language-plaintext highlighter-rouge">export</code> / <code class="language-plaintext highlighter-rouge">share</code> / <code class="language-plaintext highlighter-rouge">render</code> 命令。</p>
+
+<p>这意味着什么？</p>
+
+<p>意味着 v0.1 不能诚实地承诺“命令行自动导出 MP4”。如果要硬做，大概率只能走 UI scripting：点菜单、按快捷键、等弹窗、猜按钮。</p>
+
+<p>我不想这么做。</p>
+
+<p>所以 <code class="language-plaintext highlighter-rouge">fcp export submit</code> 在 v0.1 保留了命令面，但会返回结构化的：</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"export_unavailable"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"hint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>这看起来不如“我已经自动导出了”爽，但它更诚实，也更适合 Agent。Agent 至少能知道：这不是参数错了，不是 FCP 崩了，而是当前版本的自动导出路径不可用。</p>
+
+<p>同理，<code class="language-plaintext highlighter-rouge">subtitle</code> 命令组在 v0.1 也是预留状态，还没有完整写入字幕或标题内容。把边界讲清楚，比把 roadmap 包装成已完成能力更重要。</p>
+
+<h2 id="8-和-dvr-的关系两座桥不是一个终点">8. 和 dvr 的关系：两座桥，不是一个终点</h2>
+
+<p><code class="language-plaintext highlighter-rouge">dvr</code> 和 <code class="language-plaintext highlighter-rouge">fcp</code> 其实是一组姊妹项目：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">dvr</code>：面向 DaVinci Resolve</li>
+  <li><code class="language-plaintext highlighter-rouge">fcp</code>：面向 Apple Final Cut Pro</li>
+</ul>
+
+<p>它们共同回答的是一个更大的问题：</p>
+
+<p><strong>专业视频软件如何进入 Agent 工作流？</strong></p>
+
+<p>短期看，答案是先把现有专业软件的可脚本化部分接出来，变成 CLI、JSON、errorCode、MCP tool、SKILL.md。这样 Agent 才能可靠地做事，而不是盯着 GUI 猜。</p>
+
+<p>但长期看，我仍然认为“在传统 GUI 软件外面套 CLI”不是 Video Editing AI 的终局。它更像一座过渡桥：让今天还在 FCP / Resolve 里工作的创作者，先获得一部分自动化和 Agent 协作能力。</p>
+
+<p>真正更远的方向，还是我之前反复提到的 <strong>Video-editing Agent</strong> 和 <strong>Proactive Video Editing</strong>：AI 不只是等你下命令，而是在剪辑工作流里理解上下文、预测下一步、和人一起推进创作。</p>
+
+<p><code class="language-plaintext highlighter-rouge">fcp</code> 做的是这条路上非常实际的一步：先把当下能稳定交付的那部分能力，变成可调用、可测试、可组合的接口。</p>
+
+<h2 id="9-roadmap">9. Roadmap</h2>
+
+<p>v0.1 已经完成 rough-cut preparation 的 MVP：</p>
+
+<ul>
+  <li>Library / Event / Project</li>
+  <li>Media import</li>
+  <li>Clip add / cut / move / trim / delete</li>
+  <li><code class="language-plaintext highlighter-rouge">library open</code></li>
+  <li><code class="language-plaintext highlighter-rouge">export_unavailable</code> 结构化 fallback</li>
+  <li>MCP stdio server</li>
+  <li>Real FCP e2e 测试：验证生成的 Library 能被 Final Cut Pro 打开</li>
+</ul>
+
+<p>后面几步大概是：</p>
+
+<ul>
+  <li><strong>v0.2</strong>：继续和 <code class="language-plaintext highlighter-rouge">davinci-resolve-cli</code> v0.2 对齐，补 cross-platform FCPXML 操作、recipe mode、批量 media glob/import helper</li>
+  <li><strong>v0.3</strong>：增强 razor-cut 工作流，支持 MCP HTTP，补完整 subtitle/title support 和 config files</li>
+</ul>
+
+<p>这里有个很现实的原则：FCPXML 能稳定做的，就往前推；Final Cut Pro 没有公开自动化接口的，不靠 UI scripting 硬装。</p>
+
+<h2 id="10-试用入口">10. 试用入口</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>final-cut-pro-cli
+fcp <span class="nt">--json</span> doctor
+</code></pre></div></div>
+
+<p>项目地址：</p>
+
+<ul>
+  <li>GitHub：<a href="https://github.com/poechant/final-cut-pro-cli">github.com/poechant/final-cut-pro-cli</a></li>
+  <li>PyPI：<code class="language-plaintext highlighter-rouge">pip install final-cut-pro-cli</code></li>
+</ul>
+
+<p>如果你是 Final Cut Pro 用户，或者正在做视频工作流自动化 / AI Agent 剪辑工具，欢迎试试，也欢迎提 issue。</p>
+
+<p>写给 Agent 用的 CLI，表面上是在做命令行工具；往深处看，其实是在给下一代创作软件铺接口。</p>
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+	<span>
+		-<br/><br/>
+		船长还不会游泳 at 微信公众号/微博<br/>
+		@麦克船长 at 即刻/知乎/小宇宙/掘金/小红书/微信读书<br/>
+		@船长模玩 at Bilibili<br/>
+		Copyright © 2011-2023, MikeCaptain.com
+	</span>
+</footer>
+
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
