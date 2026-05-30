@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2026-05-29T01:30:36+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">fcp：写给人和 AI Agent 用的 Final Cut Pro 命令行</title><link href="https://www.mikecaptain.com/2026/05/28/final-cut-pro-cli/" rel="alternate" type="text/html" title="fcp：写给人和 AI Agent 用的 Final Cut Pro 命令行" /><published>2026-05-28T09:00:00+08:00</published><updated>2026-05-28T09:00:00+08:00</updated><id>https://www.mikecaptain.com/2026/05/28/final-cut-pro-cli</id><content type="html" xml:base="https://www.mikecaptain.com/2026/05/28/final-cut-pro-cli/">&lt;h2 id=&quot;1-一句话讲清楚&quot;&gt;1. 一句话讲清楚&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2026-05-30T13:20:47+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">别焦虑，软件工业远没到终局：Code-Editing Agent 只是中间态，Product-Editing Agent 才是未来</title><link href="https://www.mikecaptain.com/2026/05/30/code-editing-agent-product-editing-agent/" rel="alternate" type="text/html" title="别焦虑，软件工业远没到终局：Code-Editing Agent 只是中间态，Product-Editing Agent 才是未来" /><published>2026-05-30T09:00:00+08:00</published><updated>2026-05-30T09:00:00+08:00</updated><id>https://www.mikecaptain.com/2026/05/30/code-editing-agent-product-editing-agent</id><content type="html" xml:base="https://www.mikecaptain.com/2026/05/30/code-editing-agent-product-editing-agent/">&lt;p&gt;我越来越觉得，今天的 Coding Agent 还处在一个很早期、很不完整的阶段。它看起来已经很强，可以读代码、改代码、跑测试、修 Bug，但本质上仍然是在修改“代码”这个中间产物。可对人来说，真正直觉的工作对象从来不是中间产物，而是最终结果。&lt;/p&gt;
+
+&lt;p&gt;如果类比视频制作，这就像三四十年前我们不是在时间线、画面、声音、字幕上直接编辑，而是必须打开某种底层工程文件，通过改格式来改变成片。那当然也能工作，但一定是落后的。视频工具今天未必在 AI 层面领先，甚至很多地方还很落后；但它在产品框架上有一个更先进的默认前提：创作者直接面对结果工作。&lt;/p&gt;
+
+&lt;p&gt;软件工程现在恰好相反。我们在 Coding Agent 里描述意图，Agent 修改代码，然后我们切到浏览器、本地 App 或测试环境里看结果。发现不对，再回到 Agent 继续改代码。这两个世界是割裂的：一个是实现层，一个是结果层。代码当然重要，但代码更像 FCPXML、工程文件、配置和时间线数据，它不应该永远是人类与软件产物交互的主界面。&lt;/p&gt;
+
+&lt;p&gt;我最近做 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;davinci-resolve-cli&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;final-cut-pro-cli&lt;/code&gt; 时，其实一直把它们看作过渡桥。CLI、JSON、errorCode、MCP、SKILL.md，这些东西能让 Agent 稳定调用传统专业软件，是当下能落地的做法。但它们不是终点。真正的终点不是“让 Agent 更会绕过 GUI 操作底层”，而是让 AI 进入最终产物本身：在画面上改画面，在应用里改应用，在 3D/VR 场景中直接改场景，在用户正在看的结果里理解上下文、预测下一步，并和人实时共创。&lt;/p&gt;
+
+&lt;p&gt;所以未来的 Coding Agent，可能不该继续叫 Coding Agent。它会从 Code-Editing Agent 走向 Software-Editing Agent，甚至 Product-Editing Agent。它的核心界面不再是代码仓库，而是运行中的软件、可交互的状态、可视化的对象、可被直接验证的结果。&lt;/p&gt;
+
+&lt;p&gt;这也是我对视频编辑 AI、PACE、Human-AI Cocreation 这些方向的共同判断：AI 最有价值的形态，不是“一句话生成最终作品”，也不是永远停在命令行和工程文件里，而是在人的创作流中实时在场。人负责判断、审美、目标和取舍；AI 负责理解上下文、补齐动作链、把复杂实现折叠到结果背后。&lt;/p&gt;
+
+&lt;p&gt;下一代软件工程的突破，可能不是让 Agent 多写几行更好的代码，而是让人终于可以少看一点代码，直接修改自己真正关心的东西。&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="Coding Agent" /><category term="Code-Editing Agent" /><category term="Product-Editing Agent" /><category term="Software Engineering" /><category term="AI Agent" /><category term="Video Editing AI" /><category term="PACE" /><category term="Human-AI Cocreation" /><category term="软件工程" /><category term="人机共创" /><category term="麦克船长" /><summary type="html">今天的 Coding Agent 只是软件工程变革的中间态。代码更像工程文件，而不是人类真正想编辑的对象。未来更有价值的方向，是从 Code-Editing Agent 走向 Product-Editing Agent……</summary></entry><entry><title type="html">fcp：写给人和 AI Agent 用的 Final Cut Pro 命令行</title><link href="https://www.mikecaptain.com/2026/05/28/final-cut-pro-cli/" rel="alternate" type="text/html" title="fcp：写给人和 AI Agent 用的 Final Cut Pro 命令行" /><published>2026-05-28T09:00:00+08:00</published><updated>2026-05-28T09:00:00+08:00</updated><id>https://www.mikecaptain.com/2026/05/28/final-cut-pro-cli</id><content type="html" xml:base="https://www.mikecaptain.com/2026/05/28/final-cut-pro-cli/">&lt;h2 id=&quot;1-一句话讲清楚&quot;&gt;1. 一句话讲清楚&lt;/h2&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;final-cut-pro-cli&lt;/code&gt; 是我最近开源的一个 Python 命令行工具，命令叫 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fcp&lt;/code&gt;，干的事很明确：&lt;/p&gt;
 
@@ -1109,48 +1121,4 @@ Agentic Coding 恶意用例的顺从度下降 25%，但仍保持与 &lt;code cla
   &lt;li&gt;Model Card：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://cdn.openai.com/pdf/419b6906-9da6-406c-a19d-1bb078ac7637/oai_gpt-oss_model_card.pdf&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;Red Teaming Challenge：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://www.kaggle.com/competitions/openai-gpt-oss-20b-red-teaming/&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;HuggingFace：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://huggingface.co/openai/gpt-oss-120b&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="AGI" /><category term="Agent" /><category term="大模型" /><category term="基础模型" /><category term="模型" /><category term="OpenAI" /><category term="OSS" /><category term="开源" /><category term="开放权重" /><category term="Open Source" /><category term="Open Weight" /><category term="端侧模型" /><category term="Frontier" /><summary type="html">距离 OpenAI 上一次开源语言模型已经过去了 6 年 —— 北京时间 2025 年 8 月 6 日凌晨 00:22，美国人工智能公司 OpenAI 在官网发文，声称发布两款开放权重推理模型 ``gpt-oss-120b`` 和 ``gpt-oss-20b``，也是 ``GPT-2`` 之后的第一个开放权重语言模型。</summary></entry><entry><title type="html">趋势量化之 Event-Driven 1：上市公司发行可转债有什么影响（持续更新）</title><link href="https://www.mikecaptain.com/2023/09/19/cb-impact/" rel="alternate" type="text/html" title="趋势量化之 Event-Driven 1：上市公司发行可转债有什么影响（持续更新）" /><published>2023-09-19T08:00:13+08:00</published><updated>2023-09-19T08:00:13+08:00</updated><id>https://www.mikecaptain.com/2023/09/19/cb-impact</id><content type="html" xml:base="https://www.mikecaptain.com/2023/09/19/cb-impact/">&lt;p&gt;可转债（Convertible Bond，简称 CB），即可转换债券（或可换股债券），可按一定规则转换为债券发行公司的股票。其转换价格、转换时间段会在发行前确定。&lt;/p&gt;
-
-&lt;p&gt;北京时间 2023 年 9 月 19 日清晨（美东时间 2023 年 9 月 18 日），蔚来（NIO.US）宣布拟发行本金总额 5 亿美元的、到期时间为 2029 年的可转债，以及本金总额 5 亿美元、到期时间为 2030 年的可转债。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/quant/2023/09/23/3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;那么一家企业如果宣布发行可转债，对股东是利好还是利空呢。通常来讲，增发股票都是利空的，可转债是一种在指定时间可转换为股票的债券，所以也是类似的。但是这与公司基本面出现利空不同，相比来讲期影响是相对短期的，也就是迅速按照股本稀释股价到一定比例就差不多了。但是发行可转债通常说明这家公司的现金流不够健康，需要融资，一家有现金源源不断、充足、健康进入的企业，通常来说是不需要发行可转债的。&lt;/p&gt;
-
-&lt;p&gt;下面是一些近几年美股的上市公司发行可转债后短期股价的变化实例收集。&lt;/p&gt;
-
-&lt;p&gt;2023 年 5 月 26 日，美股大麻板块的 Tilray Brands 公司宣布将发行 1.5 亿美元的 2028 年到期的高级无担保可转债，票息 5.2%。公司还授予承销商 30 天的期权，允许额外购买不超过 2,250 万美元的债券。当日股价暴跌收盘 -21.19%（盘中最大跌幅 -22.88%），并在后续两个交易日里继续下跌 -1.61%、-8.74%，三日累计约 -30%；&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/quant/2023/09/23/1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;2022 年 11 月 16 日，嘉年华邮轮（CCL）通过私募募资发行本金规模达 10 亿美元的优先级可转换债券，当日股价暴跌收盘 -13.71%（盘中最大跌幅 -14.96%），并在后续三个交易日内连续下跌 -1.25%、-0.42%、-1.58%，四日累计约 -23%；&lt;/p&gt;
-
-&lt;p&gt;2022 年 6 月 28 日，美股上市公司 Aspen Aerogels（ASPN.US）宣布公开发行普通股和 2027 年到期的绿色高级可转债，次日股价暴跌 -42.69% 收盘；又过一日，该公司宣布取消此前的决定，原因是公司评估认为在目前的市场条件下，发行新股和可转债不利于股东最佳利益。当月 30 日股价又暴涨 +17.20% 收盘，但未能涨回到此前的价位。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/quant/2023/09/23/2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;2020 年 3 月 5 日（周四），蔚来汽车在其投资者关系网站发布公告，宣布再次完成 2.35 亿美元可转债融资项目，此时距离上次融资不到一个月。宣布可转债的前一日股价下跌 -4.68%，宣布的当日股价下跌收盘 -3.88%（盘中最大跌幅 -4.91%），并在后续几个交易日内连续下跌 -4.57%、-7.32%，三日累计下跌约 -15%；&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/quant/2023/09/23/4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;2020 年 2 月 14 日（周五），蔚来汽车发布公告，称公司与两个非关联的亚洲基金签署明确协议，蔚来汽车将向后者发行价值达 1 亿美元的可转换债，当日股价下跌收盘 -6.45%（盘中最大跌幅 -6.95%）。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/quant/2023/09/23/5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;2020 年 2 月 6 日（周四），蔚来汽车宣布分别发行价值 7000 万美元和 3000 万美元的两笔可转换债，投资方为两家非关联的亚洲投资基金，当日股价大跌收盘 -7.06%（盘中最大跌幅 -7.74%），次日继续暴跌 -6.62%，两日累计 -13% 跌幅。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/quant/2023/09/23/6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;基于以上分析，由于可转债资讯发布于盘后时间，所以最稳妥保守的决策是在盘后即卖出正股进行做空。&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;后记&quot;&gt;后记&lt;/h4&gt;
-
-&lt;p&gt;2023 年 9 月 19 日，NIO 大跌 -17.07%（盘中最大跌幅 -18.43%）。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/quant/2023/09/23/7.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name>麦克船长</name></author><category term="quant" /><category term="美股" /><category term="可转债" /><category term="NIO" /><category term="蔚来汽车" /><category term="TLRY" /><category term="CCL" /><category term="股票" /><category term="CB" /><category term="Convertible Bond" /><category term="投资" /><summary type="html">可转债（Convertible Bond，简称 CB），即可转换债券（或可换股债券），可按一定规则转换为债券发行公司的股票。其转换价格、转换时间段会在发行前确定。</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="AGI" /><category term="Agent" /><category term="大模型" /><category term="基础模型" /><category term="模型" /><category term="OpenAI" /><category term="OSS" /><category term="开源" /><category term="开放权重" /><category term="Open Source" /><category term="Open Weight" /><category term="端侧模型" /><category term="Frontier" /><summary type="html">距离 OpenAI 上一次开源语言模型已经过去了 6 年 —— 北京时间 2025 年 8 月 6 日凌晨 00:22，美国人工智能公司 OpenAI 在官网发文，声称发布两款开放权重推理模型 ``gpt-oss-120b`` 和 ``gpt-oss-20b``，也是 ``GPT-2`` 之后的第一个开放权重语言模型。</summary></entry></feed>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<meta name="generator" content="Jekyll">
+
+	<title>别焦虑，软件工业远没到终局：Code-Editing Agent 只是中间态，Product-Editing Agent 才是未来</title>
+  	<meta name="description" content="今天的 Coding Agent 看起来已经很强，但它本质上仍然是在修改代码这个中间产物。真正符合人类直觉的软件工程未来，应该是 AI 直接进入最终产物本身：在运行中的软件、可交互的状态、可视化对象和结果层上，与人实时共创。">
+
+	<!-- CSS & fonts -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- RSS -->
+	<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed" />
+
+  	<!-- Favicon -->
+ 	 <link rel="shortcut icon" type="image/png" href="/img/favicon.png">
+
+ 	 <!-- Syntax highlighter -->
+  	<link rel="stylesheet" href="/css/syntax.css" />
+
+  	<!--KaTeX-->
+  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+  	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"></script>
+  	<script>
+  		document.addEventListener("DOMContentLoaded", function() {
+  			renderMathInElement(document.body, {
+  				// ...options...
+  			});
+  		});
+  	</script>
+
+  	
+
+  	
+  		<script async src="https://www.googletagmanager.com/gtag/js?id=G-CH4708X4R5"></script>
+  		<script>
+    		window.dataLayer = window.dataLayer || [];
+    		function gtag(){dataLayer.push(arguments);}
+    		gtag('js', new Date());
+
+    		gtag('config', 'G-CH4708X4R5');
+  		</script>
+	
+
+
+</head>
+
+<body>
+	<div id="wrap">
+	  	
+	  	<!-- Navigation -->
+	  	<nav id="nav">
+	<div id="nav-list">
+		<a href="/">Home</a>
+
+		<!-- Nav pages -->
+	  <!-- 
+	    
+	  
+	    
+	      <a href="/about/" title="关于我">关于我</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	      <a href="/booklist/" title="读书行路">读书行路</a>
+	    
+	  
+	    
+	  
+	    
+	      <a href="/categories/" title="Categories">Categories</a>
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	  
+	    
+	   -->
+
+	  <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="AI">AI</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="音视频">音视频</a>
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/quant" title="投资">投资</a>
+
+
+
+
+
+  <a href="/category/thinking" title="思考">思考</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    <!-- Nav links -->
+	  <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+	</div>
+  
+  <!-- Nav footer -->
+	
+	  <footer>
+	
+	<span>version 1.0.0</span>
+
+</footer>
+	
+
+</nav>
+
+    
+    <!-- Icon menu -->
+	  <a id="nav-menu">
+	  	<div id="menu"></div>
+	  </a>
+
+      <!-- Header -->
+      
+        <header id="header" class="parent justify-spaceBetween">
+  <div class="inner w100 relative">
+    <span class="f-left">  
+      <a href="/">
+        <h1>
+          <span>Mike</span>Captain
+        </h1>
+      </a>
+    </span>
+    <span id="nav-links" class="absolute right bottom">
+
+      <!-- Tech category pages -->
+
+
+
+
+
+
+  <a href="/category/ai" title="AI">AI</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/rt_tech" title="音视频">音视频</a>
+
+
+
+
+
+  <a href="/category/web" title="前端">前端</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Non-tech category pages -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <a href="/category/design" title="设计">设计</a>
+
+
+
+
+
+
+
+
+
+  <a href="/category/quant" title="投资">投资</a>
+
+
+
+
+
+  <a href="/category/thinking" title="思考">思考</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      &nbsp;&nbsp;&nbsp;丨&nbsp;
+
+      <!-- Nav pages -->
+      
+        
+      
+        
+          <a href="/about/" title="关于我">关于我</a>
+        
+      
+        
+      
+        
+      
+        
+          <a href="/booklist/" title="读书行路">读书行路</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      
+      <!-- Nav links -->
+      <!-- <a href="https://github.com/thereviewindex/monochrome/archive/master.zip">Download</a>
+<a href="https://github.com/thereviewindex/monochrome">Project on Github</a> -->
+
+    </span>
+  </div>
+</header>
+
+
+
+
+      
+
+    <!-- Main content -->
+	  <div id="container">
+
+		<main>
+
+			<article id="post-page">
+	<h2>别焦虑，软件工业远没到终局：Code-Editing Agent 只是中间态，Product-Editing Agent 才是未来</h2>		
+	<time datetime="2026-05-30T09:00:00+08:00" class="by-line">30 May 2026, 景德镇 | 麦克船长 | 总计 1053 字</time>
+	<div class="content">
+		<p>我越来越觉得，今天的 Coding Agent 还处在一个很早期、很不完整的阶段。它看起来已经很强，可以读代码、改代码、跑测试、修 Bug，但本质上仍然是在修改“代码”这个中间产物。可对人来说，真正直觉的工作对象从来不是中间产物，而是最终结果。</p>
+
+<p>如果类比视频制作，这就像三四十年前我们不是在时间线、画面、声音、字幕上直接编辑，而是必须打开某种底层工程文件，通过改格式来改变成片。那当然也能工作，但一定是落后的。视频工具今天未必在 AI 层面领先，甚至很多地方还很落后；但它在产品框架上有一个更先进的默认前提：创作者直接面对结果工作。</p>
+
+<p>软件工程现在恰好相反。我们在 Coding Agent 里描述意图，Agent 修改代码，然后我们切到浏览器、本地 App 或测试环境里看结果。发现不对，再回到 Agent 继续改代码。这两个世界是割裂的：一个是实现层，一个是结果层。代码当然重要，但代码更像 FCPXML、工程文件、配置和时间线数据，它不应该永远是人类与软件产物交互的主界面。</p>
+
+<p>我最近做 <code class="language-plaintext highlighter-rouge">davinci-resolve-cli</code> 和 <code class="language-plaintext highlighter-rouge">final-cut-pro-cli</code> 时，其实一直把它们看作过渡桥。CLI、JSON、errorCode、MCP、SKILL.md，这些东西能让 Agent 稳定调用传统专业软件，是当下能落地的做法。但它们不是终点。真正的终点不是“让 Agent 更会绕过 GUI 操作底层”，而是让 AI 进入最终产物本身：在画面上改画面，在应用里改应用，在 3D/VR 场景中直接改场景，在用户正在看的结果里理解上下文、预测下一步，并和人实时共创。</p>
+
+<p>所以未来的 Coding Agent，可能不该继续叫 Coding Agent。它会从 Code-Editing Agent 走向 Software-Editing Agent，甚至 Product-Editing Agent。它的核心界面不再是代码仓库，而是运行中的软件、可交互的状态、可视化的对象、可被直接验证的结果。</p>
+
+<p>这也是我对视频编辑 AI、PACE、Human-AI Cocreation 这些方向的共同判断：AI 最有价值的形态，不是“一句话生成最终作品”，也不是永远停在命令行和工程文件里，而是在人的创作流中实时在场。人负责判断、审美、目标和取舍；AI 负责理解上下文、补齐动作链、把复杂实现折叠到结果背后。</p>
+
+<p>下一代软件工程的突破，可能不是让 Agent 多写几行更好的代码，而是让人终于可以少看一点代码，直接修改自己真正关心的东西。</p>
+
+	</div>
+</article>
+
+
+
+	  </main>
+		
+		  <!-- Pagination links -->
+      
+
+	  </div>
+	    
+	    <!-- Footer -->
+	    <footer>
+	<span>
+		-<br/><br/>
+		船长还不会游泳 at 微信公众号/微博<br/>
+		@麦克船长 at 即刻/知乎/小宇宙/掘金/小红书/微信读书<br/>
+		@船长模玩 at Bilibili<br/>
+		Copyright © 2011-2023, MikeCaptain.com
+	</span>
+</footer>
+
+
+	    <!-- Script -->
+      <script src="/js/main.js"></script>	
+
+
+	</div>
+</body>
+</html>
