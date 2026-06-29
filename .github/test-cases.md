@@ -1,5 +1,4 @@
-- [ ] Test AC1: Building the site must not create `_site/CLAUDE`, `_site/CLAUDE.html`, or `_site/CLAUDE/index.html`.
-- [ ] Test AC2: `_config.yml` must exclude root-level agent/collaboration files and CI dependency directories: `CLAUDE`, `CLAUDE.md`, `.claude`, `AGENTS.md`, `.Codex`, `README.md`, `_site`, `vendor`, `vendor/bundle`, and `.bundle`.
-- [ ] Test AC3: `.gitignore` must ignore local agent files, generated site output, Bundler install directories, and macOS metadata so they are not accidentally added later.
-- [ ] Test AC4: The GitHub Pages workflow must complete a fresh build and deploy after the exclusion fix.
-- [ ] Test AC5: After deployment, `https://www.mikecaptain.com/CLAUDE` must no longer return the old internal documentation page.
+- [ ] Test AC1: `booklist.markdown` must include all newly requested 2025-2026 footprints: `江西·景德镇`, `广东·广州`, and `广东·珠海`.
+- [ ] Test AC2: Every poster selected by `/private/tmp/douban-poster-copy-plan.json` must exist in `img/top250/`, while IMDb-matched existing posters remain skipped.
+- [ ] Test AC3: `booklist.markdown` must continue to render the My Movies section from `/img/top250/` and must not add a root-level Markdown file.
+- [ ] Test AC4: The site must build successfully after the poster and footprint updates.
