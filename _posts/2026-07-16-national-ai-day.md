@@ -10,6 +10,8 @@ location: 杭州
 author: 麦克船长
 ---
 
+![船长还不会游泳：National AI Day 题图](/img/src2/2026/07/2026-07-16-national-ai-day-cover.png)
+
 美国民间日历机构 National Day Calendar 将每年 7 月 16 日称为 [National AI Day](https://nationaldaycalendar.com/celebrations/national-ai-day-july-16)。
 
 先说明一下：这并不是美国政府、联合国或其他国际组织确立的正式纪念日，而是 National Day Calendar 在 2025 年发起的一个美国民间纪念日。这个机构希望借此回顾人工智能的发展，讨论 AI 已经怎样进入社会，以及人们应该如何负责任地塑造它的未来。
