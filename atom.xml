@@ -4,12 +4,22 @@
  <title>麦克船长的技术、产品与商业博客</title>
  <link href="https://www.mikecaptain.com/atom.xml" rel="self"/>
  <id>https://www.mikecaptain.com</id>
- <updated>2026-07-16T13:49:24+08:00</updated>
+ <updated>2026-07-16T23:20:01+08:00</updated>
  <author>
    <name>Poechant</name>
    <uri>https://www.mikecaptian.com</uri>
    <email>zhongchao.ustc@gmail.com</email>
  </author>
+
+ 
+
+ <entry>
+   <title>借美国民间的 National AI Day，聊聊 AI 如何成为新的生产力环境</title>
+   <link href="https://www.mikecaptain.com/2026/07/16/national-ai-day/"/>
+   <id>https://www.mikecaptain.com/2026/07/16/national-ai-day</id>
+   <updated>2026-07-16T12:00:00+08:00</updated>
+   <content type="html">&lt;p&gt;美国民间日历机构 National Day Calendar 将每年 7 月 16 日称为 &lt;a href=&quot;https://nationaldaycalendar.com/celebrations/national-ai-day-july-16&quot;&gt;National AI Day&lt;/a&gt;。&lt;/p&gt; &lt;p&gt;先说明一下：这并不是美国政府、联合国或其他国际组织确立的正式纪念日，而是 National Day Calendar 在 2025 年发起的一个美国民间纪念日。这个机构希望借此回顾人工智能的发展，讨论 AI 已经怎样进入社会，以及人们应该如何负责任地塑造它的未来。&lt;/p&gt; &lt;p&gt;作为一个中国人，我当然没有必要把它当成自己的「全国人工智能日」。但我觉得，借这样一个日子停下来聊聊 AI，仍然挺有意思。&lt;/p&gt; &lt;p&gt;AI 发展得太快了，以至于我们平时几乎只顾着追下一次模型更新、下一个新产品、下一轮能力跳变，却很少停下来回答一个更基本的问题：&lt;strong&gt;AI 对我们来说，究竟已经变成了什么？&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;我的答案是：AI 已经不再只是一个工具，而正在成为一种新的生产力环境。&lt;/p&gt; &lt;h2 id=&quot;从机器能思考吗到每个人都在使用-ai&quot;&gt;从「机器能思考吗」到每个人都在使用 AI&lt;/h2&gt; &lt;p&gt;1950 年，Alan Turing 在《Computing Machinery and Intelligence》中提出了那个著名的问题：机器能思考吗？&lt;/p&gt; &lt;p&gt;1951 年，Marvin Minsky 和 Dean Edmonds 做出了早期人工神经网络 SNARC；1952 年，Arthur Samuel 开发了能够从经验中改进的西洋跳棋程序；1956...</content>
+ </entry>
 
  
 
@@ -106,16 +116,6 @@
    <id>https://www.mikecaptain.com/2025/08/06/claude-opus-4.1</id>
    <updated>2025-08-06T08:01:12+08:00</updated>
    <content type="html">&lt;p&gt;&lt;img src=&quot;/resources/2025/08/06/09dada2a-4bfe-4b34-8513-cd1931492e47.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;北京时间 8 月 6 日凌晨，Anthropic 悄然上线新版旗舰模型 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Claude Opus 4.1&lt;/code&gt;，并同步更新 API、Bedrock、Vertex AI 三大平台与 Claude Code。虽然官方在博客中将其定位为 「&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Opus 4&lt;/code&gt; 的渐进式升级」，但从多维基准与系统卡细节来看，这次版本号仅「加 0.1」的更新，实则在编码、长程代理任务与安全调优上完成了多项关键突破，为 2025 年下半年大模型竞技赛再添变量。&lt;/p&gt; &lt;h2 id=&quot;一745-swe-bench-记录再次坐稳代码王座&quot;&gt;一、74.5% SWE-bench 记录，再次坐稳「代码王座」&lt;/h2&gt; &lt;p&gt;&lt;img src=&quot;/resources/2025/08/06/1264de84-4552-4c79-a5c4-8dde22e5d9c1.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SWE-bench Verified&lt;/code&gt;：74.5% → 较 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Opus 4&lt;/code&gt; 再提升约 4 pct，领先主流同级模型。&lt;/li&gt;...</content>
- </entry>
-
- 
-
- <entry>
-   <title>时隔六年再开源，OpenAI 发布两款语言模型，主打端侧场景</title>
-   <link href="https://www.mikecaptain.com/2025/08/06/openai-oss/"/>
-   <id>https://www.mikecaptain.com/2025/08/06/openai-oss</id>
-   <updated>2025-08-06T08:01:10+08:00</updated>
-   <content type="html">&lt;p&gt;&lt;img src=&quot;/resources/2025/08/06/3.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt; &lt;p&gt;距离 OpenAI 上一次开源语言模型已经过去了 6 年 —— 北京时间 2025 年 8 月 6 日凌晨 00:22，美国人工智能公司 OpenAI 在官网发文，声称发布两款开放权重推理模型 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-oss-120b&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-oss-20b&lt;/code&gt;，也是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GPT-2&lt;/code&gt; 之后的第一个开放权重语言模型。&lt;/p&gt; &lt;h4 id=&quot;先看看开源了啥&quot;&gt;先看看开源了啥？&lt;/h4&gt; &lt;ul&gt; &lt;li&gt;模型权重：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-oss-120b&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-oss-20b&lt;/code&gt;（含 MXFP4 量化版），许可证 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Apache-2.0&lt;/code&gt;；&lt;/li&gt; &lt;li&gt;推理脚本：官方 PyTorch 版 + Apple Metal...</content>
  </entry>
 
  

@@ -1,4 +1,95 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2026-07-16T13:49:24+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">别焦虑，软件工业远没到终局：Code-Editing Agent 只是中间态，Product-Editing Agent 才是未来</title><link href="https://www.mikecaptain.com/2026/05/30/code-editing-agent-product-editing-agent/" rel="alternate" type="text/html" title="别焦虑，软件工业远没到终局：Code-Editing Agent 只是中间态，Product-Editing Agent 才是未来" /><published>2026-05-30T09:00:00+08:00</published><updated>2026-05-30T09:00:00+08:00</updated><id>https://www.mikecaptain.com/2026/05/30/code-editing-agent-product-editing-agent</id><content type="html" xml:base="https://www.mikecaptain.com/2026/05/30/code-editing-agent-product-editing-agent/">&lt;p&gt;我越来越觉得，今天的 Coding Agent 还处在一个很早期、很不完整的阶段。它看起来已经很强，可以读代码、改代码、跑测试、修 Bug，但本质上仍然是在修改“代码”这个中间产物。可对人来说，真正直觉的工作对象从来不是中间产物，而是最终结果。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://www.mikecaptain.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.mikecaptain.com/" rel="alternate" type="text/html" /><updated>2026-07-16T23:20:01+08:00</updated><id>https://www.mikecaptain.com/feed.xml</id><title type="html">麦克船长的技术、产品与商业博客</title><subtitle>麦克船长对于技术、产品、商业等领域的分享|AI,A.I.,NLP,神经网络,人工智能,自然语言处理,BERT,GPT,ChatGPT,OpenAI,阿里巴巴,P9,运营,淘宝,天猫,总监,高管</subtitle><author><name>Poechant</name><email>zhongchao.ustc@gmail.com</email></author><entry><title type="html">借美国民间的 National AI Day，聊聊 AI 如何成为新的生产力环境</title><link href="https://www.mikecaptain.com/2026/07/16/national-ai-day/" rel="alternate" type="text/html" title="借美国民间的 National AI Day，聊聊 AI 如何成为新的生产力环境" /><published>2026-07-16T12:00:00+08:00</published><updated>2026-07-16T12:00:00+08:00</updated><id>https://www.mikecaptain.com/2026/07/16/national-ai-day</id><content type="html" xml:base="https://www.mikecaptain.com/2026/07/16/national-ai-day/">&lt;p&gt;美国民间日历机构 National Day Calendar 将每年 7 月 16 日称为 &lt;a href=&quot;https://nationaldaycalendar.com/celebrations/national-ai-day-july-16&quot;&gt;National AI Day&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;先说明一下：这并不是美国政府、联合国或其他国际组织确立的正式纪念日，而是 National Day Calendar 在 2025 年发起的一个美国民间纪念日。这个机构希望借此回顾人工智能的发展，讨论 AI 已经怎样进入社会，以及人们应该如何负责任地塑造它的未来。&lt;/p&gt;
+
+&lt;p&gt;作为一个中国人，我当然没有必要把它当成自己的「全国人工智能日」。但我觉得，借这样一个日子停下来聊聊 AI，仍然挺有意思。&lt;/p&gt;
+
+&lt;p&gt;AI 发展得太快了，以至于我们平时几乎只顾着追下一次模型更新、下一个新产品、下一轮能力跳变，却很少停下来回答一个更基本的问题：&lt;strong&gt;AI 对我们来说，究竟已经变成了什么？&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;我的答案是：AI 已经不再只是一个工具，而正在成为一种新的生产力环境。&lt;/p&gt;
+
+&lt;h2 id=&quot;从机器能思考吗到每个人都在使用-ai&quot;&gt;从「机器能思考吗」到每个人都在使用 AI&lt;/h2&gt;
+
+&lt;p&gt;1950 年，Alan Turing 在《Computing Machinery and Intelligence》中提出了那个著名的问题：机器能思考吗？&lt;/p&gt;
+
+&lt;p&gt;1951 年，Marvin Minsky 和 Dean Edmonds 做出了早期人工神经网络 SNARC；1952 年，Arthur Samuel 开发了能够从经验中改进的西洋跳棋程序；1956 年，John McCarthy 在达特茅斯会议上正式提出「Artificial Intelligence」这个名称。&lt;/p&gt;
+
+&lt;p&gt;此后几十年，AI 经历过高潮，也经历过因为算力、数据和方法受限而出现的低谷。直到深度学习、大规模算力和互联网数据汇合，尤其是 2020 年代的大语言模型出现，AI 才真正从实验室里的研究方向，变成普通人每天都能接触到的东西。&lt;/p&gt;
+
+&lt;p&gt;今天，我们已经很难把 AI 只理解成某一类软件。&lt;/p&gt;
+
+&lt;p&gt;它可以帮人写作、编程、画图、剪视频、翻译、分析数据、检索信息，也开始进入医疗、科研、教育、金融、制造和交通。它既存在于 ChatGPT、Claude、Gemini 这样的显性产品里，也藏在搜索、推荐、风控、导航和各种自动化系统背后。&lt;/p&gt;
+
+&lt;p&gt;AI 正在从一个个孤立的功能，变成数字世界的基础环境。&lt;/p&gt;
+
+&lt;h2 id=&quot;ai-最重要的变化是开始参与实现&quot;&gt;AI 最重要的变化，是开始参与「实现」&lt;/h2&gt;
+
+&lt;p&gt;过去的信息技术，最擅长的是存储、计算和连接。&lt;/p&gt;
+
+&lt;p&gt;互联网连接人与信息、人与人、人与商品和服务；传统软件把流程数字化，让人能够更高效地操作工具。但真正完成一项工作，仍然主要依赖人的知识、经验和时间。&lt;/p&gt;
+
+&lt;p&gt;GenAI 带来的根本变化，是机器第一次开始大规模参与「实现」。&lt;/p&gt;
+
+&lt;p&gt;你给它一个目标，它不只是帮你找到资料，还可以生成方案、拆解任务、编写代码、制作内容、调用工具，甚至在反馈中继续修改。它提供的不只是生产力工具，而开始提供一部分「生产力本力」。&lt;/p&gt;
+
+&lt;p&gt;这也是为什么我一直认为，AI 是先进生产力的重要方向。&lt;/p&gt;
+
+&lt;p&gt;它能够把大量重复、耗时的工作自动化，快速处理人无法直接消化的数据，在复杂信息中寻找模式，降低语言和专业工具的使用门槛，并加速科学研究与工程实验。这些价值不是概念，而是正在发生的现实。&lt;/p&gt;
+
+&lt;p&gt;但「能够生成」不等于「能够负责」。&lt;/p&gt;
+
+&lt;h2 id=&quot;ai-越强人越需要留在回路里&quot;&gt;AI 越强，人越需要留在回路里&lt;/h2&gt;
+
+&lt;p&gt;National AI Day 的原文也提到了 AI 的另一面：自动化对就业的冲击，训练数据和算法中的偏见，隐私与安全风险，以及人们过度依赖现成答案之后，批判性思考能力可能下降。&lt;/p&gt;
+
+&lt;p&gt;这些问题不会因为模型更聪明而自动消失。&lt;/p&gt;
+
+&lt;p&gt;恰恰相反，AI 能力越强、进入的环节越关键，我们就越需要明确人的责任。模型可以快速给出答案，但它不知道一个答案在具体情境中应该承担什么后果；它可以生成大量内容，但不能替人决定什么值得表达；它可以优化目标，却不能天然保证那个目标本身是正确的。&lt;/p&gt;
+
+&lt;p&gt;所以我更认同 &lt;strong&gt;Human-AI Cocreation&lt;/strong&gt;，而不是「一句话生成一切」。&lt;/p&gt;
+
+&lt;p&gt;人的参与比重可能会变化，但人仍然应该负责目标、判断、审美、取舍和最终责任。AI 负责理解上下文、提供可能性、补齐动作链，把复杂实现折叠到人的意图之后。&lt;/p&gt;
+
+&lt;p&gt;真正有价值的人机关系，不是人退出创作和决策，而是人把机械执行交给 AI，把更多精力放到只有人能承担的部分。&lt;/p&gt;
+
+&lt;h2 id=&quot;借这个民间纪念日做一次人与-ai-的校准&quot;&gt;借这个民间纪念日，做一次人与 AI 的校准&lt;/h2&gt;
+
+&lt;p&gt;如果只是庆祝 AI 又变强了，这类纪念日很快就会变成一次普通的技术营销。&lt;/p&gt;
+
+&lt;p&gt;我更愿意把它当作一个讨论的由头，借机重新检查自己与 AI 的关系：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;过去一年，我把哪些重复劳动交给了 AI？&lt;/li&gt;
+  &lt;li&gt;AI 帮我创造了真实价值，还是只制造了更多看起来不错的输出？&lt;/li&gt;
+  &lt;li&gt;哪些判断必须继续由我亲自完成？&lt;/li&gt;
+  &lt;li&gt;我提供给 AI 的数据，是否涉及他人的隐私和安全？&lt;/li&gt;
+  &lt;li&gt;当 AI 替我完成越来越多工作时，我正在积累新的能力，还是逐渐失去原有能力？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这些问题没有统一答案。&lt;/p&gt;
+
+&lt;p&gt;对于不同职业、不同产品和不同组织，人机分工的边界都会变化。但有一点应该保持不变：&lt;strong&gt;AI 的发展不应该以人的退化为代价，而应该让人拥有更强的创造能力、更高的判断水平和更大的行动空间。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;今天可以怎样庆祝-ai&quot;&gt;今天可以怎样庆祝 AI？&lt;/h2&gt;
+
+&lt;p&gt;最好的庆祝方式，不是再看十条关于 AI 的新闻，而是亲自完成一次有意义的人机协作。&lt;/p&gt;
+
+&lt;p&gt;可以尝试用 AI 解决一个拖延很久的真实问题；学习一种此前不会使用的 AI 工具；和同事讨论哪些工作适合自动化、哪些环节必须保留人工复核；检查自己常用产品的数据权限；或者回头了解从 Turing、Dartmouth 到大语言模型的这段历史。&lt;/p&gt;
+
+&lt;p&gt;AI 已经来到这里，而且不会离开。&lt;/p&gt;
+
+&lt;p&gt;接下来真正重要的，不是继续争论它究竟是好是坏，而是学习如何把它变成好的生产力：让它承担重复劳动，但不外包我们的判断；让它扩大创造力，但不抹平人的差异；让它提高效率，同时让效率最终服务于人的价值。&lt;/p&gt;
+
+&lt;p&gt;如果要借 National AI Day 说一句祝福，我想应该是：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;愿 AI 越来越强，也愿我们因为 AI 而成为更有创造力、更有判断力、更能为结果负责的人。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;参考链接&quot;&gt;参考链接&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://nationaldaycalendar.com/celebrations/national-ai-day-july-16&quot;&gt;National AI Day - July 16&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://academic.oup.com/mind/article/LIX/236/433/986238&quot;&gt;Computing Machinery and Intelligence&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="National AI Day" /><category term="AI Day" /><category term="Human-AI Cocreation" /><category term="人机共创" /><category term="先进生产力" /><category term="AI Agent" /><category term="生产力革命" /><category term="麦克船长" /><summary type="html">美国民间机构 National Day Calendar 将 7 月 16 日称为 National AI Day。借这个并非官方设立的纪念日，我想聊聊 AI 如何从一种工具变成新的生产力环境，以及什么应该交给 AI、什么必须由人负责。</summary></entry><entry><title type="html">别焦虑，软件工业远没到终局：Code-Editing Agent 只是中间态，Product-Editing Agent 才是未来</title><link href="https://www.mikecaptain.com/2026/05/30/code-editing-agent-product-editing-agent/" rel="alternate" type="text/html" title="别焦虑，软件工业远没到终局：Code-Editing Agent 只是中间态，Product-Editing Agent 才是未来" /><published>2026-05-30T09:00:00+08:00</published><updated>2026-05-30T09:00:00+08:00</updated><id>https://www.mikecaptain.com/2026/05/30/code-editing-agent-product-editing-agent</id><content type="html" xml:base="https://www.mikecaptain.com/2026/05/30/code-editing-agent-product-editing-agent/">&lt;p&gt;我越来越觉得，今天的 Coding Agent 还处在一个很早期、很不完整的阶段。它看起来已经很强，可以读代码、改代码、跑测试、修 Bug，但本质上仍然是在修改“代码”这个中间产物。可对人来说，真正直觉的工作对象从来不是中间产物，而是最终结果。&lt;/p&gt;
 
 &lt;p&gt;如果类比视频制作，这就像三四十年前我们不是在时间线、画面、声音、字幕上直接编辑，而是必须打开某种底层工程文件，通过改格式来改变成片。那当然也能工作，但一定是落后的。视频工具今天未必在 AI 层面领先，甚至很多地方还很落后；但它在产品框架上有一个更先进的默认前提：创作者直接面对结果工作。&lt;/p&gt;
 
@@ -1053,72 +1144,4 @@ Agentic Coding 恶意用例的顺从度下降 25%，但仍保持与 &lt;code cla
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://www.anthropic.com/claude/opus&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://www.anthropic.com/pricing#api&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://docs.anthropic.com/en/docs/about-claude/models/overview#model-comparison-table&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="AGI" /><category term="Agent" /><category term="大模型" /><category term="基础模型" /><category term="模型" /><category term="Anthropic" /><category term="Claude" /><category term="Opus" /><category term="Claude Code" /><category term="Coding Agent" /><category term="coding" /><category term="code" /><summary type="html">北京时间 8 月 6 日凌晨，Anthropic 悄然上线新版旗舰模型 ``Claude Opus 4.1``，并同步更新 API、Bedrock、Vertex AI 三大平台与 Claude Code。虽然官方在博客中将其定位为 「``Opus 4`` 的渐进式升级」，但从多维基准与系统卡细节来看，这次版本号仅「加 0.1」的更新，实则在编码、长程代理任务与安全调优上完成了多项关键突破，为 2025 年下半年大模型竞技赛再添变量。</summary></entry><entry><title type="html">时隔六年再开源，OpenAI 发布两款语言模型，主打端侧场景</title><link href="https://www.mikecaptain.com/2025/08/06/openai-oss/" rel="alternate" type="text/html" title="时隔六年再开源，OpenAI 发布两款语言模型，主打端侧场景" /><published>2025-08-06T08:01:10+08:00</published><updated>2025-08-06T08:01:10+08:00</updated><id>https://www.mikecaptain.com/2025/08/06/openai-oss</id><content type="html" xml:base="https://www.mikecaptain.com/2025/08/06/openai-oss/">&lt;p&gt;&lt;img src=&quot;/resources/2025/08/06/3.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;距离 OpenAI 上一次开源语言模型已经过去了 6 年 —— 北京时间 2025 年 8 月 6 日凌晨 00:22，美国人工智能公司 OpenAI 在官网发文，声称发布两款开放权重推理模型 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-oss-120b&lt;/code&gt; 和 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-oss-20b&lt;/code&gt;，也是 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GPT-2&lt;/code&gt; 之后的第一个开放权重语言模型。&lt;/p&gt;
-
-&lt;h4 id=&quot;先看看开源了啥&quot;&gt;先看看开源了啥？&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;模型权重：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-oss-120b&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-oss-20b&lt;/code&gt;（含 MXFP4 量化版），许可证 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Apache-2.0&lt;/code&gt;；&lt;/li&gt;
-  &lt;li&gt;推理脚本：官方 PyTorch 版 + Apple Metal 优化版；&lt;/li&gt;
-  &lt;li&gt;开发组件：Python/Rust 版 Harmony renderer；&lt;/li&gt;
-  &lt;li&gt;分词器：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;o200k_harmony&lt;/code&gt;（≈20 万词），与 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-o4-mini&lt;/code&gt; / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-4o&lt;/code&gt; 系列同源，用于长上下文与工具调用。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;两款模型概览120b-参数和-20b-参数128k-上下文长度&quot;&gt;两款模型概览：120b 参数和 20b 参数、128k 上下文长度&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-oss-120b&lt;/code&gt;：36 层 Transformer + MoE，总参数 116.8b，每个 token 激活 5.1b 参数；单张 80 GB GPU 即可推理。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-oss-20b&lt;/code&gt;：24 层，总参数 20.9b，每个 token 激活 3.6b 参数；只需 16 GB 内存即可运行。&lt;/li&gt;
-  &lt;li&gt;二者均支持最长 128k 上下文窗口，采用旋转位置编码（RoPE）与分组多查询注意力（group size = 8）。&lt;/li&gt;
-  &lt;li&gt;所有权重以 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Apache-2.0&lt;/code&gt; 许可证发布，并已在 Hugging Face 上线。官方同时给出了 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MXFP4&lt;/code&gt; 量化版（4.25 bit），分别缩减至 60.8 GB 与 12.8 GB，方便单机部署。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;性能20b-即追平-o3-mini120b-挑战-o4-mini&quot;&gt;性能：20b 即追平 o3-mini，120b 挑战 o4-mini&lt;/h4&gt;
-
-&lt;p&gt;官方基准测试显示，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-oss-120b&lt;/code&gt; 在 Codeforces、MMLU、HLE 等推理评测上可与 OpenAI 自家商用模型 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-o4-mini&lt;/code&gt;「打成平手」，并在 AIME 竞赛数学、HealthBench 医疗问答上反超。体量仅为其六分之一的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-oss-20b&lt;/code&gt; 亦与 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-o3-mini&lt;/code&gt; 水平相当，在部分数学与医疗任务中甚至略胜一筹。&lt;/p&gt;
-
-&lt;p&gt;更值得关注的是工具使用与代理式推理：在 Tau-Bench 评测套件中，两款模型都展示了强大的浏览器、Python 代码和函数调用能力，为未来本地化 Agent 场景奠定了基础。&lt;/p&gt;
-
-&lt;h4 id=&quot;架构与训练细节transformer-moe--三档推理力度&quot;&gt;架构与训练细节：Transformer-MoE + 三档推理力度&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;MoE 设计：120b 含 128 个专家、20b 含 32 个专家，每 token 仅激活 4 个专家，有效降低计算开销。&lt;/li&gt;
-  &lt;li&gt;训练数据：以英文为主，偏重 STEM 与代码语料；使用全新的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;o200k_harmony&lt;/code&gt; 分词器（同步开源）。&lt;/li&gt;
-  &lt;li&gt;后训练：沿用 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-o4-mini&lt;/code&gt; 的「监督 SFT + 高算力 RL」流程，并额外加入「可变推理力度」训练，使模型能在低、中、高三档模式间切换，开发者仅需一行 system 指令即可指定 latency / accuracy 取舍。&lt;/li&gt;
-  &lt;li&gt;Harmony Chat Format：模型默认支持 OpenAI 最新的提示层级体系与结构化输出，便于与 Responses API 及外部 Agent 框架衔接。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;安全评估首次公开恶意微调极限测试&quot;&gt;安全评估：首次公开「恶意微调」极限测试&lt;/h4&gt;
-
-&lt;p&gt;伴随模型发布，OpenAI 同步发出 30 来页的《Estimating Worst-Case Frontier Risks of Open-Weight LLMs》。论文提出「Malicious Fine-Tuning（MFT）」方法：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;先利用 RL 将模型的拒绝策略完全「拆除」；&lt;/li&gt;
-  &lt;li&gt;再在生物、网络安全两个高风险域内，通过浏览器、终端等工具环境进行能力最大化训练。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;结果显示，即便在 OpenAI 自研顶级训练栈下，MFT 后的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-oss-120b&lt;/code&gt; 仍低于 Preparedness Framework 的 「High」 能力阈值，综合实力落后于闭源模型 o3。这一结论为「可公开发布」提供了直接佐证。&lt;/p&gt;
-
-&lt;p&gt;此外，OpenAI 宣布设立 50 万美元「Red Teaming Challenge」奖金池，邀请全球研究者挖掘新型安全问题，并将在赛后开源评测集与报告。&lt;/p&gt;
-
-&lt;h4 id=&quot;生态与部署从桌面到云端的全链路打通&quot;&gt;生态与部署：从桌面到云端的「全链路打通」&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;合作伙伴覆盖云（Azure、AWS、Databricks 等）、推理框架（vLLM、llama.cpp、Ollama、LM Studio）、CDN/Edge（Cloudflare、Vercel）以及硬件厂商（NVIDIA、AMD、Cerebras、Groq）。&lt;/li&gt;
-  &lt;li&gt;微软同步在 Windows 端上线 gpt-oss-20b 的 ONNX Runtime 版本，VS Code AI Toolkit 内可一键本地推理。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;结语&quot;&gt;结语&lt;/h4&gt;
-
-&lt;p&gt;从性能、成本到安全规范，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-oss&lt;/code&gt; 的发布无疑是 2025 年开源大模型领域最重磅的事件之一。它不仅象征着 OpenAI 重启「权重公开」路线，更向业界展示了「高能力 + 高安全」并非零和。随着更多社区开发者与企业加入测试与精调，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpt-oss&lt;/code&gt; 能否像当年的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GPT-2&lt;/code&gt; 那样掀起新一轮创新浪潮，值得持续关注。&lt;/p&gt;
-
-&lt;h4 id=&quot;参考&quot;&gt;参考&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;Blog：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://openai.com/index/introducing-gpt-oss/&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Paper：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://cdn.openai.com/pdf/231bf018-659a-494d-976c-2efdfc72b652/oai_gpt-oss_Model_Safety.pdf&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Model Card：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://cdn.openai.com/pdf/419b6906-9da6-406c-a19d-1bb078ac7637/oai_gpt-oss_model_card.pdf&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Red Teaming Challenge：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://www.kaggle.com/competitions/openai-gpt-oss-20b-red-teaming/&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;HuggingFace：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://huggingface.co/openai/gpt-oss-120b&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="AGI" /><category term="Agent" /><category term="大模型" /><category term="基础模型" /><category term="模型" /><category term="OpenAI" /><category term="OSS" /><category term="开源" /><category term="开放权重" /><category term="Open Source" /><category term="Open Weight" /><category term="端侧模型" /><category term="Frontier" /><summary type="html">距离 OpenAI 上一次开源语言模型已经过去了 6 年 —— 北京时间 2025 年 8 月 6 日凌晨 00:22，美国人工智能公司 OpenAI 在官网发文，声称发布两款开放权重推理模型 ``gpt-oss-120b`` 和 ``gpt-oss-20b``，也是 ``GPT-2`` 之后的第一个开放权重语言模型。</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>麦克船长</name></author><category term="ai" /><category term="AI" /><category term="人工智能" /><category term="AGI" /><category term="Agent" /><category term="大模型" /><category term="基础模型" /><category term="模型" /><category term="Anthropic" /><category term="Claude" /><category term="Opus" /><category term="Claude Code" /><category term="Coding Agent" /><category term="coding" /><category term="code" /><summary type="html">北京时间 8 月 6 日凌晨，Anthropic 悄然上线新版旗舰模型 ``Claude Opus 4.1``，并同步更新 API、Bedrock、Vertex AI 三大平台与 Claude Code。虽然官方在博客中将其定位为 「``Opus 4`` 的渐进式升级」，但从多维基准与系统卡细节来看，这次版本号仅「加 0.1」的更新，实则在编码、长程代理任务与安全调优上完成了多项关键突破，为 2025 年下半年大模型竞技赛再添变量。</summary></entry></feed>
