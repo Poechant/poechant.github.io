@@ -55,6 +55,7 @@ permalink: /about/
 * 我的书单：[麦克船长的书单](/booklist/)
 * 变形金刚手办收藏
 
+![image](/img/about/photo_11.png)
 ![image](/img/about/photo_10.jpg)
 ![image](/img/about/photo_2.jpg)
 ![image](/img/about/photo_6.jpg)
